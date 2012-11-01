@@ -1,0 +1,17 @@
+<script id="barchartTemplate" type="text/x-jquery-tmpl">
+
+    {{if barchart}}
+    <div class="block-border">
+        {{if barchart.title}}
+        <div class="block-header">
+            <h1>{{if barchart.icon}}<img src='${barchart.icon}'/>{{/if}}${barchart.title}</h1><span></span>
+        </div>
+        {{/if}}
+        <div class="block-content">
+            <div class="jqplot-form"></div>
+            <div class="jqplot"></div>
+        </div>
+    </div>
+    {{/if}}
+
+</script>

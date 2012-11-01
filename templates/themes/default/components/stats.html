@@ -1,0 +1,25 @@
+<script id="statsTemplate" type="text/x-jquery-tmpl">
+
+    {{if stats}}
+    <div class="block-border">
+        {{if stats.title}}
+        <div class="block-header">
+            <h1>{{if stats.icon}}<span class="sprite-20 ${stats.icon.substring(stats.icon.lastIndexOf('/')+1,stats.icon.lastIndexOf('.'))}"></span><!--<img src='${stats.icon}'/>-->{{/if}}${stats.title}</h1><span></span>
+        </div>
+        {{/if}}
+        <div class="block-content">
+            {{if stats.alert}}
+            <div class="alert info no-margin top">${stats.alert}</div>
+            {{/if}}
+            {{if stats.items}}
+            <ul class="overview-list">
+                {{each(i, item) stats.items}}
+                <li><a href="{{if item.link}}${item.link}{{else}}javascript:void(0);{{/if}}"><span>${item.value}</span> ${item.key}</a></li>
+                {{/each}}
+            </ul>
+            {{/if}}
+        </div>
+    </div>
+    {{/if}}
+
+</script>

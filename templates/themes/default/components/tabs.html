@@ -1,0 +1,17 @@
+<script id="tabsTemplate" type="text/x-jquery-tmpl">
+
+    {{if tabs}}
+    <div class="tabs">
+        <ul>
+            {{each(i, tab) tabs}}
+            <li>
+                <a href="#tabs" tabKey="${i}">${tab.title}</a>
+            </li>
+            {{/each}}
+        </ul>
+        <!-- include the panel gadget -->
+        <div gadget="panel"></div>
+    </div>
+    {{/if}}
+
+</script>

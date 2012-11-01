@@ -1,0 +1,81 @@
+<script id="layoutTemplate" type="text/x-jquery-tmpl">
+
+    <div class="container_12">
+
+        {{if page}}
+        <div class="grid_12">
+            {{if page.title}}
+            <h1>${page.title}</h1>
+            {{/if}}
+            {{if page.description}}
+            <p>${page.description}</p>
+            {{/if}}
+        </div>
+        {{/if}}
+
+        {{if page.dashlets}}
+            {{each(i, dashlet) page.dashlets}}
+            <div class="{{if dashlet.grid}}${dashlet.grid}{{else}}grid_4{{/if}}" {{if dashlet.id}}id="${dashlet.id}"{{/if}} {{if dashlet.gadget}}gadget="${dashlet.gadget}"{{/if}} {{if dashlet.subscription}}subscription="${dashlet.subscription}"{{/if}}>
+            </div>
+            {{/each}}
+        {{/if}}
+
+        {{if page.forms}}
+            {{each(i, form) page.forms}}
+            <div class="grid_12">
+				<div class="block-border">
+					{{if form.title}}
+                    <div class="block-header">
+						<h1>{{if form.icon}}<img src='${form.icon}'/>  {{/if}}${form.title}</h1><!-- <span></span> -->
+					</div>
+                    {{/if}}
+					<div class="block-content">
+						<div {{if form.id}}id="${form.id}"{{/if}}></div>
+					    {{if form.buttons}}
+                        <div class="block-actions">
+							<ul class="actions-left">
+								{{each(j,button) form.buttons}}
+                                    {{if button.isLeft}}
+                                    <li><a class="close-toolbox button" href="javascript:void(0);" {{if button.id}}id="${button.id}"{{/if}}>{{if button.title}}${button.title}{{/if}}</a></li>
+                                    {{/if}}
+                                {{/each}}
+							</ul>
+							<ul class="actions-right">
+                                {{each(j,button) form.buttons}}
+                                    {{if ! button.isLeft}}
+                                    <li><a class="close-toolbox button red" href="javascript:void(0);" {{if button.id}}id="${button.id}"{{/if}}>{{if button.title}}${button.title}{{/if}}</a></li>
+                                    {{/if}}
+                                {{/each}}
+							</ul>
+						</div>
+                        {{/if}}
+					</div>
+				</div>
+            </div>
+            {{/each}}
+        {{/if}}
+
+        <div class="grid_12 list-form" {{if page.hiddenList}}style="display:none;"{{/if}}>
+            <div class="block-border">
+                {{if page && page.listTitle}}
+                <div class="block-header">
+                    <h1>{{if page.listIcon}}<img src='${page.listIcon}'/>{{/if}}${page.listTitle}</h1><span></span>
+                </div>
+                {{/if}}
+                <div class="list-toolbar-content" gadget="toolbar">
+                </div>
+                <div class="" gadget="filter">
+                </div>
+                {{if page.subscription}}<div class="list-toolbar" gadget="toolbar" subscription="${page.subscription}-toolbar"></div>{{/if}}
+                <div class="block-content list-datatable" >
+                    <div class="list" gadget="list" {{if page.subscription}}subscription="${page.subscription}"{{/if}} {{if page.filter}}filter="${page.filter}"{{/if}}>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear height-fix"></div>
+
+    </div>
+
+</script>

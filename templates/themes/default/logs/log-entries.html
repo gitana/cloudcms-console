@@ -1,0 +1,9 @@
+<script id="auditRecordTemplate" type="text/x-jquery-tmpl">
+
+    {{if data}}
+    <pre>
+        <code><br/>{{each(i, entry) data}}${entry.timestamp.timestamp} ${entry.level} [${entry['class']['fullyQualifiedName']}]{{if entry.message}} ${entry.message}{{/if}}</br>{{/each}}</code>
+    </pre>
+    {{/if}}
+
+</script>

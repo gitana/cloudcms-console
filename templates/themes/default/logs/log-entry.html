@@ -1,0 +1,23 @@
+<script id="auditRecordTemplate" type="text/x-jquery-tmpl">
+
+    {{if data}}
+    <ul class="item-list" style="margin:0px;">
+        <li><span>Filename</span>${data.filename}</li>
+        <li><span>Class</span>${data['class']['fullyQualifiedName']}</li>
+        <li><span>Method</span>${data.method}</li>
+        <li><span>Line</span>${data.line}</li>
+        <li><span>Principal</span>${data.principalId}</li>
+        <li><span>Repository</span>${data.repositoryId}</li>
+        <li><span>Branch</span>${data.branchId}</li>
+        <li><span>Level</span>${data.level}</li>
+        <li><span>Thread</span>${data.thread}</li>
+        <li><span>Timestamp</span>${data.timestamp.timestamp}</li>
+        {{if data.message}}
+        <li><span>Message</span>
+            <pre class="record-full-json">${data.message}</pre>
+        </li>
+        {{/if}}
+    </ul>
+    {{/if}}
+
+</script>

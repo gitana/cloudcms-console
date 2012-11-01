@@ -1,0 +1,41 @@
+<script id="toolbarTemplate" type="text/x-jquery-tmpl">
+{{if toolbar}}
+    {{if toolbar.items}}
+    <ul class="toolbar-list">
+        {{each(key, item) toolbar.items}}
+        <li id="toolbar-item-${key}" {{if !item.visibility}}style="display:none;"{{/if}}>
+            <a item-id="${key}" href="javascript:void(0);" class="toolbar-item">
+                {{if item.icon}}<span class="sprite-48 sprite-48-button ${item.icon.substring(item.icon.lastIndexOf('/')+1,item.icon.lastIndexOf('.'))}"></span><!--<img src="${item.icon}">-->{{/if}}
+                {{if item.title}}${item.title}{{/if}}
+            </a>
+        </li>
+        {{/each}}
+    </ul>
+    <div class="clear"></div>
+    {{else}}
+        {{if toolbar.groups}}
+            <dl>
+            {{each(groupKey, group) toolbar.groups}}
+                {{if group.title}}
+                <dt>${group.title}</dt>
+                {{/if}}
+                <dd>
+                {{if group.items}}
+                <ul class="toolbar-list">
+                    {{each(key, item) group.items}}
+                    <li id="toolbar-item-${key}" {{if !item.visibility}}style="display:none;"{{/if}}>
+                        <a item-id="${key}" href="javascript:void(0);" class="toolbar-item">
+                            {{if item.icon}}<span class="sprite-48 sprite-48-button ${item.icon.substring(item.icon.lastIndexOf('/')+1,item.icon.lastIndexOf('.'))}"></span><!--<img src="${item.icon}">-->{{/if}}
+                            {{if item.title}}${item.title}{{/if}}
+                        </a>
+                    </li>
+                    {{/each}}
+                </ul>
+                {{/if}}
+                </dd>
+            {{/each}}
+            </dl>
+        {{/if}}
+    {{/if}}
+{{/if}}
+</script>

@@ -1,0 +1,199 @@
+<script id="headerTemplate" type="text/x-jquery-tmpl">
+    <header id="header">
+    <!--[if IE]>
+    <div id="header">
+    <![endif]-->
+
+        <!-- Place your logo here -->
+        <img src="css/images/themes/default/console/logos/cloudcms.png" alt="Cloud CMS" class="logo">
+
+        <!-- Divider between info-button and the toolbar-icons -->
+        <div class="divider-header divider-vertical"></div>
+
+        <!-- Info-Button -->
+        <!--
+        <a href="javascript:void(0);" onclick="$('#info-dialog').dialog({ modal: true });">
+            span class="btn-info"></span></a>
+        -->
+        <!-- Modal Box Content
+        <div id="info-dialog" title="About" style="display: none;">
+            <p>Gitana CloudCMS is The only Content Repository built from the ground up on top of MongoDB.
+                Everything you need to introduce enterprise and social content management
+                functionality into your applications</p>
+        </div>
+        -->
+        <!--! end of #info-dialog -->
+
+        <!-- Begin from Toolbox -->
+        <ul class="toolbox-header">
+            <li>
+                <a rel="tooltip-html" title="Recent History" class="toolbox-action" href="javascript:void(0);"><span
+                        class="recent-history-icon"></span></a>
+                <a rel="tooltip-html" title="Clipboard" class="toolbox-action" href="javascript:void(0);"><span
+                        class="clipboard-icon"></span></a>
+                <a rel="tooltip-html" title="My Favorites" class="toolbox-action" href="javascript:void(0);"><span
+                        class="my-favorites-icon"></span></a>
+            </li>
+            <!--
+            <li>
+                <a rel="tooltip-html" title="Platform Dashboard" class="toolbox-action" href="#/"><span
+                        class="platform-dashboard-icon"></span></a>
+            </li>
+            <li>
+                <a rel="tooltip-html" title="Tenant Dashboard" class="toolbox-action" href="#/dashboard/tenant"><span
+                        class="tenant-dashboard-icon"></span></a>
+            </li>
+            -->
+            <!-- First entry -->
+            <!--
+            <li>
+                <a rel="tooltip" title="Create a User" class="toolbox-action" href="javascript:void(0);"><span
+                        class="i-24-user-business"></span></a>
+
+                <div class="toolbox-content">
+
+                    <div class="block-border">
+                        <div class="block-header small">
+                            <h1>Create a User</h1>
+                        </div>
+                        <form id="create-user-form" class="block-content form" action="" method="post">
+                            <div class="_100">
+                                <p><label for="username">Username</label><input id="username" name="username"
+                                                                                class="required" type="text" value=""/>
+                                </p>
+
+                            </div>
+                            <div class="_50">
+                                <p class="no-top-margin"><label for="firstname">Firstname</label><input id="firstname"
+                                                                                                        name="firstname"
+                                                                                                        class="required"
+                                                                                                        type="text"
+                                                                                                        value=""/></p>
+                            </div>
+                            <div class="_50">
+                                <p class="no-top-margin"><label for="lastname">Lastname</label><input id="lastname"
+                                                                                                      name="lastname"
+                                                                                                      class="required"
+                                                                                                      type="text"
+                                                                                                      value=""/></p>
+                            </div>
+                            <div class="clear"></div>
+
+
+                            <div class="block-actions">
+                                <ul class="actions-left">
+                                    <li><a class="close-toolbox button red" id="reset"
+                                           href="javascript:void(0);">Cancel</a></li>
+                                </ul>
+                                <ul class="actions-right">
+                                    <li><input type="submit" class="button" value="Create the User"></li>
+                                </ul>
+
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </li>
+            <li>
+
+                <a rel="tooltip" title="Write a Message" class="toolbox-action" href="javascript:void(0);"><span
+                        class="i-24-inbox-document"></span></a>
+
+                <div class="toolbox-content">
+
+                    <div class="block-border">
+                        <div class="block-header small">
+                            <h1>Write a Message</h1>
+                        </div>
+                        <form id="write-message-form" class="block-content form" action="" method="post">
+                            <p class="inline-mini-label">
+
+                                <label for="recipient">Recipient</label>
+                                <input type="text" name="recipient" class="required">
+                            </p>
+
+                            <p class="inline-mini-label">
+                                <label for="subject">Subject</label>
+                                <input type="text" name="subject">
+                            </p>
+
+                            <div class="_100">
+
+                                <p class="no-top-margin"><label for="message">Message</label><textarea id="message"
+                                                                                                       name="message"
+                                                                                                       class="required"
+                                                                                                       rows="5"
+                                                                                                       cols="40"></textarea>
+                                </p>
+                            </div>
+
+                            <div class="clear"></div>
+
+                            <div class="block-actions">
+                                <ul class="actions-left">
+                                    <li><a class="close-toolbox button red" id="reset2" href="javascript:void(0);">Cancel</a>
+                                    </li>
+
+                                </ul>
+                                <ul class="actions-right">
+                                    <li><input type="submit" class="button" value="Send Message"></li>
+                                </ul>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </li>
+            <li>
+                <a rel="tooltip" title="Create a Folder" class="toolbox-action" href="javascript:void(0);"><span
+                        class="i-24-folder-horizontal-open"></span></a>
+
+                <div class="toolbox-content">
+
+                    <div class="block-border">
+                        <div class="block-header small">
+
+                            <h1>Create a Folder</h1>
+                        </div>
+                        <form id="create-folder-form" class="block-content form" action="" method="post">
+                            <p class="inline-mini-label">
+                                <label for="folder-name">Name</label>
+                                <input type="text" name="folder-name" class="required">
+                            </p>
+
+                            <div class="block-actions">
+                                <ul class="actions-left">
+                                    <li><a class="close-toolbox button red" id="reset3" href="javascript:void(0);">Cancel</a>
+                                    </li>
+                                </ul>
+                                <ul class="actions-right">
+                                    <li><input type="submit" class="button" value="Create Folder"></li>
+                                </ul>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+            </li>
+            -->
+            <!--! end of third entry -->
+        </ul>
+
+        <!-- Begin of #user-info -->
+        <div id="user-info">
+            <p>
+                <a href="#/profile" rel="tooltip-html" original-title="Your Profile"><img class="header-avatar-photo" id="login-user-avatar" {{if header && header.avatarUrl}}data-src="${header.avatarUrl}"{{else}}src="css/images/themes/default/console/misc/avatar_small.png"{{/if}} alt="Hello {{if header}}${header.friendlyName}{{/if}}"></a>
+                <span class="messages"><a href="#/profile">{{if header}}${header.friendlyName}{{/if}}</a></span>
+                <!-- <a href="#/profile" class="toolbox-action button">Profile</a> --> <a href="javascript:void(1);" class="button red logout">Logout</a>
+            </p>
+
+        </div>
+        <!--! end of #user-info -->
+    <!--[if IE]>
+    </div>
+    <![endif]-->
+    </header>
+</script>

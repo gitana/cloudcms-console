@@ -1,0 +1,83 @@
+/*
+ * Grape - Professional & Flexible Admin Template
+ * by Stammi <http://themeforest.net/user/Stammi>
+ * 
+ * -----------------
+ * TABLE OF CONTENTS
+ * -----------------
+ * 
+ * 1) Generic
+ * 2) Pack: Fugue
+ *   2.1) 16x16
+ *   2.2) 24x24
+ */
+
+/* ==================================================
+* 1) Generic
+* ================================================== */
+
+.icon {
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+
+}
+
+/* ==================================================
+* 2) Pack: Fugue
+* ================================================== */
+
+/*
+ * 2.1) 16x16
+ */
+
+.i-24-information {
+    background-image: url("../../../images/themes/default/console/icons/packs/fugue/16x16/information.png");
+}
+
+/*
+ * 2.2) 24x24
+ */
+
+.i-24-information {
+    background-image: url("../../../images/themes/default/console/icons/packs/fugue/24x24/information.png");
+}
+
+.platform-dashboard-icon {
+    background-image: url("../../../images/themes/default/console/objects/platform-24.png");
+}
+
+.tenant-dashboard-icon {
+    background-image: url("../../../images/themes/default/console/objects/tenant-24.png");
+}
+
+.recent-history-icon {
+    background-image: url("../../../images/themes/default/console/special/history-24.png");
+}
+
+.clipboard-icon {
+    background-image: url("../../../images/themes/default/console/browser/clipboard-24.png");
+}
+
+.my-favorites-icon {
+    background-image: url("../../../images/themes/default/console/browser/my-favorites-24.png");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

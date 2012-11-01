@@ -1,0 +1,1530 @@
+.sprite-16 {
+    background: url('../../../images/themes/default/console/sprites/sprite-16.png') no-repeat top left;
+    width: 16px;
+    height: 16px;
+    padding-right: 32px;
+}
+
+.sprite-16.translation-16 {
+    background-position: 0px 0px;
+}
+
+.sprite-16.my-favorites-16 {
+    background-position: 0px -26px;
+}
+
+.sprite-16.clipboard-16 {
+    background-position: 0px -52px;
+}
+
+.sprite-16.paste-16 {
+    background-position: 0px -78px;
+}
+
+.sprite-16.copy-16 {
+    background-position: 0px -104px;
+}
+
+.sprite-16.interaction-application-16 {
+    background-position: 0px -130px;
+}
+
+.sprite-16.interaction-node-16 {
+    background-position: 0px -156px;
+}
+
+.sprite-16.interaction-page-16 {
+    background-position: 0px -182px;
+}
+
+.sprite-16.interaction-report-16 {
+    background-position: 0px -208px;
+}
+
+.sprite-16.interaction-user-16 {
+    background-position: 0px -234px;
+}
+
+.sprite-16.warehouse-16 {
+    background-position: 0px -260px;
+}
+
+.sprite-16.interaction-16 {
+    background-position: 0px -286px;
+}
+
+.sprite-16.session-16 {
+    background-position: 0px -312px;
+}
+
+.sprite-16.activity-16 {
+    background-position: 0px -338px;
+}
+
+.sprite-16.auto-client-mapping-16 {
+    background-position: 0px -364px;
+}
+
+.sprite-16.webhost-16 {
+    background-position: 0px -390px;
+}
+
+.sprite-16.billing-provider-16 {
+    background-position: 0px -416px;
+}
+
+.sprite-16.chart-16 {
+    background-position: 0px -442px;
+}
+
+.sprite-16.dashboard-16 {
+    background-position: 0px -468px;
+}
+
+.sprite-16.empty-16 {
+    background-position: 0px -494px;
+}
+
+.sprite-16.filter-16 {
+    background-position: 0px -520px;
+}
+
+.sprite-16.list-16 {
+    background-position: 0px -546px;
+}
+
+.sprite-16.query-16 {
+    background-position: 0px -572px;
+}
+
+.sprite-16.statistics-16 {
+    background-position: 0px -598px;
+}
+
+.sprite-16.switch-16 {
+    background-position: 0px -624px;
+}
+
+.sprite-16.n_definition-16 {
+    background-position: 0px -650px;
+}
+
+.sprite-16.n_form-16 {
+    background-position: 0px -676px;
+}
+
+.sprite-16.n_group-16 {
+    background-position: 0px -702px;
+}
+
+.sprite-16.n_node-16 {
+    background-position: 0px -728px;
+}
+
+.sprite-16.n_person-16 {
+    background-position: 0px -754px;
+}
+
+.sprite-16.n_tag-16 {
+    background-position: 0px -780px;
+}
+
+.sprite-16.container-16 {
+    background-position: 0px -806px;
+}
+
+.sprite-16.download-16 {
+    background-position: 0px -832px;
+}
+
+.sprite-16.error-16 {
+    background-position: 0px -858px;
+}
+
+.sprite-16.error-message-16 {
+    background-position: 0px -884px;
+}
+
+.sprite-16.finished-16 {
+    background-position: 0px -910px;
+}
+
+.sprite-16.history-16 {
+    background-position: 0px -936px;
+}
+
+.sprite-16.left-16 {
+    background-position: 0px -962px;
+}
+
+.sprite-16.mutual-16 {
+    background-position: 0px -988px;
+}
+
+.sprite-16.page-error-16 {
+    background-position: 0px -1014px;
+}
+
+.sprite-16.preview-16 {
+    background-position: 0px -1040px;
+}
+
+.sprite-16.right-16 {
+    background-position: 0px -1066px;
+}
+
+.sprite-16.running-16 {
+    background-position: 0px -1092px;
+}
+
+.sprite-16.started-16 {
+    background-position: 0px -1118px;
+}
+
+.sprite-16.upload-16 {
+    background-position: 0px -1144px;
+}
+
+.sprite-16.warning-16 {
+    background-position: 0px -1170px;
+}
+
+.sprite-16.group-16 {
+    background-position: 0px -1196px;
+}
+
+.sprite-16.group-security-16 {
+    background-position: 0px -1222px;
+}
+
+.sprite-16.organization-16 {
+    background-position: 0px -1248px;
+}
+
+.sprite-16.organization-add-16 {
+    background-position: 0px -1274px;
+}
+
+.sprite-16.organization-delete-16 {
+    background-position: 0px -1300px;
+}
+
+.sprite-16.organization-edit-16 {
+    background-position: 0px -1326px;
+}
+
+.sprite-16.security-16 {
+    background-position: 0px -1352px;
+}
+
+.sprite-16.team-16 {
+    background-position: 0px -1378px;
+}
+
+.sprite-16.team-add-16 {
+    background-position: 0px -1404px;
+}
+
+.sprite-16.team-delete-16 {
+    background-position: 0px -1430px;
+}
+
+.sprite-16.team-edit-16 {
+    background-position: 0px -1456px;
+}
+
+.sprite-16.user-16 {
+    background-position: 0px -1482px;
+}
+
+.sprite-16.user-security-16 {
+    background-position: 0px -1508px;
+}
+
+.sprite-16.application-16 {
+    background-position: 0px -1534px;
+}
+
+.sprite-16.archive-16 {
+    background-position: 0px -1560px;
+}
+
+.sprite-16.association-16 {
+    background-position: 0px -1586px;
+}
+
+.sprite-16.attachment-16 {
+    background-position: 0px -1612px;
+}
+
+.sprite-16.auditrecord-16 {
+    background-position: 0px -1638px;
+}
+
+.sprite-16.authentication-grant-16 {
+    background-position: 0px -1664px;
+}
+
+.sprite-16.branch-16 {
+    background-position: 0px -1690px;
+}
+
+.sprite-16.branch-add-16 {
+    background-position: 0px -1716px;
+}
+
+.sprite-16.branch-delete-16 {
+    background-position: 0px -1742px;
+}
+
+.sprite-16.branch-edit-16 {
+    background-position: 0px -1768px;
+}
+
+.sprite-16.branches-16 {
+    background-position: 0px -1794px;
+}
+
+.sprite-16.changesets-16 {
+    background-position: 0px -1820px;
+}
+
+.sprite-16.client-16 {
+    background-position: 0px -1846px;
+}
+
+.sprite-16.datastore-16 {
+    background-position: 0px -1872px;
+}
+
+.sprite-16.definition-16 {
+    background-position: 0px -1898px;
+}
+
+.sprite-16.definition-add-16 {
+    background-position: 0px -1924px;
+}
+
+.sprite-16.definition-delete-16 {
+    background-position: 0px -1950px;
+}
+
+.sprite-16.definition-edit-16 {
+    background-position: 0px -1976px;
+}
+
+.sprite-16.definitions-16 {
+    background-position: 0px -2002px;
+}
+
+.sprite-16.domain-16 {
+    background-position: 0px -2028px;
+}
+
+.sprite-16.features-16 {
+    background-position: 0px -2054px;
+}
+
+.sprite-16.features-add-16 {
+    background-position: 0px -2080px;
+}
+
+.sprite-16.features-delete-16 {
+    background-position: 0px -2106px;
+}
+
+.sprite-16.features-edit-16 {
+    background-position: 0px -2132px;
+}
+
+.sprite-16.folder-16 {
+    background-position: 0px -2158px;
+}
+
+.sprite-16.folder-add-16 {
+    background-position: 0px -2184px;
+}
+
+.sprite-16.folder-delete-16 {
+    background-position: 0px -2210px;
+}
+
+.sprite-16.form-16 {
+    background-position: 0px -2236px;
+}
+
+.sprite-16.form-add-16 {
+    background-position: 0px -2262px;
+}
+
+.sprite-16.form-delete-16 {
+    background-position: 0px -2288px;
+}
+
+.sprite-16.form-edit-16 {
+    background-position: 0px -2314px;
+}
+
+.sprite-16.forms-16 {
+    background-position: 0px -2340px;
+}
+
+.sprite-16.job-16 {
+    background-position: 0px -2366px;
+}
+
+.sprite-16.log-16 {
+    background-position: 0px -2392px;
+}
+
+.sprite-16.logs-16 {
+    background-position: 0px -2418px;
+}
+
+.sprite-16.master-branch-16 {
+    background-position: 0px -2444px;
+}
+
+.sprite-16.node-16 {
+    background-position: 0px -2470px;
+}
+
+.sprite-16.node-add-16 {
+    background-position: 0px -2496px;
+}
+
+.sprite-16.node-delete-16 {
+    background-position: 0px -2522px;
+}
+
+.sprite-16.node-edit-16 {
+    background-position: 0px -2548px;
+}
+
+.sprite-16.node-tagged-16 {
+    background-position: 0px -2574px;
+}
+
+.sprite-16.nodes-16 {
+    background-position: 0px -2600px;
+}
+
+.sprite-16.plan-16 {
+    background-position: 0px -2626px;
+}
+
+.sprite-16.platform-16 {
+    background-position: 0px -2652px;
+}
+
+.sprite-16.registrar-16 {
+    background-position: 0px -2678px;
+}
+
+.sprite-16.repositories-16 {
+    background-position: 0px -2704px;
+}
+
+.sprite-16.repository-16 {
+    background-position: 0px -2730px;
+}
+
+.sprite-16.repository-add-16 {
+    background-position: 0px -2756px;
+}
+
+.sprite-16.root-folder-16 {
+    background-position: 0px -2782px;
+}
+
+.sprite-16.settings-16 {
+    background-position: 0px -2808px;
+}
+
+.sprite-16.stack-16 {
+    background-position: 0px -2834px;
+}
+
+.sprite-16.tag-16 {
+    background-position: 0px -2860px;
+}
+
+.sprite-16.tenant-16-bk {
+    background-position: 0px -2886px;
+}
+
+.sprite-16.tenant-16 {
+    background-position: 0px -2912px;
+}
+
+.sprite-16.tenant-add-16 {
+    background-position: 0px -2938px;
+}
+
+.sprite-16.tenant-delete-16 {
+    background-position: 0px -2964px;
+}
+
+.sprite-16.tenant-edit-16 {
+    background-position: 0px -2990px;
+}
+
+.sprite-16.vault-16 {
+    background-position: 0px -3016px;
+}
+
+.sprite-48 {
+    background: url('../../../images/themes/default/console/sprites/sprite-48.png') no-repeat top left;
+    width: 48px;
+    height: 48px;
+}
+
+.sprite-48-button {
+    display: block;
+    margin: 0 auto 5px;
+    overflow: hidden;
+}
+
+ul.item-list li span.sprite-48-pairs {
+    margin-right: 10px;
+    vertical-align: top;
+    width: 48px;
+    height: 48px;
+    float: left;
+}
+
+ul.item-list li div.block-list-item-desc {
+    margin: 5px 0 5px 58px;
+    min-height: 16px;
+}
+
+.sprite-48.translation-48 {
+    background-position: 0px 0px;
+}
+
+.sprite-48.translation-add-48 {
+    background-position: 0px -58px;
+}
+
+.sprite-48.translation-delete-48 {
+    background-position: 0px -116px;
+}
+
+.sprite-48.translation-edit-48 {
+    background-position: 0px -174px;
+}
+
+.sprite-48.my-favorites-48 {
+    background-position: 0px -232px;
+}
+
+.sprite-48.clipboard-48 {
+    background-position: 0px -290px;
+}
+
+.sprite-48.copy-48 {
+    background-position: 0px -348px;
+}
+
+.sprite-48.paste-48 {
+    background-position: 0px -406px;
+}
+
+.sprite-48.json-add-48 {
+    background-position: 0px -464px;
+}
+
+.sprite-48.archive-import-48 {
+    background-position: 0px -522px;
+}
+
+.sprite-48.archive-export-48 {
+    background-position: 0px -580px;
+}
+
+.sprite-48.interaction-application-48 {
+    background-position: 0px -638px;
+}
+
+.sprite-48.interaction-node-48 {
+    background-position: 0px -696px;
+}
+
+.sprite-48.interaction-page-48 {
+    background-position: 0px -754px;
+}
+
+.sprite-48.interaction-report-48 {
+    background-position: 0px -812px;
+}
+
+.sprite-48.interaction-user-48 {
+    background-position: 0px -870px;
+}
+
+.sprite-48.warehouse-48 {
+    background-position: 0px -928px;
+}
+
+.sprite-48.warehouse-add-48 {
+    background-position: 0px -986px;
+}
+
+.sprite-48.warehouse-edit-48 {
+    background-position: 0px -1044px;
+}
+
+.sprite-48.warehouse-delete-48 {
+    background-position: 0px -1102px;
+}
+
+.sprite-48.interaction-48 {
+    background-position: 0px -1160px;
+}
+
+.sprite-48.activity-48 {
+    background-position: 0px -1218px;
+}
+
+.sprite-48.session-48 {
+    background-position: 0px -1276px;
+}
+
+.sprite-48.auto-client-mapping-48 {
+    background-position: 0px -1334px;
+}
+
+.sprite-48.auto-client-mapping-add-48 {
+    background-position: 0px -1392px;
+}
+
+.sprite-48.auto-client-mapping-delete-48 {
+    background-position: 0px -1450px;
+}
+
+.sprite-48.auto-client-mapping-edit-48 {
+    background-position: 0px -1508px;
+}
+
+.sprite-48.webhost-48 {
+    background-position: 0px -1566px;
+}
+
+.sprite-48.webhost-add-48 {
+    background-position: 0px -1624px;
+}
+
+.sprite-48.webhost-delete-48 {
+    background-position: 0px -1682px;
+}
+
+.sprite-48.webhost-edit-48 {
+    background-position: 0px -1740px;
+}
+
+.sprite-48.billing-provider-48 {
+    background-position: 0px -1798px;
+}
+
+.sprite-48.billing-provider-add-48 {
+    background-position: 0px -1856px;
+}
+
+.sprite-48.billing-provider-delete-48 {
+    background-position: 0px -1914px;
+}
+
+.sprite-48.billing-provider-edit-48 {
+    background-position: 0px -1972px;
+}
+
+.sprite-48.group-add-48 {
+    background-position: 0px -2030px;
+}
+
+.sprite-48.group-delete-48 {
+    background-position: 0px -2088px;
+}
+
+.sprite-48.group-48 {
+    background-position: 0px -2146px;
+}
+
+.sprite-48.group-edit-48 {
+    background-position: 0px -2204px;
+}
+
+.sprite-48.group-query-48 {
+    background-position: 0px -2262px;
+}
+
+.sprite-48.group-security-48 {
+    background-position: 0px -2320px;
+}
+
+.sprite-48.member-48 {
+    background-position: 0px -2378px;
+}
+
+.sprite-48.member-add-48 {
+    background-position: 0px -2436px;
+}
+
+.sprite-48.member-delete-48 {
+    background-position: 0px -2494px;
+}
+
+.sprite-48.member-manage-48 {
+    background-position: 0px -2552px;
+}
+
+.sprite-48.organization-48 {
+    background-position: 0px -2610px;
+}
+
+.sprite-48.organization-add-48 {
+    background-position: 0px -2668px;
+}
+
+.sprite-48.organization-delete-48 {
+    background-position: 0px -2726px;
+}
+
+.sprite-48.organization-edit-48 {
+    background-position: 0px -2784px;
+}
+
+.sprite-48.security-48 {
+    background-position: 0px -2842px;
+}
+
+.sprite-48.team-48 {
+    background-position: 0px -2900px;
+}
+
+.sprite-48.team-add-48 {
+    background-position: 0px -2958px;
+}
+
+.sprite-48.team-delete-48 {
+    background-position: 0px -3016px;
+}
+
+.sprite-48.team-edit-48 {
+    background-position: 0px -3074px;
+}
+
+.sprite-48.user-48 {
+    background-position: 0px -3132px;
+}
+
+.sprite-48.user-add-48 {
+    background-position: 0px -3190px;
+}
+
+.sprite-48.user-delete-48 {
+    background-position: 0px -3248px;
+}
+
+.sprite-48.user-edit-48 {
+    background-position: 0px -3306px;
+}
+
+.sprite-48.user-query-48 {
+    background-position: 0px -3364px;
+}
+
+.sprite-48.user-security-48 {
+    background-position: 0px -3422px;
+}
+
+.sprite-48.user-settings-48 {
+    background-position: 0px -3480px;
+}
+
+.sprite-48.d_type-48 {
+    background-position: 0px -3538px;
+}
+
+.sprite-48.n_definition-48 {
+    background-position: 0px -3596px;
+}
+
+.sprite-48.n_form-48 {
+    background-position: 0px -3654px;
+}
+
+.sprite-48.n_group-48 {
+    background-position: 0px -3712px;
+}
+
+.sprite-48.n_node-48 {
+    background-position: 0px -3770px;
+}
+
+.sprite-48.n_person-48 {
+    background-position: 0px -3828px;
+}
+
+.sprite-48.n_tag-48 {
+    background-position: 0px -3886px;
+}
+
+.sprite-48.container-48 {
+    background-position: 0px -3944px;
+}
+
+.sprite-48.download-48 {
+    background-position: 0px -4002px;
+}
+
+.sprite-48.history-48 {
+    background-position: 0px -4060px;
+}
+
+.sprite-48.left-48 {
+    background-position: 0px -4118px;
+}
+
+.sprite-48.mutual-48 {
+    background-position: 0px -4176px;
+}
+
+.sprite-48.preview-48 {
+    background-position: 0px -4234px;
+}
+
+.sprite-48.right-48 {
+    background-position: 0px -4292px;
+}
+
+.sprite-48.upload-48 {
+    background-position: 0px -4350px;
+}
+
+.sprite-48.warning-48 {
+    background-position: 0px -4408px;
+}
+
+.sprite-48.application-48 {
+    background-position: 0px -4466px;
+}
+
+.sprite-48.application-add-48 {
+    background-position: 0px -4524px;
+}
+
+.sprite-48.application-delete-48 {
+    background-position: 0px -4582px;
+}
+
+.sprite-48.application-edit-48 {
+    background-position: 0px -4640px;
+}
+
+.sprite-48.archive-48 {
+    background-position: 0px -4698px;
+}
+
+.sprite-48.archive-add-48 {
+    background-position: 0px -4756px;
+}
+
+.sprite-48.archive-delete-48 {
+    background-position: 0px -4814px;
+}
+
+.sprite-48.archive-edit-48 {
+    background-position: 0px -4872px;
+}
+
+.sprite-48.association-48 {
+    background-position: 0px -4930px;
+}
+
+.sprite-48.association-add-48 {
+    background-position: 0px -4988px;
+}
+
+.sprite-48.association-delete-48 {
+    background-position: 0px -5046px;
+}
+
+.sprite-48.association-edit-48 {
+    background-position: 0px -5104px;
+}
+
+.sprite-48.attachment-48 {
+    background-position: 0px -5162px;
+}
+
+.sprite-48.attachment-add-48 {
+    background-position: 0px -5220px;
+}
+
+.sprite-48.attachment-delete-48 {
+    background-position: 0px -5278px;
+}
+
+.sprite-48.auditrecord-48 {
+    background-position: 0px -5336px;
+}
+
+.sprite-48.authentication-grant-48 {
+    background-position: 0px -5394px;
+}
+
+.sprite-48.authentication-grant-add-48 {
+    background-position: 0px -5452px;
+}
+
+.sprite-48.authentication-grant-delete-48 {
+    background-position: 0px -5510px;
+}
+
+.sprite-48.authentication-grant-edit-48 {
+    background-position: 0px -5568px;
+}
+
+.sprite-48.branch-48 {
+    background-position: 0px -5626px;
+}
+
+.sprite-48.branch-add-48 {
+    background-position: 0px -5684px;
+}
+
+.sprite-48.branch-delete-48 {
+    background-position: 0px -5742px;
+}
+
+.sprite-48.branch-edit-48 {
+    background-position: 0px -5800px;
+}
+
+.sprite-48.branch-export-48 {
+    background-position: 0px -5858px;
+}
+
+.sprite-48.branch-import-48 {
+    background-position: 0px -5916px;
+}
+
+.sprite-48.branch-query-48 {
+    background-position: 0px -5974px;
+}
+
+.sprite-48.branches-48 {
+    background-position: 0px -6032px;
+}
+
+.sprite-48.changeset-48 {
+    background-position: 0px -6090px;
+}
+
+.sprite-48.client-48 {
+    background-position: 0px -6148px;
+}
+
+.sprite-48.client-add-48 {
+    background-position: 0px -6206px;
+}
+
+.sprite-48.client-delete-48 {
+    background-position: 0px -6264px;
+}
+
+.sprite-48.client-edit-48 {
+    background-position: 0px -6322px;
+}
+
+.sprite-48.definition-48 {
+    background-position: 0px -6380px;
+}
+
+.sprite-48.definition-add-48 {
+    background-position: 0px -6438px;
+}
+
+.sprite-48.definition-delete-48 {
+    background-position: 0px -6496px;
+}
+
+.sprite-48.definition-edit-48 {
+    background-position: 0px -6554px;
+}
+
+.sprite-48.definitions-48 {
+    background-position: 0px -6612px;
+}
+
+.sprite-48.domain-48 {
+    background-position: 0px -6670px;
+}
+
+.sprite-48.domain-add-48 {
+    background-position: 0px -6728px;
+}
+
+.sprite-48.domain-edit-48 {
+    background-position: 0px -6786px;
+}
+
+.sprite-48.features-48 {
+    background-position: 0px -6844px;
+}
+
+.sprite-48.domain-delete-48 {
+    background-position: 0px -6902px;
+}
+
+.sprite-48.domain-query-48 {
+    background-position: 0px -6960px;
+}
+
+.sprite-48.features-add-48 {
+    background-position: 0px -7018px;
+}
+
+.sprite-48.features-delete-48 {
+    background-position: 0px -7076px;
+}
+
+.sprite-48.features-edit-48 {
+    background-position: 0px -7134px;
+}
+
+.sprite-48.folder-48 {
+    background-position: 0px -7192px;
+}
+
+.sprite-48.folder-add-48 {
+    background-position: 0px -7250px;
+}
+
+.sprite-48.folder-delete-48 {
+    background-position: 0px -7308px;
+}
+
+.sprite-48.folder-edit-48 {
+    background-position: 0px -7366px;
+}
+
+.sprite-48.form-48 {
+    background-position: 0px -7424px;
+}
+
+.sprite-48.form-add-48 {
+    background-position: 0px -7482px;
+}
+
+.sprite-48.form-delete-48 {
+    background-position: 0px -7540px;
+}
+
+.sprite-48.form-edit-48 {
+    background-position: 0px -7598px;
+}
+
+.sprite-48.forms-48 {
+    background-position: 0px -7656px;
+}
+
+.sprite-48.html-node-add-48 {
+    background-position: 0px -7714px;
+}
+
+.sprite-48.job-48 {
+    background-position: 0px -7772px;
+}
+
+.sprite-48.job-delete-48 {
+    background-position: 0px -7830px;
+}
+
+.sprite-48.job-query-48 {
+    background-position: 0px -7888px;
+}
+
+.sprite-48.json-48 {
+    background-position: 0px -7946px;
+}
+
+.sprite-48.log-48 {
+    background-position: 0px -8004px;
+}
+
+.sprite-48.json-edit-48 {
+    background-position: 0px -8062px;
+}
+
+.sprite-48.logs-48 {
+    background-position: 0px -8120px;
+}
+
+.sprite-48.master-branch-48 {
+    background-position: 0px -8178px;
+}
+
+.sprite-48.node-48 {
+    background-position: 0px -8236px;
+}
+
+.sprite-48.node-add-48 {
+    background-position: 0px -8294px;
+}
+
+.sprite-48.node-delete-48 {
+    background-position: 0px -8352px;
+}
+
+.sprite-48.node-edit-48 {
+    background-position: 0px -8410px;
+}
+
+.sprite-48.nodes-48 {
+    background-position: 0px -8468px;
+}
+
+.sprite-48.plan-48 {
+    background-position: 0px -8526px;
+}
+
+.sprite-48.plan-add-48 {
+    background-position: 0px -8584px;
+}
+
+.sprite-48.plan-delete-48 {
+    background-position: 0px -8642px;
+}
+
+.sprite-48.plan-edit-48 {
+    background-position: 0px -8700px;
+}
+
+.sprite-48.platform-48 {
+    background-position: 0px -8758px;
+}
+
+.sprite-48.registrar-48 {
+    background-position: 0px -8816px;
+}
+
+.sprite-48.registrar-add-48 {
+    background-position: 0px -8874px;
+}
+
+.sprite-48.registrar-delete-48 {
+    background-position: 0px -8932px;
+}
+
+.sprite-48.registrar-edit-48 {
+    background-position: 0px -8990px;
+}
+
+.sprite-48.repositories-48 {
+    background-position: 0px -9048px;
+}
+
+.sprite-48.repository-48 {
+    background-position: 0px -9106px;
+}
+
+.sprite-48.repository-add-48 {
+    background-position: 0px -9164px;
+}
+
+.sprite-48.repository-delete-48 {
+    background-position: 0px -9222px;
+}
+
+.sprite-48.repository-edit-48 {
+    background-position: 0px -9280px;
+}
+
+.sprite-48.repository-manage-48 {
+    background-position: 0px -9338px;
+}
+
+.sprite-48.repository-query-48 {
+    background-position: 0px -9396px;
+}
+
+.sprite-48.root-folder-48 {
+    background-position: 0px -9454px;
+}
+
+.sprite-48.settings-48 {
+    background-position: 0px -9512px;
+}
+
+.sprite-48.settings-add-48 {
+    background-position: 0px -9570px;
+}
+
+.sprite-48.settings-delete-48 {
+    background-position: 0px -9628px;
+}
+
+.sprite-48.settings-edit-48 {
+    background-position: 0px -9686px;
+}
+
+.sprite-48.stack-48 {
+    background-position: 0px -9744px;
+}
+
+.sprite-48.stack-add-48 {
+    background-position: 0px -9802px;
+}
+
+.sprite-48.stack-delete-48 {
+    background-position: 0px -9860px;
+}
+
+.sprite-48.stack-edit-48 {
+    background-position: 0px -9918px;
+}
+
+.sprite-48.stack-query-48 {
+    background-position: 0px -9976px;
+}
+
+.sprite-48.statistics-48 {
+    background-position: 0px -10034px;
+}
+
+.sprite-48.tag-48 {
+    background-position: 0px -10092px;
+}
+
+.sprite-48.tag-add-48 {
+    background-position: 0px -10150px;
+}
+
+.sprite-48.tag-delete-48 {
+    background-position: 0px -10208px;
+}
+
+.sprite-48.tag-edit-48 {
+    background-position: 0px -10266px;
+}
+
+.sprite-48.tenant-48-bk {
+    background-position: 0px -10324px;
+}
+
+.sprite-48.tenant-48 {
+    background-position: 0px -10382px;
+}
+
+.sprite-48.tenant-add-48 {
+    background-position: 0px -10440px;
+}
+
+.sprite-48.tenant-delete-48 {
+    background-position: 0px -10498px;
+}
+
+.sprite-48.tenant-edit-48 {
+    background-position: 0px -10556px;
+}
+
+.sprite-48.txt-node-add-48 {
+    background-position: 0px -10614px;
+}
+
+.sprite-48.vault-48 {
+    background-position: 0px -10672px;
+}
+
+.sprite-48.vault-add-48 {
+    background-position: 0px -10730px;
+}
+
+.sprite-48.vault-delete-48 {
+    background-position: 0px -10788px;
+}
+
+.sprite-48.vault-edit-48 {
+    background-position: 0px -10846px;
+}
+
+.sprite-48.vault-query-48 {
+    background-position: 0px -10904px;
+}
+
+.sprite-48.switch-48 {
+    background-position: 0px -10962px;
+}
+
+.sprite-48.empty-48 {
+    background-position: 0px -11020px;
+}
+
+.sprite-48.query-48 {
+    background-position: 0px -11078px;
+}
+
+.sprite-48.refresh-48 {
+    background-position: 0px -11136px;
+}
+
+.sprite-20 {
+    background: url('../../../images/themes/default/console/sprites/sprite-20.png') no-repeat top left;
+    width: 20px;
+    height: 20px;
+    padding-right: 32px;
+}
+
+.sprite-20.translation-20 {
+    background-position: 0px 0px;
+}
+
+.sprite-20.my-favorites-20 {
+    background-position: 0px -30px;
+}
+
+.sprite-20.copy-20 {
+    background-position: 0px -60px;
+}
+
+.sprite-20.paste-20 {
+    background-position: 0px -90px;
+}
+
+.sprite-20.clipboard-20 {
+    background-position: 0px -120px;
+}
+
+.sprite-20.interaction-application-20 {
+    background-position: 0px -150px;
+}
+
+.sprite-20.interaction-node-20 {
+    background-position: 0px -180px;
+}
+
+.sprite-20.interaction-page-20 {
+    background-position: 0px -210px;
+}
+
+.sprite-20.interaction-report-20 {
+    background-position: 0px -240px;
+}
+
+.sprite-20.interaction-user-20 {
+    background-position: 0px -270px;
+}
+
+.sprite-20.warehouse-20 {
+    background-position: 0px -300px;
+}
+
+.sprite-20.session-20 {
+    background-position: 0px -330px;
+}
+
+.sprite-20.interaction-20 {
+    background-position: 0px -360px;
+}
+
+.sprite-20.activity-20 {
+    background-position: 0px -390px;
+}
+
+.sprite-20.auto-client-mapping-20 {
+    background-position: 0px -420px;
+}
+
+.sprite-20.webhost-20 {
+    background-position: 0px -450px;
+}
+
+.sprite-20.billing-provider-20 {
+    background-position: 0px -480px;
+}
+
+.sprite-20.chart-20 {
+    background-position: 0px -510px;
+}
+
+.sprite-20.list-20 {
+    background-position: 0px -540px;
+}
+
+.sprite-20.reload-20 {
+    background-position: 0px -570px;
+}
+
+.sprite-20.statistics-20 {
+    background-position: 0px -600px;
+}
+
+.sprite-20.switch-20 {
+    background-position: 0px -630px;
+}
+
+.sprite-20.group-20 {
+    background-position: 0px -660px;
+}
+
+.sprite-20.member-20 {
+    background-position: 0px -690px;
+}
+
+.sprite-20.organization-20 {
+    background-position: 0px -720px;
+}
+
+.sprite-20.team-20 {
+    background-position: 0px -750px;
+}
+
+.sprite-20.user-20 {
+    background-position: 0px -780px;
+}
+
+.sprite-20.user-settings-20 {
+    background-position: 0px -810px;
+}
+
+.sprite-20.history-20 {
+    background-position: 0px -840px;
+}
+
+.sprite-20.application-20 {
+    background-position: 0px -870px;
+}
+
+.sprite-20.archive-20 {
+    background-position: 0px -900px;
+}
+
+.sprite-20.association-20 {
+    background-position: 0px -930px;
+}
+
+.sprite-20.attachment-20 {
+    background-position: 0px -960px;
+}
+
+.sprite-20.auditrecord-20 {
+    background-position: 0px -990px;
+}
+
+.sprite-20.authentication-grant-20 {
+    background-position: 0px -1020px;
+}
+
+.sprite-20.branch-20 {
+    background-position: 0px -1050px;
+}
+
+.sprite-20.branch-export-20 {
+    background-position: 0px -1080px;
+}
+
+.sprite-20.branch-import-20 {
+    background-position: 0px -1110px;
+}
+
+.sprite-20.changesets-20 {
+    background-position: 0px -1140px;
+}
+
+.sprite-20.client-20 {
+    background-position: 0px -1170px;
+}
+
+.sprite-20.datastore-20 {
+    background-position: 0px -1200px;
+}
+
+.sprite-20.definition-20 {
+    background-position: 0px -1230px;
+}
+
+.sprite-20.definitions-20 {
+    background-position: 0px -1260px;
+}
+
+.sprite-20.domain-20 {
+    background-position: 0px -1290px;
+}
+
+.sprite-20.features-20 {
+    background-position: 0px -1320px;
+}
+
+.sprite-20.form-20 {
+    background-position: 0px -1350px;
+}
+
+.sprite-20.forms-20 {
+    background-position: 0px -1380px;
+}
+
+.sprite-20.job-20 {
+    background-position: 0px -1410px;
+}
+
+.sprite-20.log-20 {
+    background-position: 0px -1440px;
+}
+
+.sprite-20.logs-20 {
+    background-position: 0px -1470px;
+}
+
+.sprite-20.node-20 {
+    background-position: 0px -1500px;
+}
+
+.sprite-20.nodes-20 {
+    background-position: 0px -1530px;
+}
+
+.sprite-20.plan-20 {
+    background-position: 0px -1560px;
+}
+
+.sprite-20.platform-20 {
+    background-position: 0px -1590px;
+}
+
+.sprite-20.registrar-20 {
+    background-position: 0px -1620px;
+}
+
+.sprite-20.repositories-20 {
+    background-position: 0px -1650px;
+}
+
+.sprite-20.repository-20 {
+    background-position: 0px -1680px;
+}
+
+.sprite-20.settings-20 {
+    background-position: 0px -1710px;
+}
+
+.sprite-20.stack-20 {
+    background-position: 0px -1740px;
+}
+
+.sprite-20.tag-20 {
+    background-position: 0px -1770px;
+}
+
+.sprite-20.tenant-20-bk {
+    background-position: 0px -1800px;
+}
+
+.sprite-20.tenant-20 {
+    background-position: 0px -1830px;
+}
+
+.sprite-20.vault-20 {
+    background-position: 0px -1860px;
+}
