@@ -62,7 +62,7 @@
         setupEditForm: function (el) {
             var self = this;
             var client = self.targetObject();
-            var defaultData = Alpaca.cloneObject(client.object);
+            var defaultData = this.populateObject(["title","description","authorizedGrantTypes","scope","allowOpenDriverAuthentication","domainUrls","enabled"],client);
             $('#client-edit', $(el)).alpaca({
                 "data": defaultData,
                 "schema": self.schema(),
@@ -74,7 +74,7 @@
                         var formVal = form.getValue();
                         if (form.isValid(true)) {
                             Gitana.Utils.UI.block("Updating Client ...");
-                            Alpaca.mergeObject(client.object,formVal);
+                            Alpaca.mergeObject(client,formVal);
                             client.update().then(function() {
                                 Gitana.Utils.UI.unblock(function() {
                                     self.app().run('GET', self.LINK().call(self,self.targetObject()));

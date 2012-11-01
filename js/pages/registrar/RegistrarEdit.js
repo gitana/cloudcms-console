@@ -55,7 +55,7 @@
         setupEditForm: function (el) {
             var self = this;
             var registrar = self.targetObject();
-            var defaultData = Alpaca.cloneObject(registrar.object);
+            var defaultData = this.populateObject(["title","description"],registrar);
             $('#registrar-edit', $(el)).alpaca({
                 "data": defaultData,
                 "schema": self.schema(),

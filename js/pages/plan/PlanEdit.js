@@ -83,7 +83,7 @@
                             },
                             "requiresBilling": {
                                 "type": "string",
-                                "title": "RequiresBilling",
+                                "title": "Requires Billing",
                                 "required": false
                             },
                             "billingKey": {
@@ -115,7 +115,7 @@
                             },
                             "requiresBilling": {
                                 "type": "string",
-                                "title": "RequiresBilling",
+                                "title": "Requires Billing",
                                 "required": false
                             },
                             "billingKey": {
@@ -202,7 +202,7 @@
         setupEditForm: function (el) {
             var self = this;
             var plan = self.targetObject();
-            var defaultData = Alpaca.cloneObject(plan.object);
+            var defaultData = this.populateObject(["title","description","planKey","requiresBilling","base","storage","transferOut"],plan);
             $('#plan-edit', $(el)).alpaca({
                 "data": defaultData,
                 "schema": self.schema(),

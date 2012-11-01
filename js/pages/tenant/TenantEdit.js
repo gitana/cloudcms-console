@@ -130,7 +130,7 @@
         setupEditForm: function (el) {
             var self = this;
             var tenant = self.targetObject();
-            var defaultData = Alpaca.cloneObject(tenant.object);
+            var defaultData = this.populateObject(["title","description","planKey","paymentMethod","dnsSlug"],tenant);
             defaultData["target"] = defaultData["domainId"] + "/" + defaultData["principalId"];
             $('#tenant-edit', $(el)).alpaca({
                 "data": defaultData,

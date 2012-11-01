@@ -70,7 +70,7 @@
         setupEditForm: function (el) {
             var self = this;
             var authenticationGrant = self.targetObject();
-            var defaultData = Alpaca.cloneObject(authenticationGrant.object);
+            var defaultData = this.populateObject(["title","description","clientId","principalDomainId","principalId","enabled","allowOpenDriverAuthentication"],authenticationGrant);
             defaultData["gitanaPrincipalUser"] = defaultData["principalDomainId"] + "/" + defaultData["principalId"];
             $('#authentication-grant-edit', $(el)).alpaca({
                 "data": defaultData,
@@ -89,7 +89,7 @@
                         delete formVal["gitanaPrincipalUser"];
                         if (form.isValid(true)) {
                             Gitana.Utils.UI.block("Updating Authentication Grant ...");
-                            Alpaca.mergeObject(authenticationGrant.object,formVal);
+                            Alpaca.mergeObject(authenticationGrant,formVal);
                             authenticationGrant.update().then(function() {
                                 Gitana.Utils.UI.unblock(function() {
                                     self.app().run('GET', self.LINK().call(self,self.targetObject()));
