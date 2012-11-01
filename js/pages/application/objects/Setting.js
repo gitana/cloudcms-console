@@ -3,14 +3,22 @@
 
     Gitana.Setting = Gitana.Chainable.extend(
     {
-        constructor: function(object, key) {
+        constructor: function(value, key) {
             this.base();
 
-            this.objectType = "Gitana.Setting";
+            this.objectType = function() { return "Gitana.Setting"; };
 
             this.key = key;
 
-            this.object = object;
+            this.value = value;
+        },
+        
+        /**
+         * @override
+         */
+        clone: function()
+        {
+            return new Gitana.Setting(this.value, this.key);
         },
 
         getId: function() {
@@ -18,7 +26,7 @@
         },
 
         getValue: function() {
-            return this.object;
+            return this.value;
         }
 
     });
