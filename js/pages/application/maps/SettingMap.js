@@ -5,86 +5,52 @@
     {
         constructor: function(driver, object)
         {
-            this.objectType = "Gitana.SettingMap";
+            this.objectType = function() { return "Gitana.SettingMap"; };
 
             this.base(driver, object);
-
         },
 
         handleResponse: function(settings) 
         {
-
             this.clear();
 
-            if (settings)
+            // on first load, we have json with a .settings property
+            if (settings && settings['settings'])
             {
-                var settingsObject = settings['settings'];
-
-                for (var key in settingsObject) {
-                    if (settingsObject.hasOwnProperty(key) && !Gitana.isFunction(settingsObject[key])) {
-                        var value = settingsObject[key];
-
-                        var o = this.buildObject(value);
-                        this[key] = o;
-
-                        this.__keys().push(key);
-                    }
-                }
-                this.__size(this.__keys().length);
-                this.__totalRows(this.__keys().length);
+                settings = settings['settings'];
             }
 
-
-
-
-
-           /*
-            this.clear();
-
-            var object = {
-                "rows" : {},
-                "total_rows" : 0
-            };
-
-            if (settings) 
-            {
-                // parse object
-                if (settings['settings'])
-                {
-
-                    var settingsObject = settings['settings'];
-
-                    for (var key in settingsObject)
-                    {
-                        var value = settingsObject[key];
-
-                        var o = this.buildObject(value, key);
-
-                        this[key] = o;
-
-                        this.__keys().push(key);
-
-                        object["rows"][key] = {};
-
-                        Gitana.copyInto(object["rows"][key], value);
-
-                        object["total_rows"] ++;
+            for (var key in settings) {
+                if (settings.hasOwnProperty(key) && !Gitana.isFunction(settings[key])) {
+                
+                    var value = settings[key];
+                    if (typeof(value) == "object" && value.objectType() == "Gitana.Setting") {
+                        // if handleResponse is given a map of Gitana.Setting objects...
+                        value = value.value;
                     }
+                
+                    this[key] = this.buildObject(value, key);
+
+                    this.__keys().push(key);
                 }
             }
-
-            Gitana.copyInto(this.object, object);
-            */
+            this.__size(this.__keys().length);
+            this.__totalRows(this.__keys().length);
         },
 
         /**
-         * @abstract
-         * ABSTRACT METHOD
-         *
+         * @override
+         */
+        clone: function()
+        {
+            return new Gitana.SettingMap(this.getDriver(), this);
+        },
+
+        /**
          * @param json
          */
-        buildObject: function(json, key) {
-            return new Gitana.Setting(json,key);
+        buildObject: function(value, key) {
+            return new Gitana.Setting(value, key);
         },
 
         /**
@@ -106,7 +72,7 @@
                 // figure out which keys to remove
                 for (var i = 0; i < this.__keys().length; i++)
                 {
-                    if (i< skip || i >= skip + limit)
+                    if (i < skip || i >= skip + limit)
                     {
                         keysToRemove.push(this.__keys()[i]);
                     }
@@ -128,43 +94,6 @@
                 // reset the limit
                 this.__size(this.__keys().length);
             });
-
-            /*
-            return this.then(function() {
-
-                var skip = pagination.skip;
-                var limit = pagination.limit;
-                var keysToRemove = [];
-
-                // figure out which keys to remove
-                for (var i = 0; i < this.keys.length; i++)
-                {
-                    if (i< skip || i >= skip + limit)
-                    {
-                        keysToRemove.push(this.keys[i]);
-                    }
-                }
-
-                // truncate the keys
-                // NOTE: we can't use slice here since that produces a new array
-                while (this.keys.length > limit + skip)
-                {
-                    this.keys.pop();
-                }
-
-                for (var i = 0 ; i < skip ; i++ )
-                {
-                    this.keys.shift();
-                }
-
-                // remove any keys to remove from map
-                for (var i = 0; i < keysToRemove.length; i++)
-                {
-                    delete this.map[keysToRemove[i]];
-                }
-
-            });
-           */
         }
     });
 
