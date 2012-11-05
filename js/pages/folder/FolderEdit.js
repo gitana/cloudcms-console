@@ -20,7 +20,7 @@
         setupEditForm: function (el) {
             var self = this;
             var node = self.targetObject();
-            var defaultData = Alpaca.cloneObject(node.object);
+            var defaultData = self.populateObjectAll(node);
             $('#node-edit', $(el)).alpaca({
                 "data": defaultData,
                 "schema": self.schema(),
@@ -34,7 +34,7 @@
 
                             Gitana.Utils.UI.block("Updating folder...");
 
-                            Alpaca.mergeObject(node.object,formVal);
+                            Alpaca.mergeObject(node,formVal);
 
                             var tags = formVal['tags'];
 

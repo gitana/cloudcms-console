@@ -115,12 +115,12 @@
             var self = this;
             var form = self.targetObject();
 
-            var defaultData = Alpaca.cloneObject(form.object);
+            var defaultData = self.populateObjectAll(form);
             defaultData['body'] = {};
-            if (form.object['fields'] != null) {
-                defaultData['body']['fields'] = form.object['fields'];
+            if (form['fields'] != null) {
+                defaultData['body']['fields'] = form['fields'];
                 delete defaultData['fields'];
-                delete form.object['fields'];
+                delete form['fields'];
             }
             defaultData['body'] = JSON.stringify(defaultData['body'], null, ' ');
 
@@ -141,8 +141,8 @@
 
                             Gitana.Utils.UI.block("Updating form...");
 
-                            Alpaca.mergeObject(form.object, formVal);
-                            Alpaca.mergeObject(form.object, schemaBody);
+                            Alpaca.mergeObject(form, formVal);
+                            Alpaca.mergeObject(form, schemaBody);
 
                             form.update().then(function() {
                                 var updatedForm = this;
@@ -157,7 +157,7 @@
                                     }).count(function(count) {
                                         if (count == 1) {
                                             this.keepOne().then(function() {
-                                                this.object['form-key'] = formKey;
+                                                this['form-key'] = formKey;
                                                 this.update().then(function() {
                                                     updatedForm['formKey'] = formKey;
                                                 });
@@ -211,8 +211,7 @@
                             Gitana.Utils.UI.block("Updating Object JSON...");
 
                             // update our selected object with the new json
-                            //Alpaca.mergeObject(object.object,obj);
-                            object.object = Alpaca.cloneObject(obj);
+                            Alpaca.mergeObject(object,obj);
 
                             // update
                             object.update().then(function () {

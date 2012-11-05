@@ -182,13 +182,13 @@
                 var updateMyConsoleAppSettings = function() {
                     var myConsoleAppSettings = self.myConsoleAppSettings();
                     Chain(myConsoleAppSettings).then(function() {
-                        if (!this.object["settings"]) {
-                            this.object["settings"] = {};
+                        if (!this["settings"]) {
+                            this["settings"] = {};
                         }
-                        if (!this.object["settings"]['MY_FAVORITES']) {
-                            this.object["settings"]['MY_FAVORITES'] = [];
+                        if (!this["settings"]['MY_FAVORITES']) {
+                            this["settings"]['MY_FAVORITES'] = [];
                         }
-                        this.object["settings"]['MY_FAVORITES'] = myFavorites;
+                        this["settings"]['MY_FAVORITES'] = myFavorites;
                         this.update().reload().then(function() {
                             $('.my-favorites .item-list').empty().append(getFavorites(myFavorites));
                         })

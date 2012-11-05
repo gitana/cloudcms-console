@@ -76,7 +76,7 @@
 
                             Gitana.Utils.UI.block("Updating Group...");
 
-                            Alpaca.mergeObject(group.object, formVal);
+                            Alpaca.mergeObject(group, formVal);
 
                             Chain(group).update().reload().then(function() {
 

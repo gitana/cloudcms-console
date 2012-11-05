@@ -46,11 +46,11 @@
                 var attachments = [];
                 var pdfPreview = [];
 
-                var nodeObj = this.context.object;
+                var nodeObj = this.context;
                 var thumbnailKeys = [];
 
-                if (nodeObj['_features'] && nodeObj['_features']['f:thumbnailable']) {
-                    $.each(nodeObj['_features']['f:thumbnailable'], function(key, val) {
+                if (nodeObj.getFeature && nodeObj.getFeature('f:thumbnailable')) {
+                    $.each(nodeObj.getFeature('f:thumbnailable'), function(key, val) {
                         thumbnailKeys.push(key);
                     })
                 }
@@ -58,8 +58,8 @@
                 var isPreviewAttachment = function(attachmentId) {
                     var matchedKey = false;
 
-                    if (nodeObj['_features'] && nodeObj['_features']['f:previewable'] && nodeObj['_features']['f:previewable']['previews']) {
-                        $.each(nodeObj['_features']['f:previewable']['previews'], function(key, val) {
+                    if (nodeObj.getFeature && nodeObj.getFeature('f:previewable') && nodeObj.getFeature('f:previewable')['previews']) {
+                        $.each(nodeObj.getFeature('f:previewable')['previews'], function(key, val) {
                             if (Alpaca.startsWith(attachmentId, val['prefix'])) {
                                 matchedKey = true;
                                 return;

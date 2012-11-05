@@ -1848,7 +1848,7 @@
                 return "";
             }
 
-            if (node && node.objectType && (node.objectType != "Gitana.Node" && /*node.objectType != "Gitana.Association")*/ !(node.isAssociation && node.isAssociation()))) {
+            if (node && node.objectType && (node.objectType() != "Gitana.Node" && /*node.objectType != "Gitana.Association")*/ !(node.isAssociation && node.isAssociation()))) {
                 return this.link(node, mode, target);
             }
 
@@ -2144,11 +2144,11 @@
              * Commenting this out for now
              */
 
-            if (persistable.objectType && persistable.objectType == 'Gitana.Domain' && Alpaca.isValEmpty(persistable.getTitle()) && persistable.get('primary')) {
+            if (persistable.objectType && persistable.objectType() == 'Gitana.Domain' && Alpaca.isValEmpty(persistable.getTitle()) && persistable.get('primary')) {
                 return "Primary Domain";
             }
 
-            if (persistable.objectType && persistable.objectType == 'Gitana.Vault' && Alpaca.isValEmpty(persistable.getTitle()) && persistable.get('primary')) {
+            if (persistable.objectType && persistable.objectType() == 'Gitana.Vault' && Alpaca.isValEmpty(persistable.getTitle()) && persistable.get('primary')) {
                 return "Primary Vault";
             }
 

@@ -130,7 +130,7 @@
                             isEntitled = true;
                             $.each(checks, function(objectId, check) {
                                 var object = objectLookup[objectId];
-                                var objectType = object.objectType;
+                                var objectType = object.objectType ? object.objectType() : null;
                                 if (objectType) {
                                     if (objectType == "Gitana.Platform") {
                                         $.each(check, function(checkItemIndex, checkItem) {
@@ -276,11 +276,11 @@
         friendlyTitle: function(persistable) {
 
             //TODO: Change it once we add the getKey function to Application.
-            if (persistable.objectType && persistable.objectType == 'Gitana.Application' && !persistable.getTitle() && persistable.get('key')) {
+            if (persistable.objectType && persistable.objectType() == 'Gitana.Application' && !persistable.getTitle() && persistable.get('key')) {
                 return persistable.get('key');
             }
 
-            if (persistable.objectType && persistable.objectType == 'Gitana.Team') {
+            if (persistable.objectType && persistable.objectType() == 'Gitana.Team') {
                 return persistable.getKey();
             }
 

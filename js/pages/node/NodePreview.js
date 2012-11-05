@@ -25,7 +25,6 @@
         setupNodePreview: function (el) {
             var self = this;
             var node = self.targetObject();
-            var nodeObj = node.object;
 
             var images = [];
             var thumbnailImages = [];

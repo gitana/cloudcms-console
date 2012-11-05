@@ -123,8 +123,8 @@
             options['fields']['_parent']['dataSource'] = function(field, callback) {
                 self.branch().listDefinitions().each(function() {
                     field.selectOptions.push({
-                        "value": this.get('_qname'),
-                        "text": this.get('_qname')
+                        "value": this.getQName(),
+                        "text": this.getQName()
                     });
                 }).then(function() {
                     if (callback) {
@@ -160,14 +160,15 @@
         setupEditForm: function (el) {
             var self = this;
             var definition = self.targetObject();
-            var defaultData = Alpaca.cloneObject(definition.object);
+            var defaultData = self.populateObjectAll(definition);
             defaultData['body'] = {};
-            defaultData['body']['type'] = definition.object['type'] ? definition.object['type'] : "object";
-            if (definition.object['properties'] != null) {
-                defaultData['body']['properties'] = definition.object['properties'];
+            defaultData['body']['type'] = definition['type'] ? definition['type'] : "object";
+            if (definition['properties'] != null) {
+                defaultData['body']['properties'] = definition['properties'];
                 delete defaultData['properties'];
             }
             defaultData['body'] = JSON.stringify(defaultData['body'], null, ' ');
+            defaultData['_qname'] = definition.getQName();
 
             $('#definition-edit', $(el)).alpaca({
                 "data": defaultData,
@@ -185,12 +186,12 @@
 
                             Gitana.Utils.UI.block("Updating definition...");
 
-                            if (definition.object['properties'] != null) {
-                                delete definition.object['properties'];
+                            if (definition['properties'] != null) {
+                                delete definition['properties'];
                             }
 
-                            Alpaca.mergeObject(definition.object,form);
-                            Alpaca.mergeObject(definition.object,schemaBody);
+                            Alpaca.mergeObject(definition,form);
+                            Alpaca.mergeObject(definition,schemaBody);
 
                             definition.update().then(function() {
                                 var updatedDefinition = this;

@@ -311,14 +311,14 @@
 
             if (self.definition() && self.definition().object.properties) {
                 schema = Alpaca.mergeObject(schema, {
-                    "properties" : self.definition().object.properties
+                    "properties" : self.definition().properties
                 });
             }
 
             var options = self.options();
 
             if (self.form()) {
-                options = Alpaca.mergeObject(options, self.form().object);
+                options = Alpaca.mergeObject(options, self.form());
             }
 
             $('#association-add',$(el)).alpaca({

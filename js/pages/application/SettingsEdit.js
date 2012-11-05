@@ -94,18 +94,18 @@
 
             var defaultData = {
                 "id" : {
-                    "scope" : settings.object['scope'],
-                    "key" : settings.object['key']
+                    "scope" : settings['scope'],
+                    "key" : settings['key']
                 },
                 "settings" : Alpaca.cloneObject(settings.getSettings())
             };
 
-            if (settings.object['title']) {
-                defaultData['title'] = settings.object['title'];
+            if (settings['title']) {
+                defaultData['title'] = settings['title'];
             }
 
-            if (settings.object['description']) {
-                defaultData['description'] = settings.object['description'];
+            if (settings['description']) {
+                defaultData['description'] = settings['description'];
             }
 
             $('#settings-edit', $(el)).alpaca({
@@ -125,7 +125,7 @@
 
                             delete formVal['id'];
 
-                            Alpaca.mergeObject(settings.object,formVal);
+                            Alpaca.mergeObject(settings,formVal);
 
                             settings.update().then(function() {
                                 Gitana.Utils.UI.unblock(function() {

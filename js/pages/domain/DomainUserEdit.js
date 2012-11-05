@@ -73,7 +73,7 @@
                             delete updatedUser ["password"];
 
                             delete updatedUser['file'];
-                            Alpaca.mergeObject(user.object, updatedUser);
+                            Alpaca.mergeObject(user, updatedUser);
                             user.trap(function(error) {
                                 return self.handlePageError(el, error);
                             }).update().reload().then(function() {

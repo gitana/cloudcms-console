@@ -113,7 +113,7 @@
                         var title = self.friendlyTitle(this);
                         // For Form Nodes, create a node link since we can't get the definition object from form object
                         var link;
-                        if (this && this.objectType && this.objectType == "Gitana.Form") {
+                        if (this && this.objectType && this.objectType() == "Gitana.Form") {
                             link = self.LIST_LINK().call(self,"nodes") + this.getId();
                         } else {
                             link = self.LINK().call(self,this);

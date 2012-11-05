@@ -55,7 +55,7 @@
         setupEditForm: function (el) {
             var self = this;
             var domain = self.targetObject();
-            var defaultData = Alpaca.cloneObject(domain.object);
+            var defaultData = self.populateObjectAll(domain);
             $('#domain-edit', $(el)).alpaca({
                 "data": defaultData,
                 "schema": self.schema(),

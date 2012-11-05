@@ -3,18 +3,30 @@
 
     Gitana.Feature = Gitana.Chainable.extend(
     {
-        constructor: function(object, key) {
+        constructor: function(value, key) {
             this.base();
 
-            this.objectType = "Gitana.Feature";
+            this.objectType = function() { return "Gitana.Feature"; };
 
             this.key = key;
 
-            this.object = object;
+            this.value = value;
+        },
+        
+        /**
+         * @override
+         */
+        clone: function()
+        {
+            return new Gitana.Feature(this.value, this.key);
         },
 
         getId: function() {
             return this.key;
+        },
+
+        getValue: function() {
+            return this.value;
         }
 
     });
