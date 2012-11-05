@@ -56,7 +56,7 @@
         setupEditForm: function (el) {
             var self = this;
             var branch = self.targetObject();
-            var defaultData = Alpaca.cloneObject(branch.object);
+            var defaultData = this.populateObject(["title","description"],branch);
             $('#branch-edit', $(el)).alpaca({
                 "data": defaultData,
                 "schema": self.schema(),

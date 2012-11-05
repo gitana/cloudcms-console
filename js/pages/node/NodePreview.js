@@ -33,8 +33,8 @@
 
             var thumbnailKeys = [];
 
-            if ( nodeObj['_features'] && nodeObj['_features']['f:thumbnailable']) {
-                $.each(nodeObj['_features']['f:thumbnailable'], function(key,val) {
+            if ( node.getFeature('f:thumbnailable')) {
+                $.each(node.getFeature('f:thumbnailable'), function(key,val) {
                     thumbnailKeys.push(key);
                 })
             }
@@ -57,8 +57,8 @@
 
                     var matchedKey;
 
-                    if (nodeObj['_features'] && nodeObj['_features']['f:previewable'] && nodeObj['_features']['f:previewable']['previews']) {
-                        $.each(nodeObj['_features']['f:previewable']['previews'], function(key, val) {
+                    if (node.getFeature('f:previewable') && node.getFeature('f:previewable')['previews']) {
+                        $.each(node.getFeature('f:previewable')['previews'], function(key, val) {
                             if (Alpaca.startsWith(attachmentId, val['prefix'])) {
                                 matchedKey = key;
                                 matchedTitle = key + " preview :: Page " + attachmentId.substring(val['prefix'].length)
@@ -103,8 +103,8 @@
                 previewSetPicker += "<option value='original' " + isSelected(previewSetId,"original") + ">Original</option>";
                 previewSetPicker += "<option value='thumbnail' " + isSelected(previewSetId,"thumbnail") + ">Thumbnails</option>";
 
-                if (nodeObj['_features'] && nodeObj['_features']['f:previewable'] && nodeObj['_features']['f:previewable']['previews']) {
-                    $.each(nodeObj['_features']['f:previewable']['previews'], function(key, val) {
+                if (node.getFeature('f:previewable') && node.getFeature('f:previewable')['previews']) {
+                    $.each(node.getFeature('f:previewable') && node.getFeature('f:previewable')['previews'], function(key, val) {
                         previewSetPicker += "<option value='" + key + "' " + isSelected(previewSetId,key) + ">" + key + " preview" + "</option>";
                     })
                 }

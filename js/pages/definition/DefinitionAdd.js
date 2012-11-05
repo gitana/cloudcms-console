@@ -103,8 +103,8 @@
             options['fields']['_parent']['dataSource'] = function(field, callback) {
                 self.branch().listDefinitions().each(function() {
                     field.selectOptions.push({
-                        "value": this.get('_qname'),
-                        "text": this.get('_qname')
+                        "value": this.getQName(),
+                        "text": this.getQName()
                     });
                 }).then(function() {
                     if (callback) {

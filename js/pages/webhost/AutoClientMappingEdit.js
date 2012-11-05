@@ -86,7 +86,7 @@
         setupEditForm: function (el) {
             var self = this;
             var autoClientMapping = self.targetObject();
-            var defaultData = Alpaca.cloneObject(autoClientMapping.object);
+            var defaultData = this.populateObject(["title","description","uri","clientKey","applicationId"],autoClientMapping);
             $('#auto-client-mapping-edit', $(el)).alpaca({
                 "data": defaultData,
                 "schema": self.schema(),
@@ -98,7 +98,7 @@
                         var formVal = form.getValue();
                         if (form.isValid(true)) {
                             Gitana.Utils.UI.block("Updating Auto Client Mapping ...");
-                            Alpaca.mergeObject(autoClientMapping.object,formVal);
+                            Alpaca.mergeObject(autoClientMapping,formVal);
                             autoClientMapping.update().then(function() {
                                 Gitana.Utils.UI.unblock(function() {
                                     self.app().run('GET', self.LINK().call(self,self.targetObject()));

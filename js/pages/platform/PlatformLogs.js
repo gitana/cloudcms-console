@@ -305,15 +305,20 @@
 
             list["loadFunction"] = function(query, pagination, callback) {
                 var allItems = [];
+                var _this;
                 self.targetObject().trap(function(error) {
                     return self.handlePageError(el, error);
-                }).queryLogEntries(self.query(),self.pagination(pagination)).each(function(key,entry,index) {
-                    entry.object.fullJson = JSON.stringify(entry.object, null, ' ');
-                    Alpaca.mergeObject(entry.object, entry.system);
-                    allItems.push(entry.object);
-                }).then(function() {
-                    self.observable(self.LOG_ENTRIES).set(allItems);
-                    callback.call(this);
+                }).queryLogEntries(self.query(),self.pagination(pagination)).then(function() {
+                    _this = this;
+                    this.each(function(key,entry,index) {
+                        _this[entry.getId()].object = self.populateObjectAll(entry);
+                        _this[entry.getId()].object.fullJson = JSON.stringify(_this[entry.getId()].object, null, ' ');
+                        //Alpaca.mergeObject(entry.object, entry.system);
+                        allItems.push(_this[entry.getId()].object);
+                    }).then(function() {
+                        self.observable(self.LOG_ENTRIES).set(allItems);
+                        callback.call(this);
+                    });
                 });
             };
 
@@ -332,7 +337,7 @@
 
             Alpaca.mergeObject(entry.object,entry.system);
 
-            var templatePath = (Gitana.Apps.APP_NAME ? "/" : "") + Gitana.Apps.APP_NAME + "/console/templates/themes/" + Gitana.Apps.THEME + "/logs/log-entry.html";
+            var templatePath = (Gitana.Apps.APP_NAME ? "/" : "") + Gitana.Apps.APP_NAME + "/templates/themes/" + Gitana.Apps.THEME + "/logs/log-entry.html";
 
             $(dialog).empty().alpaca({
                 "data" : entry.object,
@@ -365,7 +370,7 @@
 
             if (entries) {
 
-                var templatePath = (Gitana.Apps.APP_NAME ? "/" : "") + Gitana.Apps.APP_NAME + "/console/templates/themes/" + Gitana.Apps.THEME + "/logs/log-entries.html";
+                var templatePath = (Gitana.Apps.APP_NAME ? "/" : "") + Gitana.Apps.APP_NAME + "/templates/themes/" + Gitana.Apps.THEME + "/logs/log-entries.html";
 
                 $('.log-text-view').empty().alpaca({
                     "data" : entries,

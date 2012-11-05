@@ -262,7 +262,7 @@
                                 var firstOption;
                                 self.branch().listDefinitions('association').each(
                                     function(key, val, index) {
-                                        var value = this.get('_qname');
+                                        var value = this.getQName();
                                         var text = value;
                                         if (this.getTitle()) {
                                             text += " - " + this.getTitle();
@@ -272,7 +272,7 @@
                                             "text": text
                                         });
                                         if (index == 0) {
-                                            firstOption = this.get('_qname');
+                                            firstOption = this.getQName();
                                         }
                                     }).then(function() {
                                         if (callback) {

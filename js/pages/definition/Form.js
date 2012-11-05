@@ -124,7 +124,7 @@
                     },
                     {
                         "key" : "QName",
-                        "value" : self.listItemProp(form,'_qname')
+                        "value" : form.getQName()
                     },
                     {
                         "key" : "Last Modified",

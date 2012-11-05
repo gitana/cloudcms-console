@@ -576,7 +576,7 @@
             return $.merge(this.Repositories(self, el), [
                 {
                     "text" : "Logs",
-                    "link" : self.LINK().call(self.repository(),"logs")
+                    "link" : self.LINK().call(self,self.repository(),"logs")
                 }
             ]);
         },
@@ -585,7 +585,7 @@
             return $.merge(this.Repositories(self, el), [
                 {
                     "text" : "Change Sets",
-                    "link" : self.LINK().call(self.repository(),"changesets")
+                    "link" : self.LINK().call(self,self.repository(),"changesets")
                 }
             ]);
         },

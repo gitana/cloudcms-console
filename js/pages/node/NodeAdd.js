@@ -169,7 +169,7 @@
                             "fieldClass" : "type-picker",
                             "dataSource" : function(field, callback) {
                                 self.branch().listDefinitions('type').each(function() {
-                                    var value = this.get('_qname');
+                                    var value = this.getQName();
                                     var text = value;
                                     if (this.getTitle()) {
                                         text += " - " + this.getTitle();
@@ -234,9 +234,9 @@
 
             var schema = self.schema();
 
-            if (self.definition() && self.definition().object.properties) {
+            if (self.definition() && self.definition().properties) {
                 schema = Alpaca.mergeObject(schema, {
-                    "properties" : self.definition().object.properties
+                    "properties" : self.definition().properties
                 });
             }
 
@@ -246,7 +246,7 @@
             var options = self.options();
 
             if (self.form()) {
-                options = Alpaca.mergeObject(options, self.form().object);
+                options = Alpaca.mergeObject(options, self.form());
             }
 
             formDiv.empty().alpaca({

@@ -50,8 +50,16 @@
                             Gitana.Utils.UI.block("Updating Object JSON...");
 
                             // update our selected object with the new json
-                            //Alpaca.mergeObject(object.object,obj);
-                            object.object = Alpaca.cloneObject(obj);
+
+                            // Clean up object first
+                            for (var key in object) {
+                                if (object.hasOwnProperty(key) && !Gitana.isFunction(object[key])) {
+                                    delete object[key];
+                                }
+                            }
+
+                            Alpaca.mergeObject(object,obj);
+                            //object.object = Alpaca.cloneObject(obj);
 
                             // update
                             object.update().then(function () {

@@ -16,7 +16,8 @@
         },
 
         targetFeaturesObject: function() {
-            return this.targetObject().object[this.ROOT_KEY];
+            //return this.targetObject().object[this.ROOT_KEY];
+            return this.targetObject().__features();
         },
 
         featureId: function(el) {

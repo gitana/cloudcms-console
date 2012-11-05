@@ -1309,7 +1309,7 @@
 
             if (node && node.objectType) {
 
-                var objectType = node.objectType;
+                var objectType = node.objectType();
 
                 switch (objectType) {
 
@@ -1388,7 +1388,7 @@
 
             if (node && node.objectType) {
 
-                var objectType = node.objectType;
+                var objectType = node.objectType();
 
                 switch (objectType) {
 
@@ -2231,6 +2231,17 @@
                         object[v] = item.get(v);
                     }
                 });
+            }
+            return object;
+        },
+
+        populateObjectAll : function(item) {
+            var object = {};
+            for (var key in item) {
+                if (item.hasOwnProperty(key) && !Gitana.isFunction(item[key])) {
+                    var value = item[key];
+                    object[key] = value;
+                }
             }
             return object;
         }

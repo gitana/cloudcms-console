@@ -221,7 +221,7 @@
                     "type":"property",
                     "sortingExpression": "stats.a:has_tag",
                     "property": function(callback) {
-                        var numOfDocs = this.get('stats') && this.get('stats')['a:has_tag'] ? this.get('stats')['a:has_tag'] : "0";
+                        var numOfDocs = this.stats && this.stats()['a:has_tag'] ? this.stats()['a:has_tag'] : "0";
                         callback(numOfDocs);
                     }
                 },

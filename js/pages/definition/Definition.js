@@ -142,11 +142,11 @@
                     },
                     {
                         "key" : "Type",
-                        "value" : self.listItemProp(definition,'_type')
+                        "value" : definition.getTypeQName()
                     },
                     {
                         "key" : "QName",
-                        "value" : self.listItemProp(definition,'_qname')
+                        "value" : definition.getQName()
                     },
                     {
                         "key" : "Last Modified",
@@ -215,7 +215,7 @@
                     this.subchain(self.branch()).queryNodes({
                         "_type" : self.targetObject().getQName()
                     },pagination2).totalRows(function(totalRows) {
-                        stats.items[1]['value'] = totalRows;
+                        stats.items[1]['value'] = totalRows == null ? 0 : totalRows;
                     });
                 };
 

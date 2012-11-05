@@ -205,7 +205,7 @@
                     "type":"property",
                     "sortingExpression": "_type",
                     "property": function(callback) {
-                        var title = this.get('_type') ? this.get('_type') : "";
+                        var title = this.getTypeQName() ? this.getTypeQName() : "";
                         callback(title);
                     }
                 },

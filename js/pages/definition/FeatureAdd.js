@@ -12,11 +12,14 @@
         },
 
         targetFeaturesObject: function() {
+            /*
             if (this.targetObject().object[this.ROOT_KEY] == null) {
                 this.targetObject().object[this.ROOT_KEY] = {
                 };
             }
             return this.targetObject().object[this.ROOT_KEY];
+            */
+            return this.targetObject().__features();
         },
 
         featuresLink: function() {

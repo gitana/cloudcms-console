@@ -63,7 +63,7 @@
         setupEditForm: function (el) {
             var self = this;
             var billingProvider = self.targetObject();
-            var defaultData = Alpaca.cloneObject(billingProvider.object);
+            var defaultData = this.populateObject(["title","description","providerId","environment","merchantId","publicKey","privateKey"],billingProvider);
             $('#billing-provider-edit', $(el)).alpaca({
                 "data": defaultData,
                 "schema": self.schema(),

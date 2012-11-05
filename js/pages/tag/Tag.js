@@ -121,7 +121,7 @@
                 "items" : [
                     {
                         "key" : "Tagged Nodes",
-                        "value" : this.targetObject().get('stats') && this.targetObject().get('stats')['a:has_tag'] ? this.targetObject().get('stats')['a:has_tag'] : 0,
+                        "value" : this.targetObject().stats && this.targetObject().stats()['a:has_tag'] ? this.targetObject().stats()['a:has_tag'] : 0,
                         "link" : "#" + self.LINK().call(self, this.targetObject(), 'taggednodes')
                     }
                 ]
@@ -141,8 +141,8 @@
 
             var node = this.node();
 
-            if (node.object['stats']) {
-                $.each(node.object['stats'], function(key, val) {
+            if (node.stats) {
+                $.each(node.stats(), function(key, val) {
                     stats.items.push({
                         "key" :  key,
                         "value" : val

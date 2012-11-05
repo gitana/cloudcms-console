@@ -66,7 +66,7 @@
         setupEditForm: function (el) {
             var self = this;
             var warehouse = self.targetObject();
-            var defaultData = Alpaca.cloneObject(warehouse.object);
+            var defaultData = this.populateObject(["title","description","uri"],warehouse);
             $('#warehouse-edit', $(el)).alpaca({
                 "data": defaultData,
                 "schema": self.schema(),

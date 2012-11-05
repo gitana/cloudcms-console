@@ -122,11 +122,13 @@
             var title = "Audit Record Details";
             var dialog = "<div id='audit-record-details'></div>";
 
+            record.object= self.populateObjectAll(record);
+
             record.object.fullJson = JSON.stringify(record.object, null, ' ');
 
-            Alpaca.mergeObject(record.object,record.system);
+            Alpaca.mergeObject(record.object,record.__system());
 
-            var templatePath = (Gitana.Apps.APP_NAME ? "/" : "") + Gitana.Apps.APP_NAME + "/console/templates/themes/" + Gitana.Apps.THEME + "/nodes/audit-record.html";
+            var templatePath = (Gitana.Apps.APP_NAME ? "/" : "") + Gitana.Apps.APP_NAME + "/templates/themes/" + Gitana.Apps.THEME + "/nodes/audit-record.html";
 
             $(dialog).empty().alpaca({
                 "data" : record.object,

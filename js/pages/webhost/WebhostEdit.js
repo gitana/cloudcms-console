@@ -62,7 +62,7 @@
         setupEditForm: function (el) {
             var self = this;
             var webhost = self.targetObject();
-            var defaultData = Alpaca.cloneObject(webhost.object);
+            var defaultData = this.populateObject(["title","description","urlPatterns"],webhost);
             $('#webhost-edit', $(el)).alpaca({
                 "data": defaultData,
                 "schema": self.schema(),

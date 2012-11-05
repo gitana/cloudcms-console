@@ -197,11 +197,11 @@
                         },
                         {
                             "key" : "Type",
-                            "value" : self.listItemProp(node, '_type')
+                            "value" : node.getTypeQName()
                         },
                         {
                             "key" : "QName",
-                            "value" : self.listItemProp(node, '_qname')
+                            "value" : node.getQName()
                         },
                         {
                             "key" : "Last Modified",
@@ -311,8 +311,8 @@
 
                 var node = this.node();
 
-                if (node.object['stats']) {
-                    $.each(node.object['stats'], function(key, val) {
+                if (node.stats) {
+                    $.each(node.stats(), function(key, val) {
                         stats.items.push({
                             "key" :  key,
                             "value" : val

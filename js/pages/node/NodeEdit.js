@@ -96,7 +96,7 @@
                                 formVal['_form'] = $('.form-picker select').val();
                             }
 
-                            Alpaca.mergeObject(node.object,formVal);
+                            Alpaca.mergeObject(node,formVal);
 
                             var tags = formVal['tags'];
 
@@ -142,15 +142,15 @@
 
             var node = self.targetObject();
 
-            var defaultData = Alpaca.cloneObject(node.object);
+            var defaultData = Alpaca.cloneObject(node);
 
             var schema = self.schema();
 
             var options = self.options();
 
-            if (self.definition() && self.definition().object.properties) {
+            if (self.definition() && self.definition().properties) {
                 schema = Alpaca.mergeObject(schema, {
-                    "properties" : self.definition().object.properties
+                    "properties" : self.definition().properties
                 });
             }
 
@@ -160,7 +160,7 @@
             var options = self.options();
 
             if (self.form()) {
-                options = Alpaca.mergeObject(options, self.form().object);
+                options = Alpaca.mergeObject(options, self.form());
             }
 
             var editDiv = el ? $('#node-edit', $(el)) : $('#node-edit');

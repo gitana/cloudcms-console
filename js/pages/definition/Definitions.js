@@ -193,7 +193,7 @@
                     "type":"property",
                     "sortingExpression": "_qname",
                     "property": function(callback) {
-                        var title = this.get('_qname') ? this.get('_qname') : "";
+                        var title = this.getQName() ? this.getQName() : "";
                         callback(title);
                     }
                 },
@@ -202,7 +202,7 @@
                     "type":"property",
                     "sortingExpression": "_type",
                     "property": function(callback) {
-                        var type = this.get('_type') ? this.get('_type') : "";
+                        var type = this.getTypeQName() ? this.getTypeQName() : "";
                         var friendlyTypeNames = {
                             "d:type" : "Type",
                             "d:association" : "Association",
