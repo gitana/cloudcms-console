@@ -155,7 +155,7 @@
                                 this.readDomain(domainId).readPrincipal(principalId).then(function() {
                                     this.subchain(self.targetObject()).createTenant(this,planKey,paymentMethod).then(function() {
                                         var newTenant = this;
-                                        Alpaca.mergeObject(newTenant.object,formVal);
+                                        Alpaca.mergeObject(newTenant,formVal);
                                         this.update().then(function() {
                                             // Create a customer for the new tenant
                                             var tenantPlatform = this.getPlatform();

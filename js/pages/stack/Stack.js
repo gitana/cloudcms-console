@@ -334,16 +334,18 @@
                 var memberIds = [];
                 var directMemberIds = [];
                 var dataStoreQuery = Alpaca.cloneObject(self.query());
-
+                var _this;
                 if (Alpaca.isValEmpty(dataStoreQuery) || dataStoreQuery['member']) {
                     Chain(self.targetObject()).trap(
                         function(error) {
                             return self.handlePageError(el, error);
-                        }).listDataStores(self.pagination()).each(
-                        function(key, val, index) {
-                            this.object['isMember'] = true;
-                        }).then(function() {
-                            callback.call(this);
+                        }).listDataStores(self.pagination()).then(function(){
+                            _this = this;
+                            this.each(function(key, val, index) {
+                                _this[this.getId()]['isMember'] = true;
+                            }).then(function() {
+                                callback.call(this);
+                            });
                         });
                 } else {
 
@@ -369,19 +371,18 @@
                                 }).each(function() {
                                         dataStoreMembers[this.get('datastoreId')] = this.getId();
                                     });
-
+                                var _this = this;
                                 this.then(function() {
-                                    this.each(
-                                        function() {
-                                            if (dataStoreMembers[this.getId()]) {
-                                                this.object['isMember'] = true;
-                                                this.object['key'] = dataStoreMembers[this.getId()];
-                                            } else {
-                                                this.object['isMember'] = false;
-                                            }
-                                        }).then(function() {
-                                            callback.call(this);
-                                        });
+                                    this.each(function() {
+                                        if (dataStoreMembers[this.getId()]) {
+                                            _this[this.getId()]['isMember'] = true;
+                                            _this[this.getId()]['key'] = dataStoreMembers[this.getId()];
+                                        } else {
+                                            _this[this.getId()]['isMember'] = false;
+                                        }
+                                    }).then(function() {
+                                        callback.call(this);
+                                    });
                                 });
                             });
                     };

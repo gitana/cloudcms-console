@@ -232,14 +232,17 @@
                 ];
 
                 list["loadFunction"] = function(query, pagination, callback) {
+                    var _this;
                     Chain(self.contextObject()).trap(function(error) {
                         return self.handlePageError(el, error);
-                    }).queryActivities(self.query(), self.pagination(pagination)).each(
-                        function() {
-                            this.object['activityDetails'] = Gitana.Utils.Activity.activityDetails(self, this);
+                    }).queryActivities(self.query(), self.pagination(pagination)).then(function(){
+                        _this = this;
+                        this.each(function() {
+                            _this[this.getId()]['activityDetails'] = Gitana.Utils.Activity.activityDetails(self, this);
                         }).then(function() {
                             callback.call(this);
                         });
+                    });
                 };
 
                 // store list configuration onto observer
@@ -253,11 +256,12 @@
                 var title = "Activity Details";
                 var dialog = "<div id='activity-details'></div>";
 
+                activity.object = self.populateObjectAll(activity);
                 activity.object.fullJson = JSON.stringify(activity.object, null, ' ');
 
-                Alpaca.mergeObject(activity.object, activity.system);
+                //Alpaca.mergeObject(activity.object, activity.system);
 
-                var templatePath = (Gitana.Apps.APP_NAME ? "/" : "") + Gitana.Apps.APP_NAME + "/console/templates/themes/" + Gitana.Apps.THEME + "/activities/activity-details.html";
+                var templatePath = (Gitana.Apps.APP_NAME ? "/" : "") + Gitana.Apps.APP_NAME + "/templates/themes/" + Gitana.Apps.THEME + "/activities/activity-details.html";
 
                 $(dialog).empty().alpaca({
                     "data" : activity.object,

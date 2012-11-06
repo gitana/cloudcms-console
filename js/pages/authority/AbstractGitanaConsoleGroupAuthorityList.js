@@ -388,11 +388,13 @@
 
                         this.then(function() {
 
+                            var _this = this;
+
                             this.each(function() {
 
                                 var groupId = this.getDomainId() + "/" + this.getId();
 
-                                Alpaca.mergeObject(this.object, groupAuthorityLookup[groupId]);
+                                Alpaca.mergeObject(_this[this.getId()], groupAuthorityLookup[groupId]);
 
                             }).then(function() {
 

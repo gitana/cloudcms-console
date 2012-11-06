@@ -75,7 +75,7 @@
         setupEditForm: function (el) {
             var self = this;
             var group = self.group();
-            var defaultData = this.populateObject(["title","description"],group); /*Alpaca.cloneObject(group.object);*/
+            var defaultData = this.populateObject(["title","description"],group);
             defaultData['teamKey'] = this.team().getKey();
             defaultData['roles'] = this.team().getRoleKeys();
             $('#team-edit', $(el)).alpaca({

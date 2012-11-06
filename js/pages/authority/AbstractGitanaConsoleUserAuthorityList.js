@@ -377,13 +377,13 @@
                         });
 
                         this.then(function() {
-
+                            var _this = this;
                             this.each(
                                 function() {
 
                                     var userId = this.getDomainId() + "/" + this.getId();
 
-                                    Alpaca.mergeObject(this.object, userAuthorityLookup[userId]);
+                                    Alpaca.mergeObject(_this[this.getId()], userAuthorityLookup[userId]);
 
                                 }).then(function() {
 

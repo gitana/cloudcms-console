@@ -104,9 +104,11 @@
             ];
             var memberIds = [];
             list["loadFunction"] = function(query, pagination, callback) {
+                var _this;
                 self.domain().trap(function(error) {
                     return self.handlePageError(el, error);
                 }).queryGroups(self.query(),self.pagination(pagination)).then(function() {
+                    _this = this;
 
                     this.subchain(self.targetObject()).listMemberships(false).each(function() {
                         memberIds.push(this.getId());
@@ -115,9 +117,9 @@
                     this.then(function() {
                         this.each(function() {
                             if ($.inArray(this.getId(),memberIds) != -1) {
-                                this.object['isMember'] = true;
+                                _this[this.getId()]['isMember'] = true;
                             } else {
-                                this.object['isMember'] = false;
+                                _this[this.getId()]['isMember'] = false;
                             }
                         }).then(function() {
                             callback.call(this);

@@ -102,14 +102,17 @@
                     var thisQuery = self.query();
                     thisQuery["userDomainId"] = this.user().getDomainId();
                     thisQuery["userId"] = this.user().getId();
+                    var _this;
                     Chain(self.contextObject()).trap(function(error) {
                         return self.handlePageError(el, error);
-                    }).queryActivities(thisQuery, self.pagination(pagination)).each(
-                        function() {
-                            this.object['activityDetails'] = Gitana.Utils.Activity.activityDetails(self, this);
+                    }).queryActivities(thisQuery, self.pagination(pagination)).then(function(){
+                        _this = this;
+                        this.each(function() {
+                            _this[this.getId()]['activityDetails'] = Gitana.Utils.Activity.activityDetails(self, this);
                         }).then(function() {
                             callback.call(this);
                         });
+                    });
                 };
 
                 // store list configuration onto observer

@@ -273,11 +273,12 @@
                 var title = "Interaction Details";
                 var dialog = "<div id='interaction-details'></div>";
 
+                interaction.object = self.populateObjectAll(interaction);
                 interaction.object.fullJson = JSON.stringify(interaction.object, null, ' ');
 
-                Alpaca.mergeObject(interaction.object, interaction.system);
+                //Alpaca.mergeObject(interaction.object, interaction.system);
 
-                var templatePath = (Gitana.Apps.APP_NAME ? "/" : "") + Gitana.Apps.APP_NAME + "/console/templates/themes/" + Gitana.Apps.THEME + "/interactions/interaction-details.html";
+                var templatePath = (Gitana.Apps.APP_NAME ? "/" : "") + Gitana.Apps.APP_NAME + "/templates/themes/" + Gitana.Apps.THEME + "/interactions/interaction-details.html";
 
                 $(dialog).empty().alpaca({
                     "data" : interaction.object,

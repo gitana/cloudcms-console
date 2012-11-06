@@ -105,7 +105,7 @@
                     },
                     {
                         "key" : "Full JSON",
-                        "value" : "<pre class='record-full-json'>" + JSON.stringify(archive.object, null, ' ') + "</pre>"
+                        "value" : "<pre class='record-full-json'>" + JSON.stringify(self.populateObjectAll(archive), null, ' ') + "</pre>"
                     }
                 ]
             };

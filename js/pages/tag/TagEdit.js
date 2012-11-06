@@ -102,7 +102,7 @@
 
             var node = self.targetObject();
 
-            var defaultData = Alpaca.cloneObject(node.object);
+            var defaultData = self.populateObjectAll(node);
 
             var schema = self.schema();
 
@@ -127,7 +127,7 @@
 
                             Gitana.Utils.UI.block("Updating tag...");
 
-                            Alpaca.mergeObject(node.object, formVal);
+                            Alpaca.mergeObject(node, formVal);
 
                             node.update().then(function() {
 

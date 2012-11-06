@@ -149,7 +149,7 @@
                         delete formVal["target"];
                         if (form.isValid(true)) {
                             Gitana.Utils.UI.block("Updating Tenant ...");
-                            Alpaca.mergeObject(tenant.object,formVal);
+                            Alpaca.mergeObject(tenant,formVal);
                             tenant.update().then(function() {
                                 Gitana.Utils.UI.unblock(function() {
                                     self.app().run('GET', self.LINK().call(self,self.targetObject()));

@@ -273,11 +273,12 @@
                 var title = "Report Entry Details";
                 var dialog = "<div id='report-entry-details'></div>";
 
+                reportEntry.object = self.populateObjectAll(reportEntry);
                 reportEntry.object.fullJson = JSON.stringify(reportEntry.object, null, ' ');
 
                 Alpaca.mergeObject(reportEntry.object, reportEntry.system);
 
-                var templatePath = (Gitana.Apps.APP_NAME ? "/" : "") + Gitana.Apps.APP_NAME + "/console/templates/themes/" + Gitana.Apps.THEME + "/interactions/entry-details.html";
+                var templatePath = (Gitana.Apps.APP_NAME ? "/" : "") + Gitana.Apps.APP_NAME + "/templates/themes/" + Gitana.Apps.THEME + "/interactions/entry-details.html";
 
                 $(dialog).empty().alpaca({
                     "data" : reportEntry.object,

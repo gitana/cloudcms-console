@@ -68,7 +68,7 @@
         setupEditForm: function (el) {
             var self = this;
             var group = self.targetObject();
-            var defaultData = Alpaca.cloneObject(group.object);
+            var defaultData = self.populateObjectAll(group);
             $('#repo-edit', $(el)).alpaca({
                 "data": defaultData,
                 "schema": self.schema(),
@@ -84,7 +84,7 @@
 
                             Gitana.Utils.UI.block("Updating Group...");
 
-                            Alpaca.mergeObject(group.object, formVal);
+                            Alpaca.mergeObject(group, formVal);
 
                             Chain(group).update().reload().then(function() {
 

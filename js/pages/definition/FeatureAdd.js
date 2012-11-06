@@ -231,7 +231,7 @@
                                 Alpaca.mergeObject(definitionObj[featureId],featureVal);
 
 
-                                self.targetObject().update().then(function() {
+                                self.targetObject().addFeature(featureId,featureVal).then(function() {
 
                                     var link = self.featuresLink();
 

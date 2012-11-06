@@ -166,12 +166,13 @@
                     if (Alpaca.isValEmpty(principalQuery) || principalQuery['member']) {
                         var domainIds = [];
                         var domainLookup = {};
-                        Chain(self.targetObject()).trap(
-                            function(error) {
+                        var _this;
+                        Chain(self.targetObject()).trap(function(error) {
                                 return self.handlePageError(el, error);
-                            }).listMembers(self.pagination()).each(
-                            function() {
-                                this.object['isMember'] = true;
+                        }).listMembers(self.pagination()).then(function(){
+                            _this = this;
+                            this.each(function() {
+                                _this[this.getId()]['isMember'] = true;
                                 domainIds.push(this.getDomainId());
                             }).then(function() {
                                 this.subchain(self.platform()).queryDomains({
@@ -179,25 +180,25 @@
                                         "$in" : domainIds
                                     }
                                 }).each(function() {
-                                        domainLookup[this.getId()] = {
-                                            "name" : self.friendlyTitle(this),
-                                            "link" : self.link(this)
-                                        }
-                                    });
+                                    domainLookup[this.getId()] = {
+                                        "name" : self.friendlyTitle(this),
+                                        "link" : self.link(this)
+                                    }
+                                });
 
                                 this.then(function() {
-                                    this.each(
-                                        function() {
-                                            if (domainLookup[this.getDomainId()]) {
-                                                this.object['domainName'] = domainLookup[this.getDomainId()]['name'];
-                                                this.object['domainLink'] = domainLookup[this.getDomainId()]['link'];
-                                            }
-                                        }).then(function() {
-                                            callback.call(this);
-                                        });
+                                    this.each(function() {
+                                        if (domainLookup[this.getDomainId()]) {
+                                             _this[this.getId()]['domainName'] = domainLookup[this.getDomainId()]['name'];
+                                             _this[this.getId()]['domainLink'] = domainLookup[this.getDomainId()]['link'];
+                                        }
+                                    }).then(function() {
+                                        callback.call(this);
+                                    });
                                 })
 
                             });
+                        });
                     } else {
 
                         delete principalQuery['member'];
@@ -213,10 +214,11 @@
                         });
 
                         var domainName, domainLink;
-
+                        var _this;
                         Chain(self.platform()).readDomain(domainId).then(function() {
                             domainName = self.friendlyTitle(this);
                             domainLink = self.link(this);
+                            _this = this;
                             this.then(function() {
                                 this.queryPrincipals(principalQuery, self.pagination(pagination)).then(function() {
 
@@ -228,12 +230,12 @@
                                         this.each(
                                             function() {
                                                 if ($.inArray(this.getId(), memberIds) != -1) {
-                                                    this.object['isMember'] = true;
+                                                     _this[this.getId()]['isMember'] = true;
                                                 } else {
-                                                    this.object['isMember'] = false;
+                                                     _this[this.getId()]['isMember'] = false;
                                                 }
-                                                this.object['domainName'] = domainName;
-                                                this.object['domainLink'] = domainLink;
+                                                 _this[this.getId()]['domainName'] = domainName;
+                                                 _this[this.getId()]['domainLink'] = domainLink;
                                             }).then(function() {
                                                 callback.call(this);
                                             });

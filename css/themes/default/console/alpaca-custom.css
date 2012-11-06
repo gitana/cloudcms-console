@@ -29,7 +29,7 @@ input[type="text"], input[type="password"], textarea {
 	border-color: #AAAAAA #CCCCCC #CCCCCC #AAAAAA;
 	border-radius: 3px 3px 3px 3px;
 	line-height: 1.5em;
-	padding: 5px;
+	padding: 4px;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
     font-size: 1em;
 }

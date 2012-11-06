@@ -78,7 +78,7 @@
         setupEditForm: function (el) {
             var self = this;
             var stack = self.targetObject();
-            var defaultData = Alpaca.cloneObject(stack.object);
+            var defaultData = self.populateObjectAll(stack)
             $('#stack-edit', $(el)).alpaca({
                 "data": defaultData,
                 "schema": self.schema(),

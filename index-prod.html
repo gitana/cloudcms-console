@@ -1,0 +1,276 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]>
+<html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+
+    <!-- DNS prefetch
+    <link rel=dns-prefetch href="//fonts.googleapis.com">
+    -->
+    <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+ More info: h5bp.com/b/378 -->
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <!--
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    -->
+
+    <title>Cloud CMS Administration Console</title>
+
+    <meta name="keywords" content="admin console,gitana,cloud cms"/>
+    <meta name="description" content="Cloud CMS Administration Console"/>
+    <meta name="author" content="Gitana Software Inc."/>
+
+    <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+    <link type="image/x-icon" media="all" href="favicon.ico" rel="shortcut icon"/>
+
+    <!-- CSS: implied media=all -->
+
+    <!-- JQuery UI and Theme -->
+    <link type="text/css" media="all" href="css/themes/default/jquery-ui/jquery-ui-1.8.15.custom.min.css" rel="stylesheet"/>
+
+    <!-- Third Party -->
+    <link type="text/css" media="all" href="lib/jquery/jqplot/jquery.jqplot.min.css" rel="stylesheet"/>
+    <link type="text/css" media="all" href="lib/jquery/fileupload/jquery.fileupload-ui.min.css"
+          rel="stylesheet"/>
+    <link type="text/css" media="all" href="lib/jquery/elrte/css/elrte.min.css"
+          rel="stylesheet"/>
+    <!-- Gitana Console Framework -->
+    <link type="text/css" media="all" href="css/themes/default/console/console.min.css" rel="stylesheet"/>
+
+    <!-- Alpaca -->
+    <link type="text/css" media="all" href="lib/alpaca/css/alpaca.min.css" rel="stylesheet"/>
+
+    <!--[if IE]>
+    <link type="text/css" media="all" href="css/themes/default/console/all-ie-only-custom.min.css"  rel="stylesheet"/>
+    <![endif]-->
+
+    <!--[if IE 9]>
+    <link type="text/css" media="all" href="css/themes/default/console/ie9-only-custom.min.css"  rel="stylesheet"/>
+    <![endif]-->
+
+    <!-- end CSS-->
+
+    <!-- Fonts
+    <link href="//fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" type="text/css">
+    -->
+    <!-- end Fonts-->
+
+    <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+    <!-- All JavaScript at the bottom, except for Modernizr / Respond.
+Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+
+    <script src="lib/modernizr/modernizr-2.0.6.min.js"></script>
+
+    <!-- JQuery and JQuery UI -->
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+    <!--
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
+    <script>window.jQuery || document.write('<script src="lib/jquery/jquery-1.6.2.min.js"><\/script>')</script>
+    -->
+    <script src="lib/jquery/jquery-1.6.2.min.js"></script>
+
+    <script src="lib/jquery/ui/jquery-ui-1.8.15.custom.min.js"></script>
+
+    <!-- Jqplot -->
+    <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="lib/jquery/jqplot/excanvas.js"></script><![endif]-->
+    <script type="text/javascript" src="lib/jquery/jqplot/jquery.jqplot.min.js"></script>
+    <script type="text/javascript" src="lib/jquery/jqplot/plugins/jqplot.barRenderer.min.js"></script>
+    <script type="text/javascript" src="lib/jquery/jqplot/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+    <script type="text/javascript" src="lib/jquery/jqplot/plugins/jqplot.pointLabels.min.js"></script>
+
+    <!-- BlockUI -->
+    <script type="text/javascript" src="lib/jquery/blockui/jquery.blockui.2.39.min.js"></script>
+
+    <!-- Data table -->
+    <script type="text/javascript" src="lib/jquery/datatables/jquery.dataTables.1.8.1.min.js"></script>
+    <script type="text/javascript" src="lib/jquery/datatables/TableTools.2.0.1.min.js"></script>
+
+    <!-- File Upload -->
+    <script type="text/javascript" src="lib/jquery/fileupload/jquery.iframe-transport.1.2.2.min.js"></script>
+    <script type="text/javascript" src="lib/jquery/fileupload/jquery.fileupload.5.0.3-patched.min.js"></script>
+    <script type="text/javascript" src="lib/jquery/fileupload/jquery.fileupload-ui.5.0.13-patched.min.js"></script>
+
+    <!-- Galleria -->
+    <script type="text/javascript" src="lib/jquery/galleria/galleria-1.2.5-patched.min.js"></script>
+    <script type="text/javascript" src="lib/jquery/galleria/themes/gitana/galleria.gitana.js"></script>
+
+    <!-- Notifications  -->
+    <script defer type="text/javascript" src="lib/jquery/notifications/jquery.notifications.min.js"></script>
+    <!-- Uniform (Look & Feel from forms) -->
+    <script defer type="text/javascript" src="lib/jquery/uniform/jquery.uniform.1.7.5.min.js"></script>
+
+    <!-- Validation from forms -->
+    <script defer type="text/javascript" src="lib/jquery/validate/jquery.validate.1.8.1.min.js"></script>
+    <!-- Tooltips -->
+    <script defer type="text/javascript" src="lib/jquery/tipsy/jquery.tipsy.1.0.0a.js"></script>
+    <!-- Charts
+      <script defer type="text/javascript" src="lib/excanvas/excanvas.js"></script>
+      <script defer type="text/javascript" src="lib/jquery/visualize/jquery.visualize.js"></script>
+    -->
+    <!-- Contact List -->
+    <script defer src="lib/jquery/slidernav/jquery.slidernav.min.js"></script>
+
+    <!-- Menu and Slide List -->
+    <script defer src="lib/jquery/menu/jquery-menu.js"></script>
+
+    <!-- MD 5 -->
+    <script type="text/javascript" src="lib/jquery/md5/jquery.md5.min.js"></script>
+
+    <!-- ASM Select -->
+    <script type="text/javascript" src="lib/jquery/asmselect/jquery.asmselect-1.0.4a.min.js"></script>
+
+    <!-- Breadcrumb-->
+    <script type="text/javascript" src="lib/jquery/xbreadcrumb/xbreadcrumbs.js"></script>
+
+    <!-- Multiselect-->
+    <script type="text/javascript" src="lib/jquery/multiselect/jquery.multiselect.min.js"></script>
+    <script type="text/javascript" src="lib/jquery/multiselect/jquery.multiselect.filter.min.js"></script>
+
+    <!-- Contact List -->
+    <script defer type="text/javascript" src="lib/jquery/stickysidebar/stickysidebar.jquery.js"></script>
+
+    <!-- Elrte Editor -->
+    <script defer type="text/javascript" src="lib/jquery/elrte/elrte.min.js"></script>
+
+    <!-- Cookie -->
+    <script defer type="text/javascript" src="lib/jquery/cookie/jquery.cookie.js"></script>
+
+    <!-- Accordion -->
+    <script defer type="text/javascript" src="lib/jquery/easyaccordion/easyAccordion-0.1.min.js"></script>
+
+    <!-- Alpaca -->
+    <script type="text/javascript" src="lib/alpaca/js/alpaca.min.js"></script>
+
+    <!-- Gitana Driver -->
+    <script type="text/javascript" src="lib/gitana/js/gitana.min.js"></script>
+
+    <!-- Ratchet -->
+    <script type="text/javascript" src="lib/ratchet/js/ratchet.min.js"></script>
+    <script type="text/javascript" src="lib/ratchet/js/ratchet-tmpl.min.js"></script>
+    <script type="text/javascript" src="lib/ratchet/js/ratchet-gitana.min.js"></script>
+
+    <!--                            -->
+    <!--        APPLICATION         -->
+    <!--                            -->
+
+    <script type="text/javascript" src="js/console.min.js"></script>
+
+
+    <script type="text/javascript">
+
+        Gitana.CMS.load();
+
+    </script>
+
+    <!-- end scripts-->
+    <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+   chromium.org/developers/how-tos/chrome-frame-getting-started -->
+    <!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload', function() {
+        CFInstall.check({mode:'overlay'})
+    })</script>
+    <![endif]-->
+</head>
+
+<body id="top">
+
+<!-- Begin of #container -->
+<div id="container">
+<!-- Begin of #header -->
+<div id="header-surround" gadget="header" subscription="userDetails">
+</div>
+<!--! end of #header -->
+
+<div class="fix-shadow-bottom-height"></div>
+
+<!-- Begin of Sidebar -->
+<aside id="sidebar">
+<!--[if lt IE 9]>
+<div id="sidebar">
+<![endif]-->
+    <!-- Organization -->
+    <div id="tenant-bar" gadget="tenantbar" subscription="tenantDetails">
+    </div>
+    <!--! end of #search-bar -->
+
+    <!-- Begin of #login-details -->
+    <!--[if lt IE 9]>
+    <div id="login-details" gadget="logindetails" subscription="userDetails">
+    </div>
+    <![endif]-->
+    <section id="login-details" gadget="logindetails" subscription="tenantDetails">
+    </section>
+    <!--! end of #login-details -->
+
+    <!-- Begin of Navigation -->
+    <!--[if lt IE 9]>
+    <div id="nav" gadget="menu">
+    </div>
+    <![endif]-->
+    <nav id="nav" gadget="menu">
+    </nav>
+    <!--! end of #nav -->
+<!--[if lt IE 9]>
+</div>
+<![endif]-->
+</aside>
+<!--! end of #sidebar -->
+
+<!-- Begin of #main -->
+<div id="main" role="main">
+
+    <!-- Begin of titlebar/breadcrumbs -->
+    <div id="title-bar" gadget="breadcrumb">
+    </div>
+    <!--! end of #title-bar -->
+
+    <div class="shadow-bottom shadow-titlebar"></div>
+
+    <!-- Begin of #main-content -->
+    <div id="main-content" gadget="page">
+    </div>
+
+    <!--! end of #main-content -->
+</div>
+<!--! end of #main -->
+
+<footer id="footer">
+<!--[if lt IE 9]>
+<div id="footer">
+<![endif]-->
+    <div class="container_12">
+        <div class="grid_12">
+            <div class="align-center"><a class="top" href="javascript:void(0);">Gitana Software, Inc. © Copyright 2012 All
+                rights reserved.</a></div>
+        </div>
+
+    </div>
+<!--[if lt IE 9]>
+</div>
+<![endif]-->
+</footer>
+</div>
+<!--! end of #container -->
+<!-- JavaScript at the bottom for fast page loading -->
+<!--                            -->
+<!--           SCRIPT           -->
+<!--                            -->
+
+</body>
+</html>
+

@@ -117,7 +117,7 @@
         setupUserProfileEditForm : function (el) {
             var self = this;
             var user = self.targetObject();
-            var defaultData = Alpaca.cloneObject(user.object);
+            var defaultData =self.populateObjectAll(user);
             defaultData["password"] = "";
             $('#userprofile-edit',$(el)).alpaca({
                 "data": defaultData,
@@ -136,7 +136,7 @@
                             delete updatedUser ["password"];
 
                             delete updatedUser['file'];
-                            Alpaca.mergeObject(user.object, updatedUser);
+                            Alpaca.mergeObject(user, updatedUser);
                             user.update().reload().then(function() {
                                 var updatedUser = this;
 
