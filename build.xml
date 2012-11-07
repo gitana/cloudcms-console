@@ -11,6 +11,7 @@
     <property name="js.dir" value="${project.dir}/js"/>
     <property name="lib.dir" value="${project.dir}/lib"/>
     <property name="css.dir" value="${project.dir}/css"/>
+    <property name="templates.dir" value="${project.dir}/templates"/>
 
     <property name="alpaca.lib.dir" value="${lib.dir}/alpaca"/>
     <property name="ratchet.lib.dir" value="${lib.dir}/ratchet"/>
@@ -86,12 +87,12 @@
         <mkdir dir="${prep.dir}/js"/>
         <mkdir dir="${prep.dir}/lib"/>
         <mkdir dir="${prep.dir}/css"/>
-        <mkdir dir="${prep.dir}/tests"/>
-        <mkdir dir="${prep.dir}/examples"/>
+        <mkdir dir="${prep.dir}/templates"/>
         <mkdir dir="${package.dir}"/>
         <mkdir dir="${package.dir}/js"/>
         <mkdir dir="${package.dir}/lib"/>
-        <mkdir dir="${package.dir}/examples"/>
+        <mkdir dir="${package.dir}/css"/>
+        <mkdir dir="${package.dir}/templates"/>
 
         <copy todir="${prep.dir}/js">
             <fileset dir="${js.dir}"/>
@@ -102,312 +103,475 @@
         <copy todir="${prep.dir}/css">
             <fileset dir="${css.dir}"/>
         </copy>
+        <copy todir="${prep.dir}/templates">
+            <fileset dir="${templates.dir}"/>
+        </copy>
         <copy todir="${prep.dir}/">
             <fileset dir="${project.dir}">
                 <include name="favicon.ico"/>
                 <include name="index.html"/>
-                <include name="resources.html"/>
-                <include name="tutorials.html"/>
-                <include name="license.txt"/>
+                <include name="index-prod.html"/>
             </fileset>
         </copy>
     </target>
-
-    <!-- Core files for console -->
-    <filelist id="console-files-core">
-        <file name="console.js"/>
-        <file name="views/DefaultView.js"/>
-        <file name="views/ListView.js"/>
-        <file name="views/MobileView.js"/>
-        <file name="views/LayoutView.js"/>
-
-        <file name="View.js"/>
-
-        <file name="Field.js"/>
-        <file name="ControlField.js"/>
-        <file name="ContainerField.js"/>
-        <file name="Connector.js"/>
-        <file name="Form.js"/>
-
-        <!--console Core Fields-->
-        <file name="fields/basic/TextField.js"/>
-        <file name="fields/basic/TextAreaField.js"/>
-        <file name="fields/basic/CheckBoxField.js"/>
-        <file name="fields/basic/FileField.js"/>
-        <file name="fields/basic/ListField.js"/>
-        <file name="fields/basic/RadioField.js"/>
-        <file name="fields/basic/SelectField.js"/>
-        <file name="fields/basic/NumberField.js"/>
-        <file name="fields/basic/ArrayField.js"/>
-        <file name="fields/basic/ObjectField.js"/>
-        <file name="fields/basic/AnyField.js"/>
-        <!--End of console Core Fields-->
-
-        <file name="views/DefaultViewLanguagePacks.js"/>
-    </filelist>
 
     <target name="concat-js" description="Concat all javascript files" depends="prep">
 
-        <!-- Standalone: "console-core" -->
-        <concat destfile="${package.dir}/js/${appkey}-core.js">
-            <filelist dir="${prep.dir}/lib">
-                <file name="base.js"/>
-                <file name="validator.js"/>
-                <file name="jquery.tmpl.js"/>
-                <file name="equiv_and_hoozit.js"/>
-                <file name="jquery.maskedinput-1.3.js"/>
-            </filelist>
-            <filelist dir="${prep.dir}/js">
-                <file name="console.js"/>
-                <file name="views/DefaultView.js"/>
-                <file name="views/ListView.js"/>
-                <file name="views/MobileView.js"/>
-                <file name="views/LayoutView.js"/>
-
-                <file name="View.js"/>
-
-                <file name="Field.js"/>
-                <file name="ControlField.js"/>
-                <file name="ContainerField.js"/>
-                <file name="Connector.js"/>
-                <file name="Form.js"/>
-
-                <!--console Core Fields-->
-                <file name="fields/basic/TextField.js"/>
-                <file name="fields/basic/TextAreaField.js"/>
-                <file name="fields/basic/CheckBoxField.js"/>
-                <file name="fields/basic/FileField.js"/>
-                <file name="fields/basic/ListField.js"/>
-                <file name="fields/basic/RadioField.js"/>
-                <file name="fields/basic/SelectField.js"/>
-                <file name="fields/basic/NumberField.js"/>
-                <file name="fields/basic/ArrayField.js"/>
-                <file name="fields/basic/ObjectField.js"/>
-                <file name="fields/basic/AnyField.js"/>
-                <!--End of console Core Fields-->
-
-                <file name="views/DefaultViewLanguagePacks.js"/>
-            </filelist>
-        </concat>
-
-        <!-- Standalone: "console-extras" -->
-        <concat destfile="${package.dir}/js/${appkey}-extras.js">
-            <!--
-            <filelist dir="${prep.dir}/lib">
-                <file name="jquery-ui-latest.custom.min.js"/>
-            </filelist>
-            -->
-            <filelist dir="${prep.dir}/js">
-                <file name="fields/advanced/AddressField.js"/>
-                <file name="fields/advanced/DateField.js"/>
-                <file name="fields/advanced/DatetimeField.js"/>
-                <file name="fields/advanced/EmailField.js"/>
-                <file name="fields/advanced/IntegerField.js"/>
-                <file name="fields/advanced/IPv4Field.js"/>
-                <file name="fields/advanced/JSONField.js"/>
-                <file name="fields/advanced/IntegerField.js"/>
-                <file name="fields/advanced/LowerCaseField.js"/>
-                <file name="fields/advanced/MapField.js"/>
-                <file name="fields/advanced/PasswordField.js"/>
-                <file name="fields/advanced/PersonalNameField.js"/>
-                <file name="fields/advanced/PhoneField.js"/>
-                <file name="fields/advanced/TagField.js"/>
-                <file name="fields/advanced/TimeField.js"/>
-                <file name="fields/advanced/UpperCaseField.js"/>
-                <file name="fields/advanced/WysiwygField.js"/>
-            </filelist>
-        </concat>
-
-        <!-- Standalone: "console" -->
         <concat destfile="${package.dir}/js/${appkey}.js">
-            <filelist dir="${package.dir}/js">
-                <file name="${appkey}-core.js"/>
-                <file name="${appkey}-extras.js"/>
+            <filelist dir="${prep.dir}/js">
+
+                <!-- Gitana Console Framework -->
+                <file name="fields/AttachmentField.js"/>
+                <file name="fields/AvatarField.js"/>
+                <file name="fields/ArchiveField.js"/>
+                <file name="fields/ElrteField.js"/>
+                <file name="fields/MultiNodesField.js"/>
+                <file name="fields/MultiFolderNodesField.js"/>
+                <file name="CMS.js"/>
+                <file name="authenticators/AbstractAuthenticator.js"/>
+                <file name="authenticators/AbstractOAuth2Authenticator.js"/>
+                <file name="authenticators/UsernamePasswordAuthenticator.js"/>
+                <file name="authenticators/ImplicitFlowAuthenticator.js"/>
+                <file name="AbstractGadget.js"/>
+                <file name="AbstractGitanaAppGadget.js"/>
+                <file name="utilities/GitanaUtilsDate.js"/>
+                <file name="utilities/GitanaUtilsImage.js"/>
+                <file name="utilities/GitanaUtilsUI.js"/>
+                <file name="reports/AbstractReport.js"/>
+
+                <!--                            -->
+                <!--        APPLICATION         -->
+                <!--                            -->
+
+                <file name="GitanaConsole.js"/>
+                <file name="AbstractGitanaConsoleGadget.js"/>
+
+                <file name="components/AbstractComponentGadget.js"/>
+                <file name="pages/AbstractGitanaPageGadget.js"/>
+
+                <file name="components/BarChart.js"/>
+                <file name="components/Plot.js"/>
+                <file name="components/Breadcrumb.js"/>
+                <file name="components/List.js"/>
+                <file name="components/Menu.js"/>
+                <file name="components/Notifications.js"/>
+                <file name="components/Pairs.js"/>
+                <file name="components/Searchbar.js"/>
+                <file name="components/Stats.js"/>
+                <file name="components/Tabs.js"/>
+                <file name="components/Toolbar.js"/>
+                <file name="components/Filter.js"/>
+
+                <file name="pages/AbstractDashboardPageGadget.js"/>
+                <file name="pages/AbstractListPageGadget.js"/>
+                <file name="pages/AbstractFormPageGadget.js"/>
+                <file name="pages/AbstractListFormPageGadget.js"/>
+                <file name="pages/AbstractEditFormPageGadget.js"/>
+                <file name="pages/AbstractNodeEditFormPageGadget.js"/>
+
+                <file name="fields/GitanaPrincipalPickerField.js"/>
+                <file name="fields/PlatformLogoField.js"/>
+
+                <file name="utilities/GitanaUtilsActivity.js"/>
+
+                <file name="pages/definition/objects/Feature.js"/>
+                <file name="pages/definition/maps/FeatureMap.js"/>
+
+                <file name="GitanaConsoleMenu.js"/>
+                <file name="GitanaConsoleBreadcrumb.js"/>
+                <file name="GitanaConsoleSchema.js"/>
+
+
+                <file name="components/Header.js"/>
+                <file name="components/LoginDetails.js"/>
+                <file name="components/TenantBar.js"/>
+
+                <file name="pages/importexport/AbstractExport.js"/>
+                <file name="pages/importexport/AbstractImport.js"/>
+
+                <file name="pages/authority/AbstractGitanaConsoleAuthorityList.js"/>
+                <file name="pages/authority/AbstractGitanaConsoleUserAuthorityList.js"/>
+                <file name="pages/authority/AbstractGitanaConsoleGroupAuthorityList.js"/>
+
+                <file name="pages/error/GitanaConsoleError.js"/>
+
+                <file name="pages/attachment/AbstractObjectAttachments.js"/>
+                <file name="pages/attachment/AbstractObjectAttachmentsManage.js"/>
+
+                <file name="pages/group/AbstractDomainGroup.js"/>
+
+                <file name="pages/team/AbstractObjectTeams.js"/>
+                <file name="pages/team/AbstractObjectTeam.js"/>
+                <file name="pages/team/AbstractObjectTeamAdd.js"/>
+                <file name="pages/team/AbstractObjectTeamEdit.js"/>
+                <!--
+                <file name="pages/team/AbstractObjectTeamExport.js"/>
+                <file name="pages/team/AbstractObjectTeamImport.js"/>
+                -->
+                <file name="pages/personal/Dashboard.js"/>
+
+                <file name="pages/platform/Platform.js"/>
+                <file name="pages/platform/PlatformEdit.js"/>
+                <file name="pages/platform/PlatformLogs.js"/>
+
+                <file name="pages/platform/PlatformGroupAuthorities.js"/>
+                <file name="pages/platform/PlatformUserAuthorities.js"/>
+
+                <file name="pages/platform/PlatformTeams.js"/>
+                <file name="pages/platform/PlatformTeam.js"/>
+                <file name="pages/platform/PlatformTeamAdd.js"/>
+                <file name="pages/platform/PlatformTeamEdit.js"/>
+                <file name="pages/platform/PlatformExport.js"/>
+                <file name="pages/platform/PlatformImport.js"/>
+
+                <file name="pages/platform/PlatformActivities.js"/>
+                <file name="pages/personal/MyActivities.js"/>
+
+                <file name="pages/domain/Domains.js"/>
+                <file name="pages/domain/Domain.js"/>
+                <file name="pages/domain/DomainAdd.js"/>
+                <file name="pages/domain/DomainEdit.js"/>
+                <file name="pages/domain/DomainExport.js"/>
+                <file name="pages/domain/DomainImport.js"/>
+
+                <file name="pages/domain/DomainGroups.js"/>
+                <file name="pages/domain/DomainGroup.js"/>
+                <file name="pages/domain/DomainUsers.js"/>
+                <file name="pages/domain/DomainUser.js"/>
+                <file name="pages/domain/DomainUserAdd.js"/>
+                <file name="pages/domain/DomainUserEdit.js"/>
+                <file name="pages/domain/DomainUserExport.js"/>
+                <file name="pages/domain/DomainGroupAdd.js"/>
+                <file name="pages/domain/DomainGroupEdit.js"/>
+                <file name="pages/domain/DomainGroupExport.js"/>
+                <file name="pages/domain/DomainGroupImport.js"/>
+
+                <file name="pages/domain/DomainGroupAuthorities.js"/>
+                <file name="pages/domain/DomainUserAuthorities.js"/>
+
+                <file name="pages/job/Jobs.js"/>
+
+                <file name="pages/vault/Vaults.js"/>
+                <file name="pages/vault/Vault.js"/>
+                <file name="pages/vault/VaultAdd.js"/>
+                <file name="pages/vault/VaultEdit.js"/>
+                <file name="pages/vault/VaultTeams.js"/>
+                <file name="pages/vault/VaultTeam.js"/>
+                <file name="pages/vault/VaultTeamAdd.js"/>
+                <file name="pages/vault/VaultTeamEdit.js"/>
+                <file name="pages/vault/VaultExport.js"/>
+
+                <file name="pages/vault/Archives.js"/>
+                <file name="pages/vault/ArchiveAdd.js"/>
+                <file name="pages/vault/Archive.js"/>
+
+                <file name="pages/stack/Stacks.js"/>
+                <file name="pages/stack/StackAdd.js"/>
+                <file name="pages/stack/StackEdit.js"/>
+                <file name="pages/stack/Stack.js"/>
+                <file name="pages/stack/StackTeams.js"/>
+                <file name="pages/stack/StackTeam.js"/>
+                <file name="pages/stack/StackTeamAdd.js"/>
+                <file name="pages/stack/StackTeamEdit.js"/>
+                <file name="pages/stack/StackGroupAuthorities.js"/>
+                <file name="pages/stack/StackUserAuthorities.js"/>
+                <file name="pages/stack/StackAttachments.js"/>
+                <file name="pages/stack/StackAttachmentsManage.js"/>
+                <file name="pages/stack/StackLogs.js"/>
+                <file name="pages/stack/StackExport.js"/>
+
+                <file name="pages/application/Applications.js"/>
+                <file name="pages/application/ApplicationAdd.js"/>
+                <file name="pages/application/ApplicationEdit.js"/>
+                <file name="pages/application/Application.js"/>
+                <file name="pages/application/ApplicationTeams.js"/>
+                <file name="pages/application/ApplicationTeam.js"/>
+                <file name="pages/application/ApplicationTeamAdd.js"/>
+                <file name="pages/application/ApplicationTeamEdit.js"/>
+                <file name="pages/application/ApplicationImport.js"/>
+                <file name="pages/application/ApplicationExport.js"/>
+
+                <file name="pages/application/Settings.js"/>
+                <file name="pages/application/SettingsAdd.js"/>
+                <file name="pages/application/SettingsEdit.js"/>
+                <file name="pages/application/objects/Setting.js"/>
+                <file name="pages/application/maps/SettingMap.js"/>
+                <file name="pages/application/Setting.js"/>
+                <file name="pages/application/SettingsExport.js"/>
+
+                <file name="pages/warehouse/Warehouses.js"/>
+                <file name="pages/warehouse/Warehouse.js"/>
+                <file name="pages/warehouse/WarehouseAdd.js"/>
+                <file name="pages/warehouse/WarehouseEdit.js"/>
+                <file name="pages/warehouse/WarehouseTeams.js"/>
+                <file name="pages/warehouse/WarehouseTeam.js"/>
+                <file name="pages/warehouse/WarehouseTeamAdd.js"/>
+                <file name="pages/warehouse/WarehouseTeamEdit.js"/>
+                <file name="pages/warehouse/WarehouseExport.js"/>
+                <file name="pages/warehouse/WarehouseImport.js"/>
+
+                <file name="pages/warehouse/Sessions.js"/>
+                <file name="pages/warehouse/Session.js"/>
+                <file name="pages/warehouse/SessionExport.js"/>
+                <file name="pages/warehouse/InteractionReports.js"/>
+                <file name="pages/warehouse/InteractionReport.js"/>
+                <file name="pages/warehouse/InteractionPages.js"/>
+                <file name="pages/warehouse/InteractionPage.js"/>
+                <file name="pages/warehouse/InteractionPageExport.js"/>
+                <file name="pages/warehouse/InteractionUsers.js"/>
+                <file name="pages/warehouse/InteractionUser.js"/>
+                <file name="pages/warehouse/InteractionUserExport.js"/>
+                <file name="pages/warehouse/InteractionNodes.js"/>
+                <file name="pages/warehouse/InteractionNode.js"/>
+                <file name="pages/warehouse/InteractionNodeExport.js"/>
+                <file name="pages/warehouse/InteractionApplications.js"/>
+                <file name="pages/warehouse/InteractionApplication.js"/>
+                <file name="pages/warehouse/InteractionApplicationExport.js"/>
+
+                <file name="pages/registrar/Registrars.js"/>
+                <file name="pages/registrar/RegistrarAdd.js"/>
+                <file name="pages/registrar/RegistrarEdit.js"/>
+                <file name="pages/registrar/Registrar.js"/>
+                <file name="pages/registrar/RegistrarExport.js"/>
+
+                <file name="pages/tenant/Tenants.js"/>
+                <file name="pages/tenant/TenantAdd.js"/>
+                <file name="pages/tenant/TenantEdit.js"/>
+                <file name="pages/tenant/Tenant.js"/>
+                <file name="pages/tenant/TenantAttachments.js"/>
+                <file name="pages/tenant/TenantAttachmentsManage.js"/>
+
+                <file name="pages/plan/Plans.js"/>
+                <file name="pages/plan/PlanAdd.js"/>
+                <file name="pages/plan/PlanEdit.js"/>
+                <file name="pages/plan/Plan.js"/>
+                <file name="pages/plan/PlanExport.js"/>
+
+                <file name="pages/client/Clients.js"/>
+                <file name="pages/client/ClientAdd.js"/>
+                <file name="pages/client/ClientEdit.js"/>
+                <file name="pages/client/Client.js"/>
+                <file name="pages/client/ClientExport.js"/>
+
+                <file name="pages/authenticationgrant/AuthenticationGrants.js"/>
+                <file name="pages/authenticationgrant/AuthenticationGrant.js"/>
+                <file name="pages/authenticationgrant/AuthenticationGrantAdd.js"/>
+                <file name="pages/authenticationgrant/AuthenticationGrantEdit.js"/>
+
+                <file name="pages/authenticationgrant/AuthenticationGrantExport.js"/>
+
+                <file name="pages/billingprovider/BillingProviders.js"/>
+                <file name="pages/billingprovider/BillingProvider.js"/>
+                <file name="pages/billingprovider/BillingProviderAdd.js"/>
+                <file name="pages/billingprovider/BillingProviderEdit.js"/>
+                <file name="pages/billingprovider/BillingProviderExport.js"/>
+
+                <file name="pages/webhost/Webhosts.js"/>
+                <file name="pages/webhost/Webhost.js"/>
+                <file name="pages/webhost/WebhostAdd.js"/>
+                <file name="pages/webhost/WebhostEdit.js"/>
+                <file name="pages/webhost/WebhostExport.js"/>
+                <file name="pages/webhost/WebhostImport.js"/>
+
+                <file name="pages/webhost/AutoClientMappings.js"/>
+                <file name="pages/webhost/AutoClientMapping.js"/>
+                <file name="pages/webhost/AutoClientMappingAdd.js"/>
+                <file name="pages/webhost/AutoClientMappingEdit.js"/>
+                <file name="pages/webhost/AutoClientMappingExport.js"/>
+
+                <file name="pages/user/UserProfile.js"/>
+                <file name="pages/user/UserProfileEdit.js"/>
+
+                <file name="pages/repository/Repositories.js"/>
+                <file name="pages/repository/Repository.js"/>
+                <file name="pages/repository/RepositoryAdd.js"/>
+                <file name="pages/repository/RepositoryEdit.js"/>
+                <file name="pages/repository/RepositoryExport.js"/>
+                <file name="pages/repository/RepositoryImport.js"/>
+
+                <file name="pages/repository/RepositoryTeams.js"/>
+                <file name="pages/repository/RepositoryTeam.js"/>
+                <file name="pages/repository/RepositoryTeamAdd.js"/>
+                <file name="pages/repository/RepositoryTeamEdit.js"/>
+                <file name="pages/repository/RepositoryLogs.js"/>
+                <file name="pages/repository/RepositoryChangesets.js"/>
+                <file name="pages/repository/RepositoryChangeset.js"/>
+
+                <file name="pages/repository/RepositoryUserAuthorities.js"/>
+                <file name="pages/repository/RepositoryGroupAuthorities.js"/>
+
+                <file name="pages/branch/Branches.js"/>
+                <file name="pages/branch/Branch.js"/>
+                <file name="pages/branch/BranchAdd.js"/>
+                <file name="pages/branch/BranchEdit.js"/>
+
+                <file name="pages/branch/BranchLogs.js"/>
+
+                <file name="pages/branch/BranchUserAuthorities.js"/>
+                <file name="pages/branch/BranchGroupAuthorities.js"/>
+
+                <file name="pages/branch/BranchExport.js"/>
+                <file name="pages/branch/BranchImport.js"/>
+
+                <file name="pages/definition/Definitions.js"/>
+                <file name="pages/definition/Definition.js"/>
+                <file name="pages/definition/DefinitionAdd.js"/>
+                <file name="pages/definition/DefinitionEdit.js"/>
+                <file name="pages/definition/DefinitionExport.js"/>
+
+                <file name="pages/definition/Forms.js"/>
+                <file name="pages/definition/FormAdd.js"/>
+                <file name="pages/definition/Form.js"/>
+                <file name="pages/definition/FormEdit.js"/>
+                <file name="pages/definition/FormExport.js"/>
+
+                <file name="pages/definition/Features.js"/>
+                <file name="pages/definition/FeatureAdd.js"/>
+                <file name="pages/definition/FeatureEdit.js"/>
+                <file name="pages/definition/FeatureEditJSON.js"/>
+
+                <file name="pages/node/Nodes.js"/>
+                <file name="pages/node/Node.js"/>
+                <file name="pages/node/NodeAdd.js"/>
+                <file name="pages/node/NodeEdit.js"/>
+                <file name="pages/node/NodeAttachments.js"/>
+                <file name="pages/node/NodeAttachmentsManage.js"/>
+                <file name="pages/node/NodeAssociations.js"/>
+                <file name="pages/node/NodeTranslations.js"/>
+                <file name="pages/node/NodeAuditRecords.js"/>
+                <file name="pages/node/NodeExport.js"/>
+                <file name="pages/node/NodeImport.js"/>
+
+                <file name="pages/node/NodeFeatures.js"/>
+
+                <file name="pages/node/NodeFeatureEdit.js"/>
+                <file name="pages/node/NodeFeatureEditJSON.js"/>
+
+                <file name="pages/node/NodeFeatureAdd.js"/>
+
+                <file name="pages/node/NodePreview.js"/>
+
+                <file name="pages/node/NodeUserAuthorities.js"/>
+                <file name="pages/node/NodeGroupAuthorities.js"/>
+
+                <file name="pages/node/NodeJSONAdd.js"/>
+                <file name="pages/node/NodeTextAdd.js"/>
+                <file name="pages/node/NodeHTMLAdd.js"/>
+                <file name="pages/node/NodeFileUpload.js"/>
+
+                <file name="pages/node/AssociationAdd.js"/>
+
+                <file name="pages/node/NodeTranslationAdd.js"/>
+
+                <file name="pages/tag/Tags.js"/>
+                <file name="pages/tag/Tag.js"/>
+                <file name="pages/tag/TagEdit.js"/>
+                <file name="pages/tag/TagAdd.js"/>
+                <file name="pages/tag/TagNodes.js"/>
+
+                <file name="pages/folder/Folder.js"/>
+                <file name="pages/folder/FolderAttachments.js"/>
+                <file name="pages/folder/FolderAttachmentsManage.js"/>
+                <file name="pages/folder/FolderAssociations.js"/>
+                <file name="pages/folder/ChildNodeAdd.js"/>
+                <file name="pages/folder/FolderAdd.js"/>
+                <file name="pages/folder/ChildNode.js"/>
+                <file name="pages/folder/ChildNodeEdit.js"/>
+                <file name="pages/folder/ChildNodeAttachments.js"/>
+                <file name="pages/folder/ChildNodeAttachmentsManage.js"/>
+                <file name="pages/folder/ChildNodeAssociations.js"/>
+                <file name="pages/folder/ChildNodeAssociationAdd.js"/>
+                <file name="pages/folder/FolderEdit.js"/>
+                <file name="pages/folder/FolderExport.js"/>
+                <file name="pages/folder/FolderImport.js"/>
+                <file name="pages/folder/ChildNodeExport.js"/>
+                <file name="pages/folder/ChildNodeImport.js"/>
+
+                <file name="pages/folder/ChildNodePreview.js"/>
+                <file name="pages/folder/ChildNodeJSONAdd.js"/>
+                <file name="pages/folder/ChildNodeTextAdd.js"/>
+                <file name="pages/folder/ChildNodeHTMLAdd.js"/>
+
+                <file name="pages/folder/FolderFileUpload.js"/>
+
+                <file name="pages/folder/ChildNodeAuditRecords.js"/>
+                <file name="pages/folder/FolderAuditRecords.js"/>
+                <file name="pages/node/AssociationAdd.js"/>
+
+                <file name="pages/folder/ChildNodeGroupAuthorities.js"/>
+                <file name="pages/folder/ChildNodeUserAuthorities.js"/>
+
+                <file name="pages/folder/FolderGroupAuthorities.js"/>
+                <file name="pages/folder/FolderUserAuthorities.js"/>
+
+                <file name="pages/folder/ChildNodeFeatures.js"/>
+                <file name="pages/folder/ChildNodeFeatureEdit.js"/>
+                <file name="pages/folder/ChildNodeFeatureEditJSON.js"/>
+                <file name="pages/folder/ChildNodeFeatureAdd.js"/>
+
+                <file name="pages/folder/FolderFeatures.js"/>
+                <file name="pages/folder/FolderFeatureEdit.js"/>
+                <file name="pages/folder/FolderFeatureEditJSON.js"/>
+                <file name="pages/folder/FolderFeatureAdd.js"/>
+
+                <file name="components/GitanaPrincipalSelector.js"/>
             </filelist>
         </concat>
 
-        <!-- Tests -->
-        <concat destfile="${package.dir}/js/${appkey}-tests.js">
-            <filelist dir="${prep.dir}">
-                <file name="license.txt"/>
-            </filelist>
-            <filelist dir="${prep.dir}/tests/js">
-                <file name="fields/TextField.js"/>
-                <file name="fields/CheckBoxField.js"/>
-                <file name="fields/NumberField.js"/>
-                <file name="fields/AnyField.js"/>
-                <file name="fields/ArrayField.js"/>
-                <file name="fields/ObjectField.js"/>
-                <file name="fields/IntegerField.js"/>
-                <file name="fields/RadioField.js"/>
-                <file name="fields/SelectField.js"/>
-                <file name="fields/UpperCaseField.js"/>
-                <file name="fields/LowerCaseField.js"/>
-                <file name="fields/IPv4Field.js"/>
-                <file name="fields/DateField.js"/>
-                <file name="fields/PasswordField.js"/>
-                <file name="fields/EmailField.js"/>
-                <file name="fields/PhoneField.js"/>
-                <file name="fields/TextAreaField.js"/>
-                <file name="fields/WysiwygField.js"/>
-                <file name="fields/FileField.js"/>
-                <file name="fields/AddressField.js"/>
-                <file name="fields/DependencyField.js"/>
-                <file name="fields/ConditionalField.js"/>
-                <file name="fields/Form.js"/>
-                <file name="fields/TimeField.js"/>
-                <file name="fields/TagField.js"/>
-                <file name="fields/MapField.js"/>
-                <file name="validation/Validation.js"/>
-                <file name="wizards/Wizard.js"/>
-                <file name="forms/CreateForm.js"/>
-                <file name="forms/EditForm.js"/>
-            </filelist>
-        </concat>
-
-        <!-- create a "full" version of console to preserve everything (builder reflection helpers) -->
-        <copy file="${package.dir}/js/${appkey}.js" tofile="${package.dir}/js/${appkey}-full.js"/>
-
-        <!-- strip down the console file so it does not include builder helpers (reflection) -->
-        <replaceregexp match=",//__BUILDER_HELPERS(.*?)//__END_OF_BUILDER_HELPERS"
-                       replace="" flags="gs">
-            <fileset dir="${package.dir}/js" includes="${appkey}.js"/>
-        </replaceregexp>
         <copy todir="${package.dir}/lib">
-            <fileset dir="${prep.dir}/lib">
-                <include name="jquery-latest.min.js"/>
-                <include name="jquery-ui-latest.custom.min.js"/>
-                <include name="jquery-ui-timepicker-addon.js"/>
-                <include name="jquery.wysiwyg/**/*"/>
-            </fileset>
+            <fileset dir="${prep.dir}/lib"/>
         </copy>
 
+        <copy todir="${package.dir}/templates">
+            <fileset dir="${prep.dir}/templates"/>
+        </copy>
 
-        <!--                                                                                 -->
-        <!--                                                                                 -->
-        <!--                                   COMPONENTS                                    -->
-        <!--                                                                                 -->
-        <!--                                                                                 -->
-
-        <!-- NOTE: these get build into the prep directory only -->
-
-        <!-- Component: "console-core" -->
-        <concat destfile="${prep.dir}/js/${appkey}-component-core.js">
-            <filelist dir="${prep.dir}/lib">
-                <file name="base.js"/>
-                <file name="validator.js"/>
-                <!--<file name="jquery.tmpl.js"/>-->
-                <file name="equiv_and_hoozit.js"/>
-                <file name="jquery.maskedinput-1.3.js"/>
-            </filelist>
-            <filelist dir="${prep.dir}/js">
-                <file name="console.js"/>
-                <file name="views/DefaultView.js"/>
-                <file name="views/ListView.js"/>
-                <file name="views/MobileView.js"/>
-                <file name="views/LayoutView.js"/>
-
-                <file name="View.js"/>
-
-                <file name="Field.js"/>
-                <file name="ControlField.js"/>
-                <file name="ContainerField.js"/>
-                <file name="Connector.js"/>
-                <file name="Form.js"/>
-
-                <!--console Core Fields-->
-                <file name="fields/basic/TextField.js"/>
-                <file name="fields/basic/TextAreaField.js"/>
-                <file name="fields/basic/CheckBoxField.js"/>
-                <file name="fields/basic/FileField.js"/>
-                <file name="fields/basic/ListField.js"/>
-                <file name="fields/basic/RadioField.js"/>
-                <file name="fields/basic/SelectField.js"/>
-                <file name="fields/basic/NumberField.js"/>
-                <file name="fields/basic/ArrayField.js"/>
-                <file name="fields/basic/ObjectField.js"/>
-                <file name="fields/basic/AnyField.js"/>
-                <!--End of console Core Fields-->
-
-                <file name="views/DefaultViewLanguagePacks.js"/>
-            </filelist>
-        </concat>
-
-        <!-- Component: "console-extras" -->
-        <concat destfile="${prep.dir}/js/${appkey}-component-extras.js">
-            <filelist dir="${prep.dir}/js">
-                <file name="fields/advanced/AddressField.js"/>
-                <file name="fields/advanced/DateField.js"/>
-                <file name="fields/advanced/DatetimeField.js"/>
-                <file name="fields/advanced/EmailField.js"/>
-                <file name="fields/advanced/IntegerField.js"/>
-                <file name="fields/advanced/IPv4Field.js"/>
-                <file name="fields/advanced/JSONField.js"/>
-                <file name="fields/advanced/IntegerField.js"/>
-                <file name="fields/advanced/LowerCaseField.js"/>
-                <file name="fields/advanced/MapField.js"/>
-                <file name="fields/advanced/PasswordField.js"/>
-                <file name="fields/advanced/PersonalNameField.js"/>
-                <file name="fields/advanced/PhoneField.js"/>
-                <file name="fields/advanced/TagField.js"/>
-                <file name="fields/advanced/TimeField.js"/>
-                <file name="fields/advanced/UpperCaseField.js"/>
-                <file name="fields/advanced/WysiwygField.js"/>
-            </filelist>
-        </concat>
-
-        <!-- Component: "console" -->
-        <concat destfile="${prep.dir}/js/${appkey}-component.js">
-            <filelist dir="${prep.dir}/js">
-                <file name="${appkey}-component-core.js"/>
-                <file name="${appkey}-component-extras.js"/>
-            </filelist>
-        </concat>
     </target>
 
     <target name="concat-css" description="Concat all css files" depends="prep">
-        <concat destfile="${package.dir}/css/${appkey}-core.css">
-            <filelist dir="${prep.dir}">
-                <file name="license.txt"/>
-            </filelist>
-            <filelist dir="${prep.dir}/css">
+        <concat destfile="${package.dir}/css/themes/default/console/${appkey}.css">
+            <filelist dir="${prep.dir}/css/themes/default/console">
                 <file name="960.fluid.css"/>
                 <file name="console.css"/>
-            </filelist>
-        </concat>
-        <concat destfile="${package.dir}/css/${appkey}-extras.css">
-            <filelist dir="${prep.dir}">
-                <file name="license.txt"/>
-            </filelist>
-            <filelist dir="${prep.dir}/css">
-                <file name="jquery-ui-latest.custom.css"/>
-            </filelist>
-        </concat>
-        <concat destfile="${package.dir}/css/${appkey}.css">
-            <filelist dir="${prep.dir}">
-                <file name="license.txt"/>
-            </filelist>
-            <filelist dir="${prep.dir}/css">
+                <file name="style.css"/>
                 <file name="960.fluid.css"/>
-                <file name="console.css"/>
-                <file name="jquery-ui-latest.custom.css"/>
+                <file name="main.css"/>
+                <file name="buttons.css"/>
+
+                <file name="lists.css"/>
+                <file name="icons.css"/>
+                <file name="notifications.css"/>
+                <file name="typography.css"/>
+                <file name="forms.css"/>
+                <file name="tables.css"/>
+
+                <file name="charts.css"/>
+                <file name="jquery.asmselect.css"/>
+                <file name="console-custom.css"/>
+                <file name="alpaca-custom.css"/>
+
+                <file name="sprites.css"/>
             </filelist>
         </concat>
-        <concat destfile="${package.dir}/css/${appkey}-mobile.css">
-            <filelist dir="${prep.dir}">
-                <file name="license.txt"/>
-            </filelist>
-            <filelist dir="${prep.dir}/css">
-                <file name="console-mobile.css"/>
-            </filelist>
-        </concat>
+        <copy todir="${package.dir}/css/themes/default/console">
+            <fileset dir="${prep.dir}/css/themes/default/console">
+                <include name="all-ie-only-custom.css"/>
+                <include name="ie9-only-custom.css"/>
+            </fileset>
+        </copy>
+        <copy todir="${package.dir}/css/themes/default/jquery-ui">
+            <fileset dir="${prep.dir}/css/themes/default/jquery-ui"/>
+        </copy>
+        <copy todir="${package.dir}/css/images">
+            <fileset dir="${prep.dir}/css/images"/>
+        </copy>
     </target>
 
     <target name="compress" description="Compress the javascript and css" depends="concat-js,concat-css">
         <echo>Compressing Javascript...</echo>
         <apply executable="java" parallel="false" dest="${build.dir}/package">
             <fileset dir="${build.dir}/package">
-                <include name="**/*.js"/>
+                <include name="**/console.js"/>
                 <exclude name="**/*-min.js"/>
                 <exclude name="**/*.min.js"/>
             </fileset>
@@ -435,81 +599,12 @@
     </target>
 
     <target name="prep-html" description="Prepare all htmls" depends="compress">
-        <replaceregexp match="&lt;!--console JavaScript--&gt;(.*?)&lt;!--End of console JavaScript--&gt;"
-                       replace='&lt;script type="text\/javascript" src="../../../js/${appkey}-full.min.js"&gt;&lt;/script&gt;' flags="gs">
-            <fileset dir="${prep.dir}" includes="examples/**/*.html"/>
-        </replaceregexp>
-        <replaceregexp match="&lt;!--console CSS--&gt;(.*?)&lt;!--End of console CSS--&gt;"
-                       replace='&lt;link type="text\/css" href="../../../css/${appkey}.min.css" rel="stylesheet" /&gt;' flags="gs">
-            <fileset dir="${prep.dir}" includes="examples/**/*.html"/>
-        </replaceregexp>
-        <replaceregexp match="&lt;!--console Mobile CSS--&gt;(.*?)&lt;!--End of console Mobile CSS--&gt;"
-                       replace='&lt;link type="text\/css" href="../../../css/${appkey}-mobile.min.css" rel="stylesheet" /&gt;' flags="gs">
-            <fileset dir="${prep.dir}" includes="examples/mobile/**/*.html"/>
-        </replaceregexp>
-        <replaceregexp match="../../../js/console"
-                       replace='../../js/console' flags="gs">
-            <fileset dir="${prep.dir}" includes="examples/mobile/mobile-examples.html"/>
-        </replaceregexp>
-        <replaceregexp match="../../../css/console"
-                       replace='../../css/console' flags="gs">
-            <fileset dir="${prep.dir}" includes="examples/mobile/mobile-examples.html"/>
-        </replaceregexp>
-        <replaceregexp match="jquery.wysiwyg.js"
-                       replace='jquery.wysiwyg.min.js' flags="gs">
-            <fileset dir="${prep.dir}" includes="examples/**/wysiwyg*.html"/>
-        </replaceregexp>
-        <replaceregexp match="jquery.wysiwyg.css"
-                       replace='jquery.wysiwyg.min.css' flags="gs">
-            <fileset dir="${prep.dir}" includes="examples/**/wysiwyg*.html"/>
-        </replaceregexp>
-        <replaceregexp match="jquery-ui-timepicker-addon.js"
-                       replace='jquery-ui-timepicker-addon.min.js' flags="gs">
-            <fileset dir="${prep.dir}" includes="examples/**/datetime*.html"/>
-        </replaceregexp>
-        <replaceregexp match="&lt;!--console JavaScript--&gt;(.*?)&lt;!--End of console JavaScript--&gt;"
-                       replace='&lt;script type="text\/javascript" src="js/${appkey}.min.js"&gt;&lt;/script&gt;' flags="gs">
-            <fileset dir="${prep.dir}" includes="index.html"/>
-            <fileset dir="${prep.dir}" includes="resources.html"/>
-            <fileset dir="${prep.dir}" includes="tutorials.html"/>
-        </replaceregexp>
-        <replaceregexp match="&lt;!--console CSS--&gt;(.*?)&lt;!--End of console CSS--&gt;"
-                       replace='&lt;link type="text\/css" href="css/${appkey}.min.css" rel="stylesheet" /&gt;' flags="gs">
-            <fileset dir="${prep.dir}" includes="index.html"/>
-            <fileset dir="${prep.dir}" includes="resources.html"/>
-            <fileset dir="${prep.dir}" includes="tutorials.html"/>
-        </replaceregexp>
-        <replaceregexp match="&lt;!--console JavaScript--&gt;(.*?)&lt;!--End of console JavaScript--&gt;"
-                       replace='&lt;script type="text\/javascript" src="../js/${appkey}.min.js"&gt;&lt;/script&gt;' flags="gs">
-            <fileset dir="${prep.dir}" includes="tests/index.html"/>
-        </replaceregexp>
-        <replaceregexp match="&lt;!--console CSS--&gt;(.*?)&lt;!--End of console CSS--&gt;"
-                       replace='&lt;link type="text\/css" href="../css/${appkey}.min.css" rel="stylesheet" /&gt;' flags="gs">
-            <fileset dir="${prep.dir}" includes="tests/index.html"/>
-        </replaceregexp>
-        <replaceregexp match="&lt;!--console Test JavaScript--&gt;(.*?)&lt;!--End of console Test JavaScript--&gt;"
-                       replace='&lt;script type="text\/javascript" src="../js/${appkey}-tests.min.js"&gt;&lt;/script&gt;' flags="gs">
-            <fileset dir="${prep.dir}" includes="tests/index.html"/>
-        </replaceregexp>
-        <copy todir="${package.dir}/examples">
-            <fileset dir="${prep.dir}/examples" includes="**/*"/>
-        </copy>
-        <copy todir="${package.dir}/tests">
-            <fileset dir="${prep.dir}/tests">
-                <exclude name="js/**/*"/>
-            </fileset>
-        </copy>
         <copy todir="${package.dir}">
             <fileset dir="${prep.dir}">
                 <include name="favicon.ico"/>
-                <include name="index.html"/>
-                <include name="resources.html"/>
-                <include name="tutorials.html"/>
             </fileset>
         </copy>
-        <copy todir="${package.dir}/css/images">
-            <fileset dir="${prep.dir}/css/images" includes="**/*"/>
-        </copy>
+        <copy tofile="${package.dir}/index.html" file="${prep.dir}/index-prod.html"/>
     </target>
 
     <!-- Packages up the Distribution (and components) -->
@@ -520,18 +615,6 @@
                 <exclude name="**/.idea/*"/>
             </fileset>
         </zip>
-        <zip destfile="${prep.dir}/${appkey}-basic.zip">
-            <fileset dir="${package.dir}">
-                <include name="css/**/*"/>
-                <include name="js/**/*"/>
-                <include name="lib/**/*"/>
-                <exclude name="**/.DS_Store/*"/>
-                <exclude name="**/.idea/*"/>
-            </fileset>
-        </zip>
-        <copy todir="${package.dir}/downloads">
-            <fileset dir="${prep.dir}" includes="*.zip"/>
-        </copy>
     </target>
 
     <target name="clean">
@@ -563,6 +646,10 @@
         <copy todir="${local.docroot.basepath}/${appkey}">
             <fileset refid="console-files"/>
         </copy>
+    </target>
+
+    <target name="full-prod" depends="package,webserver-clean">
+        <unzip src="${prep.dir}/${appkey}.zip" dest="${local.docroot.basepath}/${appkey}"/>
     </target>
 
 </project>
