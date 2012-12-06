@@ -37,7 +37,7 @@
 
                 self.renderTemplate(el, self.TEMPLATE, function(el) {
                     $('.menu', $(el)).initMenu();
-                    $('.menu li a', $(el)).slideList();
+                    $('.menu li a.selectable', $(el)).slideList();
                     el.swap();
                 });
 

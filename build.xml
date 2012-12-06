@@ -24,6 +24,8 @@
 
     <property name="yui-compressor" value="${project.dir}/tool/yuicompressor-2.4.7.jar"/>
 
+    <property name="theme" value="clean" />
+
     <target name="clean-alpaca-lib" description="Removes alpaca libraries">
         <delete dir="${alpaca.lib.dir}"/>
     </target>
@@ -366,6 +368,12 @@
                 <file name="pages/billingprovider/BillingProviderEdit.js"/>
                 <file name="pages/billingprovider/BillingProviderExport.js"/>
 
+                <file name="pages/project/Projects.js"/>
+                <file name="pages/project/ProjectAdd.js"/>
+                <file name="pages/project/ProjectEdit.js"/>
+                <file name="pages/project/Project.js"/>
+                <file name="pages/project/ProjectExport.js"/>
+
                 <file name="pages/webhost/Webhosts.js"/>
                 <file name="pages/webhost/Webhost.js"/>
                 <file name="pages/webhost/WebhostAdd.js"/>
@@ -529,8 +537,8 @@
     </target>
 
     <target name="concat-css" description="Concat all css files" depends="prep">
-        <concat destfile="${package.dir}/css/themes/default/console/${appkey}.css">
-            <filelist dir="${prep.dir}/css/themes/default/console">
+        <concat destfile="${package.dir}/css/themes/${theme}/console/${appkey}.css">
+            <filelist dir="${prep.dir}/css/themes/${theme}/console">
                 <file name="960.fluid.css"/>
                 <file name="console.css"/>
                 <file name="style.css"/>
@@ -553,14 +561,14 @@
                 <file name="sprites.css"/>
             </filelist>
         </concat>
-        <copy todir="${package.dir}/css/themes/default/console">
-            <fileset dir="${prep.dir}/css/themes/default/console">
+        <copy todir="${package.dir}/css/themes/${theme}/console">
+            <fileset dir="${prep.dir}/css/themes/${theme}/console">
                 <include name="all-ie-only-custom.css"/>
                 <include name="ie9-only-custom.css"/>
             </fileset>
         </copy>
-        <copy todir="${package.dir}/css/themes/default/jquery-ui">
-            <fileset dir="${prep.dir}/css/themes/default/jquery-ui"/>
+        <copy todir="${package.dir}/css/themes/${theme}/jquery-ui">
+            <fileset dir="${prep.dir}/css/themes/${theme}/jquery-ui"/>
         </copy>
         <copy todir="${package.dir}/css/images">
             <fileset dir="${prep.dir}/css/images"/>

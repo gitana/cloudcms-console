@@ -149,6 +149,14 @@
             this.observable("authenticationGrant").clear();
         },
 
+        project: function() {
+            return this._observable("project", arguments);
+        },
+
+        clearProject: function() {
+            this.observable("project").clear();
+        },
+
         warehouse: function() {
             return this._observable("warehouse", arguments);
         },
@@ -762,6 +770,13 @@
                 });
             };
 
+            var loadProjectSubObjects = function(project) {
+
+                project.then(function() {
+
+                });
+            };
+
             var loadWebhostSubObjects = function(webhost) {
 
                 webhost.then(function() {
@@ -840,6 +855,7 @@
                 var registrarId  = el.tokens["registrarId"];
                 var clientId  = el.tokens["clientId"];
                 var authenticationGrantId  = el.tokens["authenticationGrantId"];
+                var projectId = el.tokens["projectId"];
                 var repositoryId  = el.tokens["repositoryId"];
                 var billingProviderId  = el.tokens["billingProviderId"];
                 var webhostId  = el.tokens["webhostId"];
@@ -963,6 +979,17 @@
                         });
                     } else {
                         loadAuthenticationGrantSubObjects(this.subchain(self.authenticationGrant()));
+                    }
+                }
+
+                if (projectId) {
+                    if (!self.project() || self.project().getId() != projectId) {
+                        platform.readProject(projectId).then(function() {
+                            self.project(this);
+                            loadProjectSubObjects(this);
+                        });
+                    } else {
+                        loadProjectSubObjects(this.subchain(self.project()));
                     }
                 }
 
@@ -1152,6 +1179,12 @@
 
                         break;
 
+                    case 'Gitana.Project':
+
+                        link += this.listLink('projects');
+
+                        break;
+
                     case 'Gitana.Tenant':
 
                         link += this.listLink('tenants');
@@ -1250,6 +1283,12 @@
 
                         break;
 
+                    case 'Gitana.TrustedDomainMapping':
+
+                        link += this.listLink('trusted-domain-mappings');
+
+                        break;
+
                     default:
 
                         if (node.isAssociation && node.isAssociation()) {
@@ -1312,6 +1351,12 @@
                 var objectType = node.objectType();
 
                 switch (objectType) {
+
+                    case 'Gitana.Directory':
+
+                        link += this.listLink('directories');
+
+                        break;
 
                     case 'Gitana.Domain':
 
@@ -1603,9 +1648,21 @@
 
                         break;
 
+                    case 'projects':
+
+                        link += "projects/";
+
+                        break;
+
                     case 'authenticationGrants':
 
                         link += "authenticationgrants/";
+
+                        break;
+
+                    case 'directories':
+
+                        link += "directories/";
 
                         break;
 
@@ -1750,6 +1807,12 @@
                     case 'auto-client-mappings':
 
                         link += "webhosts/"+ this.webhost().getId() + "/autoclientmappings/";
+
+                        break;
+
+                    case 'trusted-domain-mappings':
+
+                        link += "webhosts/"+ this.webhost().getId() + "/trusteddomainmappings/";
 
                         break;
 

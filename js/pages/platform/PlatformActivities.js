@@ -225,7 +225,8 @@
                         "title": "Timestamp",
                         "sortingExpression" : "timestamp.ms",
                         "property": function(callback) {
-                            var value = this.getSystemMetadata().getModifiedOn().getTimestamp();
+                            //var value = this.getSystemMetadata().getModifiedOn().getTimestamp();
+                            var value = this["timestamp"].timestamp;
                             callback(value);
                         }
                     }

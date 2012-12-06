@@ -1,0 +1,26 @@
+<script id="activityTemplate" type="text/x-jquery-tmpl">
+
+    {{if data}}
+    <ul class="item-list" style="margin:0px;">
+        <li><span>ID</span>${data._doc}</li>
+        <li><span>Type</span>${data.type}</li>
+        {{if data.userDomainId}}
+        <li><span>User Domain</span>${data.userDomainId}</li>
+        {{/if}}
+        <li><span>User ID</span>${data.userId}</li>
+        <li><span>User </span>${data.userTitle}</li>
+        <li><span>User Name</span>${data.userName}</li>
+        <li><span>Datastore Type</span>${data.objectDatastoreTypeId}</li>
+        <li><span>Datastore ID</span>${data.objectDatastoreId}</li>
+        <li><span>Datastore</span>${data.objectDatastoreTitle}</li>
+        <li><span>Object</span>${data.objectId}</li>
+        <li><span>Object Type</span>${data.objectTypeId}</li>
+        <li><span>Object</span>${data.objectTitle}</li>
+        <li><span>Timestamp</span>${data.timestamp.timestamp}</li>
+        <li><span>Full JSON</span>
+            <pre class="record-full-json">${data.fullJson}</pre>
+        </li>
+    </ul>
+    {{/if}}
+
+</script>

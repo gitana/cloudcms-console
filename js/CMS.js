@@ -18,7 +18,7 @@
 
     Gitana.Apps.APP_NAME = "";
 
-    Gitana.Apps.THEME = "default";
+    Gitana.Apps.THEME = "clean";
 
     if (typeof Gitana.CMS.Pages === "undefined") {
         Gitana.CMS.Pages = {};

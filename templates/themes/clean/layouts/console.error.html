@@ -1,0 +1,63 @@
+<script id="layoutTemplate" type="text/x-jquery-tmpl">
+
+    <div class="container_12">
+
+        {{if page}}
+        <div class="grid_12">
+            {{if page.title}}
+            <h1>${page.title}</h1>
+            {{/if}}
+            {{if page.description}}
+            <p>${page.description}</p>
+            {{/if}}
+        </div>
+        {{/if}}
+
+        {{if page.error}}
+            <div class="grid_12">
+				<div class="block-border">
+                    <div class="block-header">
+						<h1>{{if page.error.icon}}<img src='${page.error.icon}'/>  {{/if}}{{if page.error.http && page.error.http.status}}${page.error.http.status}{{/if}} Error</h1>
+					</div>
+					<div class="block-content">
+						{{if page.error.page}}
+                        <h2>Page</h2>
+                        <div class="error-page">
+                            <div><a href="#{{if page.error.page.url}}${page.error.page.url}{{/if}}" >{{if page.error.page.title}}${page.error.page.title}{{/if}}</a></div>
+                            {{if page.error.page.description}}<div>${page.error.page.description}</div>{{/if}}
+                        </div>
+                        {{/if}}
+                        <h2>Error Details</h2>
+                        <div class="error-message">
+                            {{if page.error.fileName}}<div><span>File</span>${page.error.fileName}</div>{{/if}}
+                            {{if page.error.lineNumber}}<div><span>Line</span>${page.error.lineNumber}</div>{{/if}}
+                            {{if page.error.name}}<div><span>Name</span>${page.error.name}</div>{{/if}}
+                            {{if page.error.status}}<div><span>Status</span>${page.error.status}</div>{{/if}}
+                            {{if page.error.statusText}}<div><span>Name</span>${page.error.statusText}</div>{{/if}}
+                            {{if page.error.message}}<div><span>Message</span>${page.error.message}</div>{{/if}}
+                            {{if page.error.stack}}
+                                <div><span>Client Stack</span></div>
+                                <div class="error-stacktrace"><pre><code>${page.error.stack}</code></pre></div>
+                            {{/if}}
+                            {{if page.error.stacktrace}}
+                            <div><span>Server Stack Trace</span></div>
+                            <div class="error-stacktrace"><pre><code>${page.error.stacktrace}</code></pre></div>
+                            {{/if}}
+                            <!--
+                            {{if page.error.details}}
+                                <div><span>Details</span> :</div>
+                                <div class="error-details">${page.error.details}</div>
+                            {{/if}}
+                            {{if page.error.http && page.error.http.responseText}}<div class="error-stacktrace"><pre><code>${page.error.http.responseText}</code></pre></div>{{/if}}
+                            --->
+                        </div>
+					</div>
+				</div>
+            </div>
+        {{/if}}
+
+        <div class="clear height-fix"></div>
+
+    </div>
+
+</script>

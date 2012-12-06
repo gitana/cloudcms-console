@@ -1,0 +1,10 @@
+<script id="breadcrumbTemplate" type="text/x-jquery-tmpl">
+    <ul id="breadcrumbs">
+        <li><a href="#/dashboard" title="User Dashboard" rel="tooltip-html"><span id="bc-home"></span></a></li>
+        {{if breadcrumb}}
+            {{each(index, item) breadcrumb}}
+                <li {{if !item.visibility}}style="display:none;"{{/if}} {{if item.link == null}}class="no-hover"{{/if}}>{{if item.link != null}}<a href="#${item.link}" {{if item.title != null}}title="${item.title}" rel="tooltip-html"{{/if}}>{{html item.text}}</a>{{else}}{{html item.text}}{{/if}}</li>
+            {{/each}}
+        {{/if}}
+    </ul>
+</script>

@@ -1,0 +1,23 @@
+<script id="pairsTemplate" type="text/x-jquery-tmpl">
+    {{if pairs}}
+    <div class="block-border">
+        {{if pairs.title}}
+        <div class="block-header">
+            <h1>{{if pairs.icon}}<span class="sprite-20 ${pairs.icon.substring(pairs.icon.lastIndexOf('/')+1,pairs.icon.lastIndexOf('.'))}"></span><!--<img src='${pairs.icon}'/>-->{{/if}}${pairs.title}</h1><span></span>
+        </div>
+        {{/if}}
+        <div class="block-content">
+            {{if pairs.alert}}
+            <div class="alert info no-margin top">${pairs.alert}</div>
+            {{/if}}
+            {{if pairs.items}}
+            <ul class="{{if pairs['class']}}${pairs['class']}{{else}}item-list{{/if}}">
+                {{each(i, item) pairs.items}}
+                <li>{{if item.key}}<span {{if item.style}}style='${item.style}'{{/if}}>${item.key}</span> {{/if}}{{if item.link}}<a href="${item.link}">{{/if}}{{if item.img}}{{if item.img.indexOf('-48.png') != -1}}<span class="sprite-48 sprite-48-pairs ${item.img.substring(item.img.lastIndexOf('/')+1,item.img.lastIndexOf('.'))}"></span>{{else}}<img src="${item.img}" class="{{if item['class']}}${item['class']}{{else}}framed{{/if}}"/>{{/if}}{{/if}}{{if item.value != null}}{{html item.value}}{{/if}}{{if item.link}}</a>{{/if}}</li>
+                {{/each}}
+            </ul>
+            {{/if}}
+        </div>
+    </div>
+    {{/if}}
+</script>

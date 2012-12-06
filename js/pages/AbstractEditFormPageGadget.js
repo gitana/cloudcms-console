@@ -28,7 +28,7 @@
             var targetId = targetId ? targetId : "json-edit";
             var self = this;
 
-            var defaultData = object.stringify(true);
+            var defaultData = object;
 
             $('#' + targetId, $(el)).alpaca({
                 "data": defaultData,

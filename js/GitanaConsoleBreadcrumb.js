@@ -563,6 +563,24 @@
             ]);
         },
 
+        "Projects" : function(self , el) {
+            return $.merge(this.Platform(self, el), [
+                {
+                    "text" : "Projects",
+                    "link" : self.LIST_LINK().call(self,'projects')
+                }
+            ]);
+        },
+
+        "Project" : function(self , el) {
+            return $.merge(this.Projects(self, el), [
+                {
+                    "text" : self.friendlyTitle(self.project()),
+                    "link" : self.LINK().call(self,self.project())
+                }
+            ]);
+        },
+
         "Repositories" : function(self , el) {
             return $.merge(this.Platform(self, el), [
                 {

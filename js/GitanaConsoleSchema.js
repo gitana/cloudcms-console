@@ -256,6 +256,17 @@
                 }
             }
         },
+        "Project" : {
+            "type": "object",
+            "properties" : {
+                "title" : {
+                    "type" : "string"
+                },
+                "description" : {
+                    "type" : "string"
+                }
+            }
+        },
         "Archive" : {
             "type": "object",
             "properties": {
@@ -828,6 +839,16 @@
                 "enabled" : {
                     "rightLabel" : "Enabled ?",
                     "helper" : "Check this option to enable the client."
+                }
+            }
+        },
+        "Project" : {
+            "fields" : {
+                "title" : {
+                    "helper" : "Enter title."
+                },
+                "description": {
+                    "helper" : "Enter description."
                 }
             }
         },

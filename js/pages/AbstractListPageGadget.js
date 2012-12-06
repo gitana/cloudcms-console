@@ -181,7 +181,7 @@
             var filter = Alpaca.isFunction(this.FILTER) ? this.FILTER() : this.FILTER;
             var filterObservable = this.observable(filter).get();
 
-            var query = {}
+            var query = {};
 
             if (filterObservable && filterObservable.jsonData) {
                 query = filterObservable.jsonData;
