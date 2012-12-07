@@ -93,7 +93,6 @@ body.special-page {
 
 #container > #header-surround > #header {
 	background: url("../../../images/themes/clean/console/container/header/header-bg.png") repeat-x scroll top left transparent;
-    /*background: url("../../../images/themes/clean/console/container/title-bar/title-bar-bg.png") repeat-x scroll top left transparent;*/
 	height: 43px;
 	position: relative;
 	z-index: 30;
@@ -159,11 +158,21 @@ body.special-page {
  */
 
 #login-details {
+    background: url("../../../images/themes/clean/console/container/header/header-bg.png") repeat-x scroll left top #212f3b;
 	/**background: url("../../../images/themes/clean/console/container/login-details/login-details-bg.png") repeat-x scroll top center #212f3b;**/
+    /*
 	margin-right: 1px;
 	padding-top: 15px;
     padding-bottom: 15px;
-    background: #f5f5f5;
+    */
+    /*background: #f5f5f5;*/
+    display: inline-block;
+    height: 84px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 900;
+    width: 260px;
 }
 
 
@@ -177,6 +186,7 @@ body.special-page {
 	/* Remove fixed footer */
     /*position: absolute;*/
 	z-index: 30;
+    margin-top: 42px;
 }
 
 #container > #sidebar > #nav > .menu {

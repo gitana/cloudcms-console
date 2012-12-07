@@ -187,10 +187,12 @@ For optimal performance, use a custom Modernizr build: www.modernizr.com/downloa
     <script type="text/javascript" src="js/fields/MultiNodesField.js"></script>
     <script type="text/javascript" src="js/fields/MultiFolderNodesField.js"></script>
     <script type="text/javascript" src="js/CMS.js"></script>
-    <script type="text/javascript" src="js/authenticators/AbstractAuthenticator.js"></script>
-    <script type="text/javascript" src="js/authenticators/AbstractOAuth2Authenticator.js"></script>
+    <!--
+    <script type="text/javascript" src="_old/AbstractAuthenticator.js"></script>
+    <script type="text/javascript" src="_old/AbstractOAuth2Authenticator.js"></script>
+    <script type="text/javascript" src="_old/ImplicitFlowAuthenticator.js"></script>
+    -->
     <script type="text/javascript" src="js/authenticators/UsernamePasswordAuthenticator.js"></script>
-    <script type="text/javascript" src="js/authenticators/ImplicitFlowAuthenticator.js"></script>
     <script type="text/javascript" src="js/AbstractGadget.js"></script>
     <script type="text/javascript" src="js/AbstractGitanaAppGadget.js"></script>
     <script type="text/javascript" src="js/utilities/GitanaUtilsDate.js"></script>
@@ -608,7 +610,13 @@ For optimal performance, use a custom Modernizr build: www.modernizr.com/downloa
 <!--! end of #header -->
 <div class="fix-shadow-bottom-height"></div>
 
-<!-- Begin of Sidebar -->
+<!-- custom logo -->
+<!-- Begin of #login-details -->
+<div id="login-details" gadget="logindetails" subscription="tenantDetails" align="center"></div>
+<!--! end of #login-details -->
+
+
+    <!-- Begin of Sidebar -->
 <aside id="sidebar">
 <!--[if lt IE 9]>
 <div id="sidebar">
@@ -622,9 +630,12 @@ For optimal performance, use a custom Modernizr build: www.modernizr.com/downloa
 
     <!-- Begin of #login-details -->
     <!--[if lt IE 9]>
+    <!--
     <div id="login-details" gadget="logindetails" subscription="userDetails">
     </div>
+    -->
     <![endif]-->
+    <!--
     <section id="login-details" gadget="logindetails" subscription="tenantDetails">
     </section>
     <!--! end of #login-details -->
