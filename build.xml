@@ -130,6 +130,7 @@
                 <file name="fields/MultiNodesField.js"/>
                 <file name="fields/MultiFolderNodesField.js"/>
                 <file name="CMS.js"/>
+                <file name="Messages.js"/>
                 <file name="authenticators/AbstractAuthenticator.js"/>
                 <file name="authenticators/AbstractOAuth2Authenticator.js"/>
                 <file name="authenticators/UsernamePasswordAuthenticator.js"/>
@@ -138,6 +139,7 @@
                 <file name="AbstractGitanaAppGadget.js"/>
                 <file name="utilities/GitanaUtilsDate.js"/>
                 <file name="utilities/GitanaUtilsImage.js"/>
+                <file name="utilities/GitanaUtilsRender.js"/>
                 <file name="utilities/GitanaUtilsUI.js"/>
                 <file name="reports/AbstractReport.js"/>
 
@@ -151,6 +153,7 @@
                 <file name="components/AbstractComponentGadget.js"/>
                 <file name="pages/AbstractGitanaPageGadget.js"/>
 
+                <file name="components/Alerts.js"/>
                 <file name="components/BarChart.js"/>
                 <file name="components/Plot.js"/>
                 <file name="components/Breadcrumb.js"/>
@@ -183,7 +186,6 @@
                 <file name="GitanaConsoleBreadcrumb.js"/>
                 <file name="GitanaConsoleSchema.js"/>
 
-
                 <file name="components/Header.js"/>
                 <file name="components/LoginDetails.js"/>
                 <file name="components/TenantBar.js"/>
@@ -210,6 +212,22 @@
                 <file name="pages/team/AbstractObjectTeamExport.js"/>
                 <file name="pages/team/AbstractObjectTeamImport.js"/>
                 -->
+
+                <file name="pages/AbstractDatastore.js" />
+                <file name="pages/AbstractDatastoreAdd.js" />
+                <file name="pages/AbstractDatastoreEdit.js" />
+                <file name="pages/AbstractDatastoreExport.js" />
+                <file name="pages/AbstractDatastoreImport.js" />
+                <file name="pages/AbstractDatastores.js" />
+
+                <file name="pages/AbstractDatastoreObject.js" />
+                <file name="pages/AbstractDatastoreObjectAdd.js" />
+                <file name="pages/AbstractDatastoreObjectEdit.js" />
+                <file name="pages/AbstractDatastoreObjectExport.js" />
+                <file name="pages/AbstractDatastoreObjectImport.js" />
+                <file name="pages/AbstractDatastoreObjects.js" />
+
+
                 <file name="pages/personal/Dashboard.js"/>
 
                 <file name="pages/platform/Platform.js"/>
@@ -374,6 +392,19 @@
                 <file name="pages/project/Project.js"/>
                 <file name="pages/project/ProjectExport.js"/>
 
+                <file name="pages/directory/Directories.js"/>
+                <file name="pages/directory/Directory.js"/>
+                <file name="pages/directory/DirectoryAdd.js"/>
+                <file name="pages/directory/DirectoryEdit.js"/>
+                <file name="pages/directory/DirectoryExport.js"/>
+                <file name="pages/directory/DirectoryImport.js"/>
+
+                <file name="pages/directory/Identities.js"/>
+                <file name="pages/directory/Identity.js"/>
+                <file name="pages/directory/IdentityAdd.js"/>
+                <file name="pages/directory/IdentityEdit.js"/>
+                <file name="pages/directory/IdentityExport.js"/>
+
                 <file name="pages/webhost/Webhosts.js"/>
                 <file name="pages/webhost/Webhost.js"/>
                 <file name="pages/webhost/WebhostAdd.js"/>
@@ -386,6 +417,12 @@
                 <file name="pages/webhost/AutoClientMappingAdd.js"/>
                 <file name="pages/webhost/AutoClientMappingEdit.js"/>
                 <file name="pages/webhost/AutoClientMappingExport.js"/>
+
+                <file name="pages/webhost/TrustedDomainMappings.js"/>
+                <file name="pages/webhost/TrustedDomainMapping.js"/>
+                <file name="pages/webhost/TrustedDomainMappingAdd.js"/>
+                <file name="pages/webhost/TrustedDomainMappingEdit.js"/>
+                <file name="pages/webhost/TrustedDomainMappingExport.js"/>
 
                 <file name="pages/user/UserProfile.js"/>
                 <file name="pages/user/UserProfileEdit.js"/>
@@ -642,22 +679,26 @@
         <include name="templates/**/*"/>
         <include name="index.html"/>
         <include name="favicon.ico"/>
+        <include name="console-prod.appcache"/>
     </fileset>
 
     <target name="update">
         <copy todir="${local.docroot.basepath}/${appkey}">
             <fileset refid="console-files"/>
         </copy>
+		<touch file="${local.docroot.basepath}/${appkey}/console.appcache"/>
     </target>
 
     <target name="full" depends="webserver-clean">
         <copy todir="${local.docroot.basepath}/${appkey}">
             <fileset refid="console-files"/>
         </copy>
+		<touch file="${local.docroot.basepath}/${appkey}/console.appcache"/>
     </target>
 
     <target name="full-prod" depends="package,webserver-clean">
         <unzip src="${prep.dir}/${appkey}.zip" dest="${local.docroot.basepath}/${appkey}"/>
+		<touch file="${local.docroot.basepath}/${appkey}/console-prod.appcache"/>
     </target>
 
 </project>

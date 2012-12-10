@@ -7,7 +7,7 @@
 
         FILTER_TOOLBAR: {
             "query" : {
-                "title" : "Query Vaults",
+                "title" : Gitana.CMS.Messages.Vaults.toolbar.query.title,
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'vault-query', 48)
             }
         },
@@ -47,7 +47,7 @@
             this.addButtons([
                 {
                 "id": "create",
-                "title": "New Vault",
+                "title": Gitana.CMS.Messages.Vaults.toolbar.create.title,
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'vault-add', 48),
                     "url" : '/add/vault',
                     "requiredAuthorities" : [
@@ -59,7 +59,7 @@
                 },
                 {
                     "id": "import",
-                    "title": "Import Archive",
+                    "title": Gitana.CMS.Messages.Vaults.toolbar.import.title,
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'archive-import', 48),
                     "url" : this.LINK().call(this, this.contextObject(), 'import','vault'),
                     "requiredAuthorities" : [
@@ -177,9 +177,9 @@
 
         setupPage : function(el) {
             var page = {
-                "title" : "Vaults",
-                "description" : "Display list of vaults.",
-                "listTitle" : "Vault List",
+                "title" : Gitana.CMS.Messages.Vaults.title,
+                "description" : Gitana.CMS.Messages.Vaults.description,
+                "listTitle" : Gitana.CMS.Messages.Vaults.list.title,
                 "listIcon" : Gitana.Utils.Image.buildImageUri('objects', 'vault', 20),
                 "searchBox" : false,
                 "subscription" : this.SUBSCRIPTION,

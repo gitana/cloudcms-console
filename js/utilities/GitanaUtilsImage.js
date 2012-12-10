@@ -95,6 +95,10 @@
             return Gitana.Utils.Image.buildMimetypeImageUri(mimetype, filename, 32);
         },
 
+        avatarImageUri: function(user, size) {
+            return "/proxy/domains/" + user.getDomainId() + "/principals/" + user.getId() + "/attachments/avatar" + size;
+        },
+
         // register mimetypes
         MimeTypeIconRegistry : {
             "video/avi" : "avi",

@@ -7,7 +7,7 @@
 
         FILTER_TOOLBAR: {
             "query" : {
-                "title" : "Query Warehouses",
+                "title" : Gitana.CMS.Messages.Warehouses.toolbar.query.title,
                 "icon" : Gitana.Utils.Image.buildImageUri('browser', 'query', 48)
             }
         },
@@ -47,7 +47,7 @@
             this.addButtons([
                 {
                 "id": "create",
-                "title": "New Warehouse",
+                "title": Gitana.CMS.Messages.Warehouses.toolbar.create.title,
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'warehouse-add', 48),
                     "url" : '/add/warehouse',
                     "requiredAuthorities" : [
@@ -59,7 +59,7 @@
                 },
                 {
                     "id": "import",
-                    "title": "Import Archive",
+                    "title": Gitana.CMS.Messages.Warehouses.toolbar.import.title,
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'archive-import', 48),
                     "url" : this.LINK().call(this, this.contextObject(), 'import','warehouse'),
                     "requiredAuthorities" : [
@@ -177,9 +177,9 @@
 
         setupPage : function(el) {
             var page = {
-                "title" : "Warehouses",
-                "description" : "Display list of warehouses.",
-                "listTitle" : "Warehouse List",
+                "title" : Gitana.CMS.Messages.Warehouses.title,
+                "description" : Gitana.CMS.Messages.Warehouses.description,
+                "listTitle" : Gitana.CMS.Messages.Warehouses.list.title,
                 "listIcon" : Gitana.Utils.Image.buildImageUri('objects', 'warehouse', 20),
                 "searchBox" : false,
                 "subscription" : this.SUBSCRIPTION,

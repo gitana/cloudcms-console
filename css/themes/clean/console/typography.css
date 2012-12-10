@@ -261,7 +261,7 @@ p {
 }
 
 .dataTables_wrapper .block-actions {
-	text-shadow: 0 1px 0 #000;
+	/*text-shadow: 0 1px 0 #000;*/
 	color: #f3f3f3;
 }
 

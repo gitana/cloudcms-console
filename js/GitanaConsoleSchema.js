@@ -456,6 +456,30 @@
                 }
             }
         },
+        "Identity" : {
+            "type": "object",
+            "properties" : {
+                "encryptedPassword" : {
+                    "title" : "Encrypted Password",
+                    "type" : "string"
+                },
+                "authenticationEnabled" : {
+                    "title" : "Authentication Enabled",
+                    "type" : "string"
+                }
+            }
+        },
+        "Directory" : {
+            "type": "object",
+            "properties" : {
+                "title" : {
+                    "type" : "string"
+                },
+                "description" : {
+                    "type" : "string"
+                }
+            }
+        },
         "Webhost" : {
             "type": "object",
             "properties" : {
@@ -486,6 +510,29 @@
                 },
                 "applicationId" : {
                     "title" : "Application",
+                    "type" : "string",
+                    "required": true
+                }
+            }
+        },
+        "TrustedDomainMapping" : {
+            "type": "object",
+            "properties" : {
+                "host" : {
+                    "title" : "Host",
+                    "type" : "string",
+                    "format": "uri",
+                    "required": true
+                },
+                "scope" : {
+                    "title" : "Scope",
+                    "type" : "string",
+                    "enum": ["webdav", "ftp", "cmis"],
+                    "default": "webdav",
+                    "required": true
+                },
+                "platformId" : {
+                    "title" : "Platform ID",
                     "type" : "string",
                     "required": true
                 }
@@ -628,7 +675,7 @@
                     "helper" : "Enter settings title."
                 },
                 "description": {
-                    "helper" : "Enter group description."
+                    "helper" : "Enter settings description."
                 },
                 "settings" : {
                     "type" : "json",
@@ -985,6 +1032,27 @@
                 }
             }
         },
+        "Directory" : {
+            "type": "object",
+            "fields" : {
+                "title" : {
+                    "helper" : "Enter directory title."
+                },
+                "description": {
+                    "helper" : "Enter directory description."
+                }
+            }
+        },
+        "Identity" : {
+            "type": "object",
+            "fields" : {
+                "encryptedPassword" : {
+                },
+                "authenticationEnabled" : {
+                    "helper" : "Whether this identity is allowed to authenticate to the server."
+                }
+            }
+        },
         "Webhost" : {
             "type": "object",
             "fields" : {
@@ -1014,6 +1082,24 @@
                 "applicationId" : {
                     "helper" : "Select application for auto client mapping.",
                     "type" : "select",
+                    "hideInitValidationError" : true
+                }
+            }
+        },
+        "TrustedDomainMapping" : {
+            "type": "object",
+            "fields" : {
+                "host" : {
+                    "type" : "text",
+                    "hideInitValidationError" : true
+                },
+                "scope" : {
+                    "type" : "select",
+                    "optionLabels" : ["WebDAV", "FTP", "CMIS"],
+                    "hideInitValidationError" : true
+                },
+                "platformId" : {
+                    "type" : "text",
                     "hideInitValidationError" : true
                 }
             }

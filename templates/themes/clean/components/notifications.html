@@ -1,7 +1,14 @@
 <script id="notificationsTemplate" type="text/x-jquery-tmpl">
     {{if notifications}}
          {{each(i, item) notifications}}
-            <div class="alert info"><span class="hide">x</span><strong>{{if item.message}}${item.message}{{/if}}</strong></div>
+
+            <div class="notification info">
+                <span class="hide">x</span>
+                {{if item.body}}
+                    {{html item.body}}
+                {{/if}}
+            </div>
+
          {{/each}}
     {{/if}}
 </script>

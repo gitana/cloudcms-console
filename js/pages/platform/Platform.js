@@ -466,7 +466,8 @@
                                 var activityDetails = Gitana.Utils.Activity.activityDetails(self, this);
 
                                 pairs['items'].push({
-                                    "img" : Gitana.Utils.Image.buildImageUri('objects', activityDetails.iconId, 48),
+                                    //"img" : Gitana.Utils.Image.buildImageUri('objects', activityDetails.iconId, 48),
+                                    "img": activityDetails.userAvatarUri,
                                     "class" : "block-list-item-img",
                                     "value" : activityDetails.itemText + "." + "<div class='block-list-item-desc'>" + " @ " + this.get('timestamp')['timestamp'] + "</div>"
                                 });

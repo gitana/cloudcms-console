@@ -7,7 +7,7 @@
 
         FILTER_TOOLBAR: {
             "query" : {
-                "title" : "Query Registrars",
+                "title" : Gitana.CMS.Messages.Registrars.toolbar.query.title,
                 "icon" : Gitana.Utils.Image.buildImageUri('browser', 'query', 48)
             }
         },
@@ -47,7 +47,7 @@
             this.addButtons([
                 {
                 "id": "create",
-                "title": "New Registrar",
+                "title": Gitana.CMS.Messages.Registrars.toolbar.create.title,
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'registrar-add', 48),
                     "url" : '/add/registrar',
                     "requiredAuthorities" : [
@@ -59,7 +59,7 @@
                 },
                 {
                     "id": "import",
-                    "title": "Import Archive",
+                    "title": Gitana.CMS.Messages.Registrars.toolbar.import.title,
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'archive-import', 48),
                     "url" : this.LINK().call(this, this.contextObject(), 'import','registrar'),
                     "requiredAuthorities" : [
@@ -177,9 +177,9 @@
 
         setupPage : function(el) {
             var page = {
-                "title" : "Registrars",
-                "description" : "Display list of registrars.",
-                "listTitle" : "Registrar List",
+                "title" : Gitana.CMS.Messages.Registrars.title,
+                "description" : Gitana.CMS.Messages.Registrars.description,
+                "listTitle" : Gitana.CMS.Messages.Registrars.list.title,
                 "listIcon" : Gitana.Utils.Image.buildImageUri('objects', 'registrar', 20),
                 "searchBox" : false,
                 "subscription" : this.SUBSCRIPTION,

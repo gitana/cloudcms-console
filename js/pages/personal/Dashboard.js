@@ -23,14 +23,24 @@
             this.breadcrumb(breadcrumb);
         },
 
-        setupNotifications: function() {
-            var notifications = [
-                {
-                    "message" : "Hey there! Welcome to Gitana."
-                }
-            ];
+        setupNotifications: function(el) {
 
-            this.notifications(notifications);
+            var self = this;
+
+            var model = {
+                "name": this.userDetails().fullName
+            };
+
+            Gitana.Utils.Render.processRootTemplate("templates/notifications/dashboard-welcome-notification/notification.html", model, function(html) {
+
+                var notifications = [{
+                    "body" : html
+                }];
+
+                self.notifications(notifications);
+
+            });
+
         },
 
         setupMyActivities: function () {
@@ -51,7 +61,8 @@
                     var activityDetails = Gitana.Utils.Activity.activityDetails(self, this);
 
                     pairs['items'].push({
-                        "img" : Gitana.Utils.Image.buildImageUri('objects', activityDetails.iconId, 48),
+                        //"img" : Gitana.Utils.Image.buildImageUri('objects', activityDetails.iconId, 48),
+                        "img": activityDetails.userAvatarUri,
                         "class" : "block-list-item-img",
                         "value" : activityDetails.itemText + "." + "<div class='block-list-item-desc'>" + " @ " + this.get('timestamp')['timestamp'] + "</div>"
                     });
@@ -65,7 +76,7 @@
 
         setupDashlets: function(el) {
 
-            this.setupNotifications();
+            this.setupNotifications(el);
             this.setupMyActivities();
 
         },
@@ -73,8 +84,8 @@
         setupPage : function(el) {
 
             var page = {
-                "title" : "Dashboard",
-                "description" : "Your personal dashboard of Cloud CMS.",
+                "title" : "My Dashboard",
+                "description" : "Home page for " + this.userDetails().fullName,
                 "notifications" : true,
                 "dashlets" : [
                     {
@@ -88,7 +99,7 @@
 
             this.page(Alpaca.mergeObject(page,this.base(el)));
         }
-    })
+    });
 
     Ratchet.GadgetRegistry.register("page", Gitana.Console.Pages.Dashboard);
 

@@ -73,7 +73,7 @@
                 },
                 {
                     "id": "export",
-                    "title": "Export Stack",
+                    "title": "Export Auto Client Mapping",
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'archive-export', 48),
                     "url" : self.LINK().call(self, self.targetObject(), 'export'),
                     "requiredAuthorities" : [

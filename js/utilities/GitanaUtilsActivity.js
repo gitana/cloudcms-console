@@ -73,7 +73,36 @@
 
             var userLink = activity.getUserDomainId() ? "#" + self.listLink('domains') + activity.getUserDomainId() + "/users/" + activity.getUserId() : "javascript:void(0)";
 
-            var itemText = "<span class='sprite-16 user-16'></span><a class='activity-link' href='" + userLink + "'>" + activity.getUserName() + "</a> " + typeText + " <span class='sprite-16 " + iconId + "-16'></span><a class='activity-link' href='" + "#" + objectLink + "'>" + activity.getObjectTitle() + "</a>";
+            var userAvatarUri = "/proxy/domains/" + activity.getUserDomainId() + "/principals/" + activity.getUserId() + "/attachments/avatar48";
+            //var itemText = "<span class='sprite-16 user-16'></span><a class='activity-link' href='" + userLink + "'>" + activity.getUserName() + "</a> " + typeText + " <span class='sprite-16 " + iconId + "-16'></span><a class='activity-link' href='" + "#" + objectLink + "'>" + activity.getObjectTitle() + "</a>";
+            var itemText = "<span class='sprite-16 user-16'></span>";
+            if (activity.getUserTitle())
+            {
+                itemText += "<a class='activity-link' href='" + userLink + "'>";
+                itemText += activity.getUserTitle();
+                itemText += "</a>";
+                itemText += "&nbsp;";
+                itemText += "(";
+                itemText += "<a class='activity-link' href='" + userLink + "'>";
+                itemText += activity.getUserName();
+                itemText += "</a>";
+                itemText += ")";
+            }
+            else
+            {
+                itemText += "<a class='activity-link' href='" + userLink + "'>";
+                itemText += activity.getUserName();
+                itemText += "</a>";
+            }
+
+            var objectTypeName = objectTypeId;
+            itemText += " " + typeText + " a " + " " + objectTypeName;
+            itemText += " ";
+            itemText += "<span class='sprite-16 " + iconId + "-16'></span>";
+            itemText += "<a class='activity-link' href='" + "#" + objectLink + "'>";
+            itemText += activity.getObjectTitle();
+            itemText += "</a>";
+
             var plainItemText = typeText + " " +iconId + " <a class='activity-link' href='" + "#" + objectLink + "'>" + activity.getObjectTitle() + "</a>";
 
 
@@ -97,6 +126,7 @@
             }
 
             return {
+                "userAvatarUri": userAvatarUri,
                 "iconId" : iconId,
                 "typeText" : typeText,
                 "objectLink" : objectLink,

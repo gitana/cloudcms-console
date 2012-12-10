@@ -7,7 +7,7 @@
 
         FILTER_TOOLBAR: {
             "query" : {
-                "title" : "Query Web Hosts",
+                "title" : Gitana.CMS.Messages.WebHosts.toolbar.query.title,
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'query', 48)
             }
         },
@@ -47,7 +47,7 @@
             this.addButtons([
                 {
                 "id": "create",
-                "title": "New Web Host",
+                "title": Gitana.CMS.Messages.WebHosts.toolbar.create.title,
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'webhost-add', 48),
                     "url" : '/add/webhost',
                     "requiredAuthorities" : [
@@ -59,7 +59,7 @@
                 },
                 {
                     "id": "import",
-                    "title": "Import Archive",
+                    "title": Gitana.CMS.Messages.WebHosts.toolbar.import.title,
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'archive-import', 48),
                     "url" : this.LINK().call(this, this.contextObject(), 'import', 'webhost'),
                     "requiredAuthorities" : [
@@ -177,9 +177,9 @@
 
         setupPage : function(el) {
             var page = {
-                "title" : "Web Hosts",
-                "description" : "Display list of web hosts.",
-                "listTitle" : "Web Host List",
+                "title" : Gitana.CMS.Messages.WebHosts.title,
+                "description" : Gitana.CMS.Messages.WebHosts.description,
+                "listTitle" : Gitana.CMS.Messages.WebHosts.list.title,
                 "listIcon" : Gitana.Utils.Image.buildImageUri('objects', 'webhost', 20),
                 "searchBox" : false,
                 "subscription" : this.SUBSCRIPTION,

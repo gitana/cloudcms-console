@@ -20,20 +20,16 @@
             var defaultItem = "menu-my-dashboard";
             var current = current ? current : defaultItem;
             return {
-                "items" : [
-                    {
+                "items": [{
+                    "id": "menu-my-dashboard-header",
+                    "title": "My Dashboard",
+                    "header": true,
+                    "items" : [{
                         "id" : defaultItem,
                         "link" : "#/dashboard",
-                        "title" : "My Dashboard",
+                        "title" : "Overview",
                         "icon" : Gitana.Utils.Image.buildImageUri('browser', 'dashboard',16),
                         "current" : current == defaultItem
-                    },
-                    {
-                        "id" : "menu-my-activities",
-                        "link" :  "#" + self.listLink('my-activities'),
-                        "title" : "My Activities",
-                        "icon" :  Gitana.Utils.Image.buildImageUri('objects', 'activity', 16),
-                        "current" : current == "menu-my-activities"
                     },
                     {
                         "id" : "menu-my-profile",
@@ -41,23 +37,26 @@
                         "title" : "My Profile",
                         "icon" : Gitana.Utils.Image.buildImageUri('security', 'user', 16),
                         "current" : current == "menu-my-profile"
-                    }
-                    /*,
+                    },
                     {
-                        "id" : "menu-platform-dashboard",
+                        "id" : "menu-my-activities",
+                        "link" :  "#" + self.listLink('my-activities'),
+                        "title" : "My Activities",
+                        "icon" :  Gitana.Utils.Image.buildImageUri('objects', 'activity', 16),
+                        "current" : current == "menu-my-activities"
+                    }]
+                }, {
+                    "id": "menu-my-dashboard-quicklinks",
+                    "title": "Quick Links",
+                    "header": true,
+                    "items": [{
+                        "id": "menu-my-dashboard-browse-platform",
+                        "title": "Browse Platform",
                         "link" : "#/",
-                        "title" : "Platform",
-                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'platform', 16),
-                        "current" : current == "menu-platform-dashboard",
-                        "requiredAuthorities" : [
-                            {
-                                "permissioned" : self.platform(),
-                                "permissions" : ["update"]
-                            }
-                        ]
-                    }*/
-                ]
-            }
+                        "icon" : Gitana.Utils.Image.buildImageUri('browser', 'dashboard',16)
+                    }]
+                }]
+            };
         },
 
         "Tenant" : function(self , current) {
@@ -1405,6 +1404,36 @@
             };
         },
 
+        "Directory" : function(self , current) {
+            var defaultItem = "menu-directory-dashboard";
+            var current = current ? current : "menu-directory-dashboard";
+            return {
+                "items": [{
+                    "id": "menu-directory-header",
+                    "title": "Directory",
+                    "header": true,
+                    "items": [{
+                        "id" : "menu-directory-dashboard",
+                        "link" : "#" + self.link(self.webhost()),
+                        "title" : "Dashboard",
+                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'directory', 16),
+                        "current" : current == defaultItem
+                    }]
+                },{
+                    "id": "menu-directory-objects",
+                    "title": "Objects",
+                    "header": true,
+                    "items": [{
+                        "id" : "menu-directory-identities",
+                        "link" : "#" + self.link(self.directory(),'identities'),
+                        "title" : "Identities",
+                        "icon" :  Gitana.Utils.Image.buildImageUri('objects', 'identity', 16),
+                        "current" : current == "menu-directory-identities"
+                    }]
+                }]
+            };
+        },
+
         "Webhost" : function(self , current) {
             var defaultItem = "menu-webhost-dashboard";
             var current = current ? current : "menu-webhost-dashboard";
@@ -1416,7 +1445,7 @@
                     "items": [{
                         "id" : "menu-webhost-dashboard",
                         "link" : "#" + self.link(self.webhost()),
-                        "title" : "Web Host Config Dashboard",
+                        "title" : "Dashboard",
                         "icon" : Gitana.Utils.Image.buildImageUri('objects', 'webhost', 16),
                         "current" : current == defaultItem
                     }]
@@ -1453,13 +1482,53 @@
                     "items": [{
                         "id" : "menu-auto-client-mapping-dashboard",
                         "link" : "#" + self.link(self.autoClientMapping()),
-                        "title" : "Auto Client Mapping Dashboard",
+                        "title" : "Dashboard",
                         "icon" : Gitana.Utils.Image.buildImageUri('objects', 'auto-client-mapping', 16),
                         "current" : current == defaultItem
                     }]
                 }]
             };
-        }
+        },
+
+        "TrustedDomainMapping" : function(self , current) {
+            var defaultItem = "menu-trusted-domain-mapping-dashboard";
+            var current = current ? current : "menu-trusted-domain-mapping-dashboard";
+            return {
+                "items": [{
+                    "id": "menu-trusted-domain-mapping-header",
+                    "title": "Trusted Domain Mapping",
+                    "header": true,
+                    "items": [{
+                        "id" : "menu-trusted-domain-mapping-dashboard",
+                        "link" : "#" + self.link(self.trustedDomainMapping()),
+                        "title" : "Dashboard",
+                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'trusted-domain-mapping', 16),
+                        "current" : current == defaultItem
+                    }]
+                }]
+            };
+        },
+
+        "Identity" : function(self , current) {
+            var defaultItem = "menu-identity-dashboard";
+            var current = current ? current : "menu-identity-dashboard";
+            return {
+                "items": [{
+                    "id": "menu-identity-header",
+                    "title": "Identity",
+                    "header": true,
+                    "items": [{
+                        "id" : "menu-identity-dashboard",
+                        "link" : "#" + self.link(self.identity()),
+                        "title" : "Dashboard",
+                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'identity', 16),
+                        "current" : current == defaultItem
+                    }]
+                }]
+            };
+        },
+
+
     };
 
 

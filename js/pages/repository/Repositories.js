@@ -7,7 +7,7 @@
 
         FILTER_TOOLBAR: {
             "query" : {
-                "title" : "Query Repositories",
+                "title" : Gitana.CMS.Messages.Repositories.toolbar.query.title,
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'repository-query', 48)
             }
         },
@@ -47,7 +47,7 @@
             this.addButtons([
                 {
                 "id": "create",
-                "title": "New Repository",
+                "title": Gitana.CMS.Messages.Repositories.toolbar.create.title,
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'repository-add', 48),
                     "url" : '/add/repository',
                     "requiredAuthorities" : [
@@ -59,7 +59,7 @@
                 },
                 {
                     "id": "import",
-                    "title": "Import Archive",
+                    "title": Gitana.CMS.Messages.Repositories.toolbar.import.title,
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'archive-import', 48),
                     "url" : this.LINK().call(this, this.contextObject(), 'import','repository'),
                     "requiredAuthorities" : [
@@ -173,9 +173,9 @@
 
         setupPage : function(el) {
             var page = {
-                "title" : "Repositories",
-                "description" : "Display list of repositories.",
-                "listTitle" : "Repository List",
+                "title" : Gitana.CMS.Messages.Repositories.title,
+                "description" : Gitana.CMS.Messages.Repositories.description,
+                "listTitle" : Gitana.CMS.Messages.Repositories.list.title,
                 "listIcon" : Gitana.Utils.Image.buildImageUri('objects', 'repository', 20),
                 "searchBox" : true,
                 "subscription" : this.SUBSCRIPTION,

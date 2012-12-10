@@ -309,12 +309,36 @@
             this.observable("notifications").clear();
         },
 
+        alerts: function() {
+            return this._observable("alerts", arguments);
+        },
+
+        clearAlerts: function() {
+            this.observable("alerts").clear();
+        },
+
         billingProvider: function() {
             return this._observable("billingProvider", arguments);
         },
 
         clearBillingProvider: function() {
             this.observable("billingProvider").clear();
+        },
+
+        directory: function() {
+            return this._observable("directory", arguments);
+        },
+
+        clearDirectory: function() {
+            this.observable("directory").clear();
+        },
+
+        identity: function() {
+            return this._observable("identity", arguments);
+        },
+
+        clearIdentity: function() {
+            this.observable("identity").clear();
         },
 
         webhost: function() {
@@ -331,6 +355,14 @@
 
         clearAutoClientMapping: function() {
             this.observable("autoClientMapping").clear();
+        },
+
+        trustedDomainMapping: function() {
+            return this._observable("trustedDomainMapping", arguments);
+        },
+
+        clearTrustedDomainMapping: function() {
+            this.observable("trustedDomainMapping").clear();
         },
 
         session: function() {
@@ -789,6 +821,17 @@
                             });
                         }
                     }
+
+                    var trustedDomainMappingId = el.tokens["trustedDomainMappingId"];
+
+                    if (trustedDomainMappingId) {
+                        if (!self.trustedDomainMapping() || self.trustedDomainMapping().getId() != trustedDomainMappingId) {
+                            this.readTrustedDomainMapping(trustedDomainMappingId).then(function() {
+                                self.trustedDomainMapping(this);
+                            });
+                        }
+                    }
+
                 });
             };
 
@@ -842,6 +885,26 @@
                 });
             };
 
+            var loadDirectorySubObjects = function(directory) {
+
+                directory.then(function() {
+
+                    var identityId = el.tokens["identityId"];
+
+                    if (identityId) {
+                        if (!self.identity() || self.identity().getId() != identityId) {
+                            this.readIdentity(identityId).then(function() {
+                                self.identity(this);
+                            });
+                        }
+                    }
+
+                    loadObjectTeam(this);
+
+                });
+            };
+
+
             Chain(self.platform()).trap(function(error) {
                 self.error(error);
                 self.app().run('GET','/error');
@@ -860,6 +923,7 @@
                 var billingProviderId  = el.tokens["billingProviderId"];
                 var webhostId  = el.tokens["webhostId"];
                 var warehouseId  = el.tokens["warehouseId"];
+                var directoryId = el.tokens["directoryId"];
 
                 // Load user console settings
                 var authInfo = platform.getDriver().getAuthInfo();
@@ -1023,6 +1087,17 @@
                         });
                     } else {
                         loadRepositorySubObjects(this.subchain(self.repository()));
+                    }
+                }
+
+                if (directoryId) {
+                    if (!self.directory() || self.directory().getId() != directoryId) {
+                        platform.readDirectory(directoryId).then(function() {
+                            self.directory(this);
+                            loadDirectorySubObjects(this);
+                        });
+                    } else {
+                        loadDirectorySubObjects(this.subchain(self.repository()));
                     }
                 }
 
@@ -1286,6 +1361,18 @@
                     case 'Gitana.TrustedDomainMapping':
 
                         link += this.listLink('trusted-domain-mappings');
+
+                        break;
+
+                    case 'Gitana.Directory':
+
+                        link += this.listLink('directories');
+
+                        break;
+
+                    case 'Gitana.Identity':
+
+                        link += this.listLink('identities');
 
                         break;
 
@@ -1819,6 +1906,18 @@
                     case 'activities':
 
                         link += "activities/";
+
+                        break;
+
+                    case 'directories':
+
+                        link += "directories/";
+
+                        break;
+
+                    case 'identities':
+
+                        link += "directories/" + this.directory().getId() + "/identities/";
 
                         break;
                 }

@@ -152,7 +152,7 @@
                     message += "</li>";
                 }
                 return message;
-            }
+            };
 
             $('body').undelegate('.my-favorites-icon', 'click').delegate('.my-favorites-icon', 'click', function() {
                 var message = "<div class='my-favorites block-content'><ul class='item-list'>";

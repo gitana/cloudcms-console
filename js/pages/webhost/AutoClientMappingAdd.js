@@ -137,7 +137,7 @@
 
                 var page = {
                     "title" : "New Auto Client Mapping",
-                    "description" : "Create a new auto client mapping to webhost " + this.friendlyTitle(this.targetObject()) + ".",
+                    "description" : "Create a new auto client mapping on webhost " + this.friendlyTitle(this.targetObject()) + ".",
                     "forms" :[
                         {
                             "id" : "auto-client-mapping-add",

@@ -34,7 +34,7 @@
             },
 
             setupMenu: function() {
-                this.menu(Gitana.Console.Menu.Webhost(this, "menu-vault-auto-client-mappings"));
+                this.menu(Gitana.Console.Menu.Webhost(this, "menu-webhost-auto-client-mappings"));
             },
 
             setupBreadcrumb: function() {
@@ -107,10 +107,6 @@
             filterSchema: function () {
                 return Alpaca.mergeObject(this.base(), {
                     "properties" : {
-                        "applicationId" : {
-                            "title": "Application ID",
-                            "type" : "string"
-                        },
                         "clientKey" : {
                             "title": "Client Key",
                             "type" : "string"
@@ -134,10 +130,6 @@
                 var options = Alpaca.mergeObject(this.base(), {
                     "helper" : "Query auto group mappings by id, title, description, date range, client key, uri or full query.",
                     "fields" : {
-                        "applicationId" : {
-                            "size": this.DEFAULT_FILTER_TEXT_SIZE,
-                            "helper": "Enter regular expression for query by application id."
-                        },
                         "clientKey" : {
                             "size": this.DEFAULT_FILTER_TEXT_SIZE,
                             "helper": "Enter regular expression for query by client key."

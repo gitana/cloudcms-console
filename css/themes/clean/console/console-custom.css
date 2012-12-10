@@ -30,7 +30,7 @@ body {
 }
 
 .ui-dialog .ui-dialog-buttonpane {
-    background: url("../../../images/themes/default/console/container/block/block-actions-bg.png") repeat-x scroll left bottom #ffffff;
+    background: url("../../../images/themes/clean/console/container/block/block-actions-bg.png") repeat-x scroll left bottom #ffffff;
     /*
     border-radius: 0 0 5px 5px;
     height: 44px;
@@ -43,7 +43,7 @@ body {
 }
 
 .ui-dialog {
-    background: url("../../../images/themes/default/console/misc/shine-effect.png") repeat-x scroll 0 0 rgba(33, 40, 44, 0.7);
+    background: url("../../../images/themes/clean/console/misc/shine-effect.png") repeat-x scroll 0 0 rgba(33, 40, 44, 0.7);
     border: 1px solid #25333C;
     border-radius: 5px 5px 5px 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
@@ -57,7 +57,7 @@ body {
     -moz-border-left-colors: none;
     -moz-border-right-colors: none;
     -moz-border-top-colors: none;
-    background: url("../../../images/themes/default/console/container/block/block-header-bg.png") repeat-x scroll left top #CFDEE5;
+    background: url("../../../images/themes/clean/console/container/block/block-header-bg.png") repeat-x scroll left top #CFDEE5 !important;
     border-color: #4B5E6B #4B5E6B #9BA6AB;
     border-style: solid;
     border-width: 1px;
@@ -83,7 +83,7 @@ body {
 
 /*
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button,.ui-dialog-buttonset .ui-state-default {
-    background: url("../../../images/themes/default/console/buttons/button-blue.png") repeat-x scroll 0 0 #2d5672;
+    background: url("../../../images/themes/clean/console/buttons/button-blue.png") repeat-x scroll 0 0 #2d5672;
     border-style: solid;
     border-width: 1px;
     border-color: #111111;
@@ -96,13 +96,13 @@ body {
 
 
 .ui-button:hover {
-    background: url("../../../images/themes/default/console/buttons/button-blue.png") repeat-x scroll 0 -24px #4d7690;
+    background: url("../../../images/themes/clean/console/buttons/button-blue.png") repeat-x scroll 0 -24px #4d7690;
     color: #fff !important;
     text-decoration: none;
 }
 
 .ui-button:active {
-    background: url("../../../images/themes/default/console/buttons/button-blue.png") repeat-x scroll 0 -48px #6290b2;
+    background: url("../../../images/themes/clean/console/buttons/button-blue.png") repeat-x scroll 0 -48px #6290b2;
 }
 */
 .ui-dialog .ui-dialog-content {
@@ -115,7 +115,7 @@ body {
 
 /*
 .ui-widget-header .ui-icon {
-    background-image: url("../../../images/themes/default/console/themes/grape/ui-icons_d1d1d1_256x240.png");
+    background-image: url("../../../images/themes/clean/console/themes/grape/ui-icons_d1d1d1_256x240.png");
 }
 */
 
@@ -216,12 +216,12 @@ ul.item-list-long-left li span {
 }
 
 .template-download .attachment-id {
-    background: url("../../../images/themes/default/console/objects/attachment-24.png") no-repeat scroll 2px 10px;
+    background: url("../../../images/themes/clean/console/objects/attachment-24.png") no-repeat scroll 2px 10px;
     padding: 4px 10px 4px 30px;
 }
 
 .attachment-id input[type="text"] {
-    background: url("../../../images/themes/default/console/objects/attachment-16.png") no-repeat scroll 8px 3px #FFFFFF;
+    background: url("../../../images/themes/clean/console/objects/attachment-16.png") no-repeat scroll 8px 3px #FFFFFF;
     border: 1px solid #B3B3B3;
     border-radius: 10px;
     padding: 4px 10px 4px 30px;
@@ -271,7 +271,7 @@ ul.item-list-long-left li span {
 }
 
 input.list-search {
-    background: url("../../../images/themes/default/console/icons/misc/search.png") no-repeat scroll 8px 6px #FFFFFF;
+    background: url("../../../images/themes/clean/console/icons/misc/search.png") no-repeat scroll 8px 6px #FFFFFF;
     border: 1px solid #B3B3B3;
     border-radius: 20px 20px 20px 20px;
     margin-left: 10px;
@@ -309,13 +309,13 @@ input.list-search {
     list-style-type: none;
     padding-left: 10px;
     float: left;
-    background: url("../../../images/themes/default/console/misc/breadcrumb/bc-seperator.png") no-repeat scroll top right transparent;
+    background: url("../../../images/themes/clean/console/misc/breadcrumb/bc-seperator.png") no-repeat scroll top right transparent;
     padding-right: 20px;
 }
 
 /*
 #breadcrumbs li:hover {
-	background: url("../../../images/themes/default/console/misc/breadcrumb/bc-shine.png") no-repeat scroll bottom center transparent;
+	background: url("../../../images/themes/clean/console/misc/breadcrumb/bc-shine.png") no-repeat scroll bottom center transparent;
 }
 
 #breadcrumbs li.no-hover {
@@ -323,7 +323,7 @@ input.list-search {
 }
 */
 #breadcrumbs a:hover {
-    background: url("../../../images/themes/default/console/misc/breadcrumb/bc-shine.png") no-repeat scroll bottom center transparent;
+    background: url("../../../images/themes/clean/console/misc/breadcrumb/bc-shine.png") no-repeat scroll bottom center transparent;
 }
 
 #breadcrumbs a.no-hover {
@@ -332,14 +332,14 @@ input.list-search {
 
 #breadcrumbs a {
     height: 40px;
-    /*background: url("../../../images/themes/default/console/misc/breadcrumb/bc-seperator.png") no-repeat scroll top right transparent;
+    /*background: url("../../../images/themes/clean/console/misc/breadcrumb/bc-seperator.png") no-repeat scroll top right transparent;
    padding-right: 20px;*/
     text-decoration: none;
     display: block;
 }
 
 #bc-home {
-    background-image: url("../../../images/themes/default/console/icons/misc/home-hover.png");
+    background-image: url("../../../images/themes/clean/console/icons/misc/home-hover.png");
     background-position: 0px 5px;
     display: block;
     height: 32px;
@@ -627,7 +627,7 @@ pre.prettyprint {
 
 /** Error **/
 .error-page {
-    background: url("../../../images/themes/default/console/special/page-error-24.png") no-repeat scroll 5px 10px;
+    background: url("../../../images/themes/clean/console/special/page-error-24.png") no-repeat scroll 5px 10px;
     padding: 0 0 10px;
 }
 
@@ -637,7 +637,7 @@ pre.prettyprint {
 }
 
 .error-message {
-    background: url("../../../images/themes/default/console/special/error-message-24.png") no-repeat scroll 5px 10px;
+    background: url("../../../images/themes/clean/console/special/error-message-24.png") no-repeat scroll 5px 10px;
 }
 
 .error-message div {
@@ -652,13 +652,13 @@ pre.prettyprint {
 }
 
 .error-details {
-    background: url("../../../images/themes/default/console/special/page-error-24.png") no-repeat scroll 5px 10px;
+    background: url("../../../images/themes/clean/console/special/page-error-24.png") no-repeat scroll 5px 10px;
     font-size: 1.0em;
 }
 
 /*
 .error-stacktrace {
-    background: url("../../../images/themes/default/console/special/page-error-24.png") no-repeat scroll 5px 10px;
+    background: url("../../../images/themes/clean/console/special/page-error-24.png") no-repeat scroll 5px 10px;
     font-size: 0.9em;
 }
 */
@@ -674,7 +674,7 @@ pre.prettyprint {
 }
 
 .tenant-list {
-    background: url("../../../images/themes/default/console/objects/platform-20.png") no-repeat scroll 0px 0px;
+    background: url("../../../images/themes/clean/console/objects/platform-20.png") no-repeat scroll 0px 0px;
     display: inline-block;
     float: right;
     height: 20px;
@@ -689,7 +689,7 @@ pre.prettyprint {
     position: absolute;
     right: 0;
     top: 0;
-    background: url("../../../images/themes/default/console/icons/packs/fugue/16x16/minus-circle.png") no-repeat scroll 0px 3px;
+    background: url("../../../images/themes/clean/console/icons/packs/fugue/16x16/minus-circle.png") no-repeat scroll 0px 3px;
 }
 
 /** filter **/
@@ -731,17 +731,17 @@ h2.dialog-delete-message {
 }
 
 .membership-remove {
-    background: url("../../../images/themes/default/console/icons/packs/fugue/16x16/minus-circle.png") no-repeat scroll 3px 3px #FFFFFF;
+    background: url("../../../images/themes/clean/console/icons/packs/fugue/16x16/minus-circle.png") no-repeat scroll 3px 3px #FFFFFF;
     padding: 3px 5px 3px 25px;
 }
 
 .membership-add {
-    background: url("../../../images/themes/default/console/icons/packs/fugue/16x16/plus-circle.png") no-repeat scroll 3px 3px #FFFFFF;
+    background: url("../../../images/themes/clean/console/icons/packs/fugue/16x16/plus-circle.png") no-repeat scroll 3px 3px #FFFFFF;
     padding: 3px 5px 3px 25px;
 }
 
 .list-item-more {
-    background: url("../../../images/themes/default/console/icons/packs/fugue/16x16/control-double-000-small.png") no-repeat scroll 30px 3px transparent;
+    background: url("../../../images/themes/clean/console/icons/packs/fugue/16x16/control-double-000-small.png") no-repeat scroll 30px 3px transparent;
     cursor: pointer;
     font-size: 0.9em;
     font-style: italic;
@@ -753,7 +753,7 @@ h2.dialog-delete-message {
 }
 
 .list-item-less {
-    background: url("../../../images/themes/default/console/icons/packs/fugue/16x16/control-double-180-small.png") no-repeat scroll 3px 3px transparent;
+    background: url("../../../images/themes/clean/console/icons/packs/fugue/16x16/control-double-180-small.png") no-repeat scroll 3px 3px transparent;
     cursor: pointer;
     font-size: 0.9em;
     font-style: italic;
@@ -816,7 +816,7 @@ h2.dialog-delete-message {
 }
 
 .node-select {
-    background: url("../../../images/themes/default/console/icons/packs/fugue/16x16/tick-circle.png") no-repeat scroll 3px 3px #FFFFFF;
+    background: url("../../../images/themes/clean/console/icons/packs/fugue/16x16/tick-circle.png") no-repeat scroll 3px 3px #FFFFFF;
     padding: 3px 5px 3px 25px;
 }
 
@@ -826,7 +826,7 @@ h2.dialog-delete-message {
 }
 
 .dropzone {
-    background: url("../../../images/themes/default/console/misc/dropzone.png") repeat scroll 0px 0px #FFFFFF;
+    background: url("../../../images/themes/clean/console/misc/dropzone.png") repeat scroll 0px 0px #FFFFFF;
     display: block;
     min-height: 200px;
     min-width: 600px;
@@ -871,19 +871,19 @@ h2.dialog-delete-message {
 }
 
 .job-started {
-    background: url("../../../images/themes/default/console/special/started-16.png") no-repeat scroll 0 0 transparent;
+    background: url("../../../images/themes/clean/console/special/started-16.png") no-repeat scroll 0 0 transparent;
 }
 
 .job-running {
-    background: url("../../../images/themes/default/console/special/running-16.png") no-repeat scroll 0 0 transparent;
+    background: url("../../../images/themes/clean/console/special/running-16.png") no-repeat scroll 0 0 transparent;
 }
 
 .job-finished {
-    background: url("../../../images/themes/default/console/special/finished-16.png") no-repeat scroll 0 0 transparent;
+    background: url("../../../images/themes/clean/console/special/finished-16.png") no-repeat scroll 0 0 transparent;
 }
 
 .job-error {
-    background: url("../../../images/themes/default/console/special/error-16.png") no-repeat scroll 0px 0px transparent;
+    background: url("../../../images/themes/clean/console/special/error-16.png") no-repeat scroll 0px 0px transparent;
 }
 
 /*archive*/
@@ -989,7 +989,7 @@ dd p {
 
 .list-toolbar-content {
     height: 120px;
-    padding: 5px 15px 5px 5px;
+    padding: 5px 15px 0px 5px;
     background: #fff;
     border: 1px solid #b5c9e8;
 }
@@ -1008,14 +1008,14 @@ dd p {
     font-family: Tahoma, Geneva, sans-serif;
     text-transform: uppercase;
     letter-spacing: 1px;
-    background: #fff url(../../../images/themes/default/console/special/slide-title-inactive-1.jpg) 0 0 no-repeat;
+    background: #fff url(../../../images/themes/clean/console/special/slide-title-inactive-1.jpg) 0 0 no-repeat;
     color: #26526c
 }
 
 .list-toolbar-content dt.active {
     cursor: pointer;
     color: #fff;
-    background: #fff url(../../../images/themes/default/console/special/slide-title-active-1.jpg) 0 0 no-repeat
+    background: #fff url(../../../images/themes/clean/console/special/slide-title-active-1.jpg) 0 0 no-repeat
 }
 
 .list-toolbar-content dt.hover {
@@ -1028,7 +1028,7 @@ dd p {
 
 .list-toolbar-content dd {
     padding: 5px;
-    background: url(../../../images/themes/default/console/special/slide.jpg) bottom left repeat-x;
+    background: url(../../../images/themes/clean/console/special/slide.jpg) bottom left repeat-x;
     border: 1px solid #dbe9ea;
     border-left: 0;
     margin-right: 3px
@@ -1097,7 +1097,7 @@ dd p {
 }
 
 .my-favorites-item-delete-button {
-    background: url("../../../images/themes/default/console/special/delete-24.png") no-repeat scroll 0px 0px;
+    background: url("../../../images/themes/clean/console/special/delete-24.png") no-repeat scroll 0px 0px;
     width: 24px;
     height: 24px;
 }
@@ -1109,3 +1109,108 @@ ul.item-list li span.my-favorites-item-delete-button{
 
 
 
+.notification
+{
+    font-size: 16px;
+}
+
+.notification H2
+{
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.notification H3
+{
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.notification.info
+{
+    color: #666666;
+    border: 1px solid #D8D9D6;
+    padding: 15px;
+    border-radius: 10px 10px 10px 10px;
+
+    background: #FFFFF5;
+    background: -moz-linear-gradient(#FFFFF5, #F5F3B4);
+    background: -webkit-linear-gradient(#FFFFF5, #F5F3B4);
+    background: linear-gradient(#FFFFF5, #F5F3B4);
+    border: 1px solid #DFDDB5;
+}
+
+.notification span.hide
+{
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #FFFFFF;
+    float: right;
+    cursor: pointer;
+    margin: 0;
+}
+
+.dataTables_wrapper .top
+{
+    margin-top: 9px !important;
+    /*
+    border-right: 1px solid #B5C9E8 !important;
+    border-left: 1px solid #B5C9E8 !important;
+    */
+    border-top: 1px solid #949494;
+}
+
+.dataTables_wrapper TABLE
+{
+    /*
+    border-right: 1px solid #B5C9E8 !important;
+    border-left: 1px solid #B5C9E8 !important;
+    */
+}
+
+.block-actions
+{
+    border-right: 1px solid #B5C9E8 !important;
+    border-left: 1px solid #B5C9E8 !important;
+    border-bottom: 1px solid #B5C9E8 !important;
+    border-radius: 0 0 5px 5px !important;
+}
+
+.block-content
+{
+    border-left: 1px solid #B5C9E8;
+    border-right: 1px solid #B5C9E8;
+    border-bottom: 1px solid #B5C9E8;
+    /**border-top: -1 !important;**/
+    /*border-radius: 0px 0px 0px 0px;*/
+    border-radius: 0 0 3px 3px;
+}
+
+.dataTables_wrapper .block-actions {
+    color: #333;
+    text-shadow: 0px 0px 0px 0px !important;
+    margin-left: -1px;
+    margin-right: -1px;
+    border-top: 1px solid #B5C9E8;
+    line-height: 43px;
+    background: url("../../../images/themes/clean/console/container/block/block-header-bg.png") repeat-x scroll left top #CFDEE5;
+}
+
+.ui-dialog .ui-dialog-buttonpane button
+{
+    margin: 3px;
+}
+
+.list-toolbar-content
+{
+    border-top: 0px;
+    border-left: 1px solid #B5C9E8;
+    border-right: 1px solid #B5C9E8;
+    border-bottom: 0px;
+}
+
+ul.item-list
+{
+    margin: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

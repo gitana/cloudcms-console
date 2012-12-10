@@ -1,9 +1,6 @@
 <script id="logindetailsTemplate" type="text/x-jquery-tmpl">
 
-    <!--
-    <div style="margin: 5px; height: 74px; background: none repeat scroll 0px 0px white; border: 1px solid black; border-radius: 3px 3px 3px 3px;">
-    -->
-    <div style="margin: 5px; height: 74px;">
+    <div style="margin: 5px; height: 74px; line-height: 64px;">
         <a href="#/">
             <img class="side-tenant-logo" id="tenant-logo" {{if logindetails && logindetails.avatarUrl}}data-src="${logindetails.avatarUrl}"{{else}}src="css/images/themes/clean/console/logos/logo-default.png"{{/if}} alt="{{if logindetails}}${logindetails.friendlyName}{{/if}}">
         </a>

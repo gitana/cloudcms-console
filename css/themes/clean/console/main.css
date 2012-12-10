@@ -434,12 +434,16 @@ body.special-page {
  * ================================================== */
 
 .block-border {
-	margin-top: 15px;
+	/**margin-top: 15px;**/
+    margin-top: 5px;
+	/*
 	background: url("../../../images/themes/clean/console/misc/shine-effect.png") repeat-x scroll 0 0 rgba(33, 40, 44, 0.7);
 	border: 1px solid #25333c;
 	border-radius: 5px 5px 5px 5px;
 	padding: 8px;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+	*/
+    margin-bottom: 10px;
 }
 
 .block-content {
@@ -467,11 +471,15 @@ body.special-page {
 .block-header {
 	background: url("../../../images/themes/clean/console/container/block/block-header-bg.png") repeat-x scroll top left #cfdee5;
 	min-height: 38px;
+	/*
 	border: 1px solid #4b5e6b;
 	border-bottom: 1px solid #9ba6ab;
+	*/
 	margin-bottom: -2px;
 	position: relative;
 	z-index: 5;
+    border: 1px solid #B5C9E8;
+    border-radius: 5px 5px 0 0;
 }
 
 .block-header.small {
@@ -479,8 +487,9 @@ body.special-page {
 }
 
 .block-actions {
-	margin: 0 -19px -10px -19px;
-	background: url("../../../images/themes/clean/console/container/block/block-actions-bg.png") repeat-x scroll bottom left transparent;
+	/*margin: 0 -19px -10px -19px;*/
+    margin: 0 -11px -1px;
+	/*background: url("../../../images/themes/clean/console/container/block/block-actions-bg.png") repeat-x scroll bottom left transparent;*/
 	border-radius: 0px 0px 5px 5px;
 	height: 44px;
 	overflow: hidden;
@@ -492,18 +501,7 @@ body.special-page {
 }
 
 .block-header > span {
-	background: url("../../../images/themes/clean/console/icons/packs/diagona/16x16/minus.png") no-repeat scroll 0 0 transparent;
-	height: 16px;
-	width: 16px;
-	float: right;
-	margin-top: 10px;
-	margin-right: 5px;
-	display: block;
-	cursor: pointer;
-}
-
-.block-header > span.closed {
-	background: url("../../../images/themes/clean/console/icons/packs/diagona/16x16/plus.png") no-repeat scroll 0 0 transparent;
+    display:none;
 }
 
 .block-header h1 {

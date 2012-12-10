@@ -7,7 +7,7 @@
 
         FILTER_TOOLBAR: {
             "query" : {
-                "title" : "Query Domains",
+                "title" : Gitana.CMS.Messages.Domains.toolbar.query.title,
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'domain-query', 48)
             }
         },
@@ -47,7 +47,7 @@
             this.addButtons([
                 {
                 "id": "create",
-                "title": "New Domain",
+                "title": Gitana.CMS.Messages.Domains.toolbar.create.title,
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'domain-add', 48),
                     "url" : '/add/domain',
                     "requiredAuthorities" : [
@@ -59,7 +59,7 @@
                 },
                 {
                     "id": "import",
-                    "title": "Import Archive",
+                    "title": Gitana.CMS.Messages.Domains.toolbar.import.title,
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'archive-import', 48),
                     "url" : this.LINK().call(this, this.contextObject(), 'import','domain'),
                     "requiredAuthorities" : [
@@ -192,9 +192,9 @@
 
         setupPage : function(el) {
             var page = {
-                "title" : "Domains",
-                "description" : "Display list of platform domains.",
-                "listTitle" : "Platform Domain List",
+                "title" : Gitana.CMS.Messages.Domains.title,
+                "description" : Gitana.CMS.Messages.Domains.description,
+                "listTitle" : Gitana.CMS.Messages.Domains.list.title,
                 "listIcon" : Gitana.Utils.Image.buildImageUri('objects', 'domain', 20),
                 "searchBox" : false,
                 "subscription" : this.SUBSCRIPTION,

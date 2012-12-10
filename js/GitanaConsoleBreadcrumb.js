@@ -890,6 +890,43 @@
             ]);
         },
 
+        "Directories" : function(self , el) {
+            return $.merge(this.Platform(self, el), [
+                {
+                    "text" : "Directories",
+                    "link" : self.LIST_LINK().call(self,'directories')
+                }
+            ]);
+        },
+
+        "Directory" : function(self , el) {
+            return $.merge(this.Directories(self, el), [
+                {
+                    "text" : self.friendlyTitle(self.directory()),
+                    "link" : self.LINK().call(self,self.directory())
+                }
+            ]);
+        },
+
+        "Identities" : function(self , el) {
+            return $.merge(this.Directory(self, el), [
+                {
+                    "text" : "Identities",
+                    "link" : self.LIST_LINK().call(self,'identities')
+                }
+            ]);
+        },
+
+        "Identity" : function(self , el) {
+            return $.merge(this.Identities(self, el), [
+                {
+                    "text" : self.friendlyTitle(self.identity()),
+                    "link" : self.LINK().call(self,self.identity())
+                }
+            ]);
+        },
+
+
         "Webhosts" : function(self , el) {
             return $.merge(this.Platform(self, el), [
                 {
@@ -922,6 +959,24 @@
                 {
                     "text" : self.friendlyTitle(self.autoClientMapping()),
                     "link" : self.LINK().call(self,self.autoClientMapping())
+                }
+            ]);
+        },
+
+        "TrustedDomainMappings" : function(self , el) {
+            return $.merge(this.Webhost(self, el), [
+                {
+                    "text" : "Trusted Domain Mappings",
+                    "link" : self.LIST_LINK().call(self,'trusted-domain-mappings')
+                }
+            ]);
+        },
+
+        "TrustedDomainMapping" : function(self , el) {
+            return $.merge(this.TrustedDomainMappings(self, el), [
+                {
+                    "text" : self.friendlyTitle(self.trustedDomainMapping()),
+                    "link" : self.LINK().call(self,self.trustedDomainMapping())
                 }
             ]);
         },

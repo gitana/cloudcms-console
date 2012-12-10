@@ -14,7 +14,7 @@
                     'box-shadow': '0 0 5px rgba(0, 0, 0, 0.5)',
                     'padding': '8px'
                 },
-                message: '<div class="block-content"><h1><img src="' + "css/images/themes/" + Gitana.Apps.THEME + '/console/misc/busy.gif" />   ' + message + '</h1></div>'
+                message: '<div class="block-content"><br/><h2>' + message + '</h2><br/><br/><img src="' + "css/images/themes/" + Gitana.Apps.THEME + '/console/misc/ajax-loader.gif" /><br/><br/><br/></div>'
             });
         },
 

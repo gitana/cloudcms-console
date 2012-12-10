@@ -7,7 +7,7 @@
 
         FILTER_TOOLBAR: {
             "query" : {
-                "title" : "Query Applications",
+                "title" : Gitana.CMS.Messages.Applications.toolbar.query.title,
                 "icon" : Gitana.Utils.Image.buildImageUri('browser', 'query', 48)
             }
         },
@@ -47,7 +47,7 @@
             this.addButtons([
                 {
                 "id": "create",
-                "title": "New Application",
+                "title": Gitana.CMS.Messages.Applications.toolbar.create.title,
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'application-add', 48),
                     "url" : '/add/application',
                     "requiredAuthorities" : [
@@ -59,7 +59,7 @@
                 },
                 {
                     "id": "import",
-                    "title": "Import Archive",
+                    "title": Gitana.CMS.Messages.Applications.toolbar.import.title,
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'archive-import', 48),
                     "url" : this.LINK().call(this, this.contextObject(), 'import','application'),
                     "requiredAuthorities" : [
@@ -138,7 +138,7 @@
 
             list["actions"] = self.actionButtons({
                 "edit": {
-                    "title": "Edit Application",
+                    "title": "Edit",
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'application-edit', 48),
                     "click": function(application){
                         self.app().run("GET", self.link(application,'edit'));
@@ -148,7 +148,7 @@
                     }
                 },
                 "delete": {
-                    "title": "Delete Applications",
+                    "title": "Delete",
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'application-delete', 48),
                     "click": function(applications) {
                         self.onClickDeleteMultiple(self.platform(), applications , "application", self.listLink('applications') , Gitana.Utils.Image.buildImageUri('objects', 'application', 20), 'application');
@@ -169,7 +169,7 @@
                     }
                 },
                 "export": {
-                    "title": "Export Application",
+                    "title": "Export",
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'archive-export', 48),
                     "click": function(application) {
                         self.app().run("GET", self.LINK().call(self,application,'export'));
@@ -234,9 +234,9 @@
 
         setupPage : function(el) {
             var page = {
-                "title" : "Applications",
-                "description" : "Display list of applications.",
-                "listTitle" : "Application List",
+                "title" : Gitana.CMS.Messages.Applications.title,
+                "description" : Gitana.CMS.Messages.Applications.description,
+                "listTitle" : Gitana.CMS.Messages.Applications.list.title,
                 "listIcon" : Gitana.Utils.Image.buildImageUri('objects', 'application', 20),
                 "searchBox" : false,
                 "subscription" : this.SUBSCRIPTION,

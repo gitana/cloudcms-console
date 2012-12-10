@@ -236,7 +236,8 @@
                 Chain(domain).listUsers(pagination).each(
                     function() {
                         pairs['items'].push({
-                            "img" : Gitana.Utils.Image.buildImageUri('security', 'user', 48),
+                            //"img" : Gitana.Utils.Image.buildImageUri('security', 'user', 48),
+                            "img": Gitana.Utils.Image.avatarImageUri(this, 48),
                             "class" : "block-list-item-img",
                             "value" : self.friendlyName(this) + "<div class='block-list-item-desc'>By " + this.getSystemMetadata().getModifiedBy() + " @ " + this.getSystemMetadata().getModifiedOn().getTimestamp() + "</div>",
                             "link" : "#" + self.listLink('users') + this.getId()

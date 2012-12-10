@@ -104,6 +104,9 @@
         window.location.reload();
     };
 
+    // tell ratchet to go to the personal dashboard if nothing specified on the hash
+    Ratchet.DEFAULT_URI = "/dashboard";
+
     /**
      * Provides a single place where developers can override the client id and secret to be used by the application.
      * All OAuth2 authenticators will look to this object for client id/secret.
