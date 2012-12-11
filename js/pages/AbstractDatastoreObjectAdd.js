@@ -10,7 +10,7 @@
             ];
         },
 
-        buildPage : function(name, type)
+        buildPage : function(type, name)
         {
             return {
                 "title" : "New " + name,

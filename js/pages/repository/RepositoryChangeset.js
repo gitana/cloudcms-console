@@ -73,7 +73,7 @@
             return Alpaca.mergeObject(this.base(), {
                 "properties" : {
                     "id" : {
-                        "title": "Id",
+                        "title": "ID",
                         "type" : "string"
                     }
                 }
@@ -119,7 +119,7 @@
 
             list["columns"] = [
                 {
-                    "title": "Id",
+                    "title": "ID",
                     "type":"property",
                     "sortingExpression": "_doc",
                     "property": function(callback) {

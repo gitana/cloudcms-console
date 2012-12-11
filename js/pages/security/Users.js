@@ -119,7 +119,7 @@
                 "type" : "object",
                 "properties" : {
                     "principal-id" : {
-                        "title": "Id",
+                        "title": "ID",
                         "type" : "string"
                     },
                     "lastName" : {
@@ -250,7 +250,7 @@
 
             list["columns"] = [
                 {
-                    "title": "Id",
+                    "title": "ID",
                     "type":"property",
                     "sortingExpression": "principal-id",
                     "property": function(callback) {

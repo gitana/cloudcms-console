@@ -75,7 +75,6 @@
                                 self.targetObject().createProject(formVal).then(function() {
                                     var newProject = this;
                                     Gitana.Utils.UI.unblock(function() {
-                                        debugger;
                                         self.app().run('GET', self.LINK().call(self, newProject));
                                     });
                                 });

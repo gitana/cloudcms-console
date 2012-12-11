@@ -153,7 +153,7 @@
 
             list["columns"] = [
                 {
-                    "title": "Id",
+                    "title": "ID",
                     "type":"property",
                     "sortingExpression": "name",
                     "property": function(callback) {

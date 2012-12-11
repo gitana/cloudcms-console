@@ -1429,6 +1429,50 @@
                         "title" : "Identities",
                         "icon" :  Gitana.Utils.Image.buildImageUri('objects', 'identity', 16),
                         "current" : current == "menu-directory-identities"
+                    },{
+                        "id": "menu-directory-connections",
+                        "link" : "#" + self.LIST_LINK().call(self,'connections'),
+                        "title": "Connections",
+                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'connection', 16),
+                        "current" : current == "menu-directory-connections"
+                    }]
+                }]
+            };
+        },
+
+        "Identity" : function(self , current) {
+            var defaultItem = "menu-identity-dashboard";
+            var current = current ? current : "menu-identity-dashboard";
+            return {
+                "items": [{
+                    "id": "menu-identity-header",
+                    "title": "Identity",
+                    "header": true,
+                    "items": [{
+                        "id" : "menu-identity-dashboard",
+                        "link" : "#" + self.link(self.identity()),
+                        "title" : "Dashboard",
+                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'identity', 16),
+                        "current" : current == defaultItem
+                    }]
+                }]
+            };
+        },
+
+        "Connection" : function(self , current) {
+            var defaultItem = "menu-connection-dashboard";
+            var current = current ? current : "menu-connection-dashboard";
+            return {
+                "items": [{
+                    "id": "menu-connection-header",
+                    "title": "Connection",
+                    "header": true,
+                    "items": [{
+                        "id" : "menu-connection-dashboard",
+                        "link" : "#" + self.link(self.connection()),
+                        "title" : "Dashboard",
+                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'connection', 16),
+                        "current" : current == defaultItem
                     }]
                 }]
             };
@@ -1507,27 +1551,7 @@
                     }]
                 }]
             };
-        },
-
-        "Identity" : function(self , current) {
-            var defaultItem = "menu-identity-dashboard";
-            var current = current ? current : "menu-identity-dashboard";
-            return {
-                "items": [{
-                    "id": "menu-identity-header",
-                    "title": "Identity",
-                    "header": true,
-                    "items": [{
-                        "id" : "menu-identity-dashboard",
-                        "link" : "#" + self.link(self.identity()),
-                        "title" : "Dashboard",
-                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'identity', 16),
-                        "current" : current == defaultItem
-                    }]
-                }]
-            };
-        },
-
+        }
 
     };
 

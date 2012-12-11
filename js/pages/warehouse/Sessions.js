@@ -143,7 +143,7 @@
                             "format": "time"
                         },
                         "id" : {
-                            "title": "Id",
+                            "title": "ID",
                             "type" : "string"
                         },
                         "query" : {

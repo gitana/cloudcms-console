@@ -1,12 +1,12 @@
 (function($) {
-    Gitana.Console.Pages.IdentityAdd = Gitana.CMS.Pages.AbstractDatastoreObjectAdd.extend(
+    Gitana.Console.Pages.ConnectionAdd = Gitana.CMS.Pages.AbstractDatastoreObjectAdd.extend(
         {
             schema: function() {
-                return Alpaca.merge({}, Gitana.Console.Schema.Identity);
+                return Alpaca.merge({}, Gitana.Console.Schema.Connection);
             },
 
             options: function() {
-                return Alpaca.merge({}, Gitana.Console.Options.Identity);
+                return Alpaca.merge({}, Gitana.Console.Options.Connection);
             },
 
             targetObject: function() {
@@ -14,44 +14,44 @@
             },
 
             setup: function() {
-                this.get("/directories/{directoryId}/add/identity", this.index);
+                this.get("/directories/{directoryId}/add/connection", this.index);
             },
 
             setupMenu: function() {
-                this.menu(Gitana.Console.Menu.Directory(this, "menu-directory-identity"));
+                this.menu(Gitana.Console.Menu.Directory(this, "menu-directory-connection"));
             },
 
             setupBreadcrumb: function() {
                 return this.breadcrumb($.merge(Gitana.Console.Breadcrumb.Directory(this), [
                     {
-                        "text" : "New Identity"
+                        "text" : "New Connection"
                     }
                 ]));
             },
 
             setupAddForm : function (el) {
                 var self = this;
-                $('#identity-add', $(el)).alpaca({
+                $('#connection-add', $(el)).alpaca({
                     "data": {},
                     "schema": self.schema(),
                     "options": self.options(),
                     "postRender": function(form) {
-                        Gitana.Utils.UI.beautifyAlpacaForm(form, 'identity-add-create', true);
+                        Gitana.Utils.UI.beautifyAlpacaForm(form, 'connection-add-create', true);
 
                         // Add Buttons
-                        $('#identity-add-create', $(el)).click(function() {
+                        $('#connection-add-create', $(el)).click(function() {
 
                             form.showHiddenMessages();
 
                             var formVal = form.getValue();
                             if (form.isValid(true)) {
 
-                                Gitana.Utils.UI.block("Creating Identity...");
+                                Gitana.Utils.UI.block("Creating Connection...");
 
-                                self.targetObject().createIdentity(formVal).then(function() {
-                                    var newIdentity = this;
+                                self.targetObject().createConnection(formVal).then(function() {
+                                    var newConnection = this;
                                     Gitana.Utils.UI.unblock(function() {
-                                        self.app().run('GET', self.LINK().call(self, newIdentity));
+                                        self.app().run('GET', self.LINK().call(self, newConnection));
                                     });
                                 });
                             }
@@ -66,13 +66,13 @@
 
             setupPage : function(el) {
 
-                var page = this.buildPage("identity", "Identity");
+                var page = this.buildPage("connection", "Connection");
 
                 this.page(Alpaca.mergeObject(page, this.base(el)));
             }
 
         });
 
-    Ratchet.GadgetRegistry.register("page", Gitana.Console.Pages.IdentityAdd);
+    Ratchet.GadgetRegistry.register("page", Gitana.Console.Pages.ConnectionAdd);
 
 })(jQuery);

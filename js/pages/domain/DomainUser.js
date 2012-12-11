@@ -456,42 +456,60 @@
                     "title" : "Overview",
                     "icon" : Gitana.Utils.Image.buildImageUri('security', 'user', 20),
                     "alert" : "",
-                    "items" : [
-                        {
-                            "key" : "Id",
-                            "value" : self.listItemProp(user, '_doc')
-                        },
-                        {
-                            "key" : "Principal",
-                            "value" : self.listItemProp(user, 'name')
-                        },
-                        {
-                            "key" : "Last Name",
-                            "value" : self.listItemProp(user, 'lastName')
-                        },
-                        {
-                            "key" : "First Name",
-                            "value" : self.listItemProp(user, 'firstName')
-                        },
-                        {
-                            "key" : "Email",
-                            "value" : self.listItemProp(user, 'email')
-                        },
-                        {
-                            "key" : "Company",
-                            "value" : self.listItemProp(user, 'companyName')
-                        },
-                        {
-                            "key" : "Avatar",
-                            "img" : "",
-                            "class" : "avatar-photo"
-                        },
-                        {
-                            "key" : "Last Modified",
-                            "value" : user.getSystemMetadata().getModifiedOn().getTimestamp()
-                        }
-                    ]
+                    "items" : [{
+                        "key" : "ID",
+                        "value" : self.listItemProp(user, '_doc')
+                    }]
                 };
+                if (user["name"]) {
+                    pairs.items.push({
+                        "key" : "Principal",
+                        "value" : self.listItemProp(user, 'name')
+                    });
+                }
+                if (user["lastName"]) {
+                    pairs.items.push({
+                        "key" : "Last Name",
+                        "value" : self.listItemProp(user, 'lastName')
+                    });
+                }
+                if (user["firstName"]) {
+                    pairs.items.push({
+                        "key" : "First Name",
+                        "value" : self.listItemProp(user, 'firstName')
+                    });
+                }
+                if (user["email"]) {
+                    pairs.items.push({
+                        "key" : "Email",
+                        "value" : self.listItemProp(user, 'email')
+                    });
+                }
+                if (user["companyName"]) {
+                    pairs.items.push({
+                        "key" : "Company",
+                        "value" : self.listItemProp(user, 'companyName')
+                    });
+                }
+                pairs.items.push({
+                    "key" : "Avatar",
+                    "img" : "",
+                    "class" : "avatar-photo"
+                });
+                pairs.items.push({
+                    "key" : "Last Modified",
+                    "value" : user.getSystemMetadata().getModifiedOn().getTimestamp()
+                });
+                if (user["directoryId"] && user["identityId"])
+                {
+                    var directoryId = user["directoryId"];
+                    var identityId = user["identityId"];
+
+                    pairs.items.push({
+                        "key": "Identity",
+                        "value": "<a href='#/directories/" + directoryId + "/identities/" + identityId + "'>" + identityId + "</a>"
+                    });
+                }
 
                 this.pairs("user-profile-pairs", pairs);
 

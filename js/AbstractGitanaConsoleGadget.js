@@ -341,6 +341,14 @@
             this.observable("identity").clear();
         },
 
+        connection: function() {
+            return this._observable("connection", arguments);
+        },
+
+        clearConnection: function() {
+            this.observable("connection").clear();
+        },
+
         webhost: function() {
             return this._observable("webhost", arguments);
         },
@@ -1097,7 +1105,7 @@
                             loadDirectorySubObjects(this);
                         });
                     } else {
-                        loadDirectorySubObjects(this.subchain(self.repository()));
+                        loadDirectorySubObjects(this.subchain(self.directory()));
                     }
                 }
 
@@ -1376,6 +1384,12 @@
 
                         break;
 
+                    case 'Gitana.Connection':
+
+                        link += this.listLink('connections');
+
+                        break;
+
                     default:
 
                         if (node.isAssociation && node.isAssociation()) {
@@ -1472,6 +1486,12 @@
                     case 'Gitana.Repository':
 
                         link += this.listLink('repositories');
+
+                        break;
+
+                    case 'Gitana.Warehouse':
+
+                        link += this.listLink('warehouses');
 
                         break;
 
@@ -1909,15 +1929,15 @@
 
                         break;
 
-                    case 'directories':
-
-                        link += "directories/";
-
-                        break;
-
                     case 'identities':
 
                         link += "directories/" + this.directory().getId() + "/identities/";
+
+                        break;
+
+                    case 'connections':
+
+                        link += "directories/" + this.directory().getId() + "/connections/";
 
                         break;
                 }

@@ -1,9 +1,9 @@
 (function($) {
-    Gitana.Console.Pages.Identities = Gitana.CMS.Pages.AbstractDatastoreObjects.extend(
+    Gitana.Console.Pages.Connections = Gitana.CMS.Pages.AbstractDatastoreObjects.extend(
         {
-            SUBSCRIPTION : "identities",
+            SUBSCRIPTION : "connections",
 
-            FILTER : "identity-list-filters",
+            FILTER : "connection-list-filters",
 
             FILTER_TOOLBAR: {
                 "query" : {
@@ -13,7 +13,7 @@
             },
 
             setup: function() {
-                this.get("/directories/{directoryId}/identities", this.index);
+                this.get("/directories/{directoryId}/connections", this.index);
             },
 
             targetObject: function() {
@@ -21,18 +21,17 @@
             },
 
             setupMenu: function() {
-                this.menu(Gitana.Console.Menu.Directory(this, "menu-directory-identities"));
+                this.menu(Gitana.Console.Menu.Directory(this, "menu-directory-connections"));
             },
 
             setupBreadcrumb: function() {
-                return this.breadcrumb(Gitana.Console.Breadcrumb.Identities(this));
+                return this.breadcrumb(Gitana.Console.Breadcrumb.Connections(this));
             },
 
             setupToolbar: function() {
                 this.base();
 
-                //var buttons = this.buildButtons("identity", "Identity");
-                var buttons = [];
+                var buttons = this.buildButtons("connection", "Connection");
                 this.addButtons(buttons);
 
                 this.toolbar(this.SUBSCRIPTION + "-toolbar", {
@@ -119,9 +118,9 @@
                 list["actions"] = self.actionButtons({
                     "edit": {
                         "title": "Edit",
-                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'identity-edit', 48),
-                        "click": function(identity){
-                            self.app().run("GET", self.LINK().call(self, identity, 'edit'));
+                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'connection-edit', 48),
+                        "click": function(connection){
+                            self.app().run("GET", self.LINK().call(self, connection, 'edit'));
                         },
                         "requiredAuthorities" : {
                             "permissions" : ["update"]
@@ -129,10 +128,10 @@
                     },
                     "delete": {
                         "title": "Delete",
-                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'identity-delete', 48),
+                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'connection-delete', 48),
                         "selection" : "multiple",
-                        "click": function(identities) {
-                            self.onClickDeleteMultiple(self.targetObject(), identities, "identities", self.LIST_LINK().call(self, 'identities'), Gitana.Utils.Image.buildImageUri('objects', 'identity', 24), 'identity');
+                        "click": function(connections) {
+                            self.onClickDeleteMultiple(self.targetObject(), connections, "connections", self.LIST_LINK().call(self, 'connections'), Gitana.Utils.Image.buildImageUri('objects', 'connection', 24), 'connection');
                         },
                         "requiredAuthorities" : {
                             "permissions" : ["delete"]
@@ -141,8 +140,8 @@
                     "export": {
                         "title": "Export",
                         "icon" : Gitana.Utils.Image.buildImageUri('objects', 'archive-export', 48),
-                        "click": function(identities) {
-                            self.app().run("GET", self.LINK().call(self, identities, 'export'));
+                        "click": function(connections) {
+                            self.app().run("GET", self.LINK().call(self, connections, 'export'));
                         },
                         "requiredAuthorities" : {
                             "permissions" : ["read"]
@@ -152,13 +151,19 @@
 
                 list["columns"] = [
                     {
-                        "title": "ID",
+                        "title": "Title",
                         "type": "property",
-                        "sortingExpression": "id",
+                        "sortingExpression": "title",
                         "property": function(callback) {
-                            var id = self.listItemProp(this,'_doc');
-                            var value = "<a href='#" + self.link(this) + "'>" + id + "</a>";
-                            callback(value);
+                            callback(self.listItemProp(this, 'title'));
+                        }
+                    },
+                    {
+                        "title": "Description",
+                        "type":"property",
+                        "sortingExpression": "description",
+                        "property": function(callback) {
+                            callback(self.listItemProp(this, 'description'));
                         }
                     }
                 ];
@@ -168,13 +173,13 @@
                     Chain(self.targetObject()).trap(
                         function(error) {
                             return self.handlePageError(el, error);
-                        }).queryIdentities(self.query(), self.pagination(pagination)).each(
+                        }).queryConnections(self.query(), self.pagination(pagination)).each(
                         function() {
                             $.merge(checks, self.prepareListPermissionCheck(this, ['read','delete']));
                         }).then(function() {
                             var _this = this;
 
-                            this.subchain(self.targetObject()).checkIdentityPermissions(checks, function(checkResults) {
+                            this.subchain(self.targetObject()).checkConnectionPermissions(checks, function(checkResults) {
                                 self.updateUserRoles(checkResults);
                                 callback.call(_this);
                             });
@@ -187,12 +192,12 @@
 
             setupPage : function(el) {
 
-                var page = this.buildPage("identity", "Identity", "Identities");
+                var page = this.buildPage("connection", "Connection", "Connections");
 
                 this.page(Alpaca.mergeObject(page, this.base(el)));
             }
         });
 
-    Ratchet.GadgetRegistry.register("page", Gitana.Console.Pages.Identities);
+    Ratchet.GadgetRegistry.register("page", Gitana.Console.Pages.Connections);
 
 })(jQuery);

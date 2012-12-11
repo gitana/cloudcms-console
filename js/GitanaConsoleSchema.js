@@ -456,6 +456,17 @@
                 }
             }
         },
+        "Directory" : {
+            "type": "object",
+            "properties" : {
+                "title" : {
+                    "type" : "string"
+                },
+                "description" : {
+                    "type" : "string"
+                }
+            }
+        },
         "Identity" : {
             "type": "object",
             "properties" : {
@@ -469,14 +480,56 @@
                 }
             }
         },
-        "Directory" : {
+        "Connection" : {
             "type": "object",
             "properties" : {
-                "title" : {
-                    "type" : "string"
+                "title": {
+                    "title": "Title",
+                    "type": "string"
                 },
-                "description" : {
-                    "type" : "string"
+                "description": {
+                    "title": "Description",
+                    "type": "string"
+                },
+                "identity-id": {
+                    "title": "Identity ID",
+                    "type": "string"
+                },
+                "providerUserId": {
+                    "title": "Provider User ID",
+                    "type": "string"
+                },
+                "providerId": {
+                    "title": "Provider ID",
+                    "type": "string"
+                },
+                "displayName": {
+                    "title": "Display Name",
+                    "type": "string"
+                },
+                "profileUrl": {
+                    "title": "Profile URL",
+                    "type": "string"
+                },
+                "imageUrl": {
+                    "title": "Image URL",
+                    "type": "string"
+                },
+                "accessToken": {
+                    "title": "Access Token",
+                    "type": "string"
+                },
+                "refreshToken": {
+                    "title": "Refresh Token",
+                    "type": "string"
+                },
+                "expireTime": {
+                    "title": "Expire Time",
+                    "type": "string"
+                },
+                "secret": {
+                    "title": "Secret",
+                    "type": "string"
                 }
             }
         },
@@ -1050,6 +1103,35 @@
                 },
                 "authenticationEnabled" : {
                     "helper" : "Whether this identity is allowed to authenticate to the server."
+                }
+            }
+        },
+        "Connection" : {
+            "type": "object",
+            "fields" : {
+                "title": {
+                },
+                "description": {
+                },
+                "identity-id": {
+                },
+                "providerUserId": {
+                },
+                "providerId": {
+                },
+                "displayName": {
+                },
+                "profileUrl": {
+                },
+                "imageUrl": {
+                },
+                "accessToken": {
+                },
+                "refreshToken": {
+                },
+                "expireTime": {
+                },
+                "secret": {
                 }
             }
         },

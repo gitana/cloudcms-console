@@ -129,7 +129,7 @@
                             "format": "time"
                         },
                         "id" : {
-                            "title": "Id",
+                            "title": "ID",
                             "type" : "string"
                         },
                         "query" : {
@@ -204,7 +204,7 @@
 
                 list["columns"] = [
                     {
-                        "title": "Id",
+                        "title": "ID",
                         "type":"property",
                         "sortingExpression": "_doc",
                         "property": function(callback) {
@@ -249,7 +249,7 @@
                     "alert" : "",
                     "items" : [
                         {
-                            "key" : "Id",
+                            "key" : "ID",
                             "value" : interactionPage.getId()
                         },
                         {

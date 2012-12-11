@@ -405,6 +405,12 @@
                 <file name="pages/directory/IdentityEdit.js"/>
                 <file name="pages/directory/IdentityExport.js"/>
 
+                <file name="pages/directory/Connections.js"/>
+                <file name="pages/directory/Connection.js"/>
+                <file name="pages/directory/ConnectionAdd.js"/>
+                <file name="pages/directory/ConnectionEdit.js"/>
+                <file name="pages/directory/ConnectionExport.js"/>
+
                 <file name="pages/webhost/Webhosts.js"/>
                 <file name="pages/webhost/Webhost.js"/>
                 <file name="pages/webhost/WebhostAdd.js"/>

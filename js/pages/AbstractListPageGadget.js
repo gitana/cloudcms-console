@@ -248,7 +248,7 @@
                 "type" : "object",
                 "properties" : {
                     "id" : {
-                        "title": "Id",
+                        "title": "ID",
                         "type" : "string"
                     },
                     "title" : {

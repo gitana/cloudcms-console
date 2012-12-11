@@ -926,6 +926,23 @@
             ]);
         },
 
+        "Connections" : function(self , el) {
+            return $.merge(this.Directory(self, el), [
+                {
+                    "text" : "Connections",
+                    "link" : self.LIST_LINK().call(self,'connections')
+                }
+            ]);
+        },
+
+        "Connection" : function(self , el) {
+            return $.merge(this.Connections(self, el), [
+                {
+                    "text" : self.friendlyTitle(self.connection()),
+                    "link" : self.LINK().call(self,self.connection())
+                }
+            ]);
+        },
 
         "Webhosts" : function(self , el) {
             return $.merge(this.Platform(self, el), [

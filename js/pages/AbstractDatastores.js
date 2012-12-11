@@ -36,7 +36,7 @@
                 },
                 {
                     "id": "import",
-                    "title": this.messages().toolbar.import.title,
+                    "title": this.messages().toolbar.importarchive.title,
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'archive-import', 48),
                     "url" : this.LINK().call(this, this.contextObject(), 'import', type),
                     "requiredAuthorities" : [

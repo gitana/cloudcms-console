@@ -224,7 +224,7 @@
 
                 list["columns"] = [
                     {
-                        "title": "Id",
+                        "title": "ID",
                         "type":"property",
                         "sortingExpression": "_doc",
                         "property": function(callback) {

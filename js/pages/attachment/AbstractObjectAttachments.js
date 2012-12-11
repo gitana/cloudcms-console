@@ -180,7 +180,7 @@
 
             list["columns"] = [
                 {
-                    "title": "Id",
+                    "title": "ID",
                     "type":"property",
                     "property": function(callback) {
                         var attachmentUrl = this.getDownloadUri() + "?a=true'";

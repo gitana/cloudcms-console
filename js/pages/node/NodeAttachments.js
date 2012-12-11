@@ -209,7 +209,7 @@
 
             list["columns"] = [
                 {
-                    "title": "Id",
+                    "title": "ID",
                     "type":"property",
                     "sortingExpression": "attachmentId",
                     "property": function(callback) {

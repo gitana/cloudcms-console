@@ -59,7 +59,7 @@
                 },
                 {
                     "id": "import",
-                    "title": Gitana.CMS.Messages.Vaults.toolbar.import.title,
+                    "title": Gitana.CMS.Messages.Vaults.toolbar.importarchive.title,
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'archive-import', 48),
                     "url" : this.LINK().call(this, this.contextObject(), 'import','vault'),
                     "requiredAuthorities" : [

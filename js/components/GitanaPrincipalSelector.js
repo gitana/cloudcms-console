@@ -117,7 +117,7 @@
                         "type" : "string"
                     },
                     "id" : {
-                        "title": "Id",
+                        "title": "ID",
                         "type" : "string"
                     },
                     "name" : {

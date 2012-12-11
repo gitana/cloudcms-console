@@ -18,7 +18,7 @@
                 "id": "create",
                 "title": "Create New",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', type + '-add', 48),
-                "url" : this.LINK().call(self, this.targetObject(), 'add', addType),
+                "url" : this.LINK().call(self, this.targetObject(), 'add/' + type, addType),
                 "requiredAuthorities" : [{
                     "permissioned" : self.targetObject(),
                     "permissions" : ["create_subobjects"]

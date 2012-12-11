@@ -15,7 +15,7 @@
                 "create": {
                     "title": "Create New"
                 },
-                "import": {
+                "importarchive": {
                     "title": "Import"
                 }
             }
@@ -34,7 +34,7 @@
                 "create": {
                     "title": "Create New"
                 },
-                "import": {
+                "importarchive": {
                     "title": "Import"
                 }
             }
@@ -53,7 +53,7 @@
                 "create": {
                     "title": "Create New"
                 },
-                "import": {
+                "importarchive": {
                     "title": "Import"
                 }
             }
@@ -72,7 +72,7 @@
                 "create": {
                     "title": "Create New"
                 },
-                "import": {
+                "importarchive": {
                     "title": "Import"
                 }
             }
@@ -91,7 +91,7 @@
                 "create": {
                     "title": "Create New"
                 },
-                "import": {
+                "importarchive": {
                     "title": "Import"
                 }
             }
@@ -110,7 +110,7 @@
                 "create": {
                     "title": "Create New"
                 },
-                "import": {
+                "importarchive": {
                     "title": "Import"
                 }
             }
@@ -129,7 +129,7 @@
                 "create": {
                     "title": "Create New"
                 },
-                "import": {
+                "importarchive": {
                     "title": "Import"
                 }
             }
@@ -148,7 +148,7 @@
                 "create": {
                     "title": "Create New"
                 },
-                "import": {
+                "importarchive": {
                     "title": "Import"
                 }
             }

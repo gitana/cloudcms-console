@@ -101,7 +101,7 @@
 
             list["columns"] = [
                 {
-                    "title": "Id",
+                    "title": "ID",
                     "type":"property",
                     "sortingExpression": "principal-id",
                     "property": function(callback) {

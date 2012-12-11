@@ -371,7 +371,7 @@
                     "alert" : "",
                     "items" : [
                         {
-                            "key" : "Id",
+                            "key" : "ID",
                             "value" : self.listItemProp(group, '_doc')
                         },
                         {
