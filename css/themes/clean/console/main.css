@@ -92,7 +92,8 @@ body.special-page {
  */
 
 #container > #header-surround > #header {
-	background: url("../../../images/themes/clean/console/container/header/header-bg.png") repeat-x scroll top left transparent;
+	/*background: url("../../../images/themes/clean/console/container/header/header-bg.png") repeat-x scroll top left transparent;*/
+    background: url("../../../images/themes/clean/console/container/header/header-bg.jpg") repeat-x scroll top left transparent;
 	height: 43px;
 	position: relative;
 	z-index: 30;
@@ -158,7 +159,8 @@ body.special-page {
  */
 
 #login-details {
-    background: url("../../../images/themes/clean/console/container/header/header-bg.png") repeat-x scroll left top #212f3b;
+    background: url("../../../images/themes/clean/console/container/header/header-bg.jpg") repeat-x scroll left top #212f3b;
+    /*background: url("../../../images/themes/clean/console/container/header/header-bg.png") repeat-x scroll left top #212f3b;*/
 	/**background: url("../../../images/themes/clean/console/container/login-details/login-details-bg.png") repeat-x scroll top center #212f3b;**/
     /*
 	margin-right: 1px;
