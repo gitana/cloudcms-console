@@ -1112,11 +1112,12 @@ ul.item-list li span.my-favorites-item-delete-button{
 .notification
 {
     font-size: 16px;
+    margin-bottom: 15px;
 }
 
 .notification H2
 {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 400;
 }
 
@@ -1156,7 +1157,8 @@ ul.item-list li span.my-favorites-item-delete-button{
     border-right: 1px solid #B5C9E8 !important;
     border-left: 1px solid #B5C9E8 !important;
     */
-    border-top: 1px solid #949494;
+    /**border-top: 1px solid #949494;**/
+    border-top: 0 none;
 }
 
 .dataTables_wrapper TABLE

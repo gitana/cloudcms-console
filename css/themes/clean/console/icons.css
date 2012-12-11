@@ -32,7 +32,7 @@
  */
 
 .i-24-information {
-    background-image: url("../../../images/themes/default/console/icons/packs/fugue/16x16/information.png");
+    background-image: url("../../../images/themes/clean/console/icons/packs/fugue/16x16/information.png");
 }
 
 /*
@@ -40,27 +40,27 @@
  */
 
 .i-24-information {
-    background-image: url("../../../images/themes/default/console/icons/packs/fugue/24x24/information.png");
+    background-image: url("../../../images/themes/clean/console/icons/packs/fugue/24x24/information.png");
 }
 
 .platform-dashboard-icon {
-    background-image: url("../../../images/themes/default/console/objects/platform-24.png");
+    background-image: url("../../../images/themes/clean/console/objects/platform-24.png");
 }
 
 .tenant-dashboard-icon {
-    background-image: url("../../../images/themes/default/console/objects/tenant-24.png");
+    background-image: url("../../../images/themes/clean/console/objects/tenant-24.png");
 }
 
 .recent-history-icon {
-    background-image: url("../../../images/themes/default/console/special/history-24.png");
+    background-image: url("../../../images/themes/clean/console/special/history-24.png");
 }
 
 .clipboard-icon {
-    background-image: url("../../../images/themes/default/console/browser/clipboard-24.png");
+    background-image: url("../../../images/themes/clean/console/browser/clipboard-24.png");
 }
 
 .my-favorites-icon {
-    background-image: url("../../../images/themes/default/console/browser/my-favorites-24.png");
+    background-image: url("../../../images/themes/clean/console/browser/my-favorites-24.png");
 }
 
 

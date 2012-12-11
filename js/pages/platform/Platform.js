@@ -191,8 +191,23 @@
                     "icon" : Gitana.Utils.Image.buildImageUri('browser', 'statistics', 20),
                     "items" : [
                         {
+                            "key" : "Applications",
+                            "link" : "#" + this.listLink('applications'),
+                            "value" : ""
+                        },
+                        {
+                            "key" : "Directories",
+                            "link" : "#" + this.listLink('directories'),
+                            "value" : ""
+                        },
+                        {
                             "key" : "Domains",
                             "link" : "#" + this.listLink('domains'),
+                            "value" : ""
+                        },
+                        {
+                            "key" : "Registrars",
+                            "link" : "#" + this.listLink('registrars'),
                             "value" : ""
                         },
                         {
@@ -206,13 +221,8 @@
                             "value" : ""
                         },
                         {
-                            "key" : "Registrars",
-                            "link" : "#" + this.listLink('registrars'),
-                            "value" : ""
-                        },
-                        {
-                            "key" : "Applications",
-                            "link" : "#" + this.listLink('applications'),
+                            "key" : "Warehouses",
+                            "link" : "#" + this.listLink('warehouses'),
                             "value" : ""
                         },
                         {
@@ -449,12 +459,14 @@
                         this.subchain(platform).then(function() {
                             this.loadInfo(function (response) {
                                 var counts = response["datastore_counts"];
-                                stats.items[0]['value'] = counts["domain"];
-                                stats.items[1]['value'] = counts["repository"];
-                                stats.items[2]['value'] = counts["vault"];
+                                stats.items[0]['value'] = counts["application"];
+                                stats.items[1]['value'] = counts["directory"];
+                                stats.items[2]['value'] = counts["domain"];
                                 stats.items[3]['value'] = counts["registrar"];
-                                stats.items[4]['value'] = counts["application"];
-                                stats.items[5]['value'] = counts["webhost"];
+                                stats.items[4]['value'] = counts["repository"];
+                                stats.items[5]['value'] = counts["vault"];
+                                stats.items[6]['value'] = counts["warehouse"];
+                                stats.items[7]['value'] = counts["webhost"];
                             });
                         });
                     };
@@ -496,16 +508,16 @@
                             "subscription" : "platform-activities"
                         },
                         {
-                            "id" : "stats",
-                            "grid" : "grid_12",
-                            "gadget" : "stats",
-                            "subscription" : "platform-stats"
-                        },
-                        {
                             "id" : "latest-activities",
                             "grid" : "grid_12",
                             "gadget" : "pairs",
                             "subscription" : "latest-activities"
+                        },
+                        {
+                            "id" : "stats",
+                            "grid" : "grid_12",
+                            "gadget" : "stats",
+                            "subscription" : "platform-stats"
                         }
                     ]
                 };

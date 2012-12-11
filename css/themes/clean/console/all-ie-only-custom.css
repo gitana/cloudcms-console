@@ -11,7 +11,7 @@
 
 .block-border {
     margin-top: 15px;
-    background: url("../../../images/themes/default/console/misc/shine-effect.png") repeat-x scroll 0 0 #666666;
+    background: url("../../../images/themes/clean/console/misc/shine-effect.png") repeat-x scroll 0 0 #666666;
     border: 1px solid #25333c;
     border-radius: 0px;
     padding: 8px;
@@ -19,7 +19,7 @@
 }
 
 .ui-dialog {
-    background: url("../../../images/themes/default/console/misc/shine-effect.png") repeat-x scroll 0 0 #666666;
+    background: url("../../../images/themes/clean/console/misc/shine-effect.png") repeat-x scroll 0 0 #666666;
     border: 1px solid #25333C;
     border-radius: 0px;
     box-shadow: none;
@@ -30,7 +30,7 @@
 .ui-dialog .ui-dialog-titlebar {
     padding: 0.1em 1em;
     height: 40px;
-    background: url("../../../images/themes/default/console/container/block/block-header-bg.png") repeat-x scroll left top #CFDEE5;
+    background: url("../../../images/themes/clean/console/container/block/block-header-bg.png") repeat-x scroll left top #CFDEE5;
 }
 
 .ui-dialog .ui-dialog-content {
@@ -42,7 +42,7 @@
 }
 
 .ui-dialog .ui-dialog-buttonpane {
-    background: url("../../../images/themes/default/console/container/block/block-actions-bg.png") scroll left bottom #ffffff;
+    background: url("../../../images/themes/clean/console/container/block/block-actions-bg.png") scroll left bottom #ffffff;
     /*
     border-radius: 0 0 5px 5px;
     height: 44px;
@@ -64,7 +64,7 @@
 }
 
 ul.dropdown-username-menu {
-    background: url("../../../images/themes/default/console/misc/shine-effect.png") repeat-x scroll 0 0 #666666;
+    background: url("../../../images/themes/clean/console/misc/shine-effect.png") repeat-x scroll 0 0 #666666;
 }
 
 .alpaca-controlfield, .alpaca-controlfield-container {

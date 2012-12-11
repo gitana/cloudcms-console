@@ -474,7 +474,7 @@
 }
 
 .sprite-48 {
-    background: url('../../../images/themes/default/console/sprites/sprite-48.png') no-repeat top left;
+    background: url('../../../images/themes/clean/console/sprites/sprite-48.png') no-repeat top left;
     width: 48px;
     height: 48px;
 }
@@ -1271,7 +1271,7 @@ ul.item-list li div.block-list-item-desc {
 }
 
 .sprite-20 {
-    background: url('../../../images/themes/default/console/sprites/sprite-20.png') no-repeat top left;
+    background: url('../../../images/themes/clean/console/sprites/sprite-20.png') no-repeat top left;
     width: 20px;
     height: 20px;
     padding-right: 32px;

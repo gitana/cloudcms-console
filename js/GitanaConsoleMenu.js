@@ -243,7 +243,7 @@
                         },{
                             "id" : "menu-platform-billing-providers",
                             "link" : "#" + self.listLink('billing-providers'),
-                            "title" : "Billing Provider Configs",
+                            "title" : "Billing Provider Configurations",
                             "icon" :  Gitana.Utils.Image.buildImageUri('objects', 'billing-provider', 16),
                             "current" : current == "menu-platform-billing-providers"
                         },{

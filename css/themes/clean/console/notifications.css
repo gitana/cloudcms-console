@@ -166,7 +166,7 @@ div.jGrowl div.jGrowl-closer {
  */
 
 div.jGrowl div.information, div.jGrowl div.success, div.jGrowl div.error, div.jGrowl div.warning, div.jGrowl div.saved {
-	background: url("../../../images/themes/default/console/icons/packs/fugue/16x16/information.png") no-repeat scroll 10px 50% #000;
+	background: url("../../../images/themes/clean/console/icons/packs/fugue/16x16/information.png") no-repeat scroll 10px 50% #000;
 	background-repeat: no-repeat;
 	background-position: 10px 50%;
 	background-color: #000;
@@ -174,11 +174,11 @@ div.jGrowl div.information, div.jGrowl div.success, div.jGrowl div.error, div.jG
 	width: 210px;
 }
 
-div.jGrowl div.success { background-image: url("../../../images/themes/default/console/icons/packs/fugue/16x16/tick-circle.png"); }
-div.jGrowl div.error { background-image: url("../../../images/themes/default/console/icons/packs/fugue/16x16/cross-circle.png"); }
-div.jGrowl div.information { background-image: url("../../../images/themes/default/console/icons/packs/fugue/16x16/information.png"); }
-div.jGrowl div.warning { background-image: url("../../../images/themes/default/console/icons/packs/fugue/16x16/exclamation.png"); }
-div.jGrowl div.saved { background-image: url("../../../images/themes/default/console/icons/packs/fugue/16x16/disk-black.png"); }
+div.jGrowl div.success { background-image: url("../../../images/themes/clean/console/icons/packs/fugue/16x16/tick-circle.png"); }
+div.jGrowl div.error { background-image: url("../../../images/themes/clean/console/icons/packs/fugue/16x16/cross-circle.png"); }
+div.jGrowl div.information { background-image: url("../../../images/themes/clean/console/icons/packs/fugue/16x16/information.png"); }
+div.jGrowl div.warning { background-image: url("../../../images/themes/clean/console/icons/packs/fugue/16x16/exclamation.png"); }
+div.jGrowl div.saved { background-image: url("../../../images/themes/clean/console/icons/packs/fugue/16x16/disk-black.png"); }
 
 /*
  * 1.6) Hide notifications when printing

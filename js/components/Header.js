@@ -90,21 +90,34 @@
                 });
             });
 
-            // myFavorites
+            // Clipboard
 
             $('body').undelegate('.clipboard-icon', 'click').delegate('.clipboard-icon', 'click', function() {
-                var message = "<div class='clipboard block-content'><ul class='item-list'>";
+                var message = "<div class='clipboard block-content'>";
 
                 var clipboard = self.clipboard();
-
-                for (var i = clipboard.length - 1; i >= 0; i--) {
-                    var title = self.friendlyTitle(clipboard[i].object);
-                    var description = clipboard[i].object.getDescription() ? clipboard[i].object.getDescription() : "";
-                    message += "<li data-index='" + i + "'><span class='sprite-48 sprite-48-pairs " + clipboard[i].icon +"'></span>" + title ;
-                    message += "<div class='block-list-item-desc'>" + description + "</div></li>";
+                if (clipboard && clipboard.length > 0)
+                {
+                    message += "<ul class='item-list'>";
+                    for (var i = clipboard.length - 1; i >= 0; i--) {
+                        var title = self.friendlyTitle(clipboard[i].object);
+                        var description = clipboard[i].object.getDescription() ? clipboard[i].object.getDescription() : "";
+                        message += "<li data-index='" + i + "'><span class='sprite-48 sprite-48-pairs " + clipboard[i].icon +"'></span>" + title ;
+                        message += "<div class='block-list-item-desc'>" + description + "</div></li>";
+                    }
+                    message += "</ul>";
                 }
-
-                message += "</ul>";
+                else
+                {
+                    message += "<p align='center'>";
+                    message += "<br/>";
+                    message += "<br/>";
+                    message += "Your clipboard is currently empty.";
+                    message += "<br/>";
+                    message += "<br/>";
+                    message += "<br/>";
+                    message += "</p>"
+                }
 
                 if (clipboard.length > 0) {
                     message += "<div class='clear-clipboard'><span class='button red'>Clear Clipboard</span></div>";
@@ -131,26 +144,42 @@
 
             var getFavorites = function(myFavorites) {
                 var message = "";
-                for (var i = myFavorites.length - 1; i >= 0; i--) {
-                    message += "<li data-index='" + i + "'>";
-                    message += "<div class='page-title'><a href='#" + myFavorites[i].url + "'>" + myFavorites[i].title + "</a><span class='my-favorites-item-buttonbar'><span class='my-favorites-item-delete-button' title='Remove this item from My Favorites' data-index='" + i + "'></span></span></div>";
-                    message += "<div class='page-description'>" + myFavorites[i].timestamp + "<br/>" +myFavorites[i].description + "</div>";
 
-                    if (myFavorites[i].breadcrumb) {
-                        var breadcrumb = myFavorites[i].breadcrumb;
-                        message += "<div class='page-description'>";
-                        for (var j = 0; j < breadcrumb.length; j++) {
-                            var breadcrumbItem = breadcrumb[j];
-                            message += "<a href='" + (breadcrumbItem.link ? "#" + breadcrumbItem.link : "javascript:void(0);") + "'>" + breadcrumbItem.text + "</a>";
-                            if (j != breadcrumb.length -1) {
-                                message += " > ";
+                if (myFavorites && myFavorites.length > 0)
+                {
+                    for (var i = myFavorites.length - 1; i >= 0; i--) {
+                        message += "<li data-index='" + i + "'>";
+                        message += "<div class='page-title'><a href='#" + myFavorites[i].url + "'>" + myFavorites[i].title + "</a><span class='my-favorites-item-buttonbar'><span class='my-favorites-item-delete-button' title='Remove this item from My Favorites' data-index='" + i + "'></span></span></div>";
+                        message += "<div class='page-description'>" + myFavorites[i].timestamp + "<br/>" +myFavorites[i].description + "</div>";
+
+                        if (myFavorites[i].breadcrumb) {
+                            var breadcrumb = myFavorites[i].breadcrumb;
+                            message += "<div class='page-description'>";
+                            for (var j = 0; j < breadcrumb.length; j++) {
+                                var breadcrumbItem = breadcrumb[j];
+                                message += "<a href='" + (breadcrumbItem.link ? "#" + breadcrumbItem.link : "javascript:void(0);") + "'>" + breadcrumbItem.text + "</a>";
+                                if (j != breadcrumb.length -1) {
+                                    message += " > ";
+                                }
                             }
+                            message += "</div>";
                         }
-                        message += "</div>";
-                    }
 
-                    message += "</li>";
+                        message += "</li>";
+                    }
                 }
+                else
+                {
+                    message += "<p align='center'>";
+                    message += "<br/>";
+                    message += "<br/>";
+                    message += "Your My Favorites list is currently empty.";
+                    message += "<br/>";
+                    message += "<br/>";
+                    message += "<br/>";
+                    message += "</p>"
+                }
+
                 return message;
             };
 
