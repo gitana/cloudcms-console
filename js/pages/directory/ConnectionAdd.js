@@ -46,6 +46,8 @@
                             var formVal = form.getValue();
                             if (form.isValid(true)) {
 
+                                /*
+
                                 Gitana.Utils.UI.block("Creating Connection...");
 
                                 self.targetObject().createConnection(formVal).then(function() {
@@ -54,6 +56,20 @@
                                         self.app().run('GET', self.LINK().call(self, newConnection));
                                     });
                                 });
+                                */
+
+                                // redirect to gitana
+                                //window.location.href = "/proxy/signin/" + formVal["providerId"];
+
+                                var returnUrl = "http://demo.cloudcms.net/console";
+                                var url = "/proxy/signin/" + formVal["providerId"];
+                                var html = "<form action='" + url + "' method='POST'>";
+                                //html += "<input type='text' name='return_url' value='" + returnUrl + "' />";
+                                html += "</form>";
+                                var f = $(html);
+                                $(document.body).append(f);
+                                $(f).submit();
+
                             }
                         });
                     }

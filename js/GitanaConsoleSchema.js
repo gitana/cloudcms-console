@@ -495,41 +495,10 @@
                     "title": "Identity ID",
                     "type": "string"
                 },
-                "providerUserId": {
-                    "title": "Provider User ID",
-                    "type": "string"
-                },
                 "providerId": {
                     "title": "Provider ID",
-                    "type": "string"
-                },
-                "displayName": {
-                    "title": "Display Name",
-                    "type": "string"
-                },
-                "profileUrl": {
-                    "title": "Profile URL",
-                    "type": "string"
-                },
-                "imageUrl": {
-                    "title": "Image URL",
-                    "type": "string"
-                },
-                "accessToken": {
-                    "title": "Access Token",
-                    "type": "string"
-                },
-                "refreshToken": {
-                    "title": "Refresh Token",
-                    "type": "string"
-                },
-                "expireTime": {
-                    "title": "Expire Time",
-                    "type": "string"
-                },
-                "secret": {
-                    "title": "Secret",
-                    "type": "string"
+                    "type": "string",
+                    "enum": ["twitter", "facebook", "linkedin", "github", "netflix"]
                 }
             }
         },
@@ -1115,23 +1084,8 @@
                 },
                 "identity-id": {
                 },
-                "providerUserId": {
-                },
                 "providerId": {
-                },
-                "displayName": {
-                },
-                "profileUrl": {
-                },
-                "imageUrl": {
-                },
-                "accessToken": {
-                },
-                "refreshToken": {
-                },
-                "expireTime": {
-                },
-                "secret": {
+                    "optionLabels": ["Twitter", "Facebook", "LinkedIn", "Github", "NetFlix"]
                 }
             }
         },

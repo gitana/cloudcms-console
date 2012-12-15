@@ -12,7 +12,7 @@
                 case 'UPDATE' :
                     typeText = 'modified';
                     break;
-                case 'CREATE' :
+                case 'DELETE' :
                     typeText = 'deleted';
                     break;
                 case 'JOIN' :
