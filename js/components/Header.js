@@ -20,7 +20,7 @@
             {
                 platformAvatarUrl = "css/images/themes/clean/console/logos/logo-default.png";
             }
-            platformAvatarUrl = platformAvatarUrl.replace("/avatar", "/avatar256");
+            platformAvatarUrl = platformAvatarUrl.replace("/avatar.", "/avatar256.");
             el.model["platformLogoUrl"] = platformAvatarUrl;
             el.model["platformAltText"] = this.tenantDetails().friendlyName;
 
@@ -30,7 +30,7 @@
             {
                 userAvatarUrl = "css/images/themes/clean/console/misc/avatar_small.png";
             }
-            userAvatarUrl = userAvatarUrl.replace("/avatar", "/avatar128");
+            userAvatarUrl = userAvatarUrl.replace("/avatar.", "/avatar128.");
             el.model["userLogoUrl"] = userAvatarUrl;
             el.model["userAltText"] = this.userDetails().friendlyName;
 

@@ -686,6 +686,8 @@
         <include name="index.html"/>
         <include name="favicon.ico"/>
         <include name="console-prod.appcache"/>
+        <include name="main.js"/>
+        <include name="main.css"/>
     </fileset>
 
     <target name="update">

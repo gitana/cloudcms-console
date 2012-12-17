@@ -9,638 +9,638 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-    <meta charset="utf-8">
+<meta charset="utf-8">
 
-    <!-- DNS prefetch
-    <link rel=dns-prefetch href="//fonts.googleapis.com">
-    -->
-    <!-- Use the .htaccess and remove these lines to avoid edge case issues.
- More info: h5bp.com/b/378 -->
+<!-- DNS prefetch
+<link rel=dns-prefetch href="//fonts.googleapis.com">
+-->
+<!-- Use the .htaccess and remove these lines to avoid edge case issues.
+More info: h5bp.com/b/378 -->
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <!--
-    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-    -->
+<!--
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+-->
 
-    <title>Cloud CMS Console</title>
+<title>Cloud CMS Console</title>
 
-    <meta name="keywords" content="admin,gitana,cloudcms,cloud,cms"/>
-    <meta name="description" content="Cloud CMS Administration Console"/>
-    <meta name="author" content="Gitana Software Inc."/>
+<meta name="keywords" content="admin,gitana,cloudcms,cloud,cms"/>
+<meta name="description" content="Cloud CMS Administration Console"/>
+<meta name="author" content="Gitana Software Inc."/>
 
-    <!-- Mobile viewport optimized: j.mp/bplateviewport -->
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+<!-- Mobile viewport optimized: j.mp/bplateviewport -->
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
-    <link type="image/x-icon" media="all" href="favicon.ico" rel="shortcut icon"/>
+<!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+<link type="image/x-icon" media="all" href="favicon.ico" rel="shortcut icon"/>
 
-    <!-- CSS: implied media=all -->
+<!-- CSS: implied media=all -->
 
-    <!-- JQuery UI and Theme -->
-    <link type="text/css" media="all" href="css/themes/clean/jquery-ui/jquery-ui-1.8.15.custom.css" rel="stylesheet"/>
-    <!-- End of JQuery UI and Theme -->
-    
-    <!-- Third Party -->
-    <link type="text/css" media="all" href="lib/jquery/jqplot/jquery.jqplot.min.css" rel="stylesheet"/>
-    <link type="text/css" media="all" href="lib/jquery/fileupload/jquery.fileupload-ui.css" rel="stylesheet"/>
-    <link type="text/css" media="all" href="lib/jquery/elrte/css/elrte.min.css" rel="stylesheet"/>
-    
-    <!-- Gitana Console Framework -->
-    <link type="text/css" media="all" href="css/themes/clean/console/style.css" rel="stylesheet"/>
-    <link type="text/css" media="all" href="css/themes/clean/console/960.fluid.css" rel="stylesheet"/>
-    <link type="text/css" media="all" href="css/themes/clean/console/main.css" rel="stylesheet"/>
-    <link type="text/css" media="all" href="css/themes/clean/console/buttons.css" rel="stylesheet"/>
+<!-- JQuery UI and Theme -->
+<link type="text/css" media="all" href="css/themes/clean/jquery-ui/jquery-ui-1.8.15.custom.css" rel="stylesheet"/>
+<!-- End of JQuery UI and Theme -->
 
-    <link type="text/css" media="all" href="css/themes/clean/console/lists.css" rel="stylesheet"/>
-    <link type="text/css" media="all" href="css/themes/clean/console/icons.css" rel="stylesheet"/>
-    <link type="text/css" media="all" href="css/themes/clean/console/notifications.css" rel="stylesheet"/>
-    <link type="text/css" media="all" href="css/themes/clean/console/typography.css" rel="stylesheet"/>
-    <link type="text/css" media="all" href="css/themes/clean/console/forms.css" rel="stylesheet"/>
-    <link type="text/css" media="all" href="css/themes/clean/console/tables.css" rel="stylesheet"/>
+<!-- Third Party -->
+<link type="text/css" media="all" href="lib/jquery/jqplot/jquery.jqplot.min.css" rel="stylesheet"/>
+<link type="text/css" media="all" href="lib/jquery/fileupload/jquery.fileupload-ui.css" rel="stylesheet"/>
+<link type="text/css" media="all" href="lib/jquery/elrte/css/elrte.min.css" rel="stylesheet"/>
 
-    <link type="text/css" media="all" href="css/themes/clean/console/charts.css" rel="stylesheet"/>
-    <link type="text/css" media="all" href="css/themes/clean/console/jquery.asmselect.css" rel="stylesheet"/>
-    <link type="text/css" media="all" href="css/themes/clean/console/console-custom.css" rel="stylesheet"/>
-    <link type="text/css" media="all" href="css/themes/clean/console/alpaca-custom.css" rel="stylesheet"/>
+<!-- Gitana Console Framework -->
+<link type="text/css" media="all" href="css/themes/clean/console/style.css" rel="stylesheet"/>
+<link type="text/css" media="all" href="css/themes/clean/console/960.fluid.css" rel="stylesheet"/>
+<link type="text/css" media="all" href="css/themes/clean/console/main.css" rel="stylesheet"/>
+<link type="text/css" media="all" href="css/themes/clean/console/buttons.css" rel="stylesheet"/>
 
-    <link type="text/css" media="all" href="css/themes/clean/console/sprites.css" rel="stylesheet"/>
-    <!-- Alpaca -->
-    <link type="text/css" media="all" href="lib/alpaca/css/alpaca.min.css" rel="stylesheet"/>
+<link type="text/css" media="all" href="css/themes/clean/console/lists.css" rel="stylesheet"/>
+<link type="text/css" media="all" href="css/themes/clean/console/icons.css" rel="stylesheet"/>
+<link type="text/css" media="all" href="css/themes/clean/console/notifications.css" rel="stylesheet"/>
+<link type="text/css" media="all" href="css/themes/clean/console/typography.css" rel="stylesheet"/>
+<link type="text/css" media="all" href="css/themes/clean/console/forms.css" rel="stylesheet"/>
+<link type="text/css" media="all" href="css/themes/clean/console/tables.css" rel="stylesheet"/>
 
-    <!--[if IE]>
-    <link type="text/css" media="all" href="css/themes/clean/console/all-ie-only-custom.css"  rel="stylesheet"/>
-    <![endif]-->
+<link type="text/css" media="all" href="css/themes/clean/console/charts.css" rel="stylesheet"/>
+<link type="text/css" media="all" href="css/themes/clean/console/jquery.asmselect.css" rel="stylesheet"/>
+<link type="text/css" media="all" href="css/themes/clean/console/console-custom.css" rel="stylesheet"/>
+<link type="text/css" media="all" href="css/themes/clean/console/alpaca-custom.css" rel="stylesheet"/>
 
-    <!--[if IE 9]>
-    <link type="text/css" media="all" href="css/themes/clean/console/ie9-only-custom.css"  rel="stylesheet"/>
-    <![endif]-->
+<link type="text/css" media="all" href="css/themes/clean/console/sprites.css" rel="stylesheet"/>
+<!-- Alpaca -->
+<link type="text/css" media="all" href="lib/alpaca/css/alpaca.min.css" rel="stylesheet"/>
 
-    <!-- end CSS-->
+<!--[if IE]>
+<link type="text/css" media="all" href="css/themes/clean/console/all-ie-only-custom.css"  rel="stylesheet"/>
+<![endif]-->
 
-    <!-- Fonts
-    <link href="//fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" type="text/css">
-    -->
-    <!-- end Fonts-->
+<!--[if IE 9]>
+<link type="text/css" media="all" href="css/themes/clean/console/ie9-only-custom.css"  rel="stylesheet"/>
+<![endif]-->
 
-    <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+<!-- end CSS-->
 
-    <!-- All JavaScript at the bottom, except for Modernizr / Respond.
+<!-- Fonts
+<link href="//fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" type="text/css">
+-->
+<!-- end Fonts-->
+
+<!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+<!-- All JavaScript at the bottom, except for Modernizr / Respond.
 Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
 For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
 
-    <script src="lib/modernizr/modernizr-2.0.6.min.js"></script>
-
-    <!-- JQuery and JQuery UI -->
-    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
-    <!--
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
-    <script>window.jQuery || document.write('<script src="lib/jquery/jquery-1.6.2.min.js"><\/script>')</script>
-    -->
-    <script src="lib/jquery/jquery-1.6.2.min.js"></script>
-
-    <script src="lib/jquery/ui/jquery-ui-1.8.15.custom.min.js"></script>
-
-    <!-- Jqplot -->
-    <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="lib/jquery/jqplot/excanvas.js"></script><![endif]-->
-    <script type="text/javascript" src="lib/jquery/jqplot/jquery.jqplot.js"></script>
-    <script type="text/javascript" src="lib/jquery/jqplot/plugins/jqplot.barRenderer.js"></script>
-    <script type="text/javascript" src="lib/jquery/jqplot/plugins/jqplot.categoryAxisRenderer.min.js"></script>
-    <script type="text/javascript" src="lib/jquery/jqplot/plugins/jqplot.pointLabels.min.js"></script>
-
-    <!-- BlockUI -->
-    <script type="text/javascript" src="lib/jquery/blockui/jquery.blockui.2.39.min.js"></script>
-
-    <!-- Data table -->
-    <script type="text/javascript" src="lib/jquery/datatables/jquery.dataTables.1.8.1.min.js"></script>
-    <script type="text/javascript" src="lib/jquery/datatables/TableTools.2.0.1.min.js"></script>
-
-    <!-- File Upload -->
-    <script type="text/javascript" src="lib/jquery/fileupload/jquery.iframe-transport.1.2.2.min.js"></script>
-    <script type="text/javascript" src="lib/jquery/fileupload/jquery.fileupload.5.0.3-patched.js"></script>
-    <script type="text/javascript" src="lib/jquery/fileupload/jquery.fileupload-ui.5.0.13-patched.js"></script>
-
-    <!-- Galleria -->
-    <script type="text/javascript" src="lib/jquery/galleria/galleria-1.2.5-patched.min.js"></script>
-    <script type="text/javascript" src="lib/jquery/galleria/themes/gitana/galleria.gitana.js"></script>
-
-    <!-- Notifications  -->
-    <script defer type="text/javascript" src="lib/jquery/notifications/jquery.notifications.min.js"></script>
-    <!-- Uniform (Look & Feel from forms) -->
-    <script defer type="text/javascript" src="lib/jquery/uniform/jquery.uniform.1.7.5.min.js"></script>
-
-    <!-- Validation from forms -->
-    <script defer type="text/javascript" src="lib/jquery/validate/jquery.validate.1.8.1.min.js"></script>
-    <!-- Tooltips -->
-    <script defer type="text/javascript" src="lib/jquery/tipsy/jquery.tipsy.1.0.0a.js"></script>
-
-    <!-- Contact List -->
-    <script defer src="lib/jquery/slidernav/jquery.slidernav.min.js"></script>
-
-    <!-- Menu and Slide List -->
-    <script defer src="lib/jquery/menu/jquery-menu.js"></script>
-
-    <!-- MD 5 -->
-    <script type="text/javascript" src="lib/jquery/md5/jquery.md5.min.js"></script>
-
-    <!-- ASM Select -->
-    <script type="text/javascript" src="lib/jquery/asmselect/jquery.asmselect-1.0.4a.min.js"></script>
-
-    <!-- Breadcrumb-->
-    <script type="text/javascript" src="lib/jquery/xbreadcrumb/xbreadcrumbs.js"></script>
-
-    <!-- Multiselect-->
-    <script type="text/javascript" src="lib/jquery/multiselect/jquery.multiselect.min.js"></script>
-    <script type="text/javascript" src="lib/jquery/multiselect/jquery.multiselect.filter.min.js"></script>
-
-    <!-- Contact List -->
-    <script defer type="text/javascript" src="lib/jquery/stickysidebar/stickysidebar.jquery.js"></script>
-
-    <!-- Elrte Editor -->
-    <script defer type="text/javascript" src="lib/jquery/elrte/elrte.min.js"></script>
-
-    <!-- Cookie -->
-    <script defer type="text/javascript" src="lib/jquery/cookie/jquery.cookie.js"></script>
-
-    <!-- Time Picker -->
-    <script type="text/javascript" src="lib/alpaca/lib/jquery-ui-timepicker-addon.js"></script>
-
-    <!-- Easy Accordion -->
-    <script type="text/javascript" src="lib/jquery/easyaccordion/easyAccordion-0.1.js"></script>
-
-    <!-- Alpaca -->
-    <script type="text/javascript" src="lib/alpaca/js/alpaca.js"></script>
-
-    <!-- Gitana Driver -->
-    <script type="text/javascript" src="lib/gitana/js/gitana.js"></script>
-
-    <!-- Ratchet -->
-    <script type="text/javascript" src="lib/ratchet/js/ratchet.js"></script>
-    <script type="text/javascript" src="lib/ratchet/js/ratchet-tmpl.js"></script>
-    <script type="text/javascript" src="lib/ratchet/js/ratchet-gitana.js"></script>
-
-    <!-- Gitana Console Framework -->
-    <script type="text/javascript" src="js/fields/AttachmentField.js"></script>
-    <script type="text/javascript" src="js/fields/AvatarField.js"></script>
-    <script type="text/javascript" src="js/fields/ArchiveField.js"></script>
-    <script type="text/javascript" src="js/fields/ElrteField.js"></script>
-    <script type="text/javascript" src="js/fields/MultiNodesField.js"></script>
-    <script type="text/javascript" src="js/fields/MultiFolderNodesField.js"></script>
-    <script type="text/javascript" src="js/CMS.js"></script>
-    <script type="text/javascript" src="js/Messages.js"></script>
-    <!--
-    <script type="text/javascript" src="_old/AbstractAuthenticator.js"></script>
-    <script type="text/javascript" src="_old/AbstractOAuth2Authenticator.js"></script>
-    <script type="text/javascript" src="_old/ImplicitFlowAuthenticator.js"></script>
-    -->
-    <script type="text/javascript" src="js/authenticators/UsernamePasswordAuthenticator.js"></script>
-    <script type="text/javascript" src="js/AbstractGadget.js"></script>
-    <script type="text/javascript" src="js/AbstractGitanaAppGadget.js"></script>
-    <script type="text/javascript" src="js/utilities/GitanaUtilsDate.js"></script>
-    <script type="text/javascript" src="js/utilities/GitanaUtilsImage.js"></script>
-    <script type="text/javascript" src="js/utilities/GitanaUtilsRender.js"></script>
-    <script type="text/javascript" src="js/utilities/GitanaUtilsUI.js"></script>
-    <script type="text/javascript" src="js/reports/AbstractReport.js"></script>
-
-    <!--                            -->
-    <!--        APPLICATION         -->
-    <!--                            -->
-
-    <script type="text/javascript" src="js/GitanaConsole.js"></script>
-    <script type="text/javascript" src="js/AbstractGitanaConsoleGadget.js"></script>
-
-    <script type="text/javascript" src="js/components/AbstractComponentGadget.js"></script>
-    <script type="text/javascript" src="js/pages/AbstractGitanaPageGadget.js"></script>
-
-    <script type="text/javascript" src="js/components/Alerts.js"></script>
-    <script type="text/javascript" src="js/components/BarChart.js"></script>
-    <script type="text/javascript" src="js/components/Plot.js"></script>
-    <script type="text/javascript" src="js/components/Breadcrumb.js"></script>
-    <script type="text/javascript" src="js/components/List.js"></script>
-    <script type="text/javascript" src="js/components/Menu.js"></script>
-    <script type="text/javascript" src="js/components/Notifications.js"></script>
-    <script type="text/javascript" src="js/components/Pairs.js"></script>
-    <script type="text/javascript" src="js/components/Searchbar.js"></script>
-    <script type="text/javascript" src="js/components/Stats.js"></script>
-    <script type="text/javascript" src="js/components/Tabs.js"></script>
-    <script type="text/javascript" src="js/components/Toolbar.js"></script>
-    <script type="text/javascript" src="js/components/Filter.js"></script>
-
-    <script type="text/javascript" src="js/pages/AbstractDashboardPageGadget.js"></script>
-    <script type="text/javascript" src="js/pages/AbstractListPageGadget.js"></script>
-    <script type="text/javascript" src="js/pages/AbstractFormPageGadget.js"></script>
-    <script type="text/javascript" src="js/pages/AbstractListFormPageGadget.js"></script>
-    <script type="text/javascript" src="js/pages/AbstractEditFormPageGadget.js"></script>
-    <script type="text/javascript" src="js/pages/AbstractNodeEditFormPageGadget.js"></script>
-
-    <script type="text/javascript" src="js/fields/GitanaPrincipalPickerField.js"></script>
-    <script type="text/javascript" src="js/fields/PlatformLogoField.js"></script>
-
-    <script type="text/javascript" src="js/utilities/GitanaUtilsActivity.js"></script>
-
-    <script type="text/javascript" src="js/pages/definition/objects/Feature.js"></script>
-    <script type="text/javascript" src="js/pages/definition/maps/FeatureMap.js"></script>
-
-    <script type="text/javascript" src="js/GitanaConsoleMenu.js"></script>
-    <script type="text/javascript" src="js/GitanaConsoleBreadcrumb.js"></script>
-    <script type="text/javascript" src="js/GitanaConsoleSchema.js"></script>
-
-
-    <script type="text/javascript" src="js/components/Header.js"></script>
-    <script type="text/javascript" src="js/components/LoginDetails.js"></script>
-    <script type="text/javascript" src="js/components/TenantBar.js"></script>
-
-    <script type="text/javascript" src="js/pages/importexport/AbstractExport.js"></script>
-    <script type="text/javascript" src="js/pages/importexport/AbstractImport.js"></script>
-
-    <script type="text/javascript" src="js/pages/authority/AbstractGitanaConsoleAuthorityList.js"></script>
-    <script type="text/javascript" src="js/pages/authority/AbstractGitanaConsoleUserAuthorityList.js"></script>
-    <script type="text/javascript" src="js/pages/authority/AbstractGitanaConsoleGroupAuthorityList.js"></script>
-
-    <script type="text/javascript" src="js/pages/error/GitanaConsoleError.js"></script>
-
-    <script type="text/javascript" src="js/pages/attachment/AbstractObjectAttachments.js"></script>
-    <script type="text/javascript" src="js/pages/attachment/AbstractObjectAttachmentsManage.js"></script>
-
-    <script type="text/javascript" src="js/pages/group/AbstractDomainGroup.js"></script>
-
-    <script type="text/javascript" src="js/pages/team/AbstractObjectTeams.js"></script>
-    <script type="text/javascript" src="js/pages/team/AbstractObjectTeam.js"></script>
-    <script type="text/javascript" src="js/pages/team/AbstractObjectTeamAdd.js"></script>
-    <script type="text/javascript" src="js/pages/team/AbstractObjectTeamEdit.js"></script>
-    <!--
-    <script type="text/javascript" src="js/pages/team/AbstractObjectTeamExport.js"></script>
-    <script type="text/javascript" src="js/pages/team/AbstractObjectTeamImport.js"></script>
-    -->
-
-    <script type="text/javascript" src="js/pages/AbstractDatastore.js"></script>
-    <script type="text/javascript" src="js/pages/AbstractDatastoreAdd.js"></script>
-    <script type="text/javascript" src="js/pages/AbstractDatastoreEdit.js"></script>
-    <script type="text/javascript" src="js/pages/AbstractDatastoreExport.js"></script>
-    <script type="text/javascript" src="js/pages/AbstractDatastoreImport.js"></script>
-    <script type="text/javascript" src="js/pages/AbstractDatastores.js"></script>
-
-    <script type="text/javascript" src="js/pages/AbstractDatastoreObject.js"></script>
-    <script type="text/javascript" src="js/pages/AbstractDatastoreObjectAdd.js"></script>
-    <script type="text/javascript" src="js/pages/AbstractDatastoreObjectEdit.js"></script>
-    <script type="text/javascript" src="js/pages/AbstractDatastoreObjectExport.js"></script>
-    <script type="text/javascript" src="js/pages/AbstractDatastoreObjects.js"></script>
-
-
-    <script type="text/javascript" src="js/pages/personal/Dashboard.js"></script>
-
-    <script type="text/javascript" src="js/pages/platform/Platform.js"></script>
-    <script type="text/javascript" src="js/pages/platform/PlatformEdit.js"></script>
-    <script type="text/javascript" src="js/pages/platform/PlatformLogs.js"></script>
-
-    <script type="text/javascript" src="js/pages/platform/PlatformGroupAuthorities.js"></script>
-    <script type="text/javascript" src="js/pages/platform/PlatformUserAuthorities.js"></script>
-
-    <script type="text/javascript" src="js/pages/platform/PlatformTeams.js"></script>
-    <script type="text/javascript" src="js/pages/platform/PlatformTeam.js"></script>
-    <script type="text/javascript" src="js/pages/platform/PlatformTeamAdd.js"></script>
-    <script type="text/javascript" src="js/pages/platform/PlatformTeamEdit.js"></script>
-    <script type="text/javascript" src="js/pages/platform/PlatformExport.js"></script>
-    <script type="text/javascript" src="js/pages/platform/PlatformImport.js"></script>
-
-    <script type="text/javascript" src="js/pages/platform/PlatformActivities.js"></script>
-    <script type="text/javascript" src="js/pages/personal/MyActivities.js"></script>
-
-    <script type="text/javascript" src="js/pages/domain/Domains.js"></script>
-    <script type="text/javascript" src="js/pages/domain/Domain.js"></script>
-    <script type="text/javascript" src="js/pages/domain/DomainAdd.js"></script>
-    <script type="text/javascript" src="js/pages/domain/DomainEdit.js"></script>
-    <script type="text/javascript" src="js/pages/domain/DomainExport.js"></script>
-    <script type="text/javascript" src="js/pages/domain/DomainImport.js"></script>
-
-    <script type="text/javascript" src="js/pages/domain/DomainGroups.js"></script>
-    <script type="text/javascript" src="js/pages/domain/DomainGroup.js"></script>
-    <script type="text/javascript" src="js/pages/domain/DomainUsers.js"></script>
-    <script type="text/javascript" src="js/pages/domain/DomainUser.js"></script>
-    <script type="text/javascript" src="js/pages/domain/DomainUserAdd.js"></script>
-    <script type="text/javascript" src="js/pages/domain/DomainUserEdit.js"></script>
-    <script type="text/javascript" src="js/pages/domain/DomainUserExport.js"></script>
-    <script type="text/javascript" src="js/pages/domain/DomainGroupAdd.js"></script>
-    <script type="text/javascript" src="js/pages/domain/DomainGroupEdit.js"></script>
-    <script type="text/javascript" src="js/pages/domain/DomainGroupExport.js"></script>
-    <script type="text/javascript" src="js/pages/domain/DomainGroupImport.js"></script>
-
-    <script type="text/javascript" src="js/pages/domain/DomainGroupAuthorities.js"></script>
-    <script type="text/javascript" src="js/pages/domain/DomainUserAuthorities.js"></script>
-
-    <script type="text/javascript" src="js/pages/job/Jobs.js"></script>
-
-    <script type="text/javascript" src="js/pages/vault/Vaults.js"></script>
-    <script type="text/javascript" src="js/pages/vault/Vault.js"></script>
-    <script type="text/javascript" src="js/pages/vault/VaultAdd.js"></script>
-    <script type="text/javascript" src="js/pages/vault/VaultEdit.js"></script>
-    <script type="text/javascript" src="js/pages/vault/VaultTeams.js"></script>
-    <script type="text/javascript" src="js/pages/vault/VaultTeam.js"></script>
-    <script type="text/javascript" src="js/pages/vault/VaultTeamAdd.js"></script>
-    <script type="text/javascript" src="js/pages/vault/VaultTeamEdit.js"></script>
-    <script type="text/javascript" src="js/pages/vault/VaultExport.js"></script>
-
-    <script type="text/javascript" src="js/pages/vault/Archives.js"></script>
-    <script type="text/javascript" src="js/pages/vault/ArchiveAdd.js"></script>
-    <script type="text/javascript" src="js/pages/vault/Archive.js"></script>
-
-    <script type="text/javascript" src="js/pages/stack/Stacks.js"></script>
-    <script type="text/javascript" src="js/pages/stack/StackAdd.js"></script>
-    <script type="text/javascript" src="js/pages/stack/StackEdit.js"></script>
-    <script type="text/javascript" src="js/pages/stack/Stack.js"></script>
-    <script type="text/javascript" src="js/pages/stack/StackTeams.js"></script>
-    <script type="text/javascript" src="js/pages/stack/StackTeam.js"></script>
-    <script type="text/javascript" src="js/pages/stack/StackTeamAdd.js"></script>
-    <script type="text/javascript" src="js/pages/stack/StackTeamEdit.js"></script>
-    <script type="text/javascript" src="js/pages/stack/StackGroupAuthorities.js"></script>
-    <script type="text/javascript" src="js/pages/stack/StackUserAuthorities.js"></script>
-    <script type="text/javascript" src="js/pages/stack/StackAttachments.js"></script>
-    <script type="text/javascript" src="js/pages/stack/StackAttachmentsManage.js"></script>
-    <script type="text/javascript" src="js/pages/stack/StackLogs.js"></script>
-    <script type="text/javascript" src="js/pages/stack/StackExport.js"></script>
-
-    <script type="text/javascript" src="js/pages/application/Applications.js"></script>
-    <script type="text/javascript" src="js/pages/application/ApplicationAdd.js"></script>
-    <script type="text/javascript" src="js/pages/application/ApplicationEdit.js"></script>
-    <script type="text/javascript" src="js/pages/application/Application.js"></script>
-    <script type="text/javascript" src="js/pages/application/ApplicationTeams.js"></script>
-    <script type="text/javascript" src="js/pages/application/ApplicationTeam.js"></script>
-    <script type="text/javascript" src="js/pages/application/ApplicationTeamAdd.js"></script>
-    <script type="text/javascript" src="js/pages/application/ApplicationTeamEdit.js"></script>
-    <script type="text/javascript" src="js/pages/application/ApplicationImport.js"></script>
-    <script type="text/javascript" src="js/pages/application/ApplicationExport.js"></script>
-
-    <script type="text/javascript" src="js/pages/application/Settings.js"></script>
-    <script type="text/javascript" src="js/pages/application/SettingsAdd.js"></script>
-    <script type="text/javascript" src="js/pages/application/SettingsEdit.js"></script>
-    <script type="text/javascript" src="js/pages/application/objects/Setting.js"></script>
-    <script type="text/javascript" src="js/pages/application/maps/SettingMap.js"></script>
-    <script type="text/javascript" src="js/pages/application/Setting.js"></script>
-    <script type="text/javascript" src="js/pages/application/SettingsExport.js"></script>
-
-    <script type="text/javascript" src="js/pages/warehouse/Warehouses.js"></script>
-    <script type="text/javascript" src="js/pages/warehouse/Warehouse.js"></script>
-    <script type="text/javascript" src="js/pages/warehouse/WarehouseAdd.js"></script>
-    <script type="text/javascript" src="js/pages/warehouse/WarehouseEdit.js"></script>
-    <script type="text/javascript" src="js/pages/warehouse/WarehouseTeams.js"></script>
-    <script type="text/javascript" src="js/pages/warehouse/WarehouseTeam.js"></script>
-    <script type="text/javascript" src="js/pages/warehouse/WarehouseTeamAdd.js"></script>
-    <script type="text/javascript" src="js/pages/warehouse/WarehouseTeamEdit.js"></script>
-    <script type="text/javascript" src="js/pages/warehouse/WarehouseExport.js"></script>
-    <script type="text/javascript" src="js/pages/warehouse/WarehouseImport.js"></script>
-
-    <script type="text/javascript" src="js/pages/warehouse/Sessions.js"></script>
-    <script type="text/javascript" src="js/pages/warehouse/Session.js"></script>
-    <script type="text/javascript" src="js/pages/warehouse/SessionExport.js"></script>
-    <script type="text/javascript" src="js/pages/warehouse/InteractionReports.js"></script>
-    <script type="text/javascript" src="js/pages/warehouse/InteractionReport.js"></script>
-    <script type="text/javascript" src="js/pages/warehouse/InteractionPages.js"></script>
-    <script type="text/javascript" src="js/pages/warehouse/InteractionPage.js"></script>
-    <script type="text/javascript" src="js/pages/warehouse/InteractionPageExport.js"></script>
-    <script type="text/javascript" src="js/pages/warehouse/InteractionUsers.js"></script>
-    <script type="text/javascript" src="js/pages/warehouse/InteractionUser.js"></script>
-    <script type="text/javascript" src="js/pages/warehouse/InteractionUserExport.js"></script>
-    <script type="text/javascript" src="js/pages/warehouse/InteractionNodes.js"></script>
-    <script type="text/javascript" src="js/pages/warehouse/InteractionNode.js"></script>
-    <script type="text/javascript" src="js/pages/warehouse/InteractionNodeExport.js"></script>
-    <script type="text/javascript" src="js/pages/warehouse/InteractionApplications.js"></script>
-    <script type="text/javascript" src="js/pages/warehouse/InteractionApplication.js"></script>
-    <script type="text/javascript" src="js/pages/warehouse/InteractionApplicationExport.js"></script>
-
-    <script type="text/javascript" src="js/pages/registrar/Registrars.js"></script>
-    <script type="text/javascript" src="js/pages/registrar/RegistrarAdd.js"></script>
-    <script type="text/javascript" src="js/pages/registrar/RegistrarEdit.js"></script>
-    <script type="text/javascript" src="js/pages/registrar/Registrar.js"></script>
-    <script type="text/javascript" src="js/pages/registrar/RegistrarExport.js"></script>
-
-    <script type="text/javascript" src="js/pages/tenant/Tenants.js"></script>
-    <script type="text/javascript" src="js/pages/tenant/TenantAdd.js"></script>
-    <script type="text/javascript" src="js/pages/tenant/TenantEdit.js"></script>
-    <script type="text/javascript" src="js/pages/tenant/Tenant.js"></script>
-    <script type="text/javascript" src="js/pages/tenant/TenantAttachments.js"></script>
-    <script type="text/javascript" src="js/pages/tenant/TenantAttachmentsManage.js"></script>
-
-    <script type="text/javascript" src="js/pages/plan/Plans.js"></script>
-    <script type="text/javascript" src="js/pages/plan/PlanAdd.js"></script>
-    <script type="text/javascript" src="js/pages/plan/PlanEdit.js"></script>
-    <script type="text/javascript" src="js/pages/plan/Plan.js"></script>
-    <script type="text/javascript" src="js/pages/plan/PlanExport.js"></script>
-
-    <script type="text/javascript" src="js/pages/client/Clients.js"></script>
-    <script type="text/javascript" src="js/pages/client/ClientAdd.js"></script>
-    <script type="text/javascript" src="js/pages/client/ClientEdit.js"></script>
-    <script type="text/javascript" src="js/pages/client/Client.js"></script>
-    <script type="text/javascript" src="js/pages/client/ClientExport.js"></script>
-
-    <script type="text/javascript" src="js/pages/authenticationgrant/AuthenticationGrants.js"></script>
-    <script type="text/javascript" src="js/pages/authenticationgrant/AuthenticationGrant.js"></script>
-    <script type="text/javascript" src="js/pages/authenticationgrant/AuthenticationGrantAdd.js"></script>
-    <script type="text/javascript" src="js/pages/authenticationgrant/AuthenticationGrantEdit.js"></script>
-
-    <script type="text/javascript" src="js/pages/authenticationgrant/AuthenticationGrantExport.js"></script>
-
-    <script type="text/javascript" src="js/pages/billingprovider/BillingProviders.js"></script>
-    <script type="text/javascript" src="js/pages/billingprovider/BillingProvider.js"></script>
-    <script type="text/javascript" src="js/pages/billingprovider/BillingProviderAdd.js"></script>
-    <script type="text/javascript" src="js/pages/billingprovider/BillingProviderEdit.js"></script>
-    <script type="text/javascript" src="js/pages/billingprovider/BillingProviderExport.js"></script>
-
-    <script type="text/javascript" src="js/pages/project/Projects.js"></script>
-    <script type="text/javascript" src="js/pages/project/ProjectAdd.js"></script>
-    <script type="text/javascript" src="js/pages/project/ProjectEdit.js"></script>
-    <script type="text/javascript" src="js/pages/project/Project.js"></script>
-    <script type="text/javascript" src="js/pages/project/ProjectExport.js"></script>
-
-    <script type="text/javascript" src="js/pages/webhost/Webhosts.js"></script>
-    <script type="text/javascript" src="js/pages/webhost/Webhost.js"></script>
-    <script type="text/javascript" src="js/pages/webhost/WebhostAdd.js"></script>
-    <script type="text/javascript" src="js/pages/webhost/WebhostEdit.js"></script>
-    <script type="text/javascript" src="js/pages/webhost/WebhostExport.js"></script>
-    <script type="text/javascript" src="js/pages/webhost/WebhostImport.js"></script>
-
-    <script type="text/javascript" src="js/pages/webhost/AutoClientMappings.js"></script>
-    <script type="text/javascript" src="js/pages/webhost/AutoClientMapping.js"></script>
-    <script type="text/javascript" src="js/pages/webhost/AutoClientMappingAdd.js"></script>
-    <script type="text/javascript" src="js/pages/webhost/AutoClientMappingEdit.js"></script>
-    <script type="text/javascript" src="js/pages/webhost/AutoClientMappingExport.js"></script>
-
-    <script type="text/javascript" src="js/pages/webhost/TrustedDomainMappings.js"></script>
-    <script type="text/javascript" src="js/pages/webhost/TrustedDomainMapping.js"></script>
-    <script type="text/javascript" src="js/pages/webhost/TrustedDomainMappingAdd.js"></script>
-    <script type="text/javascript" src="js/pages/webhost/TrustedDomainMappingEdit.js"></script>
-    <script type="text/javascript" src="js/pages/webhost/TrustedDomainMappingExport.js"></script>
-
-    <script type="text/javascript" src="js/pages/directory/Directories.js"></script>
-    <script type="text/javascript" src="js/pages/directory/Directory.js"></script>
-    <script type="text/javascript" src="js/pages/directory/DirectoryAdd.js"></script>
-    <script type="text/javascript" src="js/pages/directory/DirectoryEdit.js"></script>
-    <script type="text/javascript" src="js/pages/directory/DirectoryExport.js"></script>
-    <script type="text/javascript" src="js/pages/directory/DirectoryImport.js"></script>
-
-    <script type="text/javascript" src="js/pages/directory/Identities.js"></script>
-    <script type="text/javascript" src="js/pages/directory/Identity.js"></script>
-    <script type="text/javascript" src="js/pages/directory/IdentityAdd.js"></script>
-    <script type="text/javascript" src="js/pages/directory/IdentityEdit.js"></script>
-    <script type="text/javascript" src="js/pages/directory/IdentityExport.js"></script>
-
-    <script type="text/javascript" src="js/pages/directory/Connections.js"></script>
-    <script type="text/javascript" src="js/pages/directory/Connection.js"></script>
-    <script type="text/javascript" src="js/pages/directory/ConnectionAdd.js"></script>
-    <script type="text/javascript" src="js/pages/directory/ConnectionEdit.js"></script>
-    <script type="text/javascript" src="js/pages/directory/ConnectionExport.js"></script>
-
-    <script type="text/javascript" src="js/pages/user/UserProfile.js"></script>
-    <script type="text/javascript" src="js/pages/user/UserProfileEdit.js"></script>
-
-    <script type="text/javascript" src="js/pages/repository/Repositories.js"></script>
-    <script type="text/javascript" src="js/pages/repository/Repository.js"></script>
-    <script type="text/javascript" src="js/pages/repository/RepositoryAdd.js"></script>
-    <script type="text/javascript" src="js/pages/repository/RepositoryEdit.js"></script>
-    <script type="text/javascript" src="js/pages/repository/RepositoryExport.js"></script>
-    <script type="text/javascript" src="js/pages/repository/RepositoryImport.js"></script>
-
-    <script type="text/javascript" src="js/pages/repository/RepositoryTeams.js"></script>
-    <script type="text/javascript" src="js/pages/repository/RepositoryTeam.js"></script>
-    <script type="text/javascript" src="js/pages/repository/RepositoryTeamAdd.js"></script>
-    <script type="text/javascript" src="js/pages/repository/RepositoryTeamEdit.js"></script>
-    <script type="text/javascript" src="js/pages/repository/RepositoryLogs.js"></script>
-    <script type="text/javascript" src="js/pages/repository/RepositoryChangesets.js"></script>
-    <script type="text/javascript" src="js/pages/repository/RepositoryChangeset.js"></script>
-
-    <script type="text/javascript" src="js/pages/repository/RepositoryUserAuthorities.js"></script>
-    <script type="text/javascript" src="js/pages/repository/RepositoryGroupAuthorities.js"></script>
-
-    <script type="text/javascript" src="js/pages/branch/Branches.js"></script>
-    <script type="text/javascript" src="js/pages/branch/Branch.js"></script>
-    <script type="text/javascript" src="js/pages/branch/BranchAdd.js"></script>
-    <script type="text/javascript" src="js/pages/branch/BranchEdit.js"></script>
-
-    <script type="text/javascript" src="js/pages/branch/BranchLogs.js"></script>
-
-    <script type="text/javascript" src="js/pages/branch/BranchUserAuthorities.js"></script>
-    <script type="text/javascript" src="js/pages/branch/BranchGroupAuthorities.js"></script>
-
-    <script type="text/javascript" src="js/pages/branch/BranchExport.js"></script>
-    <script type="text/javascript" src="js/pages/branch/BranchImport.js"></script>
-
-    <script type="text/javascript" src="js/pages/definition/Definitions.js"></script>
-    <script type="text/javascript" src="js/pages/definition/Definition.js"></script>
-    <script type="text/javascript" src="js/pages/definition/DefinitionAdd.js"></script>
-    <script type="text/javascript" src="js/pages/definition/DefinitionEdit.js"></script>
-    <script type="text/javascript" src="js/pages/definition/DefinitionExport.js"></script>
-
-    <script type="text/javascript" src="js/pages/definition/Forms.js"></script>
-    <script type="text/javascript" src="js/pages/definition/FormAdd.js"></script>
-    <script type="text/javascript" src="js/pages/definition/Form.js"></script>
-    <script type="text/javascript" src="js/pages/definition/FormEdit.js"></script>
-    <script type="text/javascript" src="js/pages/definition/FormExport.js"></script>
-
-    <script type="text/javascript" src="js/pages/definition/Features.js"></script>
-    <script type="text/javascript" src="js/pages/definition/FeatureAdd.js"></script>
-    <script type="text/javascript" src="js/pages/definition/FeatureEdit.js"></script>
-    <script type="text/javascript" src="js/pages/definition/FeatureEditJSON.js"></script>
-
-    <script type="text/javascript" src="js/pages/node/Nodes.js"></script>
-    <script type="text/javascript" src="js/pages/node/Node.js"></script>
-    <script type="text/javascript" src="js/pages/node/NodeAdd.js"></script>
-    <script type="text/javascript" src="js/pages/node/NodeEdit.js"></script>
-    <script type="text/javascript" src="js/pages/node/NodeAttachments.js"></script>
-    <script type="text/javascript" src="js/pages/node/NodeAttachmentsManage.js"></script>
-    <script type="text/javascript" src="js/pages/node/NodeAssociations.js"></script>
-    <script type="text/javascript" src="js/pages/node/NodeTranslations.js"></script>
-    <script type="text/javascript" src="js/pages/node/NodeAuditRecords.js"></script>
-    <script type="text/javascript" src="js/pages/node/NodeExport.js"></script>
-    <script type="text/javascript" src="js/pages/node/NodeImport.js"></script>
-
-    <script type="text/javascript" src="js/pages/node/NodeFeatures.js"></script>
-
-    <script type="text/javascript" src="js/pages/node/NodeFeatureEdit.js"></script>
-    <script type="text/javascript" src="js/pages/node/NodeFeatureEditJSON.js"></script>
-
-    <script type="text/javascript" src="js/pages/node/NodeFeatureAdd.js"></script>
-
-    <script type="text/javascript" src="js/pages/node/NodePreview.js"></script>
-
-    <script type="text/javascript" src="js/pages/node/NodeUserAuthorities.js"></script>
-    <script type="text/javascript" src="js/pages/node/NodeGroupAuthorities.js"></script>
-
-    <script type="text/javascript" src="js/pages/node/NodeJSONAdd.js"></script>
-    <script type="text/javascript" src="js/pages/node/NodeTextAdd.js"></script>
-    <script type="text/javascript" src="js/pages/node/NodeHTMLAdd.js"></script>
-    <script type="text/javascript" src="js/pages/node/NodeFileUpload.js"></script>
-
-    <script type="text/javascript" src="js/pages/node/AssociationAdd.js"></script>
-
-    <script type="text/javascript" src="js/pages/node/NodeTranslationAdd.js"></script>
-
-    <script type="text/javascript" src="js/pages/tag/Tags.js"></script>
-    <script type="text/javascript" src="js/pages/tag/Tag.js"></script>
-    <script type="text/javascript" src="js/pages/tag/TagEdit.js"></script>
-    <script type="text/javascript" src="js/pages/tag/TagAdd.js"></script>
-    <script type="text/javascript" src="js/pages/tag/TagNodes.js"></script>
-
-    <script type="text/javascript" src="js/pages/folder/Folder.js"></script>
-    <script type="text/javascript" src="js/pages/folder/FolderAttachments.js"></script>
-    <script type="text/javascript" src="js/pages/folder/FolderAttachmentsManage.js"></script>
-    <script type="text/javascript" src="js/pages/folder/FolderAssociations.js"></script>
-    <script type="text/javascript" src="js/pages/folder/ChildNodeAdd.js"></script>
-    <script type="text/javascript" src="js/pages/folder/FolderAdd.js"></script>
-    <script type="text/javascript" src="js/pages/folder/ChildNode.js"></script>
-    <script type="text/javascript" src="js/pages/folder/ChildNodeEdit.js"></script>
-    <script type="text/javascript" src="js/pages/folder/ChildNodeAttachments.js"></script>
-    <script type="text/javascript" src="js/pages/folder/ChildNodeAttachmentsManage.js"></script>
-    <script type="text/javascript" src="js/pages/folder/ChildNodeAssociations.js"></script>
-    <script type="text/javascript" src="js/pages/folder/ChildNodeAssociationAdd.js"></script>
-    <script type="text/javascript" src="js/pages/folder/FolderEdit.js"></script>
-    <script type="text/javascript" src="js/pages/folder/FolderExport.js"></script>
-    <script type="text/javascript" src="js/pages/folder/FolderImport.js"></script>
-    <script type="text/javascript" src="js/pages/folder/ChildNodeExport.js"></script>
-    <script type="text/javascript" src="js/pages/folder/ChildNodeImport.js"></script>
-
-    <script type="text/javascript" src="js/pages/folder/ChildNodePreview.js"></script>
-    <script type="text/javascript" src="js/pages/folder/ChildNodeJSONAdd.js"></script>
-    <script type="text/javascript" src="js/pages/folder/ChildNodeTextAdd.js"></script>
-    <script type="text/javascript" src="js/pages/folder/ChildNodeHTMLAdd.js"></script>
-
-    <script type="text/javascript" src="js/pages/folder/FolderFileUpload.js"></script>
-
-    <script type="text/javascript" src="js/pages/folder/ChildNodeAuditRecords.js"></script>
-    <script type="text/javascript" src="js/pages/folder/FolderAuditRecords.js"></script>
-    <script type="text/javascript" src="js/pages/node/AssociationAdd.js"></script>
-
-    <script type="text/javascript" src="js/pages/folder/ChildNodeGroupAuthorities.js"></script>
-    <script type="text/javascript" src="js/pages/folder/ChildNodeUserAuthorities.js"></script>
-
-    <script type="text/javascript" src="js/pages/folder/FolderGroupAuthorities.js"></script>
-    <script type="text/javascript" src="js/pages/folder/FolderUserAuthorities.js"></script>
-
-    <script type="text/javascript" src="js/pages/folder/ChildNodeFeatures.js"></script>
-    <script type="text/javascript" src="js/pages/folder/ChildNodeFeatureEdit.js"></script>
-    <script type="text/javascript" src="js/pages/folder/ChildNodeFeatureEditJSON.js"></script>
-    <script type="text/javascript" src="js/pages/folder/ChildNodeFeatureAdd.js"></script>
-
-    <script type="text/javascript" src="js/pages/folder/FolderFeatures.js"></script>
-    <script type="text/javascript" src="js/pages/folder/FolderFeatureEdit.js"></script>
-    <script type="text/javascript" src="js/pages/folder/FolderFeatureEditJSON.js"></script>
-    <script type="text/javascript" src="js/pages/folder/FolderFeatureAdd.js"></script>
-
-    <script type="text/javascript" src="js/components/GitanaPrincipalSelector.js"></script>
-
-    <script type="text/javascript">
-
-        Gitana.CMS.load();
-
-    </script>
-
-    <!-- end scripts-->
-    <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
-   chromium.org/developers/how-tos/chrome-frame-getting-started -->
-    <!--[if lt IE 7 ]>
-    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
-    <script>window.attachEvent('onload', function() {
-        CFInstall.check({mode:'overlay'})
-    })</script>
-    <![endif]-->
+<script src="lib/modernizr/modernizr-2.0.6.min.js"></script>
+
+<!-- JQuery and JQuery UI -->
+<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+<!--
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
+<script>window.jQuery || document.write('<script src="lib/jquery/jquery-1.6.2.min.js"><\/script>')</script>
+-->
+<script src="lib/jquery/jquery-1.6.2.min.js"></script>
+
+<script src="lib/jquery/ui/jquery-ui-1.8.15.custom.min.js"></script>
+
+<!-- Jqplot -->
+<!--[if lt IE 9]><script language="javascript" type="text/javascript" src="lib/jquery/jqplot/excanvas.js"></script><![endif]-->
+<script type="text/javascript" src="lib/jquery/jqplot/jquery.jqplot.js"></script>
+<script type="text/javascript" src="lib/jquery/jqplot/plugins/jqplot.barRenderer.js"></script>
+<script type="text/javascript" src="lib/jquery/jqplot/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+<script type="text/javascript" src="lib/jquery/jqplot/plugins/jqplot.pointLabels.min.js"></script>
+
+<!-- BlockUI -->
+<script type="text/javascript" src="lib/jquery/blockui/jquery.blockui.2.39.min.js"></script>
+
+<!-- Data table -->
+<script type="text/javascript" src="lib/jquery/datatables/jquery.dataTables.1.8.1.min.js"></script>
+<script type="text/javascript" src="lib/jquery/datatables/TableTools.2.0.1.min.js"></script>
+
+<!-- File Upload -->
+<script type="text/javascript" src="lib/jquery/fileupload/jquery.iframe-transport.1.2.2.min.js"></script>
+<script type="text/javascript" src="lib/jquery/fileupload/jquery.fileupload.5.0.3-patched.js"></script>
+<script type="text/javascript" src="lib/jquery/fileupload/jquery.fileupload-ui.5.0.13-patched.js"></script>
+
+<!-- Galleria -->
+<script type="text/javascript" src="lib/jquery/galleria/galleria-1.2.5-patched.min.js"></script>
+<script type="text/javascript" src="lib/jquery/galleria/themes/gitana/galleria.gitana.js"></script>
+
+<!-- Notifications  -->
+<script defer type="text/javascript" src="lib/jquery/notifications/jquery.notifications.min.js"></script>
+<!-- Uniform (Look & Feel from forms) -->
+<script defer type="text/javascript" src="lib/jquery/uniform/jquery.uniform.1.7.5.min.js"></script>
+
+<!-- Validation from forms -->
+<script defer type="text/javascript" src="lib/jquery/validate/jquery.validate.1.8.1.min.js"></script>
+<!-- Tooltips -->
+<script defer type="text/javascript" src="lib/jquery/tipsy/jquery.tipsy.1.0.0a.js"></script>
+
+<!-- Contact List -->
+<script defer src="lib/jquery/slidernav/jquery.slidernav.min.js"></script>
+
+<!-- Menu and Slide List -->
+<script defer src="lib/jquery/menu/jquery-menu.js"></script>
+
+<!-- MD 5 -->
+<script type="text/javascript" src="lib/jquery/md5/jquery.md5.min.js"></script>
+
+<!-- ASM Select -->
+<script type="text/javascript" src="lib/jquery/asmselect/jquery.asmselect-1.0.4a.min.js"></script>
+
+<!-- Breadcrumb-->
+<script type="text/javascript" src="lib/jquery/xbreadcrumb/xbreadcrumbs.js"></script>
+
+<!-- Multiselect-->
+<script type="text/javascript" src="lib/jquery/multiselect/jquery.multiselect.min.js"></script>
+<script type="text/javascript" src="lib/jquery/multiselect/jquery.multiselect.filter.min.js"></script>
+
+<!-- Contact List -->
+<script defer type="text/javascript" src="lib/jquery/stickysidebar/stickysidebar.jquery.js"></script>
+
+<!-- Elrte Editor -->
+<script defer type="text/javascript" src="lib/jquery/elrte/elrte.min.js"></script>
+
+<!-- Cookie -->
+<script defer type="text/javascript" src="lib/jquery/cookie/jquery.cookie.js"></script>
+
+<!-- Time Picker -->
+<script type="text/javascript" src="lib/alpaca/lib/jquery-ui-timepicker-addon.js"></script>
+
+<!-- Easy Accordion -->
+<script type="text/javascript" src="lib/jquery/easyaccordion/easyAccordion-0.1.js"></script>
+
+<!-- Alpaca -->
+<script type="text/javascript" src="lib/alpaca/js/alpaca.js"></script>
+
+<!-- Gitana Driver -->
+<script type="text/javascript" src="lib/gitana/js/gitana.js"></script>
+
+<!-- Ratchet -->
+<script type="text/javascript" src="lib/ratchet/js/ratchet.js"></script>
+<script type="text/javascript" src="lib/ratchet/js/ratchet-tmpl.js"></script>
+<script type="text/javascript" src="lib/ratchet/js/ratchet-gitana.js"></script>
+
+<!-- Gitana Console Framework -->
+<script type="text/javascript" src="js/fields/AttachmentField.js"></script>
+<script type="text/javascript" src="js/fields/AvatarField.js"></script>
+<script type="text/javascript" src="js/fields/ArchiveField.js"></script>
+<script type="text/javascript" src="js/fields/ElrteField.js"></script>
+<script type="text/javascript" src="js/fields/MultiNodesField.js"></script>
+<script type="text/javascript" src="js/fields/MultiFolderNodesField.js"></script>
+<script type="text/javascript" src="js/CMS.js"></script>
+<script type="text/javascript" src="js/Messages.js"></script>
+<!--
+<script type="text/javascript" src="_old/AbstractAuthenticator.js"></script>
+<script type="text/javascript" src="_old/AbstractOAuth2Authenticator.js"></script>
+<script type="text/javascript" src="_old/ImplicitFlowAuthenticator.js"></script>
+-->
+<script type="text/javascript" src="js/authenticators/UsernamePasswordAuthenticator.js"></script>
+<script type="text/javascript" src="js/AbstractGadget.js"></script>
+<script type="text/javascript" src="js/AbstractGitanaAppGadget.js"></script>
+<script type="text/javascript" src="js/utilities/GitanaUtilsDate.js"></script>
+<script type="text/javascript" src="js/utilities/GitanaUtilsImage.js"></script>
+<script type="text/javascript" src="js/utilities/GitanaUtilsRender.js"></script>
+<script type="text/javascript" src="js/utilities/GitanaUtilsUI.js"></script>
+<script type="text/javascript" src="js/reports/AbstractReport.js"></script>
+
+<!--                            -->
+<!--        APPLICATION         -->
+<!--                            -->
+
+<script type="text/javascript" src="js/GitanaConsole.js"></script>
+<script type="text/javascript" src="js/AbstractGitanaConsoleGadget.js"></script>
+
+<script type="text/javascript" src="js/components/AbstractComponentGadget.js"></script>
+<script type="text/javascript" src="js/pages/AbstractGitanaPageGadget.js"></script>
+
+<script type="text/javascript" src="js/components/Alerts.js"></script>
+<script type="text/javascript" src="js/components/BarChart.js"></script>
+<script type="text/javascript" src="js/components/Plot.js"></script>
+<script type="text/javascript" src="js/components/Breadcrumb.js"></script>
+<script type="text/javascript" src="js/components/List.js"></script>
+<script type="text/javascript" src="js/components/Menu.js"></script>
+<script type="text/javascript" src="js/components/Notifications.js"></script>
+<script type="text/javascript" src="js/components/Pairs.js"></script>
+<script type="text/javascript" src="js/components/Searchbar.js"></script>
+<script type="text/javascript" src="js/components/Stats.js"></script>
+<script type="text/javascript" src="js/components/Tabs.js"></script>
+<script type="text/javascript" src="js/components/Toolbar.js"></script>
+<script type="text/javascript" src="js/components/Filter.js"></script>
+
+<script type="text/javascript" src="js/pages/AbstractDashboardPageGadget.js"></script>
+<script type="text/javascript" src="js/pages/AbstractListPageGadget.js"></script>
+<script type="text/javascript" src="js/pages/AbstractFormPageGadget.js"></script>
+<script type="text/javascript" src="js/pages/AbstractListFormPageGadget.js"></script>
+<script type="text/javascript" src="js/pages/AbstractEditFormPageGadget.js"></script>
+<script type="text/javascript" src="js/pages/AbstractNodeEditFormPageGadget.js"></script>
+
+<script type="text/javascript" src="js/fields/GitanaPrincipalPickerField.js"></script>
+<script type="text/javascript" src="js/fields/PlatformLogoField.js"></script>
+
+<script type="text/javascript" src="js/utilities/GitanaUtilsActivity.js"></script>
+
+<script type="text/javascript" src="js/pages/definition/objects/Feature.js"></script>
+<script type="text/javascript" src="js/pages/definition/maps/FeatureMap.js"></script>
+
+<script type="text/javascript" src="js/GitanaConsoleMenu.js"></script>
+<script type="text/javascript" src="js/GitanaConsoleBreadcrumb.js"></script>
+<script type="text/javascript" src="js/GitanaConsoleSchema.js"></script>
+
+
+<script type="text/javascript" src="js/components/Header.js"></script>
+<script type="text/javascript" src="js/components/LoginDetails.js"></script>
+<script type="text/javascript" src="js/components/TenantBar.js"></script>
+
+<script type="text/javascript" src="js/pages/importexport/AbstractExport.js"></script>
+<script type="text/javascript" src="js/pages/importexport/AbstractImport.js"></script>
+
+<script type="text/javascript" src="js/pages/authority/AbstractGitanaConsoleAuthorityList.js"></script>
+<script type="text/javascript" src="js/pages/authority/AbstractGitanaConsoleUserAuthorityList.js"></script>
+<script type="text/javascript" src="js/pages/authority/AbstractGitanaConsoleGroupAuthorityList.js"></script>
+
+<script type="text/javascript" src="js/pages/error/GitanaConsoleError.js"></script>
+
+<script type="text/javascript" src="js/pages/attachment/AbstractObjectAttachments.js"></script>
+<script type="text/javascript" src="js/pages/attachment/AbstractObjectAttachmentsManage.js"></script>
+
+<script type="text/javascript" src="js/pages/group/AbstractDomainGroup.js"></script>
+
+<script type="text/javascript" src="js/pages/team/AbstractObjectTeams.js"></script>
+<script type="text/javascript" src="js/pages/team/AbstractObjectTeam.js"></script>
+<script type="text/javascript" src="js/pages/team/AbstractObjectTeamAdd.js"></script>
+<script type="text/javascript" src="js/pages/team/AbstractObjectTeamEdit.js"></script>
+<!--
+<script type="text/javascript" src="js/pages/team/AbstractObjectTeamExport.js"></script>
+<script type="text/javascript" src="js/pages/team/AbstractObjectTeamImport.js"></script>
+-->
+
+<script type="text/javascript" src="js/pages/AbstractDatastore.js"></script>
+<script type="text/javascript" src="js/pages/AbstractDatastoreAdd.js"></script>
+<script type="text/javascript" src="js/pages/AbstractDatastoreEdit.js"></script>
+<script type="text/javascript" src="js/pages/AbstractDatastoreExport.js"></script>
+<script type="text/javascript" src="js/pages/AbstractDatastoreImport.js"></script>
+<script type="text/javascript" src="js/pages/AbstractDatastores.js"></script>
+
+<script type="text/javascript" src="js/pages/AbstractDatastoreObject.js"></script>
+<script type="text/javascript" src="js/pages/AbstractDatastoreObjectAdd.js"></script>
+<script type="text/javascript" src="js/pages/AbstractDatastoreObjectEdit.js"></script>
+<script type="text/javascript" src="js/pages/AbstractDatastoreObjectExport.js"></script>
+<script type="text/javascript" src="js/pages/AbstractDatastoreObjects.js"></script>
+
+
+<script type="text/javascript" src="js/pages/personal/Dashboard.js"></script>
+
+<script type="text/javascript" src="js/pages/platform/Platform.js"></script>
+<script type="text/javascript" src="js/pages/platform/PlatformEdit.js"></script>
+<script type="text/javascript" src="js/pages/platform/PlatformLogs.js"></script>
+
+<script type="text/javascript" src="js/pages/platform/PlatformGroupAuthorities.js"></script>
+<script type="text/javascript" src="js/pages/platform/PlatformUserAuthorities.js"></script>
+
+<script type="text/javascript" src="js/pages/platform/PlatformTeams.js"></script>
+<script type="text/javascript" src="js/pages/platform/PlatformTeam.js"></script>
+<script type="text/javascript" src="js/pages/platform/PlatformTeamAdd.js"></script>
+<script type="text/javascript" src="js/pages/platform/PlatformTeamEdit.js"></script>
+<script type="text/javascript" src="js/pages/platform/PlatformExport.js"></script>
+<script type="text/javascript" src="js/pages/platform/PlatformImport.js"></script>
+
+<script type="text/javascript" src="js/pages/platform/PlatformActivities.js"></script>
+<script type="text/javascript" src="js/pages/personal/MyActivities.js"></script>
+
+<script type="text/javascript" src="js/pages/domain/Domains.js"></script>
+<script type="text/javascript" src="js/pages/domain/Domain.js"></script>
+<script type="text/javascript" src="js/pages/domain/DomainAdd.js"></script>
+<script type="text/javascript" src="js/pages/domain/DomainEdit.js"></script>
+<script type="text/javascript" src="js/pages/domain/DomainExport.js"></script>
+<script type="text/javascript" src="js/pages/domain/DomainImport.js"></script>
+
+<script type="text/javascript" src="js/pages/domain/DomainGroups.js"></script>
+<script type="text/javascript" src="js/pages/domain/DomainGroup.js"></script>
+<script type="text/javascript" src="js/pages/domain/DomainUsers.js"></script>
+<script type="text/javascript" src="js/pages/domain/DomainUser.js"></script>
+<script type="text/javascript" src="js/pages/domain/DomainUserAdd.js"></script>
+<script type="text/javascript" src="js/pages/domain/DomainUserEdit.js"></script>
+<script type="text/javascript" src="js/pages/domain/DomainUserExport.js"></script>
+<script type="text/javascript" src="js/pages/domain/DomainGroupAdd.js"></script>
+<script type="text/javascript" src="js/pages/domain/DomainGroupEdit.js"></script>
+<script type="text/javascript" src="js/pages/domain/DomainGroupExport.js"></script>
+<script type="text/javascript" src="js/pages/domain/DomainGroupImport.js"></script>
+
+<script type="text/javascript" src="js/pages/domain/DomainGroupAuthorities.js"></script>
+<script type="text/javascript" src="js/pages/domain/DomainUserAuthorities.js"></script>
+
+<script type="text/javascript" src="js/pages/job/Jobs.js"></script>
+
+<script type="text/javascript" src="js/pages/vault/Vaults.js"></script>
+<script type="text/javascript" src="js/pages/vault/Vault.js"></script>
+<script type="text/javascript" src="js/pages/vault/VaultAdd.js"></script>
+<script type="text/javascript" src="js/pages/vault/VaultEdit.js"></script>
+<script type="text/javascript" src="js/pages/vault/VaultTeams.js"></script>
+<script type="text/javascript" src="js/pages/vault/VaultTeam.js"></script>
+<script type="text/javascript" src="js/pages/vault/VaultTeamAdd.js"></script>
+<script type="text/javascript" src="js/pages/vault/VaultTeamEdit.js"></script>
+<script type="text/javascript" src="js/pages/vault/VaultExport.js"></script>
+
+<script type="text/javascript" src="js/pages/vault/Archives.js"></script>
+<script type="text/javascript" src="js/pages/vault/ArchiveAdd.js"></script>
+<script type="text/javascript" src="js/pages/vault/Archive.js"></script>
+
+<script type="text/javascript" src="js/pages/stack/Stacks.js"></script>
+<script type="text/javascript" src="js/pages/stack/StackAdd.js"></script>
+<script type="text/javascript" src="js/pages/stack/StackEdit.js"></script>
+<script type="text/javascript" src="js/pages/stack/Stack.js"></script>
+<script type="text/javascript" src="js/pages/stack/StackTeams.js"></script>
+<script type="text/javascript" src="js/pages/stack/StackTeam.js"></script>
+<script type="text/javascript" src="js/pages/stack/StackTeamAdd.js"></script>
+<script type="text/javascript" src="js/pages/stack/StackTeamEdit.js"></script>
+<script type="text/javascript" src="js/pages/stack/StackGroupAuthorities.js"></script>
+<script type="text/javascript" src="js/pages/stack/StackUserAuthorities.js"></script>
+<script type="text/javascript" src="js/pages/stack/StackAttachments.js"></script>
+<script type="text/javascript" src="js/pages/stack/StackAttachmentsManage.js"></script>
+<script type="text/javascript" src="js/pages/stack/StackLogs.js"></script>
+<script type="text/javascript" src="js/pages/stack/StackExport.js"></script>
+
+<script type="text/javascript" src="js/pages/application/Applications.js"></script>
+<script type="text/javascript" src="js/pages/application/ApplicationAdd.js"></script>
+<script type="text/javascript" src="js/pages/application/ApplicationEdit.js"></script>
+<script type="text/javascript" src="js/pages/application/Application.js"></script>
+<script type="text/javascript" src="js/pages/application/ApplicationTeams.js"></script>
+<script type="text/javascript" src="js/pages/application/ApplicationTeam.js"></script>
+<script type="text/javascript" src="js/pages/application/ApplicationTeamAdd.js"></script>
+<script type="text/javascript" src="js/pages/application/ApplicationTeamEdit.js"></script>
+<script type="text/javascript" src="js/pages/application/ApplicationImport.js"></script>
+<script type="text/javascript" src="js/pages/application/ApplicationExport.js"></script>
+
+<script type="text/javascript" src="js/pages/application/Settings.js"></script>
+<script type="text/javascript" src="js/pages/application/SettingsAdd.js"></script>
+<script type="text/javascript" src="js/pages/application/SettingsEdit.js"></script>
+<script type="text/javascript" src="js/pages/application/objects/Setting.js"></script>
+<script type="text/javascript" src="js/pages/application/maps/SettingMap.js"></script>
+<script type="text/javascript" src="js/pages/application/Setting.js"></script>
+<script type="text/javascript" src="js/pages/application/SettingsExport.js"></script>
+
+<script type="text/javascript" src="js/pages/warehouse/Warehouses.js"></script>
+<script type="text/javascript" src="js/pages/warehouse/Warehouse.js"></script>
+<script type="text/javascript" src="js/pages/warehouse/WarehouseAdd.js"></script>
+<script type="text/javascript" src="js/pages/warehouse/WarehouseEdit.js"></script>
+<script type="text/javascript" src="js/pages/warehouse/WarehouseTeams.js"></script>
+<script type="text/javascript" src="js/pages/warehouse/WarehouseTeam.js"></script>
+<script type="text/javascript" src="js/pages/warehouse/WarehouseTeamAdd.js"></script>
+<script type="text/javascript" src="js/pages/warehouse/WarehouseTeamEdit.js"></script>
+<script type="text/javascript" src="js/pages/warehouse/WarehouseExport.js"></script>
+<script type="text/javascript" src="js/pages/warehouse/WarehouseImport.js"></script>
+
+<script type="text/javascript" src="js/pages/warehouse/Sessions.js"></script>
+<script type="text/javascript" src="js/pages/warehouse/Session.js"></script>
+<script type="text/javascript" src="js/pages/warehouse/SessionExport.js"></script>
+<script type="text/javascript" src="js/pages/warehouse/InteractionReports.js"></script>
+<script type="text/javascript" src="js/pages/warehouse/InteractionReport.js"></script>
+<script type="text/javascript" src="js/pages/warehouse/InteractionPages.js"></script>
+<script type="text/javascript" src="js/pages/warehouse/InteractionPage.js"></script>
+<script type="text/javascript" src="js/pages/warehouse/InteractionPageExport.js"></script>
+<script type="text/javascript" src="js/pages/warehouse/InteractionUsers.js"></script>
+<script type="text/javascript" src="js/pages/warehouse/InteractionUser.js"></script>
+<script type="text/javascript" src="js/pages/warehouse/InteractionUserExport.js"></script>
+<script type="text/javascript" src="js/pages/warehouse/InteractionNodes.js"></script>
+<script type="text/javascript" src="js/pages/warehouse/InteractionNode.js"></script>
+<script type="text/javascript" src="js/pages/warehouse/InteractionNodeExport.js"></script>
+<script type="text/javascript" src="js/pages/warehouse/InteractionApplications.js"></script>
+<script type="text/javascript" src="js/pages/warehouse/InteractionApplication.js"></script>
+<script type="text/javascript" src="js/pages/warehouse/InteractionApplicationExport.js"></script>
+
+<script type="text/javascript" src="js/pages/registrar/Registrars.js"></script>
+<script type="text/javascript" src="js/pages/registrar/RegistrarAdd.js"></script>
+<script type="text/javascript" src="js/pages/registrar/RegistrarEdit.js"></script>
+<script type="text/javascript" src="js/pages/registrar/Registrar.js"></script>
+<script type="text/javascript" src="js/pages/registrar/RegistrarExport.js"></script>
+
+<script type="text/javascript" src="js/pages/tenant/Tenants.js"></script>
+<script type="text/javascript" src="js/pages/tenant/TenantAdd.js"></script>
+<script type="text/javascript" src="js/pages/tenant/TenantEdit.js"></script>
+<script type="text/javascript" src="js/pages/tenant/Tenant.js"></script>
+<script type="text/javascript" src="js/pages/tenant/TenantAttachments.js"></script>
+<script type="text/javascript" src="js/pages/tenant/TenantAttachmentsManage.js"></script>
+
+<script type="text/javascript" src="js/pages/plan/Plans.js"></script>
+<script type="text/javascript" src="js/pages/plan/PlanAdd.js"></script>
+<script type="text/javascript" src="js/pages/plan/PlanEdit.js"></script>
+<script type="text/javascript" src="js/pages/plan/Plan.js"></script>
+<script type="text/javascript" src="js/pages/plan/PlanExport.js"></script>
+
+<script type="text/javascript" src="js/pages/client/Clients.js"></script>
+<script type="text/javascript" src="js/pages/client/ClientAdd.js"></script>
+<script type="text/javascript" src="js/pages/client/ClientEdit.js"></script>
+<script type="text/javascript" src="js/pages/client/Client.js"></script>
+<script type="text/javascript" src="js/pages/client/ClientExport.js"></script>
+
+<script type="text/javascript" src="js/pages/authenticationgrant/AuthenticationGrants.js"></script>
+<script type="text/javascript" src="js/pages/authenticationgrant/AuthenticationGrant.js"></script>
+<script type="text/javascript" src="js/pages/authenticationgrant/AuthenticationGrantAdd.js"></script>
+<script type="text/javascript" src="js/pages/authenticationgrant/AuthenticationGrantEdit.js"></script>
+
+<script type="text/javascript" src="js/pages/authenticationgrant/AuthenticationGrantExport.js"></script>
+
+<script type="text/javascript" src="js/pages/billingprovider/BillingProviders.js"></script>
+<script type="text/javascript" src="js/pages/billingprovider/BillingProvider.js"></script>
+<script type="text/javascript" src="js/pages/billingprovider/BillingProviderAdd.js"></script>
+<script type="text/javascript" src="js/pages/billingprovider/BillingProviderEdit.js"></script>
+<script type="text/javascript" src="js/pages/billingprovider/BillingProviderExport.js"></script>
+
+<script type="text/javascript" src="js/pages/project/Projects.js"></script>
+<script type="text/javascript" src="js/pages/project/ProjectAdd.js"></script>
+<script type="text/javascript" src="js/pages/project/ProjectEdit.js"></script>
+<script type="text/javascript" src="js/pages/project/Project.js"></script>
+<script type="text/javascript" src="js/pages/project/ProjectExport.js"></script>
+
+<script type="text/javascript" src="js/pages/webhost/Webhosts.js"></script>
+<script type="text/javascript" src="js/pages/webhost/Webhost.js"></script>
+<script type="text/javascript" src="js/pages/webhost/WebhostAdd.js"></script>
+<script type="text/javascript" src="js/pages/webhost/WebhostEdit.js"></script>
+<script type="text/javascript" src="js/pages/webhost/WebhostExport.js"></script>
+<script type="text/javascript" src="js/pages/webhost/WebhostImport.js"></script>
+
+<script type="text/javascript" src="js/pages/webhost/AutoClientMappings.js"></script>
+<script type="text/javascript" src="js/pages/webhost/AutoClientMapping.js"></script>
+<script type="text/javascript" src="js/pages/webhost/AutoClientMappingAdd.js"></script>
+<script type="text/javascript" src="js/pages/webhost/AutoClientMappingEdit.js"></script>
+<script type="text/javascript" src="js/pages/webhost/AutoClientMappingExport.js"></script>
+
+<script type="text/javascript" src="js/pages/webhost/TrustedDomainMappings.js"></script>
+<script type="text/javascript" src="js/pages/webhost/TrustedDomainMapping.js"></script>
+<script type="text/javascript" src="js/pages/webhost/TrustedDomainMappingAdd.js"></script>
+<script type="text/javascript" src="js/pages/webhost/TrustedDomainMappingEdit.js"></script>
+<script type="text/javascript" src="js/pages/webhost/TrustedDomainMappingExport.js"></script>
+
+<script type="text/javascript" src="js/pages/directory/Directories.js"></script>
+<script type="text/javascript" src="js/pages/directory/Directory.js"></script>
+<script type="text/javascript" src="js/pages/directory/DirectoryAdd.js"></script>
+<script type="text/javascript" src="js/pages/directory/DirectoryEdit.js"></script>
+<script type="text/javascript" src="js/pages/directory/DirectoryExport.js"></script>
+<script type="text/javascript" src="js/pages/directory/DirectoryImport.js"></script>
+
+<script type="text/javascript" src="js/pages/directory/Identities.js"></script>
+<script type="text/javascript" src="js/pages/directory/Identity.js"></script>
+<script type="text/javascript" src="js/pages/directory/IdentityAdd.js"></script>
+<script type="text/javascript" src="js/pages/directory/IdentityEdit.js"></script>
+<script type="text/javascript" src="js/pages/directory/IdentityExport.js"></script>
+
+<script type="text/javascript" src="js/pages/directory/Connections.js"></script>
+<script type="text/javascript" src="js/pages/directory/Connection.js"></script>
+<script type="text/javascript" src="js/pages/directory/ConnectionAdd.js"></script>
+<script type="text/javascript" src="js/pages/directory/ConnectionEdit.js"></script>
+<script type="text/javascript" src="js/pages/directory/ConnectionExport.js"></script>
+
+<script type="text/javascript" src="js/pages/user/UserProfile.js"></script>
+<script type="text/javascript" src="js/pages/user/UserProfileEdit.js"></script>
+
+<script type="text/javascript" src="js/pages/repository/Repositories.js"></script>
+<script type="text/javascript" src="js/pages/repository/Repository.js"></script>
+<script type="text/javascript" src="js/pages/repository/RepositoryAdd.js"></script>
+<script type="text/javascript" src="js/pages/repository/RepositoryEdit.js"></script>
+<script type="text/javascript" src="js/pages/repository/RepositoryExport.js"></script>
+<script type="text/javascript" src="js/pages/repository/RepositoryImport.js"></script>
+
+<script type="text/javascript" src="js/pages/repository/RepositoryTeams.js"></script>
+<script type="text/javascript" src="js/pages/repository/RepositoryTeam.js"></script>
+<script type="text/javascript" src="js/pages/repository/RepositoryTeamAdd.js"></script>
+<script type="text/javascript" src="js/pages/repository/RepositoryTeamEdit.js"></script>
+<script type="text/javascript" src="js/pages/repository/RepositoryLogs.js"></script>
+<script type="text/javascript" src="js/pages/repository/RepositoryChangesets.js"></script>
+<script type="text/javascript" src="js/pages/repository/RepositoryChangeset.js"></script>
+
+<script type="text/javascript" src="js/pages/repository/RepositoryUserAuthorities.js"></script>
+<script type="text/javascript" src="js/pages/repository/RepositoryGroupAuthorities.js"></script>
+
+<script type="text/javascript" src="js/pages/branch/Branches.js"></script>
+<script type="text/javascript" src="js/pages/branch/Branch.js"></script>
+<script type="text/javascript" src="js/pages/branch/BranchAdd.js"></script>
+<script type="text/javascript" src="js/pages/branch/BranchEdit.js"></script>
+
+<script type="text/javascript" src="js/pages/branch/BranchLogs.js"></script>
+
+<script type="text/javascript" src="js/pages/branch/BranchUserAuthorities.js"></script>
+<script type="text/javascript" src="js/pages/branch/BranchGroupAuthorities.js"></script>
+
+<script type="text/javascript" src="js/pages/branch/BranchExport.js"></script>
+<script type="text/javascript" src="js/pages/branch/BranchImport.js"></script>
+
+<script type="text/javascript" src="js/pages/definition/Definitions.js"></script>
+<script type="text/javascript" src="js/pages/definition/Definition.js"></script>
+<script type="text/javascript" src="js/pages/definition/DefinitionAdd.js"></script>
+<script type="text/javascript" src="js/pages/definition/DefinitionEdit.js"></script>
+<script type="text/javascript" src="js/pages/definition/DefinitionExport.js"></script>
+
+<script type="text/javascript" src="js/pages/definition/Forms.js"></script>
+<script type="text/javascript" src="js/pages/definition/FormAdd.js"></script>
+<script type="text/javascript" src="js/pages/definition/Form.js"></script>
+<script type="text/javascript" src="js/pages/definition/FormEdit.js"></script>
+<script type="text/javascript" src="js/pages/definition/FormExport.js"></script>
+
+<script type="text/javascript" src="js/pages/definition/Features.js"></script>
+<script type="text/javascript" src="js/pages/definition/FeatureAdd.js"></script>
+<script type="text/javascript" src="js/pages/definition/FeatureEdit.js"></script>
+<script type="text/javascript" src="js/pages/definition/FeatureEditJSON.js"></script>
+
+<script type="text/javascript" src="js/pages/node/Nodes.js"></script>
+<script type="text/javascript" src="js/pages/node/Node.js"></script>
+<script type="text/javascript" src="js/pages/node/NodeAdd.js"></script>
+<script type="text/javascript" src="js/pages/node/NodeEdit.js"></script>
+<script type="text/javascript" src="js/pages/node/NodeAttachments.js"></script>
+<script type="text/javascript" src="js/pages/node/NodeAttachmentsManage.js"></script>
+<script type="text/javascript" src="js/pages/node/NodeAssociations.js"></script>
+<script type="text/javascript" src="js/pages/node/NodeTranslations.js"></script>
+<script type="text/javascript" src="js/pages/node/NodeAuditRecords.js"></script>
+<script type="text/javascript" src="js/pages/node/NodeExport.js"></script>
+<script type="text/javascript" src="js/pages/node/NodeImport.js"></script>
+
+<script type="text/javascript" src="js/pages/node/NodeFeatures.js"></script>
+
+<script type="text/javascript" src="js/pages/node/NodeFeatureEdit.js"></script>
+<script type="text/javascript" src="js/pages/node/NodeFeatureEditJSON.js"></script>
+
+<script type="text/javascript" src="js/pages/node/NodeFeatureAdd.js"></script>
+
+<script type="text/javascript" src="js/pages/node/NodePreview.js"></script>
+
+<script type="text/javascript" src="js/pages/node/NodeUserAuthorities.js"></script>
+<script type="text/javascript" src="js/pages/node/NodeGroupAuthorities.js"></script>
+
+<script type="text/javascript" src="js/pages/node/NodeJSONAdd.js"></script>
+<script type="text/javascript" src="js/pages/node/NodeTextAdd.js"></script>
+<script type="text/javascript" src="js/pages/node/NodeHTMLAdd.js"></script>
+<script type="text/javascript" src="js/pages/node/NodeFileUpload.js"></script>
+
+<script type="text/javascript" src="js/pages/node/AssociationAdd.js"></script>
+
+<script type="text/javascript" src="js/pages/node/NodeTranslationAdd.js"></script>
+
+<script type="text/javascript" src="js/pages/tag/Tags.js"></script>
+<script type="text/javascript" src="js/pages/tag/Tag.js"></script>
+<script type="text/javascript" src="js/pages/tag/TagEdit.js"></script>
+<script type="text/javascript" src="js/pages/tag/TagAdd.js"></script>
+<script type="text/javascript" src="js/pages/tag/TagNodes.js"></script>
+
+<script type="text/javascript" src="js/pages/folder/Folder.js"></script>
+<script type="text/javascript" src="js/pages/folder/FolderAttachments.js"></script>
+<script type="text/javascript" src="js/pages/folder/FolderAttachmentsManage.js"></script>
+<script type="text/javascript" src="js/pages/folder/FolderAssociations.js"></script>
+<script type="text/javascript" src="js/pages/folder/ChildNodeAdd.js"></script>
+<script type="text/javascript" src="js/pages/folder/FolderAdd.js"></script>
+<script type="text/javascript" src="js/pages/folder/ChildNode.js"></script>
+<script type="text/javascript" src="js/pages/folder/ChildNodeEdit.js"></script>
+<script type="text/javascript" src="js/pages/folder/ChildNodeAttachments.js"></script>
+<script type="text/javascript" src="js/pages/folder/ChildNodeAttachmentsManage.js"></script>
+<script type="text/javascript" src="js/pages/folder/ChildNodeAssociations.js"></script>
+<script type="text/javascript" src="js/pages/folder/ChildNodeAssociationAdd.js"></script>
+<script type="text/javascript" src="js/pages/folder/FolderEdit.js"></script>
+<script type="text/javascript" src="js/pages/folder/FolderExport.js"></script>
+<script type="text/javascript" src="js/pages/folder/FolderImport.js"></script>
+<script type="text/javascript" src="js/pages/folder/ChildNodeExport.js"></script>
+<script type="text/javascript" src="js/pages/folder/ChildNodeImport.js"></script>
+
+<script type="text/javascript" src="js/pages/folder/ChildNodePreview.js"></script>
+<script type="text/javascript" src="js/pages/folder/ChildNodeJSONAdd.js"></script>
+<script type="text/javascript" src="js/pages/folder/ChildNodeTextAdd.js"></script>
+<script type="text/javascript" src="js/pages/folder/ChildNodeHTMLAdd.js"></script>
+
+<script type="text/javascript" src="js/pages/folder/FolderFileUpload.js"></script>
+
+<script type="text/javascript" src="js/pages/folder/ChildNodeAuditRecords.js"></script>
+<script type="text/javascript" src="js/pages/folder/FolderAuditRecords.js"></script>
+<script type="text/javascript" src="js/pages/node/AssociationAdd.js"></script>
+
+<script type="text/javascript" src="js/pages/folder/ChildNodeGroupAuthorities.js"></script>
+<script type="text/javascript" src="js/pages/folder/ChildNodeUserAuthorities.js"></script>
+
+<script type="text/javascript" src="js/pages/folder/FolderGroupAuthorities.js"></script>
+<script type="text/javascript" src="js/pages/folder/FolderUserAuthorities.js"></script>
+
+<script type="text/javascript" src="js/pages/folder/ChildNodeFeatures.js"></script>
+<script type="text/javascript" src="js/pages/folder/ChildNodeFeatureEdit.js"></script>
+<script type="text/javascript" src="js/pages/folder/ChildNodeFeatureEditJSON.js"></script>
+<script type="text/javascript" src="js/pages/folder/ChildNodeFeatureAdd.js"></script>
+
+<script type="text/javascript" src="js/pages/folder/FolderFeatures.js"></script>
+<script type="text/javascript" src="js/pages/folder/FolderFeatureEdit.js"></script>
+<script type="text/javascript" src="js/pages/folder/FolderFeatureEditJSON.js"></script>
+<script type="text/javascript" src="js/pages/folder/FolderFeatureAdd.js"></script>
+
+<script type="text/javascript" src="js/components/GitanaPrincipalSelector.js"></script>
+
+<script type="text/javascript">
+
+    Gitana.CMS.load();
+
+</script>
+
+<!-- end scripts-->
+<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+chromium.org/developers/how-tos/chrome-frame-getting-started -->
+<!--[if lt IE 7 ]>
+<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+<script>window.attachEvent('onload', function() {
+    CFInstall.check({mode:'overlay'})
+})</script>
+<![endif]-->
 </head>
 
 <body id="top">
@@ -662,9 +662,9 @@ For optimal performance, use a custom Modernizr build: www.modernizr.com/downloa
 
     <!-- Begin of Sidebar -->
     <aside id="sidebar">
-    <!--[if lt IE 9]>
-    <div id="sidebar">
-    <![endif]-->
+        <!--[if lt IE 9]>
+        <div id="sidebar">
+        <![endif]-->
 
         <!-- Begin of Navigation -->
         <!--[if lt IE 9]>
@@ -674,9 +674,9 @@ For optimal performance, use a custom Modernizr build: www.modernizr.com/downloa
         <nav id="nav" gadget="menu">
         </nav>
         <!--! end of #nav -->
-    <!--[if lt IE 9]>
-    </div>
-    <![endif]-->
+        <!--[if lt IE 9]>
+        </div>
+        <![endif]-->
     </aside>
     <!--! end of #sidebar -->
 
@@ -692,9 +692,9 @@ For optimal performance, use a custom Modernizr build: www.modernizr.com/downloa
     <!--! end of #main -->
 
     <footer id="footer">
-    <!--[if lt IE 9]>
-    <div id="footer">
-    <![endif]-->
+        <!--[if lt IE 9]>
+        <div id="footer">
+        <![endif]-->
         <div align="center">
             <div style="vertical-align: middle">
                 © Copyright 2012 <a href="http://www.cloudcms.com">Gitana Software, Inc</a>. All rights reserved.
@@ -704,12 +704,12 @@ For optimal performance, use a custom Modernizr build: www.modernizr.com/downloa
             <br/>
             <br/>
         </div>
-    <!--[if lt IE 9]>
-    </div>
-    <![endif]-->
+        <!--[if lt IE 9]>
+        </div>
+        <![endif]-->
     </footer>
-    </div>
-    <!--! end of #footer -->
+</div>
+<!--! end of #footer -->
 
 <!-- JavaScript at the bottom for fast page loading -->
 <!--                            -->
