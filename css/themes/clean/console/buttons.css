@@ -322,6 +322,30 @@ input[type="submit"].button {
     background-image: linear-gradient(#777,#111);
 }
 
+.button.cancel
+{
+    color: white !important;
+    text-shadow: #333 1px 1px 0;
+    background-color: #000000;
+    border: 1px solid #333;
+    border-top: 1px solid #444;
+    background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#666),color-stop(100%,#000));
+    background-image: -webkit-linear-gradient(#666,#000);
+    background-image: -moz-linear-gradient(#666,#000);
+    background-image: -o-linear-gradient(#666,#000);
+    background-image: -ms-linear-gradient(#666,#000);
+    background-image: linear-gradient(#666,#000);
+}
+
+.button.cancel:hover
+{
+    background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#777),color-stop(100%,#111));
+    background-image: -webkit-linear-gradient(#777,#111);
+    background-image: -moz-linear-gradient(#777,#111);
+    background-image: -o-linear-gradient(#777,#111);
+    background-image: -ms-linear-gradient(#777,#111);
+    background-image: linear-gradient(#777,#111);
+}
 
 
 

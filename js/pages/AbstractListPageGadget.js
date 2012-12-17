@@ -353,13 +353,8 @@
                         $(this).html(buttonText);
                     }).appendTo($('#column-4', renderedField.outerEl));
             }
-            /*
-             $('<div style="margin:5px;" class="button red">Last</div>').click(function() {
-             renderedField.setValue(self.filterDefaultData());
-             }).appendTo($('#column-1', renderedField.outerEl));
-             */
 
-            $('<div style="margin:5px;" class="button red">Reset</div>').click(
+            $('<div style="margin:5px;" class="button reset">Reset</div>').click(
                     function() {
                         renderedField.setValue(self.filterEmptyData());
                     }).appendTo($('#column-4', renderedField.outerEl));

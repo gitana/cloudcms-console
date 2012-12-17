@@ -1250,9 +1250,10 @@ ul.item-list
 
 #platform-logo
 {
-    vertical-align: middle;
-    max-height: 38px;
+    margin-top: -3px;
+    max-height: 39px;
     max-width: 240px;
+    vertical-align: middle;
 }
 
 .user-info-messages
