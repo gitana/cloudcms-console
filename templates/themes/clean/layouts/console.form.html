@@ -33,7 +33,7 @@
 					<div class="block-content">
 						<div {{if form.id}}id="${form.id}"{{/if}}></div>
                         {{if form.buttons}}
-						<div class="block-actions">
+						<div class="block-actions" style="padding-bottom:20px;">
 							<ul class="actions-left">
 								{{each(j,button) form.buttons}}
                                     {{if button.isLeft}}
@@ -48,7 +48,7 @@
                                     {{/if}}
                                 {{/each}}
 							</ul>
-						</div>
+                        </div>
                         {{/if}}
 					</div>
 				</div>

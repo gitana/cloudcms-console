@@ -12,30 +12,29 @@
         </div>
         <!-- End of Platform Logo -->
 
-
-        <!-- Divider between info-button and the toolbar-icons -->
-        <div class="divider-header divider-vertical"></div>
-
-        <!-- Toolbox -->
-        <ul class="toolbox-header">
-            <li>
-                <a rel="tooltip-html" title="Recent History" class="toolbox-action" href="javascript:void(0);"><span
-                        class="recent-history-icon"></span></a>
-                <a rel="tooltip-html" title="Clipboard" class="toolbox-action" href="javascript:void(0);"><span
-                        class="clipboard-icon"></span></a>
-                <a rel="tooltip-html" title="My Favorites" class="toolbox-action" href="javascript:void(0);"><span
-                        class="my-favorites-icon"></span></a>
-            </li>
-        </ul>
-        <!-- End of Toolbox -->
-
         <!-- User Info -->
         <div id="user-info">
+            <ul class="toolbox-header">
+                <li>
+                    <a rel="tooltip-html" title="Recent History" class="toolbox-action" href="javascript:void(0);"><span
+                            class="recent-history-icon"></span></a>
+                    <a rel="tooltip-html" title="Clipboard" class="toolbox-action" href="javascript:void(0);"><span
+                            class="clipboard-icon"></span></a>
+                    <a rel="tooltip-html" title="My Favorites" class="toolbox-action" href="javascript:void(0);"><span
+                            class="my-favorites-icon"></span></a>
+                </li>
+            </ul>
+
+            <!-- Divider between info-button and the toolbar-icons -->
+            <div class="divider-header divider-vertical"></div>
+
+            <!-- User Icon -->
             <a href="#/profile" rel="tooltip-html" original-title="Your Profile">
                 <img class="header-avatar-photo" id="login-user-avatar" data-src="${userLogoUrl}" alt="${userAltText}"/>
             </a>
             <span class="user-info-messages"><a href="#/profile">{{if header}}${header.friendlyName}{{/if}}</a></span>
 
+            <!-- Log out button -->
             <a href="javascript:void(1);" class="button logout">Logout</a>
 
         </div>

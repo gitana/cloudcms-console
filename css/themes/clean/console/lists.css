@@ -20,34 +20,34 @@
  * 1) Toolbox
  * ================================================== */
 
-#container > #header-surround > #header > ul.toolbox-header {
+ul.toolbox-header {
 	list-style: none;
 	list-style-image: none;
 	/*margin: 0;*/
 	padding: 0;
 	/*margin-left: 35px;*/
-    margin: 0 0 0 265px;
+    margin: 0 0 0 0;
 	float: left;
-	position: absolute;
+	position: relative;
 	z-index: 1000;
+    margin-top: -3px;
 }
 
-#container > #header-surround > #header > ul.toolbox-header li {
+ul.toolbox-header li {
 	float: left;
 }
 
-#container > #header-surround > #header > ul.toolbox-header li a.toolbox-action {
-	/**background: url("../../../images/themes/clean/console/container/header/header-bg.jpg") repeat-x scroll top left transparent;*/
+ul.toolbox-header li a.toolbox-action {
 	height: 42px;
 	width: 45px;
 	float: left;
 }
 
-#container > #header-surround > #header > ul.toolbox-header li a.toolbox-action:hover {
+ul.toolbox-header li a.toolbox-action:hover {
 	background: url("../../../images/themes/clean/console/container/toolbox/toolbox-hover.png") no-repeat scroll top left transparent;
 }
 
-#container > #header-surround > #header > ul.toolbox-header li span {
+ul.toolbox-header li span {
 	width: 24px;
 	height: 24px;
 	display: block;
@@ -55,7 +55,7 @@
 	margin-left: 11px;
 }
 
-#container > #header-surround > #header > ul.toolbox-header a.active {
+ul.toolbox-header a.active {
 	background: url("../../../images/themes/clean/console/container/toolbox/toolbox-hover.png") no-repeat scroll top left transparent;
 }
 

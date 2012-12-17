@@ -1236,23 +1236,25 @@ ul.item-list
     padding-bottom: 5px;
 }
 
+/*
 .ui-widget-overlay
 {
     background: #3A8CBA !important;
 }
+*/
 
 #platform-logo-holder
 {
     width: 260px;
     float: left;
     line-height: 42px;
+    position: relative;
 }
 
 #platform-logo
 {
-    margin-top: -3px;
-    max-height: 39px;
-    max-width: 240px;
+    max-height: 32px;
+    max-width: 200px;
     vertical-align: middle;
 }
 

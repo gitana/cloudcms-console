@@ -61,7 +61,7 @@ h6 { font-size: 12px; }
  */
 
 p {
-	font-size: 12px;
+	font-size: 14px;
 	color: #2a3640;
 }
 
@@ -148,23 +148,20 @@ p {
  */
 
 #container > #sidebar > #nav > .menu li a {
-	font-size: 13px;
+	font-size: 14px;
 	color: #3b3b3b;
 }
 
 #container > #sidebar > #nav > .menu li a:hover {
-	/**color: #f4faff;**/
     color: #3b3b3b;
 }
 
 /** SUB ITEMS **/
 #container > #sidebar > #nav > .menu li ul li a {
-	/**color: #e5e5e5;**/
     color: #3b3b3b;
 }
 
 #container > #sidebar > #nav > .menu li ul li a:hover {
-	/**color: #fff;**/
     color: #3b3b3b;
 }
 
@@ -304,6 +301,7 @@ ul.tabs li a:hover {
 
 ul.toolbar-list li a {
 	color: #515151;
+    font-size: 12px;
 }
 
 
