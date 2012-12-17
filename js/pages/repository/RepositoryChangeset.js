@@ -173,7 +173,7 @@
         setupPage : function(el) {
             var page = {
                 "title" : "Repository Changeset",
-                "description" : "Display list of nodes of change set "+this.friendlyTitle(this.changeset()) + ".",
+                "description" : "Displays a list of nodes contained within changeset '"+this.friendlyTitle(this.changeset()) + "'.",
                 "listTitle" : "Node List",
                 "listIcon" : Gitana.Utils.Image.buildImageUri('objects', 'node', 20),
                 "subscription" : this.SUBSCRIPTION,

@@ -647,70 +647,94 @@ For optimal performance, use a custom Modernizr build: www.modernizr.com/downloa
 
 <!-- Begin of #container -->
 <div id="container">
+<!-- Begin of #header -->
+<div id="header-surround" gadget="header" subscription="userDetails">
+</div>
+<!--! end of #header -->
+<div class="fix-shadow-bottom-height"></div>
 
-    <!-- Begin of #header -->
-    <div id="header-surround" gadget="header" subscription="userDetails"></div>
-    <!--! end of #header -->
-    <!--
-    <div class="fix-shadow-bottom-height"></div>
-    -->
+<!-- custom logo -->
+<!-- Begin of #login-details -->
+<!--
+<div id="login-details" gadget="logindetails" subscription="tenantDetails" align="center"></div>
+-->
+<!--! end of #login-details -->
 
     <!-- Begin of titlebar/breadcrumbs -->
     <div id="title-bar" gadget="breadcrumb"></div>
     <!--! end of #title-bar -->
+
     <div class="shadow-bottom shadow-titlebar"></div>
 
+
     <!-- Begin of Sidebar -->
-    <aside id="sidebar">
-    <!--[if lt IE 9]>
-    <div id="sidebar">
-    <![endif]-->
+<aside id="sidebar">
+<!--[if lt IE 9]>
+<div id="sidebar">
+<![endif]-->
+    <!-- Tenant Bar -->
+    <!--
+    <div id="tenant-bar" gadget="tenantbar" subscription="tenantDetails"></div>
+    <div class="shadow-bottom shadow-titlebar"></div>
+    -->
+    <!--! end of #tenant-bar -->
 
-        <!-- Begin of Navigation -->
-        <!--[if lt IE 9]>
-        <div id="nav" gadget="menu">
+    <!-- Begin of #login-details -->
+    <!--[if lt IE 9]>
+    <!--
+    <div id="login-details" gadget="logindetails" subscription="userDetails">
+    </div>
+    -->
+    <![endif]-->
+    <!--
+    <section id="login-details" gadget="logindetails" subscription="tenantDetails">
+    </section>
+    <!--! end of #login-details -->
+
+    <!-- Begin of Navigation -->
+    <!--[if lt IE 9]>
+    <div id="nav" gadget="menu">
+    </div>
+    <![endif]-->
+    <nav id="nav" gadget="menu">
+    </nav>
+    <!--! end of #nav -->
+<!--[if lt IE 9]>
+</div>
+<![endif]-->
+</aside>
+<!--! end of #sidebar -->
+
+<!-- Begin of #main -->
+<div id="main" role="main">
+
+    <!-- Begin of #main-content -->
+    <div id="main-content" gadget="page">
+    </div>
+
+    <!--! end of #main-content -->
+</div>
+<!--! end of #main -->
+
+<footer id="footer">
+<!--[if lt IE 9]>
+<div id="footer">
+<![endif]-->
+    <div align="center">
+        <div style="vertical-align: middle">
+            © Copyright 2012 <a href="http://www.cloudcms.com">Gitana Software, Inc</a>. All rights reserved.
         </div>
-        <![endif]-->
-        <nav id="nav" gadget="menu">
-        </nav>
-        <!--! end of #nav -->
-    <!--[if lt IE 9]>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
     </div>
-    <![endif]-->
-    </aside>
-    <!--! end of #sidebar -->
-
-    <!-- Begin of #main -->
-    <div id="main" role="main">
-
-        <!-- Begin of #main-content -->
-        <div id="main-content" gadget="page">
-        </div>
-
-        <!--! end of #main-content -->
-    </div>
-    <!--! end of #main -->
-
-    <footer id="footer">
-    <!--[if lt IE 9]>
-    <div id="footer">
-    <![endif]-->
-        <div align="center">
-            <div style="vertical-align: middle">
-                © Copyright 2012 <a href="http://www.cloudcms.com">Gitana Software, Inc</a>. All rights reserved.
-            </div>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-        </div>
-    <!--[if lt IE 9]>
-    </div>
-    <![endif]-->
-    </footer>
-    </div>
-    <!--! end of #footer -->
-
+<!--[if lt IE 9]>
+</div>
+<![endif]-->
+</footer>
+</div>
+<!--! end of #container -->
 <!-- JavaScript at the bottom for fast page loading -->
 <!--                            -->
 <!--           SCRIPT           -->

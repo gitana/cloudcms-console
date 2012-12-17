@@ -179,9 +179,9 @@
 
         setupPage : function(el) {
             var page = {
-                "title" : "Repository Change Sets",
-                "description" : "Display list of change sets of repository "+this.friendlyTitle(this.targetObject()) + ".",
-                "listTitle" : "Change Set List",
+                "title" : "Repository Changesets",
+                "description" : "Displays a list of changesets contained within the repository '"+this.friendlyTitle(this.targetObject()) + "'.",
+                "listTitle" : "Changeset List",
                 "listIcon" : Gitana.Utils.Image.buildImageUri('objects', 'changesets', 20),
                 "subscription" : this.SUBSCRIPTION,
                 "filter" : this.FILTER

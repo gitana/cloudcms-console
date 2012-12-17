@@ -39,7 +39,8 @@
 
 body {
 	/*background: url("../../../images/themes/clean/console/container/navigation/nav-bg.png") repeat-y scroll top left #e3e5e7;*/
-    background: url("../../../images/themes/clean/console/container/navigation/nav-bg.png") repeat-y scroll top left #fff;
+    /*background: url("../../../images/themes/clean/console/container/navigation/nav-bg.png") repeat-y scroll top left #fff;*/
+    background-color: #fff;
 }
 
 body.special-page {
@@ -92,16 +93,17 @@ body.special-page {
  */
 
 #container > #header-surround > #header {
-	/*background: url("../../../images/themes/clean/console/container/header/header-bg.png") repeat-x scroll top left transparent;*/
-    background: url("../../../images/themes/clean/console/container/header/header-bg.jpg") repeat-x scroll top left transparent;
+    /*background: url("../../../images/themes/clean/console/container/header/header-bg.jpg") repeat-x scroll top left transparent;*/
+    background-color: #3A8CBA;
 	height: 43px;
 	position: relative;
 	z-index: 30;
 }
 
 #container > #header-surround {
-	background: url("../../../images/themes/clean/console/misc/shadow/shadow-bottom.png") repeat-x scroll bottom left transparent;
-	padding-bottom: 14px;
+	/*background: url("../../../images/themes/clean/console/misc/shadow/shadow-bottom.png") repeat-x scroll bottom left transparent;*/
+    border-bottom: 1px solid #333333;
+	/*padding-bottom: 14px;*/
 	position: relative;
 	z-index: 50;
 }
@@ -124,8 +126,8 @@ body.special-page {
 
 #user-info {
 	float: right;
-	margin-top: -4px;
 	margin-right: 10px;
+    padding: 3px;
 }
 
 /* ==================================================
@@ -159,15 +161,7 @@ body.special-page {
  */
 
 #login-details {
-    background: url("../../../images/themes/clean/console/container/header/header-bg.jpg") repeat-x scroll left top #212f3b;
-    /*background: url("../../../images/themes/clean/console/container/header/header-bg.png") repeat-x scroll left top #212f3b;*/
-	/**background: url("../../../images/themes/clean/console/container/login-details/login-details-bg.png") repeat-x scroll top center #212f3b;**/
-    /*
-	margin-right: 1px;
-	padding-top: 15px;
-    padding-bottom: 15px;
-    */
-    /*background: #f5f5f5;*/
+    /**background: url("../../../images/themes/clean/console/container/header/header-bg.jpg") repeat-x scroll left top #212f3b;**/
     display: inline-block;
     height: 84px;
     position: absolute;
@@ -175,6 +169,7 @@ body.special-page {
     top: 0;
     z-index: 900;
     width: 260px;
+    background-color: #3A8CBA;
 }
 
 
@@ -188,7 +183,7 @@ body.special-page {
 	/* Remove fixed footer */
     /*position: absolute;*/
 	z-index: 30;
-    margin-top: 42px;
+    /*margin-top: 42px;*/
 }
 
 #container > #sidebar > #nav > .menu {
@@ -208,7 +203,8 @@ body.special-page {
 }
 
 #container > #sidebar > #nav > .menu li a {
-	background: url("../../../images/themes/clean/console/container/navigation/nav-item-bg.png") repeat-x scroll 0 0 transparent;
+	/*background: url("../../../images/themes/clean/console/container/navigation/nav-item-bg.png") repeat-x scroll 0 0 transparent;*/
+    /*text-decoration: underline;*/
 	display: block;
 	text-decoration: none;
 	padding-left: 20px;
@@ -256,18 +252,19 @@ body.special-page {
 
 #container > #sidebar > #nav > .menu li ul.sub li a:hover
 {
-    color: white;
+    /*color: white;*/
 }
 
 #container > #sidebar > #nav > .menu li ul.sub li a.current
 {
     /**background: none scroll top left #3b5060;**/
-    color: white;
+    /*color: white;*/
+    font-weight: bold;
 }
 
 #container > #sidebar > #nav > .menu li ul.sub
 {
-    border-top: 1px #999 solid;
+    /*border-top: 1px #999 solid;*/
 }
 
 
@@ -302,11 +299,12 @@ body.special-page {
  * 7) Search-Bar & Title-Bar
  * ================================================== */
 
-#container > #main > #title-bar {
+#title-bar {
 	background: url("../../../images/themes/clean/console/container/title-bar/title-bar-bg.png") repeat-x scroll top left transparent;
-	height: 42px;
+	height: 40px;
 	position: relative;
 	z-index: 30;
+    border-bottom: 1px solid #333333;
 }
 
 .shadow-titlebar {
@@ -394,8 +392,9 @@ body.special-page {
 }
 
 .divider-vertical {
-	background: url("../../../images/themes/clean/console/misc/divider/divider-vertical.png") no-repeat scroll top left transparent;
-	height: 34px;
+	/*background: url("../../../images/themes/clean/console/misc/divider/divider-vertical.png") no-repeat scroll top left transparent;*/
+    border-left: 1px solid #0A5C8A;
+	height: 43px;
 	width: 2px;
 	overflow: hidden;
 }

@@ -297,8 +297,8 @@ input.list-search {
 
 /** Breadcrumb **/
 #breadcrumbs {
-    height: 42px;
-    line-height: 42px;
+    height: 40px;
+    line-height: 40px;
     margin: 0px;
     padding: 0px;
     overflow: hidden;
@@ -771,12 +771,14 @@ h2.dialog-delete-message {
 
 /* header avatar */
 .header-avatar-photo {
-    max-width: 24px;
+    max-width: 32px;
     float: left;
+    /*
     margin-bottom: 8px;
     margin-right: 8px;
+    */
     background: none repeat scroll 0 0 #EEEFF7;
-    border: 1px solid #969696;
+    border: 1px solid #333;
     border-radius: 3px 3px 3px 3px;
     line-height: 0;
     padding: 2px;
@@ -1215,4 +1217,46 @@ ul.item-list
     margin: 0px;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+#container > #sidebar > #nav > .menu > li > a
+{
+    /*text-decoration: underline;*/
+    font-size: 16px;
+    color: #475D68;
+}
+
+#container > #sidebar > #nav > .menu > li
+{
+    border: 1px solid #AAAAAA;
+    border-radius: 5px 5px 5px 5px;
+    margin: 15px;
+    box-shadow: 3px 3px 3px 3px #CCCCCC;
+    background: none repeat scroll 0 0 #FFFFFF;
+    padding-bottom: 5px;
+}
+
+.ui-widget-overlay
+{
+    background: #3A8CBA !important;
+}
+
+#platform-logo-holder
+{
+    width: 260px;
+    float: left;
+    line-height: 42px;
+}
+
+#platform-logo
+{
+    vertical-align: middle;
+    max-height: 38px;
+    max-width: 240px;
+}
+
+.user-info-messages
+{
+    padding-left: 10px;
+    padding-right: 10px;
 }

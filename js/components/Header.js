@@ -10,15 +10,45 @@
         index: function(el) {
             var self = this;
 
-            this.subscribe(this.subscription, this.refresh);
+            //this.subscribe(this.subscription, this.refresh);
+            this.subscribe("tenantDetails", this.refresh);
+            this.subscribe("userDetails", this.refresh);
+
+            // platform logo and alt text
+            var platformAvatarUrl = this.tenantDetails().avatarUrl;
+            if (!platformAvatarUrl)
+            {
+                platformAvatarUrl = "css/images/themes/clean/console/logos/logo-default.png";
+            }
+            platformAvatarUrl = platformAvatarUrl.replace("/avatar", "/avatar128");
+            el.model["platformLogoUrl"] = platformAvatarUrl;
+            el.model["platformAltText"] = this.tenantDetails().friendlyName;
+
+            // user logo and al ttext
+            var userAvatarUrl = this.userDetails().avatarUrl;
+            if (!userAvatarUrl)
+            {
+                userAvatarUrl = "css/images/themes/default/console/misc/avatar_small.png";
+            }
+            userAvatarUrl = userAvatarUrl.replace("/avatar", "/avatar128");
+            el.model["userLogoUrl"] = userAvatarUrl;
+            el.model["userAltText"] = this.userDetails().friendlyName;
 
             this.model(el);
 
             // render
             self.renderTemplate(el, self.TEMPLATE, function(el) {
-                var imageUrl = $('#login-user-avatar',$(el)).attr('src');
-                if (imageUrl == null || imageUrl != 'css/images/themes/default/console/misc/avatar_small.png') {
+
+                // user logo
+                var userLogoUrl = $('#login-user-avatar',$(el)).attr('src');
+                if (userLogoUrl == null || userLogoUrl != 'css/images/themes/default/console/misc/avatar_small.png') {
                     $('#login-user-avatar',$(el)).attr('src',$('#login-user-avatar',$(el)).attr('data-src'));
+                }
+
+                // platform logo
+                var platformLogoUrl = $('#platform-logo',$(el)).attr('src');
+                if (platformLogoUrl == null || platformLogoUrl != 'css/images/themes/clean/console/logos/logo-default.png') {
+                    $('#platform-logo',$(el)).attr('src',$('#platform-logo',$(el)).attr('data-src'));
                 }
 
                 // Add logout button

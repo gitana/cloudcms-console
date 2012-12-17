@@ -67,7 +67,7 @@
                     {
                         "id" : "menu-tenant-dashboard",
                         "link" : "#" + self.link(self.tenant()),
-                        "title" : "Tenant Dashboard",
+                        "title" : "Dashboard",
                         "icon" : Gitana.Utils.Image.buildImageUri('objects', 'tenant', 16),
                         "current" : current == "menu-tenant-dashboard"
                     },
@@ -77,37 +77,7 @@
                         "title" : "Attachments",
                         "icon" :  Gitana.Utils.Image.buildImageUri('objects', 'attachment', 16),
                         "current" : current == "menu-tenant-attachments"
-                    }/*,
-                    {
-                        "id" : "menu-tenant-teams",
-                        "link" : "#" + self.link(self.tenant(),'teams'),
-                        "title" : "Teams",
-                        "icon" :  Gitana.Utils.Image.buildImageUri('security', 'team', 16),
-                        "current" : current == "menu-tenant-teams"
                     }
-                    ,
-                    {
-                        "id" : "menu-tenant-allocations",
-                        "link" : "#" + self.link(self.tenant(),'allocations'),
-                        "title" : "Allocations",
-                        "icon" :  Gitana.Utils.Image.buildImageUri('objects', 'branches', 16),
-                        "current" : current == "menu-tenant-allocations"
-                    }
-                    ,
-                    {
-                        "id" : "menu-platform-dashboard",
-                        "link" : "#/",
-                        "title" : "Platform",
-                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'platform', 16),
-                        "current" : current == "menu-platform-dashboard",
-                        "requiredAuthorities" : [
-                            {
-                                "permissioned" : self.platform(),
-                                "permissions" : ["update"]
-                            }
-                        ]
-                    }
-                    */
                 ]
             };
         },
@@ -120,7 +90,7 @@
                     {
                         "id" : defaultItem,
                         "link" : "#" + self.teamLink(self.team(),self.tenant()),
-                        "title" : "Tenant Team Dashboard",
+                        "title" : "Dashboard",
                         "icon" : Gitana.Utils.Image.buildImageUri('security', 'team', 16),
                         "current" : current == defaultItem
                     }
@@ -243,7 +213,7 @@
                         },{
                             "id" : "menu-platform-billing-providers",
                             "link" : "#" + self.listLink('billing-providers'),
-                            "title" : "Billing Provider Configurations",
+                            "title" : "Billing Configurations",
                             "icon" :  Gitana.Utils.Image.buildImageUri('objects', 'billing-provider', 16),
                             "current" : current == "menu-platform-billing-providers"
                         },{
@@ -281,7 +251,7 @@
                     "items": [{
                         "id" : defaultItem,
                         "link" : "#" + self.teamLink(self.team(),self.tenant()),
-                        "title" : "Platform Team Dashboard",
+                        "title" : "Dashboard",
                         "icon" : Gitana.Utils.Image.buildImageUri('security', 'team', 16),
                         "current" : current == defaultItem
                     }]
@@ -708,7 +678,7 @@
                     "items": [{
                         "id" : "menu-interaction-user-dashboard",
                         "link" : "#" + self.link(self.interactionUser()),
-                        "title" : "Interaction User Dashboard",
+                        "title" : "Dashboard",
                         "icon" : Gitana.Utils.Image.buildImageUri('objects', 'interaction-user', 16),
                         "current" : current == defaultItem
                     }]
@@ -949,7 +919,7 @@
                     "items": [{
                         "id" : defaultItem,
                         "link" : "#" + self.teamLink(self.team(),self.repository()),
-                        "title" : "Repository Team Dashboard",
+                        "title" : "Dashboard",
                         "icon" : Gitana.Utils.Image.buildImageUri('security', 'team', 16),
                         "current" : current == defaultItem
                     }]
@@ -1077,7 +1047,7 @@
                     "items": [{
                         "id" : defaultItem,
                         "link" : "#" + self.LINK().call(self,self.node()),
-                        "title" : "Node Dashboard",
+                        "title" : "Dashboard",
                         "icon" : Gitana.Utils.Image.buildImageUri('objects', 'node', 16),
                         "current" : current == defaultItem
                     },
@@ -1233,7 +1203,7 @@
                     "items": [{
                         "id" : defaultItem,
                         "link" : "#" + self.folderLink(self.node()),
-                        "title" : "Node Dashboard",
+                        "title" : "Dashboard",
                         "icon" : Gitana.Utils.Image.buildImageUri('objects', 'node', 16),
                         "current" : current == defaultItem
                     },
@@ -1325,7 +1295,7 @@
                     "items": [{
                         "id" : defaultItem,
                         "link" : "#" + self.LINK().call(self,self.definition()),
-                        "title" : "Definition Dashboard",
+                        "title" : "Dashboard",
                         "icon" : Gitana.Utils.Image.buildImageUri('objects', 'definition', 16),
                         "current" : current == defaultItem
                     },

@@ -73,12 +73,12 @@ p {
 	color: #d9d9d9;
 }
 
-#header .messages a {
+#header .user-info-messages a {
 	color: #ebebeb;
 	font-weight: 700;
 }
 
-#header .messages a:hover {
+#header .user-info-messages a:hover {
 	color: #fff;
 	text-decoration: none;
 }

@@ -99,7 +99,7 @@
                         "type":"property",
                         "sortingExpression": "domainId",
                         "property": function(callback) {
-                            var id = this.getDomainId();
+                            var id = this["domainId"];//.getDomainId();
                             var link = this.get('domainLink') ? this.get('domainLink') : self.listLink('domains') + id;
                             var name = self.listItemProp(this, 'domainName', id);
                             // make sure we get the primary domain name
@@ -115,8 +115,9 @@
                         "type":"property",
                         "sortingExpression": "name",
                         "property": function(callback) {
-                            var id = this.getName();
-                            var value = "<a href='#" + self.link(this) + "'>" + id + "</a>";
+                            //var name = this.getName();
+                            var name = this["name"];
+                            var value = "<a href='#" + self.link(this) + "'>" + name + "</a>";
                             callback(value);
                         }
                     },
@@ -131,12 +132,17 @@
                                 callback(title);
                             } else {
                                 var name = "";
+                                /*
                                 if (this.getFirstName()) {
                                     name += this.getFirstName() + " ";
                                 }
                                 if (this.getLastName()) {
                                     name += this.getLastName();
                                 }
+                                */
+
+                                name += this["fullName"];
+
                                 callback(name);
                             }
                         }
@@ -154,7 +160,10 @@
                         "property": function(callback) {
                             var buttonText = this.get('isMember') ? "Remove" : "Add";
                             var buttonClass = this.get('isMember') ? "membership-remove" : "membership-add";
-                            var value = "<a id='" + this.getDomainQualifiedId() + "' class='membership-action " + buttonClass + "'><span>" + buttonText + "</span></a>";
+                            //var value = "<a id='" + this.getDomainQualifiedId() + "' class='membership-action " + buttonClass + "'><span>" + buttonText + "</span></a>";
+
+                            var domainQualifiedId = this["domainid"] + "/" + this["_doc"];
+                            var value = "<a id='" + domainQualifiedId + "' class='membership-action " + buttonClass + "'><span>" + buttonText + "</span></a>";
                             callback(value);
                         }
                     }
@@ -173,7 +182,8 @@
                             _this = this;
                             this.each(function() {
                                 _this[this.getId()]['isMember'] = true;
-                                domainIds.push(this.getDomainId());
+                                //domainIds.push(this.getDomainId());
+                                domainIds.push(this["domainId"]);
                             }).then(function() {
                                 this.subchain(self.platform()).queryDomains({
                                     "repository" : {
@@ -188,9 +198,12 @@
 
                                 this.then(function() {
                                     this.each(function() {
-                                        if (domainLookup[this.getDomainId()]) {
-                                             _this[this.getId()]['domainName'] = domainLookup[this.getDomainId()]['name'];
-                                             _this[this.getId()]['domainLink'] = domainLookup[this.getDomainId()]['link'];
+                                        //if (domainLookup[this.getDomainId()]) {
+                                        if (domainLookup[this["domainId"]]) {
+                                             //_this[this.getId()]['domainName'] = domainLookup[this.getDomainId()]['name'];
+                                             //_this[this.getId()]['domainLink'] = domainLookup[this.getDomainId()]['link'];
+                                            _this[this.getId()]['domainName'] = domainLookup[this["domainId"]]['name'];
+                                            _this[this.getId()]['domainLink'] = domainLookup[this["domainId"]]['link'];
                                         }
                                     }).then(function() {
                                         callback.call(this);

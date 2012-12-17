@@ -197,7 +197,7 @@
             setupPage : function(el) {
                 var page = {
                     "title" : "Branches",
-                    "description" : "Display list of branches of repository " + this.friendlyTitle(this.repository()) + ".",
+                    "description" : "Displays a list of branches contained within repository '" + this.friendlyTitle(this.repository()) + "'.",
                     "listTitle" : "Branch List",
                     "listIcon" : Gitana.Utils.Image.buildImageUri('objects', 'branch', 20),
                     "searchBox" : true,

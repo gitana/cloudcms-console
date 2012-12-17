@@ -1949,56 +1949,59 @@
 
             var link = "";
 
-            switch (context && context.objectType()) {
+            if (context && context.objectType)
+            {
+                switch (context && context.objectType()) {
 
-                case 'Gitana.Tenant':
+                    /*
+                    case 'Gitana.Tenant':
 
-                    link += this.listLink('platform-teams');
+                        link += this.listLink('platform-teams');
 
-                    break;
+                        break;
 
-                case 'Gitana.Platform':
+                    case 'Gitana.Platform':
 
-                    link += this.listLink('platform-teams');
+                        link += this.listLink('platform-teams');
 
-                    break;
+                        break;
+                    */
 
-                case 'Gitana.Repository':
+                    case 'Gitana.Repository':
 
-                    link += this.listLink('repository-teams');
+                        link += this.listLink('repository-teams');
 
-                    break;
+                        break;
 
-                case 'Gitana.Vault':
+                    case 'Gitana.Vault':
 
-                    link += this.listLink('vault-teams');
+                        link += this.listLink('vault-teams');
 
-                    break;
+                        break;
 
-                case 'Gitana.Stack':
+                    case 'Gitana.Stack':
 
-                    link += this.listLink('stack-teams');
+                        link += this.listLink('stack-teams');
 
-                    break;
+                        break;
 
-                case 'Gitana.Warehouse':
+                    case 'Gitana.Warehouse':
 
-                    link += this.listLink('warehouse-teams');
+                        link += this.listLink('warehouse-teams');
 
-                    break;
+                        break;
 
-                case 'Gitana.Application':
+                    case 'Gitana.Application':
 
-                    link += this.listLink('application-teams');
+                        link += this.listLink('application-teams');
 
-                    break;
+                        break;
+                }
+            }
 
-                default :
-
-                    link += "/teams/"
-
-                    break;
-
+            if (link.length == 0)
+            {
+                link += "/teams/"
             }
 
             if (team && team['teamKey']) {

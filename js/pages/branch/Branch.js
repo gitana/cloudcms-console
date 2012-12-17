@@ -384,7 +384,7 @@
 
                 var page = {
                     "title" : this.friendlyTitle(this.targetObject()),
-                    "description" : "Overview of branch " + title + " of repository " + this.friendlyTitle(this.repository()) + ".",
+                    "description" : "Overview of branch '" + title + "' of the repository '" + this.friendlyTitle(this.repository()) + "'.",
                     "dashlets" :[
                         {
                             "id" : "overview",

@@ -23,11 +23,12 @@
 #container > #header-surround > #header > ul.toolbox-header {
 	list-style: none;
 	list-style-image: none;
-	margin: 0;
+	/*margin: 0;*/
 	padding: 0;
-	margin-left: 35px;
+	/*margin-left: 35px;*/
+    margin: 0 0 0 265px;
 	float: left;
-	position: relative;
+	position: absolute;
 	z-index: 1000;
 }
 
@@ -36,7 +37,7 @@
 }
 
 #container > #header-surround > #header > ul.toolbox-header li a.toolbox-action {
-	background: url("../../../images/themes/clean/console/container/header/header-bg.jpg") repeat-x scroll top left transparent;
+	/**background: url("../../../images/themes/clean/console/container/header/header-bg.jpg") repeat-x scroll top left transparent;*/
 	height: 42px;
 	width: 45px;
 	float: left;
