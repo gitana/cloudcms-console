@@ -18,7 +18,7 @@
             self.renderTemplate(el, self.TEMPLATE, function(el) {
 
                 var imageUrl = $('#tenant-logo',$(el)).attr('src');
-                if (imageUrl == null || imageUrl != 'css/images/themes/default/console/logos/logo-default.png') {
+                if (imageUrl == null || imageUrl != 'css/images/themes/clean/console/logos/logo-default.png') {
                     $('#tenant-logo',$(el)).attr('src', $('#tenant-logo',$(el)).attr('data-src'));
                 }
 

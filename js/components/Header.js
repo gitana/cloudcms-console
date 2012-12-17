@@ -28,7 +28,7 @@
             var userAvatarUrl = this.userDetails().avatarUrl;
             if (!userAvatarUrl)
             {
-                userAvatarUrl = "css/images/themes/default/console/misc/avatar_small.png";
+                userAvatarUrl = "css/images/themes/clean/console/misc/avatar_small.png";
             }
             userAvatarUrl = userAvatarUrl.replace("/avatar", "/avatar128");
             el.model["userLogoUrl"] = userAvatarUrl;
@@ -41,7 +41,7 @@
 
                 // user logo
                 var userLogoUrl = $('#login-user-avatar',$(el)).attr('src');
-                if (userLogoUrl == null || userLogoUrl != 'css/images/themes/default/console/misc/avatar_small.png') {
+                if (userLogoUrl == null || userLogoUrl != 'css/images/themes/clean/console/misc/avatar_small.png') {
                     $('#login-user-avatar',$(el)).attr('src',$('#login-user-avatar',$(el)).attr('data-src'));
                 }
 

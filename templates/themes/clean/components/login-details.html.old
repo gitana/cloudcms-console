@@ -3,7 +3,7 @@
         <img class="side-tenant-logo" id="tenant-logo" {{if logindetails && logindetails.avatarUrl}}data-src="${logindetails.avatarUrl}"{{else}}src="css/images/themes/clean/console/logos/logo-default.png"{{/if}} alt="{{if logindetails}}${logindetails.friendlyName}{{/if}}">
 
         <!--
-        <img class="img-left framed avatar-photo" id="login-user-avatar" src="{{if logindetails && logindetails.avatarUrl}}${logindetails.avatarUrl}{{else}}css/images/themes/default/console/misc/avatar_small.png{{/if}}" alt="Hello {{if logindetails}}${logindetails.friendlyName}{{/if}}">
+        <img class="img-left framed avatar-photo" id="login-user-avatar" src="{{if logindetails && logindetails.avatarUrl}}${logindetails.avatarUrl}{{else}}css/images/themes/clean/console/misc/avatar_small.png{{/if}}" alt="Hello {{if logindetails}}${logindetails.friendlyName}{{/if}}">
 
         <h3>Logged in as</h3>
 
