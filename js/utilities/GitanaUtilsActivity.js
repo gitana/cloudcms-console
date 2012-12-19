@@ -82,7 +82,8 @@
             //var itemText = "<span class='sprite-16 user-16'></span><a class='activity-link' href='" + userLink + "'>" + activity.getUserName() + "</a> " + typeText + " <span class='sprite-16 " + iconId + "-16'></span><a class='activity-link' href='" + "#" + objectLink + "'>" + activity.getObjectTitle() + "</a>";
             //var itemText = "<span class='sprite-16 user-16'></span>";
             var itemText = "";
-            if (activity.getUserTitle())
+            //if (activity.getUserTitle())
+            if (activity.getUserTitle() && activity.getUserTitle() != activity.getUserId())
             {
                 itemText += "<a class='activity-link' href='" + userLink + "'>";
                 itemText += activity.getUserTitle();
