@@ -39,76 +39,61 @@
                 self.base();
                 self.addButtons([
                     {
-                        "id": "create-domain",
-                        "title": "New Domain",
-                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'domain-add', 48),
-                        "url" : '/add/domain',
+                        "id": "create-datastore",
+                        "title": "Create New...",
+                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'add', 48),
                         "requiredAuthorities" : [
                             {
                                 "permissioned" : self.targetObject(),
                                 "permissions" : ["create_subobjects"]
                             }
-                        ]
-                    },
-                    {
-                        "id": "create-repository",
-                        "title": "New Repository",
-                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'repository-add', 48),
-                        "url" : '/add/repository',
-                        "requiredAuthorities" : [
-                            {
-                                "permissioned" : self.targetObject(),
-                                "permissions" : ["create_subobjects"]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "create-vault",
-                        "title": "New Vault",
-                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'vault-add', 48),
-                        "url" : '/add/vault',
-                        "requiredAuthorities" : [
-                            {
-                                "permissioned" : self.targetObject(),
-                                "permissions" : ["create_subobjects"]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "create-registrar",
-                        "title": "New Registrar",
-                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'registrar-add', 48),
-                        "url" : '/add/registrar',
-                        "requiredAuthorities" : [
-                            {
-                                "permissioned" : self.targetObject(),
-                                "permissions" : ["create_subobjects"]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "create-application",
-                        "title": "New Application",
-                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'application-add', 48),
-                        "url" : '/add/application',
-                        "requiredAuthorities" : [
-                            {
-                                "permissioned" : self.targetObject(),
-                                "permissions" : ["create_subobjects"]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "create-stack",
-                        "title": "New Stack",
-                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'stack-add', 48),
-                        "url" : '/add/stack',
-                        "requiredAuthorities" : [
-                            {
-                                "permissioned" : self.targetObject(),
-                                "permissions" : ["create_subobjects"]
-                            }
-                        ]
+                        ],
+                        "click": function() {
+                            Gitana.Utils.UI.modalSelector({
+                                "title": "What would you like to create?",
+                                "items": [{
+                                    "title": "Application",
+                                    "description": "Stores settings and provides services for your mobile and web applications.",
+                                    "iconClass": "application-add-48",
+                                    "link": "#/add/application"
+                                }, {
+                                    "title": "Directory",
+                                    "description": "Stores authentication credentials, identities and connections to third-party systems like Facebook, Twitter or Salesforce.",
+                                    "iconClass": "directory-add-48",
+                                    "link": "#/add/directory"
+                                }, {
+                                    "title": "Domain",
+                                    "description": "Provides storage and management of users and groups.",
+                                    "iconClass": "domain-add-48",
+                                    "link": "#/add/domain"
+                                }, {
+                                    "title": "Registrar",
+                                    "description": "Manages sub-tenants, subscription plans and metered billing.",
+                                    "iconClass": "registrar-add-48",
+                                    "link": "#/add/registrar"
+                                }, {
+                                    "title": "Repository",
+                                    "description": "Collaborate on content, files and office documents.",
+                                    "iconClass": "repository-add-48",
+                                    "link": "#/add/repository"
+                                }, {
+                                    "title": "Vault",
+                                    "description": "Storage and services for backup, restore and cloud sync.",
+                                    "iconClass": "vault-add-48",
+                                    "link": "#/add/vault"
+                                }, {
+                                    "title": "Warehouse",
+                                    "description": "Captures and provides real-time analytics for your content and mobile/web applications.",
+                                    "iconClass": "warehouse-add-48",
+                                    "link": "#/add/warehouse"
+                                }, {
+                                    "title": "Web Host",
+                                    "description": "Manage the mappings of domains and URIs to your platform's services.",
+                                    "iconClass": "webhost-add-48",
+                                    "link": "#/add/webhost"
+                                }]
+                            });
+                        }
                     },
                     {
                         "id": "edit",
@@ -116,12 +101,22 @@
                         "icon" : Gitana.Utils.Image.buildImageUri('objects', 'tenant-edit', 48),
                         "url" : "/edit",
                         "requiredAuthorities" : [
-                            /*
                              {
-                             "permissioned" : this.myTenant(),
-                             "permissions" : ["update"]
+                                 "permissioned" : self.targetObject(),
+                                 "permissions" : ["update"]
                              }
-                             */
+                        ]
+                    },
+                    {
+                        "id": "edit-json",
+                        "title": "Edit JSON",
+                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'json-edit', 48),
+                        "url" : "/edit/json",
+                        "requiredAuthorities" : [
+                            {
+                                "permissioned" : self.targetObject(),
+                                "permissions" : ["update"]
+                            }
                         ]
                     },
                     {
@@ -148,23 +143,6 @@
                              }
                         ]
                     }
-                    /*
-                     ,
-                     {
-                     "id": "edit-json",
-                     "title": "Edit JSON",
-                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'json-edit', 48),
-                     "url" : "/edit/json",
-                     "requiredAuthorities" : [
-
-                     {
-                     "permissioned" : this.myTenant(),
-                     "permissions" : ["update"]
-                     }
-
-                     ]
-                     }
-                     */
                 ]);
 
                 this.toolbar(self.SUBSCRIPTION + "-toolbar", {

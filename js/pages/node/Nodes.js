@@ -48,6 +48,48 @@
             self.base();
             self.addButtons([
                 {
+                    "id": "create-node",
+                    "title": "Create Node...",
+                    "icon" : Gitana.Utils.Image.buildImageUri('objects', 'node-add', 48),
+                    "requiredAuthorities" : [
+                        {
+                            "permissioned" : self.targetObject(),
+                            "permissions" : ["create_subobjects"]
+                        }
+                    ],
+                    "click": function() {
+                        Gitana.Utils.UI.modalSelector({
+                            "title": "What would you like to create?",
+                            "items": [{
+                                "title": "Node using form",
+                                "description": "Use a content entry form to enter your node's content.",
+                                "iconUrl": Gitana.Utils.Image.buildImageUri('objects', 'node-add', 48),
+                                "link": "#" + self.LINK().call(self, self.targetObject(), 'add', 'node')
+                            }, {
+                                "title": "Node from JSON",
+                                "description": "Enter the JSON for your new node directly.",
+                                "iconUrl": Gitana.Utils.Image.buildImageUri('objects', 'json-add', 48),
+                                "link": "#" + self.LINK().call(self, self.targetObject(), 'add', 'jsonnode')
+                            }, {
+                                "title": "Text Document",
+                                "description": "Provide the text payload for a node.",
+                                "iconUrl": Gitana.Utils.Image.buildImageUri('objects', 'txt-node-add', 48),
+                                "link": "#" + self.LINK().call(self, self.targetObject(), 'add', 'textnode')
+                            }, {
+                                "title": "HTML Document",
+                                "description": "Provide the HTML payload for a node.",
+                                "iconUrl": Gitana.Utils.Image.buildImageUri('objects', 'html-node-add', 48),
+                                "link": "#" + self.LINK().call(self, self.targetObject(), 'add', 'htmlnode')
+                            }]
+                        });
+                    }
+                },
+
+
+
+
+                /*
+                {
                 "id": "create",
                 "title": "New Node",
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'node-add', 48),
@@ -95,6 +137,7 @@
                         }
                     ]
                 },
+                */
                 {
                 "id": "upload-files",
                 "title": "Upload Files",

@@ -157,6 +157,78 @@
                 html: true,
                 live: true
             });
+        },
+
+        modalSelector: function(config) {
+            var title = config.title ? config.title : "Unknown modal title";
+
+            var html = "<div title='" + title + "'>";
+            html += "<div class='modal-selector'>";
+            html += "<table class='modal-selector-table' cellpadding='1'>";
+
+            if (config.items) {
+                for (var i = 0; i < config.items.length; i++) {
+                    var item = config.items[i];
+
+                    var title = item.title ? item.title : "Unknown title";
+                    var description = item.description ? item.description : "Unknown description";
+
+                    html += "<tr class='modal-selector-table-row'>";
+
+                    // icon
+                    if (item.iconUrl) {
+                        html += "<td class='modal-selector-table-column-icon' style='padding:10px;'><img src='" + item.iconUrl + "'></td>";
+                    } else if (item.iconClass) {
+                        html += "<td class='sprite-48 sprite-48-button " + item.iconClass + " modal-selector-table-column-icon'></td>";
+                    } else {
+                        html += "<td class='modal-selector-table-column-icon'></td>";
+                    }
+
+                    // selection text
+                    html += "<td class='modal-selector-table-column-text model-selector-item-" + i + "' width='100%'><h3>";
+                    html += title;
+                    html += "</h3><p>" + description + "</p></td>";
+
+                    html += "</tr>";
+                }
+            }
+
+            html += "</table>";
+            html += "</div>";
+            html += "</div>";
+
+            var dialog = $(html);
+
+            if (config.items) {
+                for (var i = 0; i < config.items.length; i++) {
+                    var item = config.items[i];
+
+                    $(dialog).find(".model-selector-item-" + i).click(function(dialog, link) {
+                        return function() {
+                            $(dialog).dialog('close');
+                            $(dialog).bind("dialogclose", function() {
+                                window.location.href = link;
+                            });
+                        };
+                    }(dialog, item.link));
+                }
+            }
+
+            // show the dialog
+            dialog.dialog({
+                autoOpen:false,
+                resizable: false,
+                width: 500,
+                modal: true,
+                closeOnEscape: true,
+                center: true,
+                position: 'middle',
+                show: 'fade',
+                hide: 'fade'
+            }).height('auto');
+
+            // open dialog
+            dialog.dialog("open");
         }
     }
 })(jQuery);

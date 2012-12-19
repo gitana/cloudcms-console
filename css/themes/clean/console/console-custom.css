@@ -197,8 +197,8 @@ ul.item-list-long-left li span {
     border-width: 1px 1px 0px 1px;
     border-style: solid;
     border-color: #4B5E6B;
-    padding: 0 10px;
     position: relative;
+    padding: 10px 10px 0;
 }
 
 .avatar-photo {
@@ -248,6 +248,7 @@ ul.item-list-long-left li span {
 .block-list-item-img {
     margin-right: 10px;
     float: left;
+    width: 48px;
 }
 
 .block-list-more-item-img {
@@ -311,6 +312,7 @@ input.list-search {
     float: left;
     background: url("../../../images/themes/clean/console/misc/breadcrumb/bc-seperator.png") no-repeat scroll top right transparent;
     padding-right: 20px;
+    font-size: 13px;
 }
 
 /*
@@ -772,15 +774,9 @@ h2.dialog-delete-message {
 /* header avatar */
 .header-avatar-photo {
     max-width: 32px;
-    float: left;
-    /*
-    margin-bottom: 8px;
-    margin-right: 8px;
-    */
     background: none repeat scroll 0 0 #EEEFF7;
     border: 1px solid #333;
     border-radius: 3px 3px 3px 3px;
-    line-height: 0;
     padding: 2px;
     vertical-align: middle;
 }
@@ -1262,4 +1258,50 @@ ul.item-list
 {
     padding-left: 10px;
     padding-right: 10px;
+}
+
+
+.modal-selector
+{
+    margin: 5px;
+}
+
+.modal-selector-table
+{
+}
+
+.modal-selector-table-column-icon
+{
+    margin: 10px !important;
+}
+
+.modal-selector-table-column-text
+{
+}
+
+.modal-selector-table-column-text H3
+{
+    margin: 10px 0;
+}
+
+.modal-selector-table-column-text P
+{
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+}
+
+.modal-selector-table-row
+{
+    background-color: #fff;
+    border: 1px #fff solid;
+    border-radius: 5px;
+}
+
+.modal-selector-table-row:hover
+{
+    background-color: #CFDEE5;
+    border: 1px #B5C9E8 solid;
+    border-radius: 5px;
+    cursor: pointer;
 }

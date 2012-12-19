@@ -201,6 +201,11 @@
                 "items" : {}
             });
             */
+
+
+
+
+            /*
             this.addGroupedButtons({
                 "groups" : [
                     {
@@ -383,6 +388,140 @@
                     }
                 ]
             });
+            */
+
+
+            self.addButtons([
+            {
+                "id": "edit-folder",
+                "title": "Properties",
+                "icon" : Gitana.Utils.Image.buildImageUri('objects', 'folder-edit', 48),
+                "url" : self.folderLink(self.node(), "edit"),
+                "requiredAuthorities" : [
+                    {
+                        "permissioned" : this.node(),
+                        "permissions" : ["update"]
+                    }
+                ]
+            },{
+                "id": "edit-json",
+                "title": "Edit JSON",
+                "icon" : Gitana.Utils.Image.buildImageUri('objects', 'json-edit', 48),
+                "url" : self.folderLink(self.node(), "edit", "json"),
+                "requiredAuthorities" : [
+                    {
+                        "permissioned" : this.node(),
+                        "permissions" : ["update"]
+                    }
+                ]
+            },
+            {
+                "id": "create-folder",
+                "title": "New Folder",
+                "icon" : Gitana.Utils.Image.buildImageUri('objects', 'folder-add', 48),
+                "url" : self.folderLink(self.node(), "add", "folder"),
+                "requiredAuthorities" : [{
+                    "permissioned" : this.branch(),
+                    "permissions" : ["create_subobjects"]
+                },{
+                    "permissioned" : this.node(),
+                    "permissions" : ["update"]
+                }]
+            },
+            {
+                "id": "create-node",
+                "title": "Create Node...",
+                "icon" : Gitana.Utils.Image.buildImageUri('objects', 'node-add', 48),
+                "requiredAuthorities" : [
+                    {
+                        "permissioned" : self.targetObject(),
+                        "permissions" : ["create_subobjects"]
+                    },
+                    {
+                        "permissioned" : self.node(),
+                        "permissions" : ["update"]
+                    }
+                ],
+                "click": function() {
+                    Gitana.Utils.UI.modalSelector({
+                        "title": "What would you like to create?",
+                        "items": [{
+                            "title": "Node using content form",
+                            "description": "Use a content entry form to enter your node's content.",
+                            "iconUrl": Gitana.Utils.Image.buildImageUri('objects', 'node-add', 48),
+                            "link": "#" + self.folderLink(self.node(), "add", "node")
+                        }, {
+                            "title": "Node from JSON",
+                            "description": "Enter the JSON for your new node directly.",
+                            "iconUrl": Gitana.Utils.Image.buildImageUri('objects', 'json-add', 48),
+                            "link": "#" + self.folderLink(self.node(), "add", "jsonnode")
+                        }, {
+                            "title": "Text Document",
+                            "description": "Provide the text payload for a node.",
+                            "iconUrl": Gitana.Utils.Image.buildImageUri('objects', 'txt-node-add', 48),
+                            "link": "#" + self.folderLink(self.node(), "add", "textnode")
+                        }, {
+                            "title": "HTML Document",
+                            "description": "Provide the HTML payload for a node.",
+                            "iconUrl": Gitana.Utils.Image.buildImageUri('objects', 'html-node-add', 48),
+                            "link": "#" + self.folderLink(self.node(), "add", "htmlnode")
+                        }]
+                    });
+                }
+            },{
+                "id": "upload-files",
+                "title": "Upload Files",
+                "icon" : Gitana.Utils.Image.buildImageUri('special', 'upload', 48),
+                "url" : self.folderLink(self.node(), "upload"),
+                "requiredAuthorities" : [
+                    {
+                        "permissioned" : this.branch(),
+                        "permissions" : ["create_subobjects"]
+                    },
+                    {
+                        "permissioned" : this.node(),
+                        "permissions" : ["update"]
+                    }
+                ]
+
+            },{
+                "id": "copy",
+                "title": "Copy Folder",
+                "icon" : Gitana.Utils.Image.buildImageUri('browser', 'copy', 48),
+                "click": function(node) {
+                    self.onClickCopy(self.targetObject(), self.LINK().call(self, self.targetObject()), 'folder-48');
+                },
+                "requiredAuthorities" : [
+                    {
+                        "permissioned" : self.targetObject(),
+                        "permissions" : ["read"]
+                    }
+                ]
+            },{
+                "id": "import",
+                "title": "Import Archive",
+                "icon" : Gitana.Utils.Image.buildImageUri('objects', 'archive-import', 48),
+                "url" : self.folderLink(self.targetObject(), 'import'),
+                "requiredAuthorities" : [
+                    {
+                        "permissioned" : self.targetObject(),
+                        "permissions" : ["create_subobjects"]
+                    }
+                ]
+            },{
+                "id": "export",
+                "title": "Export Folder",
+                "icon" : Gitana.Utils.Image.buildImageUri('objects', 'archive-export', 48),
+                "url" : self.folderLink(self.targetObject(), 'export'),
+                "requiredAuthorities" : [
+                    {
+                        "permissioned" : self.targetObject(),
+                        "permissions" : ["read"]
+                    }
+                ]
+            }
+            ]);
+
         },
 
         /** OVERRIDE **/

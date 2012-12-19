@@ -67,30 +67,6 @@
 
                 }, allRequiredAuthorities);
 
-                /*
-                $.each(items, function(i, item) {
-
-                    item["visibility"] = false;
-
-                    if (item.requiredAuthorities) {
-                        self.checkAuthorities(function(isEntitled) {
-                            console.log('Toolbar Item ' + item['id'] + ' -- ' + isEntitled);
-                            if (isEntitled) {
-                                // turn on the item
-                                item["visibility"] = true;
-                                //$('.toolbar-list li:eq(' + i + ')').show();
-                                //$('.toolbar-list li:eq(' + i + ')', $(el)).show();
-                                $('.toolbar-list li[id="toolbar-item-' + i + '"]').show();
-                                $('.toolbar-list li[id="toolbar-item-' + i + '"]', $(el)).show();
-                            }
-                        }, item.requiredAuthorities);
-                    } else {
-                        // turn on the item
-                        item["visibility"] = true;
-                    }
-                });
-                */
-
                 // transform
                 self.renderTemplate(el, self.TEMPLATE, function(el) {
 

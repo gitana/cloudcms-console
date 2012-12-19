@@ -73,9 +73,15 @@
 
             var userLink = activity.getUserDomainId() ? "#" + self.listLink('domains') + activity.getUserDomainId() + "/users/" + activity.getUserId() : "javascript:void(0)";
 
-            var userAvatarUri = "/proxy/domains/" + activity.getUserDomainId() + "/principals/" + activity.getUserId() + "/attachments/avatar48";
+            var userAvatarUri = "css/images/themes/clean/console/misc/avatar_small.png";
+            if (activity["userAvatarAttachmentId"])
+            {
+                userAvatarUri = "/proxy/domains/" + activity.getUserDomainId() + "/principals/" + activity.getUserId() + "/attachments/" + activity["userAvatarAttachmentId"];
+            }
+
             //var itemText = "<span class='sprite-16 user-16'></span><a class='activity-link' href='" + userLink + "'>" + activity.getUserName() + "</a> " + typeText + " <span class='sprite-16 " + iconId + "-16'></span><a class='activity-link' href='" + "#" + objectLink + "'>" + activity.getObjectTitle() + "</a>";
-            var itemText = "<span class='sprite-16 user-16'></span>";
+            //var itemText = "<span class='sprite-16 user-16'></span>";
+            var itemText = "";
             if (activity.getUserTitle())
             {
                 itemText += "<a class='activity-link' href='" + userLink + "'>";
@@ -95,10 +101,11 @@
                 itemText += "</a>";
             }
 
-            var objectTypeName = objectTypeId;
-            itemText += " " + typeText + " a " + " " + objectTypeName;
+            var firstLetter = objectTypeId.substring(0,1);
+            var objectTypeName = firstLetter.toUpperCase() + objectTypeId.substring(1);
+            itemText += " " + typeText + " the " + objectTypeName;
             itemText += " ";
-            itemText += "<span class='sprite-16 " + iconId + "-16'></span>";
+            //itemText += "<span class='sprite-16 " + iconId + "-16'></span>";
             itemText += "<a class='activity-link' href='" + "#" + objectLink + "'>";
             itemText += activity.getObjectTitle();
             itemText += "</a>";
@@ -110,8 +117,11 @@
                 var repositoryLink = self.listLink('repositories') + activity.getObjectDataStoreId();
                 var branchLink = repositoryLink + "/branches/" + activity.get('branchId');
 
-                itemText += " under <span class='sprite-16 branch-16'></span><a class='activity-link' href='" + "#" + branchLink + "'>branch</a> of <span class='sprite-16 repository-16'></span><a class='activity-link' href='" + "#" + repositoryLink + "'>repository</a>";
-                plainItemText += " under <a class='activity-link' href='" + "#" + branchLink + "'>branch</a> of <a class='activity-link' href='" + "#" + repositoryLink + "'>repository</a>";
+                var branchId = activity.get('branchId');
+                var repositoryId = activity.getObjectDataStoreId();
+
+                itemText += " in branch <a class='activity-link' href='" + "#" + branchLink + "'>" + branchId + "</a> of repository <a class='activity-link' href='" + "#" + repositoryLink + "'>repositoryId</a>";
+                plainItemText += " in branch <a class='activity-link' href='" + "#" + branchLink + "'>" + branchId + "</a> of repository <a class='activity-link' href='" + "#" + repositoryLink + "'>repositoryId</a>";
             }
 
             if (activity.getObjectTypeId() == "stackAssignment") {

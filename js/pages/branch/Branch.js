@@ -36,51 +36,40 @@
                 self.addButtons([
                     {
                         "id": "create-node",
-                        "title": "New Node",
+                        "title": "Create Node...",
                         "icon" : Gitana.Utils.Image.buildImageUri('objects', 'node-add', 48),
-                        "url" : self.LINK().call(self, self.targetObject(), 'add', 'node'),
                         "requiredAuthorities" : [
                             {
                                 "permissioned" : self.targetObject(),
                                 "permissions" : ["create_subobjects"]
                             }
-                        ]
-                    },
-                    {
-                        "id": "create-json",
-                        "title": "New JSON Node",
-                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'json-add', 48),
-                        "url" : self.LINK().call(self, self.targetObject(), 'add', 'jsonnode'),
-                        "requiredAuthorities" : [
-                            {
-                                "permissioned" : self.targetObject(),
-                                "permissions" : ["create_subobjects"]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "create-text",
-                        "title": "New Text Node",
-                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'txt-node-add', 48),
-                        "url" : this.LINK().call(self, this.targetObject(), 'add', 'textnode'),
-                        "requiredAuthorities" : [
-                            {
-                                "permissioned" : self.targetObject(),
-                                "permissions" : ["create_subobjects"]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "create-html",
-                        "title": "New HTML Node",
-                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'html-node-add', 48),
-                        "url" : this.LINK().call(self, this.targetObject(), 'add', 'htmlnode'),
-                        "requiredAuthorities" : [
-                            {
-                                "permissioned" : self.targetObject(),
-                                "permissions" : ["create_subobjects"]
-                            }
-                        ]
+                        ],
+                        "click": function() {
+                            Gitana.Utils.UI.modalSelector({
+                                "title": "What would you like to create?",
+                                "items": [{
+                                    "title": "Node using form",
+                                    "description": "Use a content entry form to enter your node's content.",
+                                    "iconUrl": Gitana.Utils.Image.buildImageUri('objects', 'node-add', 48),
+                                    "link": "#" + self.LINK().call(self, self.targetObject(), 'add', 'node')
+                                }, {
+                                    "title": "Node from JSON",
+                                    "description": "Enter the JSON for your new node directly.",
+                                    "iconUrl": Gitana.Utils.Image.buildImageUri('objects', 'json-add', 48),
+                                    "link": "#" + self.LINK().call(self, self.targetObject(), 'add', 'jsonnode')
+                                }, {
+                                    "title": "Text Document",
+                                    "description": "Provide the text payload for a node.",
+                                    "iconUrl": Gitana.Utils.Image.buildImageUri('objects', 'txt-node-add', 48),
+                                    "link": "#" + self.LINK().call(self, self.targetObject(), 'add', 'textnode')
+                                }, {
+                                    "title": "HTML Document",
+                                    "description": "Provide the HTML payload for a node.",
+                                    "iconUrl": Gitana.Utils.Image.buildImageUri('objects', 'html-node-add', 48),
+                                    "link": "#" + self.LINK().call(self, self.targetObject(), 'add', 'htmlnode')
+                                }]
+                            });
+                        }
                     },
                     {
                         "id": "upload-files",
@@ -95,8 +84,8 @@
                         ]
                     },
                     {
-                        "id": "create-branch",
-                        "title": "New Branch",
+                        "id": "fork-branch",
+                        "title": "Fork Branch",
                         "icon" : Gitana.Utils.Image.buildImageUri('objects', 'branch-add', 48),
                         "url" : self.LINK().call(self, self.targetObject(), 'add', 'branch'),
                         "requiredAuthorities" : [
@@ -129,7 +118,8 @@
                                 "permissions" : ["update"]
                             }
                         ]
-                    }/*,
+                    }
+                    /*,
                     {
                         "id": "export-branch",
                         "title": "Export Branch",

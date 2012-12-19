@@ -975,7 +975,7 @@
                     "items": [{
                         "id" : "menu-root-folder",
                         "link" : "#" + self.LIST_LINK().call(self,'folders') + self.rootNode().getId(),
-                        "title" : "Root Folder",
+                        "title" : "Document Library",
                         "icon" : Gitana.Utils.Image.buildImageUri('objects', 'root-folder', 16),
                         "current" : current == "menu-root-folder"
                     },
@@ -1064,8 +1064,12 @@
                         "title" : "Attachments",
                         "icon" :  Gitana.Utils.Image.buildImageUri('objects', 'attachment', 16),
                         "current" : current == "menu-attachments"
-                    },
-                    {
+                    }]
+                },{
+                    "id": "menu-node-objects",
+                    "title": "Objects",
+                    "header": true,
+                    "items": [{
                         "id" : "menu-node-audit-records",
                         "link" : "#" + self.LINK().call(self,self.node()) + "/auditrecords",
                         "title" : "Audit Records",
@@ -1159,14 +1163,18 @@
                         "title" : "Security",
                         "icon" :  Gitana.Utils.Image.buildImageUri('security', 'security', 16),
                         "current" : current == "menu-folder-security"
-                    },
-                    {
+                    }, {
                         "id" : "menu-attachments",
                         "link" : "#" + self.folderLink(self.node(), 'attachments'),
                         "title" : "Attachments",
                         "icon" :  Gitana.Utils.Image.buildImageUri('objects', 'attachment', 16),
                         "current" : current == "menu-attachments"
-                    },
+                    }]
+                },{
+                    "id": "menu-folder-objects",
+                    "title": "Objects",
+                    "header": true,
+                    "items": [
                     {
                         "id" : "menu-associations",
                         "link" : "#" + self.folderLink(self.node(),'associations'),
@@ -1220,8 +1228,12 @@
                         "title" : "Attachments",
                         "icon" :  Gitana.Utils.Image.buildImageUri('objects', 'attachment', 16),
                         "current" : current == "menu-attachments"
-                    },
-                    {
+                    }]
+                },{
+                    "id" : "menu-child-objects",
+                    "title": "Objects",
+                    "header": true,
+                    "items": [{
                         "id" : "menu-associations",
                         "link" : "#" + self.folderLink(self.node(), 'associations'),
                         "title" : "Associations",

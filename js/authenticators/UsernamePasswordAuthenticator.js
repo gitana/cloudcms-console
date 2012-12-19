@@ -73,7 +73,15 @@
                     $('.ui-dialog-buttonpane').css("overflow", "hidden");
                     $('.ui-dialog-titlebar').find('a').hide();
                     $('.ui-dialog-buttonpane button').css("font-size", "1.05em");
+                    $('.ui-dialog-buttonpane button').css("margin", "0px");
+                    $('.ui-dialog-buttonpane button').css("margin-bottom", "10px");
+                    $('.ui-dialog-buttonpane button').css("padding", "0px");
                     $('.ui-widget-overlay').css('opacity','1.0');
+                    $('.ui-dialog .ui-dialog-content').css("border", "0px");
+                    $('.ui-dialog .ui-dialog-buttonpane').css("background", "#fff");
+                    $('.ui-dialog .ui-dialog-content').css("background", "#fff");
+                    $('.ui-dialog-buttonset').attr("align", "center");
+                    $('.ui-dialog-buttonset').css("float", "none");
                     var buttons = dialog.dialog("option", "buttons");
                     var passwordControl = control.getControlByPath("password");
                     passwordControl.field.keypress(function(e) {

@@ -29,13 +29,15 @@
             <div class="divider-header divider-vertical"></div>
 
             <!-- User Icon -->
-            <a href="#/profile" rel="tooltip-html" original-title="Your Profile">
-                <img class="header-avatar-photo" id="login-user-avatar" data-src="${userLogoUrl}" alt="${userAltText}"/>
-            </a>
-            <span class="user-info-messages"><a href="#/profile">{{if header}}${header.friendlyName}{{/if}}</a></span>
+            <div style="float:left; height:43px; line-height:43px">
+                <a href="#/profile" rel="tooltip-html" original-title="Your Profile">
+                    <img class="header-avatar-photo" id="login-user-avatar" data-src="${userLogoUrl}" alt="${userAltText}"/>
+                </a>
+                <span class="user-info-messages"><a href="#/profile">{{if header}}${header.fullName}{{/if}}</a></span>
+            </div>
 
             <!-- Log out button -->
-            <a href="javascript:void(1);" class="button logout">Logout</a>
+            <a href="javascript:void(1);" class="button logout" style="margin: 2px;">Logout</a>
 
         </div>
         <!-- End of User Info -->

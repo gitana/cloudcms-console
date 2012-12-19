@@ -326,7 +326,7 @@
             setupLatestNeighbors: function () {
                 var self = this;
                 var pairs = {
-                    "title" : "Latest Neighbors",
+                    "title" : "Neighbors",
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'nodes', 20),
                     "alert" : "",
                     "items" : [
