@@ -34,6 +34,30 @@
             el.model["userLogoUrl"] = userAvatarUrl;
             el.model["userAltText"] = this.userDetails().friendlyName;
 
+            // if trial plan, show notification
+            if (this.platform().getDriver().getAuthInfo().tenant && this.platform().getDriver().getAuthInfo().tenant.planKey)
+            {
+                var planKey = this.platform().getDriver().getAuthInfo().tenant.planKey;
+                if (planKey == "trial")
+                {
+                    // date they signed up
+                    var signupMs = this.platform().getDriver().getAuthInfo().tenant["_system"]["modified_on"]["ms"];
+
+                    // today's date
+                    var todayMs = new Date().getTime();
+
+                    var daysRemaining = parseInt(30 - ((todayMs - signupMs) / (1000 * 60 * 60 * 24)));
+                    if (daysRemaining >= 0)
+                    {
+                        el.model["tenantNotificationMessage"] = "Your Cloud CMS free trial expires in " + daysRemaining + " days";
+                    }
+                    else
+                    {
+                        el.model["tenantNotificationMessage"] = "Your Cloud CMS free trial has expired";
+                    }
+                }
+            }
+
             this.model(el);
 
             // render

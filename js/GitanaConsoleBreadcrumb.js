@@ -842,6 +842,15 @@
             ]);
         },
 
+        "NodeRules" : function(self , el) {
+            return $.merge(this.Node(self, el), [
+                {
+                    "text" : "Rules",
+                    "link" : self.LIST_LINK().call(self,"rules")
+                }
+            ]);
+        },
+
         "Folder" : function(self, el, extra) {
 
             if (self.node().get('_is_association')) {

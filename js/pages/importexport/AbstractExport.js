@@ -9,45 +9,45 @@
                 var schema = {
                     "type" : "object",
                     "properties" : {
-                        "vault" : {
-                            "title": "Vault",
-                            "type" : "string",
-                            "required" : true
+                        "vault": {
+                            "title": "Destination Vault",
+                            "type": "object",
+                            "properties": {
+                                "vaultId" : {
+                                    "type" : "string",
+                                    "required" : true
+                                }
+                            }
                         },
                         "archive" : {
-                            "title" : "Archive",
+                            "title" : "Archive Properties",
                             "type" : "object"
                         },
                         "configuration" : {
-                            "title" : "Configuration",
+                            "title" : "Export Configuration",
                             "type" : "object",
                             "properties" : {
                                 "includeACLs" : {
-                                    "title": "ACLs",
                                     "type" : "boolean",
                                     "required" : true,
                                     "default" : true
                                 },
                                 "includeTeams" : {
-                                    "title": "Teams",
                                     "type" : "boolean",
                                     "required" : true,
                                     "default" : true
                                 },
                                 "includeActivities" : {
-                                    "title": "Activities",
                                     "type" : "boolean",
                                     "required" : true,
                                     "default" : true
                                 },
                                 "includeBinaries" : {
-                                    "title": "Binaries",
                                     "type" : "boolean",
                                     "required" : true,
                                     "default" : true
                                 },
                                 "includeAttachments" : {
-                                    "title": "Attachments",
                                     "type" : "boolean",
                                     "required" : true,
                                     "default" : true
@@ -81,70 +81,74 @@
                 var self = this;
                 var options = {
                     "fields" : {
-                        "vault" : {
-                            "type" : "select",
-                            "helper" : "Select a vault for storing archive.",
-                            "dataSource": function(field, callback) {
-                                var firstOption;
-                                self.platform().listVaults().each(
-                                    function(key, val, index) {
-                                        field.selectOptions.push({
-                                            "value": this.getId(),
-                                            "text": self.friendlyTitle(this)
-                                        });
-                                        if (!firstOption) {
-                                            firstOption = this.getId();
-                                        }
-                                    }).then(function() {
-                                        if (callback) {
-                                            callback();
-                                            if (firstOption) {
-                                                field.field.val(firstOption).change();
-                                            }
-                                        }
-                                    });
+                        "vault": {
+                            "helper": "Select the vault where the exported archive will be saved.",
+                            "fields": {
+                                "vaultId" : {
+                                    "label": false,
+                                    "type" : "select",
+                                    "dataSource": function(field, callback) {
+                                        var firstOption;
+                                        self.platform().listVaults().each(
+                                            function(key, val, index) {
+                                                field.selectOptions.push({
+                                                    "value": this.getId(),
+                                                    "text": self.friendlyTitle(this)
+                                                });
+                                                if (!firstOption) {
+                                                    firstOption = this.getId();
+                                                }
+                                            }).then(function() {
+                                                if (callback) {
+                                                    callback();
+                                                    if (firstOption) {
+                                                        field.field.val(firstOption).change();
+                                                    }
+                                                }
+                                            });
+                                    }
+                                }
                             }
                         },
                         "archive" : {
-                            "helper" : "Provide settings of export archive."
+                            "helper" : "Provide identification properties for the archive."
                         },
                         "configuration" : {
-                            "helper" : "Provide export configuration.",
+                            "helper" : "What should be exported?",
                             "fields" : {
                                 "includeACLs" : {
+                                    "label": false,
                                     "type" : "checkbox",
-                                    "rightLabel" : "Include ACLs?",
-                                    "helper" : "Check option for including ACLs."
+                                    "rightLabel" : "Include Permissions and Access Control"
                                 },
                                 "includeTeams" : {
+                                    "label": false,
                                     "type" : "checkbox",
-                                    "rightLabel" : "Include Teams?",
-                                    "helper" : "Check option for including teams."
+                                    "rightLabel" : "Include Teams"
                                 },
                                 "includeActivities" : {
+                                    "label": false,
                                     "type" : "checkbox",
-                                    "rightLabel" : "Include Activities?",
-                                    "helper" : "Check option for including activities."
+                                    "rightLabel" : "Include Activities"
                                 },
                                 "includeBinaries" : {
+                                    "label": false,
                                     "type" : "checkbox",
-                                    "rightLabel" : "Include Binaries?",
-                                    "helper" : "Check option for including binaries."
+                                    "rightLabel" : "Include Binaries"
                                 },
                                 "includeAttachments" : {
+                                    "label": false,
                                     "type" : "checkbox",
-                                    "rightLabel" : "Include Attachments?",
-                                    "helper" : "Check option for including attachments."
+                                    "rightLabel" : "Include Attachments"
                                 },
                                 "startDate" : {
-                                    "helper" : "Select start datetime of objects to be exported."
+                                    "helper" : "Optionally limit the export to objects modified after a specific time."
                                 },
                                 "endDate" : {
-                                    "helper" : "Select end datetime of objects to be exported."
+                                    "helper" : "Optionally limit the import to objects modified before a specific time."
                                 },
                                 "schedule" : {
-                                    "helper" : "Select export schedule.",
-                                    "optionLabels" : ["Asynchronous","Synchronous"]
+                                    "optionLabels" : ["Run in Background", "Run Immediately"]
                                 }
                             }
                         }
@@ -165,18 +169,20 @@
 
             setupExportForm : function (el) {
 
-                var objectType = this.targetObject()['objectType'];
+                var objectType = this.targetObject().objectType();
 
                 if (Alpaca.startsWith(objectType, 'Gitana.')) {
                     objectType = objectType.substring(7);
                 }
 
+                var tenantGroupIdentifier = this.tenantDetails().title.replace(/\W/g, '').toLowerCase();
+
                 var self = this;
                 $('#export', $(el)).alpaca({
                     "data" : {
                         "archive" : {
-                            "group" : objectType.toLowerCase() + "." + this.targetObject().getId(),
-                            "artifact" : "export." + new Date().getTime(),
+                            "group" : "org." + tenantGroupIdentifier,
+                            "artifact" : this.targetObject().getType() + "." + this.targetObject().getId(),
                             "version" : "0.1"
                         }
                     },
@@ -200,7 +206,7 @@
                         $('#export-create', $(el)).click(function() {
 
                             var formVal = form.getValue();
-                            var vaultId = formVal['vault'];
+                            var vaultId = formVal['vault']['vaultId'];
                             var groupId = formVal['archive']['group'];
                             var artifactId = formVal['archive']['artifact'];
                             var version = formVal['archive']['version'];

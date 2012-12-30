@@ -160,10 +160,12 @@
         },
 
         modalSelector: function(config) {
-            var title = config.title ? config.title : "Unknown modal title";
 
-            var html = "<div title='" + title + "'>";
-            html += "<div class='modal-selector'>";
+            if (!config) {
+                config = {};
+            }
+
+            html = "<div class='modal-selector'>";
             html += "<table class='modal-selector-table' cellpadding='1'>";
 
             if (config.items) {
@@ -197,38 +199,77 @@
             html += "</div>";
             html += "</div>";
 
-            var dialog = $(html);
+            config.body = $(html);
+
+            var dialog = Gitana.Utils.UI.modalOpen(config);
 
             if (config.items) {
                 for (var i = 0; i < config.items.length; i++) {
                     var item = config.items[i];
 
-                    $(dialog).find(".model-selector-item-" + i).click(function(dialog, link) {
+                    $(dialog).find(".model-selector-item-" + i).click(function(dialog, link, click) {
                         return function() {
                             $(dialog).dialog('close');
                             $(dialog).bind("dialogclose", function() {
-                                window.location.href = link;
+
+                                if (link) {
+                                    window.location.href = link;
+                                }
+                                if (click) {
+                                    click();
+                                }
                             });
                         };
-                    }(dialog, item.link));
+                    }(dialog, item.link, item.click));
                 }
             }
+        },
+
+        modalOpen: function(config) {
+
+            if (!config) {
+                config = {};
+            }
+
+            var title = config.title ? config.title : "Unknown modal title";
+
+            var dialog = $("<div title='" + title + "'></div");
+            if (config.body) {
+                $(dialog).append(config.body);
+            }
+
+            var width = config.width ? config.width : 500;
+
+            var closeFunction = config.close ? config.close : function(event, ui) {
+                $(this).dialog('destroy').remove();
+            };
 
             // show the dialog
-            dialog.dialog({
+            var dialogConfig = {
                 autoOpen:false,
                 resizable: false,
-                width: 500,
+                width: width,
                 modal: true,
                 closeOnEscape: true,
                 center: true,
                 position: 'middle',
                 show: 'fade',
-                hide: 'fade'
-            }).height('auto');
+                hide: 'fade',
+                close: function(event, ui) {
+                    closeFunction.call(this, event, ui);
+                }
+            };
+            if (config.buttons)
+            {
+                dialogConfig.buttons = config.buttons;
+            }
+
+            dialog.dialog(dialogConfig).height('auto');
 
             // open dialog
             dialog.dialog("open");
+
+            return dialog;
         }
     }
 })(jQuery);

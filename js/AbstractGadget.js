@@ -79,7 +79,26 @@
         friendlyTitle: function(persistable) {
             var title = null;
 
-            if (persistable.getTitle) {
+            if (persistable.objectType) {
+                if (persistable.objectType() == "Gitana.DomainPrincipal") {
+                    if (persistable["firstName"] && persistable["lastName"]) {
+                        title = persistable["firstName"] + " " + persistable["lastName"];
+                    }
+                    else {
+                        title = persistable["name"];
+                    }
+                }
+            }
+            if (!title && persistable.getTypeQName) {
+                if (persistable.getTypeQName() == "n:group") {
+                    title = persistable["principal-name"];
+                }
+                else if (persistable.getTypeQName() == "n:person") {
+                    title = persistable["principal-name"];
+                }
+            }
+
+            if (!title && persistable.getTitle) {
                 title = persistable.getTitle();
             }
 

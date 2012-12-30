@@ -271,13 +271,13 @@
             "type": "object",
             "properties": {
                 "group" : {
-                    "title": "Group Id",
+                    "title": "Group ID",
                     "type" : "string",
                     "required" : true
                     //"pattern" : /^([a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*)$/
                 },
                 "artifact" : {
-                    "title": "Artifact Id",
+                    "title": "Artifact ID",
                     "type" : "string",
                     "required" : true
                     // TODO: we allow "-" in artifact value (i.e. gitana-demo is valid)... this RegEx doesn't?
@@ -425,6 +425,118 @@
                                 }
                             }
                         }
+                    }
+                }
+            }
+        },
+        "RuleConditions" : {
+            "default" : {
+                "title" : "Conditions",
+                "type" : "string",
+                "default" : "{}"
+            },
+            "propertyEquals" : {
+                "title" : "Property Equals",
+                "type" : "object",
+                "default" : {
+                    "property" : "",
+                    "value" : ""
+                },
+                "properties" : {
+                    "property" : {
+                        "title" : "Property Name",
+                        "type" : "string",
+                        "required" : true
+                    },
+                    "value" : {
+                        "title" : "Value",
+                        "type" : "any",
+                        "required" : true
+                    }
+                }
+            },
+            "typeEquals" : {
+                "title" : "Type Equals",
+                "type" : "object",
+                "default" : {
+                    "type" : ""
+                },
+                "properties" : {
+                    "type" : {
+                        "title" : "Type",
+                        "type" : "string"
+                    }
+                }
+            }
+        },
+        "RuleActions" : {
+            "executeScriptNode" : {
+                "title" : "Execute Script",
+                "type" : "object",
+                "default" : {
+                    "scriptNodeId" : "",
+                    "scriptAttachmentId" : "default",
+                    "methodName": "execute",
+                    "args": [],
+                    "model": {}
+                },
+                "properties" : {
+                    "scriptNodeId" : {
+                        "title" : "Script Node ID",
+                        "type" : "string",
+                        "required" : true
+                    },
+                    "scriptAttachmentId" : {
+                        "title" : "Attachment ID",
+                        "type" : "string",
+                        "required" : true
+                    },
+                    "methodName": {
+                        "title": "Method Name",
+                        "type": "string",
+                        "required": false
+                    },
+                    "args": {
+                        "title": "Arguments",
+                        "type": "array",
+                        "required": false
+                    },
+                    "model": {
+                        "title": "Model",
+                        "type": "any",
+                        "required": false
+                    }
+                }
+            },
+            "mapToList" : {
+                "title" : "Type Equals",
+                "type" : "object",
+                "default" : {
+                    "script" : "",
+                    "scriptMimetype": "",
+                    "scriptNodeId": "",
+                    "reduce": false
+                },
+                "properties" : {
+                    "script" : {
+                        "title" : "Script",
+                        "type" : "string",
+                        "required": false
+                    },
+                    "scriptMimetype" : {
+                        "title" : "Script Mimetype",
+                        "type" : "string",
+                        "required": true
+                    },
+                    "scriptNodeId" : {
+                        "title" : "Script Node",
+                        "type" : "string",
+                        "required": false
+                    },
+                    "reduce" : {
+                        "title" : "Call reduce function",
+                        "type" : "boolean",
+                        "required": false
                     }
                 }
             }
@@ -924,13 +1036,10 @@
         "Archive" : {
             "fields": {
                 "group" : {
-                    "helper" : "Enter archive group id."
                 },
                 "artifact" : {
-                    "helper" : "Enter archive artifact id."
                 },
                 "version" : {
-                    "helper" : "Enter archive version number."
                 }
             }
         },
@@ -1024,6 +1133,50 @@
                                 }
                             }
                         }
+                    }
+                }
+            }
+        },
+        "RuleConditions": {
+            "propertyEquals" : {
+                "fields": {
+                    "property": {
+                    },
+                    "value": {
+                    }
+                }
+            },
+            "typeEquals" : {
+                "fields": {
+                    "type": {
+                    }
+                }
+            }
+        },
+        "RuleActions" : {
+            "executeScriptNode" : {
+                "fields": {
+                    "scriptNodeId": {
+                    },
+                    "scriptAttachmentId": {
+                    },
+                    "methodName":{
+                    },
+                    "args": {
+                    },
+                    "model": {
+                    }
+                }
+            },
+            "mapToList" : {
+                "fields": {
+                    "script": {
+                    },
+                    "scriptMimetype": {
+                    },
+                    "scriptNodeId": {
+                    },
+                    "reduce": {
                     }
                 }
             }

@@ -41,13 +41,6 @@
             ];
         },
 
-        setupToolbar: function() {
-            var self = this;
-            self.base();
-            self.addButtons([
-            ]);
-        },
-
         /** Filter Related Methods **/
         filterEmptyData: function() {
             return {
@@ -372,10 +365,10 @@
         setupGitanaPrincipalSelector : function(el) {
 
             var page = {
-                "title" : "New Authentication Grant",
-                "description" : "Create a new authentication grant.",
+                "title" : "User List",
+                "description" : "List of Users.",
                 "listTitle" : "User List",
-                "listIcon" : Gitana.Utils.Image.buildImageUri('objects', 'authentication-grant', 20),
+                "listIcon" : Gitana.Utils.Image.buildImageUri('security', 'user', 20),
                 "subscription" : this.SUBSCRIPTION,
                 "filter" : this.FILTER
             };

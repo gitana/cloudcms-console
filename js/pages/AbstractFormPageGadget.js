@@ -75,15 +75,16 @@
 
                             Gitana.Utils.UI.jQueryUIDatePickerPatch();
 
-                            self.setupForms(el);
+                            self.asyncSetupForms(el, function() {
 
-                            el.swap();
+                                el.swap(function(newEl) {
 
-                            Gitana.Utils.UI.enableTooltip();
+                                    Gitana.Utils.UI.enableTooltip();
+                                    Gitana.Utils.UI.processBreadcrumb();
 
-                            Gitana.Utils.UI.processBreadcrumb();
-
-                            self.processForm();
+                                    self.asyncProcessForm(el, function() {});
+                                });
+                            });
                         });
                     } else {
                         self.handleUnauthorizedPageAccess(el, error);
@@ -92,11 +93,25 @@
             });
         },
 
+
+
+
+
         /** Abstract methods **/
+        asyncSetupForms: function(el, callback) {
+            this.setupForms(el);
+            callback();
+        },
+
         setupForms: function(el) {
         },
 
-        processForm: function() {
+        asyncProcessForm: function(el, callback) {
+            this.processForm(el);
+            callback();
+        },
+
+        processForm: function(el) {
         }
     });
 

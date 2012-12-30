@@ -1052,6 +1052,24 @@
                         "current" : current == defaultItem
                     },
                     {
+                        "id" : "menu-attachments",
+                        "link" : "#" + self.LIST_LINK().call(self,'attachments'),
+                        "title" : "Attachments",
+                        "icon" :  Gitana.Utils.Image.buildImageUri('objects', 'attachment', 16),
+                        "current" : current == "menu-attachments"
+                    },
+                    {
+                        "id" : "menu-node-security",
+                        "link" : "#" + self.LINK().call(self,self.node(),"authorities","groups"),
+                        "title" : "Security",
+                        "icon" :  Gitana.Utils.Image.buildImageUri('security', 'security', 16),
+                        "current" : current == "menu-node-security"
+                    }]
+                },{
+                    "id": "menu-node-objects",
+                    "title": "Objects",
+                    "header": true,
+                    "items": [{
                         "id" : "menu-associations",
                         "link" : "#" + self.LIST_LINK().call(self,'associations'),
                         "title" : "Associations",
@@ -1059,17 +1077,6 @@
                         "current" : current == "menu-associations"
                     },
                     {
-                        "id" : "menu-attachments",
-                        "link" : "#" + self.LIST_LINK().call(self,'attachments'),
-                        "title" : "Attachments",
-                        "icon" :  Gitana.Utils.Image.buildImageUri('objects', 'attachment', 16),
-                        "current" : current == "menu-attachments"
-                    }]
-                },{
-                    "id": "menu-node-objects",
-                    "title": "Objects",
-                    "header": true,
-                    "items": [{
                         "id" : "menu-node-audit-records",
                         "link" : "#" + self.LINK().call(self,self.node()) + "/auditrecords",
                         "title" : "Audit Records",
@@ -1084,11 +1091,11 @@
                         "current" : current == "menu-node-features"
                     },
                     {
-                        "id" : "menu-node-security",
-                        "link" : "#" + self.LINK().call(self,self.node(),"authorities","groups"),
-                        "title" : "Security",
-                        "icon" :  Gitana.Utils.Image.buildImageUri('security', 'security', 16),
-                        "current" : current == "menu-node-security"
+                        "id" : "menu-node-rules",
+                        "link" : "#" + self.LINK().call(self,self.node(),"rules"),
+                        "title" : "Rules",
+                        "icon" :  Gitana.Utils.Image.buildImageUri('objects', 'rules', 16),
+                        "current" : current == "menu-node-rules"
                     }]
                 }]
             };
@@ -1241,6 +1248,13 @@
                         "current" : current == "menu-associations"
                     },
                     {
+                        "id" : "menu-node-audit-records",
+                        "link" : "#" + self.folderLink(self.node(), "auditrecords"),
+                        "title" : "Audit Records",
+                        "icon" :  Gitana.Utils.Image.buildImageUri('objects', 'auditrecord', 16),
+                        "current" : current == "menu-node-audit-records"
+                    },
+                    {
                         "id" : "menu-node-features",
                         "link" : "#" + self.LIST_LINK().call(self,"child-features"),
                         "title" : "Features",
@@ -1248,11 +1262,11 @@
                         "current" : current == "menu-node-features"
                     },
                     {
-                        "id" : "menu-node-audit-records",
-                        "link" : "#" + self.folderLink(self.node(), "auditrecords"),
-                        "title" : "Audit Records",
-                        "icon" :  Gitana.Utils.Image.buildImageUri('objects', 'auditrecord', 16),
-                        "current" : current == "menu-node-audit-records"
+                        "id" : "menu-node-rules",
+                        "link" : "#" + self.LINK().call(self,self.node(),"rules"),
+                        "title" : "Rules",
+                        "icon" :  Gitana.Utils.Image.buildImageUri('objects', 'rules', 16),
+                        "current" : current == "menu-node-rules"
                     }]
                 }]
             };

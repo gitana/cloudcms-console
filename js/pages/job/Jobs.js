@@ -243,6 +243,7 @@
                         "title": "Status",
                         "type":"property",
                         "property": function(callback) {
+                            /*
                             var value = "";
                             if (this.getState() == "WAITING") {
                                 value += "<span class='job-status job-started' title='Job Waiting'></span>";
@@ -260,6 +261,9 @@
                                 value += "<span class='job-status job-paused'title='Job Paused'></span>";
                             }
                             callback(value);
+                            */
+
+                            callback(this.getState());
                         }
                     },
                     /*

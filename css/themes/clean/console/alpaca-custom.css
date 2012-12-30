@@ -102,6 +102,33 @@ a.button {
     margin-left: 5px;
 }
 
+/* node picker */
+.gitana-node-selector .block-border {
+    background: none repeat scroll 0 0 transparent;
+    border: medium none;
+    border-radius: 0 0 0 0;
+    box-shadow: none;
+    margin-top: 0;
+    padding: 8px;
+}
+
+.gitana-node-selector .dataTables_wrapper .block-actions {
+    margin: 0;
+    border-radius: 0 0 2px 2px;
+}
+
+.gitana-node-selector .ui-widget {
+    font-size: 1.0em;
+}
+
+.gitana-node-selector .ui-dialog .ui-dialog-title, .ui-dialog .ui-dialog-content {
+    font-size: 12px;
+}
+
+.gitana-node-picker-button {
+    margin-left: 5px;
+}
+
 /* picker */
 .container_12.gitana-picker {
     margin-left: 0;
@@ -137,4 +164,47 @@ a.button {
 .ui-dialog.ui-widget-content {
     background: url("../../../images/themes/clean/console/misc/shine-effect.png") repeat-x scroll 0 0 rgba(33, 40, 44, 0.7);
     border: 1px solid #25333C;
+}
+
+fieldset.alpaca-view-web-edit-list
+{
+    /*border: 1px #B5C9E8 solid !important;*/
+}
+
+fieldset.alpaca-view-web-edit-list legend
+{
+    background: none;
+}
+
+OL.alpaca-wizard-status-bar
+{
+    width: 100%;
+    background: none repeat scroll 0 0 transparent !important;
+    border-color: #B5C9E8;
+    color: #666;
+    /*padding: 10px;*/
+    height:42px;
+}
+
+OL.alpaca-wizard-status-bar > LI
+{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+OL.alpaca-wizard-status-bar > LI > DIV
+{
+
+}
+
+OL.alpaca-wizard-status-bar > LI > DIV > STRONG
+{
+
+}
+
+OL.alpaca-wizard-status-bar > LI > DIV > STRONG > SPAN
+{
+
 }

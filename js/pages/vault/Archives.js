@@ -212,8 +212,6 @@
                         "sortingExpression": "group",
                         "property": function(callback) {
                             var title = self.listItemProp(this, 'group');
-                            //var link = this.getDownloadUri();
-                            //var value = "<div class='archive-download' data-link='" + link + "'>" + title + "</div>";
                             var value = "<a href='#" + self.link(this) + "'>" + title + "</a>";
                             callback(value);
                         }
@@ -285,7 +283,7 @@
             setupPage : function(el) {
                 var page = {
                     "title" : "Archives",
-                    "description" : "Display list of archives of vault " + this.friendlyTitle(this.targetObject()) + ".",
+                    "description" : "List of the archives contained in vault '" + this.friendlyTitle(this.targetObject()) + "'.",
                     "listTitle" : "Archive List",
                     "listIcon" : Gitana.Utils.Image.buildImageUri('objects', 'archive', 20),
                     "subscription" : this.SUBSCRIPTION,

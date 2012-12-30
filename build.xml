@@ -129,6 +129,10 @@
                 <file name="fields/ElrteField.js"/>
                 <file name="fields/MultiNodesField.js"/>
                 <file name="fields/MultiFolderNodesField.js"/>
+                <file name="fields/RuleActionField.js"/>
+                <file name="fields/RuleActionsField.js"/>
+                <file name="fields/RuleConditionField.js"/>
+                <file name="fields/RuleConditionsField.js"/>
                 <file name="CMS.js"/>
                 <file name="Messages.js"/>
                 <file name="authenticators/AbstractAuthenticator.js"/>
@@ -139,6 +143,7 @@
                 <file name="AbstractGitanaAppGadget.js"/>
                 <file name="utilities/GitanaUtilsDate.js"/>
                 <file name="utilities/GitanaUtilsImage.js"/>
+                <file name="utilities/GitanaUtilsNode.js"/>
                 <file name="utilities/GitanaUtilsRender.js"/>
                 <file name="utilities/GitanaUtilsUI.js"/>
                 <file name="reports/AbstractReport.js"/>
@@ -175,6 +180,7 @@
                 <file name="pages/AbstractNodeEditFormPageGadget.js"/>
 
                 <file name="fields/GitanaPrincipalPickerField.js"/>
+                <file name="fields/GitanaNodePickerField.js"/>
                 <file name="fields/PlatformLogoField.js"/>
 
                 <file name="utilities/GitanaUtilsActivity.js"/>
@@ -500,6 +506,9 @@
 
                 <file name="pages/node/NodeFeatureAdd.js"/>
 
+                <file name="pages/node/NodeRules.js"/>
+                <file name="pages/node/NodeRuleAdd.js"/>
+
                 <file name="pages/node/NodePreview.js"/>
 
                 <file name="pages/node/NodeUserAuthorities.js"/>
@@ -566,6 +575,23 @@
                 <file name="pages/folder/FolderFeatureAdd.js"/>
 
                 <file name="components/GitanaPrincipalSelector.js"/>
+                <file name="components/GitanaNodeSelector.js"/>
+
+                <!-- Rule Conditions -->
+                <file name="rules/conditions/ConditionRegistry.js"/>
+                <file name="rules/conditions/AbstractCondition.js"/>
+                <file name="rules/conditions/AbstractSingleFormCondition.js"/>
+                <file name="rules/conditions/PropertyEqualsCondition.js"/>
+                <file name="rules/conditions/PropertyComparisonCondition.js"/>
+                <file name="rules/conditions/TypeEqualsCondition.js"/>
+
+                <!-- Rule Actions -->
+                <file name="rules/actions/ActionRegistry.js"/>
+                <file name="rules/actions/AbstractAction.js"/>
+                <file name="rules/actions/AbstractSingleFormAction.js"/>
+                <file name="rules/actions/MapToListAction.js"/>
+                <file name="rules/actions/ExecuteScriptNodeAction.js"/>
+
             </filelist>
         </concat>
 

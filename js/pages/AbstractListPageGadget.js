@@ -61,13 +61,15 @@
                             // set up list search box
                             self.setupListSearchbox(el);
 
-                            el.swap();
+                            el.swap(function(swappedEl) {
 
-                            self.processList(el);
+                                self.processList(swappedEl);
 
-                            Gitana.Utils.UI.enableTooltip();
+                                Gitana.Utils.UI.enableTooltip();
 
-                            Gitana.Utils.UI.processBreadcrumb();
+                                Gitana.Utils.UI.processBreadcrumb();
+
+                            });
 
                         });
                     } else {
@@ -354,10 +356,12 @@
                     }).appendTo($('#column-4', renderedField.outerEl));
             }
 
+            /*
             $('<div style="margin:5px;" class="button reset">Reset</div>').click(
                     function() {
                         renderedField.setValue(self.filterEmptyData());
                     }).appendTo($('#column-4', renderedField.outerEl));
+            */
         },
 
         filterDefaultData : function(el) {

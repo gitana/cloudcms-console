@@ -2185,7 +2185,7 @@
                             "Remove": function() {
                                 if (control.isValid(true)) {
 
-                                    Gitana.Utils.UI.block("Deleting " + objectType + " ...");
+                                    Gitana.Utils.UI.block("Deleting " + objectType + "...");
 
                                     Chain(object).del().then(function() {
 
@@ -2193,15 +2193,6 @@
                                             self.observable(observableName).clear();
                                         }
 
-                                        /*
-                                        if (link) {
-                                            Gitana.Utils.UI.unblock(function() {
-                                                self.app().run('GET',link);
-                                            });
-                                        } else {
-                                            Gitana.Utils.UI.unblock();
-                                        }
-                                        */
                                         if (link) {
                                             self.refresh(link);
                                         } else {

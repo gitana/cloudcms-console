@@ -33,6 +33,17 @@
             });
         },
 
+        processHtmlTemplate: function(html, model)
+        {
+            var self = this;
+
+            // now transform using jTmpl
+            html = $.tmpl(html, model);
+            html = self.cleanMarkup(html);
+
+            return html;
+        },
+
         cleanMarkup: function(html)
         {
             // convert to a dom briefly

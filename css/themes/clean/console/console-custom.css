@@ -1227,7 +1227,8 @@ ul.item-list
     border: 1px solid #AAAAAA;
     border-radius: 5px 5px 5px 5px;
     margin: 15px;
-    box-shadow: 3px 3px 3px 3px #CCCCCC;
+    /*box-shadow: 3px 3px 3px 3px #CCCCCC;*/
+    box-shadow: 5px 5px 5px 0 #CCCCCC;
     background: none repeat scroll 0 0 #FFFFFF;
     padding-bottom: 5px;
 }
@@ -1263,7 +1264,7 @@ ul.item-list
 
 .modal-selector
 {
-    margin: 5px;
+    margin: 6px 5px 5px;
 }
 
 .modal-selector-table
@@ -1304,4 +1305,58 @@ ul.item-list
     border: 1px #B5C9E8 solid;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.alpaca-fieldset
+{
+    overflow: none !important;
+}
+
+.alpaca-wizard-console
+{
+    border: 1px solid #B5C9E8;
+    border-radius: 5px 5px 5px 5px;
+    clear: both;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+OL.rule-condition-operation-text
+{
+    margin: 0px;
+}
+
+OL.rule-action-operation-text
+{
+    margin: 0px;
+}
+
+.ui-dialog-titlebar.ui-corner-all
+{
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.gitana-node-selector > .grid_12 > .block-border > .list-filter > .filter > .ui-widget-content
+{
+    border: 1px solid #FFFFFF;
+}
+
+.gitana-node-selector > .grid_12 > .block-border > .list-filter > .filter > .ui-widget-content > P
+{
+    margin-top: 0px;
+}
+
+span.alpaca-view-web-edit-list .alpaca-controlfield-label
+{
+    width: 160px !important;
+}
+
+#tenant-notification
+{
+    color: white;
+    line-height: 42px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
 }

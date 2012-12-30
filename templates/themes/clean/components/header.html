@@ -12,6 +12,9 @@
         </div>
         <!-- End of Platform Logo -->
 
+        <!-- Any tenant notifications get posted here -->
+        <div id="tenant-notification">{{if tenantNotificationMessage}}${tenantNotificationMessage}{{/if}}</div>
+
         <!-- User Info -->
         <div id="user-info">
             <ul class="toolbox-header">
@@ -29,7 +32,7 @@
             <div class="divider-header divider-vertical"></div>
 
             <!-- User Icon -->
-            <div style="float:left; height:43px; line-height:43px">
+            <div style="float:left; height:43px; line-height:40px">
                 <a href="#/profile" rel="tooltip-html" original-title="Your Profile">
                     <img class="header-avatar-photo" id="login-user-avatar" data-src="${userLogoUrl}" alt="${userAltText}"/>
                 </a>

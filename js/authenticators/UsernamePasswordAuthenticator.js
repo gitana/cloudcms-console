@@ -71,6 +71,8 @@
                     }).height('auto');
                     $('.ui-dialog').css("overflow", "hidden");
                     $('.ui-dialog-buttonpane').css("overflow", "hidden");
+                    $('.ui-dialog-buttonpane').css("border-bottom-left-radius", "4px");
+                    $('.ui-dialog-buttonpane').css("border-bottom-right-radius", "4px");
                     $('.ui-dialog-titlebar').find('a').hide();
                     $('.ui-dialog-buttonpane button').css("font-size", "1.05em");
                     $('.ui-dialog-buttonpane button').css("margin", "0px");

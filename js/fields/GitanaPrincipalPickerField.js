@@ -160,8 +160,8 @@
 
     Alpaca.registerMessages({
         "emptyPlatform": "Cloud CMS platform not provided",
-        "invalidDomainId": "Invalid domain id",
-        "invalidPrincipal": "Invalid principal id"
+        "invalidDomainId": "Invalid domain ID",
+        "invalidPrincipal": "Invalid principal ID"
     });
 
     Alpaca.registerFieldClass("gitanaprincipalpicker", Alpaca.Fields.GitanaPrincipalPickerField);
