@@ -153,6 +153,25 @@
 
                         if (renderedField.isValid(true)) {
 
+                            debugger;
+
+                            Gitana.Utils.UI.block("Updating feature " + featureId + "...");
+
+                            self.targetObject().addFeature(featureId, value[featureId]).then(function() {
+
+                                var link = self.featuresLink();
+
+                                var callback = function() {
+
+                                    self.app().run("GET", link);
+
+                                };
+
+                                Gitana.Utils.UI.unblock(callback);
+
+                            });
+
+                            /*
                             self.targetFeaturesObject()[featureId] = value[featureId];
 
                             Gitana.Utils.UI.block("Updating feature " + featureId + "...");
@@ -170,6 +189,7 @@
                                 Gitana.Utils.UI.unblock(callback);
 
                             });
+                            */
 
                         }
                     });

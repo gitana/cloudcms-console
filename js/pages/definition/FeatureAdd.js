@@ -224,11 +224,11 @@
 
                                 Gitana.Utils.UI.block("Adding Feature ...");
 
-                                var definitionObj = self.targetFeaturesObject();
+                                // var definitionObj = self.targetFeaturesObject();
 
-                                definitionObj[featureId] = {};
+                                // definitionObj[featureId] = {};
 
-                                Alpaca.mergeObject(definitionObj[featureId],featureVal);
+                                // Alpaca.mergeObject(definitionObj[featureId],featureVal);
 
 
                                 self.targetObject().addFeature(featureId,featureVal).then(function() {

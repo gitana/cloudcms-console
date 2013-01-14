@@ -97,7 +97,7 @@
                         modal: true,
                         buttons: {
                             "Remove": function() {
-                                var featureVal = control.getValue();
+                                //var featureVal = control.getValue();
                                 if (control.isValid(true)) {
 
                                     Gitana.Utils.UI.block("Deleting Features ...");
@@ -110,13 +110,23 @@
 
                                             var featureId = val.getId();
 
-                                            if (targetObj[featureId] != null) {
-                                                delete targetObj[featureId];
-                                            }
+                                            self.targetObject().removeFeature(featureId).then(function() {
+
+                                                if (index >= features.length) {
+                                                    self.refresh(self.featuresLink());
+                                                }
+
+                                            });
+
+                                            //if (targetObj[featureId] != null) {
+                                            //    delete targetObj[featureId];
+                                            //}
 
                                         });
-
                                     }
+                                    $(this).dialog("close");
+
+                                    /*
 
                                     self.targetObject().update().then(function() {
 
@@ -126,6 +136,7 @@
 
                                     // we also have to close the dialog
                                     $(this).dialog("close");
+                                    */
                                 }
                             }
                         }
