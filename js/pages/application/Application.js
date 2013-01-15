@@ -139,29 +139,70 @@
                 "title" : "Overview",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'application', 20),
                 "alert" : "",
-                "items" : [
-                    {
-                        "key" : "ID",
-                        "value" : self.listItemProp(application, '_doc')
-                    },
-                    {
-                        "key" : "Key",
-                        "value" : self.listItemProp(application, 'key')
-                    },
-                    {
-                        "key" : "Title",
-                        "value" : self.listItemProp(application, 'title')
-                    },
-                    {
-                        "key" : "Description",
-                        "value" : self.listItemProp(application, 'description')
-                    },
-                    {
-                        "key" : "Last Modified",
-                        "value" : "By " + application.getSystemMetadata().getModifiedBy() + " @ " + application.getSystemMetadata().getModifiedOn().getTimestamp()
-                    }
-                ]
+                "items" : []
             };
+            pairs.items.push({
+                "key" : "ID",
+                "value" : self.listItemProp(application, '_doc')
+            });
+            pairs.items.push({
+                "key" : "Key",
+                "value" : self.listItemProp(application, 'key')
+            });
+            if (application.title) {
+                pairs.items.push({
+                    "key" : "Title",
+                    "value" : self.listItemProp(application, 'title')
+                });
+            }
+            if (application.description) {
+                pairs.items.push({
+                    "key" : "Description",
+                    "value" : self.listItemProp(application, 'description')
+                });
+            }
+            pairs.items.push({
+                "key" : "Last Modified",
+                "value" : "By " + application.getSystemMetadata().getModifiedBy() + " @ " + application.getSystemMetadata().getModifiedOn().getTimestamp()
+            });
+            pairs.items.push({
+                "key" : "Application Type",
+                "value" : self.listItemProp(application, 'applicationType')
+            });
+            if (application.applicationType == "web") {
+                pairs.items.push({
+                    "key" : "Trusted Scope",
+                    "value" : self.listItemProp(application, 'trustedScope')
+                });
+                pairs.items.push({
+                    "key" : "Trusted Host",
+                    "value" : self.listItemProp(application, 'trustedHost')
+                });
+            }
+            if (application.applicationType == "trusted") {
+                if (application.source) {
+                    if (application.source.type) {
+                        pairs.items.push({
+                            "key" : "Source Type",
+                            "value" : application.source && application.source.type ? application.source.type : ""
+                        });
+                    }
+                    if (application.source.public) {
+                        pairs.items.push({
+                            "key" : "Source Public",
+                            "value" : application.source && application.source.public ? application.source.public : ""
+                        });
+                    }
+                    if (application.source.uri) {
+                        pairs.items.push({
+                            "key" : "Source URI",
+                            "value" : application.source && application.source.uri ? application.source.uri : ""
+                        });
+                    }
+                }
+
+                // TODO: deployments
+            }
 
             this.pairs("application-overview", pairs);
         },
@@ -170,7 +211,7 @@
             var self = this;
             var application = self.targetObject();
             var pairs = {
-                "title" : "Application Hosting",
+                "title" : "Web Application Hosting",
                 "icon" : Gitana.Utils.Image.buildImageUri('security', 'user', 20),
                 "alert" : "",
                 "items" : []
@@ -194,10 +235,38 @@
             });
         },
 
+        setupTrustedDomainMappingOverview: function () {
+            var self = this;
+            var application = self.targetObject();
+            var pairs = {
+                "title" : "Trusted Domain Mappings",
+                "icon" : Gitana.Utils.Image.buildImageUri('security', 'user', 20),
+                "alert" : "",
+                "items" : []
+            };
+
+            Chain(application).listTrustedDomainMappingObjects(function(objects) {
+
+                if (objects.length > 0) {
+                    for (var i = 0; i < objects.length; i++) {
+                        var object = objects[i];
+                        pairs['items'].push({
+                            "img" : Gitana.Utils.Image.buildImageUri('objects', 'trusted-domain-mapping', 48),
+                            "class" : "block-list-item-img",
+                            "value" : object["host"] + "<div class='block-list-item-desc'>Scope: " + object["scope"] + "</div>"
+                        });
+                    }
+                }
+                self.processItemsDashlet(objects.length, pairs, "");
+                self.pairs("application-trusteddomainmappings", pairs);
+            });
+        },
+
 
         setupDashlets : function () {
             this.setupApplicationOverview();
             this.setupAutoHostingOverview();
+            this.setupTrustedDomainMappingOverview();
         },
 
         setupPage : function(el) {
@@ -219,6 +288,12 @@
                         "grid" : "grid_12",
                         "gadget" : "pairs",
                         "subscription" : "application-autoclientmappings"
+                    },
+                    {
+                        "id" : "trusteddomainmappings",
+                        "grid" : "grid_12",
+                        "gadget" : "pairs",
+                        "subscription" : "application-trusteddomainmappings"
                     }
                 ]
             };

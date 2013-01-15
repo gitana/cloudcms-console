@@ -39,10 +39,62 @@
             "type" : "object",
             "properties" : {
                 "key" : {
-                    "title" : "Key",
-                    "description" : "Enter a unique application key.",
                     "type" : "string",
                     "required" : true
+                },
+                "applicationType": {
+                    "type": "string",
+                    "enum": ["web", "trusted"],
+                    "required": true
+                },
+                "trustedScope": {
+                    "type": "string",
+                    "enum": ["webdav", "ftp", "cmis"],
+                    "dependencies": "applicationType"
+                },
+                "trustedHost": {
+                    "type": "string",
+                    "dependencies": "applicationType"
+                },
+                "deployments": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "webhost": {
+                                "type": "string"
+                            },
+                            "subdomain": {
+                                "type": "string"
+                            },
+                            "domain": {
+                                "type": "string"
+                            },
+                            "clientId": {
+                                "type": "string"
+                            },
+                            "authGrantId": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "dependencies": "applicationType"
+                },
+                "source": {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "enum": ["github"]
+                        },
+                        "public": {
+                            "type": "boolean"
+                        },
+                        "uri": {
+                            "type": "string"
+                        }
+                    },
+                    "dependencies": "applicationType"
                 }
             }
         },
@@ -821,15 +873,99 @@
         "Application" : {
             "fields" : {
                 "title" : {
+                    "type": "text",
+                    "label": "Title",
                     "helper" : "Enter application title."
                 },
                 "description": {
+                    "type": "textarea",
+                    "label": "Description",
                     "helper" : "Enter application description."
                 },
                 "key" : {
                     "type" : "text",
+                    "label": "Key",
+                    "helper": "Enter a unique key for this application",
                     "size" : 60
+                },
+                "applicationType": {
+                    "type": "select",
+                    "label": "Type",
+                    "optionLabels": ["Hosted Web Application", "Trusted API"]
+                },
+                "trustedScope": {
+                    "type": "select",
+                    "label": "Trusted Scope",
+                    "optionLabels": ["WebDAV", "FTP", "CMIS"],
+                    "dependencies": {
+                        "applicationType": "trusted"
+                    }
+                },
+                "trustedHost": {
+                    "type": "text",
+                    "label": "Trusted Host",
+                    "dependencies": {
+                        "applicationType": "trusted"
+                    }
+                },
+                "deployments": {
+                    "toolbarSticky": true,
+                    "label": "Deployments",
+                    "fields": {
+                        "item": {
+                            "fields": {
+                                "webhost": {
+                                    "type": "text",
+                                    "label": "ID of Web Host"
+                                },
+                                "subdomain": {
+                                    "type": "text",
+                                    "label": "SubDomain"
+                                },
+                                "domain": {
+                                    "type": "text",
+                                    "label": "Domain"
+                                },
+                                "clientId": {
+                                    "type": "text",
+                                    "label": "ID of Client Object"
+                                },
+                                "authGrantId": {
+                                    "type": "text",
+                                    "label": "ID of Authentication Grant"
+                                }
+                            }
+                        }
+                    },
+                    "dependencies": {
+                        "applicationType": "web"
+                    }
+                },
+                "source": {
+                    "type": "object",
+                    "label": "Source Control",
+                    "fields": {
+                        "type": {
+                            "type": "text",
+                            "label": "Type",
+                            "optionLabels": ["GitHub"],
+                            "helper": "Choose your source control type"
+                        },
+                        "public": {
+                            "type": "checkbox",
+                            "label": "Public",
+                            "helper": "Is this a public repository?"
+                        },
+                        "uri": {
+                            "type": "text",
+                            "label": "URI"
+                        }
+                    },
+                    "dependencies": {
+                        "applicationType": "web"
+                    }
                 }
+
             }
         },
         "Warehouse" : {

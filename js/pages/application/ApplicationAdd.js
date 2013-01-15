@@ -7,9 +7,9 @@
 
         schema: function() {
 
-            var schema = Alpaca.cloneObject(Gitana.Console.Schema.Application);
+            var schema = Alpaca.cloneObject(this.base());
 
-            Alpaca.mergeObject(schema,this.base());
+            Alpaca.mergeObject(schema,Gitana.Console.Schema.Application);
 
             // automatic stack creation
             Alpaca.mergeObject(schema, {
