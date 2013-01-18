@@ -1,6 +1,6 @@
 <script id="layoutTemplate" type="text/x-jquery-tmpl">
 
-    <div class="container_12 gitana-selector">
+    <div class="container_12 gitana-stack-selector">
 
         <div class="grid_12">
             <div class="block-border">
@@ -10,13 +10,13 @@
                 </div>
                 -->
 
-                {{if nodeselector && nodeselector.filter}}
+                {{if stackselector && stackselector.filter}}
                 <div class="list-filter" gadget="filter">
                 </div>
                 {{/if}}
-                {{if nodeselector.subscription}}<div class="list-toolbar" gadget="toolbar" subscription="${nodeselector.subscription}-toolbar"></div>{{/if}}
+                {{if stackselector.subscription}}<div class="list-toolbar" gadget="toolbar" subscription="${stackselector.subscription}-toolbar"></div>{{/if}}
                 <div class="block-content list-datatable">
-                    <div class="list" gadget="list" {{if nodeselector.subscription}}subscription="${nodeselector.subscription}"{{/if}} {{if nodeselector.filter}}filter="${nodeselector.filter}"{{/if}}>
+                    <div class="list" gadget="list" {{if stackselector.subscription}}subscription="${stackselector.subscription}"{{/if}} {{if stackselector.filter}}filter="${stackselector.filter}"{{/if}}>
                     </div>
                 </div>
             </div>

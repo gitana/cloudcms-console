@@ -1,17 +1,17 @@
 (function($) {
-    Gitana.Console.Pages.GitanaNodeSelector = Gitana.CMS.Pages.AbstractListPageGadget.extend(
+    Gitana.Console.Pages.GitanaStackSelector = Gitana.CMS.Pages.AbstractListPageGadget.extend(
     {
-        TEMPLATE : "components/gitana-node-selector",
+        TEMPLATE : "components/gitana-stack-selector",
 
-        SUBSCRIPTION : "node-picker",
+        SUBSCRIPTION : "stack-picker",
 
         DISPLAY_LIST_FILTER: true,
 
-        FILTER : "node-candidates-list-filters",
+        FILTER : "stack-candidates-list-filters",
 
         FILTER_TOOLBAR: {
             "query" : {
-                "title" : "Query Node",
+                "title" : "Query Stack",
                 "icon" : Gitana.Utils.Image.buildImageUri('browser', 'query', 48)
             }
         },
@@ -111,7 +111,6 @@
         filterOptions: function() {
             var self = this;
             return {
-                "helper" : "Query nodes by id, last name, email, company, date range or full query.",
                 "fields" : {
                     "text" : {
                         "size": this.DEFAULT_FILTER_TEXT_SIZE
@@ -181,10 +180,10 @@
                     }
                 },
                 {
-                    "title": "Type",
-                    "sortingExpression" : "_type",
+                    "title": "Key",
+                    "sortingExpression" : "key",
                     "property": function(callback) {
-                        var value = this.getTypeQName();
+                        var value = self.listItemProp(this, "key");
                         callback(value);
                     }
                 },
@@ -203,7 +202,7 @@
                         var id = self.listItemProp(this, '_doc');
                         var title = self.listItemProp(this, 'title');
 
-                        var value = "<a class='gitana-selector-action node-action gitana-selector-select node-select' data-target-node-id='" + id + "' data-target-node-title='" + title + "'><span>Select</span></a>";
+                        var value = "<a class='gitana-selector-action stack-action gitana-selector-select stack-select' data-target-stack-id='" + id + "' data-target-stack-title='" + title + "'><span>Select</span></a>";
                         callback(value);
                     }
                 }
@@ -212,7 +211,7 @@
             list["loadFunction"] = function(query, pagination, callback) {
                 var _query = Alpaca.cloneObject(self.query());
 
-                Chain(self.branch()).queryNodes(_query, self.pagination(pagination)).then(function() {
+                Chain(self.platform()).queryStacks(_query, self.pagination(pagination)).then(function() {
                     callback.call(this);
                 });
             };
@@ -253,28 +252,28 @@
         processList: function(el) {
             var self = this;
 
-            $("body").undelegate(".node-select", "click").delegate(".node-select", "click", function() {
+            $("body").undelegate(".stack-select", "click").delegate(".stack-select", "click", function() {
 
                 var control = $(this);
-                var id = control.attr("data-target-node-id");
-                var title = control.attr("data-target-node-title");
+                var id = control.attr("data-target-stack-id");
+                var title = control.attr("data-target-stack-title");
 
                 self.selectHandler.call(this, id, title);
             })
         },
 
-        setupGitanaNodeSelector : function(el) {
+        setupGitanaStackSelector : function(el) {
 
             var page = {
-                "title" : "Node List",
-                "description" : "List of Nodes.",
-                "listTitle" : "Node List",
-                "listIcon" : Gitana.Utils.Image.buildImageUri('objects', 'node', 20),
+                "title" : "Stack List",
+                "description" : "List of Stacks.",
+                "listTitle" : "Stack List",
+                "listIcon" : Gitana.Utils.Image.buildImageUri('objects', 'stack', 20),
                 "subscription" : this.SUBSCRIPTION,
                 "filter" : this.FILTER
             };
 
-            this.observable('nodeselector').set(page);
+            this.observable('stackselector').set(page);
         },
 
         index: function(el) {
@@ -297,7 +296,7 @@
                         self.setupList(el);
 
                         // set up the page
-                        self.setupGitanaNodeSelector(el);
+                        self.setupGitanaStackSelector(el);
 
                         // list model
                         var page = self.model(el);
@@ -328,6 +327,6 @@
 
     });
 
-    Ratchet.GadgetRegistry.register("nodeselector", Gitana.Console.Pages.GitanaNodeSelector);
+    Ratchet.GadgetRegistry.register("stackselector", Gitana.Console.Pages.GitanaStackSelector);
 
 })(jQuery);

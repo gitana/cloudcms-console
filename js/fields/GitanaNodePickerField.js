@@ -102,7 +102,7 @@
         postRender: function() {
             this.base();
             var self = this;
-            $('<button class="gitana-node-picker-button">Select Node...</button>').button({
+            $('<button class="gitana-picker-button">Select...</button>').button({
                 icons: {
                     primary:'ui-icon-document'
                 }

@@ -308,16 +308,24 @@
                 }
             }
         },
-        "Project" : {
-            "type": "object",
-            "properties" : {
-                "title" : {
-                    "type" : "string"
-                },
-                "description" : {
-                    "type" : "string"
+        "Project" : function(platform) {
+            return {
+                "type": "object",
+                "properties" : {
+                    "title" : {
+                        "type" : "string"
+                    },
+                    "description" : {
+                        "type" : "string"
+                    },
+                    "stackId": {
+                        "type": "string"
+                    },
+                    "projectType": {
+                        "type": "string"
+                    }
                 }
-            }
+            };
         },
         "Archive" : {
             "type": "object",
@@ -1159,15 +1167,26 @@
                 }
             }
         },
-        "Project" : {
-            "fields" : {
-                "title" : {
-                    "helper" : "Enter title."
-                },
-                "description": {
-                    "helper" : "Enter description."
+        "Project" : function(platform) {
+            return {
+                "fields" : {
+                    "title" : {
+                        "label": "Title"
+                    },
+                    "description": {
+                        "label": "Description"
+                    },
+                    "stackId": {
+                        "label": "Stack",
+                        "hideInitValidationError": true,
+                        "type": "gitanastackpicker",
+                        "platform": platform
+                    },
+                    "projectType": {
+                        "label": "Project Type"
+                    }
                 }
-            }
+            };
         },
         "Archive" : {
             "fields": {

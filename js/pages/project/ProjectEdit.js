@@ -14,7 +14,7 @@
         },
 
         targetObject: function() {
-            return this.client();
+            return this.project();
         },
 
         requiredAuthorities: function() {
@@ -27,24 +27,11 @@
         },
 
         schema: function() {
-            return Alpaca.mergeObject(this.base(), Gitana.Console.Schema.Project);
+            return Gitana.Console.Schema.Project(this.platform());
         },
 
         options: function() {
-
-            var options = Alpaca.mergeObject(this.base(), {
-                "fields" : {
-                    "title" : {
-                        "helper" : "Enter project title."
-                    },
-                    "description" : {
-                        "helper" : "Enter project description."
-                    }
-                }
-            });
-
-            options = Alpaca.mergeObject(options, Gitana.Console.Options.Project);
-            return options;
+            return Gitana.Console.Options.Project(this.platform());
         },
 
         setupMenu: function() {
@@ -63,7 +50,7 @@
             var self = this;
             var project = self.targetObject();
             var defaultData = this.populateObject(["title","description"],project);
-            $('#client-edit', $(el)).alpaca({
+            $('#project-edit', $(el)).alpaca({
                 "data": defaultData,
                 "schema": self.schema(),
                 "options": self.options(),
@@ -75,7 +62,7 @@
                         if (form.isValid(true)) {
                             Gitana.Utils.UI.block("Updating Project ...");
                             Alpaca.mergeObject(project,formVal);
-                            client.update().then(function() {
+                            project.update().then(function() {
                                 Gitana.Utils.UI.unblock(function() {
                                     self.app().run('GET', self.LINK().call(self,self.targetObject()));
                                 });
@@ -124,7 +111,7 @@
 
             var page = {
                 "title" : "Edit Project",
-                "description" : "Edit project " + this.friendlyTitle(this.client()) + ".",
+                "description" : "Edit project " + this.friendlyTitle(this.project()) + ".",
                 "forms" :[]
             };
 

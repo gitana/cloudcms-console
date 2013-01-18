@@ -125,7 +125,16 @@
                     {
                         "key" : "Last Modified",
                         "value" : "By " + project.getSystemMetadata().getModifiedBy() + " @ " + project.getSystemMetadata().getModifiedOn().getTimestamp()
+                    },
+                    {
+                        "key": "Stack",
+                        "value": "<a href='#" + self.LIST_LINK().call(self, "stacks") + self.listItemProp(project, "stackId") + "'>" + self.listItemProp(project, "stackId") + "</a>"
+                    },
+                    {
+                        "key": "Project Type",
+                        "value": self.listItemProp(project, "projectType")
                     }
+
                 ]
             };
 

@@ -70,9 +70,11 @@
                             });
                         }
                     });
+/*
                     $('#' + targetId + '-reset', $(el)).click(function() {
                         control.setValue(defaultData);
                     });
+*/
                 }
             });
         },
@@ -101,10 +103,10 @@
                     "title" : "Edit JSON",
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'json-edit', 24),
                     "buttons" :[
-                        {
-                            "id" : "json-edit-reset",
-                            "title" : "Reset"
-                        },
+//                        {
+//                            "id" : "json-edit-reset",
+//                            "title" : "Reset"
+//                        },
                         {
                             "id" : "json-edit-save",
                             "title" : "Save JSON",

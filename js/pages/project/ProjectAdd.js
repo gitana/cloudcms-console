@@ -6,25 +6,66 @@
             },
 
             schema: function() {
-
-                return Alpaca.mergeObject(this.base(), Gitana.Console.Schema.Project);
+                return {
+                    "type": "object",
+                    "properties" : {
+                        "title" : {
+                            "type" : "string"
+                        },
+                        "description" : {
+                            "type" : "string"
+                        },
+                        "stackSelection": {
+                            "type": "string",
+                            "enum": ["new", "existing"],
+                            "default": "new",
+                            "required": true
+                        },
+                        "stackId": {
+                            "type": "string",
+                            "dependencies": "stackSelection"
+                        },
+                        "projectType": {
+                            "type": "string",
+                            "dependencies": "stackSelection",
+                            "enum": ["mobile1"]
+                        }
+                    }
+                };
             },
 
             options: function() {
-
-                var options = Alpaca.mergeObject(this.base(), {
+                return {
                     "fields" : {
                         "title" : {
-                            "helper" : "Enter project title."
+                            "label": "Title"
                         },
-                        "description" : {
-                            "helper" : "Enter project description."
+                        "description": {
+                            "label": "Description"
+                        },
+                        "stackSelection": {
+                            "label": "Stack",
+                            "optionLabels": ["Create a New Stack", "Use an Existing Stack"]
+                        },
+                        "stackId": {
+                            "label": "Select Stack",
+                            "hideInitValidationError": true,
+                            "type": "gitanastackpicker",
+                            "platform": this.platform(),
+                            "dependencies": {
+                                "stackSelection": "existing"
+                            }
+                        },
+                        "projectType": {
+                            "label": "Project Type",
+                            "type": "select",
+                            "optionLabels": ["jQuery Mobile Application"],
+                            "dependencies": {
+                                "stackSelection": "new"
+                            }
                         }
                     }
-                });
-
-                options = Alpaca.mergeObject(options, Gitana.Console.Options.Project);
-                return options;
+                };
             },
 
             setup: function() {
@@ -72,12 +113,22 @@
 
                                 Gitana.Utils.UI.block("Creating Project...");
 
-                                self.targetObject().createProject(formVal).then(function() {
+                                var projectObject = {};
+                                Gitana.copyInto(projectObject, formVal);
+
+                                if (projectObject.stackSelection == "new")
+                                {
+                                    delete formVal.stackId;
+                                }
+                                delete projectObject.stackSelection;
+
+                                self.targetObject().createProject(projectObject).then(function() {
                                     var newProject = this;
                                     Gitana.Utils.UI.unblock(function() {
                                         self.app().run('GET', self.LINK().call(self, newProject));
                                     });
                                 });
+
                             }
                         });
                     }

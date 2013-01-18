@@ -2,9 +2,9 @@
 
     var Alpaca = $.alpaca;
 
-    Alpaca.Fields.GitanaPrincipalPickerField = Alpaca.Fields.TextField.extend(
+    Alpaca.Fields.GitanaStackPickerField = Alpaca.Fields.TextField.extend(
     /**
-     * @lends Alpaca.Fields.GitanaPrincipalPickerField.prototype
+     * @lends Alpaca.Fields.GitanaStackPickerField.prototype
      */
     {
         /**
@@ -32,13 +32,13 @@
             this.base();
             var self = this;
 
-            if (this.options.context) {
-                this.context = this.options.context;
-                this.platform = this.options.context.platform();
+            if (this.options.platform) {
+                this.platform = this.options.platform;
             }
 
             if (!this.options.validator) {
                 this.options.validator = function(control, callback) {
+
                     var controlVal = control.getValue();
 
                     if (!self.platform) {
@@ -55,44 +55,17 @@
                         });
                         return true;
                     } else {
-                        var ids = controlVal.split("/");
-                        if (ids.length != 2) {
-                            callback({
-                                "message" : self.view.getMessage("invalidPrincipal"),
-                                "status" : false
-                            });
-                            return false;
-                        }
-                        var domainId = ids[0];
-                        var principalId = ids[1];
-                        var domain;
-                        Chain(self.platform).trap(function(error){
-                            callback({
-                                "message" : self.view.getMessage("invalidDomainId"),
-                                "status" : false
-                            });
-                            return false;
-                        }).readDomain(domainId).trap(function(error){
-                            callback({
-                                "message" : self.view.getMessage("invalidPrincipal"),
-                                "status" : false
-                            });
-                            return false;
-                        }).then(function() {
-                            domain = this;
-                        }).readPrincipal(principalId).then(function() {
-                                var friendlyName = self.context.friendlyName(this);
-                                var itemInfo = "<div>" + friendlyName + "</div>";
-                                itemInfo += "<div>" + self.context.listItemProp(this, 'email') + "</div>";
-                                itemInfo += "<div>" + self.context.listItemProp(this, 'companyName') + "</div>";
-                                itemInfo += "<div><b>Domain</b>: " + self.context.friendlyTitle(domain) + "</div>";
-                                itemInfo += "<div><b>Name</b>: " + this.getName() + "</div>";
+                        var id = controlVal;
 
-                                itemInfo.replace('<', '&lt;').replace('>', '$gt;');
-
-                                control.field.attr('title',itemInfo);
+                        Chain(self.platform).trap(function(error) {
                             callback({
-                                "message": "Valid group id",
+                                "message" : self.view.getMessage("invalidStackId"),
+                                "status" : false
+                            });
+                            return false;
+                        }).readStack(id).then(function() {
+                            callback({
+                                "message": "Valid stack ID",
                                 "status": true
                             });
                         });
@@ -106,6 +79,8 @@
          */
         renderField: function(onSuccess) {
 
+            var self = this;
+
             if (this.controlFieldTemplate) {
                 this.field = $.tmpl(this.controlFieldTemplate, {
                     "id": this.getId(),
@@ -113,12 +88,12 @@
                 });
                 this.injectField(this.field);
                 this.field.attr('rel',"tooltip-html");
-                $('<div gadget="principalselector" target-id="' + this.field.attr('id') + '"></div>').hide().insertAfter(this.field);
             }
 
             if (onSuccess) {
                 onSuccess();
             }
+
         },
 
         /**
@@ -129,17 +104,36 @@
             var self = this;
             $('<button class="gitana-picker-button">Select...</button>').button({
                 icons: {
-                    primary:'ui-icon-person'
+                    primary:'ui-icon-document'
                 }
             }).click(function() {
-                    $(".ui-dialog").remove();
-                    $('div[gadget="principalselector"]').show().dialog({
-                        title : "<div><img src='" + Gitana.Utils.Image.buildImageUri('objects', 'authentication-grant', 20) + "'/>Cloud CMS Principal Picker</div>",
-                        resizable: true,
-                        width: 900,
-                        height: 600,
-                        modal: true
-                    }).height('auto');
+
+                // make sure we only insert once
+                var el = $('<div gadget="stackselector"></div>').hide().insertAfter(self.field);
+                var ratchet = $(el).ratchet();
+                ratchet.run();
+
+                // TODO: we need some way to wait for ratchet to finish render...
+                window.setTimeout(function() {
+
+                    $(el).show();
+
+                    var dialog = Gitana.Utils.UI.modalOpen({
+                        "title": "Select a Stack",
+                        "body": el,
+                        "width": 700
+                    });
+
+                    for (var i = 0; i < ratchet.gadgetInstances.length; i++)
+                    {
+                        ratchet.gadgetInstances[i].selectHandler = function(stackId, title) {
+                            $(dialog).dialog("close");
+                            $(self.field).val(stackId).blur().focus();
+                        }
+                    }
+
+                }, 1000);
+
             }).insertAfter(this.field);
         },
 
@@ -147,22 +141,21 @@
          * @see Alpaca.Fields.TextField#getTitle
          */
         getTitle: function() {
-            return "Cloud CMS Principal Picker Field";
+            return "Cloud CMS Stack Picker Field";
         },
 
         /**
          * @see Alpaca.Fields.TextField#getDescription
          */
         getDescription: function() {
-            return "Field for picking Cloud CMS principal.";
+            return "Field for picking Cloud CMS stack.";
         }
     });
 
     Alpaca.registerMessages({
         "emptyPlatform": "Cloud CMS platform not provided",
-        "invalidDomainId": "Invalid domain ID",
-        "invalidPrincipal": "Invalid principal ID"
+        "invalidStackId": "Invalid stack ID"
     });
 
-    Alpaca.registerFieldClass("gitanaprincipalpicker", Alpaca.Fields.GitanaPrincipalPickerField);
+    Alpaca.registerFieldClass("gitanastackpicker", Alpaca.Fields.GitanaStackPickerField);
 })(jQuery);

@@ -793,7 +793,7 @@ h2.dialog-delete-message {
 }
 
 /* node selection */
-.node-action {
+.gitana-selector-action {
     position: relative;
     margin-left: 0;
     padding-left: 0;
@@ -804,16 +804,16 @@ h2.dialog-delete-message {
     cursor: pointer;
 }
 
-.node-action span {
+.gitana-selector-action span {
     display: inline-block;
     width: 60px;
 }
 
-.node-action:hover {
+.gitana-selector-action:hover {
     background-color: #e5e5e5;
 }
 
-.node-select {
+.gitana-selector-select {
     background: url("../../../images/themes/clean/console/icons/packs/fugue/16x16/tick-circle.png") no-repeat scroll 3px 3px #FFFFFF;
     padding: 3px 5px 3px 25px;
 }
@@ -1337,12 +1337,12 @@ OL.rule-action-operation-text
     border-bottom-left-radius: 0px;
 }
 
-.gitana-node-selector > .grid_12 > .block-border > .list-filter > .filter > .ui-widget-content
+.gitana-selector > .grid_12 > .block-border > .list-filter > .filter > .ui-widget-content
 {
     border: 1px solid #FFFFFF;
 }
 
-.gitana-node-selector > .grid_12 > .block-border > .list-filter > .filter > .ui-widget-content > P
+.gitana-selector > .grid_12 > .block-border > .list-filter > .filter > .ui-widget-content > P
 {
     margin-top: 0px;
 }

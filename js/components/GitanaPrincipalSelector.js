@@ -300,7 +300,7 @@
 
                         itemInfo.replace('<','&lt;').replace('>','$gt;');
 
-                        var value = "<a class='node-action node-select' data-target-principal-info='" + itemInfo + "' data-target-principal-id='" + nodeId + "'><span>Select</span></a>";
+                        var value = "<a class='gitana-selector-action node-action gitana-selector-select node-select' data-target-principal-info='" + itemInfo + "' data-target-principal-id='" + nodeId + "'><span>Select</span></a>";
                         callback(value);
                     }
                 }

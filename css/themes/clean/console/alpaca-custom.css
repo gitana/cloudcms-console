@@ -103,7 +103,7 @@ a.button {
 }
 
 /* node picker */
-.gitana-node-selector .block-border {
+.gitana-selector .block-border {
     background: none repeat scroll 0 0 transparent;
     border: medium none;
     border-radius: 0 0 0 0;
@@ -112,20 +112,20 @@ a.button {
     padding: 8px;
 }
 
-.gitana-node-selector .dataTables_wrapper .block-actions {
+.gitana-selector .dataTables_wrapper .block-actions {
     margin: 0;
     border-radius: 0 0 2px 2px;
 }
 
-.gitana-node-selector .ui-widget {
+.gitana-selector .ui-widget {
     font-size: 1.0em;
 }
 
-.gitana-node-selector .ui-dialog .ui-dialog-title, .ui-dialog .ui-dialog-content {
+.gitana-selector .ui-dialog .ui-dialog-title, .ui-dialog .ui-dialog-content {
     font-size: 12px;
 }
 
-.gitana-node-picker-button {
+.gitana-picker-button {
     margin-left: 5px;
 }
 
