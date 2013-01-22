@@ -187,10 +187,10 @@
                             "value" : application.source && application.source.type ? application.source.type : ""
                         });
                     }
-                    if (application.source.public) {
+                    if (application.source["public"]) {
                         pairs.items.push({
                             "key" : "Source Public",
-                            "value" : application.source && application.source.public ? application.source.public : ""
+                            "value" : application.source && application.source["public"] ? application.source["public"] : ""
                         });
                     }
                     if (application.source.uri) {
