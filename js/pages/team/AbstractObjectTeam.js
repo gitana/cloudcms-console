@@ -127,17 +127,18 @@
                         "sortingExpression": "title",
                         "property": function(callback) {
 
-                            var type = this.TYPE;
-                            var title = title;
+                            var title = null;
 
-                            if (type == "GROUP")
+                            // cover both cases: member or principal since this class uses both
+                            var isUser = (this.TYPE == "USER" || this.type == "user");
+                            if (!isUser)
                             {
                                 title = this["title"];
                                 if (!title) {
                                     title = this["name"];
                                 }
                             }
-                            else if (type == "USER")
+                            else
                             {
                                 title = this["title"];
                                 if (!title) {
@@ -156,12 +157,20 @@
                         "type":"property",
                         "sortingExpression": "type",
                         "property": function(callback) {
-                            callback(this.TYPE);
+
+                            var typeString = "group";
+                            var isUser = (this.TYPE == "USER" || this.type == "user");
+                            if (isUser) {
+                                typeString = "user";
+                            }
+
+                            callback(typeString);
                         }
                     },
                     {
                         "title": "Membership",
                         "property": function(callback) {
+
                             var buttonText = this.get('isMember') ? "Remove" : "Add";
                             var buttonClass = this.get('isMember') ? "membership-remove" : "membership-add";
 
