@@ -126,25 +126,29 @@
                         "type":"property",
                         "sortingExpression": "title",
                         "property": function(callback) {
+
                             var type = this.TYPE;
-                            if (type == "GROUP") {
-                                var title = this.get('title') ? this.get('title') : "";
-                                callback(title);
-                            } else {
-                                var name = "";
-                                /*
-                                if (this.getFirstName()) {
-                                    name += this.getFirstName() + " ";
-                                }
-                                if (this.getLastName()) {
-                                    name += this.getLastName();
-                                }
-                                */
+                            var title = title;
 
-                                name += this["fullName"];
-
-                                callback(name);
+                            if (type == "GROUP")
+                            {
+                                title = this["title"];
+                                if (!title) {
+                                    title = this["name"];
+                                }
                             }
+                            else if (type == "USER")
+                            {
+                                title = this["title"];
+                                if (!title) {
+                                    title = this["fullName"];
+                                }
+                                if (!title) {
+                                    title = this["name"];
+                                }
+                            }
+
+                            callback(title);
                         }
                     },
                     {
@@ -160,9 +164,8 @@
                         "property": function(callback) {
                             var buttonText = this.get('isMember') ? "Remove" : "Add";
                             var buttonClass = this.get('isMember') ? "membership-remove" : "membership-add";
-                            //var value = "<a id='" + this.getDomainQualifiedId() + "' class='membership-action " + buttonClass + "'><span>" + buttonText + "</span></a>";
 
-                            var domainQualifiedId = this["domainid"] + "/" + this["_doc"];
+                            var domainQualifiedId = this["domainId"] + "/" + this["_doc"];
                             var value = "<a id='" + domainQualifiedId + "' class='membership-action " + buttonClass + "'><span>" + buttonText + "</span></a>";
                             callback(value);
                         }
@@ -231,27 +234,27 @@
                         Chain(self.platform()).readDomain(domainId).then(function() {
                             domainName = self.friendlyTitle(this);
                             domainLink = self.link(this);
-                            _this = this;
                             this.then(function() {
                                 this.queryPrincipals(principalQuery, self.pagination(pagination)).then(function() {
+
+                                    _this = this;
 
                                     this.subchain(self.targetObject()).listMembers().each(function() {
                                         memberIds.push(this.getId());
                                     });
 
                                     this.then(function() {
-                                        this.each(
-                                            function() {
-                                                if ($.inArray(this.getId(), memberIds) != -1) {
-                                                     _this[this.getId()]['isMember'] = true;
-                                                } else {
-                                                     _this[this.getId()]['isMember'] = false;
-                                                }
-                                                 _this[this.getId()]['domainName'] = domainName;
-                                                 _this[this.getId()]['domainLink'] = domainLink;
-                                            }).then(function() {
-                                                callback.call(this);
-                                            });
+                                        this.each(function() {
+                                            if ($.inArray(this.getId(), memberIds) != -1) {
+                                                 _this[this.getId()]['isMember'] = true;
+                                            } else {
+                                                 _this[this.getId()]['isMember'] = false;
+                                            }
+                                             _this[this.getId()]['domainName'] = domainName;
+                                             _this[this.getId()]['domainLink'] = domainLink;
+                                        }).then(function() {
+                                            callback.call(this);
+                                        });
                                     });
                                 });
                             });
