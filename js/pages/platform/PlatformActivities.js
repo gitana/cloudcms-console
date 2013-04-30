@@ -12,10 +12,6 @@
                 }
             },
 
-            constructor: function(id, ratchet) {
-                this.base(id, ratchet);
-            },
-
             setup: function() {
                 this.get("/activities", this.index);
             },
@@ -237,9 +233,10 @@
                     Chain(self.contextObject()).trap(function(error) {
                         return self.handlePageError(el, error);
                     }).queryActivities(self.query(), self.pagination(pagination)).then(function(){
-                        _this = this;
+                        //_this = this;
                         this.each(function() {
-                            _this[this.getId()]['activityDetails'] = Gitana.Utils.Activity.activityDetails(self, this);
+                            //_this[this.getId()]['activityDetails'] = Gitana.Utils.Activity.activityDetails(self, this);
+                            this['activityDetails'] = Gitana.Utils.Activity.activityDetails(self, this);
                         }).then(function() {
                             callback.call(this);
                         });

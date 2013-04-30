@@ -11,23 +11,19 @@
                 "properties" : {
                     "firstName" : {
                         "title": "First Name",
-                        "description" : "Enter your first name.",
                         "type" : "string"
                     },
                     "lastName" : {
                         "title": "Last Name",
-                        "description" : "Enter your last name.",
                         "type" : "string"
                     },
                     "email" : {
                         "title": "Email",
-                        "description" : "Enter your email address.",
                         "type" : "string",
                         "format": "email"
                     },
                     "companyName" : {
                         "title": "Company Name",
-                        "description" : "Enter your company name.",
                         "type" : "string"
                     },
                     "password" : {
@@ -68,6 +64,7 @@
                         "size": 60
                     },
                     "email" : {
+                        "hideInitValidationError": true,
                         "size":60
                     },
                     "companyName" : {
@@ -75,8 +72,7 @@
                         "size": 60
                     },
                     "password" : {
-                        "size": 60,
-                        "helper":"Reset password."
+                        "size": 60
                     },
                     "file": {
                         "type": "avatar",
@@ -86,10 +82,6 @@
                     }
                 }
             };
-        },
-
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
         },
 
         setup: function() {
@@ -114,7 +106,7 @@
             var user = self.targetObject();
             var defaultData = this.populateObject(["_settings","firstName","lastName","email","companyName"],user);
             defaultData["password"] = "";
-            defaultData['_settings'] = self.consoleAppSettings();
+            defaultData["_settings"] = self.consoleAppSettings();
             $('#userprofile-edit',$(el)).alpaca({
                 "data": defaultData,
                 "schema": self.schema(),
@@ -134,9 +126,9 @@
 
                             delete updatedUser['file'];
 
-                            var settings = Alpaca.cloneObject(updatedUser['_settings']);
+                            var settings = Alpaca.cloneObject(updatedUser["_settings"]);
 
-                            delete updatedUser['_settings'];
+                            delete updatedUser["_settings"];
 
                             Alpaca.mergeObject(user, updatedUser);
                             user.update().reload().then(function() {
@@ -209,9 +201,6 @@
                             });
                         }
                     });
-                    $('#userprofile-edit-reset',$(el)).click(function(){
-                        form.setValue(defaultData);
-                    });
                 }
             });
         },
@@ -231,10 +220,6 @@
                         "title" : "Edit My Profile ("+ this.targetObject().getName() +")",
                         "icon" : Gitana.Utils.Image.buildImageUri('security', 'user-edit', 24),
                         "buttons" :[
-                            {
-                                "id" : "userprofile-edit-reset",
-                                "title" : "Reset"
-                            },
                             {
                                 "id" : "userprofile-edit-save",
                                 "title" : "Save Profile",

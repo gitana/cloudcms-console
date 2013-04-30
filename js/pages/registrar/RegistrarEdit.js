@@ -75,9 +75,6 @@
                             });
                         }
                     });
-                    $('#registrar-edit-reset', $(el)).click(function() {
-                        form.setValue(defaultData);
-                    });
                 }
             });
         },
@@ -97,10 +94,6 @@
                 "title" : "Edit Registrar",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'registrar-edit', 24),
                 "buttons" :[
-                    {
-                        "id" : "registrar-edit-reset",
-                        "title" : "Reset"
-                    },
                     {
                         "id" : "registrar-edit-save",
                         "title" : "Save Registrar",

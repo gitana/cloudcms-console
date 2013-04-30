@@ -98,9 +98,6 @@
                             });
                         }
                     });
-                    $('#stack-edit-reset', $(el)).click(function() {
-                        form.setValue(defaultData);
-                    });
                 }
             });
         },
@@ -120,10 +117,6 @@
                 "title" : "Edit Stack",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'stack-edit', 24),
                 "buttons" :[
-                    {
-                        "id" : "stack-edit-reset",
-                        "title" : "Reset"
-                    },
                     {
                         "id" : "stack-edit-save",
                         "title" : "Save Stack",

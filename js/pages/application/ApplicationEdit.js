@@ -123,9 +123,6 @@
                             });
                         }
                     });
-                    $('#application-edit-reset', $(el)).click(function() {
-                        form.setValue(defaultData);
-                    });
                 }
             });
         },
@@ -145,10 +142,6 @@
                 "title" : "Edit Application",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'application-edit', 24),
                 "buttons" :[
-                    {
-                        "id" : "application-edit-reset",
-                        "title" : "Reset"
-                    },
                     {
                         "id" : "application-edit-save",
                         "title" : "Save Application",

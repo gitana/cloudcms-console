@@ -7,47 +7,50 @@
         EDIT_JSON_URI: [
             "/repositories/{repositoryId}/branches/{branchId}/definitions/{definitionId}/forms/{formId}/edit/json"        ],
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         schema: function() {
-            var self = this;
-            return Alpaca.mergeObject(this.base(), {
-                "properties" : {
+
+            return {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "title": "Title",
+                        "type": "string",
+                        "required": true
+                    },
+                    "description": {
+                        "title": "Description",
+                        "type": "string"
+                    },
                     "formKey" : {
-                        "title": "Form Key",
+                        "title": "Unique Form Key",
                         "type" : "string",
-                        "default" : self.form()['formKey'],
-                        "required" : true
+                        "required": true
                     },
                     "body" : {
-                        "title" : "Form Body",
+                        "title" : "Form Configuration",
                         "type" : "string",
-                        "default" : "{\"fields\" : {}}"
+                        "default" : JSON.stringify({
+                            "fields": {}
+                        }, null, "  ")
                     }
                 }
-            });
+            };
         },
 
         options: function() {
             var self = this;
-            var options = Alpaca.mergeObject(this.base(), {
+            var options = {
+                "focus": true,
                 "fields" : {
                     "title" : {
-                        "helper" : "Enter form title."
+                        "size" : 60
                     },
-                    "description" : {
-                        "helper" : "Enter form description."
-                    },
-                    "body" : {
-                        "type" : "json",
-                        "rows" : 20,
-                        "cols" : 90,
-                        "helper" : "Enter form body."
+                    "description": {
+                        "type": "textarea",
+                        "cols" : 60
                     }
                 }
-            });
+            };
 
             options ["fields"]["formKey"] = {
                 "type": "text",
@@ -110,7 +113,44 @@
             ]));
         },
 
-        setupEditForm: function (el) {
+        editButtonConfig: function() {
+            return  {
+                "id": "edit",
+                "title": "Edit Form",
+                "icon" : Gitana.Utils.Image.buildImageUri('objects', 'form-edit', 48),
+                "url" : this.link(this.targetObject(), 'edit')
+            };
+        },
+
+        editPageConfig: function() {
+            return {
+                "id" : "form-edit",
+                "title" : "Edit Form",
+                "icon" : Gitana.Utils.Image.buildImageUri('objects', 'form-edit', 24),
+                "buttons" :[
+                    {
+                        "id" : "form-edit-save",
+                        "title" : "Save Form",
+                        "isLeft" : true
+                    }
+                ]
+            };
+        },
+
+        setupPage: function(el) {
+
+            var page = {
+                "title" : "Edit Form",
+                "description" : "Edit form " + this.friendlyTitle(this.targetObject()) + ".",
+                "forms" :[]
+            };
+
+            this.setupEditPage(el, page);
+
+            this.page(Alpaca.mergeObject(page,this.base(el)));
+        },
+
+        processEditForm: function (el) {
 
             var self = this;
             var form = self.targetObject();
@@ -124,16 +164,16 @@
             }
             defaultData['body'] = JSON.stringify(defaultData['body'], null, ' ');
 
-            $('#form-edit', $(el)).alpaca({
+            $('#form-edit').alpaca({
                 "data": defaultData,
                 "schema": self.schema(),
                 "options": self.options(),
                 "postRender": function(control) {
                     Gitana.Utils.UI.beautifyAlpacaForm(control, 'form-edit-save', true);
                     // Add Buttons
-                    $('#form-edit-save', $(el)).click(function() {
+                    $('#form-edit-save').click(function() {
                         var formVal = control.getValue();
-                        var schemaBody = formVal['body'];
+                        var schemaBody = JSON.parse(formVal['body']);
                         var formKey = formVal['formKey'];
                         delete formVal['body'];
                         delete formVal['formKey'];
@@ -155,15 +195,15 @@
                                         "source" : self.definition().getId(),
                                         "form-key" : self.form()['formKey']
                                     }).count(function(count) {
-                                        if (count == 1) {
-                                            this.keepOne().then(function() {
-                                                this['form-key'] = formKey;
-                                                this.update().then(function() {
-                                                    updatedForm['formKey'] = formKey;
+                                            if (count == 1) {
+                                                this.keepOne().then(function() {
+                                                    this['form-key'] = formKey;
+                                                    this.update().then(function() {
+                                                        updatedForm['formKey'] = formKey;
+                                                    });
                                                 });
-                                            });
-                                        }
-                                    });
+                                            }
+                                        });
 
                                     this.then(function() {
                                         Gitana.Utils.UI.unblock(function() {
@@ -179,20 +219,17 @@
                             });
                         }
                     });
-                    $('#form-edit-reset', $(el)).click(function() {
-                        control.setValue(defaultData);
-                    });
                 }
             });
         },
 
-        setupJSONEditForm: function (el, object, targetId) {
+        processJSONEditForm: function (el, object, targetId) {
             var targetId = targetId ? targetId : "json-edit";
             var self = this;
 
             var defaultData = object.stringify(true);
 
-            $('#' + targetId, $(el)).alpaca({
+            $('#' + targetId).alpaca({
                 "data": defaultData,
                 "options": {
                     "type" : "json",
@@ -202,7 +239,7 @@
                 "postRender": function(control) {
                     Gitana.Utils.UI.beautifyAlpacaForm(control, targetId + '-save', true);
                     // Add Buttons
-                    $('#' + targetId + '-save', $(el)).click(function() {
+                    $('#' + targetId + '-save').click(function() {
                         var form = control.getValue();
                         if (control.isValid(true)) {
 
@@ -223,53 +260,9 @@
                             });
                         }
                     });
-                    $('#' + targetId + '-reset', $(el)).click(function() {
-                        control.setValue(defaultData);
-                    });
                 }
             });
         },
-
-        editButtonConfig: function() {
-            return  {
-                "id": "edit",
-                "title": "Edit Form",
-                "icon" : Gitana.Utils.Image.buildImageUri('objects', 'form-edit', 48),
-                "url" : this.link(this.targetObject(), 'edit')
-            };
-        },
-
-        editPageConfig: function() {
-            return {
-                "id" : "form-edit",
-                "title" : "Edit Form",
-                "icon" : Gitana.Utils.Image.buildImageUri('objects', 'form-edit', 24),
-                "buttons" :[
-                    {
-                        "id" : "form-edit-reset",
-                        "title" : "Reset"
-                    },
-                    {
-                        "id" : "form-edit-save",
-                        "title" : "Save Form",
-                        "isLeft" : true
-                    }
-                ]
-            };
-        },
-
-        setupPage: function(el) {
-
-            var page = {
-                "title" : "Edit Form",
-                "description" : "Edit form " + this.friendlyTitle(this.targetObject()) + ".",
-                "forms" :[]
-            };
-
-            this.setupEditPage(el, page);
-
-            this.page(Alpaca.mergeObject(page,this.base(el)));
-        }
 
     });
 

@@ -2394,7 +2394,7 @@
             $('.clipboard li').tipsy({
                 fade: true,
                 html: true,
-                live: true,
+                live: false,
                 fallback : 'Click to paste this item to folder ' + self.friendlyTitle(target) + '.'
             });
         },

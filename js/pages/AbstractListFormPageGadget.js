@@ -72,10 +72,10 @@
                         self.setupPage(el);
 
                         // detect changes to the list and redraw when they occur
-                        self.subscribe(this.subscription, this.refresh);
+                        self.setupRefreshSubscription(el);
 
-                        if (this.filterSubscription) {
-                            this.subscribe(this.filterSubscription, this.refresh);
+                        if (self.filterSubscription) {
+                            self.subscribe(self.filterSubscription, self.refreshHandler(el));
                         }
 
                         // list model

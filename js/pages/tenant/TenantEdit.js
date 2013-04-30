@@ -157,9 +157,6 @@
                             });
                         }
                     });
-                    $('#tenant-edit-reset', $(el)).click(function() {
-                        form.setValue(defaultData);
-                    });
                 }
             });
         },
@@ -179,10 +176,6 @@
                 "title" : "Edit Tenant",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'tenant-edit', 24),
                 "buttons" :[
-                    {
-                        "id" : "tenant-edit-reset",
-                        "title" : "Reset"
-                    },
                     {
                         "id" : "tenant-edit-save",
                         "title" : "Save Tenant",

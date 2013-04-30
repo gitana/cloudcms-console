@@ -1,31 +1,30 @@
 (function($) {
     Gitana.CMS.AbstractGadget = Ratchet.Gadget.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
+        constructor: function(type, ratchet) {
+            this.base(type, ratchet);
+
+            var self = this;
+
             var val = $(this.ratchet().el).attr('subscription');
-            this.subscription = val ? val : id;
+            this.subscription = val ? val : type;
             this.filterSubscription = $(this.ratchet().el).attr('filter');
+
+            this.setupRefreshSubscription = function(el)
+            {
+                self.subscribe(self.subscription, self.refreshHandler(el));
+            };
         },
 
         setup: function() {
             this.get(this.index);
         },
 
-        refresh: function(link) {
-            var self = this;
-            var defaultURL = this.DEFAULT_URL ? this.DEFAULT_URL : "/";
-            var refreshLink = link ? link : defaultURL;
-            Gitana.Utils.UI.unblock(function() {
-                self.run(refreshLink);
-            });
-        },
-
         model: function(el) {
-            if (!el.model[this.id]) {
-                el.model[this.id] = this.observable(this.subscription).get();
+            if (!el.model[this.getGadgetType()]) {
+                el.model[this.getGadgetType()] = this.observable(this.subscription).get();
             }
-            return el.model[this.id];
+            return el.model[this.getGadgetType()];
         },
 
         preSwap: function(el) {
@@ -37,7 +36,7 @@
         index: function(el) {
             var self = this;
 
-            this.subscribe(this.subscription, this.refresh);
+            this.setupRefreshSubscription(el);
 
             this.model(el);
 
@@ -62,14 +61,16 @@
             return str;
         },
 
+        /*
         //TODO: add handler?
         invalidTicketHandler: function(error) {
             alert('Invalid Ticket');
         },
+        */
 
         platform: function() {
-            //return this.app().platform.chain().trap(this.invalidTicketHandler);
-            return Gitana.Authentication.platform.chain().trap(this.invalidTicketHandler);
+
+            return Gitana.Authentication.platform().trap(this.invalidTicketHandler);
         },
 
         driver: function() {
@@ -139,6 +140,9 @@
             }
             return name;
         },
+
+
+
 
         _observable : function (key, args, defaultVal) {
             var _args = Ratchet.makeArray(args);

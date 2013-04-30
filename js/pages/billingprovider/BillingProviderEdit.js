@@ -83,9 +83,6 @@
                             });
                         }
                     });
-                    $('#billing-provider-edit-reset', $(el)).click(function() {
-                        form.setValue(defaultData);
-                    });
                 }
             });
         },
@@ -105,10 +102,6 @@
                 "title" : "Edit Billing Provider Config",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'billing-provider-edit', 24),
                 "buttons" :[
-                    {
-                        "id" : "billing-provider-edit-reset",
-                        "title" : "Reset"
-                    },
                     {
                         "id" : "billing-provider-edit-save",
                         "title" : "Save Billing Provider",

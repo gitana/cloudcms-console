@@ -31,7 +31,7 @@ input[type="text"], input[type="password"], textarea {
 	line-height: 1.5em;
 	padding: 4px;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
-    font-size: 1em;
+    /*font-size: 1em;*/
 }
 
 input[type="text"]:hover, input[type="password"]:hover, textarea:hover {
@@ -51,6 +51,11 @@ a.button {
     background:none;
 }
 */
+
+.alpaca-controlfield-label
+{
+    font-size: 12px !important;
+}
 
 .alpaca-controlfield-json textarea {
     font-style:italic;
@@ -207,4 +212,27 @@ OL.alpaca-wizard-status-bar > LI > DIV > STRONG
 OL.alpaca-wizard-status-bar > LI > DIV > STRONG > SPAN
 {
 
+}
+
+
+.alpaca-controlfield-date input {
+    background: url("../../../../lib/alpaca/images/alpaca-icons.png") no-repeat right -2px;
+}
+
+.alpaca-controlfield-phone input {
+    background: url("../../../../lib/alpaca/images/alpaca-icons.png") no-repeat right -82px;
+}
+
+.alpaca-controlfield-email input
+{
+    background: url("../../../../lib/alpaca/images/alpaca-icons.png") no-repeat right -42px;
+}
+
+.alpaca-controlfield-time input {
+    background: url("../../../../lib/alpaca/images/alpaca-icons.png") no-repeat right -122px;
+}
+
+.alpaca-controlfield-label
+{
+    white-space: nowrap;
 }

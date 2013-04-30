@@ -11,7 +11,7 @@
             var self = this;
 
             // subscribe: "toolbar"
-            this.subscribe(this.subscription, this.refresh);
+            self.setupRefreshSubscription(el);
 
             var toolbar = self.model(el);
 

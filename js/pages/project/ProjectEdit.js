@@ -69,14 +69,11 @@
                             });
                         }
                     });
-                    $('#project-edit-reset', $(el)).click(function() {
-                        form.setValue(defaultData);
-                    });
                 }
             });
         },
 
-        processForm: function() {
+        processForms: function() {
         },
 
         editButtonConfig: function() {
@@ -94,10 +91,6 @@
                 "title" : "Edit Project",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'project-edit', 24),
                 "buttons" :[
-                    {
-                        "id" : "project-edit-reset",
-                        "title" : "Reset"
-                    },
                     {
                         "id" : "project-edit-save",
                         "title" : "Save Project",

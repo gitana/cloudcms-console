@@ -7,66 +7,79 @@
 
         schema: function() {
 
-            return Alpaca.mergeObject(this.base(), {
+            return {
+                "type": "object",
                 "properties" : {
                     "_type" : {
-                        "title": "Definition Type",
+                        "title": "What kind of definition is this?",
                         "type" : "string",
                         "default" : "d:type",
                         "enum" : ["d:type","d:feature","d:association"],
-                        "required" : true                        
+                        "required" : true
+                    },
+                    "_qname" : {
+                        "title": "Unique QName",
+                        "type" : "string",
+                        "required": true
+                    },
+                    "title": {
+                        "title": "Title",
+                        "type": "string",
+                        "required": true
+                    },
+                    "description": {
+                        "title": "Description",
+                        "type": "string"
                     },
                     "_parent" : {
-                        "title": "Parent Type",
+                        "title": "Inherits from:",
                         "type" : "string",
                         "default" : "n:node",
                         "required" : true                        
                     },                    
-                    "_qname" : {
-                        "title": "Definition QName",
-                        "type" : "string"
-                    },
                     "body" : {
-                        "title" : "Schema Body",
+                        "title" : "Schema",
                         "type" : "string",
-                        "default" : "{\"type\" : \"object\", \"properties\" : {}}"
+                        "default" : JSON.stringify({
+                            "type": "object",
+                            "properties": {}
+                        }, null, "  ")
                     }
                 }
-            });
+            };
         },
 
         options: function() {
             var self = this;
-            var options = Alpaca.mergeObject(this.base(), {
+
+            var options = {
+                "focus": true,
                 "fields" : {
-                    "title" : {
-                        "helper" : "Enter definition title."
-                    },
-                    "description" : {
-                        "helper" : "Enter definition description."
-                    },
                     "_type" : {
                         "type": "select",
-                        "helper" : "Pick definition type.",
-                        "optionLabels": ["Type", "Feature", "Association"]
+                        "optionLabels": ["Content Type Definition", "Feature Definition", "Association Definition"]
                     },
-                    "_parent" : {
-                        "type": "select",
-                        "helper" : "Pick parent type."
-                    },                    
                     "_qname" : {
                         "type": "text",
-                        "helper": "Enter a unique qname.",
                         "size" : 60
                     },
+                    "title" : {
+                        "size" : 60
+                    },
+                    "description": {
+                        "type": "textarea",
+                        "cols" : 60
+                    },
+                    "_parent" : {
+                        "type": "select"
+                    },
                     "body" : {
-                        "type" : "json",
-                        "rows" : 20,
-                        "cols" : 90,
-                        "helper" : "Enter definition body."
+                        "type" : "editor",
+                        "aceMode": "ace/mode/javascript",
+                        "aceFitContentHeight": true
                     }
                 }
-            });
+            };
 
             options['fields']['_qname']['postRender'] = function(control) {
                 self.branch().generateQName({
@@ -74,7 +87,7 @@
                 }, function(qname) {
                     control.setValue(qname);
                 });
-            },
+            };
 
             options['fields']['_qname']['validator'] = function(control, callback) {
                 var controlVal = control.getValue();
@@ -110,6 +123,8 @@
                     if (callback) {
                         callback();
                         field.field.val("n:node").change();
+
+                        Gitana.Utils.UI.uniform(field.getEl());
                     }
                 });
             };
@@ -147,47 +162,6 @@
             ]));
         },
 
-        setupDefinitionAddForm : function (el) {
-            var self = this;
-            $('#definition-add',$(el)).alpaca({
-                "schema": self.schema(),
-                "options": self.options(),
-                "postRender": function(renderedField) {
-
-                    Gitana.Utils.UI.uniform(renderedField.getEl());
-                    renderedField.getEl().css('border', 'none');
-
-                    // Add Buttons
-                    $('#definition-add-create',$(el)).click(function(){
-
-                        var value = renderedField.getValue();
-                        var schemaBody = value['body'];
-                        delete value['body'];
-
-                        Alpaca.mergeObject(value, schemaBody);
-
-                        if (renderedField.isValid(true)) {
-
-                            Gitana.Utils.UI.block("Creating Definition...");
-
-                            self.targetObject().createNode(value).then(function() {
-                                var link = self.LIST_LINK().call(self,"definitions") + this.getId();
-                                var callback = function() {
-                                    self.app().run("GET", link);
-                                };
-                                Gitana.Utils.UI.unblock(callback);
-
-                            });
-                        }
-                    });
-                }
-            });
-        },
-
-        setupForms : function (el) {
-            this.setupDefinitionAddForm(el);
-        },
-
         setupPage : function(el) {
 
             var page = {
@@ -208,6 +182,49 @@
             };
 
             this.page(Alpaca.mergeObject(page,this.base(el)));
+        },
+
+        processDefinitionAddForm : function (el) {
+            var self = this;
+
+            $('#definition-add').alpaca({
+                "schema": self.schema(),
+                "options": self.options(),
+                "view": "VIEW_WEB_CREATE",
+                "postRender": function(renderedField) {
+
+                    Gitana.Utils.UI.uniform(renderedField.getEl());
+                    renderedField.getEl().css('border', 'none');
+
+                    // Add Buttons
+                    $('#definition-add-create').click(function(){
+
+                        var value = renderedField.getValue();
+                        var schemaBody = JSON.parse(value['body']);
+                        delete value['body'];
+
+                        Alpaca.mergeObject(value, schemaBody);
+
+                        if (renderedField.isValid(true)) {
+
+                            Gitana.Utils.UI.block("Creating Definition...");
+
+                            _Chain(self.targetObject()).createNode(value).then(function() {
+                                var link = self.LIST_LINK().call(self,"definitions") + this.getId();
+                                var callback = function() {
+                                    self.app().run("GET", link);
+                                };
+                                Gitana.Utils.UI.unblock(callback);
+
+                            });
+                        }
+                    });
+                }
+            });
+        },
+
+        processForms : function (el) {
+            this.processDefinitionAddForm(el);
         }
 
     });

@@ -10,13 +10,11 @@
                     "properties" : {
                         "scope" : {
                             "title" : "Scope",
-                            "description" : "Enter settings scope.",
                             "type" : "string",
                             "required" : true
                         },
                         "key" : {
                             "title" : "Key",
-                            "description" : "Enter settings key.",
                             "type" : "string",
                             "required" : true
                         }
@@ -30,7 +28,6 @@
                 },
                 "settings" : {
                     "title" : "Settings",
-                    "description" : "Enter settings key/value pairs.",
                     "type" : "string"
                 }
             }
@@ -105,7 +102,6 @@
             "properties" : {
                 "name" : {
                     "title": "Principal Name",
-                    "description" : "Enter a unique group principal name using only numbers, letters, underscore and hyphen.",
                     "type" : "string",
                     "required" : true,
                     //"default" : "group-" + new Date().getTime(),
@@ -119,7 +115,6 @@
                 },
                 "file": {
                     "title": "Avatar",
-                    "description" : "Select an image as your group avatar.",
                     "type": "string",
                     "format": "uri"
                 }
@@ -130,7 +125,6 @@
             "properties" : {
                 "name" : {
                     "title": "Principal Name",
-                    "description" : "Enter a unique user principal name using only numbers, letters, underscore and hyphen.",
                     "type" : "string",
                     "required" : true,
                     //"default" : "user-" + new Date().getTime(),
@@ -138,40 +132,35 @@
                 },
                 "password" : {
                     "title": "Password",
-                    "description": "Enter your password.",
                     "type" : "string",
+                    "required" : true,
                     "format" : "password"
                 },
                 "passwordVerify" : {
-                    "title": "Verify Password",
-                    "description": "Verify your password by entering it again.",
+                    "title": "Enter the User's Password Again",
                     "type" : "string",
+                    "required" : true,
                     "format" : "password"
+                },
+                "email" : {
+                    "title": "Email",
+                    "type" : "string",
+                    "format": "email"
                 },
                 "firstName" : {
                     "title": "First Name",
-                    "description" : "Enter your first name.",
                     "type" : "string"
                 },
                 "lastName" : {
                     "title": "Last Name",
-                    "description" : "Enter your last name.",
                     "type" : "string"
-                },
-                "email" : {
-                    "title": "Email",
-                    "description" : "Enter your email address.",
-                    "type" : "string",
-                    "format": "email"
                 },
                 "companyName" : {
                     "title": "Company Name",
-                    "description" : "Enter your company name.",
                     "type" : "string"
                 },
                 "file": {
                     "title": "Avatar",
-                    "description" : "Select an image as your avatar.",
                     "type": "string",
                     "format": "uri"
                 }
@@ -247,16 +236,6 @@
                     "type" : "string",
                     "required" : true
                 },
-                /*
-                 "principalDomainId" : {
-                 "title" : "Principal Domain Id",
-                 "type" : "string"
-                 },
-                 "principalId" : {
-                 "title" : "Principal Id",
-                 "type" : "string"
-                 },
-                 */
                 "gitanaPrincipalUser" : {
                     "title" : "Cloud CMS Principal User",
                     "type" : "string",
@@ -865,12 +844,6 @@
                         }
                     }
                 },
-                "title" : {
-                    "helper" : "Enter settings title."
-                },
-                "description": {
-                    "helper" : "Enter settings description."
-                },
                 "settings" : {
                     "type" : "json",
                     "rows" : 15,
@@ -882,13 +855,11 @@
             "fields" : {
                 "title" : {
                     "type": "text",
-                    "label": "Title",
-                    "helper" : "Enter application title."
+                    "label": "Title"
                 },
                 "description": {
                     "type": "textarea",
-                    "label": "Description",
-                    "helper" : "Enter application description."
+                    "label": "Description"
                 },
                 "key" : {
                     "type" : "text",
@@ -956,8 +927,7 @@
                         "type": {
                             "type": "text",
                             "label": "Type",
-                            "optionLabels": ["GitHub"],
-                            "helper": "Choose your source control type"
+                            "optionLabels": ["GitHub"]
                         },
                         "public": {
                             "type": "checkbox",
@@ -978,26 +948,13 @@
         },
         "Warehouse" : {
             "fields" : {
-                "title" : {
-                    "helper" : "Enter warehouse title."
-                },
-                "description": {
-                    "helper" : "Enter warehouse description."
-                }
             }
         },
         "PrincipalGroup" :  {
             "fields": {
                 "name" : {
                     "type":"text",
-                    "size":60,
-                    "hideInitValidationError": true
-                },
-                "title" : {
-                    "helper" : "Enter group title."
-                },
-                "description": {
-                    "helper" : "Enter group description."
+                    "size":60
                 },
                 "file": {
                     "type": "avatar",
@@ -1009,14 +966,18 @@
             "fields": {
                 "name" : {
                     "type":"text",
-                    "size":60,
-                    "hideInitValidationError": true
+                    "size":60
                 },
                 "password" : {
-                    "size": 60
+                    "size": 60,
+                    "hideInitValidationError": true
                 },
                 "passwordVerify" : {
-                    "size": 60
+                    "size": 60,
+                    "hideInitValidationError": true
+                },
+                "email" : {
+                    "size":60
                 },
                 "firstName" : {
                     "type":"text",
@@ -1025,9 +986,6 @@
                 "lastName" : {
                     "type":"text",
                     "size": 60
-                },
-                "email" : {
-                    "size":60
                 },
                 "companyName" : {
                     "type":"text",
@@ -1041,14 +999,7 @@
         },
         "Tenant" : {
             "fields" : {
-                "title" : {
-                    "helper" : "Enter tenant title."
-                },
-                "description" : {
-                    "helper" : "Enter tenant description."
-                },
                 "planKey" : {
-                    "helper" : "Select plan.",
                     "type" : "select"
                 },
                 "target" : {
@@ -1090,27 +1041,10 @@
         },
         "AuthenticationGrant" : {
             "fields" : {
-                "title" : {
-                    "helper" : "Enter authentication grant title."
-                },
-                "description" : {
-                    "helper" : "Enter authentication grant description."
-                },
                 "clientId" : {
                     "helper" : "Select target client id.",
                     "type" : "select"
                 },
-                /*
-                 "principalDomainId" : {
-                 "helper" : "Select a domain for picking target user.",
-                 "type" : "select",
-                 "fieldClass" : "domain-picker"
-                 },
-                 "principalId" : {
-                 "helper" : "Enter target user principal id or select it from the following user list.",
-                 "fieldClass" : "target-principal-id"
-                 },
-                 */
                 "gitanaPrincipalUser" : {
                     "helper" : "Pick Cloud CMS principal user or enter his domain qualified id.",
                     "type" : "gitanaprincipalpicker",
@@ -1128,7 +1062,6 @@
         "Client" : {
             "fields" : {
                 "authorizedGrantTypes" : {
-                    "helper": "Select client authorized grant types.",
                     "type": "select",
                     "multiple" : true,
                     "fieldClass" : "authorized-grant-types",
@@ -1141,7 +1074,6 @@
                     }
                 },
                 "scope" : {
-                    "helper": "Select client scope.",
                     "type": "select",
                     "multiple" : true,
                     "fieldClass" : "scope",
@@ -1151,19 +1083,18 @@
                 },
                 "allowOpenDriverAuthentication" : {
                     "rightLabel": "Allowed?",
-                    "helper" : "Check this option to allow open driver authentication."
+                    "helper" : "Open Driver Authentication allows connections from qualified domains using only the public key (the secret is never transmitted or checked)"
                 },
                 "domainUrls" : {
                     "helper" : "Enter list of allowed domain URLs",
                     "fields" : {
                         "item": {
-                            "helper": "Enter domain url."
+                            "helper": "The URL of the domain"
                         }
                     }
                 },
                 "enabled" : {
-                    "rightLabel" : "Enabled ?",
-                    "helper" : "Check this option to enable the client."
+                    "rightLabel" : "Enabled ?"
                 }
             }
         },
@@ -1365,12 +1296,6 @@
         "Directory" : {
             "type": "object",
             "fields" : {
-                "title" : {
-                    "helper" : "Enter directory title."
-                },
-                "description": {
-                    "helper" : "Enter directory description."
-                }
             }
         },
         "Identity" : {

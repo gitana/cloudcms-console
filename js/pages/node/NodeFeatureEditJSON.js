@@ -52,10 +52,6 @@
                         "icon" : Gitana.Utils.Image.buildImageUri('objects', 'features-edit', 24),
                         "buttons" :[
                             {
-                                "id" : "feature-edit-reset",
-                                "title" : "Reset"
-                            },
-                            {
                                 "id" : "feature-edit-save",
                                 "title" : "Save Feature",
                                 "isLeft" : true

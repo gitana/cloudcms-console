@@ -134,9 +134,6 @@
                             });
                         }
                     });
-                    $('#settings-edit-reset', $(el)).click(function() {
-                        form.setValue(defaultData);
-                    });
                 }
             });
         },
@@ -156,10 +153,6 @@
                 "title" : "Edit Settings",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'settings-edit', 24),
                 "buttons" :[
-                    {
-                        "id" : "settings-edit-reset",
-                        "title" : "Reset"
-                    },
                     {
                         "id" : "settings-edit-save",
                         "title" : "Save Settings",

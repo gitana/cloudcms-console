@@ -37,20 +37,24 @@
 
     <!-- CSS: implied media=all -->
 
+    <!-- Alpaca -->
+    <link type="text/css" media="all" href="lib/alpaca/alpaca.css" rel="stylesheet"/>
+
     <!-- JQuery UI and Theme -->
-    <link type="text/css" media="all" href="css/themes/clean/jquery-ui/jquery-ui-1.8.15.custom.min.css" rel="stylesheet"/>
+    <link type="text/css" media="all" href="css/themes/clean/jquery-ui/jquery-ui.custom.css" rel="stylesheet"/>
 
     <!-- Third Party -->
     <link type="text/css" media="all" href="lib/jquery/jqplot/jquery.jqplot.min.css" rel="stylesheet"/>
-    <link type="text/css" media="all" href="lib/jquery/fileupload/jquery.fileupload-ui.min.css"
+    <link type="text/css" media="all" href="lib/jquery-file-upload/css/jquery.fileupload-ui-jqueryui.css"
           rel="stylesheet"/>
     <link type="text/css" media="all" href="lib/jquery/elrte/css/elrte.min.css"
           rel="stylesheet"/>
+
+    <!-- Cloud 9 ACE Editor -->
+    <script src="lib/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+
     <!-- Gitana Console Framework -->
     <link type="text/css" media="all" href="css/themes/clean/console/console.min.css" rel="stylesheet"/>
-
-    <!-- Alpaca -->
-    <link type="text/css" media="all" href="lib/alpaca/css/alpaca.min.css" rel="stylesheet"/>
 
     <!--[if IE]>
     <link type="text/css" media="all" href="css/themes/clean/console/all-ie-only-custom.min.css"  rel="stylesheet"/>
@@ -83,7 +87,7 @@ For optimal performance, use a custom Modernizr build: www.modernizr.com/downloa
     -->
     <script src="lib/jquery/jquery-1.6.2.min.js"></script>
 
-    <script src="lib/jquery/ui/jquery-ui-1.8.15.custom.min.js"></script>
+    <script src="lib/jquery/ui/jquery-ui.min.js"></script>
 
     <!-- Jqplot -->
     <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="lib/jquery/jqplot/excanvas.js"></script><![endif]-->
@@ -93,16 +97,17 @@ For optimal performance, use a custom Modernizr build: www.modernizr.com/downloa
     <script type="text/javascript" src="lib/jquery/jqplot/plugins/jqplot.pointLabels.min.js"></script>
 
     <!-- BlockUI -->
-    <script type="text/javascript" src="lib/jquery/blockui/jquery.blockui.2.39.min.js"></script>
+    <script type="text/javascript" src="lib/jquery/blockui/jquery.blockui.js"></script>
 
     <!-- Data table -->
     <script type="text/javascript" src="lib/jquery/datatables/jquery.dataTables.1.8.1.min.js"></script>
     <script type="text/javascript" src="lib/jquery/datatables/TableTools.2.0.1.min.js"></script>
 
     <!-- File Upload -->
-    <script type="text/javascript" src="lib/jquery/fileupload/jquery.iframe-transport.1.2.2.min.js"></script>
-    <script type="text/javascript" src="lib/jquery/fileupload/jquery.fileupload.5.0.3-patched.min.js"></script>
-    <script type="text/javascript" src="lib/jquery/fileupload/jquery.fileupload-ui.5.0.13-patched.min.js"></script>
+    <script type="text/javascript" src="lib/jquery-file-upload/js/jquery.iframe-transport.js"></script>
+    <script type="text/javascript" src="lib/jquery-file-upload/js/jquery.fileupload.js"></script>
+    <script type="text/javascript" src="lib/jquery-file-upload/js/jquery.fileupload-ui.js"></script>
+    <script type="text/javascript" src="lib/jquery-file-upload/js/jquery.fileupload-jui.js"></script>
 
     <!-- Galleria -->
     <script type="text/javascript" src="lib/jquery/galleria/galleria-1.2.5-patched.min.js"></script>
@@ -111,7 +116,7 @@ For optimal performance, use a custom Modernizr build: www.modernizr.com/downloa
     <!-- Notifications  -->
     <script defer type="text/javascript" src="lib/jquery/notifications/jquery.notifications.min.js"></script>
     <!-- Uniform (Look & Feel from forms) -->
-    <script defer type="text/javascript" src="lib/jquery/uniform/jquery.uniform.1.7.5.min.js"></script>
+    <script defer type="text/javascript" src="lib/jquery/uniform/jquery.uniform.2.1.0.min.js"></script>
 
     <!-- Validation from forms -->
     <script defer type="text/javascript" src="lib/jquery/validate/jquery.validate.1.8.1.min.js"></script>
@@ -131,14 +136,14 @@ For optimal performance, use a custom Modernizr build: www.modernizr.com/downloa
     <script type="text/javascript" src="lib/jquery/md5/jquery.md5.min.js"></script>
 
     <!-- ASM Select -->
-    <script type="text/javascript" src="lib/jquery/asmselect/jquery.asmselect-1.0.4a.min.js"></script>
+    <script type="text/javascript" src="lib/jquery/asmselect/jquery.asmselect-1.0.4a.custom.js"></script>
 
     <!-- Breadcrumb-->
     <script type="text/javascript" src="lib/jquery/xbreadcrumb/xbreadcrumbs.js"></script>
 
     <!-- Multiselect-->
-    <script type="text/javascript" src="lib/jquery/multiselect/jquery.multiselect.min.js"></script>
-    <script type="text/javascript" src="lib/jquery/multiselect/jquery.multiselect.filter.min.js"></script>
+    <script type="text/javascript" src="lib/jquery/multiselect/jquery.multiselect.js"></script>
+    <script type="text/javascript" src="lib/jquery/multiselect/jquery.multiselect.filter.js"></script>
 
     <!-- Contact List -->
     <script defer type="text/javascript" src="lib/jquery/stickysidebar/stickysidebar.jquery.js"></script>
@@ -153,15 +158,15 @@ For optimal performance, use a custom Modernizr build: www.modernizr.com/downloa
     <script defer type="text/javascript" src="lib/jquery/easyaccordion/easyAccordion-0.1.min.js"></script>
 
     <!-- Alpaca -->
-    <script type="text/javascript" src="lib/alpaca/js/alpaca.min.js"></script>
+    <script type="text/javascript" src="lib/alpaca/alpaca.js"></script>
 
     <!-- Gitana Driver -->
-    <script type="text/javascript" src="lib/gitana/js/gitana.min.js"></script>
+    <script type="text/javascript" src="lib/gitana/gitana.js"></script>
 
     <!-- Ratchet -->
-    <script type="text/javascript" src="lib/ratchet/js/ratchet.min.js"></script>
-    <script type="text/javascript" src="lib/ratchet/js/ratchet-tmpl.min.js"></script>
-    <script type="text/javascript" src="lib/ratchet/js/ratchet-gitana.min.js"></script>
+    <script type="text/javascript" src="lib/ratchet/ratchet.js"></script>
+    <script type="text/javascript" src="lib/ratchet/tmpl.js"></script>
+    <script type="text/javascript" src="lib/ratchet/gitana.js"></script>
 
     <!--                            -->
     <!--        APPLICATION         -->
@@ -194,7 +199,7 @@ For optimal performance, use a custom Modernizr build: www.modernizr.com/downloa
 <div id="container">
 
     <!-- Begin of #header -->
-    <div id="header-surround" gadget="header" subscription="userDetails"></div>
+    <div id="header-surround" gadget="header" subscription="userDetails" class="clearfix"></div>
     <!--! end of #header -->
     <!--
     <div class="fix-shadow-bottom-height"></div>
@@ -242,7 +247,7 @@ For optimal performance, use a custom Modernizr build: www.modernizr.com/downloa
         <![endif]-->
         <div align="center">
             <div style="vertical-align: middle">
-                © Copyright 2012 <a href="http://www.cloudcms.com">Gitana Software, Inc</a>. All rights reserved.
+                © Copyright 2013 <a href="http://www.cloudcms.com">Gitana Software, Inc</a>. All rights reserved.
             </div>
             <br/>
             <br/>

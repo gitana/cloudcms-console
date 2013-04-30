@@ -222,9 +222,6 @@
                             });
                         }
                     });
-                    $('#plan-edit-reset', $(el)).click(function() {
-                        form.setValue(defaultData);
-                    });
                 }
             });
         },
@@ -244,10 +241,6 @@
                 "title" : "Edit Plan",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'plan-edit', 24),
                 "buttons" :[
-                    {
-                        "id" : "plan-edit-reset",
-                        "title" : "Reset"
-                    },
                     {
                         "id" : "plan-edit-save",
                         "title" : "Save Plan",

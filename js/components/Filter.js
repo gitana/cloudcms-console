@@ -3,14 +3,10 @@
     {
         TEMPLATE : "components/filter",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         index: function(el) {
             var self = this;
 
-            this.subscribe(this.subscription, this.refresh);
+            self.setupRefreshSubscription(el);
 
             var filter = this.model(el);
 

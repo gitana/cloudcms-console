@@ -9,10 +9,6 @@
             "/repositories/{repositoryId}/branches/{branchId}/nodes/{nodeId}/edit/json"
         ],
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         schema: function() {
             return Alpaca.mergeObject(this.base(), {
                 "properties": {
@@ -67,7 +63,7 @@
             ]));
         },
 
-        _setupEditForm: function (editDiv, saveButton, resetButton, node, defaultData, schema, options, mimeType) {
+        _setupEditForm: function (editDiv, saveButton, node, defaultData, schema, options, mimeType) {
             var self = this;
 
             editDiv.empty().alpaca({
@@ -167,11 +163,9 @@
 
             var saveButton = el ? $('#node-edit-save', $(el)) : $('#node-edit-save');
 
-            var resetButton = el ? $('#node-edit-reset', $(el)) : $('#node-edit-reset');
-
             Chain(node).listAttachments().trap(function() {
 
-                self._setupEditForm(editDiv, saveButton, resetButton, node, defaultData, schema, options);
+                self._setupEditForm(editDiv, saveButton, node, defaultData, schema, options);
 
                 return false;
 
@@ -207,16 +201,16 @@
                         "dataType": "text",
                         "success": function(doc) {
                             defaultData['body'] = doc;
-                            self._setupEditForm(editDiv, saveButton, resetButton, node, defaultData, schema, options, mimeType);
+                            self._setupEditForm(editDiv, saveButton, node, defaultData, schema, options, mimeType);
                         },
                         "error": function(jqXHR, textStatus, errorThrown) {
-                            self._setupEditForm(editDiv, saveButton, resetButton, node, defaultData, schema, options, mimeType);
+                            self._setupEditForm(editDiv, saveButton, node, defaultData, schema, options, mimeType);
                         }
                     });
 
                 } else {
 
-                    self._setupEditForm(editDiv, saveButton, resetButton, node, defaultData, schema, options);
+                    self._setupEditForm(editDiv, saveButton, node, defaultData, schema, options);
                 }
 
             });
@@ -340,10 +334,6 @@
                 "title" : "Edit Node",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'node-edit', 24),
                 "buttons" :[
-                    {
-                        "id" : "node-edit-reset",
-                        "title" : "Reset"
-                    },
                     {
                         "id" : "node-edit-save",
                         "title" : "Save Node",

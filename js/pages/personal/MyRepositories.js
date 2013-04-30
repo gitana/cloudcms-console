@@ -5,10 +5,6 @@
 
         FILTER : "my-repository-list-filters",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/dashboard/repositories", this.index);
         },

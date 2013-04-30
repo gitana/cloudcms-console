@@ -92,10 +92,26 @@ body.special-page {
 
 #container > #header-surround > #header {
     /*background: url("../../../images/themes/clean/console/container/header/header-bg.jpg") repeat-x scroll top left transparent;*/
-    background-color: #3A8CBA;
+    /*background-color: #3A8CBA;
 	height: 43px;
 	position: relative;
-	z-index: 30;
+	z-index: 30;*/
+
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #005D9E;
+    background-image: linear-gradient(#00ADEE, #0078A5);
+    border-color: #1086B3 #0076A3 #0076A3;
+    border-image: none;
+    border-right: 1px solid #0076A3;
+    border-style: solid;
+    border-width: 1px;
+    color: white !important;
+    text-shadow: 1px 1px 0 #0076A3;
+    height: 64px;
+    border-top: 0px;
 }
 
 #container > #header-surround {
@@ -127,6 +143,7 @@ body.special-page {
 	margin-right: 10px;
     /*padding: 2px;*/
     position: relative;
+    height: 64px;
 }
 
 /* ==================================================
@@ -247,7 +264,7 @@ body.special-page {
     padding-top: 0px;
     padding-bottom: 0px;
     color: #333;
-    line-height: 32px;
+    line-height: 26px;
 }
 
 #container > #sidebar > #nav > .menu li ul.sub li a:hover
@@ -360,6 +377,7 @@ body.special-page {
 	background: url("../../../images/themes/clean/console/misc/shadow/shadow-bottom.png") repeat-x scroll bottom left transparent;
 	position: relative;
 	z-index: 30;
+    margin-top: -1px;
 }
 
 
@@ -393,12 +411,12 @@ body.special-page {
 
 .divider-vertical {
     border-left: 1px solid #0A5C8A;
-    height: 47px;
     margin-left: 15px;
     margin-right: 15px;
-    margin-top: -4px;
+    margin-top: 0px;
     overflow: hidden;
     width: 2px;
+    height: 65px;
 }
 
 .block-actions ul li.divider-vertical {

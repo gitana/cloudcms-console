@@ -153,8 +153,6 @@
 
                         if (renderedField.isValid(true)) {
 
-                            debugger;
-
                             Gitana.Utils.UI.block("Updating feature " + featureId + "...");
 
                             self.targetObject().addFeature(featureId, value[featureId]).then(function() {

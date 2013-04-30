@@ -57,9 +57,6 @@
                             });
                         }
                     });
-                    $('#identity-edit-reset', $(el)).click(function() {
-                        form.setValue(defaultData);
-                    });
                 }
             });
         },

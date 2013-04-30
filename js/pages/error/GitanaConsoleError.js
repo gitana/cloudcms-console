@@ -41,7 +41,7 @@
                 self.setupPage(el);
 
                 // detect changes to the error and redraw when they occur
-                self.subscribe(self.SUBSCRIPTION, this.refresh);
+                self.subscribe(self.SUBSCRIPTION, self.refreshHandler(el));
 
                 // list model
                 var page = self.model(el);

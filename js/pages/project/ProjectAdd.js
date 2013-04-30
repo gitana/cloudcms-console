@@ -163,7 +163,7 @@
                 this.page(Alpaca.mergeObject(page, this.base(el)));
             },
 
-            processForm: function() {
+            processForms: function() {
             }
 
         });

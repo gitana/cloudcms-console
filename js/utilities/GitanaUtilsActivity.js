@@ -10,13 +10,10 @@
                     typeText = 'created';
                     break;
                 case 'UPDATE' :
-                    typeText = 'modified';
+                    typeText = 'made changes to';
                     break;
                 case 'DELETE' :
                     typeText = 'deleted';
-                    break;
-                case 'JOIN' :
-                    typeText = 'joined';
                     break;
             }
 
@@ -79,11 +76,8 @@
                 userAvatarUri = "/proxy/domains/" + activity.getUserDomainId() + "/principals/" + activity.getUserId() + "/attachments/" + activity["userAvatarAttachmentId"];
             }
 
-            //var itemText = "<span class='sprite-16 user-16'></span><a class='activity-link' href='" + userLink + "'>" + activity.getUserName() + "</a> " + typeText + " <span class='sprite-16 " + iconId + "-16'></span><a class='activity-link' href='" + "#" + objectLink + "'>" + activity.getObjectTitle() + "</a>";
-            //var itemText = "<span class='sprite-16 user-16'></span>";
             var itemText = "";
-            //if (activity.getUserTitle())
-            if (activity.getUserTitle() && activity.getUserTitle() != activity.getUserId())
+            if (activity.getUserTitle() && activity.getUserTitle() != activity.getUserName())
             {
                 itemText += "<a class='activity-link' href='" + userLink + "'>";
                 itemText += activity.getUserTitle();
@@ -102,39 +96,61 @@
                 itemText += "</a>";
             }
 
+            // default way that we set up the activity string
             var firstLetter = objectTypeId.substring(0,1);
             var objectTypeName = firstLetter.toUpperCase() + objectTypeId.substring(1);
-            itemText += " " + typeText + " the " + objectTypeName;
-            itemText += " ";
-            //itemText += "<span class='sprite-16 " + iconId + "-16'></span>";
-            itemText += "<a class='activity-link' href='" + "#" + objectLink + "'>";
-            itemText += activity.getObjectTitle();
-            itemText += "</a>";
 
-            var plainItemText = typeText + " " +iconId + " <a class='activity-link' href='" + "#" + objectLink + "'>" + activity.getObjectTitle() + "</a>";
+            if (activity.getObjectTypeId() == "stackAssignment___")
+            {
+                // TODO: "stackAssignment"
+            }
+            else if (type == 'JOIN' || type == "LEAVE")
+            {
+                var otherLink = self.listLink(activity.getOtherDataStoreTypeId() + 's') + activity.getOtherDataStoreId();
+                otherLink += "/" + activity.getOtherTypeId().toLowerCase() + "s" + "/" + activity.getOtherId();
 
+                var principalTypeNoun = (activity.getOtherTypeId() == "user" ? "User" : "Group");
 
-            if (activity.get('branchId')) {
+                itemText += " ";
+                if (type == "JOIN")
+                {
+                    itemText += "added the ";
+                }
+                else if (type == "LEAVE") {
+                    itemText += "removed the ";
+                }
+                itemText += principalTypeNoun + " <a class='activity-link' href='" + "#" + otherLink + "'>" + activity.getOtherTitle() + "</a>";
+                if (type == "JOIN") {
+                    itemText += " to ";
+                }
+                else if (type == "LEAVE") {
+                    itemText += " from ";
+                }
+                itemText += " the Team <a class='activity-link' href='" + "#" + objectLink + "'>" + activity.getObjectTitle() + "</a>";
+            }
+            else
+            {
+                // default
+                itemText += " " + typeText + " the " + objectTypeName;
+                itemText += " ";
+                itemText += "<a class='activity-link' href='" + "#" + objectLink + "'>";
+                itemText += activity.getObjectTitle();
+                itemText += "</a>";
+            }
+
+            // if branch provided, add some additional info
+            if (activity.get("branchId"))
+            {
                 var repositoryLink = self.listLink('repositories') + activity.getObjectDataStoreId();
                 var branchLink = repositoryLink + "/branches/" + activity.get('branchId');
 
                 var branchId = activity.get('branchId');
                 var repositoryId = activity.getObjectDataStoreId();
 
-                itemText += " in branch <a class='activity-link' href='" + "#" + branchLink + "'>" + branchId + "</a> of repository <a class='activity-link' href='" + "#" + repositoryLink + "'>repositoryId</a>";
-                plainItemText += " in branch <a class='activity-link' href='" + "#" + branchLink + "'>" + branchId + "</a> of repository <a class='activity-link' href='" + "#" + repositoryLink + "'>repositoryId</a>";
+                itemText += " in Branch <a class='activity-link' href='" + "#" + branchLink + "'>" + branchId + "</a> of Repository <a class='activity-link' href='" + "#" + repositoryLink + "'>" + repositoryId + "</a>";
             }
 
-            if (activity.getObjectTypeId() == "stackAssignment") {
-            }
-
-            if (type == 'JOIN') {
-                var otherLink = self.listLink(activity.getOtherDataStoreTypeId() + 's') + activity.getOtherDataStoreId();
-                otherLink += "/" + activity.getOtherTypeId().toLowerCase() + "s" + "/" + activity.getOtherId();
-
-                itemText = " <span class='sprite-16 " + activity.getOtherTypeId() + "-16'></span><a class='activity-link' href='" + "#" + otherLink + "'>" + activity.getOtherTitle() + "</a> " + typeText + " <span class='sprite-16 " + iconId + "-16'></span><a class='activity-link' href='" + "#" + objectLink + "'>" + activity.getObjectTitle() + "</a>" + " by <span class='sprite-16 user-16'></span><a class='activity-link' href='" + userLink + "'>" + activity.getUserName() + "</a> ";
-                plainItemText = activity.getOtherTypeId() + " <a class='activity-link' href='" + "#" + otherLink + "'>" + activity.getOtherTitle() + "</a> " + typeText + " " + iconId + " <a class='activity-link' href='" + "#" + objectLink + "'>" + activity.getObjectTitle() + "</a>" + " by <a class='activity-link' href='" + userLink + "'>" + activity.getUserName() + "</a> ";
-            }
+            var plainItemText = itemText;
 
             return {
                 "userAvatarUri": userAvatarUri,

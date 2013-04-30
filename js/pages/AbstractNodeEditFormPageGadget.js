@@ -65,10 +65,6 @@
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'json-edit', 24),
                     "buttons" :[
                         {
-                            "id" : "json-edit-reset",
-                            "title" : "Reset"
-                        },
-                        {
                             "id" : "json-edit-save",
                             "title" : "Save JSON",
                             "isLeft" : true
@@ -134,7 +130,7 @@
                                 self.setupPage(el);
 
                                 // detect changes to the list and redraw when they occur
-                                self.subscribe(this.subscription, this.refresh);
+                                self.setupRefreshSubscription(el);
 
                                 // list model
                                 var page = self.model(el);
@@ -154,7 +150,7 @@
 
                                     Gitana.Utils.UI.processBreadcrumb();
 
-                                    self.processForm();
+                                    self.processForms();
                                 });
                             } else {
                                 self.handleUnauthorizedPageAccess(el, error);

@@ -75,9 +75,6 @@
                             });
                         }
                     });
-                    $('#vault-edit-reset', $(el)).click(function() {
-                        form.setValue(defaultData);
-                    });
                 }
             });
         },
@@ -97,10 +94,6 @@
                 "title" : "Edit Vault",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'vault-edit', 24),
                 "buttons" :[
-                    {
-                        "id" : "vault-edit-reset",
-                        "title" : "Reset"
-                    },
                     {
                         "id" : "vault-edit-save",
                         "title" : "Save Vault",

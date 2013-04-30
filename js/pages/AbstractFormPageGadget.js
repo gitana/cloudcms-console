@@ -3,10 +3,6 @@
     {
         TEMPLATE: "layouts/console.form",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         schema: function() {
             return {
                 "type": "object",
@@ -63,7 +59,7 @@
                         self.setupPage(el);
 
                         // detect changes to the list and redraw when they occur
-                        self.subscribe(this.subscription, this.refresh);
+                        self.setupRefreshSubscription(el);
 
                         // list model
                         var page = self.model(el);
@@ -71,18 +67,22 @@
                         // render layout
                         self.renderTemplate(el, self.TEMPLATE, function(el) {
 
+                            /*
                             Gitana.Utils.UI.contentBox($(el));
-
                             Gitana.Utils.UI.jQueryUIDatePickerPatch();
+                            */
 
                             self.asyncSetupForms(el, function() {
 
                                 el.swap(function(newEl) {
 
+                                    Gitana.Utils.UI.contentBox();
+                                    Gitana.Utils.UI.jQueryUIDatePickerPatch();
+
                                     Gitana.Utils.UI.enableTooltip();
                                     Gitana.Utils.UI.processBreadcrumb();
 
-                                    self.asyncProcessForm(el, function() {});
+                                    self.asyncProcessForms(el, newEl, function() {});
                                 });
                             });
                         });
@@ -93,10 +93,6 @@
             });
         },
 
-
-
-
-
         /** Abstract methods **/
         asyncSetupForms: function(el, callback) {
             this.setupForms(el);
@@ -106,12 +102,12 @@
         setupForms: function(el) {
         },
 
-        asyncProcessForm: function(el, callback) {
-            this.processForm(el);
+        asyncProcessForms: function(el, newEl, callback) {
+            this.processForms(el);
             callback();
         },
 
-        processForm: function(el) {
+        processForms: function(el) {
         }
     });
 

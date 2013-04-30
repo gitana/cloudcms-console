@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.Node = Gitana.CMS.Pages.AbstractDashboardPageGadget.extend(
         {
-            constructor: function(id, ratchet) {
-                this.base(id, ratchet);
-            },
-
             setup: function() {
                 this.get("/repositories/{repositoryId}/branches/{branchId}/nodes/{nodeId}", this.index);
             },

@@ -114,7 +114,7 @@
                 this.page(Alpaca.mergeObject(page, this.base(el)));
             },
 
-            processForm: function() {
+            processForms: function() {
                 $('body').bind('swap', function(event, param) {
                     var authorizedGrantTypesSelector = $('#client-add .authorized-grant-types select');
 

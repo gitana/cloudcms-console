@@ -29,7 +29,7 @@
          */
         setup: function() {
             this.base();
-            this.controlFieldTemplate = this.view.getTemplate("controlFieldMultiNodes");
+            this.controlFieldTemplate = this.view.getTemplateDescriptor("controlFieldMultiNodes");
             if (this.options && this.options.nodeType) {
                 this.nodeType = this.options.nodeType;
             }
@@ -42,14 +42,14 @@
          *
          */
         getUploadTemplate: function() {
-            return this.view.getTemplate("multiNodesUploadTemplate");
+            return this.wrapTemplate("multiNodesUploadTemplate");
         },
 
         /**
          *
          */
         getDownloadTemplate: function() {
-            return this.view.getTemplate("multiNodesDownloadTemplate");
+            return this.wrapTemplate("multiNodesDownloadTemplate");
         },
 
         /**
@@ -272,7 +272,7 @@
                 if (branch) {
                     nodesUploadUri += "/branches/" + branch.getId();
                 }
-                var format = $.browser.msie ? ".text" : "";
+                var format = Ratchet.Browser.ie ? ".text" : "";
                 nodesUploadUri += "/nodes"+format;
             }
             return nodesUploadUri;

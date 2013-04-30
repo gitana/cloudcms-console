@@ -7,7 +7,8 @@
         <!-- Platform Logo -->
         <div id="platform-logo-holder" align="center">
             <a href="#/dashboard">
-                <img class="platform-logo" id="platform-logo" data-src="${platformLogoUrl}" alt="${platformAltText}"/>
+                <img class="platform-logo" id="platform-logo" data-src="${platformLogoUrl}" alt="${platformTitleText}"/>
+                ${platformTitleText}
             </a>
         </div>
         <!-- End of Platform Logo -->
@@ -28,19 +29,24 @@
                 </li>
             </ul>
 
-            <!-- Divider between info-button and the toolbar-icons -->
+            <!-- Divider between toolbox-header and user-icon section -->
             <div class="divider-header divider-vertical"></div>
 
             <!-- User Icon -->
-            <div style="float:left; height:43px; line-height:40px">
-                <a href="#/profile" rel="tooltip-html" original-title="Your Profile">
-                    <img class="header-avatar-photo" id="login-user-avatar" data-src="${userLogoUrl}" alt="${userAltText}"/>
-                </a>
-                <span class="user-info-messages"><a href="#/profile">{{if header}}${header.fullName}{{/if}}</a></span>
+            <div class="user-icon" rel="tooltip-html" original-title="Your Profile">
+                <img id="login-user-avatar" data-src="${userLogoUrl}" alt="${userAltText}"/>
             </div>
 
+            <!-- User Name -->
+            <div class="user-name" rel="tooltip-html" original-title="Your Profile">
+                {{if header}}${header.fullName}{{/if}}
+            </div>
+
+            <!-- Divider between user-icon section and logout button -->
+            <div class="divider-header divider-vertical"></div>
+
             <!-- Log out button -->
-            <a href="javascript:void(1);" class="button logout" style="margin: 2px;">Logout</a>
+            <a href="javascript:void(1);" class="button logout" style="margin: 2px; margin-right: 10px;">Logout</a>
 
         </div>
         <!-- End of User Info -->

@@ -75,9 +75,6 @@
                             });
                         }
                     });
-                    $('#domain-edit-reset', $(el)).click(function() {
-                        form.setValue(defaultData);
-                    });
                 }
             });
         },
@@ -97,10 +94,6 @@
                 "title" : "Edit Domain",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'domain-edit', 24),
                 "buttons" :[
-                    {
-                        "id" : "domain-edit-reset",
-                        "title" : "Reset"
-                    },
                     {
                         "id" : "domain-edit-save",
                         "title" : "Save Domain",

@@ -1,0 +1,8 @@
+{
+    "name": "jquery-fileupload",
+    "version": "6.9.6",
+    "dependencies": {
+        "jquery": "*"
+    },
+    "main": ["js/jquery.fileupload.js"]
+}

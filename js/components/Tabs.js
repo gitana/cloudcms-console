@@ -11,7 +11,7 @@
             var self = this;
 
             // detect changes to the tabs and redraw when they occur
-            this.subscribe(this.subscription, this.refresh);
+            self.setupRefreshSubscription(el);
 
             var tabs = self.model(el);
 

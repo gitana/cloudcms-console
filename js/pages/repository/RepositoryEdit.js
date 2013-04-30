@@ -75,9 +75,6 @@
                             });
                         }
                     });
-                    $('#repo-edit-reset', $(el)).click(function() {
-                        form.setValue(defaultData);
-                    });
                 }
             });
         },
@@ -97,10 +94,6 @@
                 "title" : "Edit Repository",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'repository-edit', 24),
                 "buttons" :[
-                    {
-                        "id" : "repo-edit-reset",
-                        "title" : "Reset"
-                    },
                     {
                         "id" : "repo-edit-save",
                         "title" : "Save Repository",

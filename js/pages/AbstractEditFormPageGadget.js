@@ -1,10 +1,6 @@
 (function($) {
     Gitana.CMS.Pages.AbstractEditFormPageGadget = Gitana.CMS.Pages.AbstractFormPageGadget.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             var self = this;
             if ($.isArray(this.EDIT_URI)) {
@@ -24,21 +20,39 @@
             }
         },
 
+        teardown: function() {
+            this.base();
+
+            this.editor = null;
+        },
+
         setupJSONEditForm: function (el, object, targetId) {
+
+            /*
+            var self = this;
+
             var targetId = targetId ? targetId : "json-edit";
             var self = this;
 
-            var defaultData = object;
+            var defaultData = JSON.stringify(object, null, "   ");
 
-            $('#' + targetId, $(el)).alpaca({
+            $("#" + targetId, $(el)).alpaca({
                 "data": defaultData,
+                "schema": {
+                    "type": "string"
+                },
                 "options": {
-                    "type" : "json",
-                    "rows" : 20,
-                    "cols" : 90
+                    "type": "editor",
+                    "aceMode": "ace/mode/json",
+                    "aceFitContentHeight": true
                 },
                 "postRender": function(control) {
-                    Gitana.Utils.UI.uniform(control.getEl());
+
+                    self.editor = control.getEditor();
+
+                    control.getEditor().setShowPrintMargin(false);
+
+                    //Gitana.Utils.UI.uniform(control.getEl());
                     control.getEl().css('border', 'none');
                     // Add Buttons
                     $('#' + targetId + '-save', $(el)).click(function() {
@@ -70,13 +84,9 @@
                             });
                         }
                     });
-/*
-                    $('#' + targetId + '-reset', $(el)).click(function() {
-                        control.setValue(defaultData);
-                    });
-*/
                 }
             });
+            */
         },
 
         isEditJSONUri: function(el) {
@@ -93,7 +103,6 @@
             } else {
                 return el.ratchet().executeMatch(this.EDIT_JSON_URI, el.route.uri) != null;
             }
-
         },
 
         setupEditPage: function(el, page) {
@@ -103,10 +112,6 @@
                     "title" : "Edit JSON",
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'json-edit', 24),
                     "buttons" :[
-//                        {
-//                            "id" : "json-edit-reset",
-//                            "title" : "Reset"
-//                        },
                         {
                             "id" : "json-edit-save",
                             "title" : "Save JSON",
@@ -151,6 +156,79 @@
         },
 
         editButtonConfig: function() {
+        },
+
+        processForms: function(el) {
+
+            var self = this;
+            if (this.isEditJSONUri(el)) {
+                this.processJSONEditForm(el, this.targetObject());
+            } else {
+                this.processEditForm(el);
+            }
+        },
+
+        processEditForm: function(el) {
+        },
+
+        processJSONEditForm: function(el, object, targetId) {
+
+            var self = this;
+
+            var targetId = targetId ? targetId : "json-edit";
+            var defaultData = JSON.stringify(object, null, "   ");
+
+            $("#" + targetId).alpaca({
+                "data": defaultData,
+                "schema": {
+                    "type": "string"
+                },
+                "options": {
+                    "type": "editor",
+                    "aceMode": "ace/mode/json",
+                    "aceFitContentHeight": true
+                },
+                "postRender": function(control) {
+
+                    self.editor = control.getEditor();
+
+                    //Gitana.Utils.UI.uniform(control.getEl());
+                    control.getEl().css('border', 'none');
+
+                    // Add Buttons
+                    $('#' + targetId + '-save').click(function() {
+
+                        if (control.isValid(true))
+                        {
+                            Gitana.Utils.UI.block("Updating Object JSON...");
+
+                            // json
+                            var json = JSON.parse(control.getValue());
+                            delete json._doc;
+
+                            // Clean up object first
+                            for (var key in object) {
+                                if (object.hasOwnProperty(key) && !Gitana.isFunction(object[key])) {
+                                    if (key !== "_doc") {
+                                        delete object[key];
+                                    }
+                                }
+                            }
+
+                            Ratchet.merge(json, object);
+
+                            // update
+                            object.update().then(function () {
+                                var updatedObject = this;
+                                Gitana.Utils.UI.unblock(function() {
+                                    self.app().run("GET", self.LINK().call(self,updatedObject));
+                                });
+                            });
+                        }
+                    });
+                }
+            });
+
         }
 
     });

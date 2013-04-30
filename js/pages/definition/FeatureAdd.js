@@ -284,7 +284,7 @@
                         self.setupPage(el);
 
                         // detect changes to the list and redraw when they occur
-                        self.subscribe(this.subscription, this.refresh);
+                        self.setupRefreshSubscription(el);
 
                         // list model
                         var page = self.model(el);

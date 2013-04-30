@@ -75,6 +75,7 @@
             self.clearForm();
 
             $('body').undelegate('.type-picker select', 'change').delegate('.type-picker select', 'change', function() {
+
                 var typeQName = $(this).val();
                 if (typeQName) {
                     Chain(self.branch()).readDefinition(typeQName).then(function() {
@@ -119,7 +120,7 @@
                                         $('.form-picker select').multiselect("refresh");
                                     } else {
                                         $('.form-picker select').multiselect({
-                                            minWidth: '300',
+                                            minWidth: 300,
                                             multiple: false,
                                             selectedList: 1,
                                             header: "Select Form"
@@ -188,7 +189,7 @@
                                         field.field.val(defaultTypeQName).change();
 
                                         field.field.multiselect({
-                                            minWidth: '300',
+                                            minWidth: 300,
                                             multiple: false,
                                             selectedList: 1,
                                             header: "Select Node Type"
@@ -202,7 +203,7 @@
                         "_form" : {
                             "type": "select",
                             "helper" : "Pick form.",
-                            "fieldClass" : "form-picker"
+                            "fieldClass" : "form-picker multi"
                         }
                     }
                 },

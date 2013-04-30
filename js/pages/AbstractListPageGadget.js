@@ -13,10 +13,6 @@
             }
         },
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         index: function(el) {
             var self = this;
 
@@ -49,7 +45,7 @@
                         self.setupPage(el);
 
                         // list model
-                        var page = self.model(el);
+                        self.model(el);
 
                         // render layout
                         self.renderTemplate(el, self.TEMPLATE, function(el) {
@@ -150,7 +146,7 @@
                 self.addButtons([
                     {
                         "id": "refresh-list",
-                        "title": "Refresh List",
+                        "title": "Refresh",
                         "icon" : Gitana.Utils.Image.buildImageUri('browser', 'refresh', 48),
                         "click" : function() {
                             $('.list-toolbar').css({
@@ -181,7 +177,10 @@
 
         query: function() {
             var filter = Alpaca.isFunction(this.FILTER) ? this.FILTER() : this.FILTER;
-            var filterObservable = this.observable(filter).get();
+            var filterObservable = null;
+            if (filter) {
+                filterObservable = this.observable(filter).get();
+            }
 
             var query = {};
 
@@ -369,7 +368,11 @@
 
             var targetObservable = Alpaca.isFunction(this.FILTER) ? this.FILTER() : this.FILTER;
 
-            var existingData = this.observable(targetObservable).get();
+            var existingData = null;
+            if (targetObservable)
+            {
+                existingData = this.observable(targetObservable).get();
+            }
 
             if (existingData && existingData.formData && !Alpaca.isValEmpty(existingData.formData)) {
                 defaultData = existingData.formData;

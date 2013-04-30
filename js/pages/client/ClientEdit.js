@@ -82,14 +82,11 @@
                             });
                         }
                     });
-                    $('#client-edit-reset', $(el)).click(function() {
-                        form.setValue(defaultData);
-                    });
                 }
             });
         },
 
-        processForm: function() {
+        processForms: function() {
             $('body').bind('swap', function(event, param) {
                 var authorizedGrantTypesSelector = $('#client-edit .authorized-grant-types select');
 
@@ -130,10 +127,6 @@
                 "title" : "Edit Client",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'client-edit', 24),
                 "buttons" :[
-                    {
-                        "id" : "client-edit-reset",
-                        "title" : "Reset"
-                    },
                     {
                         "id" : "client-edit-save",
                         "title" : "Save Client",

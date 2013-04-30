@@ -106,9 +106,6 @@
                             });
                         }
                     });
-                    $('#auto-client-mapping-edit-reset', $(el)).click(function() {
-                        form.setValue(defaultData);
-                    });
                 }
             });
         },
@@ -128,10 +125,6 @@
                 "title" : "Edit Auto Client Mapping",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'auto-client-mapping-edit', 24),
                 "buttons" :[
-                    {
-                        "id" : "auto-client-mapping-edit-reset",
-                        "title" : "Reset"
-                    },
                     {
                         "id" : "auto-client-mapping-edit-save",
                         "title" : "Save Auto Client Mapping",

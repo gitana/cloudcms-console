@@ -112,8 +112,6 @@
 
             var saveButton = $('#tag-edit-save', $(el));
 
-            var resetButton = $('#tag-edit-reset', $(el));
-
             editDiv.alpaca({
                 "data": defaultData,
                 "schema": schema,
@@ -144,9 +142,6 @@
                             });
                         }
                     });
-                    resetButton.click(function() {
-                        form.setValue(defaultData);
-                    });
                 }
             });
         },
@@ -166,10 +161,6 @@
                 "title" : "Edit Tag",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'tag-edit', 24),
                 "buttons" :[
-                    {
-                        "id" : "tag-edit-reset",
-                        "title" : "Reset"
-                    },
                     {
                         "id" : "tag-edit-save",
                         "title" : "Save Tag",

@@ -5,10 +5,6 @@
 
             FILTER : "my-activity-list-filters",
 
-            constructor: function(id, ratchet) {
-                this.base(id, ratchet);
-            },
-
             setup: function() {
                 this.get("/dashboard/activities", this.index);
             },
@@ -106,9 +102,8 @@
                     Chain(self.contextObject()).trap(function(error) {
                         return self.handlePageError(el, error);
                     }).queryActivities(thisQuery, self.pagination(pagination)).then(function(){
-                        _this = this;
                         this.each(function() {
-                            _this[this.getId()]['activityDetails'] = Gitana.Utils.Activity.activityDetails(self, this);
+                            this['activityDetails'] = Gitana.Utils.Activity.activityDetails(self, this);
                         }).then(function() {
                             callback.call(this);
                         });

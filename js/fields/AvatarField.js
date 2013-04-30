@@ -29,7 +29,9 @@
          */
         setup: function() {
             this.base();
-            this.controlFieldTemplate = this.view.getTemplate("controlFieldAvatar");
+
+            this.controlFieldTemplateDescriptor = this.view.getTemplateDescriptor("controlFieldAvatar");
+
             Alpaca.mergeObject(this.options, {
                 "fileupload" : {
                     "attachmentId" : "avatar",
@@ -52,14 +54,14 @@
          *
          */
         getUploadTemplate: function() {
-            return this.view.getTemplate("templateAvatarUpload");
+            return this.wrapTemplate("templateAvatarUpload");
         },
 
         /**
          *
          */
         getDownloadTemplate: function() {
-            return this.view.getTemplate("templateAvatarDownload");
+            return this.wrapTemplate("templateAvatarDownload");
         },
 
         /**

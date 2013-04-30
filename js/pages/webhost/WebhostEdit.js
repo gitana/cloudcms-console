@@ -82,9 +82,6 @@
                             });
                         }
                     });
-                    $('#webhost-edit-reset', $(el)).click(function() {
-                        form.setValue(defaultData);
-                    });
                 }
             });
         },
@@ -104,10 +101,6 @@
                 "title" : "Edit Web Host",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'webhost-edit', 24),
                 "buttons" :[
-                    {
-                        "id" : "webhost-edit-reset",
-                        "title" : "Reset"
-                    },
                     {
                         "id" : "webhost-edit-save",
                         "title" : "Save Web Host",

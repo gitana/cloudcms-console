@@ -13,7 +13,7 @@
         index: function(el) {
             var self = this;
 
-            this.subscribe(this.subscription, this.refresh);
+            self.setupRefreshSubscription(el);
 
             var tenant = this.model(el);
 

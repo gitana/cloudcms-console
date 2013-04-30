@@ -47,7 +47,7 @@
                 var self = this;
 
                 // detect changes to the pairs and redraw when they occur
-                this.subscribe(this.subscription, this.refresh);
+                self.setupRefreshSubscription(el);
 
                 // list model
                 this.plot = self.model(el);

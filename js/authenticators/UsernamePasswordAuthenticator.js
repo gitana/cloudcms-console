@@ -97,8 +97,7 @@
 
         logout: function(context, callback) {
             var self = this;
-            var platform = Gitana.Authentication.platform;
-            platform.logout().then(function() {
+            Gitana.Authentication.platform().logout().then(function() {
                 if (callback) {
                     callback();
                 }

@@ -10,19 +10,19 @@
         index: function(el) {
             var self = this;
 
-            //this.subscribe(this.subscription, this.refresh);
-            this.subscribe("tenantDetails", this.refresh);
-            this.subscribe("userDetails", this.refresh);
+            //this.setupRefreshSubscription(el);
+            self.subscribe("tenantDetails", self.refreshHandler(el));
+            self.subscribe("userDetails", self.refreshHandler(el));
 
             // platform logo and alt text
             var platformAvatarUrl = this.tenantDetails().avatarUrl;
             if (!platformAvatarUrl)
             {
-                platformAvatarUrl = "css/images/themes/clean/console/logos/logo-default.png";
+                platformAvatarUrl = "css/images/themes/clean/console/logos/cloudcms_48.png";
             }
-            platformAvatarUrl = platformAvatarUrl.replace("/avatar.", "/avatar256.");
+            platformAvatarUrl = platformAvatarUrl.replace("/avatar.", "/avatar48.");
             el.model["platformLogoUrl"] = platformAvatarUrl;
-            el.model["platformAltText"] = this.tenantDetails().friendlyName;
+            el.model["platformTitleText"] = this.tenantDetails().friendlyName;
 
             // user logo and al ttext
             var userAvatarUrl = this.userDetails().avatarUrl;
@@ -76,11 +76,35 @@
                 }
 
                 // Add logout button
-                $('.logout',$(el)).click(function() {
+                $('.logout',$(el)).click(function(e) {
                     self.app().authenticator.logout(self,function() {
                         Gitana.CMS.refresh();
                     });
+                    e.preventDefault();
                 });
+
+                // profile clicks
+                $(".user-icon", $(el)).click(function(e) {
+                    self.app().run('GET',"#/profile");
+
+                    e.preventDefault();
+                });
+                $(".user-name", $(el)).click(function(e) {
+                    self.app().run('GET',"#/profile");
+
+                    e.preventDefault();
+                });
+
+                // profile mouseover
+                $(".user-icon", $(el)).mouseover(function(e) {
+                    $(this).css("cursor", "pointer");
+                    e.preventDefault();
+                });
+                $(".user-name", $(el)).mouseover(function(e) {
+                    $(this).css("cursor", "pointer");
+                    e.preventDefault();
+                });
+
                 el.swap();
             });
 

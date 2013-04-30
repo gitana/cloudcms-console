@@ -28,66 +28,80 @@
 
         schema: function() {
 
-            return Alpaca.mergeObject(this.base(), {
+            return {
+                "type": "object",
                 "properties" : {
                     "_type" : {
-                        "title": "Definition Type",
+                        "title": "What kind of definition is this?",
                         "type" : "string",
                         "default" : "d:type",
                         "enum" : ["d:type","d:feature","d:association"],
                         "required" : true
                     },
+                    "_qname" : {
+                        "title": "Unique QName",
+                        "type" : "string",
+                        "required": true
+                    },
+                    "title": {
+                        "title": "Title",
+                        "type": "string",
+                        "required": true
+                    },
+                    "description": {
+                        "title": "Description",
+                        "type": "string"
+                    },
                     "_parent" : {
-                        "title": "Parent Type",
+                        "title": "Inherits from:",
                         "type" : "string",
                         "default" : "n:node",
                         "required" : true
                     },
-                    "_qname" : {
-                        "title": "Definition QName",
-                        "type" : "string"
-                    },
                     "body" : {
-                        "title" : "Schema Body",
+                        "title" : "Schema",
                         "type" : "string",
-                        "default" : "{\"type\" : \"object\", \"properties\" : {}}"
+                        "default" : JSON.stringify({
+                            "type": "object",
+                            "properties": {}
+                        }, null, "  ")
                     }
                 }
-            });
+            };
+
         },
 
         options: function() {
             var self = this;
-            var options = Alpaca.mergeObject(this.base(), {
+
+            var options = {
+                "focus": true,
                 "fields" : {
-                    "title" : {
-                        "helper" : "Enter definition title."
-                    },
-                    "description" : {
-                        "helper" : "Enter definition description."
-                    },
                     "_type" : {
                         "type": "select",
-                        "helper" : "Pick definition type.",
-                        "optionLabels": ["Type", "Feature", "Association"]
-                    },
-                    "_parent" : {
-                        "type": "select",
-                        "helper" : "Pick parent type."
+                        "optionLabels": ["Content Type Definition", "Feature Definition", "Association Definition"]
                     },
                     "_qname" : {
                         "type": "text",
-                        "helper": "Enter a unique qname.",
                         "size" : 60
                     },
+                    "title" : {
+                        "size" : 60
+                    },
+                    "description": {
+                        "type": "textarea",
+                        "cols" : 60
+                    },
+                    "_parent" : {
+                        "type": "select"
+                    },
                     "body" : {
-                        "type" : "json",
-                        "rows" : 20,
-                        "cols" : 90,
-                        "helper" : "Enter definition body."
+                        "type" : "editor",
+                        "aceMode": "ace/mode/javascript",
+                        "aceFitContentHeight": true
                     }
                 }
-            });
+            };
 
             options['fields']['_qname']['validator'] = function(control, callback) {
                 var controlVal = control.getValue();
@@ -130,6 +144,8 @@
                     if (callback) {
                         callback();
                         field.field.val("n:node").change();
+
+                        Gitana.Utils.UI.uniform(field.getEl());
                     }
                 });
             };
@@ -157,58 +173,6 @@
             ]));
         },
 
-        setupEditForm: function (el) {
-            var self = this;
-            var definition = self.targetObject();
-            var defaultData = self.populateObjectAll(definition);
-            defaultData['body'] = {};
-            defaultData['body']['type'] = definition['type'] ? definition['type'] : "object";
-            if (definition['properties'] != null) {
-                defaultData['body']['properties'] = definition['properties'];
-                delete defaultData['properties'];
-            }
-            defaultData['body'] = JSON.stringify(defaultData['body'], null, ' ');
-            defaultData['_qname'] = definition.getQName();
-
-            $('#definition-edit', $(el)).alpaca({
-                "data": defaultData,
-                "schema": self.schema(),
-                "options": self.options(),
-                "postRender": function(control) {
-                    Gitana.Utils.UI.uniform(control.getEl());
-                    control.getEl().css('border', 'none');
-                    // Add Buttons
-                    $('#definition-edit-save', $(el)).click(function() {
-                        var form = control.getValue();
-                        var schemaBody = form['body'];
-                        delete form['body'];
-                        if (control.isValid(true)) {
-
-                            Gitana.Utils.UI.block("Updating definition...");
-
-                            if (definition['properties'] != null) {
-                                delete definition['properties'];
-                            }
-
-                            Alpaca.mergeObject(definition,form);
-                            Alpaca.mergeObject(definition,schemaBody);
-
-                            definition.update().then(function() {
-                                var updatedDefinition = this;
-                                Gitana.Utils.UI.unblock(function() {
-                                    self.app().run("GET", self.LINK().call(self,updatedDefinition));
-                                });
-
-                            });
-                        }
-                    });
-                    $('#definition-edit-reset', $(el)).click(function() {
-                        control.setValue(defaultData);
-                    });
-                }
-            });
-        },
-
         editButtonConfig: function() {
             return  {
                 "id": "edit",
@@ -224,10 +188,6 @@
                 "title" : "Edit Definition",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'definition-edit', 24),
                 "buttons" :[
-                    {
-                        "id" : "definition-edit-reset",
-                        "title" : "Reset"
-                    },
                     {
                         "id" : "definition-edit-save",
                         "title" : "Save Definition",
@@ -248,6 +208,60 @@
             this.setupEditPage(el, page);
 
             this.page(Alpaca.mergeObject(page,this.base(el)));
+        },
+
+        processEditForm: function (el) {
+            var self = this;
+            var definition = self.targetObject();
+            var defaultData = self.populateObjectAll(definition);
+
+            defaultData['body'] = {};
+            defaultData['body']['type'] = definition['type'] ? definition['type'] : "object";
+            defaultData['body']['properties'] = {};
+            if (definition['properties'] != null) {
+                defaultData['body']['properties'] = definition['properties'];
+                //delete defaultData['properties'];
+            }
+            defaultData["body"] = JSON.stringify(defaultData["body"], null, "    ");
+            defaultData['_qname'] = definition.getQName();
+
+            $('#definition-edit').alpaca({
+                "data": defaultData,
+                "schema": self.schema(),
+                "options": self.options(),
+                "postRender": function(control) {
+                    Gitana.Utils.UI.uniform(control.getEl());
+                    control.getEl().css('border', 'none');
+
+                    // Add Buttons
+                    $('#definition-edit-save').click(function() {
+
+                        var form = control.getValue();
+                        var schemaBody = JSON.parse(form['body']);
+                        delete form['body'];
+
+                        if (control.isValid(true)) {
+
+                            Gitana.Utils.UI.block("Updating definition...");
+
+                            if (definition['properties'] != null) {
+                                delete definition['properties'];
+                            }
+
+                            Alpaca.mergeObject(definition,form);
+                            Alpaca.mergeObject(definition,schemaBody);
+
+                            _Chain(definition).update().then(function() {
+                                var updatedDefinition = this;
+                                Gitana.Utils.UI.unblock(function() {
+                                    self.app().run("GET", self.LINK().call(self,updatedDefinition));
+                                });
+
+                            });
+                        }
+                    });
+                }
+            });
         }
 
     });

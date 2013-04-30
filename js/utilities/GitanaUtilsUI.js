@@ -1,4 +1,4 @@
-(function($) {
+(function($, window) {
     Gitana.Utils.UI = {
         /**
          * Used to launch a modal blocking dialog with message.
@@ -46,17 +46,33 @@
          * @param el
          */
         uniform : function(el) {
-            if (el.uniform && $('.alpaca-controlfield-file',el).length == 0) {
-                // remove select
-                $("input:checkbox, input:text, input:password, input:radio, input:file, textarea", el).uniform();
+
+            if (el.uniform)
+            {
+                if ($('.alpaca-controlfield-file', el).length == 0) {
+
+                    // remove select
+                    $("input:checkbox, input:text, input:password, input:radio, input:file, textarea", el).uniform();
+
+                    // special handle select
+                    $("select").each(function() {
+
+                        // we don't enhance multi-select fields
+                        if (!$(this).hasClass("multi")) {
+                            $(this).uniform();
+                        }
+                    });
+
+                    // special handle checkbox
+                    $("checkbox", el).uniform();
+                }
             }
         },
 
         /**
          * Generates box-style chrome for default theme.
-         * @param el
          */
-        contentBox : function(el) {
+        contentBox : function() {
             $("body").undelegate(".block-border .block-header span", "click").delegate(".block-border .block-header span", "click", function() {
                 if ($(this).hasClass('closed')) {
                     $(this).removeClass('closed');
@@ -145,17 +161,17 @@
             $('a[rel=tooltip-html]').tipsy({
                 fade: true,
                 html: true,
-                live: true
+                live: false
             });
             $('div[rel=tooltip-html]').tipsy({
                 fade: true,
                 html: true,
-                live: true
+                live: false
             });
             $('input[rel=tooltip-html]').tipsy({
                 fade: true,
                 html: true,
-                live: true
+                live: false
             });
         },
 
@@ -165,7 +181,7 @@
                 config = {};
             }
 
-            html = "<div class='modal-selector'>";
+            var html = "<div class='modal-selector'>";
             html += "<table class='modal-selector-table' cellpadding='1'>";
 
             if (config.items) {
@@ -270,6 +286,38 @@
             dialog.dialog("open");
 
             return dialog;
+        },
+
+        modalTrap: function(err)
+        {
+            Gitana.Utils.UI.unblock(function() {
+
+                Gitana.Utils.UI.modalOpen({
+                    'title': '<img src="./css/images/themes/clean/console/special/error-message-24.png">There was a problem...',
+                    "body": "<p style='font-family: Courier; padding: 10px; font-style: italic; color: #555'>" + err.message + "</p>",
+                    "width": 800
+                });
+            });
+        },
+
+        isChecked: function(el)
+        {
+            return $(el)[0].checked;
+        },
+
+        setChecked: function(el, checked)
+        {
+            $(el).prop('checked', checked);
         }
+    };
+
+    _Chain = function(chainable)
+    {
+        return Chain(chainable).trap(Gitana.Utils.UI.modalTrap);
+    };
+
+    if (window) {
+        window._Chain = _Chain;
     }
-})(jQuery);
+
+})(jQuery, window);

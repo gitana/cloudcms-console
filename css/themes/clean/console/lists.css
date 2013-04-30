@@ -30,7 +30,7 @@ ul.toolbox-header {
 	float: left;
 	position: relative;
 	z-index: 1000;
-    margin-top: -3px;
+    margin-top: 10px;
 }
 
 ul.toolbox-header li {
@@ -260,7 +260,7 @@ ul.toolbar-list li {
 	border: 1px solid #bcbcbc;
 	float: left;
 	overflow: hidden;
-	margin: 10px 5px;
+	margin: 11px 5px;
 	cursor: pointer;
 	border-radius: 5px 5px 5px 5px;
 }

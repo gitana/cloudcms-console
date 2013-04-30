@@ -1,44 +1,54 @@
 (function($) {
     Gitana.Console.Pages.FormAdd = Gitana.CMS.Pages.AbstractFormPageGadget.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         schema: function() {
 
-            return Alpaca.mergeObject(this.base(), {
-                "properties" : {
+            return {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "title": "Title",
+                        "type": "string",
+                        "required": true
+                    },
+                    "description": {
+                        "title": "Description",
+                        "type": "string"
+                    },
                     "formKey" : {
-                        "title": "Form Key",
-                        "type" : "string"
+                        "title": "Unique Form Key",
+                        "type" : "string",
+                        "required": true
                     },
                     "body" : {
-                        "title" : "Form Body",
+                        "title" : "Form Configuration",
                         "type" : "string",
-                        "default" : "{\"fields\" : {}}"
+                        "default" : JSON.stringify({
+                            "fields": {}
+                        }, null, "  ")
                     }
                 }
-            });
+            };
         },
 
         options: function() {
             var self = this;
 
-            var options = Alpaca.mergeObject(this.base(), {
+            var options = {
+                "focus": true,
                 "fields" : {
                     "title" : {
-                        "helper" : "Enter form title."
+                        "size" : 60
                     },
-                    "description" : {
-                        "helper" : "Enter form description."
+                    "description": {
+                        "type": "textarea",
+                        "cols" : 60
                     }
                 }
-            });
+            };
 
             options ["fields"]["formKey"] = {
                 "type": "text",
-                "helper": "Enter a unique form key.",
                 "size" : 60,
                 "postRender" : function(control) {
                     self.definition().listFormAssociations().count(function(count) {
@@ -70,10 +80,9 @@
             };
 
             options ["fields"]["body"] = {
-                "type" : "json",
-                "rows" : 20,
-                "cols" : 90,
-                "helper" : "Enter form body."
+                "type" : "editor",
+                "aceMode": "ace/mode/javascript",
+                "aceFitContentHeight": true
             };
 
             return options;
@@ -109,21 +118,46 @@
             ]));
         },
 
-        setupFormAddForm : function (el) {
+        setupPage : function(el) {
+
+            var page = {
+                "title" : "New Form",
+                "description" : "Create a new form.",
+                "forms" :[{
+                    "id" : "form-add",
+                    "title" : "Create A New Form",
+                    "icon" : Gitana.Utils.Image.buildImageUri('objects', 'form-add', 24),
+                    "buttons" :[
+                        {
+                            "id" : "form-add-create",
+                            "title" : "Create Form",
+                            "isLeft" : true
+                        }
+                    ]
+                }]
+            };
+
+            this.page(Alpaca.mergeObject(page,this.base(el)));
+        },
+
+        processFormAddForm : function (el) {
             var self = this;
-            $('#form-add',$(el)).alpaca({
+            $('#form-add').alpaca({
                 "schema": self.schema(),
                 "options": self.options(),
+                "view": "VIEW_WEB_CREATE",
                 "postRender": function(renderedField) {
 
                     Gitana.Utils.UI.beautifyAlpacaForm(renderedField, 'form-add-create', true);
 
                     // Add Buttons
-                    $('#form-add-create',$(el)).click(function(){
+                    $('#form-add-create').click(function(){
+
+                        debugger;
 
                         var value = renderedField.getValue();
 
-                        var formBody = value['body'];
+                        var formBody = JSON.parse(value['body']);
                         formBody['title'] = value['title'] ? value['title'] : "";
                         formBody['description'] = value['description'] ? value['description'] : "";
 
@@ -150,30 +184,8 @@
             });
         },
 
-        setupForms : function (el) {
-            this.setupFormAddForm(el);
-        },
-
-        setupPage : function(el) {
-
-            var page = {
-                "title" : "New Form",
-                "description" : "Create a new form.",
-                "forms" :[{
-                    "id" : "form-add",
-                    "title" : "Create A New Form",
-                    "icon" : Gitana.Utils.Image.buildImageUri('objects', 'form-add', 24),
-                    "buttons" :[
-                        {
-                            "id" : "form-add-create",
-                            "title" : "Create Form",
-                            "isLeft" : true
-                        }
-                    ]
-                }]
-            };
-
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+        processForms : function (el) {
+            this.processFormAddForm(el);
         }
 
     });

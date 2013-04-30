@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.FolderAdd = Gitana.Console.Pages.ChildNodeAdd.extend(
         {
-            constructor: function(id, ratchet) {
-                this.base(id, ratchet);
-            },
-
             setup: function() {
                 this.get("/repositories/{repositoryId}/branches/{branchId}/folders/{nodeId}/add/folder", this.index);
             },

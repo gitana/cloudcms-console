@@ -105,9 +105,6 @@
                             });
                         }
                     });
-                    $('#user-edit-reset',$(el)).click(function(){
-                        form.setValue(defaultData);
-                    });
                 }
             });
         },
@@ -127,10 +124,6 @@
                 "title" : "Edit User",
                 "icon" : Gitana.Utils.Image.buildImageUri('security', 'user-edit', 24),
                 "buttons" :[
-                    {
-                        "id" : "user-edit-reset",
-                        "title" : "Reset"
-                    },
                     {
                         "id" : "user-edit-save",
                         "title" : "Save User",

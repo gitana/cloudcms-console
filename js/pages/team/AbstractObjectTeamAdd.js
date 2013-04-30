@@ -186,7 +186,7 @@
             this.setupTeamAddForm(el);
         },
 
-        processForm: function() {
+        processForms: function() {
             $('body').bind('swap', function(event, param) {
                 var rolesSelector = $('#team-add select');
 

@@ -1,9 +1,9 @@
 /** jQuery UI and Theme **/
-@import url( "css/themes/clean/jquery-ui/jquery-ui-1.8.15.custom.css" );
+@import url( "css/themes/clean/jquery-ui/jquery-ui.custom.css" );
 
 /** jQuery Third Party **/
 @import url( "lib/jquery/jqplot/jquery.jqplot.min.css" );
-@import url( "lib/jquery/fileupload/jquery.fileupload-ui.css" );
+@import url( "lib/jquery-file-upload/css/jquery.fileupload-ui.css" );
 @import url( "lib/jquery/elrte/css/elrte.min.css" );
 
 /** Gitana Console Framework **/

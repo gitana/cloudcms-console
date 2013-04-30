@@ -97,9 +97,6 @@
                             });
                         }
                     });
-                    $('#authentication-grant-edit-reset', $(el)).click(function() {
-                        form.setValue(defaultData);
-                    });
                 }
             });
         },
@@ -119,10 +116,6 @@
                 "title" : "Edit Authentication Grant",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'authentication-grant-edit', 24),
                 "buttons" :[
-                    {
-                        "id" : "authentication-grant-edit-reset",
-                        "title" : "Reset"
-                    },
                     {
                         "id" : "authentication-grant-edit-save",
                         "title" : "Save AuthenticationGrant",

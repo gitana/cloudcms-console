@@ -141,7 +141,7 @@
         },
 
         buildPage : function(el, type) {
-            var page = {
+            var config = {
                 "title" : this.messages().title,
                 "description" : this.messages().description,
                 "listTitle" : this.messages().list.title,
@@ -151,7 +151,14 @@
                 "filter" : this.FILTER
             };
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            var page = this.base(el);
+            if (!page) {
+                page = {};
+            }
+
+            Ratchet.merge(config, page);
+
+            this.page(page);
         }
 
     });

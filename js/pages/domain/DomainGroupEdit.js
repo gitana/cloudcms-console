@@ -101,9 +101,6 @@
 
                         }
                     });
-                    $('#group-edit-reset', $(el)).click(function() {
-                        form.setValue(defaultData);
-                    });
                 }
             });
         },
@@ -123,10 +120,6 @@
                 "title" : "Edit Group",
                 "icon" : Gitana.Utils.Image.buildImageUri('security', 'group-edit', 24),
                 "buttons" :[
-                    {
-                        "id" : "group-edit-reset",
-                        "title" : "Reset"
-                    },
                     {
                         "id" : "group-edit-save",
                         "title" : "Save Group",

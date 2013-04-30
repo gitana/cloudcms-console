@@ -164,9 +164,6 @@
                             });
                         }
                     });
-                    $('#userprofile-edit-reset',$(el)).click(function(){
-                        form.setValue(defaultData);
-                    });
                 }
             });
         },
@@ -186,10 +183,6 @@
                         "title" : "Edit Profile - "+ this.targetObject().getId(),
                         "icon" : Gitana.Utils.Image.buildImageUri('security', 'user-edit', 24),
                         "buttons" :[
-                            {
-                                "id" : "userprofile-edit-reset",
-                                "title" : "Reset"
-                            },
                             {
                                 "id" : "userprofile-edit-save",
                                 "title" : "Save User",

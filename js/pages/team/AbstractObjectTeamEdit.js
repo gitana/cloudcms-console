@@ -141,9 +141,6 @@
                             });
                         }
                     });
-                    $('#team-edit-reset', $(el)).click(function() {
-                        form.setValue(defaultData);
-                    });
                 }
             });
         },
@@ -164,10 +161,6 @@
                 "icon" : Gitana.Utils.Image.buildImageUri('security', 'team-edit', 24),
                 "buttons" :[
                     {
-                        "id" : "team-edit-reset",
-                        "title" : "Reset"
-                    },
-                    {
                         "id" : "team-edit-save",
                         "title" : "Save Team",
                         "isLeft" : true
@@ -176,7 +169,7 @@
             };
         },
 
-        processForm: function() {
+        processForms: function() {
             $('body').bind('swap', function(event, param) {
                 var rolesSelector = $('select');
 

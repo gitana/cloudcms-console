@@ -86,9 +86,6 @@
                             });
                         }
                     });
-                    $('#warehouse-edit-reset', $(el)).click(function() {
-                        form.setValue(defaultData);
-                    });
                 }
             });
         },
@@ -108,10 +105,6 @@
                 "title" : "Edit Warehouse",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'warehouse-edit', 24),
                 "buttons" :[
-                    {
-                        "id" : "warehouse-edit-reset",
-                        "title" : "Reset"
-                    },
                     {
                         "id" : "warehouse-edit-save",
                         "title" : "Save Warehouse",

@@ -9,10 +9,6 @@
             "/edit/json"
         ],
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         targetObject: function() {
             //return this.myTenant();
             return this.tenantDetails();
@@ -194,9 +190,6 @@
                             });
                         }
                     });
-                    $('#tenant-edit-reset', $(el)).click(function() {
-                        form.setValue(defaultData);
-                    });
                     */
                 }
             });
@@ -218,11 +211,6 @@
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'tenant-edit', 24)
                 /*,
                 "buttons" :[
-
-                    {
-                        "id" : "tenant-edit-reset",
-                        "title" : "Reset"
-                    },
                     {
                         "id" : "tenant-edit-save",
                         "title" : "Save Platform",

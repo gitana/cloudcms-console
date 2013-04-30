@@ -3,10 +3,6 @@
     {
         TEMPLATE : "components/list",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         selectedItems: function() {
             return this._observable("selectedItems", arguments,{});
         },
@@ -116,7 +112,7 @@
                     }
                 });
 
-                var options = $.browser.msie ? {
+                var options = Ratchet.Browser.ie ? {
                     "left" : "-270px",
                     "width" : "225px",
                     "z-index" : "999",
@@ -185,14 +181,21 @@
             }
         },
 
+        applyUniform: function(el)
+        {
+            if (el.uniform) {
+                $(el).find("select, input:checkbox, input:text, input:password, input:radio, input:file, textarea").uniform();
+            }
+        },
+
         index: function(el) {
             var self = this;
 
             // detect changes to the list and redraw when they occur
-            // this.subscribe(this.subscription, this.refresh);
+            // this.setupRefreshSubscription(el);
 
-            if (this.filterSubscription) {
-                this.subscribe(this.filterSubscription, this.refresh);
+            if (self.filterSubscription) {
+                self.subscribe(self.filterSubscription, self.refreshHandler(el));
             }
 
             self.clearSelectedItems();
@@ -467,13 +470,13 @@
 
                             var currentSelectedItems = self.selectedItems();
 
-                            if ($(this).attr("checked")) {
+                            if (Gitana.Utils.UI.isChecked(this)) {
                                 currentSelectedItems[targetObjectId] = chainedItem;
                                 self.selectedItems(currentSelectedItems);
                             } else {
                                 if (currentSelectedItems[targetObjectId]) {
                                     delete currentSelectedItems[targetObjectId];
-                                };
+                                }
                                 self.selectedItems(currentSelectedItems);
                             }
 
@@ -488,6 +491,8 @@
                             self.onSelectedItems();
                         });
 
+                        self.applyUniform($(nRow));
+
                         return nRow;
                     };
 
@@ -498,14 +503,16 @@
                             "bSearchable": false,
                             "bSortable": false,
                             "sWidth": "10px",
-                            "sTitle": "<input type='checkbox' class='table-overall-checkbox'/>"
+                            "sTitle": "<input type='checkbox' class='table-overall-checkbox'/>",
+                            "sClass": "table-checkbox-column"
                         },
                         {
                             // ICON
                             "bVisible": true,
                             "bSearchable": false,
                             "bSortable": false,
-                            "sTitle": "Icon"
+                            "sTitle": "Icon",
+                            "sClass": "table-icon-column"
                         }
                     ];
 
@@ -552,16 +559,14 @@
 
                     self.oTable = $(el).find("table").dataTable(tableConfig);
 
-                    if (el.uniform) {
-                        $("select, input:checkbox, input:text, input:password, input:radio, input:file, textarea",$(el)).uniform();
-                    }
+                    self.applyUniform($(el));
 
                     // select/unselect-all checkbox
                     $('.table-overall-checkbox',$(el)).click(function() {
                         if ($(this).attr("checked")) {
                             $(".gitanaselectbox").each(function() {
-                                if (! $(this).attr("checked")) {
-                                    $(this).attr("checked",true);
+                                if (!Gitana.Utils.UI.isChecked(this)) {
+                                    Gitana.Utils.UI.setChecked(this, true);
                                 }
                             });
                             self.clearSelectedItems();
@@ -575,8 +580,8 @@
                             self.onSelectedItems();
                         } else {
                             $(".gitanaselectbox").each(function() {
-                                if ($(this).attr("checked")) {
-                                    $(this).attr("checked",false);
+                                if (Gitana.Utils.UI.isChecked(this)) {
+                                    Gitana.Utils.UI.setChecked(this, false);
                                 }
                             });
                             self.clearSelectedItems();

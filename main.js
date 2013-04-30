@@ -22,21 +22,21 @@ require([
     "lib/jquery/jqplot/plugins/jqplot.categoryAxisRenderer.min.js",
     "lib/jquery/jqplot/plugins/jqplot.pointLabels.min.js",
 
-    "lib/jquery/blockui/jquery.blockui.2.39.min.js",
+    "lib/jquery/blockui/jquery.blockui.js",
 
     "lib/jquery/datatables/jquery.dataTables.1.8.1.min.js",
     "lib/jquery/datatables/TableTools.2.0.1.min.js",
 
-    "lib/jquery/fileupload/jquery.iframe-transport.1.2.2.min.js",
-    "lib/jquery/fileupload/jquery.fileupload.5.0.3-patched.js",
-    "lib/jquery/fileupload/jquery.fileupload-ui.5.0.13-patched.js",
+    "lib/jquery-file-upload/js/jquery.iframe-transport.js",
+    "lib/jquery-file-upload/js/jquery.fileupload.js",
+    "lib/jquery-file-upload/js/jquery.fileupload-ui.js",
 
     "lib/jquery/galleria/galleria-1.2.5-patched.min.js",
     "lib/jquery/galleria/themes/gitana/galleria.gitana.js",
 
     "lib/jquery/notifications/jquery.notifications.min.js",
 
-    "lib/jquery/uniform/jquery.uniform.1.7.5.min.js",
+    "lib/jquery/uniform/jquery.uniform.2.1.0.min.js",
 
     "lib/jquery/validate/jquery.validate.1.8.1.min.js",
 
@@ -45,14 +45,14 @@ require([
     "lib/jquery/slidernav/jquery.slidernav.min.js",
     "lib/jquery/menu/jquery-menu.js",
     "lib/jquery/md5/jquery.md5.min.js",
-    "lib/jquery/asmselect/jquery.asmselect-1.0.4a.min.js",
+    "lib/jquery/asmselect/jquery.asmselect-1.0.4a.custom.js",
     "lib/jquery/xbreadcrumb/xbreadcrumbs.js",
-    "lib/jquery/multiselect/jquery.multiselect.min.js",
-    "lib/jquery/multiselect/jquery.multiselect.filter.min.js",
+    "lib/jquery/multiselect/jquery.multiselect.js",
+    "lib/jquery/multiselect/jquery.multiselect.filter.js",
     "lib/jquery/stickysidebar/stickysidebar.jquery.js",
     "lib/jquery/elrte/elrte.min.js",
     "lib/jquery/cookie/jquery.cookie.js",
-    "lib/alpaca/lib/jquery-ui-timepicker-addon.js",
+    "lib/jquery/jquery-ui-timepicker-addon/jquery-ui-timepicker-addon.js",
     "lib/jquery/easyaccordion/easyAccordion-0.1.js",
     "alpaca",
     "gitana",

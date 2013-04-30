@@ -53,41 +53,35 @@
         "type" : "object",
         "properties" : {
             "NUMBER_OF_HISTORY_ENTRIES" : {
-                "title" : "Number of history entries",
-                "description" : "Default number of history entries.",
+                "title" : "Number of entries to show in the console history",
                 "default" : Gitana.Console.Settings.Default['NUMBER_OF_HISTORY_ENTRIES'],
                 "type" : "integer",
                 "minimum" : 1
             },
             "NUMBER_OF_CLIPBOARD_ENTRIES" : {
-                "title" : "Number of clipboard entries",
-                "description" : "Default number of clipboard entries.",
+                "title" : "Number of entries to show in the console clipboard",
                 "default" : Gitana.Console.Settings.Default['NUMBER_OF_CLIPBOARD_ENTRIES'],
                 "type" : "integer",
                 "minimum" : 1
             },
             "LIST_SIZE" : {
-                "title" : "List Size",
-                "description" : "Default console list size.",
+                "title" : "Number of items to show in console lists",
                 "default" : Gitana.Console.Settings.Default['LIST_SIZE'],
                 "enum" : [10,25,50,100]
             },
             "DISPLAY_LIST_FILTER" : {
-                "title" : "Display list filter",
-                "description" : "Show list filter automatically if checked.",
+                "title" : "Show the filter for console lists automatically?",
                 "default" : Gitana.Console.Settings.Default['DISPLAY_LIST_FILTER'],
                 "type" : "boolean"
             },
             "NUMBER_OF_LATEST_ITEMS" : {
-                "title" : "Number of Latest Items",
-                "description" : "Default number of latest items on dashboard pages.",
+                "title" : "Number of items to show for console latest items",
                 "default" : Gitana.Console.Settings.Default['NUMBER_OF_LATEST_ITEMS'],
                 "type" : "integer",
                 "minimum" : 1
             },
             "NUMBER_OF_ACTIVITY_ITEMS" : {
-                "title" : "Number of Platform Activities Items",
-                "description" : "Default number of activities items on platform dashboard page.",
+                "title" : "Number of items to show on the platform dashboard's activities list",
                 "default" : Gitana.Console.Settings.Default['NUMBER_OF_ACTIVITY_ITEMS'],
                 "type" : "integer",
                 "minimum" : 1
@@ -168,6 +162,20 @@
         "layout" : {
             "template" : "fourColumnGridLayout"
         }
+    });
+
+    // adjust the VIEW_WEB_EDIT view so it uses jQuery UI
+    Alpaca.registerView({
+        "id": "VIEW_WEB_EDIT",
+        "style": "jquery-ui",
+        "ui": "jquery-ui"
+    });
+
+    // adjust the VIEW_WEB_CREATE view so it uses jQuery UI
+    Alpaca.registerView({
+        "id": "VIEW_WEB_CREATE",
+        "style": "jquery-ui",
+        "ui": "jquery-ui"
     });
 
 })(jQuery);

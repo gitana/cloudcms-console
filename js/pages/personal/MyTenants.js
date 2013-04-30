@@ -5,10 +5,6 @@
 
         FILTER : "my-tenant-list-filters",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/dashboard/tenants", this.index);
         },

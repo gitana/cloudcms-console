@@ -14,9 +14,11 @@
 
             // load context
             self.loadContext(el, function() {
+
                 // check authorities
                 self.checkAuthorities(function(isEntitled ,error) {
                     if (isEntitled) {
+
                         // set up menu
                         self.setupMenu();
 
@@ -33,7 +35,7 @@
                         self.setupPage(el);
 
                         // detect changes to the list and redraw when they occur
-                        //self.subscribe(this.subscription, this.refresh);
+                        //self.setupRefreshSubscription(el);
 
                         // list model
                         var page = self.model(el);
@@ -85,11 +87,16 @@
         processItemsDashlet: function(totalRows, pairs, link) {
             totalRows = totalRows == null ? 0 : totalRows;
             if (totalRows > this.consoleSetting('NUMBER_OF_LATEST_ITEMS')) {
+                /*
                 pairs['items'].push({
                     "img" : Gitana.Utils.Image.buildImageUri('browser', 'more', 32),
                     "class" : "block-list-more-item-img",
                     "link" : "#" + link
                 });
+                */
+                pairs['items'].push({
+                    "value": "<div class='block-list-item-more'><a href='#" + link + "'>More...</a></div>"
+                })
             }
             if (totalRows == 0) {
                 pairs['items'].push({

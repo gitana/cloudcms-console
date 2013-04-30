@@ -80,9 +80,6 @@
                             });
                         }
                     });
-                    $('#branch-edit-reset', $(el)).click(function() {
-                        form.setValue(defaultData);
-                    });
                 }
             });
         },
@@ -102,10 +99,6 @@
                 "title" : "Edit Branch",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'branch-edit', 24),
                 "buttons" :[
-                    {
-                        "id" : "branch-edit-reset",
-                        "title" : "Reset"
-                    },
                     {
                         "id" : "branch-edit-save",
                         "title" : "Save Branch",

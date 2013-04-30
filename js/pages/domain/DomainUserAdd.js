@@ -121,6 +121,7 @@
                 "data": {},
                 "schema": self.schema(),
                 "options": self.options(),
+                "view": "VIEW_WEB_CREATE",
                 "postRender": function(form) {
                     Gitana.Utils.UI.beautifyAlpacaForm(form, 'user-add-create', true);
 

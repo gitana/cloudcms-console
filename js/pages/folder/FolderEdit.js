@@ -9,10 +9,6 @@
             "/repositories/{repositoryId}/branches/{branchId}/folders/{nodeId}/edit/json"
         ],
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         LINK : function() {
             return this.folderLink;
         },
@@ -55,9 +51,6 @@
                             });
                         }
                     });
-                    $('#node-edit-reset', $(el)).click(function() {
-                        form.setValue(defaultData);
-                    });
                 }
             });
         },
@@ -77,10 +70,6 @@
                 "title" : "Edit Folder",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'node-edit', 24),
                 "buttons" :[
-                    {
-                        "id" : "node-edit-reset",
-                        "title" : "Reset"
-                    },
                     {
                         "id" : "node-edit-save",
                         "title" : "Save Folder",

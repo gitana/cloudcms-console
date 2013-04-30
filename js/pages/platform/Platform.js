@@ -1,8 +1,8 @@
 (function($) {
     Gitana.Console.Pages.Platform = Gitana.CMS.Pages.AbstractDashboardPageGadget.extend(
         {
-            constructor: function(id, ratchet) {
-                this.base(id, ratchet);
+            constructor: function(type, ratchet) {
+                this.base(type, ratchet);
             },
 
             setup: function() {
@@ -456,10 +456,9 @@
                                 var activityDetails = Gitana.Utils.Activity.activityDetails(self, this);
 
                                 pairs['items'].push({
-                                    //"img" : Gitana.Utils.Image.buildImageUri('objects', activityDetails.iconId, 48),
                                     "img": activityDetails.userAvatarUri,
                                     "class" : "block-list-item-img",
-                                    "value" : activityDetails.itemText + "." + "<div class='block-list-item-desc'>" + " @ " + this.get('timestamp')['timestamp'] + "</div>"
+                                    "value" : "<div class='block-list-item-div'><div class='block-list-item-text'>" + activityDetails.itemText + "</div><div class='block-list-item-desc'> @ " + this.get('timestamp')['timestamp'] + "</div></div>"
                                 });
                             }).totalRows(function (totalRows) {
                                 self.processItemsDashlet(totalRows, pairs, self.listLink('activities'));

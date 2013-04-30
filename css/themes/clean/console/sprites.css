@@ -261,6 +261,7 @@ ul.item-list li span.sprite-48-pairs {
 ul.item-list li div.block-list-item-desc {
     margin: 5px 0 5px 58px;
     min-height: 16px;
+    white-space: nowrap;
 }
 
 /** START INDIVIDUAL 48 SPRITES **/

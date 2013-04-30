@@ -79,9 +79,7 @@
     Gitana.CMS.load = function ()
     {
         // pick an authenticator
-        var authenticator = new Gitana.CMS.UsernamePasswordAuthenticator({
-            "client" : {}
-        });
+        var authenticator = new Gitana.CMS.UsernamePasswordAuthenticator();
         //var authenticator = new Gitana.CMS.ImplicitFlowAuthenticator();
 
         // let the authenticator decide whether it lacks any state it might need to proceed
@@ -122,4 +120,18 @@
         "clientSecret": Gitana.DEFAULT_CONFIG.clientSecret
     };
     */
+
+    // extend jquery ui dialog so that it supports HTML in the dialog title
+    // this was broken in 1.10
+    // @see http://stackoverflow.com/questions/14488774/using-html-in-a-dialogs-title-in-jquery-ui-1-10
+    $.widget("ui.dialog", $.extend({}, $.ui.dialog.prototype, {
+        _title: function(title) {
+            if (!this.options.title ) {
+                title.html("&#160;");
+            } else {
+                title.html(this.options.title);
+            }
+        }
+    }));
+
 })();

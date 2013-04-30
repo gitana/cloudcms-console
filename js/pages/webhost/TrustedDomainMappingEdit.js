@@ -70,9 +70,6 @@
                             });
                         }
                     });
-                    $('#trusted-domain-mapping-edit-reset', $(el)).click(function() {
-                        form.setValue(defaultData);
-                    });
                 }
             });
         },
@@ -92,10 +89,6 @@
                 "title" : "Edit Trusted Domain Mapping",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'trusted-domain-mapping-edit', 24),
                 "buttons" :[
-                    {
-                        "id" : "trusted-domain-mapping-edit-reset",
-                        "title" : "Reset"
-                    },
                     {
                         "id" : "trusted-domain-mapping-edit-save",
                         "title" : "Save Trusted Domain Mapping",

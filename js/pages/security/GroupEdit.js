@@ -109,9 +109,6 @@
 
                         }
                     });
-                    $('#repo-edit-reset', $(el)).click(function() {
-                        form.setValue(defaultData);
-                    });
                 }
             });
         },
@@ -131,10 +128,6 @@
                 "title" : "Edit Group",
                 "icon" : Gitana.Utils.Image.buildImageUri('security', 'group-edit', 24),
                 "buttons" :[
-                    {
-                        "id" : "repo-edit-reset",
-                        "title" : "Reset"
-                    },
                     {
                         "id" : "repo-edit-save",
                         "title" : "Save Group",

@@ -29,7 +29,9 @@
          */
         setup: function() {
             this.base();
-            this.controlFieldTemplate = this.view.getTemplate("controlFieldMultiFolderNodes");
+
+            this.controlFieldTemplateDescriptor = this.view.getTemplateDescriptor("controlFieldMultiFolderNodes");
+
             if (this.options && this.options.nodeType) {
                 this.nodeType = this.options.nodeType;
             }
@@ -42,14 +44,14 @@
          *
          */
         getUploadTemplate: function() {
-            return this.view.getTemplate("multiFolderNodesUploadTemplate");
+            return this.wrapTemplate("multiFolderNodesUploadTemplate");
         },
 
         /**
          *
          */
         getDownloadTemplate: function() {
-            return this.view.getTemplate("multiFolderNodesDownloadTemplate");
+            return this.wrapTemplate("multiFolderNodesDownloadTemplate");
         },
 
         /**

@@ -9,10 +9,6 @@
             "/repositories/{repositoryId}/branches/{branchId}/children/{nodeId}/edit/json"
         ],
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         LINK : function() {
             return this.folderLink;
         },
