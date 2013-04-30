@@ -211,9 +211,13 @@
 
         setupPage : function(el) {
 
+            var msgContext = {
+                "userFullName": this.userDetails().fullName
+            };
+
             var page = {
-                "title" : "Edit My Profile",
-                "description" : "Edit my profile and personal settings.",
+                "title" : _msg("Personal.MyProfileEdit.title", msgContext),
+                "description" : _msg("Personal.MyProfileEdit.description", msgContext),
                 "forms" :[
                     {
                         "id" : "userprofile-edit",

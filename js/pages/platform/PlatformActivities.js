@@ -285,9 +285,12 @@
             },
 
             setupPage : function(el) {
+
+                var msgContext = {};
+
                 var page = {
-                    "title" : "Platform Activities",
-                    "description" : "Display list of platform activities.",
+                    "title" : _msg("Platform.Activities.title", msgContext),
+                    "description" : _msg("Platform.Activities.description", msgContext),
                     "listTitle" : "Platform Activity List",
                     "listIcon" : Gitana.Utils.Image.buildImageUri('objects', 'activity', 20),
                     "subscription" : this.SUBSCRIPTION,

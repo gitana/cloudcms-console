@@ -29,9 +29,13 @@
 
         setupPage : function(el) {
 
+            var msgContext = {
+                "tenantFriendlyTitle": this.friendlyTitle(this.tenantDetails())
+            };
+
             var page = {
-                "title" : "Export Platform",
-                "description" : "Export platform " + this.friendlyTitle(this.tenantDetails()) + " to an archive file.",
+                "title" : _msg("Platform.Export.title", msgContext),
+                "description" : _msg("Platform.Export.description", msgContext),
                 "forms" :[{
                     "id" : "export",
                     "title" : "Export Platform",

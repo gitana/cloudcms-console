@@ -474,9 +474,13 @@
 
             setupPage : function(el) {
 
+                var msgContext = {
+                    "tenantFriendlyTitle": this.friendlyTitle(this.tenantDetails())
+                };
+
                 var page = {
-                    "title" : "Platform Dashboard",
-                    "description" : "Platform overview of tenant " + this.friendlyTitle(this.tenantDetails()) + ".",
+                    "title": _msg("Platform.title", msgContext),
+                    "description": _msg("Platform.description", msgContext),
                     "dashlets" :[
                         {
                             "id" : "platform-activities",

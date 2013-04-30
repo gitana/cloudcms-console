@@ -80,9 +80,13 @@
 
         setupPage : function(el) {
 
+            var msgContext = {
+                "userFullName": this.userDetails().fullName
+            };
+
             var page = {
-                "title" : "My Dashboard",
-                "description" : "Home page for " + this.userDetails().fullName,
+                "title": _msg("Personal.Dashboard.title", msgContext),
+                "description": _msg("Personal.Dashboard.description", msgContext),
                 "notifications" : true,
                 "dashlets" : [
                     {

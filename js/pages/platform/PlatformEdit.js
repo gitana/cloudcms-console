@@ -223,10 +223,13 @@
 
         setupPage: function(el) {
 
+            var msgContext = {
+                "tenantFriendlyTitle": this.friendlyTitle(this.tenantDetails())
+            };
+
             var page = {
-                "title" : "Edit Platform",
-                //"description" : "Edit tenant " + this.friendlyTitle(this.myTenant()) + ".",
-                "description" : "Edit platform " + this.friendlyTitle(this.tenantDetails()) + ".",
+                "title" : _msg("Platform.Edit.title", msgContext),
+                "description" : _msg("Platform.Edit.description", msgContext),
                 "forms" :[]
             };
 

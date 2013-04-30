@@ -28,8 +28,8 @@
         setupPage : function(el) {
 
             var page = {
-                "title" : "New Platform Team",
-                "description" : "Create a new platform team.",
+                "title" : _msg("Platform.TeamAdd.title"),
+                "description" : _msg("Platform.TeamAdd.description"),
                 "forms" :[{
                     "id" : "team-add",
                     "title" : "Create A New Platform Team",

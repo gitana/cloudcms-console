@@ -30,11 +30,15 @@
         },
 
         setupPage : function(el) {
+
+            var msgContext = {
+                "tenantFriendlyTitle": this.friendlyTitle(this.tenantDetails())
+            };
+
             var page = {
-                "title" : "Platform Group Security",
-                //"description" : "Display and manage group access to platform of tenant " + this.friendlyTitle(this.myTenant()) + ".",
-                "description" : "Display and manage group access to platform of tenant " + this.friendlyTitle(this.tenantDetails()) + ".",
-                "listTitle" : "Group List",
+                "title" : _msg("Platform.GroupAuthorities.title", msgContext),
+                "description" : _msg("Platform.GroupAuthorities.description", msgContext),
+                "listTitle" : _msg("Platform.GroupAuthorities.listTitle", msgContext),
                 "listIcon" : Gitana.Utils.Image.buildImageUri('security', 'group', 20),
                 "searchBox" : true,
                 "subscription" : this.SUBSCRIPTION,

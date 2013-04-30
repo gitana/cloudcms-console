@@ -30,10 +30,15 @@
         },
 
         setupPage : function(el) {
+
+            var msgContext = {
+                "tenantFriendlyTitle": this.friendlyTitle(this.tenantDetails())
+            };
+
             var page = {
-                "title" : "Platform User Security",
-                "description" : "Display and manage user access to this platform.",
-                "listTitle" : "User List",
+                "title" : _msg("Platform.UserAuthorities.title", msgContext),
+                "description" : _msg("Platform.UserAuthorities.description", msgContext),
+                "listTitle" : _msg("Platform.UserAuthorities.listTitle", msgContext),
                 "listIcon" : Gitana.Utils.Image.buildImageUri('security', 'user', 20),
                 "searchBox" : true,
                 "subscription" : this.SUBSCRIPTION,

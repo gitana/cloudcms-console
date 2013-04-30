@@ -59,6 +59,65 @@
             }
         },
 
+        "Personal": {
+            "Dashboard": {
+                "title" : "My Dashboard",
+                "description" : "Personal home page for '${userFullName}'"
+            },
+            "MyActivities": {
+                "title" : "My Activities",
+                "description" : "Most recent activities for '${userFullName}'"
+            },
+            "MyProfile": {
+                "title" : "My Profile",
+                "description" : "Profile and personal settings for '${userFullName}'"
+            },
+            "MyProfileEdit": {
+                "title" : "Edit My Profile",
+                "description" : "Edit profile and personal settings for '${userFullName}'"
+            }
+        },
+
+        "Platform": {
+            "title": "Platform Dashboard",
+            "description": "Overview of the platform Cloud CMS tenant '${tenantFriendlyTitle}'",
+            "Activities": {
+                "title" : "Platform Activities",
+                "description" : "List of activities that have occurred on your platform"
+            },
+            "Edit": {
+                "title" : "Edit Platform",
+                "description" : "Make changes to the global settings for this platform"
+            },
+            "Export": {
+                "title" : "Export Platform",
+                "description" : "Export this platform to an archive"
+            },
+            "Import": {
+                "title" : "Import Platform",
+                "description" : "Imports the platform from an archive"
+            },
+            "GroupAuthorities": {
+                "title" : "Platform Group Security",
+                "description" : "Manage group access to the platform",
+                "listTitle": "Group List"
+            },
+            "TeamAdd": {
+                "title" : "New Platform Team",
+                "description" : "Create a new team for this platform"
+            },
+            "Teams": {
+                "title" : "Platform Teams",
+                "description" : "Manage team-based collaboration for this platform"
+            },
+            "UserAuthorities": {
+                "title" : "Platform User Security",
+                "description" : "Manage user access to the platform",
+                "listTitle": "User List"
+            }
+
+        },
+
         "Registrars": {
             "title": "Registrars",
             "description": "A list of the Registrar data stores on your platform",
@@ -153,7 +212,6 @@
                 }
             }
         }
-
     };
 
 })(jQuery);

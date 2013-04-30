@@ -210,10 +210,7 @@
 
                                 this.then(function() {
                                     this.each(function() {
-                                        //if (domainLookup[this.getDomainId()]) {
                                         if (domainLookup[this["domainId"]]) {
-                                             //_this[this.getId()]['domainName'] = domainLookup[this.getDomainId()]['name'];
-                                             //_this[this.getId()]['domainLink'] = domainLookup[this.getDomainId()]['link'];
                                             _this[this.getId()]['domainName'] = domainLookup[this["domainId"]]['name'];
                                             _this[this.getId()]['domainLink'] = domainLookup[this["domainId"]]['link'];
                                         }
@@ -372,6 +369,7 @@
             setupPage : function(el) {
                 var page = {
                     "title" : "Team " + this.friendlyTitle(this.targetObject()),
+                    "description": "Overview of the team",
                     "listTitle" : "Manage Memberships",
                     "subscription" : this.SUBSCRIPTION,
                     "listIcon" : Gitana.Utils.Image.buildImageUri('security', 'user', 20),

@@ -109,9 +109,13 @@
 
         setupPage : function(el) {
 
+            var msgContext = {
+                "userFullName": this.userDetails().fullName
+            };
+
             var page = {
-                "title" : "My Profile",
-                "description" : "Diaply my profile and personal console settings.",
+                "title" : _msg("Personal.MyProfile.title", msgContext),
+                "description" : _msg("Personal.MyProfile.description", msgContext),
                 "dashlets" :[{
                     "id" : "pairs",
                     "grid" : "grid_12",

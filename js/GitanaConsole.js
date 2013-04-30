@@ -178,4 +178,32 @@
         "ui": "jquery-ui"
     });
 
+    var _msg = window._msg = function(key, messageContext)
+    {
+        var value = null;
+
+        if (key) {
+            value = Ratchet.resolveDotNotation(Gitana.CMS.Messages, key);
+            if (!value) {
+                value = Ratchet.resolveDotNotation(window, key);
+            }
+        }
+
+        if (!value)
+        {
+            console.log("Unable to _msg resolve: " + key);
+        }
+        else
+        {
+            if (messageContext) {
+                value = $.tmpl("<div>" + value + "</div>", messageContext);
+                if (value) {
+                    value = value.html();
+                }
+            }
+        }
+
+        return value;
+    };
+
 })(jQuery);

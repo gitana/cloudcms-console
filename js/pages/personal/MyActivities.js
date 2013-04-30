@@ -115,9 +115,14 @@
             },
 
             setupPage : function(el) {
+
+                var msgContext = {
+                    "userFullName": this.userDetails().fullName
+                };
+
                 var page = {
-                    "title" : "My Activities",
-                    "description" : "Display list of my activities.",
+                    "title": _msg("Personal.MyActivities.title", msgContext),
+                    "description": _msg("Personal.MyActivities.description", msgContext),
                     "listTitle" : "My Activity List",
                     "listIcon" : Gitana.Utils.Image.buildImageUri('objects', 'activity', 20),
                     "subscription" : this.SUBSCRIPTION,

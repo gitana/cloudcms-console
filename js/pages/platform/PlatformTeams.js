@@ -31,9 +31,15 @@
         },
 
         setupPage : function(el) {
+
+            var msgContext = {
+                "tenantFriendlyTitle": this.friendlyTitle(this.tenantDetails())
+            };
+
+
             var page = {
-                "title" : "Platform Teams",
-                "description" : "Display list of teams of tenant " + this.friendlyTitle(this.targetObject()) + ".",
+                "title" : _msg("Platform.Teams.title", msgContext),
+                "description" : _msg("Platform.Teams.description", msgContext),
                 "listTitle" : "Team List",
                 "listIcon" : Gitana.Utils.Image.buildImageUri('security', 'team', 20),
                 "subscription" : this.SUBSCRIPTION,

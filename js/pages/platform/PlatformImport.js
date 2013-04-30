@@ -41,9 +41,13 @@
 
         setupPage : function(el) {
 
+            var msgContext = {
+                "tenantFriendlyTitle": this.friendlyTitle(this.tenantDetails())
+            };
+
             var page = {
-                "title" : "Platform Import",
-                "description" : "Import an archive to platform " + this.friendlyTitle(this.tenantDetails()) + ".",
+                "title" : _msg("Platform.Import.title", msgContext),
+                "description" : _msg("Platform.Import.description", msgContext),
                 "listTitle" : "Archive List",
                 "listIcon" : Gitana.Utils.Image.buildImageUri('objects', 'archive', 20),
                 "subscription" : this.SUBSCRIPTION,
