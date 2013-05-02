@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.AbstractObjectTeamEdit = Gitana.CMS.Pages.AbstractEditFormPageGadget.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         targetObject: function() {
             return this.team();
         },

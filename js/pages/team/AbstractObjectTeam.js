@@ -40,7 +40,8 @@
                                 "permissions" : ["delete"]
                             }
                         ]
-                    },
+                    }//,
+                    /*
                     {
                         "id": "edit-json",
                         "title": "Edit JSON",
@@ -52,7 +53,7 @@
                                 "permissions" : ["edit"]
                             }
                         ]
-                    }/*,
+                    }*//*,
                     {
                         "id": "export",
                         "title": "Export Team",

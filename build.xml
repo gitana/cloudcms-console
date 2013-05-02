@@ -6,6 +6,10 @@
     <!-- load properties from file -->
     <property file="local.properties"/>
 
+    <tstamp>
+        <format property="timestamp" pattern="yyyy-mm-dd_hh:mm:ss"/>
+    </tstamp>
+
     <property name="project.dir" value="."/>
 
     <property name="js.dir" value="${project.dir}/js"/>
@@ -673,6 +677,12 @@
     </target>
 
     <target name="prep-html" description="Prepare all htmls" depends="compress">
+        <echo>TIMESTAMP: ${timestamp}</echo>
+        <echo>DIR: ${prep.dir}</echo>
+        <replaceregexp match="&lt;!--TIMESTAMP--&gt;" replace="Version: ${version}, Build Date: ${timestamp}" flags="gs">
+            <fileset dir="${prep.dir}" includes="index.html"/>
+            <fileset dir="${prep.dir}" includes="index-prod.html"/>
+        </replaceregexp>
         <copy todir="${package.dir}">
             <fileset dir="${prep.dir}">
                 <include name="favicon.ico"/>

@@ -124,7 +124,7 @@
                     "sortingExpression": "_doc",
                     "property": function(callback) {
                         var nodeId = this.getId();
-                        var value = "<a href='#" + self.LIST_LINK().call(self,'branches') + self.changeset().get('branch') + "/" + nodeId + "'>" + nodeId + "</a>";
+                        var value = "<a href='#" + self.LIST_LINK().call(self,'branches') + self.changeset().get('branch') + "/nodes/" + nodeId + "'>" + nodeId + "</a>";
                         callback(value);
                     }
                 },
