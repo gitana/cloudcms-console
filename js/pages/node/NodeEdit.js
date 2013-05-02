@@ -76,7 +76,7 @@
                     $('body').trigger('form-rendered',[form.getEl()]);
 
                     // Add Buttons
-                    saveButton.click(function() {
+                    saveButton.off().click(function() {
                         var formVal = form.getValue();
                         if (form.isValid(true)) {
 
@@ -92,7 +92,8 @@
                                 formVal['_form'] = $('.form-picker select').val();
                             }
 
-                            Alpaca.mergeObject(node,formVal);
+                            Ratchet.merge(formVal, node);
+                            //Alpaca.mergeObject(node,formVal);
 
                             var tags = formVal['tags'];
 
@@ -124,9 +125,6 @@
 
                             });
                         }
-                    });
-                    resetButton.click(function() {
-                        form.setValue(defaultData);
                     });
                 }
             });

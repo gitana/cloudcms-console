@@ -845,9 +845,9 @@
                     }
                 },
                 "settings" : {
-                    "type" : "json",
-                    "rows" : 15,
-                    "cols" : 60
+                    "type": "editor",
+                    "aceMode": "ace/mode/json",
+                    "aceFitContentHeight": true
                 }
             }
         },
@@ -1131,10 +1131,9 @@
         },
         "Features" : {
             "default" : {
-                "type" : "json",
-                "rows" : 20,
-                "cols" : 60,
-                "helper" : "Enter feature configurations."
+                "type": "editor",
+                "aceMode": "ace/mode/json",
+                "aceFitContentHeight": true
             },
             "f:multilingual" : {
                 "type" : "object",

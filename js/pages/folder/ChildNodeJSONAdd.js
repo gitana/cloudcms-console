@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.ChildNodeJSONAdd = Gitana.Console.Pages.NodeJSONAdd.extend(
         {
-            constructor: function(id, ratchet) {
-                this.base(id, ratchet);
-            },
-
             setup: function() {
                 this.get("/repositories/{repositoryId}/branches/{branchId}/folders/{nodeId}/add/jsonnode", this.index);
                 this.get("/repositories/{repositoryId}/branches/{branchId}/children/{nodeId}/add/jsonnode", this.index);

@@ -340,7 +340,6 @@
 
         refresh: function(link)
         {
-            debugger;
             Gitana.CMS.refresh(link);
         }
 

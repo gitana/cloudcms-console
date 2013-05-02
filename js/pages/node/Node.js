@@ -104,10 +104,12 @@
                             ]
                         },
                         {
-                            "id": "export",
-                            "title": "Export Node",
-                            "icon" : Gitana.Utils.Image.buildImageUri('objects', 'archive-export', 48),
-                            "url" : self.LINK().call(self, self.targetObject(), 'export'),
+                            "id": "copy",
+                            "title": "Copy Node",
+                            "icon" : Gitana.Utils.Image.buildImageUri('browser', 'copy', 48),
+                            "click": function(node) {
+                                self.onClickCopy(self.targetObject(),self.LINK().call(self, self.targetObject()),'node-48');
+                            },
                             "requiredAuthorities" : [
                                 {
                                     "permissioned" : self.targetObject(),
@@ -116,12 +118,10 @@
                             ]
                         },
                         {
-                            "id": "copy",
-                            "title": "Copy Node",
-                            "icon" : Gitana.Utils.Image.buildImageUri('browser', 'copy', 48),
-                            "click": function(node) {
-                                self.onClickCopy(self.targetObject(),self.LINK().call(self, self.targetObject()),'node-48');
-                            },
+                            "id": "export",
+                            "title": "Export Node",
+                            "icon" : Gitana.Utils.Image.buildImageUri('objects', 'archive-export', 48),
+                            "url" : self.LINK().call(self, self.targetObject(), 'export'),
                             "requiredAuthorities" : [
                                 {
                                     "permissioned" : self.targetObject(),
@@ -248,6 +248,13 @@
                     });
                     self.pairs("node-overview", pairs);
                 }
+
+                // read the definition and plug in
+                Chain(node.getBranch()).readDefinition(node.getTypeQName()).then(function() {
+                    var link = "#" + self.LIST_LINK().call(self, "definitions") + this.getId();
+                    self._updateItem(pairs.items, "Type", null, link);
+                    self.pairs("node-overview", pairs);
+                })
 
             },
 

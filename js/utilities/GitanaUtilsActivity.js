@@ -70,11 +70,8 @@
 
             var userLink = activity.getUserDomainId() ? "#" + self.listLink('domains') + activity.getUserDomainId() + "/users/" + activity.getUserId() : "javascript:void(0)";
 
-            var userAvatarUri = "css/images/themes/clean/console/misc/avatar_small.png";
-            if (activity["userAvatarAttachmentId"])
-            {
-                userAvatarUri = "/proxy/domains/" + activity.getUserDomainId() + "/principals/" + activity.getUserId() + "/attachments/" + activity["userAvatarAttachmentId"];
-            }
+            var userAvatarUri = "/proxy/domains/" + activity.getUserDomainId() + "/principals/" + activity.getUserId() + "/preview/activity_list?attachment=" + activity["userAvatarAttachmentId"] + "&size=48";
+            userAvatarUri = _previewFallback(userAvatarUri, "css/images/themes/clean/console/misc/avatar_small.png");
 
             var itemText = "";
             if (activity.getUserTitle() && activity.getUserTitle() != activity.getUserName())

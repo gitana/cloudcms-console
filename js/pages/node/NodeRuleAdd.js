@@ -165,7 +165,9 @@
                                                 }
                                             },
                                             "config": {
-                                                "type": "json"
+                                                "type": "editor",
+                                                "aceMode": "ace/mode/json",
+                                                "aceFitContentHeight": true
                                             }
                                         }
                                     }
@@ -192,7 +194,9 @@
                                                 }
                                             },
                                             "config": {
-                                                "type": "json"
+                                                "type": "editor",
+                                                "aceMode": "ace/mode/json",
+                                                "aceFitContentHeight": true
                                             }
                                         }
                                     }

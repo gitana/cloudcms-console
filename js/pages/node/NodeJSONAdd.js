@@ -56,9 +56,9 @@
             formDiv.empty().alpaca({
                 "data" : "{}",
                 "options": {
-                    "type" : "json",
-                    "rows" : 20,
-                    "cols" : 90
+                    "type": "editor",
+                    "aceMode": "ace/mode/json",
+                    "aceFitContentHeight": true
                 },
                 "postRender": function(form) {
 
