@@ -54,27 +54,13 @@
                 self.addButtons([
                     {
                         "id": "edit",
-                        "title": "Edit Stack",
+                        "title": "Edit",
                         "icon" : Gitana.Utils.Image.buildImageUri('objects', 'stack-edit', 48),
                         "url" : self.link(this.targetObject(), "edit"),
                         "requiredAuthorities" : [
                             {
                                 "permissioned" : this.targetObject(),
                                 "permissions" : ["update"]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "delete",
-                        "title": "Delete Stack",
-                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'stack-delete', 48),
-                        "click": function(stack) {
-                            self.onClickDelete(self.targetObject(), 'stack', self.listLink('stacks'), Gitana.Utils.Image.buildImageUri('security', 'stack', 20), 'stack');
-                        },
-                        "requiredAuthorities" : [
-                            {
-                                "permissioned" : this.targetObject(),
-                                "permissions" : ["delete"]
                             }
                         ]
                     },
@@ -89,13 +75,27 @@
                                 "permissions" : ["update"]
                             }
                         ]
+                    },
+                    {
+                        "id": "delete",
+                        "title": "Delete",
+                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'stack-delete', 48),
+                        "click": function(stack) {
+                            self.onClickDelete(self.targetObject(), 'stack', self.listLink('stacks'), Gitana.Utils.Image.buildImageUri('security', 'stack', 20), 'stack');
+                        },
+                        "requiredAuthorities" : [
+                            {
+                                "permissioned" : this.targetObject(),
+                                "permissions" : ["delete"]
+                            }
+                        ]
                     }
                 ], self.SUBSCRIPTION + "-page-toolbar");
             } else {
                 self.addButtons([
                     {
                         "id": "edit",
-                        "title": "Edit Stack",
+                        "title": "Edit",
                         "icon" : Gitana.Utils.Image.buildImageUri('objects', 'stack-edit', 48),
                         "url" : self.link(this.targetObject(), "edit"),
                         "requiredAuthorities" : [
@@ -123,7 +123,7 @@
             self.addButtons([
                 {
                     "id": "export",
-                    "title": "Export Stack",
+                    "title": "Export",
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'archive-export', 48),
                     "url" : self.LINK().call(self, self.targetObject(), 'export'),
                     "requiredAuthorities" : [
@@ -155,29 +155,28 @@
                 "title" : "Overview",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'stack', 20),
                 "alert" : "",
-                "items" : [
-                    {
-                        "key" : "ID",
-                        "value" : self.listItemProp(stack, '_doc')
-                    },
-                    {
-                        "key" : "Title",
-                        "value" : self.listItemProp(stack, 'title')
-                    },
-                    {
-                        "key" : "Description",
-                        "value" : self.listItemProp(stack, 'description')
-                    },
-                    {
-                        "key" : "Key",
-                        "value" : self.listItemProp(stack, 'key')
-                    },
-                    {
-                        "key" : "Last Modified",
-                        "value" : "By " + stack.getSystemMetadata().getModifiedBy() + " @ " + stack.getSystemMetadata().getModifiedOn().getTimestamp()
-                    }
-                ]
+                "items" : []
             };
+            this._pushItem(pairs.items, {
+                "key" : "ID",
+                "value" : self.listItemProp(stack, '_doc')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Title",
+                "value" : self.listItemProp(stack, 'title')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Description",
+                "value" : self.listItemProp(stack, 'description')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Key",
+                "value" : self.listItemProp(stack, 'key')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Last Modified",
+                "value" : "By " + stack.getSystemMetadata().getModifiedBy() + " @ " + stack.getSystemMetadata().getModifiedOn().getTimestamp()
+            });
 
             this.pairs("stack-overview", pairs);
         },

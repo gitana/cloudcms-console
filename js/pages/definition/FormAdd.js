@@ -25,7 +25,7 @@
                         "type" : "string",
                         "default" : JSON.stringify({
                             "fields": {}
-                        }, null, "  ")
+                        }, null, "    ")
                     }
                 }
             };

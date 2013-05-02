@@ -530,6 +530,34 @@
                 "url" : el.route.uri,
                 "timestamp" : new Date()
             }
+        },
+
+        /**
+         * Conditionally pushes a pair item if it has a value.
+         *
+         * @param items
+         * @param item
+         *
+         * @private
+         */
+        _pushItem: function(items, item)
+        {
+            if (item && item.value)
+            {
+                items.push(item);
+            }
+        },
+
+        _updateItem: function(items, key, value)
+        {
+            if (items) {
+                for (var i = 0; i < items.length; i++) {
+                    if (items[i].key == key) {
+                        items[i].value = value;
+                        break;
+                    }
+                }
+            }
         }
     });
 

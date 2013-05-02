@@ -336,6 +336,12 @@
                     res.push(obj[k]);
             }
             return res;
+        },
+
+        refresh: function(link)
+        {
+            debugger;
+            Gitana.CMS.refresh(link);
         }
 
     });

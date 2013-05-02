@@ -154,35 +154,35 @@
                     "title" : "Overview",
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'branch', 20),
                     "alert" : "",
-                    "items" : [
-                        {
-                            "key" : "ID",
-                            "value" : self.listItemProp(branch, '_doc')
-                        },
-                        {
-                            "key" : "Title",
-                            "value" : self.listItemProp(branch, 'title')
-                        },
-                        {
-                            "key" : "Description",
-                            "value" : self.listItemProp(branch, 'description')
-                        },
-                        {
-                            "key" : "Root Changeset",
-                            "value" : self.listItemProp(branch, 'root'),
-                            "link" : "#" + self.LIST_LINK().call(self, 'changesets') + self.listItemProp(branch, 'root')
-                        },
-                        {
-                            "key" : "Tip Changeset",
-                            "value" : self.listItemProp(branch, 'tip'),
-                            "link" : "#" + self.LIST_LINK().call(self, 'changesets') + self.listItemProp(branch, 'tip')
-                        },
-                        {
-                            "key" : "Last Modified",
-                            "value" : "By " + branch.getSystemMetadata().getModifiedBy() + " @ " + branch.getSystemMetadata().getModifiedOn().getTimestamp()
-                        }
-                    ]
+                    "items" : []
                 };
+
+                this._pushItem(pairs.items, {
+                    "key" : "ID",
+                    "value" : self.listItemProp(branch, '_doc')
+                });
+                this._pushItem(pairs.items, {
+                    "key" : "Title",
+                    "value" : self.listItemProp(branch, 'title')
+                });
+                this._pushItem(pairs.items, {
+                    "key" : "Description",
+                    "value" : self.listItemProp(branch, 'description')
+                });
+                this._pushItem(pairs.items, {
+                    "key" : "Root Changeset",
+                    "value" : self.listItemProp(branch, 'root'),
+                    "link" : "#" + self.LIST_LINK().call(self, 'changesets') + self.listItemProp(branch, 'root')
+                });
+                this._pushItem(pairs.items, {
+                    "key" : "Tip Changeset",
+                    "value" : self.listItemProp(branch, 'tip'),
+                    "link" : "#" + self.LIST_LINK().call(self, 'changesets') + self.listItemProp(branch, 'tip')
+                });
+                this._pushItem(pairs.items, {
+                    "key" : "Last Modified",
+                    "value" : "By " + branch.getSystemMetadata().getModifiedBy() + " @ " + branch.getSystemMetadata().getModifiedOn().getTimestamp()
+                });
 
                 this.pairs("branch-overview", pairs);
             },

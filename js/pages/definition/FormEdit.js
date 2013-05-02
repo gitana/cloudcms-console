@@ -31,7 +31,7 @@
                         "type" : "string",
                         "default" : JSON.stringify({
                             "fields": {}
-                        }, null, "  ")
+                        }, null, "    ")
                     }
                 }
             };
@@ -83,6 +83,12 @@
                         });
                     }
                 }
+            };
+
+            options ["fields"]["body"] = {
+                "type" : "editor",
+                "aceMode": "ace/mode/javascript",
+                "aceFitContentHeight": true
             };
 
             return options;
@@ -162,7 +168,7 @@
                 delete defaultData['fields'];
                 delete form['fields'];
             }
-            defaultData['body'] = JSON.stringify(defaultData['body'], null, ' ');
+            defaultData['body'] = JSON.stringify(defaultData['body'], null, '    ');
 
             $('#form-edit').alpaca({
                 "data": defaultData,
@@ -232,9 +238,9 @@
             $('#' + targetId).alpaca({
                 "data": defaultData,
                 "options": {
-                    "type" : "json",
-                    "rows" : 20,
-                    "cols" : 90
+                    "type": "editor",
+                    "aceMode": "ace/mode/json",
+                    "aceFitContentHeight": true
                 },
                 "postRender": function(control) {
                     Gitana.Utils.UI.beautifyAlpacaForm(control, targetId + '-save', true);

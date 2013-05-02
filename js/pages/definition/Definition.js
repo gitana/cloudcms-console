@@ -127,33 +127,32 @@
                 "title" : "Overview",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'definition', 20),
                 "alert" : "",
-                "items" : [
-                    {
-                        "key" : "ID",
-                        "value" : self.listItemProp(definition,'_doc')
-                    },
-                    {
-                        "key" : "Title",
-                        "value" : self.listItemProp(definition,'title')
-                    },
-                    {
-                        "key" : "Description",
-                        "value" : self.listItemProp(definition,'description')
-                    },
-                    {
-                        "key" : "Type",
-                        "value" : definition.getTypeQName()
-                    },
-                    {
-                        "key" : "QName",
-                        "value" : definition.getQName()
-                    },
-                    {
-                        "key" : "Last Modified",
-                        "value" : this.definition().getSystemMetadata().getModifiedOn().getTimestamp()
-                    }
-                ]
+                "items" : []
             };
+            this._pushItem(pairs.items, {
+                "key" : "ID",
+                "value" : self.listItemProp(definition,'_doc')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Title",
+                "value" : self.listItemProp(definition,'title')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Description",
+                "value" : self.listItemProp(definition,'description')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Type",
+                "value" : definition.getTypeQName()
+            });
+            this._pushItem(pairs.items, {
+                "key" : "QName",
+                "value" : definition.getQName()
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Last Modified",
+                "value" : this.definition().getSystemMetadata().getModifiedOn().getTimestamp()
+            });
 
             this.pairs("definition-overview",pairs);
         },

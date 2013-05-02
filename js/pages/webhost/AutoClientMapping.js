@@ -35,27 +35,13 @@
             self.addButtons([
                 {
                     "id": "edit",
-                    "title": "Edit Auto Client Mapping",
+                    "title": "Edit",
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'auto-client-mapping-edit', 48),
                     "url" : self.link(this.targetObject(), "edit"),
                     "requiredAuthorities" : [
                         {
                             "permissioned" : this.targetObject(),
                             "permissions" : ["update"]
-                        }
-                    ]
-                },
-                {
-                    "id": "delete",
-                    "title": "Delete Auto Client Mapping",
-                    "icon" : Gitana.Utils.Image.buildImageUri('objects', 'auto-client-mapping-delete', 48),
-                    "click": function(autoClientMapping) {
-                        self.onClickDelete(self.targetObject(), 'auto client mapping', self.listLink('auto-client-mappings'), Gitana.Utils.Image.buildImageUri('objects', 'auto-client-mapping', 20), 'auto client mapping');
-                    },
-                    "requiredAuthorities" : [
-                        {
-                            "permissioned" : this.targetObject(),
-                            "permissions" : ["delete"]
                         }
                     ]
                 },
@@ -72,8 +58,22 @@
                     ]
                 },
                 {
+                    "id": "delete",
+                    "title": "Delete",
+                    "icon" : Gitana.Utils.Image.buildImageUri('objects', 'auto-client-mapping-delete', 48),
+                    "click": function(autoClientMapping) {
+                        self.onClickDelete(self.targetObject(), 'auto client mapping', self.listLink('auto-client-mappings'), Gitana.Utils.Image.buildImageUri('objects', 'auto-client-mapping', 20), 'auto client mapping');
+                    },
+                    "requiredAuthorities" : [
+                        {
+                            "permissioned" : this.targetObject(),
+                            "permissions" : ["delete"]
+                        }
+                    ]
+                },
+                {
                     "id": "export",
-                    "title": "Export Auto Client Mapping",
+                    "title": "Export",
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'archive-export', 48),
                     "url" : self.LINK().call(self, self.targetObject(), 'export'),
                     "requiredAuthorities" : [
@@ -95,37 +95,36 @@
                 "title" : "Overview",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'auto-client-mapping', 20),
                 "alert" : "",
-                "items" : [
-                    {
-                        "key" : "ID",
-                        "value" : self.listItemProp(autoClientMapping, '_doc')
-                    },
-                    {
-                        "key" : "Source URI",
-                        "value" : self.listItemProp(autoClientMapping, 'uri')
-                    },
-                    {
-                        "key" : "Client",
-                        "value" : self.listItemProp(autoClientMapping, 'clientKey')
-                    },
-                    {
-                        "key" : "Application",
-                        "value" : self.listItemProp(autoClientMapping, 'applicationId')
-                    },
-                    {
-                        "key" : "Tenant Id",
-                        "value" : self.listItemProp(autoClientMapping, 'tenantId')
-                    },
-                    {
-                        "key" : "Auto Manage",
-                        "value" : self.listItemProp(autoClientMapping, 'automanage')
-                    },
-                    {
-                        "key" : "Last Modified",
-                        "value" : "By " + autoClientMapping.getSystemMetadata().getModifiedBy() + " @ " + autoClientMapping.getSystemMetadata().getModifiedOn().getTimestamp()
-                    }
-                ]
+                "items" : []
             };
+            this._pushItem(pairs.items, {
+                "key" : "ID",
+                "value" : self.listItemProp(autoClientMapping, '_doc')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Source URI",
+                "value" : self.listItemProp(autoClientMapping, 'uri')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Client",
+                "value" : self.listItemProp(autoClientMapping, 'clientKey')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Application",
+                "value" : self.listItemProp(autoClientMapping, 'applicationId')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Tenant ID",
+                "value" : self.listItemProp(autoClientMapping, 'tenantId')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Auto Manage",
+                "value" : self.listItemProp(autoClientMapping, 'automanage')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Last Modified",
+                "value" : "By " + autoClientMapping.getSystemMetadata().getModifiedBy() + " @ " + autoClientMapping.getSystemMetadata().getModifiedOn().getTimestamp()
+            });
 
             var platform = Chain(this.platform());
 
@@ -134,13 +133,13 @@
                 var f00 = function() {
                     this.subchain(platform).readClient(autoClientMapping.getTargetClientKey()).then(function () {
                         var title = this.getTitle() ? this.getTitle() : this.getKey();
-                        pairs.items[2]['value'] = "<a href='#" + self.link(this) +"'>" + title + "</a>";
+                        self._updateItem(pairs.items, "Client", "<a href='#" + self.link(this) +"'>" + title + "</a>");
                     });
                 };
                 var f01 = function() {
                     this.subchain(platform).readApplication(autoClientMapping.getTargetApplicationId()).then(function () {
                         var title = this.getTitle() ? this.getTitle() : this.getId();
-                        pairs.items[3]['value'] = "<a href='#" + self.link(this) +"'>" + title + "</a>";
+                        self._updateItem(pairs.items, "Application", "<a href='#" + self.link(this) +"'>" + title + "</a>");
                     });
                 };
 

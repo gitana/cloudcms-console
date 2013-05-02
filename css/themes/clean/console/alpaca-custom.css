@@ -216,20 +216,20 @@ OL.alpaca-wizard-status-bar > LI > DIV > STRONG > SPAN
 
 
 .alpaca-controlfield-date input {
-    background: url("../../../../lib/alpaca/images/alpaca-icons.png") no-repeat right -2px;
+    background: url("../../../../lib/alpaca/images/alpaca-icons.png") no-repeat right -2px !important;
 }
 
 .alpaca-controlfield-phone input {
-    background: url("../../../../lib/alpaca/images/alpaca-icons.png") no-repeat right -82px;
+    background: url("../../../../lib/alpaca/images/alpaca-icons.png") no-repeat right -82px !important;
 }
 
 .alpaca-controlfield-email input
 {
-    background: url("../../../../lib/alpaca/images/alpaca-icons.png") no-repeat right -42px;
+    background: url("../../../../lib/alpaca/images/alpaca-icons.png") no-repeat right -42px !important;
 }
 
 .alpaca-controlfield-time input {
-    background: url("../../../../lib/alpaca/images/alpaca-icons.png") no-repeat right -122px;
+    background: url("../../../../lib/alpaca/images/alpaca-icons.png") no-repeat right -122px !important;
 }
 
 .alpaca-controlfield-label

@@ -165,6 +165,7 @@
                                             if (link) {
                                                 self.refresh(link);
                                             } else {
+                                                Gitana.CMS.refresh();
                                                 self.refresh();
                                             }
                                         });
@@ -219,6 +220,14 @@
                         var link = this.getDownloadUri();
                         var value = "<div class='attachment-download' data-link='" + link + "'>" + this.getId() + "</div>";
                         callback(value);
+                    }
+                },
+                {
+                    "title": "Preview",
+                    "type":"property",
+                    "property": function(callback) {
+                        var previewUrl = _previewMimetypeFallback(this.getPreviewUri("attachment_list"), this.getContentType());
+                        var value = "<div><img src='" + previewUrl + "'></div>";
                         callback(value);
                     }
                 },

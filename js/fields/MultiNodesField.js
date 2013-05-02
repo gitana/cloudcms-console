@@ -29,7 +29,9 @@
          */
         setup: function() {
             this.base();
-            this.controlFieldTemplate = this.view.getTemplateDescriptor("controlFieldMultiNodes");
+
+            this.controlFieldTemplateDescriptor = this.view.getTemplateDescriptor("controlFieldMultiNodes");
+
             if (this.options && this.options.nodeType) {
                 this.nodeType = this.options.nodeType;
             }
@@ -73,9 +75,10 @@
 
         },
 
+        /*
         renderPreview : function (previews) {
             var _this = this;
-            var images = []
+            var images = [];
             $.each(previews, function(index, thumbnail) {
                 var pageNumber = parseInt(index) + 1;
                 images.push({
@@ -121,6 +124,7 @@
             });
             $('.galleria-container', tempDiv).css('margin', 'auto');
         },
+        */
 
         /**
          *
@@ -145,6 +149,9 @@
          * @param fileUpload
          */
         onFileUploadDone: function (e, data, fileUpload) {
+
+            fileUpload = this.fileUpload.data("blueimp-fileupload");
+
             var _this = this;
             var gitanaResults = data.result;
             data.result = [];
@@ -259,7 +266,7 @@
         /**
          * Returns service uri for attachment upload
          */
-        _getNodesUploadUri : function () {
+        computeAttachmentUploadUri : function () {
             var nodesUploadUri = "#";
             var context = this.context;
             if (context) {
@@ -284,16 +291,18 @@
         prepareUploadFormFields : function (data) {
             var _this = this;
             var formElem = this.field.find('form');
-            var actionUri = this._getNodesUploadUri();
+            var actionUri = this.computeAttachmentUploadUri();
             formElem.find('.properties-field').remove();
             /* add hidden fields */
             $('input:hidden', formElem).remove();
             $.each(data.files, function(index, file) {
                 var alpacaId = file['alpacaId'];
-                $('input.node-title-input:text:[data-alpacaid=' + alpacaId + ']', _this.field).each(function(index2) {
+                //$('input.node-title-input:text:[data-alpacaid=' + alpacaId + ']', _this.field).each(function(index2) {
+                $('input[data-alpacaid=' + alpacaId + ']', _this.field).each(function(index2) {
                     formElem.append('<input class="properties-field" type="hidden" name="property' + index + '_title" value="' + $(this).val() + '">');
                 });
-                $('textarea.node-description-input:[data-alpacaid=' + alpacaId + ']', _this.field).each(function(index2) {
+                //$('textarea.node-description-input:[data-alpacaid=' + alpacaId + ']', _this.field).each(function(index2) {
+                $('textarea[data-alpacaid=' + alpacaId + ']', _this.field).each(function(index2) {
                     formElem.append('<input class="properties-field" type="hidden" name="property' + index + '_description" value="' + $(this).val() + '">');
                 });
 
@@ -302,7 +311,7 @@
                 } else {
                     if($('.upload-node-type').val() != null) {
                         formElem.append('<input class="properties-field" type="hidden" name="property' + index + '__type" value="' + $('.upload-node-type').val() + '">');
-                    };
+                    }
                 }
             });
             formElem.attr('action', actionUri);
@@ -358,9 +367,9 @@
 
     Alpaca.registerTemplate('multiNodesUploadTemplate', '<tr class="fileupload-item"><tr><td style="display:none;"><strong>Title</strong></td><td class="node-title" colspan="6"  style="display:none;"><input class="node-title-input" size="40" type="text" data-alpacaid="${alpacaId}" value="${name}"/></td></tr><tr><td style="display:none;"><strong>Description</strong></td><td class="node-description" colspan="6"  style="display:none;"><textarea class="node-description-input" rows="5" cols="40" data-alpacaid="${alpacaId}"></textarea></td></tr><tr class="template-upload{{if error}} ui-state-error{{/if}}"><td class="attachment-id"  style="display:none;"><span class="ui-icon ui-icon-copy" style="float:left;"/><input class="attachment-id-input" type="text" value="${attachmentId}" data-alpacaid="${alpacaId}"/></td><td class="preview"></td><td class="name">${name}</td><td class="type">${type}</td><td class="size">${sizef}</td>{{if error}}<td class="upload-error" colspan="2">Error:{{if error === \'maxFileSize\'}}File is too big{{else error === \'minFileSize\'}}File is too small{{else error === \'acceptFileTypes\'}}Filetype not allowed{{else error === \'maxNumberOfFiles\'}}Max number of files exceeded{{else}}${error}{{/if}}</td>{{else}}<td class="progress" style="display:none"><div></div></td><td class="start"><button  style="display:none">Start</button></td>{{/if}}<td class="cancel"><button>Cancel</button></td></tr></tr>');
 
-    Alpaca.registerTemplate('multiNodesDownloadTemplate', '{{if loaded}}<tr class="template-download{{if error}} ui-state-error{{/if}}" data-attachmentid="${attachmentId}">{{if error}}<td></td><td class="attachment-id"><input class="attachment-id-input" type="text" value="${attachmentId}" disabled="disabled"/></td><td class="name">${name}</td><td class="size">${sizef}</td><td class="upload-error" colspan="2">Error:{{if error === 1}}File exceeds upload_max_filesize (php.ini directive){{else error === 2}}File exceeds MAX_FILE_SIZE (HTML form directive){{else error === 3}}File was only partially uploaded{{else error === 4}}No File was uploaded{{else error === 5}}Missing a temporary folder{{else error === 6}}Failed to write file to disk{{else error === 7}}File upload stopped by extension{{else error === \'maxFileSize\'}}File is too big{{else error === \'minFileSize\'}}File is too small{{else error === \'acceptFileTypes\'}}Filetype not allowed{{else error === \'maxNumberOfFiles\'}}Max number of files exceeded{{else error === \'uploadedBytes\'}}Uploaded bytes exceed file size{{else error === \'emptyResult\'}}Empty file upload result{{else}}${error}{{/if}}</td>{{else}}<td class="attachment-id"><a href="${url}">${title}</a></td><td class="preview" colspan="2" style="white-space:nowrap;">{{if thumbnails}}<span class="ui-icon ui-icon-image" style="float:left;"></span> {{each thumbnails}}<span style="padding:0 2px"><a href="${url}" class="thumbnail"  target="_blank">${id}</a></span>{{/each}}{{/if}}</td>{{if attachments}}<td class="name"  colspan="2" style="white-space:nowrap;"><span class="ui-icon ui-icon-copy" style="float:left;"/> {{each attachments}}<span style="padding:0 2px"><a href="${url}" class="attachment" title="${name} ${size} ${type}" target="_blank">${id}</a></span>{{/each}}</td>{{/if}}<td colspan="1"></td>{{/if}}<td class="delete"><button data-type="${delete_type}" data-url="${delete_url}">Delete</button></td></tr>{{/if}}');
+    Alpaca.registerTemplate('multiNodesDownloadTemplate', '{{if loaded}}<tr class="template-download{{if error}} ui-state-error{{/if}}" data-attachmentid="${attachmentId}">{{if error}}<td></td><td class="attachment-id"><input class="attachment-id-input" type="text" value="${attachmentId}" disabled="disabled"/></td><td class="name">${name}</td><td class="size">${sizef}</td><td class="upload-error" colspan="2">Error:{{if error === 1}}File exceeds upload_max_filesize (php.ini directive){{else error === 2}}File exceeds MAX_FILE_SIZE (HTML form directive){{else error === 3}}File was only partially uploaded{{else error === 4}}No File was uploaded{{else error === 5}}Missing a temporary folder{{else error === 6}}Failed to write file to disk{{else error === 7}}File upload stopped by extension{{else error === \'maxFileSize\'}}File is too big{{else error === \'minFileSize\'}}File is too small{{else error === \'acceptFileTypes\'}}Filetype not allowed{{else error === \'maxNumberOfFiles\'}}Max number of files exceeded{{else error === \'uploadedBytes\'}}Uploaded bytes exceed file size{{else error === \'emptyResult\'}}Empty file upload result{{else}}${error}{{/if}}</td>{{else}}<td class="attachment-id"><a href="${url}">${title}</a></td><td class="preview" colspan="2" style="white-space:nowrap;">{{if thumbnails}}<span class="ui-icon ui-icon-image" style="float:left;"></span> {{each thumbnails}}<span style="padding:0 2px"><a href="${url}" class="thumbnail"  target="_blank">${id}</a></span>{{/each}}{{/if}}</td>{{if attachments}}<td class="name"  colspan="2" style="white-space:nowrap;"><span class="ui-icon ui-icon-copy" style="float:left;"/> {{each attachments}}<span style="padding:0 2px"><a href="${url}" class="attachment" title="${name} ${size} ${type}" target="_blank">${id}</a></span>{{/each}}</td>{{/if}}<td colspan="1"></td>{{/if}}<td><button class="delete" data-type="${delete_type}" data-url="${delete_url}">Delete</button></td></tr>{{/if}}');
 
-    Alpaca.registerTemplate("controlFieldMultiNodes", '<div id="fileupload-${id}"><form method="POST" enctype="multipart/form-data"><div class="fileupload-buttonbar"><label class="fileinput-button"><span>Add files...</span><input type="file" name="files[]" multiple></label><button type="submit" class="start">Start upload</button><button type="reset" class="cancel" style="display:none">Cancel upload</button><button type="button" class="delete"  style="display:none">Delete files</button><select class="upload-node-type" style="float:right"></select></div></form><div class="fileupload-slideshow"></div><div class="fileupload-content dropzone" rel="tooltip-html" title="Drag-n-Drop your desktop file(s) to the above drop zone."><table class="files"></table><div class="fileupload-progressbar" style="visibility:hidden;display:none"></div></div></div>');
+    Alpaca.registerTemplate("controlFieldMultiNodes", '<div id="fileupload-${id}"><form method="POST" enctype="multipart/form-data"><div class="fileupload-buttonbar"><label class="fileinput-button"><span>Add files...</span><input type="file" name="files[]" multiple></label><select class="upload-node-type" style="float:right"></select></div></form><div class="fileupload-slideshow"></div><div class="fileupload-content dropzone" rel="tooltip-html" title="Drag-n-Drop your desktop file(s) to the above drop zone."><table class="files"></table><div class="fileupload-progressbar" style="visibility:hidden;display:none"></div></div></div>');
 
     Alpaca.registerFieldClass("multinodes", Alpaca.Fields.MultiNodesField);
 

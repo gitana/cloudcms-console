@@ -225,7 +225,7 @@
             return $.merge(this.Stack(self, el), [
                 {
                     "text" : "Logs",
-                    "link" : self.LINK().call(self.stack(),"logs")
+                    "link" : self.LINK().call(self, self.stack(),"logs")
                 }
             ]);
         },

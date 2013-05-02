@@ -386,13 +386,13 @@
                     "id": "menu-stack-header",
                     "title": "Stack",
                     "header": true,
-                    "items": [{
+                    "items": [/*{
                         "id" : "menu-stack-attachments",
                         "link" : "#" + self.link(self.stack(),'attachments'),
                         "title" : "Attachments",
                         "icon" :  Gitana.Utils.Image.buildImageUri('objects', 'attachment', 16),
                         "current" : current == "menu-stack-attachments"
-                    },
+                    },*/
                     {
                         "id" : "menu-stack-dashboard",
                         "link" : "#" + self.link(self.stack()),

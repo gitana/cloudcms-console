@@ -235,13 +235,17 @@
 
                 Chain(domain).listUsers(pagination).each(
                     function() {
+                        var avatarImageUri = "css/images/themes/clean/console/misc/avatar_small.png";
+                        //if (this.listAttachments(true) && this.listAttachments(true)["avatar"]) {
+                        //    avatarImageUri = Gitana.Utils.Image.avatarImageUri(this, 48);
+                        //}
+
                         pairs['items'].push({
-                            //"img" : Gitana.Utils.Image.buildImageUri('security', 'user', 48),
-                            "img": Gitana.Utils.Image.avatarImageUri(this, 48),
+                            "img": avatarImageUri,
                             "class" : "block-list-item-img",
-                            "value" : self.friendlyName(this) + "<div class='block-list-item-desc'>By " + this.getSystemMetadata().getModifiedBy() + " @ " + this.getSystemMetadata().getModifiedOn().getTimestamp() + "</div>",
-                            "link" : "#" + self.listLink('users') + this.getId()
+                            "value" : "<div class='block-list-item-div'><div class='block-list-item-text'>" + self.friendlyName(this) + "</div><div class='block-list-item-desc'>By " + this.getSystemMetadata().getModifiedBy() + " @ " + this.getSystemMetadata().getModifiedOn().getTimestamp() + "</div></div>"
                         });
+
                     }).totalRows(function (totalRows) {
                         self.processItemsDashlet(totalRows, pairs, self.listLink('users'));
                         self.pairs("latest-users", pairs);

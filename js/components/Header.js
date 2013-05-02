@@ -3,10 +3,6 @@
     {
         TEMPLATE : "components/header",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         index: function(el) {
             var self = this;
 
@@ -15,23 +11,11 @@
             self.subscribe("userDetails", self.refreshHandler(el));
 
             // platform logo and alt text
-            var platformAvatarUrl = this.tenantDetails().avatarUrl;
-            if (!platformAvatarUrl)
-            {
-                platformAvatarUrl = "css/images/themes/clean/console/logos/cloudcms_48.png";
-            }
-            platformAvatarUrl = platformAvatarUrl.replace("/avatar.", "/avatar48.");
-            el.model["platformLogoUrl"] = platformAvatarUrl;
+            el.model["platformLogoUrl"] = _previewFallback(this.tenantDetails().avatarUrl, "css/images/themes/clean/console/logos/cloudcms_48.png");
             el.model["platformTitleText"] = this.tenantDetails().friendlyName;
 
             // user logo and al ttext
-            var userAvatarUrl = this.userDetails().avatarUrl;
-            if (!userAvatarUrl)
-            {
-                userAvatarUrl = "css/images/themes/clean/console/misc/avatar_small.png";
-            }
-            userAvatarUrl = userAvatarUrl.replace("/avatar.", "/avatar128.");
-            el.model["userLogoUrl"] = userAvatarUrl;
+            el.model["userLogoUrl"] = _previewFallback(this.userDetails().avatarUrl, "css/images/themes/clean/console/misc/avatar_small.png");
             el.model["userAltText"] = this.userDetails().friendlyName;
 
             // if trial plan, show notification

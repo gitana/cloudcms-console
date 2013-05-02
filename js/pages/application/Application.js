@@ -37,27 +37,13 @@
                 self.addButtons([
                     {
                         "id": "edit",
-                        "title": "Edit Application",
+                        "title": "Edit",
                         "icon" : Gitana.Utils.Image.buildImageUri('objects', 'application-edit', 48),
                         "url" : self.link(this.targetObject(), "edit"),
                         "requiredAuthorities" : [
                             {
                                 "permissioned" : this.targetObject(),
                                 "permissions" : ["update"]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "delete",
-                        "title": "Delete Application",
-                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'application-delete', 48),
-                        "click": function(application) {
-                            self.onClickDelete(self.targetObject(), 'application', self.listLink('applications'), Gitana.Utils.Image.buildImageUri('objects', 'application', 20), 'application');
-                        },
-                        "requiredAuthorities" : [
-                            {
-                                "permissioned" : this.targetObject(),
-                                "permissions" : ["delete"]
                             }
                         ]
                     },
@@ -72,13 +58,27 @@
                                 "permissions" : ["update"]
                             }
                         ]
+                    },
+                    {
+                        "id": "delete",
+                        "title": "Delete",
+                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'application-delete', 48),
+                        "click": function(application) {
+                            self.onClickDelete(self.targetObject(), 'application', self.listLink('applications'), Gitana.Utils.Image.buildImageUri('objects', 'application', 20), 'application');
+                        },
+                        "requiredAuthorities" : [
+                            {
+                                "permissioned" : this.targetObject(),
+                                "permissions" : ["delete"]
+                            }
+                        ]
                     }
                 ]);
             } else {
                 self.addButtons([
                     {
                         "id": "edit",
-                        "title": "Edit Application",
+                        "title": "Edit",
                         "icon" : Gitana.Utils.Image.buildImageUri('objects', 'application-edit', 48),
                         "url" : self.link(this.targetObject(), "edit"),
                         "requiredAuthorities" : [
@@ -107,7 +107,7 @@
             self.addButtons([
                 {
                     "id": "export",
-                    "title": "Export Application",
+                    "title": "Export",
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'archive-export', 48),
                     "url" : self.LINK().call(self, self.targetObject(), 'export'),
                     "requiredAuthorities" : [
@@ -119,7 +119,7 @@
                 },
                 {
                     "id": "import",
-                    "title": "Import Archive",
+                    "title": "Import",
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'archive-import', 48),
                     "url" : self.LINK().call(self, self.targetObject(), 'import'),
                     "requiredAuthorities" : [
@@ -141,68 +141,69 @@
                 "alert" : "",
                 "items" : []
             };
-            pairs.items.push({
+            this._pushItem(pairs.items, {
                 "key" : "ID",
                 "value" : self.listItemProp(application, '_doc')
             });
-            pairs.items.push({
+            this._pushItem(pairs.items, {
                 "key" : "Key",
                 "value" : self.listItemProp(application, 'key')
             });
-            if (application.title) {
-                pairs.items.push({
-                    "key" : "Title",
-                    "value" : self.listItemProp(application, 'title')
-                });
-            }
-            if (application.description) {
-                pairs.items.push({
-                    "key" : "Description",
-                    "value" : self.listItemProp(application, 'description')
-                });
-            }
-            pairs.items.push({
+            this._pushItem(pairs.items, {
+                "key" : "Title",
+                "value" : self.listItemProp(application, 'title')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Description",
+                "value" : self.listItemProp(application, 'description')
+            });
+            this._pushItem(pairs.items, {
                 "key" : "Last Modified",
                 "value" : "By " + application.getSystemMetadata().getModifiedBy() + " @ " + application.getSystemMetadata().getModifiedOn().getTimestamp()
             });
-            pairs.items.push({
+            this._pushItem(pairs.items, {
                 "key" : "Application Type",
                 "value" : self.listItemProp(application, 'applicationType')
             });
             if (application.applicationType == "web") {
-                pairs.items.push({
+                this._pushItem(pairs.items, {
                     "key" : "Trusted Scope",
                     "value" : self.listItemProp(application, 'trustedScope')
                 });
-                pairs.items.push({
+                this._pushItem(pairs.items, {
                     "key" : "Trusted Host",
                     "value" : self.listItemProp(application, 'trustedHost')
                 });
             }
             if (application.applicationType == "trusted") {
                 if (application.source) {
-                    if (application.source.type) {
-                        pairs.items.push({
-                            "key" : "Source Type",
-                            "value" : application.source && application.source.type ? application.source.type : ""
-                        });
-                    }
-                    if (application.source["public"]) {
-                        pairs.items.push({
-                            "key" : "Source Public",
-                            "value" : application.source && application.source["public"] ? application.source["public"] : ""
-                        });
-                    }
-                    if (application.source.uri) {
-                        pairs.items.push({
-                            "key" : "Source URI",
-                            "value" : application.source && application.source.uri ? application.source.uri : ""
-                        });
-                    }
+                    this._pushItem(pairs.items, {
+                        "key" : "Source Type",
+                        "value" : application.source && application.source.type ? application.source.type : ""
+                    });
+                    this._pushItem(pairs.items, {
+                        "key" : "Source Public",
+                        "value" : application.source && application.source["public"] ? application.source["public"] : ""
+                    });
+                    this._pushItem(pairs.items, {
+                        "key" : "Source URI",
+                        "value" : application.source && application.source.uri ? application.source.uri : ""
+                    });
                 }
 
                 // TODO: deployments
             }
+            this._pushItem(pairs.items, {
+                "key" : "Stack",
+                "value" : "None"
+            });
+
+            Chain(this.contextObject()).trap(function() {
+                // no stack found... no problem
+            }).findStack().then(function() {
+                self._updateItem(pairs.items, "Stack", "<a href='#" + self.link(this) + "'>" + self.friendlyTitle(this) + "</a>");
+                self.pairs("application-overview", pairs);
+            });
 
             this.pairs("application-overview", pairs);
         },
@@ -226,7 +227,8 @@
                             "img" : Gitana.Utils.Image.buildImageUri('objects', 'domain', 48),
                             "class" : "block-list-item-img",
                             "value" : object["uri"] + "<div class='block-list-item-desc'>Application: " + object["applicationId"] + ", Client Key: " + object["clientKey"] + "</div>",
-                            "link" : object["uri"]
+                            "link" : object["uri"],
+                            "linkTarget": "_blank"
                         });
                     }
                 }

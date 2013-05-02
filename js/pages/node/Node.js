@@ -58,6 +58,18 @@
                             ]
                         },
                         {
+                            "id": "edit-json",
+                            "title": "Edit JSON",
+                            "icon" : Gitana.Utils.Image.buildImageUri('objects', 'json-edit', 48),
+                            "url" : self.LINK().call(self, self.targetObject(), 'edit', 'json'),
+                            "requiredAuthorities" : [
+                                {
+                                    "permissioned" : self.targetObject(),
+                                    "permissions" : ["update"]
+                                }
+                            ]
+                        },
+                        {
                             "id": "delete",
                             "title": targetNode.isAssociation() ? "Delete Association" : "Delete Node",
                             "icon" : targetNode.isAssociation() ? Gitana.Utils.Image.buildImageUri('objects', 'association-delete', 48) : Gitana.Utils.Image.buildImageUri('objects', 'node-delete', 48),
@@ -68,18 +80,6 @@
                                 {
                                     "permissioned" : self.targetObject(),
                                     "permissions" : ["delete"]
-                                }
-                            ]
-                        },
-                        {
-                            "id": "edit-json",
-                            "title": "Edit JSON",
-                            "icon" : Gitana.Utils.Image.buildImageUri('objects', 'json-edit', 48),
-                            "url" : self.LINK().call(self, self.targetObject(), 'edit', 'json'),
-                            "requiredAuthorities" : [
-                                {
-                                    "permissioned" : self.targetObject(),
-                                    "permissions" : ["update"]
                                 }
                             ]
                         },
@@ -178,33 +178,32 @@
                     "title" : "Overview",
                     "icon" : node.isAssociation() ? Gitana.Utils.Image.buildImageUri('objects', 'association', 20) : Gitana.Utils.Image.buildImageUri('objects', 'node', 20),
                     "alert" : "",
-                    "items" : [
-                        {
-                            "key" : "ID",
-                            "value" : self.listItemProp(node, '_doc')
-                        },
-                        {
-                            "key" : "Title",
-                            "value" : self.listItemProp(node, 'title')
-                        },
-                        {
-                            "key" : "Description",
-                            "value" : self.listItemProp(node, 'description')
-                        },
-                        {
-                            "key" : "Type",
-                            "value" : node.getTypeQName()
-                        },
-                        {
-                            "key" : "QName",
-                            "value" : node.getQName()
-                        },
-                        {
-                            "key" : "Last Modified",
-                            "value" : "By " + this.node().getSystemMetadata().getModifiedBy() + " @ " + this.node().getSystemMetadata().getModifiedOn().getTimestamp()
-                        }
-                    ]
+                    "items" : []
                 };
+                this._pushItem(pairs.items, {
+                    "key" : "ID",
+                    "value" : self.listItemProp(node, '_doc')
+                });
+                this._pushItem(pairs.items, {
+                    "key" : "Title",
+                    "value" : self.listItemProp(node, 'title')
+                });
+                this._pushItem(pairs.items, {
+                    "key" : "Description",
+                    "value" : self.listItemProp(node, 'description')
+                });
+                this._pushItem(pairs.items, {
+                    "key" : "Type",
+                    "value" : node.getTypeQName()
+                });
+                this._pushItem(pairs.items, {
+                    "key" : "QName",
+                    "value" : node.getQName()
+                });
+                this._pushItem(pairs.items, {
+                    "key" : "Last Modified",
+                    "value" : "By " + this.node().getSystemMetadata().getModifiedBy() + " @ " + this.node().getSystemMetadata().getModifiedOn().getTimestamp()
+                });
 
                 this.pairs("node-overview", pairs);
 
@@ -280,13 +279,13 @@
                         this.subchain(self.node()).listAttachments().count(function(count) {
                             stats.items[0]['value'] = count;
                         });
-                    }
+                    };
 
                     var f1 = function() {
                         this.subchain(self.node()).associations({}, pagination).totalRows(function(totalRows) {
                             stats.items[1]['value'] = totalRows;
                         });
-                    }
+                    };
 
                     this.then([f0,f1]).then(function() {
                         self.stats("node-snapshot", stats);

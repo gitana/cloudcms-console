@@ -39,27 +39,13 @@
             self.addButtons([
                 {
                 "id": "edit",
-                "title": "Edit Project",
+                "title": "Edit",
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'project-edit', 48),
                     "url" : self.link(this.targetObject(),"edit"),
                     "requiredAuthorities" : [
                         {
                             "permissioned" : this.targetObject(),
                             "permissions" : ["update"]
-                        }
-                    ]
-                },
-                {
-                "id": "delete",
-                "title": "Delete Project",
-                    "icon" : Gitana.Utils.Image.buildImageUri('objects', 'project-delete', 48),
-                    "click": function(project) {
-                        self.onClickDelete(self.targetObject(),'project',self.listLink('projects'),Gitana.Utils.Image.buildImageUri('objects', 'project', 20), 'project');
-                    },
-                    "requiredAuthorities" : [
-                        {
-                            "permissioned" : this.targetObject(),
-                            "permissions" : ["delete"]
                         }
                     ]
                 },
@@ -76,8 +62,22 @@
                     ]
                 },
                 {
+                    "id": "delete",
+                    "title": "Delete",
+                    "icon" : Gitana.Utils.Image.buildImageUri('objects', 'project-delete', 48),
+                    "click": function(project) {
+                        self.onClickDelete(self.targetObject(),'project',self.listLink('projects'),Gitana.Utils.Image.buildImageUri('objects', 'project', 20), 'project');
+                    },
+                    "requiredAuthorities" : [
+                        {
+                            "permissioned" : this.targetObject(),
+                            "permissions" : ["delete"]
+                        }
+                    ]
+                },
+                {
                     "id": "export",
-                    "title": "Export Project",
+                    "title": "Export",
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'archive-export', 48),
                     "url" : self.LINK().call(self, self.targetObject(), 'export'),
                     "requiredAuthorities" : [
@@ -109,34 +109,32 @@
                 "title" : "Overview",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'project', 20),
                 "alert" : "",
-                "items" : [
-                    {
-                        "key" : "ID",
-                        "value" : self.listItemProp(project, '_doc')
-                    },
-                    {
-                        "key" : "Title",
-                        "value" : self.listItemProp(project, 'title')
-                    },
-                    {
-                        "key" : "Description",
-                        "value" : self.listItemProp(project, 'description')
-                    },
-                    {
-                        "key" : "Last Modified",
-                        "value" : "By " + project.getSystemMetadata().getModifiedBy() + " @ " + project.getSystemMetadata().getModifiedOn().getTimestamp()
-                    },
-                    {
-                        "key": "Stack",
-                        "value": "<a href='#" + self.LIST_LINK().call(self, "stacks") + self.listItemProp(project, "stackId") + "'>" + self.listItemProp(project, "stackId") + "</a>"
-                    },
-                    {
-                        "key": "Project Type",
-                        "value": self.listItemProp(project, "projectType")
-                    }
-
-                ]
+                "items" : []
             };
+            this._pushItem(pairs.items, {
+                "key" : "ID",
+                "value" : self.listItemProp(project, '_doc')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Title",
+                "value" : self.listItemProp(project, 'title')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Description",
+                "value" : self.listItemProp(project, 'description')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Last Modified",
+                "value" : "By " + project.getSystemMetadata().getModifiedBy() + " @ " + project.getSystemMetadata().getModifiedOn().getTimestamp()
+            });
+            this._pushItem(pairs.items, {
+                "key": "Stack",
+                "value": "<a href='#" + self.LIST_LINK().call(self, "stacks") + self.listItemProp(project, "stackId") + "'>" + self.listItemProp(project, "stackId") + "</a>"
+            });
+            this._pushItem(pairs.items, {
+                "key": "Project Type",
+                "value": self.listItemProp(project, "projectType")
+            });
 
             this.pairs("project-overview", pairs);
         },

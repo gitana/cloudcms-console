@@ -32,7 +32,7 @@
         },
 
         setupMenu: function() {
-            this.menu(Gitana.Console.Menu.Node(this,"menu-rules"));
+            this.menu(Gitana.Console.Menu.Node(this,"menu-node-rules"));
         },
 
         setupBreadcrumb: function() {

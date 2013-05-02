@@ -39,27 +39,13 @@
             self.addButtons([
                 {
                 "id": "edit",
-                "title": "Edit Client",
+                "title": "Edit",
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'client-edit', 48),
                     "url" : self.link(this.targetObject(),"edit"),
                     "requiredAuthorities" : [
                         {
                             "permissioned" : this.targetObject(),
                             "permissions" : ["update"]
-                        }
-                    ]
-                },
-                {
-                "id": "delete",
-                "title": "Delete Client",
-                    "icon" : Gitana.Utils.Image.buildImageUri('objects', 'client-delete', 48),
-                    "click": function(client) {
-                        self.onClickDelete(self.targetObject(),'client',self.listLink('clients'),Gitana.Utils.Image.buildImageUri('security', 'client', 20), 'client');
-                    },
-                    "requiredAuthorities" : [
-                        {
-                            "permissioned" : this.targetObject(),
-                            "permissions" : ["delete"]
                         }
                     ]
                 },
@@ -76,8 +62,22 @@
                     ]
                 },
                 {
+                    "id": "delete",
+                    "title": "Delete",
+                    "icon" : Gitana.Utils.Image.buildImageUri('objects', 'client-delete', 48),
+                    "click": function(client) {
+                        self.onClickDelete(self.targetObject(),'client',self.listLink('clients'),Gitana.Utils.Image.buildImageUri('security', 'client', 20), 'client');
+                    },
+                    "requiredAuthorities" : [
+                        {
+                            "permissioned" : this.targetObject(),
+                            "permissions" : ["delete"]
+                        }
+                    ]
+                },
+                {
                     "id": "export",
-                    "title": "Export Client",
+                    "title": "Export",
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'archive-export', 48),
                     "url" : self.LINK().call(self, self.targetObject(), 'export'),
                     "requiredAuthorities" : [
@@ -112,53 +112,52 @@
                 "title" : "Overview",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'client', 20),
                 "alert" : "",
-                "items" : [
-                    {
-                        "key" : "ID",
-                        "value" : self.listItemProp(client, '_doc')
-                    },
-                    {
-                        "key" : "Title",
-                        "value" : self.listItemProp(client, 'title')
-                    },
-                    {
-                        "key" : "Description",
-                        "value" : self.listItemProp(client, 'description')
-                    },
-                    {
-                        "key" : "Key",
-                        "value" : client.getKey()
-                    },
-                    {
-                        "key" : "Secret",
-                        "value" : '<pre class="record-full-json">' + client.getSecret() + "</pre>"
-                    },
-                    {
-                        "key" : "Open Driver",
-                        "value" : client.getAllowOpenDriverAuthentication() ? "Authentication Allowed" : "Authentication Not Allowed"
-                    },
-                    {
-                        "key" : "Domain URLs",
-                        "value" : '<div style="display: inline-block;vertical-align: top;">' + domainUrls + '</div>'
-                    },
-                    {
-                        "key" : "Authorized Grant Types",
-                        "value" : '<div style="display: inline-block;vertical-align: top;">' + authorizedGrantTypes + '</div>'
-                    },
-                    {
-                        "key" : "Scope",
-                        "value" : '<div style="display: inline-block;vertical-align: top;">' + scope + '</div>'
-                    },
-                    {
-                        "key" : "Enabled",
-                        "value" : client.getEnabled()
-                    },
-                    {
-                        "key" : "Last Modified",
-                        "value" : "By " + client.getSystemMetadata().getModifiedBy() + " @ " + client.getSystemMetadata().getModifiedOn().getTimestamp()
-                    }
-                ]
+                "items" : []
             };
+            this._pushItem(pairs.items, {
+                "key" : "ID",
+                "value" : self.listItemProp(client, '_doc')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Title",
+                "value" : self.listItemProp(client, 'title')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Description",
+                "value" : self.listItemProp(client, 'description')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Key",
+                "value" : client.getKey()
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Secret",
+                "value" : '<code class="record-full-json">' + client.getSecret() + "</code>"
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Open Driver",
+                "value" : client.getAllowOpenDriverAuthentication() ? "Authentication Allowed" : "Authentication Not Allowed"
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Domain URLs",
+                "value" : '<div style="display: inline-block;vertical-align: top;">' + domainUrls + '</div>'
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Authorized Grant Types",
+                "value" : '<div style="display: inline-block;vertical-align: top;">' + authorizedGrantTypes + '</div>'
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Scope",
+                "value" : '<div style="display: inline-block;vertical-align: top;">' + scope + '</div>'
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Enabled",
+                "value" : client.getEnabled()
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Last Modified",
+                "value" : "By " + client.getSystemMetadata().getModifiedBy() + " @ " + client.getSystemMetadata().getModifiedOn().getTimestamp()
+            });
 
             this.pairs("client-overview", pairs);
         },

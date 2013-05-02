@@ -46,6 +46,18 @@
                     ]
                 },
                 {
+                    "id": "edit-json",
+                    "title": "Edit JSON",
+                    "icon" : Gitana.Utils.Image.buildImageUri('objects', 'json-edit', 48),
+                    "url" : self.link(this.targetObject(), "edit", "json"),
+                    "requiredAuthorities" : [
+                        {
+                            "permissioned" : this.targetObject(),
+                            "permissions" : ["update"]
+                        }
+                    ]
+                },
+                {
                     "id": "delete",
                     "title": "Delete",
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'auto-trusted-domain-delete', 48),
@@ -56,18 +68,6 @@
                         {
                             "permissioned" : this.targetObject(),
                             "permissions" : ["delete"]
-                        }
-                    ]
-                },
-                {
-                    "id": "edit-json",
-                    "title": "Edit JSON",
-                    "icon" : Gitana.Utils.Image.buildImageUri('objects', 'json-edit', 48),
-                    "url" : self.link(this.targetObject(), "edit", "json"),
-                    "requiredAuthorities" : [
-                        {
-                            "permissioned" : this.targetObject(),
-                            "permissions" : ["update"]
                         }
                     ]
                 },
@@ -95,25 +95,24 @@
                 "title" : "Overview",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'trusted-domain-mapping', 20),
                 "alert" : "",
-                "items" : [
-                    {
-                        "key" : "ID",
-                        "value" : self.listItemProp(trustedDomainMapping, '_doc')
-                    },
-                    {
-                        "key" : "Host",
-                        "value" : self.listItemProp(trustedDomainMapping, 'host')
-                    },
-                    {
-                        "key" : "Scope",
-                        "value" : self.listItemProp(trustedDomainMapping, 'scope')
-                    },
-                    {
-                        "key" : "Platform ID",
-                        "value" : self.listItemProp(trustedDomainMapping, 'platformId')
-                    }
-                ]
+                "items" : []
             };
+            this._pushItem(pairs.items, {
+                "key" : "ID",
+                "value" : self.listItemProp(trustedDomainMapping, '_doc')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Host",
+                "value" : self.listItemProp(trustedDomainMapping, 'host')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Scope",
+                "value" : self.listItemProp(trustedDomainMapping, 'scope')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Platform ID",
+                "value" : self.listItemProp(trustedDomainMapping, 'platformId')
+            });
 
             this.pairs("trusted-domain-mapping-overview", pairs);
         },

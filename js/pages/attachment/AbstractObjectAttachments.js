@@ -172,7 +172,7 @@
                         });
                     },
                     "requiredAuthorities" : {
-                        "permissioned" : self.node(),
+                        "permissioned" : self.targetObject(),
                         "permissions" : ["update"]
                     }
                 }

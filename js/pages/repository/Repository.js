@@ -130,25 +130,25 @@
                 "title" : "Overview",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'repository', 20),
                 "alert" : "",
-                "items" : [
-                    {
-                        "key" : "ID",
-                        "value" : self.listItemProp(repository,'_doc')
-                    },
-                    {
-                        "key" : "Title",
-                        "value" : self.listItemProp(repository,'title')
-                    },
-                    {
-                        "key" : "Description",
-                        "value" : self.listItemProp(repository,'description')
-                    },
-                    {
-                        "key" : "Last Modified",
-                        "value" : "By " + repository.getSystemMetadata().getModifiedBy() + " @ " + repository.getSystemMetadata().getModifiedOn().getTimestamp()
-                    }
-                ]
+                "items" : []
             };
+
+            this._pushItem(pairs.items, {
+                "key" : "ID",
+                "value" : self.listItemProp(repository,'_doc')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Title",
+                "value" : self.listItemProp(repository,'title')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Description",
+                "value" : self.listItemProp(repository,'description')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Last Modified",
+                "value" : "By " + repository.getSystemMetadata().getModifiedBy() + " @ " + repository.getSystemMetadata().getModifiedOn().getTimestamp()
+            });
 
             this.pairs("repository-overview",pairs);
         },

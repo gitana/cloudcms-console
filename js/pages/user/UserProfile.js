@@ -38,42 +38,41 @@
                 "title" : "Overview",
                 "icon" : Gitana.Utils.Image.buildImageUri('security', 'user', 20),
                 "alert" : "",
-                "items" : [
-                    {
-                        "key" : "ID",
-                        "value" : user.getId()
-                    },
-                    {
-                        "key" : "Name",
-                        "value" : user.getName()
-                    },
-                    {
-                        "key" : "Last Name",
-                        "value" : user.getLastName() ? user.getLastName() : ""
-                    },
-                    {
-                        "key" : "First Name",
-                        "value" : user.getFirstName() ? user.getFirstName() : ""
-                    },
-                    {
-                        "key" : "Email",
-                        "value" : user.getEmail() ? user.getEmail() : ""
-                    },
-                    {
-                        "key" : "Company",
-                        "value" : user.getCompanyName() ? user.getCompanyName() : ""
-                    },
-                    {
-                        "key" : "Avatar",
-                        "class" : "avatar-photo",
-                        "img" : userDetails && userDetails.avatarUrl ? userDetails.avatarUrl : "css/images/themes/" + Gitana.Apps.THEME +"/console/misc/avatar_small.png"
-                    },
-                    {
-                        "key" : "Last Modified",
-                        "value" : user.getSystemMetadata().getModifiedOn().getTimestamp()
-                    }
-                ]
+                "items" : []
             };
+            this._pushItem(pairs.items, {
+                "key" : "ID",
+                "value" : user.getId()
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Name",
+                "value" : user.getName()
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Last Name",
+                "value" : user.getLastName() ? user.getLastName() : ""
+            });
+            this._pushItem(pairs.items, {
+                "key" : "First Name",
+                "value" : user.getFirstName() ? user.getFirstName() : ""
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Email",
+                "value" : user.getEmail() ? user.getEmail() : ""
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Company",
+                "value" : user.getCompanyName() ? user.getCompanyName() : ""
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Avatar",
+                "class" : "avatar-photo",
+                "img" : userDetails && userDetails.avatarUrl ? userDetails.avatarUrl : "css/images/themes/" + Gitana.Apps.THEME +"/console/misc/avatar_small.png"
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Last Modified",
+                "value" : user.getSystemMetadata().getModifiedOn().getTimestamp()
+            });
 
             this.pairs("profile-pairs",pairs);
         },

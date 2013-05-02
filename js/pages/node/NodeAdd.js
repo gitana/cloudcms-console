@@ -1,8 +1,5 @@
 (function($) {
     Gitana.Console.Pages.NodeAdd = Gitana.CMS.Pages.AbstractFormPageGadget.extend({
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
 
         schema: function() {
 
@@ -17,8 +14,8 @@
         },
 
         options: function() {
-            var self = this;
-            var options = Alpaca.mergeObject(this.base(), {
+
+            return Alpaca.mergeObject(this.base(), {
                 "fields" : {
                     "title" : {
                         "helper" : "Enter node title."
@@ -33,8 +30,6 @@
                     }
                 }
             });
-
-            return options;
         },
 
         setup: function() {
@@ -236,6 +231,7 @@
             var schema = self.schema();
 
             if (self.definition() && self.definition().properties) {
+                schema.properties = {};
                 schema = Alpaca.mergeObject(schema, {
                     "properties" : self.definition().properties
                 });
@@ -249,6 +245,8 @@
             if (self.form()) {
                 options = Alpaca.mergeObject(options, self.form());
             }
+
+            options = JSON.parse(JSON.stringify(options));
 
             formDiv.empty().alpaca({
                 "schema": schema,

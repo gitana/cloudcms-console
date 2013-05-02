@@ -206,4 +206,36 @@
         return value;
     };
 
+    var _previewMimetypeFallback = window._previewMimetypeFallback = function(originalUrl, mimetype)
+    {
+        var mimetypeFilename = mimetype + ".png";
+        mimetypeFilename = mimetypeFilename.replace("/", "-");
+
+        return _previewFallback(originalUrl, "css/images/themes/clean/console/filetypes/64/" + mimetypeFilename);
+    };
+
+    var _previewFallback = window._previewFallback = function(originalUrl, fallback)
+    {
+        var url = originalUrl;
+
+        if (fallback)
+        {
+            if (originalUrl.indexOf("?") == -1) {
+                url += "?";
+            } else {
+                url += "&";
+            }
+
+            url += "fallback=";
+            url += window.location.protocol + "//" + window.location.hostname;
+            if (window.location.port)
+            {
+                url += ":" + window.location.port;
+            }
+            url += "/console/" + fallback;
+        }
+
+        return url;
+    };
+
 })(jQuery);

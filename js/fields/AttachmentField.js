@@ -63,6 +63,22 @@
 
             this.controlFieldTemplateDescriptor = this.view.getTemplateDescriptor("controlFieldAttachment");
 
+            if (!this.options) {
+                this.options = {};
+            }
+            if (Ratchet.isUndefined(this.options.multiple))
+            {
+                this.options.multiple = true;
+            }
+            if (Ratchet.isUndefined(this.options.attachmentIdAsFilename))
+            {
+                this.options.attachmentIdAsFilename = false;
+            }
+            if (Ratchet.isUndefined(this.options.filterPreviews))
+            {
+                this.options.filterPreviews = false;
+            }
+
             if (this.options && this.options.context) {
                 this.context = this.options.context;
                 if (this.context.platform && this.context.platform()) {
@@ -82,11 +98,14 @@
         },
 
         getAuthorizedUrl: function(url) {
+            /*
             if (this.context && this.context.getDriver && this.context.getDriver()) {
                 return url;
             } else {
                 return url;
             }
+            */
+            return url;
         },
 
         /**
@@ -174,19 +193,8 @@
             var count = 0;
             $.each(data.result.rows, function(index, gitanaResult) {
 
-                files.push({
-                    "name": gitanaResult.filename,
-                    "size": gitanaResult.length,
-                    "type": gitanaResult.contentType,
-                    "url": self.computeAttachmentUrl(gitanaResult),
-                    "thumbnail_url": self.computeThumbnailUrl(gitanaResult),
-                    "delete_url": self.computeDeleteUrl(gitanaResult),
-                    "delete_type": "DELETE",
-                    "attachmentId": gitanaResult.attachmentId
-                });
-
+                files.push(self.computeFile(gitanaResult));
                 count++;
-
             });
 
             data.result = {
@@ -199,38 +207,53 @@
         /**
          * Produces a URI to the attachment.
          *
-         * @param gitanaResult
+         * @param attachmentId
          * @return {String}
          */
-         computeAttachmentUrl: function(gitanaResult)
+         computeAttachmentUrl: function(attachmentId)
          {
-             return this.context.getDriver().baseURL + this.context.getUri() + "/attachments/" + gitanaResult.attachmentId + "?a=true";
+             var uriPrefix = this.options.uriPrefix;
+             if (!uriPrefix) {
+                 uriPrefix = "";
+             }
+
+             var attachmentUrl = this.context.getDriver().baseURL + this.context.getUri() + uriPrefix + "/attachments/" + attachmentId + "?a=true";
+             return this.getAuthorizedUrl(attachmentUrl);
          },
 
         /**
          * Produces a URI to the thumbnail version of this attachment.
          *
-         * @param gitanaResult
-         * @return {*}
+         * @param attachmentId
+         * @param size
+         * @return {String}
          */
-         computeThumbnailUrl: function(gitanaResult)
+         computeThumbnailUrl: function(attachmentId, size)
          {
-             var attachmentUrl = this.computeAttachmentUrl(gitanaResult);
+             if (!size) {
+                 size = 64;
+             }
 
-             return this.getAuthorizedUrl(attachmentUrl);
+             var uriPrefix = this.options.uriPrefix;
+             if (!uriPrefix) {
+                 uriPrefix = "";
+             }
+
+             var thumbnailUrl = this.context.getDriver().baseURL + this.context.getUri() + uriPrefix + "/preview/" + attachmentId + "" + size + "?size=" + size + "&attachment=" + attachmentId;
+             thumbnailUrl = _previewFallback(thumbnailUrl);
+
+             return this.getAuthorizedUrl(thumbnailUrl);
          },
 
         /**
          * Produces a URI to the URI to use for deleting an attachment.
          *
-         * @param gitanaResult
+         * @param attachmentId
          * @return {*}
          */
-         computeDeleteUrl: function(gitanaResult)
+         computeDeleteUrl: function(attachmentId)
          {
-             var attachmentUrl = this.computeAttachmentUrl(gitanaResult);
-
-             return this.getAuthorizedUrl(attachmentUrl + "?timestamp=" + new Date().getTime());
+             return this.computeAttachmentUrl(attachmentId);
          },
 
         /**
@@ -243,15 +266,60 @@
          {
              return {
                  "id"  : attachableAttachment.getId(),
-                 "attachmentId" : attachableAttachment.getId(),
-                 "type" : attachableAttachment.getContentType(),
+
+                 "name" : attachableAttachment.getFilename ? attachableAttachment.getFilename() : attachableAttachment.getId(),
                  "size" : attachableAttachment.getLength(),
-                 "url"  : this.getAuthorizedUrl(attachableAttachment.getDownloadUri()+"?a=true"),
-                 "thumbnail_url": this.getAuthorizedUrl(attachableAttachment.getDownloadUri() + "?timestamp=" + new Date().getTime()),
-                 "delete_url": attachableAttachment.getDownloadUri(),
+                 "type" : attachableAttachment.getContentType(),
+                 "url"  : this.computeAttachmentUrl(attachableAttachment.getId()),
+                 "thumbnail_url": this.computeThumbnailUrl(attachableAttachment.getId()),
+                 "delete_url": this.computeDeleteUrl(attachableAttachment.getId()),
                  "delete_type": "DELETE",
-                 "name" : attachableAttachment.getFilename ? attachableAttachment.getFilename() : attachableAttachment.getId()
+
+                 "attachmentId" : attachableAttachment.getId()
              };
+         },
+
+        /**
+         * Converts a Gitana Result to a File.
+         *
+         * @param gitanaResult
+         * @return {Object}
+         */
+         computeFile: function(gitanaResult)
+         {
+             var file = {
+                 "name": gitanaResult.filename,
+                 "size": gitanaResult.length,
+                 "type": gitanaResult.contentType,
+                 "url": this.computeAttachmentUrl(gitanaResult.attachmentId),
+                 "thumbnail_url": this.computeThumbnailUrl(gitanaResult.attachmentId),
+                 "delete_url": this.computeDeleteUrl(gitanaResult),
+                 "delete_type": "DELETE",
+
+                 "attachmentId": gitanaResult.attachmentId
+             };
+
+             if (this.options.attachmentIdAsFilename)
+             {
+                 file.filename = file.attachmentId;
+             }
+
+             return file;
+         },
+
+        /**
+         * Returns the URI for handling attachment uploads.
+         * This should be a bare /attachments handler (not specific to any attachment id).
+         */
+         computeAttachmentUploadUri : function () {
+
+            var uriPrefix = this.options.uriPrefix;
+            if (!uriPrefix) {
+                uriPrefix = "";
+            }
+
+            var format = Ratchet.Browser.ie ? ".text" : "";
+            return this.context ? this.context.getDriver().baseURL + this.context.getUri() + uriPrefix + "/attachments" + format : "";
          },
 
         /**
@@ -269,6 +337,9 @@
                  this.context.listAttachments().each(function() {
                      attachments.push(self.computeAttachment(this));
                  }).then(function() {
+
+                     self.filterAttachments(attachments);
+
                      callback(attachments);
                  });
 
@@ -276,6 +347,34 @@
              }
 
              callback([]);
+         },
+
+         filterAttachments: function(attachments)
+         {
+             var i = 0;
+             do
+             {
+                 var attachment = attachments[i];
+
+                 var remove = false;
+                 if (this.options.filterPreviews)
+                 {
+                     if (attachment.attachmentId.indexOf("_preview_") == 0)
+                     {
+                         remove = true;
+                     }
+                 }
+
+                 if (remove)
+                 {
+                     attachments.splice(i, 1);
+                 }
+                 else
+                 {
+                     i++;
+                 }
+             }
+             while (i < attachments.length);
          },
 
         /**
@@ -381,13 +480,6 @@
                 _this.renderValidationState();
             });
 
-            /*
-            if (this.options && this.options.renderAttachments) {
-                this.options.renderAttachments();
-            } else {
-                this.renderAttachments();
-            }
-            */
             this.renderAttachments();
 
             this.base();
@@ -472,7 +564,20 @@
         /**
          * Renders all attachments of the attachable
          */
-        renderAttachments : function () {
+        renderAttachments : function ()
+        {
+            if (this.options && this.options.renderAttachments)
+            {
+                this.options.renderAttachments();
+            }
+            else
+            {
+                this._renderAttachments();
+            }
+        },
+
+        _renderAttachments: function()
+        {
             var _this = this;
 
             this.listAttachments(function(attachments) {
@@ -521,15 +626,6 @@
         },
 
         /**
-         * Returns service uri for attachment upload
-         */
-        _getNodeUploadUri : function () {
-            var format = Ratchet.Browser.ie ? ".text" : "";
-            var nodeUploadUri = this.context ? this.context.getDriver().baseURL + this.context.getUri() + "/attachments" + format : "";
-            return nodeUploadUri;
-        },
-
-        /**
          * Sets attachable for file upload
          */
         setContext: function (context) {
@@ -540,28 +636,44 @@
          * Prepares final uri for attachment upload
          */
         prepareUploadFormFields : function (data) {
+
+            var self = this;
+
+            var actionUri = this.computeAttachmentUploadUri();
+
             var formElem = this.field.find('form');
-            if (this.options.uploadUri) {
-                formElem.attr('action', this.options.uploadUri);
-            } else {
-                var actionUri = this._getNodeUploadUri();
 
-                if (data.files.length == 1) {
+            if (data.files.length == 1) {
 
-                    var alpacaId = data.files[0]['alpacaId'];
-                    $('input.attachment-id-input:text:not(:disabled)[data-alpacaId="'+  alpacaId +'"]', this.field).each(function(index) {
+                var alpacaId = data.files[0]['alpacaId'];
+                $('input.attachment-id-input:text:not(:disabled)[data-alpacaId="'+  alpacaId +'"]', this.field).each(function(index) {
+
+                    var attachmentId = $(this).val();
+
+                    if (self.options.supportMultiple)
+                    {
                         var uriPrefix = (index == 0) ? '?' : "&";
-                        actionUri += uriPrefix + "attachmentId_" + index + "=" + $(this).val();
-                    });
-                } else {
-                    //TODO : seems to have issues with multiplars -- files are empty
-                    $('input.attachment-id-input:text:not(:disabled)', this.field).each(function(index) {
-                        var uriPrefix = (index == 0) ? '?' : "&";
-                        actionUri += uriPrefix + "attachmentId_" + index + "=" + $(this).val();
-                    });
-                }
-                formElem.attr('action', actionUri);
+                        actionUri += uriPrefix + "attachmentId_" + index + "=" + attachmentId;
+                    }
+                    else
+                    {
+                        actionUri += "/" + attachmentId;
+                    }
+                });
             }
+            else
+            {
+                //TODO : seems to have issues with multiplars -- files are empty
+                $('input.attachment-id-input:text:not(:disabled)', this.field).each(function(index) {
+
+                    var attachmentId = $(this).val();
+
+                    var uriPrefix = (index == 0) ? '?' : "&";
+                    actionUri += uriPrefix + "attachmentId_" + index + "=" + attachmentId;
+                });
+            }
+
+            formElem.attr('action', actionUri);
         },
 
         /**
@@ -671,8 +783,8 @@
 
     Alpaca.registerTemplate('templateUpload', '<tr class="template-upload{{if error}} ui-state-error{{/if}}"><td class="attachment-id"><input class="attachment-id-input" type="text" value="${attachmentId}" data-alpacaid="${alpacaId}" autocomplete="off" placeholder="Attachment ID"/></td><td class="preview"></td><td class="name">${name}</td><td class="type">${type}</td><td class="size">${size}</td>{{if error}}<td class="upload-error" colspan="2">Error:{{if error === \'maxFileSize\'}}File is too big{{else error === \'minFileSize\'}}File is too small{{else error === \'acceptFileTypes\'}}Filetype not allowed{{else error === \'maxNumberOfFiles\'}}Max number of files exceeded{{else}}${error}{{/if}}</td>{{else}}<td class="progress" style="display:none;"><div></div></td><td class="start"><button style="display:none;">Start</button></td>{{/if}}<td class="cancel"><button>Cancel</button></td></tr>');
 
-    //Alpaca.registerTemplate('templateDownload', '<tr class="template-download{{if error}} ui-state-error{{/if}}" data-attachmentid="${attachmentId}">{{if error}}<td></td><td class="attachment-id"><span class="fileupload-attachment-id">${attachmentId}</span></td><td class="preview"></td><td class="name">${name}</td><td class="size">${size}</td><td class="upload-error" colspan="2">Error:{{if error === 1}}File exceeds upload_max_filesize (php.ini directive){{else error === 2}}File exceeds MAX_FILE_SIZE (HTML form directive){{else error === 3}}File was only partially uploaded{{else error === 4}}No File was uploaded{{else error === 5}}Missing a temporary folder{{else error === 6}}Failed to write file to disk{{else error === 7}}File upload stopped by extension{{else error === \'maxFileSize\'}}File is too big{{else error === \'minFileSize\'}}File is too small{{else error === \'acceptFileTypes\'}}Filetype not allowed{{else error === \'maxNumberOfFiles\'}}Max number of files exceeded{{else error === \'uploadedBytes\'}}Uploaded bytes exceed file size{{else error === \'emptyResult\'}}Empty file upload result{{else}}${error}{{/if}}</td>{{else}}<td class="attachment-id"><span class="fileupload-attachment-id">${attachmentId}</span></td><td class="preview"></td><td class="name">BBBBBBBBBB<a class="fileupload-attachment-download" href="${url}">AAAAAAAAAAAAAA${name}</a></td><td class="type">CCCCCCCCCCC${type}</td><td class="size">DDDDDDDDDD${size}</td>{{/if}}<td class="delete" colspan="3"><button data-type="${delete_type}" data-url="${delete_url}">Delete</button></td></tr>');
-    Alpaca.registerTemplate('templateDownload', '<tr class="template-download{{if error}} ui-state-error{{/if}}" data-attachmentid="${attachmentId}">{{if error}}<td></td><td class="attachment-id"><span class="fileupload-attachment-id">${attachmentId}</span></td><td class="preview"></td><td class="name">${name}</td><td class="size">${size}</td><td class="upload-error" colspan="2">Error:{{if error === 1}}File exceeds upload_max_filesize (php.ini directive){{else error === 2}}File exceeds MAX_FILE_SIZE (HTML form directive){{else error === 3}}File was only partially uploaded{{else error === 4}}No File was uploaded{{else error === 5}}Missing a temporary folder{{else error === 6}}Failed to write file to disk{{else error === 7}}File upload stopped by extension{{else error === \'maxFileSize\'}}File is too big{{else error === \'minFileSize\'}}File is too small{{else error === \'acceptFileTypes\'}}Filetype not allowed{{else error === \'maxNumberOfFiles\'}}Max number of files exceeded{{else error === \'uploadedBytes\'}}Uploaded bytes exceed file size{{else error === \'emptyResult\'}}Empty file upload result{{else}}${error}{{/if}}</td>{{else}}<td class="attachment-id"><span class="fileupload-attachment-id">${attachmentId}</span></td><td class="preview"></td><td class="name">BBBBBBBBBB<a class="fileupload-attachment-download" href="${url}">AAAAAAAAAAAAAA${name}</a></td><td class="type">CCCCCCCCCCC${type}</td><td class="size">DDDDDDDDDD${size}</td>{{/if}}<td class="delete" colspan="3"><button data-type="${delete_type}" data-url="${delete_url}">Delete</button></td></tr>');
+    //Alpaca.registerTemplate('templateDownload', '<tr class="template-download{{if error}} ui-state-error{{/if}}" data-attachmentid="${attachmentId}">{{if error}}<td></td><td class="attachment-id"><span class="fileupload-attachment-id">${attachmentId}</span></td><td class="preview"></td><td class="name">${name}</td><td class="size">${size}</td><td class="upload-error" colspan="2">Error:{{if error === 1}}File exceeds upload_max_filesize (php.ini directive){{else error === 2}}File exceeds MAX_FILE_SIZE (HTML form directive){{else error === 3}}File was only partially uploaded{{else error === 4}}No File was uploaded{{else error === 5}}Missing a temporary folder{{else error === 6}}Failed to write file to disk{{else error === 7}}File upload stopped by extension{{else error === \'maxFileSize\'}}File is too big{{else error === \'minFileSize\'}}File is too small{{else error === \'acceptFileTypes\'}}Filetype not allowed{{else error === \'maxNumberOfFiles\'}}Max number of files exceeded{{else error === \'uploadedBytes\'}}Uploaded bytes exceed file size{{else error === \'emptyResult\'}}Empty file upload result{{else}}${error}{{/if}}</td>{{else}}<td class="attachment-id"><span class="fileupload-attachment-id">${attachmentId}</span></td><td class="preview"></td><td class="name"><a class="fileupload-attachment-download" href="${url}">${name}</a></td><td class="type">${type}</td><td class="size">${size}</td>{{/if}}<td class="delete" colspan="3"><button data-type="${delete_type}" data-url="${delete_url}">Delete</button></td></tr>');
+    Alpaca.registerTemplate('templateDownload', '<tr class="template-download{{if error}} ui-state-error{{/if}}" data-attachmentid="${attachmentId}">{{if error}}<td></td><td class="attachment-id"><span class="fileupload-attachment-id">${attachmentId}</span></td><td class="preview"></td><td class="name">${name}</td><td class="size">${size}</td><td class="upload-error" colspan="2">Error:{{if error === 1}}File exceeds upload_max_filesize (php.ini directive){{else error === 2}}File exceeds MAX_FILE_SIZE (HTML form directive){{else error === 3}}File was only partially uploaded{{else error === 4}}No File was uploaded{{else error === 5}}Missing a temporary folder{{else error === 6}}Failed to write file to disk{{else error === 7}}File upload stopped by extension{{else error === \'maxFileSize\'}}File is too big{{else error === \'minFileSize\'}}File is too small{{else error === \'acceptFileTypes\'}}Filetype not allowed{{else error === \'maxNumberOfFiles\'}}Max number of files exceeded{{else error === \'uploadedBytes\'}}Uploaded bytes exceed file size{{else error === \'emptyResult\'}}Empty file upload result{{else}}${error}{{/if}}</td>{{else}}<td class="attachment-id"><span class="fileupload-attachment-id">${attachmentId}</span></td><td class="preview"></td><td class="name"><a class="fileupload-attachment-download" href="${url}">${name}</a></td><td class="type">${type}</td><td class="size">${size}</td>{{/if}}<td colspan="3"><button class="delete" data-type="${delete_type}" data-url="${delete_url}">Delete</button></td></tr>');
 
     //Alpaca.registerTemplate("controlFieldAttachment", '<div id="fileupload-${id}"><form method="POST" enctype="multipart/form-data"><div class="fileupload-buttonbar"><label class="fileinput-button"><span>Add files...</span><input type="file" name="{{if options.name}}${options.name}{{else}}files[]{{/if}}" multiple></label><button type="submit" class="start">Start upload</button><button type="reset" class="cancel" style="display:none;">Cancel upload</button><button type="button" class="delete"  style="display:none;">Delete files</button><button type="button" class="fileupload-thumbnails" style="display:none;">Thumbnails</button><button type="button" class="fileupload-preview" style="display:none;">Preview</button></div></form><div class="fileupload-slideshow"></div><div class="fileupload-content dropzone" rel="tooltip-html" title="Drag-n-Drop your desktop file(s) to the above drop zone."><table class="files"></table><div class="fileupload-progressbar" style="display:none"></div></div></div>');
     //Alpaca.registerTemplate("controlFieldAttachment", '<div id="fileupload-${id}"><form method="POST" enctype="multipart/form-data"><div class="fileupload-buttonbar"><label class="fileinput-button"><span>Add files...</span><input type="file" name="{{if options.name}}${options.name}{{else}}files[]{{/if}}" multiple></label><button type="submit" class="start">Start upload</button><button type="reset" class="cancel" style="display:none;">Cancel upload</button><button type="button" class="delete"  style="display:none;">Delete files</button></div></form><div class="fileupload-slideshow"></div><div class="fileupload-content dropzone" rel="tooltip-html" title="Drag-n-Drop your desktop file(s) to the above drop zone."><table class="files"></table><div class="fileupload-progressbar" style="display:none"></div></div></div>');

@@ -98,8 +98,16 @@
         });
     };
 
-    Gitana.CMS.refresh = function () {
-        window.location.reload();
+    Gitana.CMS.refresh = function (link)
+    {
+        if (!link)
+        {
+            window.location.reload();
+        }
+        else
+        {
+            window.location.href = "/console#" + link;
+        }
     };
 
     // tell ratchet to go to the personal dashboard if nothing specified on the hash

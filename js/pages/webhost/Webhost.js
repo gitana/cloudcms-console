@@ -35,27 +35,13 @@
             self.addButtons([
                 {
                     "id": "edit",
-                    "title": "Edit Web Host",
+                    "title": "Edit",
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'webhost-edit', 48),
                     "url" : self.link(this.targetObject(), "edit"),
                     "requiredAuthorities" : [
                         {
                             "permissioned" : this.targetObject(),
                             "permissions" : ["update"]
-                        }
-                    ]
-                },
-                {
-                    "id": "delete",
-                    "title": "Delete Web Host",
-                    "icon" : Gitana.Utils.Image.buildImageUri('objects', 'webhost-delete', 48),
-                    "click": function(webhost) {
-                        self.onClickDelete(self.targetObject(), 'web host', self.listLink('webhosts'), Gitana.Utils.Image.buildImageUri('objects', 'webhost', 20), 'webhost');
-                    },
-                    "requiredAuthorities" : [
-                        {
-                            "permissioned" : this.targetObject(),
-                            "permissions" : ["delete"]
                         }
                     ]
                 },
@@ -72,8 +58,22 @@
                     ]
                 },
                 {
+                    "id": "delete",
+                    "title": "Delete",
+                    "icon" : Gitana.Utils.Image.buildImageUri('objects', 'webhost-delete', 48),
+                    "click": function(webhost) {
+                        self.onClickDelete(self.targetObject(), 'web host', self.listLink('webhosts'), Gitana.Utils.Image.buildImageUri('objects', 'webhost', 20), 'webhost');
+                    },
+                    "requiredAuthorities" : [
+                        {
+                            "permissioned" : this.targetObject(),
+                            "permissions" : ["delete"]
+                        }
+                    ]
+                },
+                {
                     "id": "export",
-                    "title": "Export Web Host",
+                    "title": "Export",
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'archive-export', 48),
                     "url" : self.LINK().call(self, self.targetObject(), 'export'),
                     "requiredAuthorities" : [
@@ -85,7 +85,7 @@
                 },
                 {
                     "id": "import",
-                    "title": "Import Archive",
+                    "title": "Import",
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'archive-import', 48),
                     "url" : self.LINK().call(self, self.targetObject(), 'import'),
                     "requiredAuthorities" : [
@@ -108,29 +108,28 @@
                 "title" : "Overview",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'webhost', 20),
                 "alert" : "",
-                "items" : [
-                    {
-                        "key" : "ID",
-                        "value" : self.listItemProp(webhost, '_doc')
-                    },
-                    {
-                        "key" : "Title",
-                        "value" : self.listItemProp(webhost, 'title')
-                    },
-                    {
-                        "key" : "Description",
-                        "value" : self.listItemProp(webhost, 'description')
-                    },
-                    {
-                        "key" : "URL Patterns",
-                        "value" : '<div style="display: inline-block;vertical-align: top;">' + urlPatterns + '</div>'
-                    },
-                    {
-                        "key" : "Last Modified",
-                        "value" : "By " + webhost.getSystemMetadata().getModifiedBy() + " @ " + webhost.getSystemMetadata().getModifiedOn().getTimestamp()
-                    }
-                ]
+                "items" : []
             };
+            this._pushItem(pairs.items, {
+                "key" : "ID",
+                "value" : self.listItemProp(webhost, '_doc')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Title",
+                "value" : self.listItemProp(webhost, 'title')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Description",
+                "value" : self.listItemProp(webhost, 'description')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "URL Patterns",
+                "value" : '<div style="display: inline-block;vertical-align: top;">' + urlPatterns + '</div>'
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Last Modified",
+                "value" : "By " + webhost.getSystemMetadata().getModifiedBy() + " @ " + webhost.getSystemMetadata().getModifiedOn().getTimestamp()
+            });
 
             this.pairs("webhost-overview", pairs);
         },
