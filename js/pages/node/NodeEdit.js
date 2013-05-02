@@ -142,9 +142,8 @@
 
             var schema = self.schema();
 
-            var options = self.options();
-
             if (self.definition() && self.definition().properties) {
+                schema.properties = {};
                 schema = Alpaca.mergeObject(schema, {
                     "properties" : self.definition().properties
                 });
@@ -158,6 +157,8 @@
             if (self.form()) {
                 options = Alpaca.mergeObject(options, self.form());
             }
+
+            options = JSON.parse(JSON.stringify(options));
 
             var editDiv = el ? $('#node-edit', $(el)) : $('#node-edit');
 
