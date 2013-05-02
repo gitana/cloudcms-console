@@ -153,8 +153,6 @@
                     // Add Buttons
                     $('#form-add-create').click(function(){
 
-                        debugger;
-
                         var value = renderedField.getValue();
 
                         var formBody = JSON.parse(value['body']);
