@@ -207,10 +207,9 @@
                         "helper": "Pick end date of date range."
                     },
                     "query" : {
-                        "type" : "json",
-                        "cols": 60,
-                        "rows" : 5,
-                        "helper": "Enter full query in JSON."
+                        "type": "editor",
+                        "aceMode": "ace/mode/json",
+                        "aceFitContentHeight": true
                     }
                 }
             };

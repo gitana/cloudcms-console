@@ -854,7 +854,7 @@
         "Folder" : function(self, el, extra) {
 
             if (self.node().get('_is_association')) {
-                self.breadcrumb(Gitana.Console.Breadcrumb.Nodes(self));
+                return self.breadcrumb(Gitana.Console.Breadcrumb.Nodes(self));
             } else {
 
                 var breadcrumb = self.breadcrumb(Gitana.Console.Breadcrumb.Branch(self));
@@ -866,7 +866,7 @@
                     if (extra) {
                         $.merge(nodeBreadcrumb, extra);
                     }
-                    self.breadcrumb(nodeBreadcrumb);
+                    //return self.breadcrumb(nodeBreadcrumb);
                 } else {
                     Gitana.Console.Breadcrumb.findPath(self.node(), self, function() {
                         if (Gitana.Console.Breadcrumb.PATHS[nodeId]) {
@@ -874,11 +874,21 @@
                             if (extra) {
                                 $.merge(nodeBreadcrumb, extra);
                             }
-                            self.breadcrumb(nodeBreadcrumb);
                         }
                     });
                 }
+
+                return self.breadcrumb(nodeBreadcrumb);
             }
+        },
+
+        "FolderRules" : function(self , el) {
+            return $.merge(this.Folder(self, el), [
+                {
+                    "text" : "Rules",
+                    "link" : self.LIST_LINK().call(self,"rules")
+                }
+            ]);
         },
 
         "BillingProviders" : function(self , el) {

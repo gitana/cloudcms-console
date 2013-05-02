@@ -122,9 +122,9 @@
                         "size": this.DEFAULT_FILTER_DATE_SIZE
                     },
                     "query" : {
-                        "type" : "json",
-                        "cols": 60,
-                        "rows" : 5
+                        "type": "editor",
+                        "aceMode": "ace/mode/json",
+                        "aceFitContentHeight": true
                     }
                 }
             };

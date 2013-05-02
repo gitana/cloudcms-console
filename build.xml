@@ -124,10 +124,14 @@
                 <file name="fields/RuleConditionsField.js"/>
                 <file name="CMS.js"/>
                 <file name="Messages.js"/>
+                <!--
                 <file name="authenticators/AbstractAuthenticator.js"/>
                 <file name="authenticators/AbstractOAuth2Authenticator.js"/>
+                -->
                 <file name="authenticators/UsernamePasswordAuthenticator.js"/>
+                <!--
                 <file name="authenticators/ImplicitFlowAuthenticator.js"/>
+                -->
                 <file name="AbstractGadget.js"/>
                 <file name="AbstractGitanaAppGadget.js"/>
                 <file name="utilities/GitanaUtilsDate.js"/>
@@ -219,7 +223,9 @@
                 <file name="pages/AbstractDatastoreObjectAdd.js" />
                 <file name="pages/AbstractDatastoreObjectEdit.js" />
                 <file name="pages/AbstractDatastoreObjectExport.js" />
+                <!--
                 <file name="pages/AbstractDatastoreObjectImport.js" />
+                -->
                 <file name="pages/AbstractDatastoreObjects.js" />
 
 
@@ -530,6 +536,8 @@
                 <file name="pages/folder/ChildNodeAttachmentsManage.js"/>
                 <file name="pages/folder/ChildNodeAssociations.js"/>
                 <file name="pages/folder/ChildNodeAssociationAdd.js"/>
+                <file name="pages/folder/ChildNodeRules.js"/>
+                <file name="pages/folder/ChildNodeRuleAdd.js"/>
                 <file name="pages/folder/FolderEdit.js"/>
                 <file name="pages/folder/FolderExport.js"/>
                 <file name="pages/folder/FolderImport.js"/>

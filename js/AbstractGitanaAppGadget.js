@@ -548,12 +548,19 @@
             }
         },
 
-        _updateItem: function(items, key, value)
+        _updateItem: function(items, key, value, link)
         {
             if (items) {
                 for (var i = 0; i < items.length; i++) {
                     if (items[i].key == key) {
-                        items[i].value = value;
+
+                        if (value) {
+                            items[i].value = value;
+                        }
+                        if (link) {
+                            items[i].link = link;
+                        }
+
                         break;
                     }
                 }
