@@ -10,7 +10,7 @@
         ],
 
         schema: function() {
-            return Alpaca.mergeObject(this.base(), {
+            return _mergeObject(this.base(), {
                 "properties": {
                     "tags": {
                         "title": "Tags",
@@ -21,7 +21,7 @@
         },
 
         options: function() {
-            return Alpaca.mergeObject(this.base(), {
+            return _mergeObject(this.base(), {
                 "fields" : {
                     "title" : {
                         "helper" : "Enter node title."
@@ -93,7 +93,7 @@
                             }
 
                             Ratchet.merge(formVal, node);
-                            //Alpaca.mergeObject(node,formVal);
+                            //_mergeObject(node,formVal);
 
                             var tags = formVal['tags'];
 
@@ -142,7 +142,7 @@
 
             if (self.definition() && self.definition().properties) {
                 schema.properties = {};
-                schema = Alpaca.mergeObject(schema, {
+                schema = _mergeObject(schema, {
                     "properties" : self.definition().properties
                 });
             }
@@ -153,7 +153,7 @@
             var options = self.options();
 
             if (self.form()) {
-                options = Alpaca.mergeObject(options, self.form());
+                options = _mergeObject(options, self.form());
             }
 
             options = JSON.parse(JSON.stringify(options));
@@ -174,7 +174,7 @@
 
                 if (mimeType == "text/plain" || mimeType == "text/html") {
 
-                    schema = Alpaca.mergeObject(schema, {
+                    schema = _mergeObject(schema, {
                         "properties" : {
                             "body" : {
                                 "title": "Node Body",
@@ -183,7 +183,7 @@
                         }
                     });
 
-                    options = Alpaca.mergeObject(options, {
+                    options = _mergeObject(options, {
                         "fields" : {
                             "body" : {
                                 "type" :  mimeType == "text/plain" ? "textarea" : "elrte",
@@ -375,7 +375,7 @@
                 });
             }
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

@@ -956,9 +956,9 @@
                                     consoleAppUserSettings = this.getSettings();
                                 });
                                 this.then(function() {
-                                    Alpaca.mergeObject(myConsoleAppSettings,Gitana.Console.Settings.Default);
-                                    Alpaca.mergeObject(myConsoleAppSettings,consoleAppDefaultSettings);
-                                    Alpaca.mergeObject(myConsoleAppSettings,consoleAppUserSettings);
+                                    _mergeObject(myConsoleAppSettings,Gitana.Console.Settings.Default);
+                                    _mergeObject(myConsoleAppSettings,consoleAppDefaultSettings);
+                                    _mergeObject(myConsoleAppSettings,consoleAppUserSettings);
                                     self.consoleAppSettings(myConsoleAppSettings);
                                 })
                             });

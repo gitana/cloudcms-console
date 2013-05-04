@@ -238,4 +238,11 @@
         return url;
     };
 
+    var _mergeObject = window._mergeObject = function(target, source)
+    {
+        Ratchet.merge(source, target);
+
+        return target;
+    };
+
 })(jQuery);

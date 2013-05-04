@@ -6,12 +6,12 @@
         },
 
         schema: function() {
-            return Alpaca.mergeObject(this.base(),Gitana.Console.Schema.Tenant);
+            return _mergeObject(this.base(),Gitana.Console.Schema.Tenant);
         },
 
         options: function() {
             var self = this;
-            var options = Alpaca.mergeObject(this.base(),Gitana.Console.Options.Tenant);
+            var options = _mergeObject(this.base(),Gitana.Console.Options.Tenant);
 
             options['fields']['planKey']['dataSource'] = function(field, callback) {
                 var firstOption;
@@ -155,7 +155,7 @@
                                 this.readDomain(domainId).readPrincipal(principalId).then(function() {
                                     this.subchain(self.targetObject()).createTenant(this,planKey,paymentMethod).then(function() {
                                         var newTenant = this;
-                                        Alpaca.mergeObject(newTenant,formVal);
+                                        _mergeObject(newTenant,formVal);
                                         this.update().then(function() {
                                             // Create a customer for the new tenant
                                             var tenantPlatform = this.getPlatform();
@@ -217,7 +217,7 @@
                 }]
             };
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

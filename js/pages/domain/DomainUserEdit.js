@@ -73,7 +73,7 @@
                             delete updatedUser ["password"];
 
                             delete updatedUser['file'];
-                            Alpaca.mergeObject(user, updatedUser);
+                            _mergeObject(user, updatedUser);
                             user.trap(function(error) {
                                 return self.handlePageError(el, error);
                             }).update().reload().then(function() {
@@ -143,7 +143,7 @@
 
             this.setupEditPage(el, page);
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

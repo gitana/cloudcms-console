@@ -155,6 +155,10 @@
                 "value" : client.getEnabled()
             });
             this._pushItem(pairs.items, {
+                "key" : "Allow Guest Login",
+                "value" : client["allowGuestLogin"]
+            });
+            this._pushItem(pairs.items, {
                 "key" : "Last Modified",
                 "value" : "By " + client.getSystemMetadata().getModifiedBy() + " @ " + client.getSystemMetadata().getModifiedOn().getTimestamp()
             });
@@ -183,7 +187,7 @@
                 ]
             };
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

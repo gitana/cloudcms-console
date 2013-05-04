@@ -2,7 +2,7 @@
     Gitana.Console.Pages.AbstractObjetTeamAdd = Gitana.CMS.Pages.AbstractFormPageGadget.extend(
     {
         schema : function() {
-            var schema = Alpaca.mergeObject(this.base(), {
+            var schema = _mergeObject(this.base(), {
                 "type": "object",
                 "properties": {
                     "teamKey" : {
@@ -35,7 +35,7 @@
                 rolesDS[key] = val['title'];
             });
 
-            return Alpaca.mergeObject(this.base(), {
+            return _mergeObject(this.base(), {
                 "fields": {
                     "title" : {
                         "helper" : "Enter team title."
@@ -149,7 +149,7 @@
                                     this.then(function() {
                                         this.subchain(self.platform()).readPrimaryDomain().readPrincipal(newGroupId).then(function() {
 
-                                            Alpaca.mergeObject(this, val);
+                                            _mergeObject(this, val);
 
                                             this.update().then(function() {
 

@@ -20,7 +20,7 @@
 
         schema: function() {
 
-            return Alpaca.mergeObject({
+            return _mergeObject({
                 "properties" : {
                     "target" : {
                         "title": "Target Node Id",
@@ -45,7 +45,7 @@
 
         options: function() {
             var self = this;
-            var options = Alpaca.mergeObject(this.base(), {
+            var options = _mergeObject(this.base(), {
                 "fields" : {
                     "title" : {
                         "helper" : "Enter association title."
@@ -310,7 +310,7 @@
             var schema = self.schema();
 
             if (self.definition() && self.definition().object.properties) {
-                schema = Alpaca.mergeObject(schema, {
+                schema = _mergeObject(schema, {
                     "properties" : self.definition().properties
                 });
             }
@@ -318,7 +318,7 @@
             var options = self.options();
 
             if (self.form()) {
-                options = Alpaca.mergeObject(options, self.form());
+                options = _mergeObject(options, self.form());
             }
 
             $('#association-add',$(el)).alpaca({
@@ -433,7 +433,7 @@
         },
 
         filterSchema: function () {
-            return Alpaca.mergeObject(this.base(), {
+            return _mergeObject(this.base(), {
                 "properties" : {
                     "type" : {
                         "title": "Type",
@@ -447,7 +447,7 @@
 
             var self = this;
 
-            var options = Alpaca.mergeObject(this.base(), {
+            var options = _mergeObject(this.base(), {
                 "helper" : "Query nodes by id, title, description, date range, type or full query.",
                 "fields" : {
                     "type" : {
@@ -487,7 +487,7 @@
         },
 
         filterView: function() {
-            return Alpaca.mergeObject(this.base(),{
+            return _mergeObject(this.base(),{
                 "layout": {
                     "bindings": {
                         "type" : "column-1"
@@ -631,7 +631,7 @@
                 ]
             };
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

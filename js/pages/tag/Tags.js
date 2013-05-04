@@ -90,7 +90,7 @@
         },
 
         filterSchema: function () {
-            return Alpaca.mergeObject(this.base(), {
+            return _mergeObject(this.base(), {
                 "properties" : {
                     "tag" : {
                         "title": "Tag",
@@ -104,7 +104,7 @@
 
             var self = this;
 
-            var options = Alpaca.mergeObject(this.base(), {
+            var options = _mergeObject(this.base(), {
                 "helper" : "Query list by id, title, description, date range, type or full query.",
                 "fields" : {
                     "tag" : {
@@ -118,7 +118,7 @@
         },
 
         filterView: function() {
-            return Alpaca.mergeObject(this.base(),{
+            return _mergeObject(this.base(),{
                 "layout": {
                     "bindings": {
                         "tag": "column-1",
@@ -248,7 +248,7 @@
                 var checks = [];
                 Chain(self.branch()).trap(function(error) {
                     return self.handlePageError(el, error);
-                }).find(Alpaca.mergeObject(self.query(),{
+                }).find(_mergeObject(self.query(),{
                     "query" : {
                         "_type" : "n:tag"
                     }
@@ -278,7 +278,7 @@
                 "filter" : this.FILTER
             };
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
     });
 

@@ -47,7 +47,7 @@
                 }
             };
 
-            Alpaca.mergeObject(schema.properties['_settings'],Gitana.Console.Settings.Schema);
+            _mergeObject(schema.properties['_settings'],Gitana.Console.Settings.Schema);
 
             return schema;
         },
@@ -130,7 +130,7 @@
 
                             delete updatedUser["_settings"];
 
-                            Alpaca.mergeObject(user, updatedUser);
+                            _mergeObject(user, updatedUser);
                             user.update().reload().then(function() {
                                 var updatedUser = this;
 
@@ -146,7 +146,7 @@
                                             if (count > 0) {
                                                 this.keepOne().then(function() {
                                                     this.readApplicationPrincipalSettings(self.user()).then(function() {
-                                                        Alpaca.mergeObject(this, {
+                                                        _mergeObject(this, {
                                                             "settings" : settings
                                                         });
                                                         this.update().reload().then(function() {
@@ -233,7 +233,7 @@
                     }]
             };
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

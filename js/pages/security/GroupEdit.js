@@ -10,7 +10,7 @@
         },
 
         schema: function() {
-            return Alpaca.mergeObject(this.base(), {
+            return _mergeObject(this.base(), {
                 "properties" : {
                     "file": {
                         "title": "Avatar",
@@ -22,7 +22,7 @@
         },
 
         options: function() {
-            return Alpaca.mergeObject(this.base(), {
+            return _mergeObject(this.base(), {
                 "fields" : {
                     "title" : {
                         "helper" : "Enter group title."
@@ -84,7 +84,7 @@
 
                             Gitana.Utils.UI.block("Updating Group...");
 
-                            Alpaca.mergeObject(group, formVal);
+                            _mergeObject(group, formVal);
 
                             Chain(group).update().reload().then(function() {
 
@@ -147,7 +147,7 @@
 
             this.setupEditPage(el, page);
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

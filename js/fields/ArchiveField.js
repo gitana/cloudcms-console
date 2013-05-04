@@ -32,7 +32,7 @@
 
             this.controlFieldTemplateDescriptor = this.view.getTemplateDescriptor("controlFieldArchive");
 
-            Alpaca.mergeObject(this.options, {
+            _mergeObject(this.options, {
                 "fileupload" : {
                     "attachmentId" : "archive",
                     "maxNumberOfFiles" :1,

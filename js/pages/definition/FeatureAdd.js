@@ -228,7 +228,7 @@
 
                                 // definitionObj[featureId] = {};
 
-                                // Alpaca.mergeObject(definitionObj[featureId],featureVal);
+                                // _mergeObject(definitionObj[featureId],featureVal);
 
 
                                 self.targetObject().addFeature(featureId,featureVal).then(function() {
@@ -324,7 +324,7 @@
                 }]
             };
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

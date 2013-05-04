@@ -36,7 +36,7 @@
 
             this.controlFieldTemplateDescriptor = this.view.getTemplateDescriptor("controlFieldAvatar");
 
-            Alpaca.mergeObject(this.options, {
+            _mergeObject(this.options, {
                 "fileupload" : {
                     "attachmentId" : "avatar",
                     "maxNumberOfFiles" :1,

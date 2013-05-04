@@ -6,7 +6,7 @@
 
         schema: function() {
 
-            return Alpaca.mergeObject(this.base(), {
+            return _mergeObject(this.base(), {
                 "properties" : {
                     "tag" : {
                         "title" : "Tag",
@@ -19,7 +19,7 @@
 
         options: function() {
             var self = this;
-            var options = Alpaca.mergeObject(this.base(), {
+            var options = _mergeObject(this.base(), {
                 "fields" : {
                     "title" : {
                         "helper" : "Enter tag title."
@@ -154,7 +154,7 @@
                 ]
             };
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

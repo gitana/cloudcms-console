@@ -139,7 +139,7 @@
         },
 
         filterView: function() {
-            return Alpaca.mergeObject(this.base(),{
+            return _mergeObject(this.base(),{
                 "layout": {
                     "bindings": {
                         "type": "column-1",
@@ -266,7 +266,7 @@
                 "filter" : this.FILTER()
             };
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
     });
 

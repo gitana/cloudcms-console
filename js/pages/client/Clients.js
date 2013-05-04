@@ -125,12 +125,27 @@
 
             list["columns"] = [
                 {
-                    "title": "Title",
+                    "title": "Key",
                     "type":"property",
-                    "sortingExpression": "title",
+                    "sortingExpression": "key",
                     "property": function(callback) {
-                        var title = self.friendlyTitle(this);
-                        var value = "<a href='#" + self.link(this) + "'>" + title + "</a>";
+                        var key = this["key"];
+                        var value = "<a href='#" + self.link(this) + "'>" + key + "</a>";
+                        callback(value);
+                    }
+                },
+                {
+                    "title": "Domain URLs",
+                    "sortingExpression": "domainUrls",
+                    "property": function(callback) {
+                        var domainUrls = this["domainUrls"];
+                        var value = "";
+                        if (domainUrls ) {
+                            for (var i = 0; i < domainUrls.length; i++) {
+                                value += "<a href='" + domainUrls[i] + "' target='_blank'>" + domainUrls[i] + "</a>";
+                                value += "<br/>";
+                            }
+                        }
                         callback(value);
                     }
                 },
@@ -182,7 +197,7 @@
                 "filter" : this.FILTER
             };
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

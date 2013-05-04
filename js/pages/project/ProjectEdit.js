@@ -57,7 +57,7 @@
                         var formVal = form.getValue();
                         if (form.isValid(true)) {
                             Gitana.Utils.UI.block("Updating Project ...");
-                            Alpaca.mergeObject(project,formVal);
+                            _mergeObject(project,formVal);
                             project.update().then(function() {
                                 Gitana.Utils.UI.unblock(function() {
                                     self.app().run('GET', self.LINK().call(self,self.targetObject()));
@@ -103,7 +103,7 @@
 
             this.setupEditPage(el, page);
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

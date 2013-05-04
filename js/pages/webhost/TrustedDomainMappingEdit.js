@@ -62,7 +62,7 @@
                         var formVal = form.getValue();
                         if (form.isValid(true)) {
                             Gitana.Utils.UI.block("Updating Trusted Domain Mapping ...");
-                            Alpaca.mergeObject(trustedDomainMapping,formVal);
+                            _mergeObject(trustedDomainMapping,formVal);
                             trustedDomainMapping.update().then(function() {
                                 Gitana.Utils.UI.unblock(function() {
                                     self.app().run('GET', self.LINK().call(self,self.targetObject()));
@@ -108,7 +108,7 @@
 
             this.setupEditPage(el, page);
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

@@ -678,7 +678,6 @@
 
     <target name="prep-html" description="Prepare all htmls" depends="compress">
         <echo>TIMESTAMP: ${timestamp}</echo>
-        <echo>DIR: ${prep.dir}</echo>
         <replaceregexp match="&lt;!--TIMESTAMP--&gt;" replace="Version: ${version}, Build Date: ${timestamp}" flags="gs">
             <fileset dir="${prep.dir}" includes="index.html"/>
             <fileset dir="${prep.dir}" includes="index-prod.html"/>

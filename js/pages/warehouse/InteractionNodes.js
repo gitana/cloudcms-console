@@ -79,7 +79,7 @@
             },
 
             filterSchema: function () {
-                return Alpaca.mergeObject({
+                return _mergeObject({
                     "properties" : {
                         "nodeId" : {
                             "title": "Node Id",
@@ -91,7 +91,7 @@
 
             filterOptions: function() {
 
-                var options = Alpaca.mergeObject(this.base(), {
+                var options = _mergeObject(this.base(), {
                     "helper" : "Query interaction nodes by nodeId, id, title, description, date range or full query.",
                     "fields" : {
                         "nodeId" : {
@@ -105,7 +105,7 @@
             },
 
             filterView: function() {
-                return Alpaca.mergeObject(this.base(),{
+                return _mergeObject(this.base(),{
                     "layout": {
                         "bindings": {
                             "nodeId": "column-1",
@@ -183,7 +183,7 @@
                     "filter" : this.FILTER
                 };
 
-                this.page(Alpaca.mergeObject(page, this.base(el)));
+                this.page(_mergeObject(page, this.base(el)));
             }
         });
 

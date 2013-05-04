@@ -20,7 +20,7 @@
                 var items = toolbar.items ? toolbar.items : {};
                 if (toolbar.groups) {
                     $.each(toolbar.groups, function(i,group) {
-                        Alpaca.mergeObject(items, group.items);
+                        _mergeObject(items, group.items);
                     })
                 }
 

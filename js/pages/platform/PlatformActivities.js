@@ -83,7 +83,7 @@
             },
 
             filterSchema: function () {
-                return Alpaca.mergeObject(this.base(), {
+                return _mergeObject(this.base(), {
                     "properties" : {
                         "type" : {
                             "title": "Activity Type",
@@ -109,7 +109,7 @@
 
                 var self = this;
 
-                var options = Alpaca.mergeObject(this.base(), {
+                var options = _mergeObject(this.base(), {
                     "helper" : "Query nodes by id, title, description, date range, keyword, activity type, object type, datastore type or full query.",
                     "fields" : {
                         "type" : {
@@ -167,7 +167,7 @@
             },
 
             filterView: function() {
-                return Alpaca.mergeObject(this.base(), {
+                return _mergeObject(this.base(), {
                     "layout": {
                         "bindings": {
                             "id": "column-1",
@@ -257,7 +257,7 @@
                 activity.object = self.populateObjectAll(activity);
                 activity.object.fullJson = JSON.stringify(activity.object, null, ' ');
 
-                //Alpaca.mergeObject(activity.object, activity.system);
+                //_mergeObject(activity.object, activity.system);
 
                 var templatePath = (Gitana.Apps.APP_NAME ? "/" : "") + Gitana.Apps.APP_NAME + "/templates/themes/" + Gitana.Apps.THEME + "/activities/activity-details.html";
 
@@ -297,7 +297,7 @@
                     "filter" : this.FILTER
                 };
 
-                this.page(Alpaca.mergeObject(page, this.base(el)));
+                this.page(_mergeObject(page, this.base(el)));
             }
 
         });

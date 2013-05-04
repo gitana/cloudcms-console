@@ -12,9 +12,9 @@
         schema: function() {
             var schema = {};
 
-            Alpaca.mergeObject(schema,Gitana.Console.Schema.PrincipalGroup);
+            _mergeObject(schema,Gitana.Console.Schema.PrincipalGroup);
 
-            Alpaca.mergeObject(schema,this.base());
+            _mergeObject(schema,this.base());
 
             schema['properties']['name']['readonly'] = true;
 
@@ -25,7 +25,7 @@
             var self = this;
             var options = Alpaca.cloneObject(Gitana.Console.Options.PrincipalGroup);
 
-            Alpaca.mergeObject(options,this.base());
+            _mergeObject(options,this.base());
 
             options['fields']['file']['context'] = self.targetObject();
 
@@ -76,7 +76,7 @@
 
                             Gitana.Utils.UI.block("Updating Group...");
 
-                            Alpaca.mergeObject(group, formVal);
+                            _mergeObject(group, formVal);
 
                             Chain(group).update().reload().then(function() {
 
@@ -139,7 +139,7 @@
 
             this.setupEditPage(el, page);
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

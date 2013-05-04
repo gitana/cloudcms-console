@@ -82,13 +82,13 @@
             if (this.options && this.options.context) {
                 this.context = this.options.context;
                 if (this.context.platform && this.context.platform()) {
-                    Alpaca.mergeObject(this.options, {
+                    _mergeObject(this.options, {
                         "fileupload" : {
                             "driver" : this.context.platform().getDriver()
                         }
                     });
                 } else if (this.context.getDriver && this.context.getDriver()) {
-                    Alpaca.mergeObject(this.options, {
+                    _mergeObject(this.options, {
                         "fileupload" : {
                             "driver" : this.context.getDriver()
                         }
@@ -435,7 +435,7 @@
             };
             // merge with user provided options
             if (this.options && this.options.fileupload) {
-                Alpaca.mergeObject(this.fileUploadOptions, this.options.fileupload);
+                _mergeObject(this.fileUploadOptions, this.options.fileupload);
             }
 
             // custom handler for file widget change event

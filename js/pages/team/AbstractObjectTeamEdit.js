@@ -6,7 +6,7 @@
         },
 
         schema: function() {
-            return Alpaca.mergeObject(this.base(), {
+            return _mergeObject(this.base(), {
                 "properties" : {
                     "teamKey" : {
                         "title": "Team Key",
@@ -35,7 +35,7 @@
                 rolesDS[key] = val['title'];
             });
 
-            return Alpaca.mergeObject(this.base(), {
+            return _mergeObject(this.base(), {
                 "fields" : {
                     "title" : {
                         "helper" : "Enter team title."
@@ -94,7 +94,7 @@
 
                             Gitana.Utils.UI.block("Updating Team...");
 
-                            Alpaca.mergeObject(group, formVal);
+                            _mergeObject(group, formVal);
 
                             self.team().then(function() {
 
@@ -190,7 +190,7 @@
 
             this.setupEditPage(el, page);
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
     });
 

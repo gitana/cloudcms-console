@@ -126,7 +126,7 @@
 
             record.object.fullJson = JSON.stringify(record.object, null, ' ');
 
-            Alpaca.mergeObject(record.object,record.__system());
+            _mergeObject(record.object,record.__system());
 
             var templatePath = (Gitana.Apps.APP_NAME ? "/" : "") + Gitana.Apps.APP_NAME + "/templates/themes/" + Gitana.Apps.THEME + "/nodes/audit-record.html";
 
@@ -162,7 +162,7 @@
                 "filter" : this.FILTER()
             };
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
     });
 

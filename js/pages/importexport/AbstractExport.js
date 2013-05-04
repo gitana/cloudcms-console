@@ -73,7 +73,7 @@
                         }
                     }
                 };
-                Alpaca.mergeObject(schema.properties.archive, Gitana.Console.Schema.Archive);
+                _mergeObject(schema.properties.archive, Gitana.Console.Schema.Archive);
                 return schema;
             },
 
@@ -154,7 +154,7 @@
                         }
                     }
                 };
-                Alpaca.mergeObject(options.fields.archive, Gitana.Console.Options.Archive);
+                _mergeObject(options.fields.archive, Gitana.Console.Options.Archive);
                 return options;
             },
 

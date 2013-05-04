@@ -64,7 +64,7 @@
 
 
         filterSchema: function () {
-            return Alpaca.mergeObject(this.base(), {
+            return _mergeObject(this.base(), {
                 "properties" : {
                     "title" : {
                         "title": "Title",
@@ -82,7 +82,7 @@
 
             var self = this;
 
-            var options = Alpaca.mergeObject(this.base(), {
+            var options = _mergeObject(this.base(), {
                 "helper" : "Query groups by id, name, title, description, date range, type or full query.",
                 "fields" : {
                     "title" : {
@@ -394,7 +394,7 @@
 
                                 var groupId = this.getDomainId() + "/" + this.getId();
 
-                                Alpaca.mergeObject(_this[this.getId()], groupAuthorityLookup[groupId]);
+                                _mergeObject(_this[this.getId()], groupAuthorityLookup[groupId]);
 
                             }).then(function() {
 

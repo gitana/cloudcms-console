@@ -30,7 +30,7 @@
 
                             Gitana.Utils.UI.block("Updating folder...");
 
-                            Alpaca.mergeObject(node,formVal);
+                            _mergeObject(node,formVal);
 
                             var tags = formVal['tags'];
 
@@ -89,7 +89,7 @@
 
             this.setupEditPage(el, page);
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

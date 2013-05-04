@@ -15,7 +15,7 @@
 
             /** Filter Related Methods **/
             filterEmptyData: function() {
-                var emptyData = Alpaca.mergeObject({
+                var emptyData = _mergeObject({
                     "indirect" : false
                 }, this.base());
                 delete emptyData["domainId"];
@@ -37,7 +37,7 @@
             },
 
             filterSchema: function () {
-                var schema = Alpaca.mergeObject({
+                var schema = _mergeObject({
                     "type" : "object",
                     "properties" : {
                         "indirect" : {
@@ -66,7 +66,7 @@
             },
 
             filterView: function() {
-                return Alpaca.mergeObject(this.base(), {
+                return _mergeObject(this.base(), {
                     "layout": {
                         "bindings": {
                             "indirect": "column-2"
@@ -308,14 +308,14 @@
 
                         delete principalQuery['indirect'];
 
-                        Alpaca.mergeObject(principalQuery, {
+                        _mergeObject(principalQuery, {
                             "teamGroup" : {
                                 "$ne" : true
                             }
                         });
 
                         if (!principalQuery['_doc']) {
-                            Alpaca.mergeObject(principalQuery, {
+                            _mergeObject(principalQuery, {
                                 "_doc" : {
                                     "$ne" : self.targetObject().getId()
                                 }
@@ -478,7 +478,7 @@
                     ]
                 };
 
-                this.page(Alpaca.mergeObject(page, this.base(el)));
+                this.page(_mergeObject(page, this.base(el)));
             }
 
         });

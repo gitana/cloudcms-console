@@ -33,7 +33,7 @@
 
         /** Filter Related Methods **/
         filterEmptyData: function() {
-            return Alpaca.mergeObject(this.base(),{
+            return _mergeObject(this.base(),{
                 "lastName" : "",
                 "email" : "",
                 "companyName" : ""
@@ -69,7 +69,7 @@
         },
 
         filterSchema: function () {
-            return Alpaca.mergeObject(this.base(),{
+            return _mergeObject(this.base(),{
                 "properties" : {
                     "lastName" : {
                         "title": "Last Name",
@@ -88,7 +88,7 @@
         },
 
         filterOptions: function() {
-            return Alpaca.mergeObject(this.base(),{
+            return _mergeObject(this.base(),{
                 "helper" : "Query users by id, name, last name, email, company name, date range or full query.",
                 "fields" : {
                     "lastName" : {
@@ -383,7 +383,7 @@
 
                                     var userId = this.getDomainId() + "/" + this.getId();
 
-                                    Alpaca.mergeObject(_this[this.getId()], userAuthorityLookup[userId]);
+                                    _mergeObject(_this[this.getId()], userAuthorityLookup[userId]);
 
                                 }).then(function() {
 

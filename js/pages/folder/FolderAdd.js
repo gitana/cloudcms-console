@@ -80,7 +80,7 @@
                     ]
                 };
 
-                this.page(Alpaca.mergeObject(page, this.pageHistory(el)));
+                this.page(_mergeObject(page, this.pageHistory(el)));
             }
 
         });

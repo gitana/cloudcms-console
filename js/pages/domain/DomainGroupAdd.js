@@ -6,7 +6,7 @@
             var schema = {};
 
             if (this.group()) {
-               Alpaca.mergeObject(schema,{
+               _mergeObject(schema,{
                     "properties": {
                         "parentGroupId" : {
                             "title": "Parent Group Id",
@@ -19,9 +19,9 @@
                 });
             }
 
-            Alpaca.mergeObject(schema,Gitana.Console.Schema.PrincipalGroup);
+            _mergeObject(schema,Gitana.Console.Schema.PrincipalGroup);
 
-            Alpaca.mergeObject(schema,this.base());
+            _mergeObject(schema,this.base());
 
             return schema;
         },
@@ -29,7 +29,7 @@
             var self = this;
             var options = Alpaca.cloneObject(Gitana.Console.Options.PrincipalGroup);
 
-            Alpaca.mergeObject(options,this.base());
+            _mergeObject(options,this.base());
 
             options['fields']['file']['context'] = self.platform();
 
@@ -181,7 +181,7 @@
                 }]
             };
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

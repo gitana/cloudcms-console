@@ -9,7 +9,7 @@
 
             var schema = Alpaca.cloneObject(Gitana.Console.Schema.Warehouse);
 
-            Alpaca.mergeObject(schema,this.base());
+            _mergeObject(schema,this.base());
 
             return schema;
         },
@@ -20,7 +20,7 @@
 
             var options = Alpaca.cloneObject(Gitana.Console.Options.Warehouse);
 
-            Alpaca.mergeObject(options,this.base());
+            _mergeObject(options,this.base());
 
             return options;
         },
@@ -109,7 +109,7 @@
                 }]
             };
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

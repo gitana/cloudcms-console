@@ -111,7 +111,7 @@
             };
 
             if (formVal['duplicate']) {
-                Alpaca.mergeObject(newObj,self.node());
+                _mergeObject(newObj,self.node());
                 $.each(newObj,function(k,v) {
                     if (Alpaca.startsWith(k,'_')) {
                         delete newObj[k];
@@ -209,7 +209,7 @@
                 ]
             };
 
-            this.page(Alpaca.mergeObject(page, this.base(el)));
+            this.page(_mergeObject(page, this.base(el)));
 
         }
 

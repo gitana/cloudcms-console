@@ -230,7 +230,7 @@
 
                         delete principalQuery['domainId'];
 
-                        Alpaca.mergeObject(principalQuery, {
+                        _mergeObject(principalQuery, {
                             "teamGroup" : {
                                 "$ne" : true
                             }
@@ -386,7 +386,7 @@
                     ]
                 };
 
-                this.page(Alpaca.mergeObject(page, this.base(el)));
+                this.page(_mergeObject(page, this.base(el)));
             }
 
         });

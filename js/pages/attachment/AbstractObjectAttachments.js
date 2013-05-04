@@ -73,7 +73,7 @@
         },
 
         filterView: function() {
-            return Alpaca.mergeObject(this.base(),{
+            return _mergeObject(this.base(),{
                 "layout": {
                     "bindings": {
                         "name": "column-1"

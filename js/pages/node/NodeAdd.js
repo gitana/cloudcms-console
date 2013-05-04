@@ -3,7 +3,7 @@
 
         schema: function() {
 
-            return Alpaca.mergeObject(this.base(), {
+            return _mergeObject(this.base(), {
                 "properties" : {
                     "tags": {
                         "title": "Tags",
@@ -15,7 +15,7 @@
 
         options: function() {
 
-            return Alpaca.mergeObject(this.base(), {
+            return _mergeObject(this.base(), {
                 "fields" : {
                     "title" : {
                         "helper" : "Enter node title."
@@ -232,7 +232,7 @@
 
             if (self.definition() && self.definition().properties) {
                 schema.properties = {};
-                schema = Alpaca.mergeObject(schema, {
+                schema = _mergeObject(schema, {
                     "properties" : self.definition().properties
                 });
             }
@@ -243,7 +243,7 @@
             var options = self.options();
 
             if (self.form()) {
-                options = Alpaca.mergeObject(options, self.form());
+                options = _mergeObject(options, self.form());
             }
 
             options = JSON.parse(JSON.stringify(options));
@@ -326,7 +326,7 @@
                 ]
             };
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
 
         }
 

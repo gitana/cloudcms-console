@@ -89,7 +89,7 @@
         },
 
         filterSchema: function () {
-            return Alpaca.mergeObject({
+            return _mergeObject({
                 "properties" : {
                     "key" : {
                         "title": "Key",
@@ -101,7 +101,7 @@
 
         filterOptions: function() {
 
-            var options = Alpaca.mergeObject(this.base(), {
+            var options = _mergeObject(this.base(), {
                 "helper" : "Query applications by key, id, title, description, date range, keyword, type or full query.",
                 "fields" : {
                     "key" : {
@@ -115,7 +115,7 @@
         },
 
         filterView: function() {
-            return Alpaca.mergeObject(this.base(),{
+            return _mergeObject(this.base(),{
                 "layout": {
                     "bindings": {
                         "key": "column-1",
@@ -239,7 +239,7 @@
                 "filter" : this.FILTER
             };
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

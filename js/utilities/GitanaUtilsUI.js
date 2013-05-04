@@ -52,7 +52,8 @@
                 if ($('.alpaca-controlfield-file', el).length == 0) {
 
                     // remove select
-                    $("input:checkbox, input:text, input:password, input:radio, input:file, textarea", el).uniform();
+                    //$("input:checkbox, input:text, input:password, input:radio, input:file, textarea", el).uniform();
+                    $("input:text, input:password, input:radio, input:file, textarea", el).uniform();
 
                     // special handle select
                     $("select").each(function() {
@@ -64,7 +65,7 @@
                     });
 
                     // special handle checkbox
-                    $("checkbox", el).uniform();
+                    //$("checkbox", el).uniform();
                 }
             }
         },
@@ -144,7 +145,8 @@
         beautifyAlpacaFormWithASMSelect: function(form, buttonId, auto) {
             var el = form.getEl();
             if (el.uniform && $('.alpaca-controlfield-file',el).length == 0) {
-                $("input:checkbox, input:text, input:password, input:radio, input:file, textarea", el).uniform();
+                //$("input:checkbox, input:text, input:password, input:radio, input:file, textarea", el).uniform();
+                $("input:text, input:password, input:radio, input:file, textarea", el).uniform();
             }
             form.getEl().css('border', 'none');
             if (auto) {

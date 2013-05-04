@@ -2,7 +2,7 @@
     Gitana.Console.Pages.GroupAdd = Gitana.CMS.Pages.AbstractFormPageGadget.extend(
     {
         schema : function() {
-            var schema = Alpaca.mergeObject(this.base(), {
+            var schema = _mergeObject(this.base(), {
                 "type": "object",
                 "properties": {
                     "groupId" : {
@@ -20,7 +20,7 @@
             });
 
             if (this.group()) {
-                Alpaca.mergeObject(schema, {
+                _mergeObject(schema, {
                     "properties": {
                         "parentGroupId" : {
                             "title": "Parent Group Id",
@@ -37,7 +37,7 @@
         },
         options : function () {
             var self = this;
-            return Alpaca.mergeObject(this.base(), {
+            return _mergeObject(this.base(), {
                 "fields": {
                     "title" : {
                         "helper" : "Enter group title."
@@ -225,7 +225,7 @@
                 }]
             };
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

@@ -284,6 +284,11 @@
                     "title" : "Client",
                     "type" : "boolean",
                     "default" : true
+                },
+                "allowGuestLogin": {
+                    "title": "Allow Guest Login",
+                    "type": "boolean",
+                    "default": true
                 }
             }
         },
@@ -1095,6 +1100,10 @@
                 },
                 "enabled" : {
                     "rightLabel" : "Enabled ?"
+                },
+                "allowGuestLogin": {
+                    "rightLabel": "Allow Guest Login?",
+                    "helper": "Whether to allow guest logins via this client"
                 }
             }
         },

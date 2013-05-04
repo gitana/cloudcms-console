@@ -7,7 +7,7 @@
 
             FILTER_TOOLBAR: {
                 "query" : {
-                    "title" : "Query Auto Client Mappings",
+                    "title" : "Query",
                     "icon" : Gitana.Utils.Image.buildImageUri('browser', 'query', 48)
                 }
             },
@@ -47,7 +47,7 @@
                 self.addButtons([
                     {
                         "id": "create",
-                        "title": "New Auto Client Mapping",
+                        "title": "New Mapping",
                         "icon" : Gitana.Utils.Image.buildImageUri('objects', 'auto-client-mapping-add', 48),
                         "url" : this.LINK().call(self, this.targetObject(), 'add', 'autoclientmapping'),
                         "requiredAuthorities" : [
@@ -105,7 +105,7 @@
             },
 
             filterSchema: function () {
-                return Alpaca.mergeObject(this.base(), {
+                return _mergeObject(this.base(), {
                     "properties" : {
                         "clientKey" : {
                             "title": "Client Key",
@@ -127,7 +127,7 @@
 
                 var self = this;
 
-                var options = Alpaca.mergeObject(this.base(), {
+                var options = _mergeObject(this.base(), {
                     "helper" : "Query auto group mappings by id, title, description, date range, client key, uri or full query.",
                     "fields" : {
                         "clientKey" : {
@@ -149,7 +149,7 @@
             },
 
             filterView: function() {
-                return Alpaca.mergeObject(this.base(), {
+                return _mergeObject(this.base(), {
                     "layout": {
                         "bindings": {
                             "clientKey" : "column-1",
@@ -259,7 +259,7 @@
                     "filter" : this.FILTER
                 };
 
-                this.page(Alpaca.mergeObject(page, this.base(el)));
+                this.page(_mergeObject(page, this.base(el)));
             }
         });
 

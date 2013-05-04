@@ -98,7 +98,7 @@
                         var formVal = form.getValue();
                         if (form.isValid(true)) {
                             Gitana.Utils.UI.block("Updating Auto Client Mapping ...");
-                            Alpaca.mergeObject(autoClientMapping,formVal);
+                            _mergeObject(autoClientMapping,formVal);
                             autoClientMapping.update().then(function() {
                                 Gitana.Utils.UI.unblock(function() {
                                     self.app().run('GET', self.LINK().call(self,self.targetObject()));
@@ -144,7 +144,7 @@
 
             this.setupEditPage(el, page);
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

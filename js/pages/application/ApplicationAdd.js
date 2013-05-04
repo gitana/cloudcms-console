@@ -9,10 +9,10 @@
 
             var schema = Alpaca.cloneObject(this.base());
 
-            Alpaca.mergeObject(schema,Gitana.Console.Schema.Application);
+            _mergeObject(schema,Gitana.Console.Schema.Application);
 
             // automatic stack creation
-            Alpaca.mergeObject(schema, {
+            _mergeObject(schema, {
                 "properties" : {
                     "stack" : {
                         "title" : "Stack",
@@ -34,10 +34,10 @@
 
             var options = Alpaca.cloneObject(Gitana.Console.Options.Application);
 
-            Alpaca.mergeObject(options,this.base());
+            _mergeObject(options,this.base());
 
             // automatic stack creation
-            Alpaca.mergeObject(options, {
+            _mergeObject(options, {
                 "fields" : {
                     "stack" : {
                         "type": "select",
@@ -224,7 +224,7 @@
                 }]
             };
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

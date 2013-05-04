@@ -136,7 +136,7 @@
                             delete updatedUser ["password"];
 
                             delete updatedUser['file'];
-                            Alpaca.mergeObject(user, updatedUser);
+                            _mergeObject(user, updatedUser);
                             user.update().reload().then(function() {
                                 var updatedUser = this;
 
@@ -192,7 +192,7 @@
                     }]
             };
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

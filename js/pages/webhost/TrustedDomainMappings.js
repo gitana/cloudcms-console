@@ -105,7 +105,7 @@
             },
 
             filterSchema: function () {
-                return Alpaca.mergeObject(this.base(), {
+                return _mergeObject(this.base(), {
                     "properties" : {
                         "host" : {
                             "title": "Host",
@@ -127,7 +127,7 @@
 
                 var self = this;
 
-                var options = Alpaca.mergeObject(this.base(), {
+                var options = _mergeObject(this.base(), {
                     //"helper" : "Query trusted domain mappings by id, title, description, date range, client key, uri or full query.",
                     "fields" : {
                         "host" : {
@@ -149,7 +149,7 @@
             },
 
             filterView: function() {
-                return Alpaca.mergeObject(this.base(), {
+                return _mergeObject(this.base(), {
                     "layout": {
                         "bindings": {
                             "host" : "column-1",
@@ -259,7 +259,7 @@
                     "filter" : this.FILTER
                 };
 
-                this.page(Alpaca.mergeObject(page, this.base(el)));
+                this.page(_mergeObject(page, this.base(el)));
             }
         });
 

@@ -71,7 +71,7 @@
                 }]
             };
 
-            return Alpaca.mergeObject(page,this.base(el));
+            return _mergeObject(page,this.base(el));
         }
     });
 

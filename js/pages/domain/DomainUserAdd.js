@@ -5,7 +5,7 @@
             var schema = Alpaca.cloneObject(Gitana.Console.Schema.PrincipalUser);
 
             if (this.group()) {
-                return Alpaca.mergeObject({
+                return _mergeObject({
                     "properties": {
                         "parentGroupId" : {
                             "title": "Parent Group Id",
@@ -199,7 +199,7 @@
                 }]
             };
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

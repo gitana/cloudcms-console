@@ -187,7 +187,7 @@
 
         /** Filter Related Methods **/
         filterEmptyData: function() {
-            return Alpaca.mergeObject(this.base(), {
+            return _mergeObject(this.base(), {
                 "member" : true,
                 "dataStoreType" : "repository"
             });
@@ -213,7 +213,7 @@
         },
 
         filterSchema: function () {
-            return Alpaca.mergeObject({
+            return _mergeObject({
                 "type" : "object",
                 "properties" : {
                     "member" : {
@@ -235,7 +235,7 @@
 
         filterOptions: function() {
             var self = this;
-            return Alpaca.mergeObject(this.base(), {
+            return _mergeObject(this.base(), {
                 "helper" : "Query data stores by membership, type, id, title, description, date range or full query.",
                 "fields" : {
                     "member" : {
@@ -256,7 +256,7 @@
         },
 
         filterView: function() {
-            return Alpaca.mergeObject(this.base(), {
+            return _mergeObject(this.base(), {
                 "layout": {
                     "bindings": {
                         "member": "column-1",
@@ -509,7 +509,7 @@
                 ]
             };
 
-            this.page(Alpaca.mergeObject(page, this.base(el)));
+            this.page(_mergeObject(page, this.base(el)));
         }
 
     });

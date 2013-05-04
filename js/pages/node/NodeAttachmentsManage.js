@@ -36,7 +36,7 @@
                 "description" : "Add, remove or view attachment(s) of node " + this.friendlyTitle(this.node()) + "."
             };
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
     });
 

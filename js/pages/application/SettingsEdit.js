@@ -34,7 +34,7 @@
 
             var schema = Alpaca.cloneObject(Gitana.Console.Schema.Settings);
             
-            Alpaca.mergeObject(schema,this.base());
+            _mergeObject(schema,this.base());
 
             return schema;
         },
@@ -45,7 +45,7 @@
 
             var options = Alpaca.cloneObject(Gitana.Console.Options.Settings);
             
-            Alpaca.mergeObject(options,this.base());
+            _mergeObject(options,this.base());
 
             options['fields']['id']['validator'] = function(control, callback) {
                 var controlVal = control.getValue();
@@ -125,7 +125,7 @@
 
                             delete formVal['id'];
 
-                            Alpaca.mergeObject(settings,formVal);
+                            _mergeObject(settings,formVal);
 
                             settings.update().then(function() {
                                 Gitana.Utils.UI.unblock(function() {
@@ -172,7 +172,7 @@
 
             this.setupEditPage(el, page);
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

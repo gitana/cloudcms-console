@@ -284,7 +284,7 @@
                 interaction.object = self.populateObjectAll(interaction);
                 interaction.object.fullJson = JSON.stringify(interaction.object, null, ' ');
 
-                //Alpaca.mergeObject(interaction.object, interaction.system);
+                //_mergeObject(interaction.object, interaction.system);
 
                 var templatePath = (Gitana.Apps.APP_NAME ? "/" : "") + Gitana.Apps.APP_NAME + "/templates/themes/" + Gitana.Apps.THEME + "/interactions/interaction-details.html";
 
@@ -333,7 +333,7 @@
                     ]
                 };
 
-                this.page(Alpaca.mergeObject(page, this.base(el)));
+                this.page(_mergeObject(page, this.base(el)));
             }
 
         });

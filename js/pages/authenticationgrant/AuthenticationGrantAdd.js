@@ -6,12 +6,12 @@
         },
 
         schema: function() {
-            return Alpaca.mergeObject(this.base(),Gitana.Console.Schema.AuthenticationGrant);
+            return _mergeObject(this.base(),Gitana.Console.Schema.AuthenticationGrant);
         },
 
         options: function() {
             var self = this;
-            var options = Alpaca.mergeObject(this.base(),Gitana.Console.Options.AuthenticationGrant);
+            var options = _mergeObject(this.base(),Gitana.Console.Options.AuthenticationGrant);
             options["fields"]["clientId"]["dataSource"] = function(field, callback) {
                 var firstOption;
                 Chain(self.platform()).listClients({
@@ -145,7 +145,7 @@
                 }]
             };
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

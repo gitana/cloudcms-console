@@ -181,7 +181,7 @@
                 }]
             };
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         },
 
         processDefinitionAddForm : function (el) {
@@ -203,7 +203,7 @@
                         var schemaBody = JSON.parse(value['body']);
                         delete value['body'];
 
-                        Alpaca.mergeObject(value, schemaBody);
+                        _mergeObject(value, schemaBody);
 
                         if (renderedField.isValid(true)) {
 

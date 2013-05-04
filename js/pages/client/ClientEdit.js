@@ -27,12 +27,12 @@
         },
 
         schema: function() {
-            return Alpaca.mergeObject(this.base(), Gitana.Console.Schema.Client);
+            return _mergeObject(this.base(), Gitana.Console.Schema.Client);
         },
 
         options: function() {
 
-            var options = Alpaca.mergeObject(this.base(), {
+            var options = _mergeObject(this.base(), {
                 "fields" : {
                     "title" : {
                         "helper" : "Enter client title."
@@ -43,7 +43,7 @@
                 }
             });
 
-            options = Alpaca.mergeObject(options, Gitana.Console.Options.Client);
+            options = _mergeObject(options, Gitana.Console.Options.Client);
             return options;
         },
 
@@ -74,7 +74,7 @@
                         var formVal = form.getValue();
                         if (form.isValid(true)) {
                             Gitana.Utils.UI.block("Updating Client ...");
-                            Alpaca.mergeObject(client,formVal);
+                            _mergeObject(client,formVal);
                             client.update().then(function() {
                                 Gitana.Utils.UI.unblock(function() {
                                     self.app().run('GET', self.LINK().call(self,self.targetObject()));
@@ -86,11 +86,12 @@
             });
         },
 
-        processForms: function() {
+        processEditForm: function(el) {
+
             $('body').bind('swap', function(event, param) {
                 var authorizedGrantTypesSelector = $('#client-edit .authorized-grant-types select');
 
-                authorizedGrantTypesSelector.attr('title', 'Select and Add A Authorized Grant Type');
+                authorizedGrantTypesSelector.attr('title', 'Select and Add An Authorized Grant Type');
 
                 if (!authorizedGrantTypesSelector.parent().hasClass('asmContainer')) {
                     authorizedGrantTypesSelector.asmSelect({
@@ -146,7 +147,7 @@
 
             this.setupEditPage(el, page);
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

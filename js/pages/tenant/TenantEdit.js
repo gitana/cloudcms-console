@@ -31,12 +31,12 @@
         },
 
         schema: function() {
-            return Alpaca.mergeObject(this.base(),Gitana.Console.Schema.Tenant);
+            return _mergeObject(this.base(),Gitana.Console.Schema.Tenant);
         },
 
         options: function() {
             var self = this;
-            var options = Alpaca.mergeObject(this.base(),Gitana.Console.Options.Tenant);
+            var options = _mergeObject(this.base(),Gitana.Console.Options.Tenant);
 
             options['fields']['planKey']['dataSource'] = function(field, callback) {
                 Chain(self.contextObject()).listPlans().each(
@@ -149,7 +149,7 @@
                         delete formVal["target"];
                         if (form.isValid(true)) {
                             Gitana.Utils.UI.block("Updating Tenant ...");
-                            Alpaca.mergeObject(tenant,formVal);
+                            _mergeObject(tenant,formVal);
                             tenant.update().then(function() {
                                 Gitana.Utils.UI.unblock(function() {
                                     self.app().run('GET', self.LINK().call(self,self.targetObject()));
@@ -195,7 +195,7 @@
 
             this.setupEditPage(el, page);
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

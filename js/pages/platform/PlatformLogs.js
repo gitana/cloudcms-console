@@ -313,7 +313,7 @@
                     this.each(function(key,entry,index) {
                         _this[entry.getId()].object = self.populateObjectAll(entry);
                         _this[entry.getId()].object.fullJson = JSON.stringify(_this[entry.getId()].object, null, ' ');
-                        //Alpaca.mergeObject(entry.object, entry.system);
+                        //_mergeObject(entry.object, entry.system);
                         allItems.push(_this[entry.getId()].object);
                     }).then(function() {
                         self.observable(self.LOG_ENTRIES).set(allItems);
@@ -335,7 +335,7 @@
 
             entry.object.fullJson = JSON.stringify(entry.object.fullJson, null, ' ');
 
-            Alpaca.mergeObject(entry.object,entry.system);
+            _mergeObject(entry.object,entry.system);
 
             var templatePath = (Gitana.Apps.APP_NAME ? "/" : "") + Gitana.Apps.APP_NAME + "/templates/themes/" + Gitana.Apps.THEME + "/logs/log-entry.html";
 
@@ -395,7 +395,7 @@
                 "filter" : this.FILTER
             };
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         },
 
         processList : function(el) {

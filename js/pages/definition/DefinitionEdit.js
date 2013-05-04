@@ -207,7 +207,7 @@
 
             this.setupEditPage(el, page);
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         },
 
         processEditForm: function (el) {
@@ -248,8 +248,8 @@
                                 delete definition['properties'];
                             }
 
-                            Alpaca.mergeObject(definition,form);
-                            Alpaca.mergeObject(definition,schemaBody);
+                            _mergeObject(definition,form);
+                            _mergeObject(definition,schemaBody);
 
                             _Chain(definition).update().then(function() {
                                 var updatedDefinition = this;

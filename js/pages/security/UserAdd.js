@@ -42,7 +42,7 @@
             };
 
             if (this.group()) {
-                Alpaca.mergeObject(schema, {
+                _mergeObject(schema, {
                     "properties": {
                         "parentGroupId" : {
                             "title": "Parent Group Id",
@@ -286,7 +286,7 @@
                 }]
             };
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

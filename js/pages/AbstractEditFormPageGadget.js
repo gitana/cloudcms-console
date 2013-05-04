@@ -72,7 +72,7 @@
                                 }
                             }
 
-                            Alpaca.mergeObject(object,obj);
+                            Alpaca._mergeObject(object,obj);
                             //object.object = Alpaca.cloneObject(obj);
 
                             // update

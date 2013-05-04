@@ -48,7 +48,7 @@
 
         options: function() {
 
-            return Alpaca.mergeObject(this.base(), {
+            return _mergeObject(this.base(), {
                 "fields" : {
                     "title" : {
                         "helper" : "Enter stack title."
@@ -136,7 +136,7 @@
 
             this.setupEditPage(el, page);
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

@@ -542,7 +542,7 @@
          */
         _pushItem: function(items, item)
         {
-            if (item && item.value)
+            if (item && !Ratchet.isUndefined(item.value))
             {
                 items.push(item);
             }

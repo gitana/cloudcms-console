@@ -25,7 +25,7 @@
 
         schema: function() {
             /*
-            return Alpaca.mergeObject(this.base(), {
+            return _mergeObject(this.base(), {
                 "properties" : {
                     "planKey" : {
                         "type" : "string",
@@ -39,7 +39,7 @@
                 }
             });
             */
-            return Alpaca.mergeObject({}, {
+            return _mergeObject({}, {
                 "properties" : {
                     "file": {
                         "title": "Logo",
@@ -55,7 +55,7 @@
             var self = this;
 
             /*
-            var options = Alpaca.mergeObject(this.base(), {
+            var options = _mergeObject(this.base(), {
                 "fields" : {
                     "title" : {
                         "helper" : "Enter tenant title."
@@ -92,7 +92,7 @@
             };
             */
 
-            var options = Alpaca.mergeObject({}, {
+            var options = _mergeObject({}, {
                 "fields" : {
                     "file": {
                         "type": "platform-logo",
@@ -148,7 +148,7 @@
                         if (form.isValid(true)) {
                             Gitana.Utils.UI.block("Updating My Tenant ...");
                             delete formVal['file'];
-                            Alpaca.mergeObject(tenant.object,formVal);
+                            _mergeObject(tenant.object,formVal);
                             tenant.update().then(function() {
 
                                 var updatedTenant = this;
@@ -235,7 +235,7 @@
 
             this.setupEditPage(el, page);
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

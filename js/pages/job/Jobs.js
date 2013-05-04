@@ -397,7 +397,7 @@
                 job.object = self.populateObjectAll(job);
                 job.object.fullJson = JSON.stringify(job.object, null, ' ');
 
-                Alpaca.mergeObject(job.object, job.system);
+                _mergeObject(job.object, job.system);
 
                 var templatePath = (Gitana.Apps.APP_NAME ? "/" : "") + Gitana.Apps.APP_NAME + "/templates/themes/" + Gitana.Apps.THEME + "/jobs/job-details.html";
 
@@ -434,7 +434,7 @@
                     "filter" : this.FILTER
                 };
 
-                this.page(Alpaca.mergeObject(page, this.base(el)));
+                this.page(_mergeObject(page, this.base(el)));
             }
         });
 

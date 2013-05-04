@@ -15,7 +15,7 @@
                 var options = Alpaca.cloneObject(plot.options);
 
                 if (loadedData.options) {
-                    Alpaca.mergeObject(options, loadedData.options);
+                    _mergeObject(options, loadedData.options);
                 }
 
                 if ($("#" + generatedId).length > 0) {

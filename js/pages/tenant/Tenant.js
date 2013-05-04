@@ -533,7 +533,7 @@
                 "subscription": "tenant-transferOut"
             });
 
-            self.page(Alpaca.mergeObject(page, self.base(el)));
+            self.page(_mergeObject(page, self.base(el)));
         }
 
     });

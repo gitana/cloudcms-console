@@ -76,7 +76,7 @@
                         }
                     }
                 };
-                Alpaca.mergeObject(schema.properties.archive, Gitana.Console.Schema.Archive);
+                _mergeObject(schema.properties.archive, Gitana.Console.Schema.Archive);
                 return schema;
             },
 
@@ -152,8 +152,8 @@
                         }
                     }
                 };
-                Alpaca.mergeObject(options.fields.archive, Gitana.Console.Options.Archive);
-                Alpaca.mergeObject(options.fields.archive, {
+                _mergeObject(options.fields.archive, Gitana.Console.Options.Archive);
+                _mergeObject(options.fields.archive, {
                     "fields" : {
                         "group" : {
                             "hideInitValidationError" : true,
@@ -358,7 +358,7 @@
             */
 
             filterSchema: function (el) {
-                var schema = Alpaca.mergeObject(this.base(), {
+                var schema = _mergeObject(this.base(), {
                     "properties" : {
                         "archive" : {
                             "type" : "object",
@@ -401,7 +401,7 @@
 
                 var self = this;
 
-                var options = Alpaca.mergeObject(this.base(), {
+                var options = _mergeObject(this.base(), {
                     "helper" : "Query archives by id, title, description, date range, archive id or full query.",
                     "fields" : {
                         "archive" : {
@@ -458,7 +458,7 @@
             },
 
             filterView: function() {
-                return Alpaca.mergeObject(this.base(), {
+                return _mergeObject(this.base(), {
                     "layout": {
                         "bindings": {
                             "startDate" : "column-1",

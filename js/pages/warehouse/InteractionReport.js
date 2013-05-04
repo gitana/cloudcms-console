@@ -276,7 +276,7 @@
                 reportEntry.object = self.populateObjectAll(reportEntry);
                 reportEntry.object.fullJson = JSON.stringify(reportEntry.object, null, ' ');
 
-                Alpaca.mergeObject(reportEntry.object, reportEntry.system);
+                _mergeObject(reportEntry.object, reportEntry.system);
 
                 var templatePath = (Gitana.Apps.APP_NAME ? "/" : "") + Gitana.Apps.APP_NAME + "/templates/themes/" + Gitana.Apps.THEME + "/interactions/entry-details.html";
 
@@ -325,7 +325,7 @@
                     ]
                 };
 
-                this.page(Alpaca.mergeObject(page, this.base(el)));
+                this.page(_mergeObject(page, this.base(el)));
             }
 
         });

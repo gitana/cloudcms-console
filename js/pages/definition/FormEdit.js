@@ -153,7 +153,7 @@
 
             this.setupEditPage(el, page);
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         },
 
         processEditForm: function (el) {
@@ -187,8 +187,8 @@
 
                             Gitana.Utils.UI.block("Updating form...");
 
-                            Alpaca.mergeObject(form, formVal);
-                            Alpaca.mergeObject(form, schemaBody);
+                            _mergeObject(form, formVal);
+                            _mergeObject(form, schemaBody);
 
                             form.update().then(function() {
                                 var updatedForm = this;
@@ -254,7 +254,7 @@
                             Gitana.Utils.UI.block("Updating Object JSON...");
 
                             // update our selected object with the new json
-                            Alpaca.mergeObject(object,obj);
+                            _mergeObject(object,obj);
 
                             // update
                             object.update().then(function () {

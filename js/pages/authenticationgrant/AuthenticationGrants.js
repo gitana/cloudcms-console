@@ -7,7 +7,7 @@
 
         FILTER_TOOLBAR: {
             "query" : {
-                "title" : "Query Auth Grants",
+                "title" : "Query",
                 "icon" : Gitana.Utils.Image.buildImageUri('browser', 'query', 48)
             }
         },
@@ -182,7 +182,7 @@
                 "filter" : this.FILTER
             };
 
-            this.page(Alpaca.mergeObject(page,this.base(el)));
+            this.page(_mergeObject(page,this.base(el)));
         }
 
     });

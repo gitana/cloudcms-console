@@ -7,12 +7,12 @@
 
             schema: function() {
 
-                return Alpaca.mergeObject(this.base(), Gitana.Console.Schema.Client);
+                return _mergeObject(this.base(), Gitana.Console.Schema.Client);
             },
 
             options: function() {
 
-                var options = Alpaca.mergeObject(this.base(), {
+                var options = _mergeObject(this.base(), {
                     "fields" : {
                         "title" : {
                             "helper" : "Enter client title."
@@ -23,7 +23,7 @@
                     }
                 });
 
-                options = Alpaca.mergeObject(options, Gitana.Console.Options.Client);
+                options = _mergeObject(options, Gitana.Console.Options.Client);
                 return options;
             },
 
@@ -111,7 +111,7 @@
                     ]
                 };
 
-                this.page(Alpaca.mergeObject(page, this.base(el)));
+                this.page(_mergeObject(page, this.base(el)));
             },
 
             processForms: function() {
