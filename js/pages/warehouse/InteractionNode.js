@@ -247,29 +247,28 @@
                     "title" : "Overview",
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'interaction-node', 20),
                     "alert" : "",
-                    "items" : [
-                        {
-                            "key" : "ID",
-                            "value" : interactionNode.getId()
-                        },
-                        {
-                            "key" : "Repository Id",
-                            "value" : interactionNode.get('repositoryId')
-                        },
-                        {
-                            "key" : "Branch Id",
-                            "value" : interactionNode.get('branchId')
-                        },
-                        {
-                            "key" : "Node Id",
-                            "value" : interactionNode.get('nodeId')
-                        },
-                        {
-                            "key" : "Last Modified",
-                            "value" : "By " + interactionNode.getSystemMetadata().getModifiedBy() + " @ " + interactionNode.getSystemMetadata().getModifiedOn().getTimestamp()
-                        }
-                    ]
+                    "items" : []
                 };
+                this._pushItem(pairs.items, {
+                    "key" : "ID",
+                    "value" : interactionNode.getId()
+                });
+                this._pushItem(pairs.items, {
+                    "key" : "Repository Id",
+                    "value" : interactionNode.get('repositoryId')
+                });
+                this._pushItem(pairs.items, {
+                    "key" : "Branch Id",
+                    "value" : interactionNode.get('branchId')
+                });
+                this._pushItem(pairs.items, {
+                    "key" : "Node Id",
+                    "value" : interactionNode.get('nodeId')
+                });
+                this._pushItem(pairs.items, {
+                    "key" : "Last Modified",
+                    "value" : "By " + interactionNode.getSystemMetadata().getModifiedBy() + " @ " + interactionNode.getSystemMetadata().getModifiedOn().getTimestamp()
+                });
 
                 this.pairs("interaction-node-profile-pairs", pairs);
             },

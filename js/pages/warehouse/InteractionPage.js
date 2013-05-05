@@ -247,21 +247,20 @@
                     "title" : "Overview",
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'interaction-page', 20),
                     "alert" : "",
-                    "items" : [
-                        {
-                            "key" : "ID",
-                            "value" : interactionPage.getId()
-                        },
-                        {
-                            "key" : "Uri",
-                            "value" : interactionPage.get('uri')
-                        },
-                        {
-                            "key" : "Last Modified",
-                            "value" : "By " + interactionPage.getSystemMetadata().getModifiedBy() + " @ " + interactionPage.getSystemMetadata().getModifiedOn().getTimestamp()
-                        }
-                    ]
+                    "items" : []
                 };
+                this._pushItem(pairs.items, {
+                    "key" : "ID",
+                    "value" : interactionPage.getId()
+                });
+                this._pushItem(pairs.items, {
+                    "key" : "Uri",
+                    "value" : interactionPage.get('uri')
+                });
+                this._pushItem(pairs.items, {
+                    "key" : "Last Modified",
+                    "value" : "By " + interactionPage.getSystemMetadata().getModifiedBy() + " @ " + interactionPage.getSystemMetadata().getModifiedOn().getTimestamp()
+                });
 
                 this.pairs("interaction-page-profile-pairs", pairs);
             },

@@ -4,7 +4,7 @@
     <div class="block-border">
         {{if stats.title}}
         <div class="block-header">
-            <h1>{{if stats.icon}}<span class="sprite-20 ${stats.icon.substring(stats.icon.lastIndexOf('/')+1,stats.icon.lastIndexOf('.'))}"></span><!--<img src='${stats.icon}'/>-->{{/if}}${stats.title}</h1><span></span>
+            <h1>{{if stats.icon}}<span class="sprite-20 ${stats.icon.substring(stats.icon.lastIndexOf('/')+1,stats.icon.lastIndexOf('.'))}"></span><!--<img src='${stats.icon}'/>-->{{/if}}<span class="block-header-title">${stats.title}</span></h1><span></span>
         </div>
         {{/if}}
         <div class="block-content">

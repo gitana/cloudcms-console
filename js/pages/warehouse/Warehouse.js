@@ -106,25 +106,24 @@
                 "title" : "Overview",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'warehouse', 20),
                 "alert" : "",
-                "items" : [
-                    {
-                        "key" : "ID",
-                        "value" : self.listItemProp(warehouse, '_doc')
-                    },
-                    {
-                        "key" : "Title",
-                        "value" : self.listItemProp(warehouse, 'title')
-                    },
-                    {
-                        "key" : "Description",
-                        "value" : self.listItemProp(warehouse, 'description')
-                    },
-                    {
-                        "key" : "Last Modified",
-                        "value" : "By " + warehouse.getSystemMetadata().getModifiedBy() + " @ " + warehouse.getSystemMetadata().getModifiedOn().getTimestamp()
-                    }
-                ]
+                "items" : []
             };
+            this._pushItem(pairs.items, {
+                "key" : "ID",
+                "value" : self.listItemProp(warehouse, '_doc')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Title",
+                "value" : self.listItemProp(warehouse, 'title')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Description",
+                "value" : self.listItemProp(warehouse, 'description')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Last Modified",
+                "value" : "By " + warehouse.getSystemMetadata().getModifiedBy() + " @ " + warehouse.getSystemMetadata().getModifiedOn().getTimestamp()
+            });
 
             this.pairs("warehouse-overview", pairs);
         },

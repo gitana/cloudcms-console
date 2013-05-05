@@ -138,25 +138,24 @@
                 "title" : "Overview",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'vault', 20),
                 "alert" : "",
-                "items" : [
-                    {
-                        "key" : "ID",
-                        "value" : self.listItemProp(vault, '_doc')
-                    },
-                    {
-                        "key" : "Title",
-                        "value" : self.listItemProp(vault, 'title')
-                    },
-                    {
-                        "key" : "Description",
-                        "value" : self.listItemProp(vault, 'description')
-                    },
-                    {
-                        "key" : "Last Modified",
-                        "value" : "By " + vault.getSystemMetadata().getModifiedBy() + " @ " + vault.getSystemMetadata().getModifiedOn().getTimestamp()
-                    }
-                ]
+                "items" : []
             };
+            this._pushItem(pairs.items, {
+                "key" : "ID",
+                "value" : self.listItemProp(vault, '_doc')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Title",
+                "value" : self.listItemProp(vault, 'title')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Description",
+                "value" : self.listItemProp(vault, 'description')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Last Modified",
+                "value" : "By " + vault.getSystemMetadata().getModifiedBy() + " @ " + vault.getSystemMetadata().getModifiedOn().getTimestamp()
+            });
 
             this.pairs("vault-overview", pairs);
         },

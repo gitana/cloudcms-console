@@ -3,7 +3,7 @@
     <div class="block-border">
         {{if pairs.title}}
         <div class="block-header">
-            <h1>{{if pairs.icon}}<span class="sprite-20 ${pairs.icon.substring(pairs.icon.lastIndexOf('/')+1,pairs.icon.lastIndexOf('.'))}"></span><!--<img src='${pairs.icon}'/>-->{{/if}}${pairs.title}</h1><span></span>
+            <h1>{{if pairs.icon}}<span class="sprite-20 ${pairs.icon.substring(pairs.icon.lastIndexOf('/')+1,pairs.icon.lastIndexOf('.'))}"></span><!--<img src='${pairs.icon}'/>-->{{/if}}<span class="block-header-title">${pairs.title}</span></h1><span></span>
         </div>
         {{/if}}
         <div class="block-content">

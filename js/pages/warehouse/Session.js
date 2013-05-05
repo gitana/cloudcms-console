@@ -247,21 +247,20 @@
                     "title" : "Overview",
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'session', 20),
                     "alert" : "",
-                    "items" : [
-                        {
-                            "key" : "ID",
-                            "value" : session.getId()
-                        },
-                        {
-                            "key" : "Start",
-                            "value" : new Date(session.getTimestampStart())
-                        },
-                        {
-                            "key" : "End",
-                            "value" : session.getTimestampEnd() ? new Date(session.getTimestampEnd()) : ""
-                        }
-                    ]
+                    "items" : []
                 };
+                this._pushItem(pairs.items, {
+                    "key" : "ID",
+                    "value" : session.getId()
+                });
+                this._pushItem(pairs.items, {
+                    "key" : "Start",
+                    "value" : new Date(session.getTimestampStart())
+                });
+                this._pushItem(pairs.items, {
+                    "key" : "End",
+                    "value" : session.getTimestampEnd() ? new Date(session.getTimestampEnd()) : ""
+                });
 
                 this.pairs("session-profile-pairs", pairs);
             },

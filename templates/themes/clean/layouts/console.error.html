@@ -17,7 +17,7 @@
             <div class="grid_12">
 				<div class="block-border">
                     <div class="block-header">
-						<h1>{{if page.error.icon}}<img src='${page.error.icon}'/>  {{/if}}{{if page.error.http && page.error.http.status}}${page.error.http.status}{{/if}} Error</h1>
+						<h1>{{if page.error.icon}}<img src='${page.error.icon}'/>{{/if}}{{if page.error.http && page.error.http.status}}<span class="block-header-title">${page.error.http.status}</span>{{/if}} Error</h1>
 					</div>
 					<div class="block-content">
 						{{if page.error.page}}

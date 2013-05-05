@@ -79,7 +79,7 @@
 
             featureList += "</ul>";
 
-            var dialog = $('<div><h2 style="padding:20px;margin:2px;line-height:1.2em;">Are you sure you want to remove the following features?' + featureList + '</h2></div>');
+            var dialog = $('<div><h2 class="dialog-delete-message-2">Are you sure you want to remove the following features?' + featureList + '</h2></div>');
 
             dialog.alpaca({
                 "data": {},

@@ -143,19 +143,19 @@
             };
             this._pushItem(pairs.items, {
                 "key" : "ID",
-                "value" : self.listItemProp(application, '_doc')
+                "value" : application["_doc"]
             });
             this._pushItem(pairs.items, {
                 "key" : "Key",
-                "value" : self.listItemProp(application, 'key')
+                "value" : application.key
             });
             this._pushItem(pairs.items, {
                 "key" : "Title",
-                "value" : self.listItemProp(application, 'title')
+                "value" : application.title
             });
             this._pushItem(pairs.items, {
                 "key" : "Description",
-                "value" : self.listItemProp(application, 'description')
+                "value" : application.description
             });
             this._pushItem(pairs.items, {
                 "key" : "Last Modified",
@@ -163,16 +163,16 @@
             });
             this._pushItem(pairs.items, {
                 "key" : "Application Type",
-                "value" : self.listItemProp(application, 'applicationType')
+                "value" : application.applicationType
             });
             if (application.applicationType == "web") {
                 this._pushItem(pairs.items, {
                     "key" : "Trusted Scope",
-                    "value" : self.listItemProp(application, 'trustedScope')
+                    "value" : application.trustedScope
                 });
                 this._pushItem(pairs.items, {
                     "key" : "Trusted Host",
-                    "value" : self.listItemProp(application, 'trustedHost')
+                    "value" : application.trustedHost
                 });
             }
             if (application.applicationType == "trusted") {

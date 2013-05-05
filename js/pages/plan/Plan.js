@@ -106,49 +106,48 @@
                 "title" : "Overview",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'plan', 20),
                 "alert" : "",
-                "items" : [
-                    {
-                        "key" : "ID",
-                        "style": style,
-                        "value" : self.listItemProp(plan, '_doc')
-                    },
-                    {
-                        "key" : "Title",
-                        "style": style,
-                        "value" : self.listItemProp(plan, 'title')
-                    },
-                    {
-                        "key" : "Description",
-                        "style": style,
-                        "value" : self.listItemProp(plan, 'description')
-                    },
-                    {
-                        "key" : "Plan Key",
-                        "style": style,
-                        "value" : self.listItemProp(plan, 'planKey')
-                    },
-                    {
-                        "key" : "Last Modified",
-                        "style": style,
-                        "value" : "By " + plan.getSystemMetadata().getModifiedBy() + " @ " + plan.getSystemMetadata().getModifiedOn().getTimestamp()
-                    },
-                    {
-                        "key" : "Requires Billing",
-                        "style": style,
-                        "value" : self.listItemProp(plan, 'requiresBilling')
-                    }
-                ]
+                "items" : []
             };
+            this._pushItem(pairs.items, {
+                "key" : "ID",
+                "style": style,
+                "value" : self.listItemProp(plan, '_doc')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Title",
+                "style": style,
+                "value" : self.listItemProp(plan, 'title')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Description",
+                "style": style,
+                "value" : self.listItemProp(plan, 'description')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Plan Key",
+                "style": style,
+                "value" : self.listItemProp(plan, 'planKey')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Last Modified",
+                "style": style,
+                "value" : "By " + plan.getSystemMetadata().getModifiedBy() + " @ " + plan.getSystemMetadata().getModifiedOn().getTimestamp()
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Requires Billing",
+                "style": style,
+                "value" : self.listItemProp(plan, 'requiresBilling')
+            });
 
             // BASE
             if (plan.get("base"))
             {
-                pairs.items.push({
+                this._pushItem(pairs.items, {
                     "key" : "Base Price",
                     "style": style,
                     "value" : plan.get("base")["price"]
                 });
-                pairs.items.push({
+                this._pushItem(pairs.items, {
                     "key" : "Base Schedule",
                     "style": style,
                     "value" : plan.get("base")["schedule"]
@@ -158,27 +157,27 @@
             // STORAGE
             if (plan.get("storage"))
             {
-                pairs.items.push({
+                this._pushItem(pairs.items, {
                     "key" : "Storage Unit",
                     "style": style,
                     "value" : plan.get("storage")["unit"]
                 });
-                pairs.items.push({
+                this._pushItem(pairs.items, {
                     "key" : "Storage Allowance",
                     "style": style,
                     "value" : plan.get("storage")["allowance"]
                 });
-                pairs.items.push({
+                this._pushItem(pairs.items, {
                     "key" : "Storage Price",
                     "style": style,
                     "value" : plan.get("storage")["price"]
                 });
-                pairs.items.push({
+                this._pushItem(pairs.items, {
                     "key" : "Storage Addon Key",
                     "style": style,
                     "value" : plan.get("storage")["addonKey"]
                 });
-                pairs.items.push({
+                this._pushItem(pairs.items, {
                     "key" : "Storage Max",
                     "style": style,
                     "value" : plan.get("storage")["max"]

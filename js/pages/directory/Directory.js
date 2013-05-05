@@ -39,21 +39,20 @@
                 "title" : "Overview",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'directory', 20),
                 "alert" : "",
-                "items" : [
-                    {
-                        "key" : "ID",
-                        "value" : self.listItemProp(datastore, '_doc')
-                    },
-                    {
-                        "key" : "Title",
-                        "value" : self.listItemProp(datastore, 'title')
-                    },
-                    {
-                        "key" : "Description",
-                        "value" : self.listItemProp(datastore, 'description')
-                    }
-                ]
+                "items" : []
             };
+            this._pushItem(pairs.items, {
+                "key" : "ID",
+                "value" : self.listItemProp(datastore, '_doc')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Title",
+                "value" : self.listItemProp(datastore, 'title')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Description",
+                "value" : self.listItemProp(datastore, 'description')
+            });
 
             this.pairs("directory-overview", pairs);
         },

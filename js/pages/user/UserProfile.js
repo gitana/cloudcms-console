@@ -50,19 +50,19 @@
             });
             this._pushItem(pairs.items, {
                 "key" : "Last Name",
-                "value" : user.getLastName() ? user.getLastName() : ""
+                "value" : user.getLastName()
             });
             this._pushItem(pairs.items, {
                 "key" : "First Name",
-                "value" : user.getFirstName() ? user.getFirstName() : ""
+                "value" : user.getFirstName()
             });
             this._pushItem(pairs.items, {
                 "key" : "Email",
-                "value" : user.getEmail() ? user.getEmail() : ""
+                "value" : user.getEmail()
             });
             this._pushItem(pairs.items, {
                 "key" : "Company",
-                "value" : user.getCompanyName() ? user.getCompanyName() : ""
+                "value" : user.getCompanyName()
             });
             this._pushItem(pairs.items, {
                 "key" : "Avatar",

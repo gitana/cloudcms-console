@@ -182,15 +182,15 @@
                 };
                 this._pushItem(pairs.items, {
                     "key" : "ID",
-                    "value" : self.listItemProp(node, '_doc')
+                    "value" : node["_doc"]
                 });
                 this._pushItem(pairs.items, {
                     "key" : "Title",
-                    "value" : self.listItemProp(node, 'title')
+                    "value" : node.title
                 });
                 this._pushItem(pairs.items, {
                     "key" : "Description",
-                    "value" : self.listItemProp(node, 'description')
+                    "value" : node.description
                 });
                 this._pushItem(pairs.items, {
                     "key" : "Type",

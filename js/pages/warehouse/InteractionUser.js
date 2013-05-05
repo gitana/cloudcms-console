@@ -247,21 +247,20 @@
                     "title" : "Overview",
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'interaction-user', 20),
                     "alert" : "",
-                    "items" : [
-                        {
-                            "key" : "ID",
-                            "value" : interactionUser.getId()
-                        },
-                        {
-                            "key" : "Key",
-                            "value" : interactionUser.get('key')
-                        },
-                        {
-                            "key" : "Last Modified",
-                            "value" : "By " + interactionUser.getSystemMetadata().getModifiedBy() + " @ " + interactionUser.getSystemMetadata().getModifiedOn().getTimestamp()
-                        }
-                    ]
+                    "items" : []
                 };
+                this._pushItem(pairs.items, {
+                    "key" : "ID",
+                    "value" : interactionUser.getId()
+                });
+                this._pushItem(pairs.items, {
+                    "key" : "Key",
+                    "value" : interactionUser.get('key')
+                });
+                this._pushItem(pairs.items, {
+                    "key" : "Last Modified",
+                    "value" : "By " + interactionUser.getSystemMetadata().getModifiedBy() + " @ " + interactionUser.getSystemMetadata().getModifiedOn().getTimestamp()
+                });
 
                 this.pairs("interaction-user-profile-pairs", pairs);
             },

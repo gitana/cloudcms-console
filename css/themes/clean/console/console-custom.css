@@ -74,13 +74,15 @@ body {
     font-size: 16px;
     line-height: 37px;
     margin: 0;
-    padding: 0 0 0 10px;
+    /*padding: 0 0 0 10px;*/
+    padding: 0 0 0 0px;
     color: #475D68;
     text-shadow: 0 1px 0 #FFFFFF;
 }
 
 .ui-dialog .ui-dialog-title img {
-    margin-right: 10px;
+    /*margin-right: 10px;*/
+    margin-right: 5px;
 }
 
 /*
@@ -109,7 +111,7 @@ body {
 */
 .ui-dialog .ui-dialog-content {
     background: none repeat scroll 0 0 #FAFAFA;
-    border: 1px solid #4B5E6B;
+    /*border: 1px solid #4B5E6B;*/
     border-radius: 0px;
     padding: 0 10px;
     position: relative;
@@ -174,9 +176,15 @@ ul.item-list-long-left li span {
 /* ==================================================
  * Block-header
  * ================================================== */
-.block-header h1 img {
-    margin-right: 10px;
-    vertical-align: text-bottom;
+.block-header h1 img
+{
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.block-header h1 span.block-header-title
+{
+    vertical-align: middle;
 }
 
 .ui-datepicker {
@@ -736,6 +744,16 @@ h2.dialog-delete-message {
     padding: 20px;
     margin: 2px;
     line-height: 1.2em;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+h2.dialog-delete-message-2 {
+    padding:20px;
+    margin:2px;
+    line-height:1.2em;
+    font-size: 15px;
+    font-weight: 300;
 }
 
 /** jqplot **/
@@ -1405,30 +1423,45 @@ span.alpaca-view-web-edit-list .alpaca-controlfield-label
     padding: 0px;
     margin: 0px;
     border: 0px;
-    vertical-align: middle;
-    margin-top: 10px;
+    height: 64px;
 }
 
-#platform-logo-holder A
+#platform-logo-holder DIV
+{
+    display: inline-block;
+    line-height: 64px;
+    vertical-align: middle;
+}
+
+#platform-logo-holder DIV A
 {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 24px;
     font-weight: 600;
     color: white !important;
+}
+
+#platform-logo-holder DIV.platform-logo-icon A
+{
     padding-left: 10px;
 }
 
-#platform-logo-holder A:hover
+#platform-logo-holder DIV.platform-logo-text A
+{
+    padding-left: 5px;
+}
+
+#platform-logo-holder DIV A:hover
 {
     text-decoration: none;
 }
 
-#platform-logo-holder IMG
+#platform-logo-holder DIV A IMG
 {
     max-height: 48px;
     max-width: 48px;
     vertical-align: middle;
-    margin-top: -2px;
+    padding-bottom: 5px;
 }
 
 

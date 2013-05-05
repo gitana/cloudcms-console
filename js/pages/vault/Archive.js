@@ -74,41 +74,40 @@
                 "title" : "Overview",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'archive', 20),
                 "alert" : "",
-                "items" : [
-                    {
-                        "key" : "ID",
-                        "value" : self.listItemProp(archive, '_doc')
-                    },
-                    {
-                        "key" : "Group",
-                        "value" : self.listItemProp(archive, 'group')
-                    },
-                    {
-                        "key" : "Artifact",
-                        "value" : self.listItemProp(archive, 'artifact')
-                    },
-                    {
-                        "key" : "Version",
-                        "value" : self.listItemProp(archive, 'version')
-                    },
-                    {
-                        "key" : "Container Type",
-                        "value" : self.listItemProp(archive, 'containerType')
-                    },
-                    {
-                        "key" : "Type",
-                        "value" : self.listItemProp(archive, 'type')
-                    },
-                    {
-                        "key" : "Last Modified",
-                        "value" : "By " + archive.getSystemMetadata().getModifiedBy() + " @ " + archive.getSystemMetadata().getModifiedOn().getTimestamp()
-                    },
-                    {
-                        "key" : "Full JSON",
-                        "value" : "<pre class='record-full-json'>" + JSON.stringify(self.populateObjectAll(archive), null, ' ') + "</pre>"
-                    }
-                ]
+                "items" : []
             };
+            this._pushItem(pairs.items, {
+                "key" : "ID",
+                "value" : self.listItemProp(archive, '_doc')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Group",
+                "value" : self.listItemProp(archive, 'group')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Artifact",
+                "value" : self.listItemProp(archive, 'artifact')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Version",
+                "value" : self.listItemProp(archive, 'version')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Container Type",
+                "value" : self.listItemProp(archive, 'containerType')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Type",
+                "value" : self.listItemProp(archive, 'type')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Last Modified",
+                "value" : "By " + archive.getSystemMetadata().getModifiedBy() + " @ " + archive.getSystemMetadata().getModifiedOn().getTimestamp()
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Full JSON",
+                "value" : "<pre class='record-full-json'>" + JSON.stringify(self.populateObjectAll(archive), null, ' ') + "</pre>"
+            });
 
             this.pairs("archive-overview", pairs);
         },

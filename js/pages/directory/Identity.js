@@ -39,21 +39,20 @@
                 "title" : "Overview",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'identity', 20),
                 "alert" : "",
-                "items" : [
-                    {
-                        "key" : "ID",
-                        "value" : self.listItemProp(object, '_doc')
-                    },
-                    {
-                        "key" : "Title",
-                        "value" : self.listItemProp(object, 'title')
-                    },
-                    {
-                        "key" : "Description",
-                        "value" : self.listItemProp(object, 'description')
-                    }
-                ]
+                "items" : []
             };
+            this._pushItem(pairs.items, {
+                "key" : "ID",
+                "value" : self.listItemProp(object, '_doc')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Title",
+                "value" : self.listItemProp(object, 'title')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Description",
+                "value" : self.listItemProp(object, 'description')
+            });
 
             this.pairs("identity-overview", pairs);
         },

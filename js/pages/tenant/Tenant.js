@@ -81,33 +81,32 @@
                 "title" : "Overview",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'tenant', 20),
                 "alert" : "",
-                "items" : [
-                    {
-                        "key" : "ID",
-                        "value" : self.listItemProp(tenant, '_doc')
-                    },
-                    {
-                        "key" : "Title",
-                        "value" : self.listItemProp(tenant, 'title')
-                    },
-                    {
-                        "key" : "Description",
-                        "value" : self.listItemProp(tenant, 'description')
-                    },
-                    {
-                        "key" : "Plan",
-                        "value" : self.listItemProp(tenant, 'planKey')
-                    },
-                    {
-                        "key" : "Sub-Domain",
-                        "value" : self.listItemProp(tenant, 'dnsSlug')
-                    },
-                    {
-                        "key" : "Last Modified",
-                        "value" : "By " + tenant.getSystemMetadata().getModifiedBy() + " @ " + tenant.getSystemMetadata().getModifiedOn().getTimestamp()
-                    }
-                ]
+                "items" : []
             };
+            this._pushItem(pairs.items, {
+                "key" : "ID",
+                "value" : self.listItemProp(tenant, '_doc')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Title",
+                "value" : self.listItemProp(tenant, 'title')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Description",
+                "value" : self.listItemProp(tenant, 'description')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Plan",
+                "value" : self.listItemProp(tenant, 'planKey')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Sub-Domain",
+                "value" : self.listItemProp(tenant, 'dnsSlug')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Last Modified",
+                "value" : "By " + tenant.getSystemMetadata().getModifiedBy() + " @ " + tenant.getSystemMetadata().getModifiedOn().getTimestamp()
+            });
 
             this.pairs("tenant-overview", pairs);
         },

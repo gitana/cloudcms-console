@@ -136,25 +136,24 @@
                 "title" : "Overview",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'registrar', 20),
                 "alert" : "",
-                "items" : [
-                    {
-                        "key" : "ID",
-                        "value" : self.listItemProp(registrar, '_doc')
-                    },
-                    {
-                        "key" : "Title",
-                        "value" : self.listItemProp(registrar, 'title')
-                    },
-                    {
-                        "key" : "Description",
-                        "value" : self.listItemProp(registrar, 'description')
-                    },
-                    {
-                        "key" : "Last Modified",
-                        "value" : "By " + registrar.getSystemMetadata().getModifiedBy() + " @ " + registrar.getSystemMetadata().getModifiedOn().getTimestamp()
-                    }
-                ]
+                "items" : []
             };
+            this._pushItem(pairs.items, {
+                "key" : "ID",
+                "value" : self.listItemProp(registrar, '_doc')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Title",
+                "value" : self.listItemProp(registrar, 'title')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Description",
+                "value" : self.listItemProp(registrar, 'description')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Last Modified",
+                "value" : "By " + registrar.getSystemMetadata().getModifiedBy() + " @ " + registrar.getSystemMetadata().getModifiedOn().getTimestamp()
+            });
 
             this.pairs("registrar-overview", pairs);
         },
