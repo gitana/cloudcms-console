@@ -7,7 +7,7 @@
 
         FILTER_TOOLBAR: {
             "query" : {
-                "title" : "Query Billing Provider Configs",
+                "title" : "Query Configs",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'query', 48)
             }
         },
@@ -47,7 +47,7 @@
             this.addButtons([
                 {
                 "id": "create",
-                "title": "New Billing Provider Config",
+                "title": "New Config",
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'billing-provider-add', 48),
                     "url" : '/add/billingprovider',
                     "requiredAuthorities" : [
@@ -131,6 +131,15 @@
                     "property": function(callback) {
                         var title = self.friendlyTitle(this);
                         var value = "<a href='#" + self.link(this) + "'>" + title + "</a>";
+                        callback(value);
+                    }
+                },
+                {
+                    "title": "Provider Type",
+                    "type":"property",
+                    "property": function(callback) {
+                        var providerId = this["providerId"];
+                        var value = "" + providerId;
                         callback(value);
                     }
                 },

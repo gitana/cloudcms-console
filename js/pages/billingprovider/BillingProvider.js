@@ -36,7 +36,7 @@
                 self.addButtons([
                     {
                         "id": "edit",
-                        "title": "Edit Billing Provider Config",
+                        "title": "Edit Config",
                         "icon" : Gitana.Utils.Image.buildImageUri('objects', 'billing-provider-edit', 48),
                         "url" : self.link(this.targetObject(), "edit"),
                         "requiredAuthorities" : [
@@ -48,7 +48,7 @@
                     },
                     {
                         "id": "delete",
-                        "title": "Delete Billing Provider Config",
+                        "title": "Delete Config",
                         "icon" : Gitana.Utils.Image.buildImageUri('objects', 'billing-provider-delete', 48),
                         "click": function(billingProvider) {
                             self.onClickDelete(self.targetObject(), 'billing provider config', self.listLink('billingproviders'), Gitana.Utils.Image.buildImageUri('objects', 'billing-provider', 20), 'billing-provider');
@@ -74,7 +74,7 @@
                     },
                     {
                         "id": "export",
-                        "title": "Export Billing Provider Config",
+                        "title": "Export Config",
                         "icon" : Gitana.Utils.Image.buildImageUri('objects', 'archive-export', 48),
                         "url" : self.LINK().call(self, self.targetObject(), 'export'),
                         "requiredAuthorities" : [
@@ -101,7 +101,7 @@
                 self.addButtons([
                     {
                         "id": "edit",
-                        "title": "Edit Billing Provider",
+                        "title": "Edit Config",
                         "icon" : Gitana.Utils.Image.buildImageUri('objects', 'billing-provider-edit', 48),
                         "url" : self.link(this.targetObject(), "edit"),
                         "requiredAuthorities" : [

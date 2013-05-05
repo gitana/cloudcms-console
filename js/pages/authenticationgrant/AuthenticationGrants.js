@@ -125,12 +125,21 @@
 
             list["columns"] = [
                 {
-                    "title": "Title",
+                    "title": "Key",
                     "type":"property",
-                    "sortingExpression": "title",
+                    "sortingExpression": "key",
                     "property": function(callback) {
-                        var title = self.friendlyTitle(this);
-                        var value = "<a href='#" + self.link(this) + "'>" + title + "</a>";
+                        var key = this["key"];
+                        var value = "<a href='#" + self.link(this) + "'>" + key + "</a>";
+                        callback(value);
+                    }
+                },
+                {
+                    "title": "Client",
+                    "type":"property",
+                    "property": function(callback) {
+                        var clientId = this["clientId"];
+                        var value = "<a href='#/clients/" + clientId + "'>" + clientId + "</a>";
                         callback(value);
                     }
                 },
