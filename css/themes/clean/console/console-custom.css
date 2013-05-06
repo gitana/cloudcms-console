@@ -1269,7 +1269,8 @@ ul.item-list
 {
     /*text-decoration: underline;*/
     font-size: 16px;
-    color: #475D68;
+    /*color: #475D68;*/
+    color: #222;
 }
 
 #container > #sidebar > #nav > .menu > li
@@ -1280,6 +1281,7 @@ ul.item-list
     box-shadow: 3px 3px 3px 0 #CCCCCC;
     background: none repeat scroll 0 0 #FFFFFF;
     padding-bottom: 15px;
+    background: none repeat scroll 0 0 #fafafa;
 }
 
 /*

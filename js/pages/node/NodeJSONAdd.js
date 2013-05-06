@@ -54,7 +54,7 @@
             var formDiv = el ? $('#node-add',$(el)) : $('#node-add');
 
             formDiv.empty().alpaca({
-                "data" : "{}",
+                "data" : "{\n\n}",
                 "options": {
                     "type": "editor",
                     "aceMode": "ace/mode/json",

@@ -1,0 +1,29 @@
+<script id="layoutTemplate" type="text/x-jquery-tmpl">
+
+    <div class="container_12 gitana-client-selector">
+
+        <div class="grid_12">
+            <div class="block-border">
+
+                <!--
+                <div class="list-toolbar-content" gadget="toolbar">
+                </div>
+                -->
+
+                {{if clientselector && clientselector.filter}}
+                <div class="list-filter" gadget="filter">
+                </div>
+                {{/if}}
+                {{if clientselector.subscription}}<div class="list-toolbar" gadget="toolbar" subscription="${clientselector.subscription}-toolbar"></div>{{/if}}
+                <div class="block-content list-datatable">
+                    <div class="list" gadget="list" {{if clientselector.subscription}}subscription="${clientselector.subscription}"{{/if}} {{if clientselector.filter}}filter="${clientselector.filter}"{{/if}}>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear height-fix"></div>
+
+    </div>
+
+</script>

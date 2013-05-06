@@ -78,6 +78,10 @@
             {
                 this.options.filterPreviews = false;
             }
+            if (Ratchet.isUndefined(this.options.uploadSingleAttachmentById))
+            {
+                this.options.uploadSingleAttachmentById = true;
+            }
 
             if (this.options && this.options.context) {
                 this.context = this.options.context;
@@ -193,7 +197,9 @@
             var count = 0;
             $.each(data.result.rows, function(index, gitanaResult) {
 
-                files.push(self.computeFile(gitanaResult));
+                var fileUploadFile = data.files[index];
+
+                files.push(self.computeFile(gitanaResult, fileUploadFile));
                 count++;
             });
 
@@ -283,17 +289,24 @@
          * Converts a Gitana Result to a File.
          *
          * @param gitanaResult
+         * @param fileUploadFile
+         *
          * @return {Object}
          */
-         computeFile: function(gitanaResult)
+         computeFile: function(gitanaResult, fileUploadFile)
          {
+             var attachmentId = gitanaResult.attachmentId;
+             if (!attachmentId) {
+                 attachmentId = fileUploadFile.attachmentId;
+             }
+
              var file = {
                  "name": gitanaResult.filename,
                  "size": gitanaResult.length,
                  "type": gitanaResult.contentType,
-                 "url": this.computeAttachmentUrl(gitanaResult.attachmentId),
-                 "thumbnail_url": this.computeThumbnailUrl(gitanaResult.attachmentId),
-                 "delete_url": this.computeDeleteUrl(gitanaResult),
+                 "url": this.computeAttachmentUrl(attachmentId),
+                 "thumbnail_url": this.computeThumbnailUrl(attachmentId),
+                 "delete_url": this.computeDeleteUrl(attachmentId),
                  "delete_type": "DELETE",
 
                  "attachmentId": gitanaResult.attachmentId
@@ -312,6 +325,11 @@
          * This should be a bare /attachments handler (not specific to any attachment id).
          */
          computeAttachmentUploadUri : function () {
+
+            if (this.options.uploadUri)
+            {
+                return this.options.uploadUri;
+            }
 
             var uriPrefix = this.options.uriPrefix;
             if (!uriPrefix) {
@@ -351,30 +369,33 @@
 
          filterAttachments: function(attachments)
          {
-             var i = 0;
-             do
+             if (attachments && attachments.length > 0)
              {
-                 var attachment = attachments[i];
-
-                 var remove = false;
-                 if (this.options.filterPreviews)
+                 var i = 0;
+                 do
                  {
-                     if (attachment.attachmentId.indexOf("_preview_") == 0)
+                     var attachment = attachments[i];
+
+                     var remove = false;
+                     if (this.options.filterPreviews)
                      {
-                         remove = true;
+                         if (attachment.attachmentId.indexOf("_preview_") == 0)
+                         {
+                             remove = true;
+                         }
+                     }
+
+                     if (remove)
+                     {
+                         attachments.splice(i, 1);
+                     }
+                     else
+                     {
+                         i++;
                      }
                  }
-
-                 if (remove)
-                 {
-                     attachments.splice(i, 1);
-                 }
-                 else
-                 {
-                     i++;
-                 }
+                 while (i < attachments.length);
              }
-             while (i < attachments.length);
          },
 
         /**
@@ -657,7 +678,10 @@
                     }
                     else
                     {
-                        actionUri += "/" + attachmentId;
+                        if (self.options.uploadSingleAttachmentById)
+                        {
+                            actionUri += "/" + attachmentId;
+                        }
                     }
                 });
             }

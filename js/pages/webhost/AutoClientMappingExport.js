@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.AutoClientMappingExport = Gitana.Console.Pages.AbstractExport.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/webhosts/{webhostId}/autoclientmappings/{autoClientMappingId}/export", this.index);
         },

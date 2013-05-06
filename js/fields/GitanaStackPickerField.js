@@ -128,6 +128,7 @@
                         ratchet.gadgetInstances[i].selectHandler = function(stackId, title) {
                             $(dialog).dialog("close");
                             $(self.field).val(stackId).blur().focus();
+                            $(self.field).trigger("change");
                         }
                     }
 

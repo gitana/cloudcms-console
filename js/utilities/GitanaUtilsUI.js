@@ -135,6 +135,33 @@
             if (auto) {
                 Gitana.Utils.UI.autoForm(form,buttonId);
             }
+
+            // find any "editor" fields and do resets on values to make sure they size correctly
+            if (form.children)
+            {
+                for (var i = 0; i < form.children.length; i++)
+                {
+                    var child = form.children[i];
+                    if (child.type === "editor")
+                    {
+                        var value = child.getEditor().getValue();
+                        window.setTimeout(function() {
+                            child.getEditor().setValue("");
+                            child.getEditor().setValue(value);
+                        }, 300);
+                    }
+                }
+            }
+
+            // if our control is actually an editor itself, then apply the same
+            if (form.type && form.type == "editor")
+            {
+                var value = form.getEditor().getValue();
+                window.setTimeout(function() {
+                    form.getEditor().setValue("");
+                    form.getEditor().setValue(value);
+                }, 300);
+            }
         },
 
         /**

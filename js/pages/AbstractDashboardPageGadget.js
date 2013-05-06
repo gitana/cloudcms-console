@@ -3,10 +3,6 @@
     {
         TEMPLATE: "layouts/console.dashboard",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         index: function(el) {
             var self = this;
 

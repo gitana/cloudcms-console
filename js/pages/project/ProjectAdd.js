@@ -1,16 +1,13 @@
 (function($) {
     Gitana.Console.Pages.ProjectAdd = Gitana.CMS.Pages.AbstractFormPageGadget.extend(
         {
-            constructor: function(id, ratchet) {
-                this.base(id, ratchet);
-            },
-
             schema: function() {
                 return {
                     "type": "object",
                     "properties" : {
                         "title" : {
-                            "type" : "string"
+                            "type" : "string",
+                            "required": true
                         },
                         "description" : {
                             "type" : "string"
@@ -28,7 +25,9 @@
                         "projectType": {
                             "type": "string",
                             "dependencies": "stackSelection",
-                            "enum": ["mobile1"]
+                            "enum": ["collaboration"],
+                            "default": "collaboration",
+                            "required": true
                         }
                     }
                 };
@@ -38,17 +37,22 @@
                 return {
                     "fields" : {
                         "title" : {
-                            "label": "Title"
+                            "label": "What would you like to call this project?",
+                            "hideInitValidationError": true,
                         },
                         "description": {
-                            "label": "Description"
+                            "label": "Provide a brief project description:",
+                            "type": "textarea",
+                            "hideInitValidationError": true,
                         },
                         "stackSelection": {
-                            "label": "Stack",
-                            "optionLabels": ["Create a New Stack", "Use an Existing Stack"]
+                            "label": "Configure your Infrastructure Stack",
+                            "helper": "By default, a new infrastructure stack will be created for your project.  If you'd like to reuse an existing infrastructure stack, you can elect to do so.",
+                            "optionLabels": ["Create a New Stack", "Use an Existing Stack"],
+                            "hideInitValidationError": true,
                         },
                         "stackId": {
-                            "label": "Select Stack",
+                            "label": "Pick an Existing Stack",
                             "hideInitValidationError": true,
                             "type": "gitanastackpicker",
                             "platform": this.platform(),
@@ -57,9 +61,10 @@
                             }
                         },
                         "projectType": {
-                            "label": "Project Type",
+                            "label": "What kind of project would you like to create?",
                             "type": "select",
-                            "optionLabels": ["jQuery Mobile Application"],
+                            "optionLabels": ["Collaboration Project"],
+                            "hideInitValidationError": true,
                             "dependencies": {
                                 "stackSelection": "new"
                             }

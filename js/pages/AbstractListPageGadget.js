@@ -61,6 +61,8 @@
 
                                 self.processList(swappedEl);
 
+                                self.processFilter(swappedEl);
+
                                 Gitana.Utils.UI.enableTooltip();
 
                                 Gitana.Utils.UI.processBreadcrumb();
@@ -92,6 +94,11 @@
                         "description" : {
                             "$regex" : key
                         }
+                    },
+                    {
+                        "_doc": {
+                            "$regex": key
+                        }
                     }
                 ]
             };
@@ -117,6 +124,10 @@
 
         /** ABSTRACT **/
         processList: function(el) {
+        },
+
+        /** ABSTRACT **/
+        processFilter: function(el) {
         },
 
         resetFilter: function() {
@@ -168,10 +179,9 @@
             return {
                 "id" : "",
                 "title" : "",
-                "description" : "",
                 "startDate" : "",
                 "endDate": "",
-                "query" : ""
+                "query" : "{\n\n}"
             };
         },
 
@@ -222,11 +232,6 @@
                             "$regex" : formData.title
                         };
                     }
-                    if (formData.description) {
-                        query.description = {
-                            "$regex" : formData.description
-                        };
-                    }
                     if (formData.startDate || formData.endDate) {
                         query["_system.modified_on.ms"] = {
                         };
@@ -256,10 +261,6 @@
                         "title": "Title",
                         "type" : "string"
                     },
-                    "description" : {
-                        "title": "Description",
-                        "type" : "string"
-                    },
                     "startDate" : {
                         "title": "Start Date",
                         "type" : "string",
@@ -280,27 +281,19 @@
 
         filterOptions: function() {
             return {
-                "helper" : "Query list by id, title, description, date range or full query.",
+                "helper" : "Query for results by ID, title, date range and more.",
                 "fields" : {
                     "id" : {
-                        "size": this.DEFAULT_FILTER_TEXT_SIZE,
-                        "helper": "Enter Gitana GUID for query by exact matching of id."
+                        "size": this.DEFAULT_FILTER_TEXT_SIZE
                     },
                     "title" : {
-                        "size": this.DEFAULT_FILTER_TEXT_SIZE,
-                        "helper": "Enter regular expression for query by title."
-                    },
-                    "description" : {
-                        "size": this.DEFAULT_FILTER_TEXT_SIZE,
-                        "helper": "Enter regular expression for query by description."
+                        "size": this.DEFAULT_FILTER_TEXT_SIZE
                     },
                     "startDate" : {
-                        "size": this.DEFAULT_FILTER_DATE_SIZE,
-                        "helper": "Pick start date of date range."
+                        "size": this.DEFAULT_FILTER_DATE_SIZE
                     },
                     "endDate" : {
-                        "size": this.DEFAULT_FILTER_DATE_SIZE,
-                        "helper": "Pick end date of date range."
+                        "size": this.DEFAULT_FILTER_DATE_SIZE
                     },
                     "query" : {
                         "type": "editor",
@@ -308,7 +301,8 @@
                         "aceFitContentHeight": true,
                         "helper": "Enter full query in JSON."
                     }
-                }
+                },
+                "view": "VIEW_WEB_EDIT_INLINE"
             };
         },
 
@@ -319,7 +313,6 @@
                     "bindings": {
                         "id": "column-1",
                         "title": "column-1",
-                        "description": "column-1",
                         "startDate": "column-2",
                         "endDate": "column-2",
                         "query" : "column-3"
@@ -352,15 +345,15 @@
                         $('#column-3', renderedField.outerEl).toggle();
                         var buttonText = $(this).html() == 'Switch To Full Query' ? 'Switch To Detailed Query' : 'Switch To Full Query';
                         $(this).html(buttonText);
+
+                        window.setTimeout(function() {
+                            var value = renderedField.childrenByPropertyId["query"].getEditor().getValue();
+                            renderedField.childrenByPropertyId["query"].getEditor().setValue("");
+                            renderedField.childrenByPropertyId["query"].getEditor().setValue(value);
+                        }, 500);
+
                     }).appendTo($('#column-4', renderedField.outerEl));
             }
-
-            /*
-            $('<div style="margin:5px;" class="button reset">Reset</div>').click(
-                    function() {
-                        renderedField.setValue(self.filterEmptyData());
-                    }).appendTo($('#column-4', renderedField.outerEl));
-            */
         },
 
         filterDefaultData : function(el) {

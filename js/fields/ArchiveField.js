@@ -30,6 +30,9 @@
         setup: function() {
             this.base();
 
+            // we upload to /archives, that's all
+            this.options.uploadSingleAttachmentById = false;
+
             this.controlFieldTemplateDescriptor = this.view.getTemplateDescriptor("controlFieldArchive");
 
             _mergeObject(this.options, {
@@ -45,9 +48,9 @@
          * Disables all upload buttons
          */
         hideButtons: function () {
-            this.field.find('.delete').hide();
-            this.field.find('.start').hide();
-            this.field.find('.cancel').hide();
+            //this.field.find('.delete').hide();
+            //this.field.find('.start').hide();
+            //this.field.find('.cancel').hide();
         },
 
         /**
@@ -90,7 +93,8 @@
 
     Alpaca.registerTemplate('templateArchiveDownload', '<tr class="template-download{{if error}} ui-state-error{{/if}}" data-attachmentid="${attachmentId}">{{if error}}<td></td><td class="attachment-id"><span class="fileupload-attachment-id">${attachmentId}</span></td><td class="name">${name}</td><td class="size">${sizef}</td><td class="upload-error" colspan="2">Error:{{if error === 1}}File exceeds upload_max_filesize (php.ini directive){{else error === 2}}File exceeds MAX_FILE_SIZE (HTML form directive){{else error === 3}}File was only partially uploaded{{else error === 4}}No File was uploaded{{else error === 5}}Missing a temporary folder{{else error === 6}}Failed to write file to disk{{else error === 7}}File upload stopped by extension{{else error === \'maxFileSize\'}}File is too big{{else error === \'minFileSize\'}}File is too small{{else error === \'acceptFileTypes\'}}Filetype not allowed{{else error === \'maxNumberOfFiles\'}}Max number of files exceeded{{else error === \'uploadedBytes\'}}Uploaded bytes exceed file size{{else error === \'emptyResult\'}}Empty file upload result{{else}}${error}{{/if}}</td>{{else}}<td class="attachment-id"><span class="fileupload-attachment-id" style="display:none;">${attachmentId}</span><span>${name}</span></td><td class="name"><a class="fileupload-attachment-download" href="${url}"><img src="${thumbnail_url}" class="archive-photo"/></a></td><td class="type">${type}</td><td class="size">${size}</td><td></td>{{/if}}<td><button class="delete" data-type="${delete_type}" data-url="${delete_url}">Delete</button></td></tr>');
 
-    Alpaca.registerTemplate("controlFieldArchive", '<div id="fileupload-${id}"><form method="POST" enctype="multipart/form-data"><div class="fileupload-buttonbar"><label class="fileinput-button"><span>Add archive...</span><input type="file" name="{{if options.name}}${options.name}{{else}}files[]{{/if}}" multiple></label><button type="submit" class="start">Start upload</button><button type="reset" class="cancel" style="display:none">Cancel upload</button><button type="button" class="delete" style="display:none">Delete files</button><button type="button" class="fileupload-thumbnails" style="display:none;">Thumbnails</button><button type="button" class="fileupload-preview" style="display:none;">Preview</button></div></form><div class="fileupload-slideshow"></div><div class="fileupload-content dropzone" rel="tooltip-html" title="Drag-n-Drop your desktop file to the above drop zone."><table class="files"></table><div class="fileupload-progressbar"></div></div></div>');
+    //Alpaca.registerTemplate("controlFieldArchive", '<div id="fileupload-${id}"><form method="POST" enctype="multipart/form-data"><div class="fileupload-buttonbar"><label class="fileinput-button"><span>Add archive...</span><input type="file" name="{{if options.name}}${options.name}{{else}}files[]{{/if}}" multiple></label><button type="submit" class="start">Start upload</button><button type="reset" class="cancel" style="display:none">Cancel upload</button><button type="button" class="delete" style="display:none">Delete files</button><button type="button" class="fileupload-thumbnails" style="display:none;">Thumbnails</button><button type="button" class="fileupload-preview" style="display:none;">Preview</button></div></form><div class="fileupload-slideshow"></div><div class="fileupload-content dropzone" rel="tooltip-html" title="Drag-n-Drop your desktop file to the above drop zone."><table class="files"></table><div class="fileupload-progressbar"></div></div></div>');
+    Alpaca.registerTemplate("controlFieldArchive", '<div id="fileupload-${id}"><form method="POST" enctype="multipart/form-data"><div class="fileupload-buttonbar"><label class="fileinput-button"><span>Add archive...</span><input type="file" name="{{if options.name}}${options.name}{{else}}files[]{{/if}}" multiple></label></div></form><div class="fileupload-slideshow"></div><div class="fileupload-content dropzone" rel="tooltip-html" title="Drag-n-Drop your desktop file(s) to the above drop zone."><table class="files"></table><div class="fileupload-progressbar" style="display:none"></div></div></div>');
 
     Alpaca.registerFieldClass("archive", Alpaca.Fields.ArchiveField);
 

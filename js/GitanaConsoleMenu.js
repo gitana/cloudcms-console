@@ -1506,6 +1506,13 @@
                         "title" : "Trusted Domain Mappings",
                         "icon" :  Gitana.Utils.Image.buildImageUri('objects', 'trusted-domain-mapping', 16),
                         "current" : current == "menu-webhost-trusted-domain-mappings"
+                    },
+                    {
+                        "id" : "menu-webhost-deployed-applications",
+                        "link" : "#" + self.link(self.webhost(),'deployedapplications'),
+                        "title" : "Deployed Applications",
+                        "icon" :  Gitana.Utils.Image.buildImageUri('objects', 'deployed-application', 16),
+                        "current" : current == "menu-webhost-deployed-applications"
                     }]
                 }]
             };
@@ -1547,7 +1554,27 @@
                     }]
                 }]
             };
+        },
+
+        "DeployedApplication" : function(self , current) {
+            var defaultItem = "menu-deployed-application-dashboard";
+            var current = current ? current : "menu-deployed-application-dashboard";
+            return {
+                "items": [{
+                    "id": "menu-deployed-application-header",
+                    "title": "Deployed Application",
+                    "header": true,
+                    "items": [{
+                        "id" : "menu-deployed-application-dashboard",
+                        "link" : "#" + self.link(self.deployedApplication()),
+                        "title" : "Dashboard",
+                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'deployed-application', 16),
+                        "current" : current == defaultItem
+                    }]
+                }]
+            };
         }
+
 
     };
 

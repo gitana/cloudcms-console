@@ -39,10 +39,18 @@
                     "type" : "string",
                     "required" : true
                 },
+                "title": {
+                    "title": "Title",
+                    "type": "string",
+                    "required": true
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string"
+                },
                 "applicationType": {
                     "type": "string",
-                    "enum": ["web", "trusted"],
-                    "required": true
+                    "enum": ["web", "trusted"]
                 },
                 "trustedScope": {
                     "type": "string",
@@ -716,6 +724,36 @@
                 }
             }
         },
+        "DeployedApplication" : {
+            "type": "object",
+            "properties" : {
+                "applicationId" : {
+                    "title" : "Application ID",
+                    "type" : "string",
+                    "required": true
+                },
+                "deploymentKey" : {
+                    "title" : "Deployment Key",
+                    "type" : "string",
+                    "required": true
+                },
+                "deploymentWebhost" : {
+                    "title" : "Deployment Web Host",
+                    "type" : "string",
+                    "required": true
+                },
+                "host" : {
+                    "title" : "Host",
+                    "type" : "string",
+                    "readonly": true
+                },
+                "urls" : {
+                    "title" : "URLs",
+                    "type" : "array",
+                    "readonly": true
+                }
+            }
+        },
         "Locale" : {
             "type" : "string",
             "title" : "Locale",
@@ -858,6 +896,12 @@
         },
         "Application" : {
             "fields" : {
+                "key" : {
+                    "type" : "text",
+                    "label": "Key",
+                    "helper": "Enter a unique key for this application",
+                    "size" : 60
+                },
                 "title" : {
                     "type": "text",
                     "label": "Title"
@@ -865,12 +909,6 @@
                 "description": {
                     "type": "textarea",
                     "label": "Description"
-                },
-                "key" : {
-                    "type" : "text",
-                    "label": "Key",
-                    "helper": "Enter a unique key for this application",
-                    "size" : 60
                 },
                 "applicationType": {
                     "type": "select",
@@ -900,11 +938,11 @@
                             "fields": {
                                 "webhost": {
                                     "type": "text",
-                                    "label": "ID of Web Host"
+                                    "label": "Web Host"
                                 },
                                 "subdomain": {
                                     "type": "text",
-                                    "label": "SubDomain"
+                                    "label": "Subdomain"
                                 },
                                 "domain": {
                                     "type": "text",
@@ -912,11 +950,11 @@
                                 },
                                 "clientId": {
                                     "type": "text",
-                                    "label": "ID of Client Object"
+                                    "label": "Client ID"
                                 },
                                 "authGrantId": {
                                     "type": "text",
-                                    "label": "ID of Authentication Grant"
+                                    "label": "Authentication Grant ID"
                                 }
                             }
                         }
@@ -1377,6 +1415,26 @@
                 },
                 "platformId" : {
                     "type" : "text",
+                    "hideInitValidationError" : true
+                }
+            }
+        },
+        "DeployedApplication" : {
+            "type": "object",
+            "fields" : {
+                "applicationId" : {
+                    "type" : "text",
+                    "hideInitValidationError" : true
+                },
+                "deploymentKey" : {
+                    "type" : "select",
+                    "hideInitValidationError" : true
+                },
+                "host" : {
+                    "type" : "text",
+                    "hideInitValidationError" : true
+                },
+                "urls" : {
                     "hideInitValidationError" : true
                 }
             }

@@ -28,7 +28,7 @@
         },
 
         targetObject: function() {
-            return this.branch();
+            return this.platform();
         },
 
         requiredAuthorities: function() {

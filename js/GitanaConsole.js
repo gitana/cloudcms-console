@@ -14,30 +14,6 @@
         Gitana.Console.Pages = {};
     }
 
-    /*
-    Gitana.Console.Settings = {
-        "LIST_SIZE" : {
-            "title" : "List Size",
-            "description" : "Default console list size.",
-            "default" : 25,
-            "enum" : [10,25,50,100]
-        },
-        "DISPLAY_LIST_FILTER" : {
-            "title" : "Display lister filter",
-            "description" : "Show list filter automatically if checked.",
-            "default" : false,
-            "type" : "boolean"
-        },
-        "NUMBER_OF_LATEST_ITEMS" : {
-            "title" : "Number of Latest Items",
-            "description" : "Default number of latest items on dashboard pages.",
-            "default" : 5,
-            "type" : "integer",
-            "minimum" : 1
-        }
-    };
-    */
-
     Gitana.Console.Settings = {};
 
     Gitana.Console.Settings.Default = {
@@ -168,7 +144,24 @@
     Alpaca.registerView({
         "id": "VIEW_WEB_EDIT",
         "style": "jquery-ui",
-        "ui": "jquery-ui"
+        "ui": "jquery-ui",
+        "templates": {
+            // Templates for control fields
+            "controlFieldOuterEl": '<div>{{html this.html}}</div>',
+            "controlFieldMessage": '<div><div class="ui-icon ui-icon-alert"></div><div class="alpaca-controlfield-message-text">${message}</div></div>',
+            "controlFieldLabel": '{{if options.label}}<div class="{{if options.labelClass}}${options.labelClass}{{/if}}"><div>${options.label}</div></div>{{/if}}',
+            "controlFieldHelper": '{{if options.helper}}<div class="{{if options.helperClass}}${options.helperClass}{{/if}}"><div class="ui-icon ui-icon-info"></div><div class="alpaca-controlfield-helper-text">${options.helper}</div></div>{{/if}}',
+            "controlFieldContainer": '<div>{{html this.html}}</div>',
+            "controlField": '{{wrap(null, {}) Alpaca.fieldTemplate(this,"controlFieldOuterEl",true)}}{{html Alpaca.fieldTemplate(this,"controlFieldLabel")}}{{wrap(null, {}) Alpaca.fieldTemplate(this,"controlFieldContainer",true)}}{{html Alpaca.fieldTemplate(this,"controlFieldHelper")}}{{/wrap}}{{/wrap}}',
+            // Templates for container fields
+            "fieldSetOuterEl": '<fieldset>{{html this.html}}</fieldset>',
+            "fieldSetMessage": '<div><div class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></div><div>${message}</div></div>',
+            "fieldSetLegend": '{{if options.label}}<legend class="{{if options.labelClass}}${options.labelClass}{{/if}}">${options.label}</legend>{{/if}}',
+            "fieldSetHelper": '{{if options.helper}}<div class="{{if options.helperClass}}${options.helperClass}{{/if}}">${options.helper}</div>{{/if}}',
+            "fieldSetItemsContainer": '<div>{{html this.html}}</div>',
+            "fieldSet": '{{wrap(null, {}) Alpaca.fieldTemplate(this,"fieldSetOuterEl",true)}}{{html Alpaca.fieldTemplate(this,"fieldSetLegend")}}{{html Alpaca.fieldTemplate(this,"fieldSetHelper")}}{{wrap(null, {}) Alpaca.fieldTemplate(this,"fieldSetItemsContainer",true)}}{{/wrap}}{{/wrap}}',
+            "fieldSetItemContainer": '<div></div>'
+        }
     });
 
     // adjust the VIEW_WEB_CREATE view so it uses jQuery UI

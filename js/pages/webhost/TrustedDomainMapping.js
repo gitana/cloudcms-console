@@ -1,8 +1,5 @@
 (function($) {
     Gitana.Console.Pages.TrustedDomainMapping = Gitana.CMS.Pages.AbstractDashboardPageGadget.extend({
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
 
         setup: function() {
             this.get("/webhosts/{webhostId}/trusteddomainmappings/{trustedDomainMappingId}", this.index);
@@ -36,7 +33,7 @@
                 {
                     "id": "edit",
                     "title": "Edit",
-                    "icon" : Gitana.Utils.Image.buildImageUri('objects', 'auto-trusted-domain-edit', 48),
+                    "icon" : Gitana.Utils.Image.buildImageUri('objects', 'trusted-domain-mapping-edit', 48),
                     "url" : self.link(this.targetObject(), "edit"),
                     "requiredAuthorities" : [
                         {
@@ -60,7 +57,7 @@
                 {
                     "id": "delete",
                     "title": "Delete",
-                    "icon" : Gitana.Utils.Image.buildImageUri('objects', 'auto-trusted-domain-delete', 48),
+                    "icon" : Gitana.Utils.Image.buildImageUri('objects', 'trusted-domain-mapping-delete', 48),
                     "click": function(autoClientMapping) {
                         self.onClickDelete(self.targetObject(), 'trusted domain mapping', self.listLink('trusted-domain-mappings'), Gitana.Utils.Image.buildImageUri('objects', 'trusted-domain-mapping', 24), 'trusted domain mapping');
                     },

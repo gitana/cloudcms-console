@@ -1017,6 +1017,24 @@
             ]);
         },
 
+        "DeployedApplications" : function(self , el) {
+            return $.merge(this.Webhost(self, el), [
+                {
+                    "text" : "Deployed Applications",
+                    "link" : self.LIST_LINK().call(self,'deployed-applications')
+                }
+            ]);
+        },
+
+        "DeployedApplication" : function(self , el) {
+            return $.merge(this.DeployedApplications(self, el), [
+                {
+                    "text" : self.friendlyTitle(self.deployedApplication()),
+                    "link" : self.LINK().call(self,self.deployedApplication())
+                }
+            ]);
+        },
+
         "PlatformActivities" : function(self , el) {
             return $.merge(this.Platform(self, el), [
                 {

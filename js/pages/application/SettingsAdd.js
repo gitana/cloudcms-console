@@ -37,18 +37,18 @@
                 }
 
                 Chain(self.targetObject()).querySettings(controlVal).count(function(count) {
-                        if (count == 0) {
-                            callback({
-                                "message": "Valid Settings key.",
-                                "status": true
-                            });
-                        } else {
-                            callback({
-                                "message": "Unique Settings Id required!",
-                                "status": false
-                            });
-                        }
-                    });
+                    if (count == 0) {
+                        callback({
+                            "message": "Valid Settings key.",
+                            "status": true
+                        });
+                    } else {
+                        callback({
+                            "message": "Unique Settings Id required!",
+                            "status": false
+                        });
+                    }
+                });
             };
 
             return options;
@@ -86,7 +86,9 @@
         setupSettingsAddForm : function (el) {
             var self = this;
             $('#settings-add', $(el)).alpaca({
-                "data": {},
+                "data": {
+                    "settings": "{\n\n}"
+                },
                 "schema": self.schema(),
                 "options": self.options(),
                 "postRender": function(form) {

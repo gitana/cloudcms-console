@@ -178,6 +178,12 @@
 
                 <file name="fields/GitanaPrincipalPickerField.js"/>
                 <file name="fields/GitanaNodePickerField.js"/>
+                <file name="fields/GitanaStackPickerField.js"/>
+                <file name="fields/GitanaApplicationPickerField.js"/>
+                <file name="fields/GitanaWebHostPickerField.js"/>
+                <file name="fields/GitanaClientPickerField.js"/>
+                <file name="fields/GitanaAuthGrantPickerField.js"/>
+
                 <file name="fields/PlatformLogoField.js"/>
 
                 <file name="utilities/GitanaUtilsActivity.js"/>
@@ -435,6 +441,12 @@
                 <file name="pages/webhost/TrustedDomainMappingEdit.js"/>
                 <file name="pages/webhost/TrustedDomainMappingExport.js"/>
 
+                <file name="pages/webhost/DeployedApplications.js"/>
+                <file name="pages/webhost/DeployedApplication.js"/>
+                <file name="pages/webhost/DeployedApplicationAdd.js"/>
+                <file name="pages/webhost/DeployedApplicationEdit.js"/>
+                <file name="pages/webhost/DeployedApplicationExport.js"/>
+
                 <file name="pages/user/UserProfile.js"/>
                 <file name="pages/user/UserProfileEdit.js"/>
 
@@ -577,6 +589,12 @@
 
                 <file name="components/GitanaPrincipalSelector.js"/>
                 <file name="components/GitanaNodeSelector.js"/>
+                <file name="components/GitanaStackSelector.js"/>
+                <file name="components/GitanaApplicationSelector.js"/>
+                <file name="components/GitanaWebHostSelector.js"/>
+                <file name="components/GitanaClientSelector.js"/>
+                <file name="components/GitanaAuthGrantSelector.js"/>
+
 
                 <!-- Rule Conditions -->
                 <file name="rules/conditions/ConditionRegistry.js"/>

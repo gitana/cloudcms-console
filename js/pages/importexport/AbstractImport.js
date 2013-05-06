@@ -23,7 +23,7 @@
                     "type" : "object",
                     "properties" : {
                         "vault" : {
-                            "title": "Vault",
+                            "title": "Select a Vault",
                             "type" : "string",
                             "required" : true
                         },
@@ -43,31 +43,31 @@
                             "type" : "object",
                             "properties" : {
                                 "includeACLs" : {
-                                    "title": "ACLs",
+                                    "title": "",
                                     "type" : "boolean",
                                     "required" : true,
                                     "default" : true
                                 },
                                 "includeTeams" : {
-                                    "title": "Teams",
+                                    "title": "",
                                     "type" : "boolean",
                                     "required" : true,
                                     "default" : true
                                 },
                                 "includeActivities" : {
-                                    "title": "Activities",
+                                    "title": "",
                                     "type" : "boolean",
                                     "required" : true,
                                     "default" : true
                                 },
                                 "includeBinaries" : {
-                                    "title": "Binaries",
+                                    "title": "",
                                     "type" : "boolean",
                                     "required" : true,
                                     "default" : true
                                 },
                                 "includeAttachments" : {
-                                    "title": "Attachments",
+                                    "title": "",
                                     "type" : "boolean",
                                     "required" : true,
                                     "default" : true
@@ -86,7 +86,6 @@
                     "fields" : {
                         "vault" : {
                             "type" : "select",
-                            "helper" : "Select a vault for picking archive to import.",
                             "fieldClass" : "vault-picker",
                             "dataSource": function(field, callback) {
                                 var firstOption;
@@ -117,36 +116,30 @@
                             "helper" : "Provide settings of import archive or select them from the following list."
                         },
                         "schedule" : {
-                            "helper" : "Select import schedule.",
-                            "optionLabels" : ["Asynchronous","Synchronous"]
+                            "optionLabels" : ["Run in the Background", "Run Immediately and Wait"]
                         },
                         "configuration" : {
-                            "helper" : "Provide import configuration.",
+                            "helper" : "Configure how you would like the import process to run:",
                             "fields" : {
                                 "includeACLs" : {
                                     "type" : "checkbox",
-                                    "rightLabel" : "Include ACLs?",
-                                    "helper" : "Check this option for including ACLs."
+                                    "rightLabel" : "Import Access Control and Permissions"
                                 },
                                 "includeTeams" : {
                                     "type" : "checkbox",
-                                    "rightLabel" : "Include Teams?",
-                                    "helper" : "Check this option for including teams."
+                                    "rightLabel" : "Import Teams"
                                 },
                                 "includeActivities" : {
                                     "type" : "checkbox",
-                                    "rightLabel" : "Include Activities?",
-                                    "helper" : "Check this option for including activities."
+                                    "rightLabel" : "Import Activities"
                                 },
                                 "includeBinaries" : {
                                     "type" : "checkbox",
-                                    "rightLabel" : "Include Binaries?",
-                                    "helper" : "Check this option for including binaries."
+                                    "rightLabel" : "Import Data Store Binaries"
                                 },
                                 "includeAttachments" : {
                                     "type" : "checkbox",
-                                    "rightLabel" : "Include Attachments?",
-                                    "helper" : "Check this option for including attachments."
+                                    "rightLabel" : "Include Object Attachments"
                                 }
                             }
                         }

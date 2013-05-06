@@ -1,0 +1,29 @@
+<script id="layoutTemplate" type="text/x-jquery-tmpl">
+
+    <div class="container_12 gitana-authgrant-selector">
+
+        <div class="grid_12">
+            <div class="block-border">
+
+                <!--
+                <div class="list-toolbar-content" gadget="toolbar">
+                </div>
+                -->
+
+                {{if authgrantselector && authgrantselector.filter}}
+                <div class="list-filter" gadget="filter">
+                </div>
+                {{/if}}
+                {{if authgrantselector.subscription}}<div class="list-toolbar" gadget="toolbar" subscription="${authgrantselector.subscription}-toolbar"></div>{{/if}}
+                <div class="block-content list-datatable">
+                    <div class="list" gadget="list" {{if authgrantselector.subscription}}subscription="${authgrantselector.subscription}"{{/if}} {{if authgrantselector.filter}}filter="${authgrantselector.filter}"{{/if}}>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear height-fix"></div>
+
+    </div>
+
+</script>

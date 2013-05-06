@@ -1,0 +1,29 @@
+<script id="layoutTemplate" type="text/x-jquery-tmpl">
+
+    <div class="container_12 gitana-application-selector">
+
+        <div class="grid_12">
+            <div class="block-border">
+
+                <!--
+                <div class="list-toolbar-content" gadget="toolbar">
+                </div>
+                -->
+
+                {{if applicationselector && applicationselector.filter}}
+                <div class="list-filter" gadget="filter">
+                </div>
+                {{/if}}
+                {{if applicationselector.subscription}}<div class="list-toolbar" gadget="toolbar" subscription="${applicationselector.subscription}-toolbar"></div>{{/if}}
+                <div class="block-content list-datatable">
+                    <div class="list" gadget="list" {{if applicationselector.subscription}}subscription="${applicationselector.subscription}"{{/if}} {{if applicationselector.filter}}filter="${applicationselector.filter}"{{/if}}>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear height-fix"></div>
+
+    </div>
+
+</script>

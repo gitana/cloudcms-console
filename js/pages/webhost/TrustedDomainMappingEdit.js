@@ -9,10 +9,6 @@
             "/webhosts/{webhostId}/trusteddomainmappings/{trustedDomainMappingId}/edit/json"
         ],
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         targetObject: function() {
             return this.trustedDomainMapping();
         },

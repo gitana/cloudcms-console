@@ -46,6 +46,34 @@
                 }
             });
 
+            // web host picker for deployments
+            // client picker for deployments
+            // auth grant picker for deployments
+            _mergeObject(options, {
+                "fields": {
+                    "deployments": {
+                        "fields": {
+                            "item": {
+                                "fields": {
+                                    "webhost": {
+                                        "type": "gitanawebhostpicker",
+                                        "platform": this.platform()
+                                    },
+                                    "clientId": {
+                                        "type": "gitanaclientpicker",
+                                        "platform": this.platform()
+                                    },
+                                    "authGrantId": {
+                                        "type": "gitanaauthgrantpicker",
+                                        "platform": this.platform()
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
             options["fields"]["key"]["hideInitValidationError"] = true;
 
             options['fields']['key']['validator'] = function(control, callback) {

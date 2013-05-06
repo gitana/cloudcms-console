@@ -12,10 +12,6 @@
                 }
             },
 
-            constructor: function(id, ratchet) {
-                this.base(id, ratchet);
-            },
-
             setup: function() {
                 this.get("/webhosts/{webhostId}/autoclientmappings", this.index);
             },

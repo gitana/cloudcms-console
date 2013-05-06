@@ -373,6 +373,14 @@
             this.observable("trustedDomainMapping").clear();
         },
 
+        deployedApplication: function() {
+            return this._observable("deployedApplication", arguments);
+        },
+
+        clearDeployedApplication: function() {
+            this.observable("deployedApplication").clear();
+        },
+
         session: function() {
             return this._observable("session", arguments);
         },
@@ -840,6 +848,16 @@
                         }
                     }
 
+                    var deployedApplicationId = el.tokens["deployedApplicationId"];
+
+                    if (deployedApplicationId) {
+                        if (!self.deployedApplication() || self.deployedApplication().getId() != deployedApplicationId) {
+                            this.readDeployedApplication(deployedApplicationId).then(function() {
+                                self.deployedApplication(this);
+                            });
+                        }
+                    }
+
                 });
             };
 
@@ -1150,7 +1168,7 @@
          * @param mode
          * @param target
          */
-        link : function(node, mode, target) {
+        link: function(node, mode, target) {
 
             var link = "";
 
@@ -1372,6 +1390,12 @@
 
                         break;
 
+                    case 'Gitana.DeployedApplication':
+
+                        link += this.listLink('deployed-applications');
+
+                        break;
+
                     case 'Gitana.Directory':
 
                         link += this.listLink('directories');
@@ -1586,7 +1610,7 @@
          *
          * @param type
          */
-        listLink : function (type) {
+        listLink: function (type) {
             var link = "/";
 
             if (type) {
@@ -1920,6 +1944,12 @@
                     case 'trusted-domain-mappings':
 
                         link += "webhosts/"+ this.webhost().getId() + "/trusteddomainmappings/";
+
+                        break;
+
+                    case 'deployed-applications':
+
+                        link += "webhosts/"+ this.webhost().getId() + "/deployedapplications/";
 
                         break;
 

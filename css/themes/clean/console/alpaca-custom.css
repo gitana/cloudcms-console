@@ -1,3 +1,4 @@
+
 p.inline-label, p.inline-medium-label, p.inline-small-label {
 	padding-right: 10px;
 }
@@ -31,7 +32,6 @@ input[type="text"], input[type="password"], textarea {
 	line-height: 1.5em;
 	padding: 4px;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
-    /*font-size: 1em;*/
 }
 
 input[type="text"]:hover, input[type="password"]:hover, textarea:hover {
@@ -45,12 +45,6 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 a.button {
     text-decoration:none;
 }
-
-/*
-.alpaca-controlfield-file .ui-widget-header {
-    background:none;
-}
-*/
 
 .alpaca-controlfield-label
 {
@@ -80,7 +74,6 @@ a.button {
     margin-top: 0.3em;
 }
 
-/* principal picker */
 .gitana-principal-selector .block-border {
     background: none repeat scroll 0 0 transparent;
     border: medium none;
@@ -107,7 +100,6 @@ a.button {
     margin-left: 5px;
 }
 
-/* node picker */
 .gitana-selector .block-border {
     background: none repeat scroll 0 0 transparent;
     border: medium none;
@@ -134,7 +126,6 @@ a.button {
     margin-left: 5px;
 }
 
-/* picker */
 .container_12.gitana-picker {
     margin-left: 0;
     margin-right: 0;
@@ -173,7 +164,6 @@ a.button {
 
 fieldset.alpaca-view-web-edit-list
 {
-    /*border: 1px #B5C9E8 solid !important;*/
 }
 
 fieldset.alpaca-view-web-edit-list legend
@@ -187,7 +177,6 @@ OL.alpaca-wizard-status-bar
     background: none repeat scroll 0 0 transparent !important;
     border-color: #B5C9E8;
     color: #666;
-    /*padding: 10px;*/
     height:42px;
 }
 

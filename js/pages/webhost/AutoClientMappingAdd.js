@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.AutoClientMappingAdd = Gitana.CMS.Pages.AbstractFormPageGadget.extend(
         {
-            constructor: function(id, ratchet) {
-                this.base(id, ratchet);
-            },
-
             schema: function() {
                 return Alpaca.merge({}, Gitana.Console.Schema.AutoClientMapping);
             },

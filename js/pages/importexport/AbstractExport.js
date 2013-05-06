@@ -10,7 +10,7 @@
                     "type" : "object",
                     "properties" : {
                         "vault": {
-                            "title": "Destination Vault",
+                            "title": "Select a Destination Vault",
                             "type": "object",
                             "properties": {
                                 "vaultId" : {
@@ -82,7 +82,6 @@
                 var options = {
                     "fields" : {
                         "vault": {
-                            "helper": "Select the vault where the exported archive will be saved.",
                             "fields": {
                                 "vaultId" : {
                                     "label": false,
@@ -114,32 +113,32 @@
                             "helper" : "Provide identification properties for the archive."
                         },
                         "configuration" : {
-                            "helper" : "What should be exported?",
+                            "helper" : "Configure how you would like the export process to run:",
                             "fields" : {
                                 "includeACLs" : {
                                     "label": false,
                                     "type" : "checkbox",
-                                    "rightLabel" : "Include Permissions and Access Control"
+                                    "rightLabel" : "Export Permissions and Access Control"
                                 },
                                 "includeTeams" : {
                                     "label": false,
                                     "type" : "checkbox",
-                                    "rightLabel" : "Include Teams"
+                                    "rightLabel" : "Export Teams"
                                 },
                                 "includeActivities" : {
                                     "label": false,
                                     "type" : "checkbox",
-                                    "rightLabel" : "Include Activities"
+                                    "rightLabel" : "Export Activities"
                                 },
                                 "includeBinaries" : {
                                     "label": false,
                                     "type" : "checkbox",
-                                    "rightLabel" : "Include Binaries"
+                                    "rightLabel" : "Export Data Store Binaries"
                                 },
                                 "includeAttachments" : {
                                     "label": false,
                                     "type" : "checkbox",
-                                    "rightLabel" : "Include Attachments"
+                                    "rightLabel" : "Export Object Attachments"
                                 },
                                 "startDate" : {
                                     "helper" : "Optionally limit the export to objects modified after a specific time."
@@ -148,7 +147,7 @@
                                     "helper" : "Optionally limit the import to objects modified before a specific time."
                                 },
                                 "schedule" : {
-                                    "optionLabels" : ["Run in Background", "Run Immediately"]
+                                    "optionLabels" : ["Run in the Background", "Run Immediately and Wait"]
                                 }
                             }
                         }

@@ -32,11 +32,7 @@
 
         schema: function() {
 
-            var schema = Alpaca.cloneObject(Gitana.Console.Schema.Application);
-
-            _mergeObject(schema,this.base());
-
-            return schema;
+            return Alpaca.cloneObject(Gitana.Console.Schema.Application);
         },
 
         options: function() {
@@ -45,7 +41,33 @@
 
             var options = Alpaca.cloneObject(Gitana.Console.Options.Application);
 
-            _mergeObject(options,this.base());
+            // web host picker for deployments
+            // client picker for deployments
+            // auth grant picker for deployments
+            _mergeObject(options, {
+                "fields": {
+                    "deployments": {
+                        "fields": {
+                            "item": {
+                                "fields": {
+                                    "webhost": {
+                                        "type": "gitanawebhostpicker",
+                                        "platform": this.platform()
+                                    },
+                                    "clientId": {
+                                        "type": "gitanaclientpicker",
+                                        "platform": this.platform()
+                                    },
+                                    "authGrantId": {
+                                        "type": "gitanaauthgrantpicker",
+                                        "platform": this.platform()
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
 
             //TODO: Make key field readonly?
             options['fields']['key']['validator'] = function(control, callback) {
