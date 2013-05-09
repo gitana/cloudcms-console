@@ -89,9 +89,9 @@
 
         filterOptions: function() {
             return _mergeObject(this.base(),{
-                "helper" : "Query users by id, name, last name, email, company name, date range or full query.",
+                "helper" : "Search for users and assign security rights.",
                 "fields" : {
-                    "lastName" : {
+                    "text" : {
                         "size": this.DEFAULT_FILTER_TEXT_SIZE,
                         "helper": "Enter regular expression for query by last name."
                     },
@@ -149,7 +149,7 @@
                         });
                     }
                 });
-            }
+            };
 
             list["columns"] = [
                 {
@@ -263,134 +263,60 @@
 
                 query['type'] = "USER";
 
+                var loadUserPrincipals = function() {
+
+                    if (domainId == "default")
+                    {
+                        var factory = new Gitana.ObjectFactory();
+
+                        var specialDomain = factory.domain(self.platform(), {
+                            "_doc": "default"
+                        });
+                        var specialGuest = factory.domainPrincipal(specialDomain, {
+                            "name": "guest",
+                            "type": "USER",
+                            "_doc": "guest"
+                        });
+                        var map = new Gitana.PrincipalMap(specialDomain);
+                        map.handleResponse({
+                            "offset": 0,
+                            "total_rows": 1,
+                            "rows": {
+                                "everyone": specialGuest
+                            }
+                        });
+                        Chain(map).then(function() {
+                            loadUserAuthorities.call(this);
+                        });
+                    }
+                    else
+                    {
+                        self.platform().readDomain(domainId).queryPrincipals(query,self.pagination(pagination)).then(function() {
+                            loadUserAuthorities.call(this);
+                        });
+                    }
+                };
+
                 var loadUserAuthorities = function (){
 
-                    self.platform().readDomain(domainId).queryPrincipals(query, self.pagination(pagination)).then(function() {
+                    // create a list of domain qualified principal ids for whom we want to load authorities
+                    var domainQualifiedUserIds = [];
+                    this.each(function() {
+                        domainQualifiedUserIds.push(this.getDomainQualifiedId());
+                    });
 
-                        var userIds = [];
+                    // generate a principal authority lookup map of all authorities keyed by domain qualified principal id
+                    var userAuthorityLookup = null;
+                    this.subchain(self.targetObject()).loadAuthorityGrants(domainQualifiedUserIds, function(principalAuthorityGrants) {
+                        userAuthorityLookup = self.generateAuthorityLookup(domainId, domainQualifiedUserIds, principalAuthorityGrants)
+                    });
 
-                        var userAuthorityLookup = {};
-
+                    // for each user, merge in the authority information
+                    this.then(function() {
                         this.each(function() {
-                            userIds.push(this.getDomainId() + "/" + this.getId());
-                        });
-
-                        this.subchain(self.targetObject()).loadAuthorityGrants(userIds, function(principalAuthorityGrants) {
-
-                            $.each(userIds, function(index, principalId) {
-
-                                userAuthorityLookup[principalId] = {
-
-                                    "inheritedRoles" : [],
-
-                                    "indirectRoles" : [],
-
-                                    "roles" : []
-
-                                };
-
-                                var authorityGrants = principalAuthorityGrants[principalId];
-
-                                for (var grantId in authorityGrants) {
-
-                                    var grant = authorityGrants[grantId];
-
-                                    // the "role key" of the authority (i.e. consumer, collaborator)
-                                    var grantRoleKey = grant["role-key"];
-
-                                    // the id of the principal who was granted the right
-                                    var grantPrincipalId = domainId + "/" + grant["principal"];
-
-                                    var grantDomainId = grant["domain"];
-
-                                    var grantPrincipalFullId = grantDomainId + "/" + grantPrincipalId;
-
-                                    var grantPrincipalName = grant["principalName"];
-
-                                    // the id of the object that was granted against (i.e. server id, repo id)
-                                    var grantPermissionedId = grant["permissioned"];
-
-                                    // NOTE: if the grant was made directly, then grantPrincipalId == userId1
-                                    // otherwise, grantPrincipalId == the id of the security user that was granted the authority
-                                    // and to which the principal userId1 belongs
-                                    var indirect = (grantPrincipalId != principalId);
-
-                                    if (indirect) {
-
-                                        userAuthorityLookup[principalId]['indirectRoles'].push({
-                                            "grantId" : grantId,
-                                            "grantRoleKey" : grantRoleKey,
-                                            "grantPrincipalId" : grantPrincipalId,
-                                            "grantPrincipalDomain" : grantDomainId,
-                                            "grantPrincipalName" : grantPrincipalName,
-                                            "grantPermissionedId" : grantPermissionedId
-                                        });
-
-                                    } else {
-
-                                        userAuthorityLookup[principalId]['roles'].push({
-                                            "grantId" : grantId,
-                                            "grantRoleKey" : grantRoleKey,
-                                            "grantPrincipalId" : grantPrincipalId,
-                                            "grantPrincipalDomain" : grantDomainId,
-                                            "grantPrincipalName" : grantPrincipalName,
-                                            "grantPermissionedId" : grantPermissionedId
-                                        });
-
-                                    }
-
-                                    // NOTE: in the case of nodes, authorities may also be inherited (i.e. propagated) due to
-                                    // authorities being assigned to a node on the other side of an association that propagates
-                                    // authorities (like the a:child association).
-
-                                    var inheritsFrom = grant["inheritsFrom"];
-
-                                    //text += "\n\tinherited: " + (!Gitana.isEmpty(inheritsFrom));
-
-                                    if (inheritsFrom) {
-                                        // the id of the grant being masked
-                                        // this is usually the original association id that our propagated association is masking
-                                        var inheritedGrantId = inheritsFrom["id"];
-
-                                        // the id of the original principal
-                                        // this should be the same as userId1
-                                        var inheritedDomainId = inheritsFrom["domain"];
-                                        var inheritedPrincipalId = inheritsFrom["principal"];
-                                        var inheritedPrincipalName = inheritsFrom["principalName"];
-                                        // the id of the original permissioned
-                                        // this may be something like the folder that our document sits inside of
-                                        var inheritedPermissionedId = inheritsFrom["permissioned"];
-
-                                        userAuthorityLookup[principalId]['inheritedRoles'].push({
-                                            "grantId" : inheritedGrantId,
-                                            "grantRoleKey" : grantRoleKey,
-                                            "grantPrincipalId" : inheritedPrincipalId,
-                                            "grantPrincipalDomain" : inheritedDomainId,
-                                            "grantPrincipalName" : inheritedPrincipalName,
-                                            "grantPermissionedId" : inheritedPermissionedId
-                                        });
-
-                                    }
-
-                                }
-                            });
-                        });
-
-                        this.then(function() {
-                            var _this = this;
-                            this.each(
-                                function() {
-
-                                    var userId = this.getDomainId() + "/" + this.getId();
-
-                                    _mergeObject(_this[this.getId()], userAuthorityLookup[userId]);
-
-                                }).then(function() {
-
-                                    callback.call(this);
-
-                                });
-
+                            _mergeObject(this, userAuthorityLookup[this.getDomainQualifiedId()]);
+                        }).then(function() {
+                            callback.call(this);
                         });
                     });
                 };
@@ -411,13 +337,13 @@
                         });
                         query['_doc'] = {
                             "$in" : userIds
-                        }
+                        };
 
-                        loadUserAuthorities();
+                        loadUserPrincipals();
 
                     });
                 } else {
-                   loadUserAuthorities();
+                    loadUserPrincipals();
                 }
 
 

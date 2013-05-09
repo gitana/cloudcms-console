@@ -141,6 +141,13 @@
                         "type" : "select",
                         "helper": "Select principal domain.",
                         "dataSource": function(field, callback) {
+
+                            // add in the "special principals" domain
+                            field.selectOptions.push({
+                                "value": "default",
+                                "text": "Special Principals"
+                            });
+
                             self.platform().listDomains().each(
                                 function(key, val, index) {
                                     field.selectOptions.push({
@@ -202,6 +209,121 @@
                 $('.list-item-more[data-principal-id="' + principalId + '"]').show();
                 $(this).hide();
             });
+        },
+
+        determineAuthorityGrantDomainQualifiedId: function(domainId, grant)
+        {
+            var principalId = grant["principal"];
+
+            if (grant.principalName == "everyone") {
+                principalId = "everyone";
+            }
+            if (grant.principalName == "guest") {
+                principalId = "guest";
+            }
+
+            return domainId + "/" + principalId;
+        },
+
+        generateAuthorityLookup: function(domainId, domainQualifiedPrincipalIds, principalAuthorityGrants)
+        {
+            var self = this;
+            var principalAuthorityLookup = {};
+
+            $.each(domainQualifiedPrincipalIds, function(index, domainQualifiedPrincipalId) {
+
+                principalAuthorityLookup[domainQualifiedPrincipalId] = {
+                    "inheritedRoles" : [],
+                    "indirectRoles" : [],
+                    "roles" : []
+                };
+
+                var authorityGrants = principalAuthorityGrants[domainQualifiedPrincipalId];
+                for (var grantId in authorityGrants) {
+
+                    var authorityGrant = authorityGrants[grantId];
+
+                    // the "role key" of the authority (i.e. consumer, collaborator)
+                    var grantRoleKey = authorityGrant["role-key"];
+
+                    // the domain qualified id of the principal who was granted the right
+                    var grantPrincipalId = self.determineAuthorityGrantDomainQualifiedId(domainId, authorityGrant);
+
+                    // the domain
+                    var grantDomainId = authorityGrant["domain"];
+
+                    // the name of the principal
+                    var grantPrincipalName = authorityGrant["principalName"];
+
+                    // the id of the object that was granted against (i.e. server id, repo id)
+                    var grantPermissionedId = authorityGrant["permissioned"];
+
+                    // NOTE: if the grant was made directly, then grantPrincipalId == userId1
+                    // otherwise, grantPrincipalId == the id of the security user that was granted the authority
+                    // and to which the principal userId1 belongs
+                    var indirect = (grantPrincipalId != domainQualifiedPrincipalId);
+
+                    if (indirect) {
+
+                        principalAuthorityLookup[domainQualifiedPrincipalId]['indirectRoles'].push({
+                            "grantId" : grantId,
+                            "grantRoleKey" : grantRoleKey,
+                            "grantPrincipalId" : grantPrincipalId,
+                            "grantPrincipalDomain" : grantDomainId,
+                            "grantPrincipalName" : grantPrincipalName,
+                            "grantPermissionedId" : grantPermissionedId
+                        });
+
+                    } else {
+
+                        principalAuthorityLookup[domainQualifiedPrincipalId]['roles'].push({
+                            "grantId" : grantId,
+                            "grantRoleKey" : grantRoleKey,
+                            "grantPrincipalId" : grantPrincipalId,
+                            "grantPrincipalDomain" : grantDomainId,
+                            "grantPrincipalName" : grantPrincipalName,
+                            "grantPermissionedId" : grantPermissionedId
+                        });
+
+                    }
+
+                    // NOTE: in the case of nodes, authorities may also be inherited (i.e. propagated) due to
+                    // authorities being assigned to a node on the other side of an association that propagates
+                    // authorities (like the a:child association).
+
+                    var inheritsFrom = authorityGrant["inheritsFrom"];
+
+                    //text += "\n\tinherited: " + (!Gitana.isEmpty(inheritsFrom));
+
+                    if (inheritsFrom) {
+                        // the id of the grant being masked
+                        // this is usually the original association id that our propagated association is masking
+                        var inheritedGrantId = inheritsFrom["id"];
+
+                        // the id of the original principal
+                        // this should be the same as userId1
+                        var inheritedDomainId = inheritsFrom["domain"];
+                        var inheritedPrincipalId = inheritsFrom["principal"];
+                        var inheritedPrincipalName = inheritsFrom["principalName"];
+                        // the id of the original permissioned
+                        // this may be something like the folder that our document sits inside of
+                        var inheritedPermissionedId = inheritsFrom["permissioned"];
+
+                        principalAuthorityLookup[domainQualifiedPrincipalId]['inheritedRoles'].push({
+                            "grantId" : inheritedGrantId,
+                            "grantRoleKey" : grantRoleKey,
+                            "grantPrincipalId" : inheritedPrincipalId,
+                            "grantPrincipalDomain" : inheritedDomainId,
+                            "grantPrincipalName" : inheritedPrincipalName,
+                            "grantPermissionedId" : inheritedPermissionedId
+                        });
+
+                    }
+
+                }
+            });
+
+            return principalAuthorityLookup;
         }
 
     });

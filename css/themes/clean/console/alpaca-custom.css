@@ -204,24 +204,42 @@ OL.alpaca-wizard-status-bar > LI > DIV > STRONG > SPAN
 }
 
 
-.alpaca-controlfield-date input {
+.alpaca-controlfield-date input
+{
     background: url("../../../../lib/alpaca/images/alpaca-icons.png") no-repeat right -2px !important;
+    background-color: white !important;
 }
 
-.alpaca-controlfield-phone input {
+.alpaca-controlfield-phone input
+{
     background: url("../../../../lib/alpaca/images/alpaca-icons.png") no-repeat right -82px !important;
+    background-color: white !important;
 }
 
 .alpaca-controlfield-email input
 {
     background: url("../../../../lib/alpaca/images/alpaca-icons.png") no-repeat right -42px !important;
+    background-color: white !important;
 }
 
-.alpaca-controlfield-time input {
+.alpaca-controlfield-time input
+{
     background: url("../../../../lib/alpaca/images/alpaca-icons.png") no-repeat right -122px !important;
+    background-color: white !important;
 }
 
 .alpaca-controlfield-label
 {
     white-space: nowrap;
+}
+
+.alpaca-fieldset-item-container
+{
+    margin-bottom: 20px;
+}
+
+.alpaca-controlfield-helper-text
+{
+    font-style: italic;
+    font-size: 10px;
 }

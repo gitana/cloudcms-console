@@ -144,7 +144,7 @@
     Alpaca.registerView({
         "id": "VIEW_WEB_EDIT",
         "style": "jquery-ui",
-        "ui": "jquery-ui",
+        "ui": "jquery-ui"/*,
         "templates": {
             // Templates for control fields
             "controlFieldOuterEl": '<div>{{html this.html}}</div>',
@@ -162,6 +162,7 @@
             "fieldSet": '{{wrap(null, {}) Alpaca.fieldTemplate(this,"fieldSetOuterEl",true)}}{{html Alpaca.fieldTemplate(this,"fieldSetLegend")}}{{html Alpaca.fieldTemplate(this,"fieldSetHelper")}}{{wrap(null, {}) Alpaca.fieldTemplate(this,"fieldSetItemsContainer",true)}}{{/wrap}}{{/wrap}}',
             "fieldSetItemContainer": '<div></div>'
         }
+        */
     });
 
     // adjust the VIEW_WEB_CREATE view so it uses jQuery UI

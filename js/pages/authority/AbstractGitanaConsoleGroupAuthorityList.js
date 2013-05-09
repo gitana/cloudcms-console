@@ -140,7 +140,7 @@
                         });
                     }
                 });
-            }
+            };
 
             list["columns"] = [
                 {
@@ -256,155 +256,62 @@
                     "$ne" : true
                 };
 
+                var loadGroupPrincipals = function() {
+
+                    if (domainId == "default")
+                    {
+                        var factory = new Gitana.ObjectFactory();
+
+                        var specialDomain = factory.domain(self.platform(), {
+                            "_doc": "default"
+                        });
+                        var specialEveryone = factory.domainPrincipal(specialDomain, {
+                            "name": "everyone",
+                            "type": "GROUP",
+                            "_doc": "everyone"
+                        });
+                        var map = new Gitana.PrincipalMap(specialDomain);
+                        map.handleResponse({
+                            "offset": 0,
+                            "total_rows": 1,
+                            "rows": {
+                                "everyone": specialEveryone
+                            }
+                        });
+                        Chain(map).then(function() {
+                            loadGroupAuthorities.call(this);
+                        });
+                    }
+                    else
+                    {
+                        self.platform().readDomain(domainId).queryPrincipals(query,self.pagination(pagination)).then(function() {
+                            loadGroupAuthorities.call(this);
+                        });
+                    }
+                };
+
                 var loadGroupAuthorities = function (){
 
-                    self.platform().readDomain(domainId).queryPrincipals(query,self.pagination(pagination)).then(function() {
-
-                        var groupIds = [];
-
-                        var groupAuthorityLookup = {};
-
-                        this.each(function() {
-                            groupIds.push(this.getDomainQualifiedId());
-                        });
-
-                        this.subchain(self.targetObject()).loadAuthorityGrants(groupIds,function(principalAuthorityGrants) {
-
-                            $.each(groupIds, function(index, principalId) {
-
-                                groupAuthorityLookup[principalId] = {
-
-                                    "inheritedRoles" : [],
-
-                                    "indirectRoles" : [],
-
-                                    "roles" : []
-
-                                };
-
-                                var authorityGrants = principalAuthorityGrants[principalId];
-
-                                for (var grantId in authorityGrants) {
-
-                                    var grant = authorityGrants[grantId];
-
-                                    // the "role key" of the authority (i.e. consumer, collaborator)
-                                    var grantRoleKey = grant["role-key"];
-
-                                    // the id of the principal who was granted the right
-                                    var grantPrincipalId = grant["principal"];
-
-                                    var grantDomainId = grant["domain"];
-
-                                    var grantPrincipalFullId = grantDomainId + "/" + grantPrincipalId;
-
-                                    var grantPrincipalName = grant["principalName"];
-
-                                    // the id of the object that was granted against (i.e. server id, repo id)
-                                    var grantPermissionedId = grant["permissioned"];
-
-                                    // NOTE: if the grant was made directly, then grantPrincipalId == userId1
-                                    // otherwise, grantPrincipalId == the id of the security group that was granted the authority
-                                    // and to which the principal userId1 belongs
-                                    var indirect = (grantPrincipalFullId != principalId);
-
-                                    /*
-                                     var text = "Principal: " + principalId + " was granted: " + grantId;
-                                     text += "\n\trole: " + grantRoleKey;
-                                     text += "\n\tprincipal: " + grantPrincipalId;
-                                     text += "\n\tpermissioned: " + grantPermissionedId;
-                                     text += "\n\tindirect: " + indirect;
-                                     */
-
-                                    if (indirect) {
-
-                                        var indirectRole = {
-                                            "grantId" : grantId,
-                                            "grantRoleKey" : grantRoleKey,
-                                            "grantPrincipalId" : grantPrincipalId,
-                                            "grantPrincipalDomain" : grantDomainId,
-                                            "grantPrincipalName" : grantPrincipalName,
-                                            "grantPermissionedId" : grantPermissionedId
-                                        };
-
-                                        groupAuthorityLookup[principalId]['indirectRoles'].push(indirectRole);
-
-                                    } else {
-
-                                        groupAuthorityLookup[principalId]['roles'].push({
-                                            "grantId" : grantId,
-                                            "grantRoleKey" : grantRoleKey,
-                                            "grantPrincipalId" : grantPrincipalId,
-                                            "grantPrincipalDomain" : grantDomainId,
-                                            "grantPrincipalName" : grantPrincipalName,
-                                            "grantPermissionedId" : grantPermissionedId
-                                        });
-
-                                    }
-
-                                    // NOTE: in the case of nodes, authorities may also be inherited (i.e. propagated) due to
-                                    // authorities being assigned to a node on the other side of an association that propagates
-                                    // authorities (like the a:child association).
-
-                                    var inheritsFrom = grant["inheritsFrom"];
-
-                                    //text += "\n\tinherited: " + (!Gitana.isEmpty(inheritsFrom));
-
-                                    if (inheritsFrom) {
-                                        // the id of the grant being masked
-                                        // this is usually the original association id that our propagated association is masking
-                                        var inheritedGrantId = inheritsFrom["id"];
-
-                                        // the id of the original principal
-                                        // this should be the same as userId1
-                                        var inheritedDomainId = inheritsFrom["domain"];
-                                        var inheritedPrincipalId = inheritsFrom["principal"];
-                                        var inheritedPrincipalName = inheritsFrom["principalName"];
-
-                                        // the id of the original permissioned
-                                        // this may be something like the folder that our document sits inside of
-                                        var inheritedPermissionedId = inheritsFrom["permissioned"];
-
-                                        /*
-                                         text += "\n\t\tid: " + inheritedGrantId;
-                                         text += "\n\t\tprincipal: " + inheritedPrincipalId;
-                                         text += "\n\t\tpermissioned: " + inheritedPermissionedId;
-                                         */
-
-                                        groupAuthorityLookup[principalId]['inheritedRoles'].push({
-                                            "grantId" : inheritedGrantId,
-                                            "grantRoleKey" : grantRoleKey,
-                                            "grantPrincipalId" : inheritedPrincipalId,
-                                            "grantPrincipalDomain" : inheritedDomainId,
-                                            "grantPrincipalName" : inheritedPrincipalName,
-                                            "grantPermissionedId" : inheritedPermissionedId
-                                        });
-
-                                    }
-
-                                }
-                            });
-                        });
-
-                        this.then(function() {
-
-                            var _this = this;
-
-                            this.each(function() {
-
-                                var groupId = this.getDomainId() + "/" + this.getId();
-
-                                _mergeObject(_this[this.getId()], groupAuthorityLookup[groupId]);
-
-                            }).then(function() {
-
-                               callback.call(this);
-
-                            });
-
-                        });
+                    // create a list of domain qualified principal ids for whom we want to load authorities
+                    var domainQualifiedGroupIds = [];
+                    this.each(function() {
+                        domainQualifiedGroupIds.push(this.getDomainQualifiedId());
                     });
 
+                    // generate a principal authority lookup map of all authorities keyed by domain qualified principal id
+                    var groupAuthorityLookup = null;
+                    this.subchain(self.targetObject()).loadAuthorityGrants(domainQualifiedGroupIds, function(principalAuthorityGrants) {
+                        groupAuthorityLookup = self.generateAuthorityLookup(domainId, domainQualifiedGroupIds, principalAuthorityGrants)
+                    });
+
+                    // for each user, merge in the authority information
+                    this.then(function() {
+                        this.each(function() {
+                            _mergeObject(this, groupAuthorityLookup[this.getDomainQualifiedId()]);
+                        }).then(function() {
+                            callback.call(this);
+                        });
+                    });
                 };
 
                 if (directRole || Alpaca.isValEmpty(query)) {
@@ -423,13 +330,13 @@
                         });
                         query['_doc'] = {
                             "$in" : groupIds
-                        }
+                        };
 
-                        loadGroupAuthorities();
+                        loadGroupPrincipals();
 
                     });
                 } else {
-                   loadGroupAuthorities();
+                    loadGroupPrincipals();
                 }
             };
 
@@ -472,73 +379,6 @@
             this.base();
 
         },
-
-        /*
-        publicSecurityDashlet: function() {
-            return [
-                {
-                    "id" : "public-security",
-                    "grid" : "grid_4"
-                }
-            ]
-        },
-
-
-        setupPublicSecurity: function(el) {
-            var self = this;
-            var authorityPickerForm = "<h3>Roles for General Public</h3>";
-            var id = 'EVERYONE';
-            var targetObject = self.targetObject();
-            if (targetObject.listAuthorities) {
-                var hasAuthority = false;
-                authorityPickerForm += "<select multiple='multiple' data-principal-id='" + id + "' class='public-authority-picker' title='Select and Add New Role for General Public'>";
-                targetObject.listAuthorities(Gitana.EVERYONE, function(authorities) {
-                    hasAuthority = true;
-                    $.each(Gitana.Console.AUTHORITIES, function(key, val) {
-                        var hasRole = $.inArray(key, authorities) == -1 ? "" : "selected='selected'";
-                        authorityPickerForm += "<option value='" + key + "' " + hasRole + ">" + val['title'] + "</option>";
-                    });
-                }).then(function() {
-                    if (!hasAuthority) {
-                        $.each(Gitana.Console.AUTHORITIES, function(key, val) {
-                            authorityPickerForm += "<option value='" + key + "'>" + val['title'] + "</option>";
-                        });
-                    }
-                    authorityPickerForm += "</select>";
-                    $('#public-security').empty().append(authorityPickerForm);
-                    $(".public-authority-picker").asmSelect({
-                        sortable: false,
-                        removeLabel: "Revoke"
-                    });
-                });
-            }
-            $("body").undelegate(".public-authority-picker", "change").delegate(".public-authority-picker", "change", function(e, data) {
-
-                var control = $(this);
-                var authoritySelection = control.val();
-                var principalId = id;
-                var targetObject = self.targetObject();
-
-                if (data.type == 'add') {
-                    var role = data.value;
-                    Gitana.Utils.UI.block('Granting ' + role + ' role to group ' + principalId + '\'...');
-
-                    Chain(targetObject).grantAuthority(Gitana.EVERYONE,role).then(function() {
-                        Gitana.Utils.UI.unblock();
-                    });
-                }
-
-                if (data.type == 'drop') {
-                    var role = data.value;
-                    Gitana.Utils.UI.block('Revoking ' + role + ' role from group ' + principalId + '\'...');
-
-                    Chain(targetObject).revokeAuthority(Gitana.EVERYONE,role).then(function() {
-                        Gitana.Utils.UI.unblock();
-                    });
-                }
-            })
-        },
-        */
 
         setupDashlets: function(el) {
             //this.setupPublicSecurity(el);

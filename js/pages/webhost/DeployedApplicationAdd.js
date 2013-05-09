@@ -72,12 +72,12 @@
                             var applicationId = $(this).val();
                             self.platform().readApplication(applicationId).then(function() {
 
-                                form.childrenByPropertyId["deploymentKey"].schema.enum = [];
+                                form.childrenByPropertyId["deploymentKey"].schema["enum"] = [];
                                 form.childrenByPropertyId["deploymentKey"].options.optionLabels = [];
 
                                 for (var deploymentKey in this.deployments)
                                 {
-                                    form.childrenByPropertyId["deploymentKey"].schema.enum.push(deploymentKey);
+                                    form.childrenByPropertyId["deploymentKey"].schema["enum"].push(deploymentKey);
                                     form.childrenByPropertyId["deploymentKey"].options.optionLabels.push(deploymentKey);
                                 }
 

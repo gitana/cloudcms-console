@@ -35,6 +35,7 @@
 
             this.controlFieldTemplateDescriptor = this.view.getTemplateDescriptor("controlFieldArchive");
 
+            debugger;
             _mergeObject(this.options, {
                 "fileupload" : {
                     "attachmentId" : "archive",
@@ -42,6 +43,8 @@
                     "acceptFileTypes" : /(\.|\/)(zip|gz|tar|jar|war)$/i
                 }
             });
+
+            var a = 3;
         },
 
         /**
