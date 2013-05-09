@@ -3,9 +3,29 @@
         /**
          * Used to launch a modal blocking dialog with message.
          *
+         * @param title
          * @param message
          */
-        block: function(message) {
+        block: function(title, message)
+        {
+            if (!message) {
+                message = title;
+                title = null;
+            }
+
+            var html = "<div class='block-content'>";
+            if (title)
+            {
+                html += "<br/><h2>" + title + "</h2>";
+            }
+            html += "<br/><br/>";
+            if (message)
+            {
+                html += "<p>" + message + "</p>";
+            }
+            html += "<br/><br/>";
+            html += "<img src='css/images/themes/" + Gitana.Apps.THEME + "/console/misc/ajax-loader.gif' /><br/><br/><br/></div>";
+
             $.blockUI({
                 css: {
                     'background': 'url("' + "css/images/themes/" + Gitana.Apps.THEME + '/console/misc/shine-effect.png") repeat-x scroll 0 0 rgba(33, 40, 44, 0.7)',
@@ -14,7 +34,7 @@
                     'box-shadow': '0 0 5px rgba(0, 0, 0, 0.5)',
                     'padding': '8px'
                 },
-                message: '<div class="block-content"><br/><h2>' + message + '</h2><br/><br/><img src="' + "css/images/themes/" + Gitana.Apps.THEME + '/console/misc/ajax-loader.gif" /><br/><br/><br/></div>'
+                message: html
             });
         },
 

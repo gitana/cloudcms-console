@@ -282,7 +282,7 @@
                             "offset": 0,
                             "total_rows": 1,
                             "rows": {
-                                "everyone": specialGuest
+                                "guest": specialGuest
                             }
                         });
                         Chain(map).then(function() {

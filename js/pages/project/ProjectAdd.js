@@ -38,21 +38,20 @@
                     "fields" : {
                         "title" : {
                             "label": "What would you like to call this project?",
-                            "hideInitValidationError": true,
+                            "hideInitValidationError": true
                         },
                         "description": {
-                            "label": "Provide a brief project description:",
+                            "label": "Please describe your project:",
                             "type": "textarea",
-                            "hideInitValidationError": true,
+                            "hideInitValidationError": true
                         },
                         "stackSelection": {
-                            "label": "Configure your Infrastructure Stack",
-                            "helper": "By default, a new infrastructure stack will be created for your project.  If you'd like to reuse an existing infrastructure stack, you can elect to do so.",
-                            "optionLabels": ["Create a New Stack", "Use an Existing Stack"],
-                            "hideInitValidationError": true,
+                            "label": "Infrastructure Setup",
+                            "optionLabels": ["Create a new infrastructure stack", "Re-use an existing infrastructure stack"],
+                            "hideInitValidationError": true
                         },
                         "stackId": {
-                            "label": "Pick an Existing Stack",
+                            "label": "Select one of your existing stacks:",
                             "hideInitValidationError": true,
                             "type": "gitanastackpicker",
                             "platform": this.platform(),
@@ -63,7 +62,7 @@
                         "projectType": {
                             "label": "What kind of project would you like to create?",
                             "type": "select",
-                            "optionLabels": ["Collaboration Project"],
+                            "optionLabels": ["A Collaboration Project"],
                             "hideInitValidationError": true,
                             "dependencies": {
                                 "stackSelection": "new"
@@ -116,7 +115,7 @@
                             var formVal = form.getValue();
                             if (form.isValid(true)) {
 
-                                Gitana.Utils.UI.block("Creating Project...");
+                                Gitana.Utils.UI.block("Please wait while we create your project...");
 
                                 var projectObject = {};
                                 Gitana.copyInto(projectObject, formVal);
@@ -147,8 +146,8 @@
             setupPage : function(el) {
 
                 var page = {
-                    "title" : "New Project",
-                    "description" : "Create a new project.",
+                    "title" : "Create a New Project",
+                    "description" : "Setup and deploy your new project workspace",
                     "forms" :[
                         {
                             "id" : "project-add",

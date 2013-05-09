@@ -874,7 +874,7 @@ h2.dialog-delete-message-2 {
 }
 
 .dropzone {
-    background: url("../../../images/themes/clean/console/misc/dropzone.png") repeat scroll 0px 0px #FFFFFF;
+    background: url("../../../images/themes/clean/console/misc/dropzone.png") no-repeat scroll 0px 0px #FFFFFF;
     display: block;
     min-height: 200px;
     min-width: 600px;
@@ -1478,4 +1478,9 @@ span.alpaca-view-web-edit-list .alpaca-controlfield-label
     display: block;
     height: 0;
     clear: both;
+}
+
+.alpaca-controlfield-radio-item
+{
+    display:block;
 }
