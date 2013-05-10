@@ -627,8 +627,8 @@
     <target name="concat-css" description="Concat all css files" depends="prep">
         <concat destfile="${package.dir}/css/themes/${theme}/console/${appkey}.css">
             <filelist dir="${prep.dir}/css/themes/${theme}/console">
-                <file name="960.fluid.css"/>
-                <file name="console.css"/>
+                <!--<file name="960.fluid.css"/>-->
+                <!--<file name="console.css"/>-->
                 <file name="style.css"/>
                 <file name="960.fluid.css"/>
                 <file name="main.css"/>
