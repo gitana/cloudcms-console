@@ -42,8 +42,6 @@
                     "acceptFileTypes" : /(\.|\/)(zip|gz|tar|jar|war)$/i
                 }
             });
-
-            var a = 3;
         },
 
         /**
