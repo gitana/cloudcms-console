@@ -195,7 +195,7 @@
 
                     "options": self.options(featureIds, featureLabels),
 
-                    "view": "VIEW_WEB_EDIT_LIST",
+                    "view": "VIEW_WEB_CREATE_LIST",
 
                     "postRender": function(renderedField) {
 

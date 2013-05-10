@@ -89,6 +89,7 @@
             setupAutoClientMappingAddForm : function (el) {
                 var self = this;
                 $('#auto-client-mapping-add', $(el)).alpaca({
+                    "view": "VIEW_WEB_CREATE",
                     "data": {},
                     "schema": self.schema(),
                     "options": self.options(),

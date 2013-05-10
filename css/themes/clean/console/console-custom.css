@@ -1484,3 +1484,8 @@ span.alpaca-view-web-edit-list .alpaca-controlfield-label
 {
     display:block;
 }
+
+.ui-multiselect-menu
+{
+    background-color: white !important;
+}

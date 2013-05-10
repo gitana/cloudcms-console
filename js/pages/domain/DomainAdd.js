@@ -51,6 +51,7 @@
         setupDomainAddForm : function (el) {
             var self = this;
             $('#domain-add', $(el)).alpaca({
+                "view": "VIEW_WEB_CREATE",
                 "data": {},
                 "schema": self.schema(),
                 "options": self.options(),

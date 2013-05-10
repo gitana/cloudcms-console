@@ -104,6 +104,7 @@
         setupTeamAddForm : function (el) {
             var self = this;
             $('#team-add',$(el)).alpaca({
+                "view": "VIEW_WEB_CREATE",
                 "data": {
                     "roles" : ['consumer']
                 },

@@ -57,6 +57,7 @@
         setupWarehouseAddForm : function (el) {
             var self = this;
             $('#warehouse-add', $(el)).alpaca({
+                "view": "VIEW_WEB_CREATE",
                 "data": {},
                 "schema": self.schema(),
                 "options": self.options(),

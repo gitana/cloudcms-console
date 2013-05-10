@@ -98,6 +98,7 @@
         setupNodeAddForm : function (el) {
             var self = this;
             $('#tag-add', $(el)).alpaca({
+                "view": "VIEW_WEB_CREATE",
                 "schema": self.schema(),
                 "options": self.options(),
                 "postRender": function(form) {

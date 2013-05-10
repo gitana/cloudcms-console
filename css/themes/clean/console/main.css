@@ -153,7 +153,7 @@ body.special-page {
 #container > #footer {
     /* Remove fixed footer */
 	/*background: url("../../../images/themes/clean/console/container/footer/footer-bg.png") repeat-x scroll bottom left transparent;*/
-	height: 50px;
+	/*height: 50px;*/
 	width: 100%;
     /* Remove fixed footer */
 	/*position: fixed;*/
@@ -163,7 +163,7 @@ body.special-page {
 
 #footer .footer-icon {
 	background: url("../../../images/themes/clean/console/container/footer/footer-icon.png") no-repeat scroll top left transparent;
-	height: 50px;
+    /*height: 50px;*/
 	width: 59px;
 	float: left;
 }

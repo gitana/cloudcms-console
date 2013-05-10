@@ -86,6 +86,7 @@
         setupSettingsAddForm : function (el) {
             var self = this;
             $('#settings-add', $(el)).alpaca({
+                "view": "VIEW_WEB_CREATE",
                 "data": {
                     "settings": "{\n\n}"
                 },

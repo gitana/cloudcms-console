@@ -251,7 +251,7 @@
                         "schema": schema,
                         "options": options,
                         "view": {
-                            "parent": "VIEW_WEB_EDIT_LIST",
+                            "parent": "VIEW_WEB_CREATE_LIST",
                             "layout": {
                                 "template": "./templates/wizards/rule-wizard-template.html",
                                 "bindings": {

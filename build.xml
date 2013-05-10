@@ -7,7 +7,7 @@
     <property file="local.properties"/>
 
     <tstamp>
-        <format property="timestamp" pattern="yyyy-mm-dd_hh:mm:ss"/>
+        <format property="timestamp" pattern="MM/dd/yyyy hh:mm"/>
     </tstamp>
 
     <property name="project.dir" value="."/>
@@ -698,6 +698,8 @@
         <echo>TIMESTAMP: ${timestamp}</echo>
         <replaceregexp match="&lt;!--TIMESTAMP--&gt;" replace="Version: ${version}, Build Date: ${timestamp}" flags="gs">
             <fileset dir="${prep.dir}" includes="index.html"/>
+        </replaceregexp>
+        <replaceregexp match="&lt;!--TIMESTAMP--&gt;" replace="Version: ${version}, Build Date: ${timestamp}" flags="gs">
             <fileset dir="${prep.dir}" includes="index-prod.html"/>
         </replaceregexp>
         <copy todir="${package.dir}">

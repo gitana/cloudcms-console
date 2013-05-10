@@ -122,6 +122,7 @@
         setupTenantAddForm : function (el) {
             var self = this;
             $('#tenant-add', $(el)).alpaca({
+                "view": "VIEW_WEB_CREATE",
                 "data": {},
                 "schema": self.schema(),
                 "options": self.options(),

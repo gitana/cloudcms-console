@@ -249,6 +249,7 @@
             options = JSON.parse(JSON.stringify(options));
 
             formDiv.empty().alpaca({
+                "view": "VIEW_WEB_CREATE",
                 "schema": schema,
                 "options": options,
                 "postRender": function(form) {

@@ -104,6 +104,7 @@
             setupProjectAddForm : function (el) {
                 var self = this;
                 $('#project-add', $(el)).alpaca({
+                    "view": "VIEW_WEB_CREATE",
                     "data": {
                     },
                     "schema": self.schema(),

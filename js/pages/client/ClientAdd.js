@@ -59,6 +59,7 @@
             setupClientAddForm : function (el) {
                 var self = this;
                 $('#client-add', $(el)).alpaca({
+                    "view": "VIEW_WEB_CREATE",
                     "data": {
                         "authorizedGrantTypes" : ["authorization_code","client_credentials","implicit","password","refresh_token"],
                         "scope" : ['api']

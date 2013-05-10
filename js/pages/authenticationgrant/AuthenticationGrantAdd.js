@@ -85,6 +85,7 @@
             var options = this.options();
 
             $('#authentication-grant-add',$(el)).alpaca({
+                "view": "VIEW_WEB_CREATE",
                 "schema": schema,
                 "options": options,
                 "postRender": function(form) {

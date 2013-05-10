@@ -143,9 +143,9 @@
         processFormAddForm : function (el) {
             var self = this;
             $('#form-add').alpaca({
+                "view": "VIEW_WEB_CREATE",
                 "schema": self.schema(),
                 "options": self.options(),
-                "view": "VIEW_WEB_CREATE",
                 "postRender": function(renderedField) {
 
                     Gitana.Utils.UI.beautifyAlpacaForm(renderedField, 'form-add-create', true);

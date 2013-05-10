@@ -156,6 +156,7 @@
                 });
 
                 formDiv.empty().alpaca({
+                    "view": "VIEW_WEB_CREATE",
                     "data" : {
                         "locale" : defaultLocale
                     },
