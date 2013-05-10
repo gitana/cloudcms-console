@@ -233,11 +233,6 @@ OL.alpaca-wizard-status-bar > LI > DIV > STRONG > SPAN
     white-space: nowrap;
 }
 
-.alpaca-fieldset-item-container
-{
-    margin-bottom: 20px;
-}
-
 .alpaca-controlfield-helper-text
 {
     font-style: italic;

@@ -182,6 +182,9 @@
                     form.getEditor().setValue(value);
                 }, 300);
             }
+
+            // put some spacing into the form
+            form.getEl().find(".alpaca-fieldset-item-container").css("margin-bottom", "20px");
         },
 
         /**
@@ -199,6 +202,9 @@
             if (auto) {
                 Gitana.Utils.UI.autoForm(form,buttonId);
             }
+
+            // put some spacing into the form
+            form.getEl().find(".alpaca-fieldset-item-container").css("margin-bottom", "20px");
         },
 
         /**
