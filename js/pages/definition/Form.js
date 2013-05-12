@@ -109,29 +109,28 @@
                 "title" : "Overview",
                 "icon" : Gitana.Utils.Image.buildImageUri('objects', 'form', 20),
                 "alert" : "",
-                "items" : [
-                    {
-                        "key" : "ID",
-                        "value" : self.listItemProp(form,'_doc')
-                    },
-                    {
-                        "key" : "Title",
-                        "value" : self.listItemProp(form,'title')
-                    },
-                    {
-                        "key" : "Description",
-                        "value" : self.listItemProp(form,'description')
-                    },
-                    {
-                        "key" : "QName",
-                        "value" : form.getQName()
-                    },
-                    {
-                        "key" : "Last Modified",
-                        "value" : "By " + this.form().getSystemMetadata().getModifiedBy() + " @ " +this.form().getSystemMetadata().getModifiedOn().getTimestamp()
-                    }
-                ]
+                "items" : []
             };
+            this._pushItem(pairs.items, {
+                "key" : "ID",
+                "value" : self.listItemProp(form,'_doc')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Title",
+                "value" : self.listItemProp(form,'title')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Description",
+                "value" : self.listItemProp(form,'description')
+            });
+            this._pushItem(pairs.items, {
+                "key" : "QName",
+                "value" : form.getQName()
+            });
+            this._pushItem(pairs.items, {
+                "key" : "Last Modified",
+                "value" : "By " + this.form().getSystemMetadata().getModifiedBy() + " @ " +this.form().getSystemMetadata().getModifiedOn().getTimestamp()
+            });
 
             this.pairs("form-overview",pairs);
         },

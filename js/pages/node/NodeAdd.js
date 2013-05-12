@@ -18,10 +18,10 @@
             return _mergeObject(this.base(), {
                 "fields" : {
                     "title" : {
-                        "helper" : "Enter node title."
+                        //"helper" : "Enter node title."
                     },
                     "description" : {
-                        "helper" : "Enter node description."
+                        //"helper" : "Enter node description."
                     },
                     "tags" : {
                         "type" : "tag",
