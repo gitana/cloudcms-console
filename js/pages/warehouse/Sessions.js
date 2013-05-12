@@ -79,8 +79,9 @@
 
             filterFormToJSON: function (formData, renderedField) {
                 if (! Alpaca.isValEmpty(formData)) {
-                    if (! Alpaca.isValEmpty(formData.query)) {
-                        return formData.query;
+                    var json_query = JSON.parse(formData.query);
+                    if (!Alpaca.isValEmpty(json_query)) {
+                        return json_query;
                     } else {
                         var query = {};
                         if (formData.startDate || formData.endDate) {

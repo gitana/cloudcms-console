@@ -83,7 +83,8 @@
         filterFormToJSON: function (formData) {
             var query = this.base(formData);
             if (! Alpaca.isValEmpty(formData)) {
-                if (Alpaca.isValEmpty(formData.query)) {
+                var json_query = JSON.parse(formData.query);
+                if (Alpaca.isValEmpty(json_query)) {
                     if (formData['scope']) {
                         query['scope'] = formData['scope'];
                     }

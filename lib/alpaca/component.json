@@ -8,7 +8,7 @@
 		"type": "git", 
 		"url": "git://github.com/gitana/alpaca.git"
 	},
-    "version": "1.0.9",
+    "version": "1.1.0",
     "main": ["alpaca.js", "alpaca.css"],
     "dependencies": {
         "jquery": "*",

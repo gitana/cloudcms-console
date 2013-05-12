@@ -38,10 +38,11 @@
             return _mergeObject(this.base(), {
                 "fields": {
                     "title" : {
-                        "helper" : "Enter team title."
+                        //"helper" : "Enter team title."
+                        "required": true
                     },
                     "description": {
-                        "helper" : "Enter team description."
+                        //"helper" : "Enter team description."
                     },
                     "teamKey" : {
                         "type":"text",

@@ -23,13 +23,11 @@
             return {
                 "fields": {
                     "title" : {
-                        "size" : 60,
-                        "helper" : "Enter object title."
+                        "size" : 60
                     },
                     "description": {
                         "type": "textarea",
-                        "cols" : 60,
-                        "helper" : "Enter object description."
+                        "cols" : 60
                     }
                 }
             }

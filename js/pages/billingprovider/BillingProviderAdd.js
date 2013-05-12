@@ -17,10 +17,10 @@
                 return Alpaca.merge(options, {
                     "fields" : {
                         "title" : {
-                            "helper" : "Enter billing provider config title."
+                            //"helper" : "Enter billing provider config title."
                         },
                         "description" : {
-                            "helper" : "Enter billing provider config description."
+                            //"helper" : "Enter billing provider config description."
                         }
                     }
                 });

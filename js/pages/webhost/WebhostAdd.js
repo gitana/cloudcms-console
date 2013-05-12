@@ -17,10 +17,10 @@
             return Alpaca.merge(options, {
                 "fields" : {
                     "title" : {
-                        "helper" : "Enter web host title."
+                        //"helper" : "Enter web host title."
                     },
                     "description" : {
-                        "helper" : "Enter web host description."
+                        //"helper" : "Enter web host description."
                     }
                 }
             });

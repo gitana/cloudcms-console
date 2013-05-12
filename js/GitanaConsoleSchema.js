@@ -104,6 +104,18 @@
             }
         },
         "Warehouse" : {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "title": "Title",
+                    "type": "string",
+                    "required": true
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string"
+                }
+            }
         },
         "PrincipalGroup" : {
             "type" : "object",
@@ -116,7 +128,8 @@
                     "pattern" : /^[0-9a-zA-Z-_]*$/
                 },
                 "title" : {
-                    "type" : "string"
+                    "type" : "string",
+                    "required": true
                 },
                 "description" : {
                     "type" : "string"
@@ -239,6 +252,15 @@
         "AuthenticationGrant" : {
             "type": "object",
             "properties" : {
+                "title": {
+                    "title": "Title",
+                    "type": "string",
+                    "required": true
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string"
+                },
                 "clientId" : {
                     "title" : "Client ID",
                     "type" : "string",
@@ -264,6 +286,15 @@
         "Client" : {
             "type": "object",
             "properties" : {
+                "title": {
+                    "title": "Title",
+                    "type": "string",
+                    "required": true
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string"
+                },
                 "authorizedGrantTypes" : {
                     "title" : "Authorized Grant Types",
                     "type" : "string",
@@ -596,6 +627,15 @@
         "BillingProvider" : {
             "type": "object",
             "properties" : {
+                "title": {
+                    "title": "Title",
+                    "type": "string",
+                    "required": true
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string"
+                },
                 "providerId" : {
                     "type" : "string",
                     "title" : "Billing Provider Id",
@@ -624,7 +664,8 @@
             "type": "object",
             "properties" : {
                 "title" : {
-                    "type" : "string"
+                    "type" : "string",
+                    "required": true
                 },
                 "description" : {
                     "type" : "string"
@@ -669,6 +710,15 @@
         "Webhost" : {
             "type": "object",
             "properties" : {
+                "title": {
+                    "title": "Title",
+                    "type": "string",
+                    "required": true
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string"
+                },
                 "urlPatterns" : {
                     "title" : "Url Patterns",
                     "type" : "array",
