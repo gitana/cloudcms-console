@@ -357,12 +357,16 @@
 
         isChecked: function(el)
         {
-            return $(el)[0].checked;
+            var isChecked = Alpaca.attrProp(el, "checked");
+            return isChecked;
+
+            //return $(el)[0].checked;
         },
 
         setChecked: function(el, checked)
         {
-            $(el).prop('checked', checked);
+            Alpaca.attrProp(el, "checked", checked);
+            //$(el).prop('checked', checked);
         }
     };
 

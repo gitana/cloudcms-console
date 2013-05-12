@@ -129,6 +129,7 @@
                     Gitana.Utils.UI.beautifyAlpacaForm(form);
                     var fileUploadControl = form.getControlByPath("file");
 
+                    // when the logo finishes uploading, auto-refresh the logo in the header
                     fileUploadControl.field.bind('fileuploaddone', function (e, data) {
                         self.platform().tenantAttachment('avatar').trap(function() {
 
@@ -140,6 +141,8 @@
                                 }
                         });
                     });
+
+                    // TODO when the logo is deleted, auto-refresh the logo in the header
 
                     // Add Buttons
                     /*

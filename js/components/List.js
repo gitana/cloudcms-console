@@ -183,7 +183,9 @@
 
         applyUniform: function(el)
         {
-            if (el.uniform) {
+            if ($(el).uniform) {
+
+                // look for child elements
                 $(el).find("select, input:checkbox, input:text, input:password, input:radio, input:file, textarea").uniform();
             }
         },
@@ -301,10 +303,10 @@
                             var linkUri = null;
                             if (list.linkUri) {
                                 if (Gitana.isFunction(list.linkUri)) {
-                                    uri = list.linkUri.call(this);
+                                    linkUri = list.linkUri.call(this);
                                 }
                                 else {
-                                    uri = list.linkUri;
+                                    linkUri = list.linkUri;
                                 }
                             }
                             else {
@@ -393,20 +395,20 @@
                                     var title = this.getTitle() ? this.getTitle() : "";
                                     var description = this.getDescription() ? this.getDescription() : "";
 
-                                    data["" + counter] = "<a href='#" + uri + "'>" + title + "</a><br/>" + description;
+                                    data["" + counter] = "<a href='#" + linkUri + "'>" + title + "</a><br/>" + description;
 
                                 }
                                 if (type == "principaldesc") {
                                     var title = this.getPrincipalId();
                                     var description = this.getDescription() ? this.getDescription() : "";
 
-                                    data["" + counter] = "<a href='#" + uri + "'>" + title + "</a><br/>" + description;
+                                    data["" + counter] = "<a href='#" + linkUri + "'>" + title + "</a><br/>" + description;
                                 }
                                 if (type == "qnamedesc") {
                                     var title = this.getQName();
                                     var description = this.getDescription() ? this.getDescription() : "";
 
-                                    data["" + counter] = "<a href='#" + uri + "'>" + title + "</a><br/>" + description;
+                                    data["" + counter] = "<a href='#" + linkUri + "'>" + title + "</a><br/>" + description;
                                 }
                                 counter++;
                             }
@@ -444,9 +446,6 @@
 
                         $(nRow).mouseover(function() {
 
-                            var mapObject = map.get(aData.DT_RowId);
-                            //self.selectedItems(mapObject);
-
                             // clear other selected rows
                             $(".row_selected").removeClass("row_selected");
 
@@ -458,12 +457,6 @@
                         // bind the checkbox selections for this row
                         $(nRow).find(".gitanaselectbox").click(function(event) {
 
-                            //self.clearSelectedItems();
-
-                            //$(".gitanaselectbox").each(function() {
-
-                            //    if ($(this).attr("checked"))
-                            //    {
                             var targetObjectId = $(this).attr("gitanatargetobjectid");
                             var item = map.get(targetObjectId);
                             var chainedItem = Chain(item);
@@ -480,13 +473,6 @@
                                 self.selectedItems(currentSelectedItems);
                             }
 
-                            // Un-select others
-
-                            // $(".gitanaselectbox[gitanatargetobjectid!='" + targetObjectId + "']").attr('checked', false);
-
-
-                            //    }
-                            //});
                             // Enable or disable buttons
                             self.onSelectedItems();
                         });
@@ -527,6 +513,11 @@
                             "bSearchable": true,
                             "bSortable": columnSortable
                         };
+
+                        if (item.cssClass) {
+                            config.sClass = item.cssClass;
+                        }
+
                         tableConfig["aoColumns"].push(config);
                     }
 
@@ -563,15 +554,18 @@
 
                     // select/unselect-all checkbox
                     $('.table-overall-checkbox',$(el)).click(function() {
-                        if ($(this).attr("checked")) {
+
+                        if (Alpaca.attrProp(this, "checked")) {
                             $(".gitanaselectbox").each(function() {
                                 if (!Gitana.Utils.UI.isChecked(this)) {
                                     Gitana.Utils.UI.setChecked(this, true);
+                                    $(this).uniform();
                                 }
                             });
                             self.clearSelectedItems();
                             var allItems = {};
-                            $.each(map.map,function(key,val) {
+                            $.each(map.__keys(),function(index, key) {
+                                var val = map[key];
                                 if( $("input:checkbox[gitanatargetobjectid='" + key +"']").length > 0) {
                                     allItems[key] = Chain(val);
                                 }
@@ -582,6 +576,7 @@
                             $(".gitanaselectbox").each(function() {
                                 if (Gitana.Utils.UI.isChecked(this)) {
                                     Gitana.Utils.UI.setChecked(this, false);
+                                    $(this).uniform();
                                 }
                             });
                             self.clearSelectedItems();

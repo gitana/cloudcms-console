@@ -251,4 +251,35 @@
         return json;
     };
 
+    var _filterPreviews = window._filterPreviews = function(attachments)
+    {
+        if (attachments && attachments.length > 0)
+        {
+            var i = 0;
+            do
+            {
+                var attachment = attachments[i];
+
+                var remove = false;
+                if (this.options.filterPreviews)
+                {
+                    if (attachment.attachmentId.indexOf("_preview_") == 0)
+                    {
+                        remove = true;
+                    }
+                }
+
+                if (remove)
+                {
+                    attachments.splice(i, 1);
+                }
+                else
+                {
+                    i++;
+                }
+            }
+            while (i < attachments.length);
+        }
+    };
+
 })(jQuery);

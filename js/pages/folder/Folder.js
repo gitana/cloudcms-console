@@ -254,7 +254,7 @@
                     "type":"property",
                     "sortingExpression": "_type",
                     "property": function(callback) {
-                        var title = this.get('_type') ? this.get('_type') : "";
+                        var title = this.getTypeQName();
                         var value = "<a href='#" + self.link(this) + "'>" + title + "</a>";
                         callback(value);
                     }

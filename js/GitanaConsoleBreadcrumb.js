@@ -31,7 +31,6 @@
                             Gitana.Console.Breadcrumb.PATHS[child.getId()] = childPath;
                         } else {
                             Gitana.Console.Breadcrumb.findPath(parentNode, self, function() {
-                                console.log('Callback to populate path for ' + self.friendlyTitle(child));
                                 if (Gitana.Console.Breadcrumb.PATHS[parentNode.getId()]) {
                                     var childPath = $.merge([], Gitana.Console.Breadcrumb.PATHS[parentNode.getId()]);
                                     childPath.push({

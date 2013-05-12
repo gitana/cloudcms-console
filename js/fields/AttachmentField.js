@@ -41,16 +41,18 @@
                     var formatFileSize = config.formatFileSize;
                     var options = config.options;
 
-                    var html = $("<div></div>");
+                    var rows = [];
                     for (var i = 0; i < files.length; i++)
                     {
                         var model = Alpaca.cloneObject(files[i]);
                         model.size = formatFileSize(model.size);
 
-                        html.append(Alpaca.tmpl(self.view, self.view.getTemplateDescriptor(templateId), model));
+                        var row = Alpaca.tmpl(self.view, self.view.getTemplateDescriptor(templateId), model);
+
+                        rows.push(row[0]);
                     }
 
-                    return html.html();
+                    return $(rows);
                 };
             };
         },
@@ -369,7 +371,7 @@
 
          filterAttachments: function(attachments)
          {
-             if (attachments && attachments.length > 0)
+             if (attachments && attachments.length && attachments.length > 0)
              {
                  var i = 0;
                  do
@@ -447,7 +449,8 @@
             var field = this.field;
             var outerEl = _this.getEl();
             this.fileUploadOptions = {
-                "autoUpload": true,
+                "autoUpload": false,
+                //"autoUpload": true,
                 "uploadTemplateId": null,
                 "uploadTemplate" : this.getUploadTemplate(),
                 "downloadTemplateId": null,
@@ -805,7 +808,7 @@
         }
     });
 
-    Alpaca.registerTemplate('templateUpload', '<tr class="template-upload{{if error}} ui-state-error{{/if}}"><td class="attachment-id"><input class="attachment-id-input" type="text" value="${attachmentId}" data-alpacaid="${alpacaId}" autocomplete="off" placeholder="Attachment ID"/></td><td class="preview"></td><td class="name">${name}</td><td class="type">${type}</td><td class="size">${size}</td>{{if error}}<td class="upload-error" colspan="2">Error:{{if error === \'maxFileSize\'}}File is too big{{else error === \'minFileSize\'}}File is too small{{else error === \'acceptFileTypes\'}}Filetype not allowed{{else error === \'maxNumberOfFiles\'}}Max number of files exceeded{{else}}${error}{{/if}}</td>{{else}}<td class="progress" style="display:none;"><div></div></td><td class="start"><button style="display:none;">Start</button></td>{{/if}}<td class="cancel"><button>Cancel</button></td></tr>');
+    Alpaca.registerTemplate('templateUpload', '<tr class="template-upload{{if error}} ui-state-error{{/if}}"><td class="attachment-id"><input class="attachment-id-input" type="text" value="${attachmentId}" data-alpacaid="${alpacaId}" autocomplete="off" placeholder="Attachment ID"/></td><td class="preview"></td><td class="name">${name}</td><td class="type">${type}</td><td class="size">${size}</td>{{if error}}<td class="upload-error" colspan="2">Error:{{if error === \'maxFileSize\'}}File is too big{{else error === \'minFileSize\'}}File is too small{{else error === \'acceptFileTypes\'}}Filetype not allowed{{else error === \'maxNumberOfFiles\'}}Max number of files exceeded{{else}}${error}{{/if}}</td>{{else}}<td><div class="progress"><div class="bar" style="width:0%;"></div></div></td><td><button class="start">Start</button></td>{{/if}}<td><button class="cancel">Cancel</button></td></tr>');
 
     //Alpaca.registerTemplate('templateDownload', '<tr class="template-download{{if error}} ui-state-error{{/if}}" data-attachmentid="${attachmentId}">{{if error}}<td></td><td class="attachment-id"><span class="fileupload-attachment-id">${attachmentId}</span></td><td class="preview"></td><td class="name">${name}</td><td class="size">${size}</td><td class="upload-error" colspan="2">Error:{{if error === 1}}File exceeds upload_max_filesize (php.ini directive){{else error === 2}}File exceeds MAX_FILE_SIZE (HTML form directive){{else error === 3}}File was only partially uploaded{{else error === 4}}No File was uploaded{{else error === 5}}Missing a temporary folder{{else error === 6}}Failed to write file to disk{{else error === 7}}File upload stopped by extension{{else error === \'maxFileSize\'}}File is too big{{else error === \'minFileSize\'}}File is too small{{else error === \'acceptFileTypes\'}}Filetype not allowed{{else error === \'maxNumberOfFiles\'}}Max number of files exceeded{{else error === \'uploadedBytes\'}}Uploaded bytes exceed file size{{else error === \'emptyResult\'}}Empty file upload result{{else}}${error}{{/if}}</td>{{else}}<td class="attachment-id"><span class="fileupload-attachment-id">${attachmentId}</span></td><td class="preview"></td><td class="name"><a class="fileupload-attachment-download" href="${url}">${name}</a></td><td class="type">${type}</td><td class="size">${size}</td>{{/if}}<td class="delete" colspan="3"><button data-type="${delete_type}" data-url="${delete_url}">Delete</button></td></tr>');
     Alpaca.registerTemplate('templateDownload', '<tr class="template-download{{if error}} ui-state-error{{/if}}" data-attachmentid="${attachmentId}">{{if error}}<td></td><td class="attachment-id"><span class="fileupload-attachment-id">${attachmentId}</span></td><td class="preview"></td><td class="name">${name}</td><td class="size">${size}</td><td class="upload-error" colspan="2">Error:{{if error === 1}}File exceeds upload_max_filesize (php.ini directive){{else error === 2}}File exceeds MAX_FILE_SIZE (HTML form directive){{else error === 3}}File was only partially uploaded{{else error === 4}}No File was uploaded{{else error === 5}}Missing a temporary folder{{else error === 6}}Failed to write file to disk{{else error === 7}}File upload stopped by extension{{else error === \'maxFileSize\'}}File is too big{{else error === \'minFileSize\'}}File is too small{{else error === \'acceptFileTypes\'}}Filetype not allowed{{else error === \'maxNumberOfFiles\'}}Max number of files exceeded{{else error === \'uploadedBytes\'}}Uploaded bytes exceed file size{{else error === \'emptyResult\'}}Empty file upload result{{else}}${error}{{/if}}</td>{{else}}<td class="attachment-id"><span class="fileupload-attachment-id">${attachmentId}</span></td><td class="preview"></td><td class="name"><a class="fileupload-attachment-download" href="${url}">${name}</a></td><td class="type">${type}</td><td class="size">${size}</td>{{/if}}<td colspan="3"><button class="delete" data-type="${delete_type}" data-url="${delete_url}">Delete</button></td></tr>');

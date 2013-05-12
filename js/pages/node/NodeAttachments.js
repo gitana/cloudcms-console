@@ -10,7 +10,7 @@
 
         FILTER_TOOLBAR: {
             "query" : {
-                "title" : "Query Attachments",
+                "title" : "Query",
                 "icon" : Gitana.Utils.Image.buildImageUri('browser', 'query', 48)
             }
         },
@@ -153,12 +153,12 @@
 
                                     Gitana.Utils.UI.block("Deleting " + objectType + "(s) ...");
 
-                                    parentObject.then(function() {
+                                    Chain(parentObject).then(function() {
 
                                         var _this = this;
 
                                         $.each(objects, function(key,obj) {
-                                            parentObject.attachment(obj['attachmentId']).del();
+                                            _this.attachment(obj["attachmentId"]).del();
                                         });
 
                                         this.then(function() {
@@ -225,8 +225,9 @@
                 {
                     "title": "Preview",
                     "type":"property",
+                    "cssClass": "table-preview-attachment",
                     "property": function(callback) {
-                        var previewUrl = _previewMimetypeFallback(this.getPreviewUri("attachment_list"), this.getContentType());
+                        var previewUrl = _previewMimetypeFallback(this.getPreviewUri(this.getId()), this.getContentType());
                         var value = "<div><img src='" + previewUrl + "'></div>";
                         callback(value);
                     }
@@ -267,6 +268,9 @@
                     if (!Alpaca.isValEmpty(query) && ! this.attachmentId.match(query)) {
                         return false;
                     } else {
+                        if (this.attachmentId.indexOf("_preview_") == 0) {
+                            return false;
+                        }
                         return true;
                     }
                 }).then(function () {
