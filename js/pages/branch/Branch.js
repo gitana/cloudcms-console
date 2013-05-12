@@ -48,7 +48,7 @@
                             Gitana.Utils.UI.modalSelector({
                                 "title": "What would you like to create?",
                                 "items": [{
-                                    "title": "Node using form",
+                                    "title": "Node using Form",
                                     "description": "Use a content entry form to enter your node's content.",
                                     "iconUrl": Gitana.Utils.Image.buildImageUri('objects', 'node-add', 48),
                                     "link": "#" + self.LINK().call(self, self.targetObject(), 'add', 'node')
