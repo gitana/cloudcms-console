@@ -134,7 +134,7 @@
                 "description" : "Create a new authentication grant.",
                 "forms" :[{
                     "id" : "authentication-grant-add",
-                    "title" : "Create A New Authencation Grant",
+                    "title" : "Create A New Authentication Grant",
                     "icon" : Gitana.Utils.Image.buildImageUri('objects', 'authentication-grant-add', 24),
                     "buttons" :[
                         {
