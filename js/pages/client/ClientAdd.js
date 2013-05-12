@@ -6,7 +6,6 @@
             },
 
             schema: function() {
-
                 return _mergeObject(this.base(), Gitana.Console.Schema.Client);
             },
 
@@ -15,10 +14,10 @@
                 var options = _mergeObject(this.base(), {
                     "fields" : {
                         "title" : {
-                            "helper" : "Enter client title."
+                            //"helper" : "Enter client title."
                         },
                         "description" : {
-                            "helper" : "Enter client description."
+                            //"helper" : "Enter client description."
                         }
                     }
                 });

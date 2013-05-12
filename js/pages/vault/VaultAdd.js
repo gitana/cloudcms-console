@@ -5,15 +5,25 @@
             this.base(id, ratchet);
         },
 
+        schema: function() {
+            return _mergeObject(this.base(), {
+                "properties": {
+                    "title": {
+                        "required": true
+                    }
+                }
+            });
+        },
+
         options: function() {
 
             return _mergeObject(this.base(), {
                 "fields" : {
                     "title" : {
-                        "helper" : "Enter vault title."
+                        //"helper" : "Enter vault title."
                     },
                     "description" : {
-                        "helper" : "Enter vault description."
+                        //"helper" : "Enter vault description."
                     }
                 }
             });

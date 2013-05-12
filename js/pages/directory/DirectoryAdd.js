@@ -13,10 +13,10 @@
             return Alpaca.merge(options, {
                 "fields" : {
                     "title" : {
-                        "helper" : "Enter directory title."
+                        //"helper" : "Enter directory title."
                     },
                     "description" : {
-                        "helper" : "Enter directory description."
+                        //"helper" : "Enter directory description."
                     }
                 }
             });

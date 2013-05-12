@@ -195,8 +195,9 @@
 
         filterFormToJSON: function (formData) {
             if (! Alpaca.isValEmpty(formData)) {
-                if (! Alpaca.isValEmpty(formData.query)) {
-                    return JSON.parse(formData.query);
+                var json_query = JSON.parse(formData.query);
+                if (!Alpaca.isValEmpty(json_query)) {
+                    return json_query;
                 } else {
                     var query = this.base(formData);
                     query['member'] = formData['member'];
@@ -226,7 +227,16 @@
                         "type" : "string",
                         "required" : true,
                         "default" : "repository",
-                        "enum" : ["repository", "domain", "application", "registrar","vault", "webhost"],
+                        "enum" : [
+                            "application",
+                            "directory",
+                            "domain",
+                            "registrar",
+                            "repository",
+                            "vault",
+                            "warehouse",
+                            "webhost"
+                        ],
                         "dependencies": "member"
                     }
                 }
@@ -245,8 +255,16 @@
                     },
                     "dataStoreType" : {
                         "type": "select",
-                        "optionLabels": ["Repository", "Domain", "Application", "Registrar","Vault", "Web Host"],
-                        "helper": "Pick data store type.",
+                        "optionLabels": [
+                            "Application",
+                            "Directory",
+                            "Domain",
+                            "Registrar",
+                            "Repository",
+                            "Vault",
+                            "Warehouse",
+                            "Web Host"
+                        ],
                         "dependencies": {
                             "member": false
                         }
@@ -333,15 +351,13 @@
                 var memberIds = [];
                 var directMemberIds = [];
                 var dataStoreQuery = Alpaca.cloneObject(self.query());
-                var _this;
                 if (Alpaca.isValEmpty(dataStoreQuery) || dataStoreQuery['member']) {
                     Chain(self.targetObject()).trap(
                         function(error) {
                             return self.handlePageError(el, error);
                         }).listDataStores(self.pagination()).then(function(){
-                            _this = this;
                             this.each(function(key, val, index) {
-                                _this[this.getId()]['isMember'] = true;
+                                this['isMember'] = true;
                             }).then(function() {
                                 callback.call(this);
                             });
@@ -370,14 +386,13 @@
                                 }).each(function() {
                                         dataStoreMembers[this.get('datastoreId')] = this.getId();
                                     });
-                                var _this = this;
                                 this.then(function() {
                                     this.each(function() {
                                         if (dataStoreMembers[this.getId()]) {
-                                            _this[this.getId()]['isMember'] = true;
-                                            _this[this.getId()]['key'] = dataStoreMembers[this.getId()];
+                                            this['isMember'] = true;
+                                            this['key'] = dataStoreMembers[this.getId()];
                                         } else {
-                                            _this[this.getId()]['isMember'] = false;
+                                            this['isMember'] = false;
                                         }
                                     }).then(function() {
                                         callback.call(this);

@@ -58,7 +58,8 @@
         filterFormToJSON: function (formData) {
             var query = this.base();
             if (! Alpaca.isValEmpty(formData)) {
-                if ( Alpaca.isValEmpty(formData.query)) {
+                var json_query = JSON.parse(formData.query);
+                if (Alpaca.isValEmpty(json_query)) {
                     if (formData['id']) {
                         query['_doc'] = {
                             "$regex" : formData['id']

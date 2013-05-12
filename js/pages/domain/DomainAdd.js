@@ -5,15 +5,25 @@
             this.base(id, ratchet);
         },
 
+        schema: function() {
+            return _mergeObject(this.base(), {
+                "properties": {
+                    "title": {
+                        "required": true
+                    }
+                }
+            });
+        },
+
         options: function() {
 
             return _mergeObject(this.base(), {
                 "fields" : {
                     "title" : {
-                        "helper" : "Enter domain title."
+                        //"helper" : "Enter domain title."
                     },
                     "description" : {
-                        "helper" : "Enter domain description."
+                        //"helper" : "Enter domain description."
                     }
                 }
             });

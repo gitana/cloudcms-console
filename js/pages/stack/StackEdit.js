@@ -51,13 +51,13 @@
             return _mergeObject(this.base(), {
                 "fields" : {
                     "title" : {
-                        "helper" : "Enter stack title."
+                        //"helper" : "Enter stack title."
                     },
                     "description" : {
-                        "helper" : "Enter stack description."
+                        //"helper" : "Enter stack description."
                     },
                     "key": {
-                        "helper": "Enter stack key."
+                        "helper": "Please provide a unique key for your stack."
                     }
                 }
             });
