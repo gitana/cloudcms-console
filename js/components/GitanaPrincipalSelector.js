@@ -41,6 +41,15 @@
             ];
         },
 
+        defaultList: function() {
+            return _mergeObject({
+                "tableConfig": {
+                    "iDisplayLength": 10
+                }
+            }, this.base());
+        },
+
+
         /** Filter Related Methods **/
         filterEmptyData: function() {
             return {
@@ -57,7 +66,7 @@
 
         filterFormToJSON: function (formData) {
             if (! Alpaca.isValEmpty(formData)) {
-                var json_query = JSON.parse(formData.query);
+                var json_query = _safeParse(formData.query);
                 if (!Alpaca.isValEmpty(json_query)) {
                     return json_query;
                 } else {
@@ -155,57 +164,48 @@
                 "fields" : {
                     "domainId" : {
                         "type" : "select",
-                        "helper": "Select principal domain.",
                         "dataSource": function(field, callback) {
                             var selectedOption;
-                            self.platform().listDomains().each(
-                                function(key, val, index) {
-                                    field.selectOptions.push({
-                                        "value": this.getId(),
-                                        "text": self.friendlyTitle(this)
-                                    });
-                                    if (! selectedOption) {
-                                        selectedOption = this.getId();
-                                        if (!self.domain() || self.domain().getId() != selectedOption) {
-                                            self.domain(this);
-                                            self.resetFilter();
-                                        }
-                                    }
-                                }).then(function() {
-                                    if (callback) {
-                                        callback();
-                                        field.field.val(selectedOption).change();
-                                    }
+                            self.platform().listDomains().each(function(key, val, index) {
+                                field.selectOptions.push({
+                                    "value": this.getId(),
+                                    "text": self.friendlyTitle(this)
                                 });
+                                if (! selectedOption) {
+                                    selectedOption = this.getId();
+                                    if (!self.domain() || self.domain().getId() != selectedOption) {
+                                        self.domain(this);
+                                        self.resetFilter();
+                                    }
+                                }
+                            }).then(function() {
+                                if (callback) {
+                                    callback();
+                                    field.field.val(selectedOption).change();
+                                }
+                            });
                         }
                     },
                     "id" : {
-                        "size": this.DEFAULT_FILTER_TEXT_SIZE,
-                        "helper": "Enter a valid Cloud CMS id for query by exact match of id."
+                        "size": this.DEFAULT_FILTER_TEXT_SIZE
                     },
                     "name" : {
-                        "size": this.DEFAULT_FILTER_TEXT_SIZE,
-                        "helper": "Enter regular expression for query by principal name."
+                        "size": this.DEFAULT_FILTER_TEXT_SIZE
                     },
                     "lastName" : {
-                        "size": this.DEFAULT_FILTER_TEXT_SIZE,
-                        "helper": "Enter regular expression for query by last name."
+                        "size": this.DEFAULT_FILTER_TEXT_SIZE
                     },
                     "email" : {
-                        "size": this.DEFAULT_FILTER_TEXT_SIZE,
-                        "helper": "Enter regular expression for query by email."
+                        "size": this.DEFAULT_FILTER_TEXT_SIZE
                     },
                     "companyName" : {
-                        "size": this.DEFAULT_FILTER_TEXT_SIZE,
-                        "helper": "Enter regular expression for query by company name."
+                        "size": this.DEFAULT_FILTER_TEXT_SIZE
                     },
                     "startDate" : {
-                        "size": this.DEFAULT_FILTER_DATE_SIZE,
-                        "helper": "Pick start date of date range."
+                        "size": this.DEFAULT_FILTER_DATE_SIZE
                     },
                     "endDate" : {
-                        "size": this.DEFAULT_FILTER_DATE_SIZE,
-                        "helper": "Pick end date of date range."
+                        "size": this.DEFAULT_FILTER_DATE_SIZE
                     },
                     "query" : {
                         "type": "editor",
@@ -300,13 +300,14 @@
 
                         itemInfo.replace('<','&lt;').replace('>','$gt;');
 
-                        var value = "<a class='gitana-selector-action node-action gitana-selector-select node-select' data-target-principal-info='" + itemInfo + "' data-target-principal-id='" + nodeId + "'><span>Select</span></a>";
+                        var value = '<a class="gitana-selector-action node-action gitana-selector-select node-select" data-target-principal-info="' + itemInfo + '" data-target-principal-id="' + nodeId + '"><span>Select</span></a>';
                         callback(value);
                     }
                 }
             ];
 
             list["loadFunction"] = function(query, pagination, callback) {
+
                 var _query = Alpaca.cloneObject(self.query());
                 if (Alpaca.isValEmpty(_query)) {
                     if (self.domain()) {
@@ -421,6 +422,21 @@
                     } else {
                         self.handleUnauthorizedPageAccess(el, error);
                     }
+                });
+            });
+        },
+
+        filterPostRender: function (renderedField, self) {
+            this.base(renderedField, self);
+
+            var domainField = renderedField.childrenByPropertyId["domainId"];
+
+            $(domainField.getEl()).bind("fieldupdate", function() {
+
+                var domainId = domainField.getValue();
+
+                self.platform().readDomain(domainId).then(function() {
+                    self.domain(this);
                 });
             });
         }

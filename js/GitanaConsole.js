@@ -239,4 +239,16 @@
         return target;
     };
 
+    var _safeParse = window._safeParse = function(text)
+    {
+        var json = {};
+
+        if (text)
+        {
+            json = JSON.parse(text);
+        }
+
+        return json;
+    };
+
 })(jQuery);

@@ -51,7 +51,7 @@
             filterFormToJSON: function (formData) {
                 var query = this.base(formData);
                 if (! Alpaca.isValEmpty(formData)) {
-                    var json_query = JSON.parse(formData.query);
+                    var json_query = _safeParse(formData.query);
                     if (Alpaca.isValEmpty(json_query)) {
                         if (formData['title']) {
                             query['title'] = formData['title'];

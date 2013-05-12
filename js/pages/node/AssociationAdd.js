@@ -403,7 +403,7 @@
                 };
             };
             if (! Alpaca.isValEmpty(formData)) {
-                var json_query = JSON.parse(formData.query);
+                var json_query = _safeParse(formData.query);
                 if (Alpaca.isValEmpty(json_query)) {
                     query['_doc'] = {
                         "$ne" : this.node().getId()
