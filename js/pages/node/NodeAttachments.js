@@ -268,9 +268,11 @@
                     if (!Alpaca.isValEmpty(query) && ! this.attachmentId.match(query)) {
                         return false;
                     } else {
+                        /*
                         if (this.attachmentId.indexOf("_preview_") == 0) {
                             return false;
                         }
+                        */
                         return true;
                     }
                 }).then(function () {
