@@ -1,0 +1,26 @@
+<script id="layoutTemplate" type="text/x-jquery-tmpl">
+
+    <div class="container_12">
+
+        {{if page}}
+        <div class="grid_12">
+            {{if page.title}}
+            <h1>${page.title}</h1>
+            {{/if}}
+            {{if page.description}}
+            <p>${page.description}</p>
+            {{/if}}
+            {{if page.notifications}}
+            <div gadget="notifications"></div>
+            {{/if}}
+        </div>
+        {{/if}}
+
+        <div class="grid_12" gadget="commands">
+        </div>
+
+        <div class="clear height-fix"></div>
+
+    </div>
+
+</script>

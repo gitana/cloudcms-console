@@ -6,8 +6,7 @@
         },
 
         requiredAuthorities: function() {
-            return [
-            ];
+            return [];
         },
 
         isGitanaAdmin: function() {
@@ -174,27 +173,41 @@
                                         });
                                     };
 
+                                    // data stores
+                                    if (objectType == "Gitana.Application") {
+                                        _this.checkApplicationPermissions(check, handleCheckResult);
+                                    }
+                                    if (objectType == "Gitana.Directory") {
+                                        _this.checkDirectoryPermissions(check, handleCheckResult);
+                                    }
+                                    if (objectType == "Gitana.Domain") {
+                                        _this.checkDomainPermissions(check, handleCheckResult);
+                                    }
+                                    if (objectType == "Gitana.Registrar") {
+                                        _this.checkRegistrarPermissions(check, handleCheckResult);
+                                    }
                                     if (objectType == "Gitana.Repository") {
                                         _this.checkRepositoryPermissions(check, handleCheckResult);
                                     }
                                     if (objectType == "Gitana.Vault") {
                                         _this.checkVaultPermissions(check, handleCheckResult);
                                     }
-                                    if (objectType == "Gitana.Application") {
-                                        _this.checkApplicationPermissions(check, handleCheckResult);
+                                    if (objectType == "Gitana.Warehouse") {
+                                        _this.checkWarehousePermissions(check, handleCheckResult);
+                                    }
+
+                                    // platform objects
+                                    if (objectType == "Gitana.AuthenticationGrant") {
+                                        _this.checkAuthenticationGrantPermissions(check, handleCheckResult);
+                                    }
+                                    if (objectType == "Gitana.Client") {
+                                        _this.checkClientPermissions(check, handleCheckResult);
                                     }
                                     if (objectType == "Gitana.Stack") {
                                         _this.checkStackPermissions(check, handleCheckResult);
                                     }
-                                    if (objectType == "Gitana.AuthenticationGrant") {
-                                        _this.checkAuthenticationGrantPermissions(check, handleCheckResult);
-                                    }
-                                    if (objectType == "Gitana.Registrar") {
-                                        _this.checkRegistrarPermissions(check, handleCheckResult);
-                                    }
-                                    if (objectType == "Gitana.Domain") {
-                                        _this.checkDomainPermissions(check, handleCheckResult);
-                                    }
+
+                                    // repository objects
                                     if (objectType == "Gitana.Branch") {
                                         _this.subchain(self.repository()).checkBranchPermissions(check, handleCheckResult);
                                     }

@@ -1500,3 +1500,28 @@ TD.table-preview-attachment IMG
     border: 1px solid #777;
     border-radius: 8px;
 }
+
+UL.commands-list
+{
+    list-style-type: none;
+}
+
+UL.commands-list LI
+{
+
+}
+
+UL.commands-list LI P.commands-item-title
+{
+
+}
+
+UL.commands-list LI P.commands-item-description
+{
+
+}
+
+.commands-item
+{
+    font-weight: 600;
+}

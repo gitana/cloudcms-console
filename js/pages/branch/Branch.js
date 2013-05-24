@@ -118,7 +118,20 @@
                                 "permissions" : ["update"]
                             }
                         ]
+                    },
+                    {
+                        "id": "admin",
+                        "title": "Administer",
+                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'admin', 48),
+                        "url" : self.link(self.targetObject(), 'admin'),
+                        "requiredAuthorities" : [
+                            {
+                                "permissioned" : self.targetObject(),
+                                "permissions" : ["create_subobjects"]
+                            }
+                        ]
                     }
+
                     /*,
                     {
                         "id": "export-branch",

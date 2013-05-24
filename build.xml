@@ -167,9 +167,11 @@
                 <file name="components/Stats.js"/>
                 <file name="components/Tabs.js"/>
                 <file name="components/Toolbar.js"/>
+                <file name="components/Commands.js"/>
                 <file name="components/Filter.js"/>
 
                 <file name="pages/AbstractDashboardPageGadget.js"/>
+                <file name="pages/AbstractAdminPageGadget.js"/>
                 <file name="pages/AbstractListPageGadget.js"/>
                 <file name="pages/AbstractFormPageGadget.js"/>
                 <file name="pages/AbstractListFormPageGadget.js"/>
@@ -480,6 +482,8 @@
 
                 <file name="pages/branch/BranchExport.js"/>
                 <file name="pages/branch/BranchImport.js"/>
+
+                <file name="pages/branch/BranchAdmin.js"/>
 
                 <file name="pages/definition/Definitions.js"/>
                 <file name="pages/definition/Definition.js"/>

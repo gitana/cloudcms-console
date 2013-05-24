@@ -1,0 +1,27 @@
+<script id="commandsTemplate" type="text/x-jquery-tmpl">
+{{if commands}}
+
+    <h3>Commands</h3>
+
+    {{if commands.items}}
+    <ul class="commands-list">
+        {{each(key, item) commands.items}}
+        <li id="commands-item-${key}" {{if !item.visibility}}style="display:none;"{{/if}}>
+            {{if item.title}}
+            <p class="commands-item-title">
+                <a item-id="${key}" href="javascript:void(0);" class="commands-item">
+                    ${item.title}
+                </a>
+            </p>
+            {{/if}}
+            {{if item.description}}
+            <p class="commands-item-description">
+                ${item.description}
+            </p>
+            {{/if}}
+        </li>
+        {{/each}}
+    </ul>
+    {{/if}}
+{{/if}}
+</script>
