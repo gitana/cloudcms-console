@@ -131,7 +131,7 @@
                         var title = null;
 
                         // cover both cases: member or principal since this class uses both
-                        var isUser = (this.TYPE == "USER" || this.type == "user");
+                        var isUser = (this.TYPE == "USER" || this.TYPE == "user" || this.type == "USER" || this.type == "user");
                         if (!isUser)
                         {
                             title = this["title"];
@@ -160,7 +160,7 @@
                     "property": function(callback) {
 
                         var typeString = "group";
-                        var isUser = (this.TYPE == "USER" || this.type == "user");
+                        var isUser = (this.TYPE == "USER" || this.TYPE == "user" || this.type == "USER" || this.type == "user");
                         if (isUser) {
                             typeString = "user";
                         }
