@@ -100,6 +100,23 @@
                         }
                     },
                     "dependencies": "applicationType"
+                },
+                "public": {
+                    "type": "object",
+                    "properties": {
+                        "runAsPrincipalId": {
+                            "type": "string"
+                        },
+                        "emailProviderId": {
+                            "type": "string"
+                        },
+                        "userDomainId": {
+                            "type": "string"
+                        },
+                        "tenantRegistrarId": {
+                            "type": "string"
+                        }
+                    }
                 }
             }
         },
@@ -1035,8 +1052,27 @@
                     "dependencies": {
                         "applicationType": "web"
                     }
+                },
+                "public": {
+                    "fields": {
+                        "runAsPrincipalId": {
+                            "type": "text",
+                            "label": "Run As Principal ID"
+                        },
+                        "emailProviderId": {
+                            "type": "text",
+                            "label": "Email Provider ID"
+                        },
+                        "userDomainId": {
+                            "type": "text",
+                            "label": "User Domain ID"
+                        },
+                        "tenantRegistrarId": {
+                            "type": "text",
+                            "label": "Tenant Registrar ID"
+                        }
+                    }
                 }
-
             }
         },
         "Warehouse" : {
