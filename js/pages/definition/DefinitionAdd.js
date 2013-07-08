@@ -114,7 +114,9 @@
             };
 
             options['fields']['_parent']['dataSource'] = function(field, callback) {
-                self.branch().listDefinitions().each(function() {
+                self.branch().listDefinitions(null, {
+                    "limit": -1
+                }).each(function() {
                     field.selectOptions.push({
                         "value": this.getQName(),
                         "text": this.getQName()

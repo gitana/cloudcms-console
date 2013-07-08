@@ -118,6 +118,7 @@
 	text-align: left;
 	padding: 7px;
 	border-left: 1px dotted #bebebe;
+    padding-top: 9px;
 }
 
 .table tbody td {

@@ -199,34 +199,34 @@
             });
 
             // public api properties
-            if (application.public)
+            if (application["public"])
             {
-                if (application.public.runAsPrincipalId)
+                if (application["public"].runAsPrincipalId)
                 {
-                    this._pushItem(pairs,items, {
+                    this._pushItem(pairs.items, {
                         "key": "Public RunAs Principal",
-                        "value": application.public.runAsPrincipalId
+                        "value": application["public"].runAsPrincipalId
                     });
                 }
-                if (application.public.emailProviderId)
+                if (application["public"].emailProviderId)
                 {
-                    this._pushItem(pairs,items, {
+                    this._pushItem(pairs.items, {
                         "key": "Email Provider",
-                        "value": application.public.emailProviderId
+                        "value": application["public"].emailProviderId
                     });
                 }
-                if (application.public.userDomainId)
+                if (application["public"].userDomainId)
                 {
-                    this._pushItem(pairs,items, {
+                    this._pushItem(pairs.items, {
                         "key": "User Domain",
-                        "value": application.public.userDomainId
+                        "value": application["public"].userDomainId
                     });
                 }
-                if (application.public.tenantRegistrarId)
+                if (application["public"].tenantRegistrarId)
                 {
-                    this._pushItem(pairs,items, {
+                    this._pushItem(pairs.items, {
                         "key": "Tenant Registrar",
-                        "value": application.public.tenantRegistrarId
+                        "value": application["public"].tenantRegistrarId
                     });
                 }
             }

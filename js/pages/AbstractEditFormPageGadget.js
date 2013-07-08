@@ -176,7 +176,7 @@
             var self = this;
 
             var targetId = targetId ? targetId : "json-edit";
-            var defaultData = JSON.stringify(object, null, "   ");
+            var defaultData = JSON.stringify(object, null, "    ");
 
             $("#" + targetId).alpaca({
                 "data": defaultData,

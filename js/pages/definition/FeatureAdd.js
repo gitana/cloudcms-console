@@ -329,6 +329,6 @@
 
     });
 
-    Ratchet.GadgetRegistry.register("page", Gitana.Console.Pages.FeatureAdd);
+    //Ratchet.GadgetRegistry.register("page", Gitana.Console.Pages.FeatureAdd);
 
 })(jQuery);

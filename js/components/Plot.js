@@ -68,6 +68,9 @@
 
                                 Gitana.Utils.UI.beautifyAlpacaForm(form);
 
+                                // put some spacing into the form
+                                form.getEl().find(".alpaca-fieldset-item-container").css("margin-bottom", "0px");
+
                                 if (userPostRender) {
                                     userPostRender.call(self, form);
                                 }

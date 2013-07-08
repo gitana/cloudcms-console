@@ -230,11 +230,15 @@
 
             var schema = self.schema();
 
-            if (self.definition() && self.definition().properties) {
-                schema.properties = {};
-                schema = _mergeObject(schema, {
-                    "properties" : self.definition().properties
-                });
+            if (self.definition() && self.definition().properties)
+            {
+                if (Ratchet.countProperties(self.definition().properties) > 0)
+                {
+                    schema.properties = {};
+                    schema = _mergeObject(schema, {
+                        "properties" : self.definition().properties
+                    });
+                }
             }
 
             delete schema['title'];

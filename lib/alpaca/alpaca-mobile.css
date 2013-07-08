@@ -64,3 +64,8 @@ input, textarea, select
 {
     border-bottom-width: 1px;
 }
+
+.alpaca-controlfield-message-hidden
+{
+    display:none;
+}
