@@ -69,19 +69,25 @@
                             var updatedUser = form.getValue();
 
                             var newPassword = updatedUser["password"];
+                            var newPasswordVerify = updatedUser["passwordVerify"];
 
                             delete updatedUser ["password"];
+                            delete updatedUser ["passwordVerify"];
 
                             delete updatedUser['file'];
                             _mergeObject(user, updatedUser);
-                            user.trap(function(error) {
+                            Chain(user).trap(function(error) {
                                 return self.handlePageError(el, error);
                             }).update().reload().then(function() {
                                 var updatedUser = this;
 
-                                if (newPassword != "") {
-                                    this.readIdentity().changePassword(newPassword,newPassword);
-                                }
+                                this.then(function() {
+
+                                    if (newPassword != "") {
+                                        this.readIdentity().changePassword(newPassword,newPasswordVerify);
+                                    }
+
+                                });
 
                                 this.then(function() {
 
@@ -89,7 +95,7 @@
                                         Gitana.Utils.UI.unblock(function() {
                                             self.app().run("GET", self.link(updatedUser));
                                         });
-                                    }
+                                    };
 
                                     if (fileUploadControl.getPayloadSize() > 0) {
                                         fileUploadControl.uploadAll();
