@@ -123,7 +123,6 @@
                             var newPassword = updatedUser["password"];
 
                             delete updatedUser ["password"];
-
                             delete updatedUser['file'];
 
                             var settings = Alpaca.cloneObject(updatedUser["_settings"]);
@@ -131,7 +130,7 @@
                             delete updatedUser["_settings"];
 
                             _mergeObject(user, updatedUser);
-                            user.update().reload().then(function() {
+                            Chain(user).update().reload().then(function() {
                                 var updatedUser = this;
 
                                 if (newPassword != "") {

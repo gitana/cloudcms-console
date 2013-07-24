@@ -134,10 +134,10 @@
 
                             var newPassword = updatedUser["password"];
                             delete updatedUser ["password"];
-
                             delete updatedUser['file'];
+
                             _mergeObject(user, updatedUser);
-                            user.update().reload().then(function() {
+                            Chain(user).update().reload().then(function() {
                                 var updatedUser = this;
 
                                 if (newPassword != "") {
@@ -148,7 +148,7 @@
 
                                     var callback = function () {
                                         self.app().run("GET", self.link(updatedUser));
-                                    }
+                                    };
 
                                     if (fileUploadControl.getPayloadSize() > 0) {
                                         fileUploadControl.uploadAll();
