@@ -307,7 +307,6 @@
                         }
 
                         if (form.isValid(true)) {
-
                             self.createNode(formVal);
                         }
                     });
