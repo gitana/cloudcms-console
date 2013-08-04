@@ -69,6 +69,21 @@
             self.clearDefinition();
             self.clearForm();
 
+            var doPickForm = function(formKey)
+            {
+                $("INPUT[value='" + formKey + "']").click();
+
+                Chain(self.definition()).readForm(formKey).then(function() {
+                    self.form(this);
+
+                    var inputs = $("#node-add input");
+                    if (inputs && inputs.length > 0)
+                    {
+                        $(inputs[0]).focus();
+                    }
+                });
+            };
+
             $('body').undelegate('.type-picker select', 'change').delegate('.type-picker select', 'change', function() {
 
                 var typeQName = $(this).val();
@@ -103,12 +118,16 @@
                             });
 
                             this.then(function() {
+                                var firstFormKey = null;
                                 this.each(function() {
                                     var formKey = this.getFormKey();
                                     var formId = this.getTargetNodeId();
                                     $('.form-picker select').append($("<option></option>")
                                         .attr("value", formKey)
                                         .text(formLookup[formReverseLookup[formKey]]['title']));
+                                    if (!firstFormKey) {
+                                        firstFormKey = formKey;
+                                    }
                                 }).then(function() {
 
                                     if ($('.form-picker .ui-multiselect').length > 0) {
@@ -123,6 +142,12 @@
                                     }
 
                                     $('body').trigger('swap',[this]);
+
+                                    if (firstFormKey)
+                                    {
+                                        doPickForm(firstFormKey);
+                                    }
+
                                 });
                             });
                         });
@@ -133,9 +158,7 @@
             $('body').undelegate('.form-picker select', 'change').delegate('.form-picker select', 'change', function() {
                 var formKey = $(this).val();
                 if (formKey) {
-                    Chain(self.definition()).readForm(formKey).then(function() {
-                        self.form(this);
-                    });
+                    doPickForm(formKey);
                 } else {
                     self.clearForm();
                 }
@@ -284,7 +307,6 @@
                         }
 
                         if (form.isValid(true)) {
-
                             self.createNode(formVal);
                         }
                     });
