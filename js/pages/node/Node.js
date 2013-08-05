@@ -168,6 +168,14 @@
                     });
                 }
 
+                // change type
+                buttons.push({
+                    "id": "changetype",
+                    "title": "Change Type",
+                    "icon" : Gitana.Utils.Image.buildImageUri('browser', 'changetype', 48),
+                    "url": self.LINK().call(self, self.targetObject(), 'changetype')
+                });
+
                 self.addButtons(buttons);
             },
 

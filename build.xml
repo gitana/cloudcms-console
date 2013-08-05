@@ -513,6 +513,7 @@
                 <file name="pages/node/NodeAuditRecords.js"/>
                 <file name="pages/node/NodeExport.js"/>
                 <file name="pages/node/NodeImport.js"/>
+                <file name="pages/node/NodeChangeType.js"/>
 
                 <file name="pages/node/NodeFeatures.js"/>
 
@@ -549,7 +550,9 @@
                 <file name="pages/folder/FolderAttachmentsManage.js"/>
                 <file name="pages/folder/FolderAssociations.js"/>
                 <file name="pages/folder/ChildNodeAdd.js"/>
+                <file name="pages/folder/ChildNodeChangeType.js"/>
                 <file name="pages/folder/FolderAdd.js"/>
+                <file name="pages/folder/FolderChangeType.js"/>
                 <file name="pages/folder/ChildNode.js"/>
                 <file name="pages/folder/ChildNodeEdit.js"/>
                 <file name="pages/folder/ChildNodeAttachments.js"/>

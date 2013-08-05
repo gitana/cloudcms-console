@@ -36,7 +36,7 @@
             var self = this;
             self.base();
 
-            self.addButtons([
+            var buttons = [
             {
                 "id": "edit-folder",
                 "title": "Properties",
@@ -165,8 +165,24 @@
                     }
                 ]
             }
-            ]);
+            ];
 
+            // change type
+            buttons.push({
+                "id": "changetype",
+                "title": "Change Type",
+                "icon" : Gitana.Utils.Image.buildImageUri('browser', 'changetype', 48),
+                "url": self.folderLink(self.targetObject(), "changetype"),
+                "requiredAuthorities" : [
+                    {
+                        "permissioned" : self.targetObject(),
+                        "permissions" : ["update"]
+                    }
+                ]
+            });
+
+
+            self.addButtons(buttons);
         },
 
         /** OVERRIDE **/
