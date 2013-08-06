@@ -92,8 +92,7 @@
                                 formVal[Gitana.CMS.NodeFormKey] = $('.form-picker select').val();
                             }
 
-                            Ratchet.merge(formVal, node);
-                            //_mergeObject(node,formVal);
+                            Gitana.CMS.copyIntoNode(node, formVal);
 
                             var tags = formVal['tags'];
 

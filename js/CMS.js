@@ -112,6 +112,35 @@
 
     Gitana.CMS.NodeFormKey = "form";
 
+    Gitana.CMS.copyIntoNode = function(node, obj)
+    {
+        if (!node)
+        {
+            return;
+        }
+
+        if (!obj)
+        {
+            return;
+        }
+
+        // collect keys to remove
+        var json = JSON.parse(JSON.stringify(node));
+        for (var k in json)
+        {
+            delete node[k];
+        }
+
+        // copy in
+        for (var k in obj)
+        {
+            node[k] = obj[k];
+        }
+
+        // restore id
+        node["_doc"] = json["_doc"];
+    };
+
     // tell ratchet to go to the personal dashboard if nothing specified on the hash
     Ratchet.DEFAULT_URI = "/dashboard";
 
