@@ -64,6 +64,7 @@
         },
 
         setupNodeTypeForm : function (el) {
+
             var self = this;
 
             self.clearDefinition();
@@ -84,85 +85,90 @@
                 });
             };
 
-            $('body').undelegate('.type-picker select', 'change').delegate('.type-picker select', 'change', function() {
+            var setupEventHandlers = function()
+            {
+                $('body').undelegate('.type-picker select', 'change').delegate('.type-picker select', 'change', function() {
 
-                var typeQName = $(this).val();
-                if (typeQName) {
-                    Chain(self.branch()).readDefinition(typeQName).then(function() {
-                        var selectedType = this;
-                        self.definition(selectedType);
-                        self.clearForm();
-                        $('.form-picker select').empty().append($("<option></option>")
+                    var typeQName = $(this).val();
+                    if (typeQName)
+                    {
+                        Chain(self.branch()).readDefinition(typeQName).then(function() {
+                            var selectedType = this;
+                            self.definition(selectedType);
+                            self.clearForm();
+                            $('.form-picker select').empty().append($("<option></option>")
                                 .attr("value", "")
                                 .text("None"));
-                        var formIds = [];
-                        var formLookup = {};
-                        var formReverseLookup = {};
+                            var formIds = [];
+                            var formLookup = {};
+                            var formReverseLookup = {};
 
-                        this.listFormAssociations().each(function() {
-                            var formKey = this.getFormKey();
-                            var formId = this.getTargetNodeId();
-                            formIds.push(formId);
-                            formLookup[formId] = {
-                                "key" : formKey
-                            };
-                            formReverseLookup[formKey] = formId;
-                        }).then(function() {
-                            this.subchain(self.branch()).queryNodes({
-                                "_doc" : {
-                                    "$in" : formIds
-                                }
-                            }).each(function() {
-                                var formNode = this;
-                                formLookup[this.getId()]['title'] = this.getTitle() ?  formLookup[this.getId()]['key'] + " - " + this.getTitle() : formLookup[this.getId()]['key'];
-                            });
+                            this.listFormAssociations().each(function() {
+                                var formKey = this.getFormKey();
+                                var formId = this.getTargetNodeId();
+                                formIds.push(formId);
+                                formLookup[formId] = {
+                                    "key" : formKey
+                                };
+                                formReverseLookup[formKey] = formId;
+                            }).then(function() {
 
-                            this.then(function() {
-                                var firstFormKey = null;
-                                this.each(function() {
-                                    var formKey = this.getFormKey();
-                                    var formId = this.getTargetNodeId();
-                                    $('.form-picker select').append($("<option></option>")
-                                        .attr("value", formKey)
-                                        .text(formLookup[formReverseLookup[formKey]]['title']));
-                                    if (!firstFormKey) {
-                                        firstFormKey = formKey;
+                                this.subchain(self.branch()).queryNodes({
+                                    "_doc" : {
+                                        "$in" : formIds
                                     }
-                                }).then(function() {
+                                }).each(function() {
+                                        var formNode = this;
+                                        formLookup[this.getId()]['title'] = this.getTitle() ?  formLookup[this.getId()]['key'] + " - " + this.getTitle() : formLookup[this.getId()]['key'];
+                                    });
 
-                                    if ($('.form-picker .ui-multiselect').length > 0) {
-                                        $('.form-picker select').multiselect("refresh");
-                                    } else {
-                                        $('.form-picker select').multiselect({
-                                            minWidth: 300,
-                                            multiple: false,
-                                            selectedList: 1,
-                                            header: "Select Form"
-                                        }).multiselectfilter();
-                                    }
+                                this.then(function() {
+                                    var firstFormKey = null;
+                                    this.each(function() {
+                                        var formKey = this.getFormKey();
+                                        var formId = this.getTargetNodeId();
+                                        $('.form-picker select').append($("<option></option>")
+                                            .attr("value", formKey)
+                                            .text(formLookup[formReverseLookup[formKey]]['title']));
+                                        if (!firstFormKey) {
+                                            firstFormKey = formKey;
+                                        }
+                                    }).then(function() {
 
-                                    $('body').trigger('swap',[this]);
+                                        if ($('.form-picker .ui-multiselect').length > 0) {
+                                            $('.form-picker select').multiselect("refresh");
+                                        } else {
+                                            $('.form-picker select').multiselect({
+                                                minWidth: 300,
+                                                multiple: false,
+                                                selectedList: 1,
+                                                header: "Select Form"
+                                            }).multiselectfilter();
+                                        }
 
-                                    if (firstFormKey)
-                                    {
-                                        doPickForm(firstFormKey);
-                                    }
+                                        $('body').trigger('swap',[this]);
 
+                                        if (firstFormKey)
+                                        {
+                                            doPickForm(firstFormKey);
+                                        }
+
+                                    });
                                 });
                             });
                         });
-                    });
-                }
-            });
+                    }
+                });
 
-            $('body').undelegate('.form-picker select', 'change').delegate('.form-picker select', 'change', function() {
-                var formKey = $(this).val();
-                if (formKey) {
-                    doPickForm(formKey);
-                } else {
-                    self.clearForm();
-                }
-            });
+                $('body').undelegate('.form-picker select', 'change').delegate('.form-picker select', 'change', function() {
+                    var formKey = $(this).val();
+                    if (formKey) {
+                        doPickForm(formKey);
+                    } else {
+                        self.clearForm();
+                    }
+                });
+            };
 
             $('#form-pick', $(el)).alpaca({
                 "schema": {
@@ -184,7 +190,6 @@
                     "fields" : {
                         "_type" : {
                             "type": "select",
-                            "helper" : "Pick node type.",
                             "fieldClass" : "type-picker",
                             "dataSource" : function(field, callback) {
                                 self.branch().listDefinitions('type').each(function() {
@@ -198,7 +203,9 @@
                                         "text": text
                                     });
                                 }).then(function() {
-                                    if (callback) {
+
+                                    if (callback)
+                                    {
                                         callback();
 
                                         //var defaultTypeQName = self.definition() ? self.definition().getQName() : "n:node";
@@ -212,15 +219,14 @@
                                             selectedList: 1,
                                             header: "Select Node Type"
                                         }).multiselectfilter();
-
-
                                     }
+
+                                    setupEventHandlers();
                                 });
                             }
                         },
                         "_form" : {
                             "type": "select",
-                            "helper" : "Pick form.",
                             "fieldClass" : "form-picker multi"
                         }
                     }
@@ -249,7 +255,9 @@
 
         setupNodeAddForm : function (el) {
             var self = this;
+
             var formDiv = el ? $('#node-add',$(el)) : $('#node-add');
+            var buttonDiv = el ? $('#node-add-create',$(el)) : $('#node-add-create');
 
             var schema = self.schema();
 
@@ -286,7 +294,7 @@
                     $('body').trigger('form-rendered',[form.getEl()]);
 
                     // Add Buttons
-                    $('#node-add-create').unbind( 'click' ).click(function() {
+                    $(buttonDiv).off().click(function() {
 
                         var formVal = form.getValue();
 
@@ -303,9 +311,10 @@
                         formVal['_type'] = $('.type-picker select').val();
 
                         if ($('.form-picker select').val()) {
-                           formVal['_form'] = $('.form-picker select').val();
+                           formVal[Gitana.CMS.NodeFormKey] = $('.form-picker select').val();
                         }
 
+                        form.renderValidationState(true);
                         if (form.isValid(true)) {
                             self.createNode(formVal);
                         }

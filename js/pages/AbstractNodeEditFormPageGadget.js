@@ -7,7 +7,7 @@
 
         setupNodeTypeForm : function (el) {
             var self = this;
-            var currentFormKey = self.targetObject().get('_form');
+            var currentFormKey = self.targetObject().get(Gitana.CMS.NodeFormKey);
             $('.form-picker select').empty().append($("<option></option>")
                 .attr("value", "")
                 .text("None"));
@@ -44,7 +44,6 @@
                     "fields" : {
                         "_form" : {
                             "type": "select",
-                            "helper" : "Pick form.",
                             "fieldClass" : "form-picker"
                         }
                     }
@@ -103,7 +102,7 @@
             self.loadContext(el, function() {
 
                 var typeQName = self.targetObject().getTypeQName();
-                var currentFormKey = self.targetObject().get('_form');
+                var currentFormKey = self.targetObject().get(Gitana.CMS.NodeFormKey);
                 Chain(self.branch()).readDefinition(typeQName).then(function() {
                     var selectedType = this;
                     self.definition(selectedType);

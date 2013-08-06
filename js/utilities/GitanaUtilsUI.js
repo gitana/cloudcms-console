@@ -184,7 +184,7 @@
             }
 
             // put some spacing into the form
-            form.getEl().find(".alpaca-fieldset-item-container").css("margin-bottom", "20px");
+            form.getEl().find(".alpaca-fieldset-item-container");//.css("margin-bottom", "20px");
         },
 
         /**
@@ -204,7 +204,7 @@
             }
 
             // put some spacing into the form
-            form.getEl().find(".alpaca-fieldset-item-container").css("margin-bottom", "20px");
+            form.getEl().find(".alpaca-fieldset-item-container");//.css("margin-bottom", "20px");
         },
 
         /**

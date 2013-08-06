@@ -89,7 +89,7 @@
                             }
 
                             if ($('.form-picker select').val()) {
-                                formVal['_form'] = $('.form-picker select').val();
+                                formVal[Gitana.CMS.NodeFormKey] = $('.form-picker select').val();
                             }
 
                             Ratchet.merge(formVal, node);
@@ -244,7 +244,6 @@
                     "fields" : {
                         "_form" : {
                             "type": "select",
-                            "helper" : "Pick form.",
                             "fieldClass" : "form-picker",
                             "dataSource" : function(field, callback) {
 
@@ -283,7 +282,7 @@
                                                 if (callback) {
                                                     callback();
 
-                                                    var defaultFormKey = self.targetObject().get('_form');
+                                                    var defaultFormKey = self.targetObject().get(Gitana.CMS.NodeFormKey);
 
                                                     if (defaultFormKey) {
                                                         field.field.val(defaultFormKey).change();
