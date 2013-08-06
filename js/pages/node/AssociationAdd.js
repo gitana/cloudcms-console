@@ -256,7 +256,6 @@
                     "fields" : {
                         "_type" : {
                             "type": "select",
-                            "helper" : "Pick node type.",
                             "fieldClass" : "type-picker",
                             "dataSource" : function(field, callback) {
                                 var firstOption;
@@ -291,7 +290,6 @@
                         },
                         "_form" : {
                             "type": "select",
-                            "helper" : "Pick form.",
                             "fieldClass" : "form-picker"
                         }
                     }
@@ -337,7 +335,7 @@
                         formVal['_type'] = $('.type-picker select').val();
 
                         if ($('.form-picker select').val()) {
-                           formVal['_form'] = $('.form-picker select').val();
+                           formVal[Gitana.CMS.NodeFormKey] = $('.form-picker select').val();
                         }
 
                         if (form.isValid(true)) {

@@ -869,10 +869,12 @@
                 } else {
                     Gitana.Console.Breadcrumb.findPath(self.node(), self, function() {
                         if (Gitana.Console.Breadcrumb.PATHS[nodeId]) {
-                            var nodeBreadcrumb = $.merge(self.breadcrumb(), Gitana.Console.Breadcrumb.PATHS[nodeId]);
+                            var nodeBreadcrumb = $.merge(breadcrumb, Gitana.Console.Breadcrumb.PATHS[nodeId]);
                             if (extra) {
                                 $.merge(nodeBreadcrumb, extra);
                             }
+
+                            self.breadcrumb(nodeBreadcrumb);
                         }
                     });
                 }

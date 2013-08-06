@@ -98,6 +98,11 @@
     };
 
     Alpaca.registerView({
+        "id": "VIEW_WEB_CREATE",
+        "displayReadonly": true
+    });
+
+    Alpaca.registerView({
         "id": "VIEW_WEB_EDIT",
         "templates": {
             "threeColumnGridLayout": '<div class="filter-content">'

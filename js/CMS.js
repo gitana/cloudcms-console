@@ -110,6 +110,8 @@
         }
     };
 
+    Gitana.CMS.NodeFormKey = "form";
+
     // tell ratchet to go to the personal dashboard if nothing specified on the hash
     Ratchet.DEFAULT_URI = "/dashboard";
 
