@@ -1,5 +1,5 @@
 /*!
-Alpaca Version 1.1.0
+Alpaca Version 1.1.2
 
 Copyright 2013 Gitana Software, Inc.
 
@@ -20,6 +20,40 @@ address:
 
   info@gitanasoftware.com
 */
+/*
+ * Bootstrap wants help text to have the "help-block" class.  Unfortunately, this block insists on display:block
+ * which causes next-line formatting issues.  The "help-inline" class orients back to display: inline-block.
+ */
+.help-inline
+{
+    display: inline-block !important;
+}
+
+/*
+ * When in an error state, adjust the glyphicons as well.
+ */
+.has-error .glyphicon
+{
+    color: #b94a48;
+}
+
+/**
+ * Helper messages will have their glyphicon's dimmed to the appropriate color
+ */
+.alpaca-controlfield-helper .glyphicon
+{
+    color: #737373;
+}
+
+/**
+ * Labels for control fields should be inline
+ */
+.alpaca-controlfield-label DIV
+{
+    display: inline-block;
+}
+
+/*
 .alpaca-controlfield-helper-text
 {
     vertical-align: bottom;
@@ -57,9 +91,6 @@ address:
     vertical-align: middle;
 }
 
-/**
- * Editor Field
- */
 .alpaca-controlfield-editor
 {
     position: relative;
@@ -107,3 +138,26 @@ DIV.alpaca-controlfield-text .twitter-typeahead .tt-dropdown-menu P
 {
     margin-left: 0px;
 }
+
+textarea
+{
+    border-radius: 6px;
+    border: 1px #ccc solid;
+    box-shadow: 0px 0px;
+    width: 280px;
+}
+
+select
+{
+    border-radius: 6px;
+    border: 1px #ccc solid;
+    box-shadow: 0px 0px;
+    width: 280px;
+}
+
+fieldset.alpaca-view-web-list.fieldset-collapsed
+{
+    border: solid 1px #ccc;
+    border-radius: 6px;
+}
+*/

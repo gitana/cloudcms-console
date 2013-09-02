@@ -523,7 +523,7 @@
                             var groupId = this.get('group');
                             var artifactId = this.get('artifact');
                             var version = this.get('version');
-                            var value = "<a class='node-action node-select' data-targetgroupid='" + groupId + "' data-targetartifactid='" + artifactId + "' data-targetversion='" + version + "'><span>Select</span></a>";
+                            var value = "<a class='gitana-selector-select gitana-selector-action node-action node-select' data-targetgroupid='" + groupId + "' data-targetartifactid='" + artifactId + "' data-targetversion='" + version + "'><span>Select</span></a>";
                             callback(value);
                         }
                     }

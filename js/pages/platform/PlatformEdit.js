@@ -224,8 +224,22 @@
             };
         },
 
-        setupPage: function(el) {
+        targetJsonObject: function() {
+            return Gitana.Authentication.platform();
+        },
 
+        handleUpdate: function(object, json, callback)
+        {
+            this.base(object, json, function() {
+
+                // reload
+                window.location.reload();
+
+            });
+        },
+
+        setupPage: function(el)
+        {
             var msgContext = {
                 "tenantFriendlyTitle": this.friendlyTitle(this.tenantDetails())
             };

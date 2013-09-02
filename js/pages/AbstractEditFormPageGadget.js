@@ -158,11 +158,15 @@
         editButtonConfig: function() {
         },
 
+        targetJsonObject: function() {
+            return this.targetObject();
+        },
+
         processForms: function(el) {
 
             var self = this;
             if (this.isEditJSONUri(el)) {
-                this.processJSONEditForm(el, this.targetObject());
+                this.processJSONEditForm(el, this.targetJsonObject());
             } else {
                 this.processEditForm(el);
             }
@@ -206,20 +210,8 @@
                             var json = JSON.parse(control.getValue());
                             delete json._doc;
 
-                            // Clean up object first
-                            for (var key in object) {
-                                if (object.hasOwnProperty(key) && !Gitana.isFunction(object[key])) {
-                                    if (key !== "_doc") {
-                                        delete object[key];
-                                    }
-                                }
-                            }
-
-                            Ratchet.merge(json, object);
-
                             // update
-                            object.update().then(function () {
-                                var updatedObject = this;
+                            self.handleUpdate(object, json, function(updatedObject) {
                                 Gitana.Utils.UI.unblock(function() {
                                     self.app().run("GET", self.LINK().call(self,updatedObject));
                                 });
@@ -229,6 +221,24 @@
                 }
             });
 
+        },
+
+        handleUpdate: function(object, json, callback)
+        {
+            // Clean up object first
+            for (var key in object) {
+                if (object.hasOwnProperty(key) && !Gitana.isFunction(object[key])) {
+                    if (key !== "_doc") {
+                        delete object[key];
+                    }
+                }
+            }
+
+            Ratchet.merge(json, object);
+
+            object.update().then(function() {
+                callback(this);
+            });
         }
 
     });

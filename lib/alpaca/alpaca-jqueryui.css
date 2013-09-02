@@ -1,5 +1,5 @@
 /*!
-Alpaca Version 1.1.0
+Alpaca Version 1.1.2
 
 Copyright 2013 Gitana Software, Inc.
 
@@ -27,10 +27,17 @@ address:
 {
     display: none;
     background-color:white;
+    z-index: 9999999 !important;
+    width: 22em !important;
 }
 
 /* Fix for Chrome issue with Button text */
 .ui-button .ui-button-text {
     white-space: nowrap;
+}
+
+.ui-datepicker
+{
+    z-index: 100;
 }
 
