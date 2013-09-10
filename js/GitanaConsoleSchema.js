@@ -761,6 +761,11 @@
                     "type" : "string",
                     "required": true
                 },
+                "authGrantKey": {
+                    "title": "Authentication Grant",
+                    "type": "string",
+                    "required": false
+                },
                 "applicationId" : {
                     "title" : "Application",
                     "type" : "string",
@@ -1478,6 +1483,10 @@
                 "clientKey" : {
                     "helper" : "Select client for auto client mapping.",
                     "type" : "select",
+                    "hideInitValidationError" : true
+                },
+                "authGrantKey": {
+                    "type": "select",
                     "hideInitValidationError" : true
                 },
                 "applicationId" : {

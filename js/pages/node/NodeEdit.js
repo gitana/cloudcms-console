@@ -71,6 +71,7 @@
                 "schema": schema,
                 "options": options,
                 "postRender": function(form) {
+
                     Gitana.Utils.UI.beautifyAlpacaForm(form, 'node-edit-save', true);
 
                     $('body').trigger('form-rendered',[form.getEl()]);

@@ -107,6 +107,10 @@
                 "value" : self.listItemProp(autoClientMapping, 'clientKey')
             });
             this._pushItem(pairs.items, {
+                "key" : "Authentication Grant",
+                "value" : self.listItemProp(autoClientMapping, 'authGrantKey')
+            });
+            this._pushItem(pairs.items, {
                 "key" : "Application",
                 "value" : self.listItemProp(autoClientMapping, 'applicationId')
             });
@@ -134,13 +138,22 @@
                     });
                 };
                 var f01 = function() {
+                    if (autoClientMapping["authGrantKey"])
+                    {
+                        this.subchain(platform).readAuthenticationGrant(autoClientMapping["authGrantKey"]).then(function () {
+                            var title = this.getTitle() ? this.getTitle() : this.getKey();
+                            self._updateItem(pairs.items, "Authentication Grant", "<a href='#" + self.link(this) +"'>" + title + "</a>");
+                        });
+                    }
+                };
+                var f02 = function() {
                     this.subchain(platform).readApplication(autoClientMapping.getTargetApplicationId()).then(function () {
                         var title = this.getTitle() ? this.getTitle() : this.getId();
                         self._updateItem(pairs.items, "Application", "<a href='#" + self.link(this) +"'>" + title + "</a>");
                     });
                 };
 
-                this.then([f00,f01]).then(function() {
+                this.then([f00,f01,f02]).then(function() {
                     self.pairs("auto-client-mapping-overview", pairs);
                 });
             });
