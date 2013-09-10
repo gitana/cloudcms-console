@@ -32,7 +32,9 @@
             var options = Alpaca.merge({}, Gitana.Console.Options.AutoClientMapping);
 
             options['fields']['clientKey']['dataSource'] = function(field, callback) {
-                Chain(self.platform()).listClients().each(
+                Chain(self.platform()).listClients({
+                    "limit": -1
+                }).each(
                     function(key, val, index) {
                         var title = this.getTitle() ? this.getTitle() : this.getKey();
                         field.selectOptions.push({
@@ -43,6 +45,24 @@
                         if (callback) {
                             callback();
                             field.field.val(self.targetObject().getTargetClientKey()).change();
+                        }
+                    });
+            };
+
+            options['fields']['authGrantKey']['dataSource'] = function(field, callback) {
+                Chain(self.platform()).queryAuthenticationGrants({}, {
+                    "limit": -1
+                }).each(
+                    function(key, val, index) {
+                        var title = this.getTitle() ? this.getTitle() : this.getKey();
+                        field.selectOptions.push({
+                            "value": this.getKey(),
+                            "text": title
+                        });
+                    }).then(function() {
+                        if (callback) {
+                            callback();
+                            field.field.val(self.targetObject()["authGrantKey"]).change();
                         }
                     });
             };
@@ -82,7 +102,7 @@
         setupEditForm: function (el) {
             var self = this;
             var autoClientMapping = self.targetObject();
-            var defaultData = this.populateObject(["title","description","uri","clientKey","applicationId"],autoClientMapping);
+            var defaultData = this.populateObject(["title","description","uri","clientKey","authGrantKey","applicationId"],autoClientMapping);
             $('#auto-client-mapping-edit', $(el)).alpaca({
                 "data": defaultData,
                 "schema": self.schema(),

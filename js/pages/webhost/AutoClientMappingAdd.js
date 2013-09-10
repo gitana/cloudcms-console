@@ -12,7 +12,33 @@
 
                 options['fields']['clientKey']['dataSource'] = function(field, callback) {
                     var firstOption;
-                    Chain(self.platform()).listClients().each(
+                    Chain(self.platform()).listClients({
+                        "limit": -1
+                    }).each(
+                        function(key, val, index) {
+                            var title = this.getTitle() ? this.getTitle() : this.getKey();
+                            field.selectOptions.push({
+                                "value": this.getKey(),
+                                "text": title
+                            });
+                            if (!firstOption) {
+                                firstOption = this.getKey();
+                            }
+                        }).then(function() {
+                            if (callback) {
+                                callback();
+                                if (firstOption) {
+                                    field.field.val(firstOption).change();
+                                }
+                            }
+                        });
+                };
+
+                options['fields']['authGrantKey']['dataSource'] = function(field, callback) {
+                    var firstOption;
+                    Chain(self.platform()).queryAuthenticationGrants({}, {
+                        "limit": -1
+                    }).each(
                         function(key, val, index) {
                             var title = this.getTitle() ? this.getTitle() : this.getKey();
                             field.selectOptions.push({
@@ -34,7 +60,9 @@
 
                 options['fields']['applicationId']['dataSource'] = function(field, callback) {
                     var firstOption;
-                    Chain(self.platform()).listApplications().each(
+                    Chain(self.platform()).listApplications({
+                        "limit": -1
+                    }).each(
                         function(key, val, index) {
                             var title = this.getTitle() ? this.getTitle() : this.getId();
                             field.selectOptions.push({
