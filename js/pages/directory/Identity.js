@@ -57,9 +57,11 @@
             this.pairs("identity-overview", pairs);
         },
 
-        setupDashlets : function ()
+        setupDashlets : function (el, callback)
         {
             this.setupOverview();
+
+            callback();
         },
 
         setupPage : function(el) {

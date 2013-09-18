@@ -57,12 +57,14 @@
                                 });
                             }
                         });
+
+                        callback();
                     }
                 });
             },
 
-            setupForms : function (el) {
-                this.setupAddForm(el);
+            setupForms : function (el, callback) {
+                this.setupAddForm(el, callback);
             },
 
             setupPage : function(el) {

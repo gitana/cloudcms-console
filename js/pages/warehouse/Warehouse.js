@@ -128,8 +128,9 @@
             this.pairs("warehouse-overview", pairs);
         },
 
-        setupDashlets : function () {
+        setupDashlets : function (el, callback) {
             this.setupWarehouseOverview();
+            callback();
         },
 
         setupPage : function(el) {

@@ -98,7 +98,7 @@
             }
         },
 
-        setupDomainGroupAddForm : function (el) {
+        setupDomainGroupAddForm : function (el, callback) {
             var self = this;
             $('#group-add',$(el)).alpaca({
                 "view": "VIEW_WEB_CREATE",
@@ -155,12 +155,14 @@
 
                         }
                     });
+
+                    callback();
                 }
             });
         },
 
-        setupForms : function (el) {
-            this.setupDomainGroupAddForm(el);
+        setupForms : function (el, callback) {
+            this.setupDomainGroupAddForm(el, callback);
         },
 
         setupPage : function(el) {

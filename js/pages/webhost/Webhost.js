@@ -134,8 +134,9 @@
             this.pairs("webhost-overview", pairs);
         },
 
-        setupDashlets : function () {
+        setupDashlets : function (el, callback) {
             this.setupWebhostOverview();
+            callback();
         },
 
         setupPage : function(el) {

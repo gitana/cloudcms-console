@@ -43,7 +43,7 @@
                 }
             },
 
-            index: function(el) {
+            index: function(el, callback) {
                 var self = this;
 
                 // detect changes to the pairs and redraw when they occur
@@ -58,37 +58,49 @@
 
                         var formDiv = $('.plot-form', $(el));
 
-                        el.swap();
+                        el.swap(function(swappedEl) {
 
-                        var queryFormOptions = self.plot['queryForm'];
+                            var queryFormOptions = self.plot['queryForm'];
 
-                        if (queryFormOptions) {
-                            var userPostRender = queryFormOptions["postRender"];
-                            queryFormOptions["postRender"] = function(form) {
+                            if (queryFormOptions) {
+                                var userPostRender = queryFormOptions["postRender"];
+                                queryFormOptions["postRender"] = function(form) {
 
-                                Gitana.Utils.UI.beautifyAlpacaForm(form);
+                                    Gitana.Utils.UI.beautifyAlpacaForm(form);
 
-                                // put some spacing into the form
-                                form.getEl().find(".alpaca-fieldset-item-container").css("margin-bottom", "0px");
+                                    // put some spacing into the form
+                                    form.getEl().find(".alpaca-fieldset-item-container").css("margin-bottom", "0px");
 
-                                if (userPostRender) {
-                                    userPostRender.call(self, form);
-                                }
-                                if ($(".query-button", form.getEl()).length == 0 && self.plot['displayQueryButton']) {
-                                    var queryButton = $('<div class="button">Query</div>').click(
-                                        function() {
-                                            self.loadPlot(form.getValue());
-                                        }
-                                    ).appendTo(form.getEl());
-                                }
-                                self.loadPlot(form.getValue());
-                            };
-                            formDiv.alpaca(queryFormOptions);
-                        } else {
-                            self.loadPlot(null);
-                        }
+                                    if (userPostRender) {
+                                        userPostRender.call(self, form);
+                                    }
+                                    if ($(".query-button", form.getEl()).length == 0 && self.plot['displayQueryButton']) {
+                                        var queryButton = $('<div class="button">Query</div>').click(
+                                            function() {
+                                                self.loadPlot(form.getValue());
+                                            }
+                                        ).appendTo(form.getEl());
+                                    }
+                                    self.loadPlot(form.getValue());
+                                };
+                                formDiv.alpaca(queryFormOptions);
+                            } else {
+                                self.loadPlot(null);
+                            }
 
+                            if (callback)
+                            {
+                                callback();
+                            }
+                        });
                     });
+                }
+                else
+                {
+                    if (callback)
+                    {
+                        callback();
+                    }
                 }
             }
 

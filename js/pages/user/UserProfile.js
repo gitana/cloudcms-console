@@ -101,9 +101,11 @@
             this.pairs("settings-pairs",pairs);
         },
 
-        setupDashlets : function () {
+        setupDashlets : function (el, callback) {
             this.setupProfile();
             this.setupSettings();
+
+            callback();
         },
 
         setupPage : function(el) {

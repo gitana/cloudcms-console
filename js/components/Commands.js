@@ -3,7 +3,7 @@
     {
         TEMPLATE : "components/commands",
 
-        index: function(el) {
+        index: function(el, callback) {
             var self = this;
 
             // subscribe: "commands"
@@ -61,11 +61,25 @@
                             });
                         });
 
-                        el.swap();
+                        el.swap(function(swappedEl) {
+
+                            if (callback)
+                            {
+                                callback();
+                            }
+
+                        });
 
                     });
 
                 }, allRequiredAuthorities);
+            }
+            else
+            {
+                if (callback)
+                {
+                    callback();
+                }
             }
         }
     });

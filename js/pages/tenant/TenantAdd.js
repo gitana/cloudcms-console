@@ -119,7 +119,7 @@
             ]));
         },
 
-        setupTenantAddForm : function (el) {
+        setupTenantAddForm : function (el, callback) {
             var self = this;
             $('#tenant-add', $(el)).alpaca({
                 "view": "VIEW_WEB_CREATE",
@@ -187,12 +187,14 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },
 
-        setupForms : function (el) {
-            this.setupTenantAddForm(el);
+        setupForms : function (el, callback) {
+            this.setupTenantAddForm(el, callback);
         },
 
         setupPage : function(el) {

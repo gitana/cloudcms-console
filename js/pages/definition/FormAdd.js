@@ -182,8 +182,9 @@
             });
         },
 
-        processForms : function (el) {
-            this.processFormAddForm(el);
+        processForms : function (el, newEl, callback)
+        {
+            this.processFormAddForm(newEl);
         }
 
     });

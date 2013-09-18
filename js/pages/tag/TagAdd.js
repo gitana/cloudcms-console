@@ -95,7 +95,7 @@
             ]));
         },
 
-        setupNodeAddForm : function (el) {
+        setupNodeAddForm : function (el, callback) {
             var self = this;
             $('#tag-add', $(el)).alpaca({
                 "view": "VIEW_WEB_CREATE",
@@ -126,12 +126,14 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },
 
-        setupForms : function (el) {
-            this.setupNodeAddForm(el);
+        setupForms : function (el, callback) {
+            this.setupNodeAddForm(el, callback);
         },
 
         setupPage : function(el) {

@@ -13,7 +13,7 @@
             }
         },
 
-        index: function(el) {
+        index: function(el, callback) {
             var self = this;
 
             this.tokens = el.tokens;
@@ -39,37 +39,44 @@
                         self.setupList(el);
 
                         // set up the dashlets
-                        self.setupDashlets(el);
+                        self.setupDashlets(el, function() {
 
-                        // set up the page
-                        self.setupPage(el);
+                            // set up the page
+                            self.setupPage(el);
 
-                        // list model
-                        self.model(el);
+                            // list model
+                            self.model(el);
 
-                        // render layout
-                        self.renderTemplate(el, self.TEMPLATE, function(el) {
+                            // render layout
+                            self.renderTemplate(el, self.TEMPLATE, function(el) {
 
-                            Gitana.Utils.UI.jQueryUIDatePickerPatch();
+                                Gitana.Utils.UI.jQueryUIDatePickerPatch();
 
-                            Gitana.Utils.UI.contentBox($(el));
+                                Gitana.Utils.UI.contentBox($(el));
 
-                            // set up list search box
-                            self.setupListSearchbox(el);
+                                // set up list search box
+                                self.setupListSearchbox(el);
 
-                            el.swap(function(swappedEl) {
+                                el.swap(function(swappedEl) {
 
-                                self.processList(swappedEl);
+                                    self.processList(swappedEl);
 
-                                self.processFilter(swappedEl);
+                                    self.processFilter(swappedEl);
 
-                                Gitana.Utils.UI.enableTooltip();
+                                    Gitana.Utils.UI.enableTooltip();
 
-                                Gitana.Utils.UI.processBreadcrumb();
+                                    Gitana.Utils.UI.processBreadcrumb();
+
+                                    if (callback)
+                                    {
+                                        callback();
+                                    }
+
+                                });
 
                             });
-
                         });
+
                     } else {
                         self.handleUnauthorizedPageAccess(el, error);
                     }
@@ -119,7 +126,8 @@
         },
 
         /** ABSTRACT **/
-        setupDashlets: function(el) {
+        setupDashlets: function(el, callback) {
+            callback();
         },
 
         /** ABSTRACT **/

@@ -3,7 +3,7 @@
     {
         TEMPLATE: "layouts/console.admin",
 
-        index: function(el) {
+        index: function(el, callback) {
             var self = this;
 
             this.tokens = el.tokens;
@@ -33,9 +33,15 @@
                         // render layout
                         self.renderTemplate(el, self.TEMPLATE, function(el) {
                             Gitana.Utils.UI.contentBox($(el));
-                            el.swap();
-                            Gitana.Utils.UI.enableTooltip();
-                            Gitana.Utils.UI.processBreadcrumb();
+                            el.swap(function(swappedEl) {
+                                Gitana.Utils.UI.enableTooltip();
+                                Gitana.Utils.UI.processBreadcrumb();
+
+                                if (callback)
+                                {
+                                    callback();
+                                }
+                            });
                         });
                     } else {
                         self.handleUnauthorizedPageAccess(el, error);

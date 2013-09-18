@@ -58,7 +58,7 @@
             ]));
         },
 
-        setupVaultAddForm : function (el) {
+        setupVaultAddForm : function (el, callback) {
             var self = this;
             $('#vault-add', $(el)).alpaca({
                 "view": "VIEW_WEB_CREATE",
@@ -82,12 +82,14 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },
 
-        setupForms : function (el) {
-            this.setupVaultAddForm(el);
+        setupForms : function (el, callback) {
+            this.setupVaultAddForm(el, callback);
         },
 
         setupPage : function(el) {

@@ -35,7 +35,9 @@
                     qnameLabels: {}
                 };
 
-                Chain(branch).listDefinitions().each(function() {
+                Chain(branch).listDefinitions({
+                    "limit": Gitana.Console.LIMIT_NONE
+                }).each(function() {
                     _definitions.qnames.push(this.getQName());
                     _definitions.names.push(this["title"]);
                     var label = this["title"];

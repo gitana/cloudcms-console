@@ -34,10 +34,6 @@
             return options;
         },
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setupMenu: function() {
             this.menu(Gitana.Console.Menu.DomainUser(this));
         },
@@ -50,7 +46,7 @@
             ]));
         },
 
-        setupEditForm : function (el) {
+        setupEditForm : function (el, callback) {
             var self = this;
             var user = self.targetObject();
             var defaultData = this.populateObject(["firstName","lastName","companyName","email","name"],user);
@@ -111,6 +107,8 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },

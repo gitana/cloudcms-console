@@ -137,7 +137,7 @@
             });
         },
 
-        setupNodeAddForm : function (el) {
+        setupNodeAddForm : function (el, callback) {
             var self = this;
             var formDiv = el ? $('#translation-add', $(el)) : $('#translation-add');
 
@@ -177,16 +177,18 @@
                                 self.createTranslation(formVal);
                             }
                         });
+
+                        callback();
                     }
                 });
             });
         },
 
-        setupForms : function (el) {
+        setupForms : function (el, callback) {
 
             var self = this;
 
-            this.setupNodeAddForm(el);
+            this.setupNodeAddForm(el, callback);
         },
 
         setupPage: function(el) {

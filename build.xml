@@ -199,7 +199,6 @@
 
                 <file name="components/Header.js"/>
                 <file name="components/LoginDetails.js"/>
-                <file name="components/TenantBar.js"/>
 
                 <file name="pages/importexport/AbstractExport.js"/>
                 <file name="pages/importexport/AbstractImport.js"/>

@@ -33,7 +33,7 @@
 
             options['fields']['clientKey']['dataSource'] = function(field, callback) {
                 Chain(self.platform()).listClients({
-                    "limit": -1
+                    "limit": Gitana.Console.LIMIT_NONE
                 }).each(
                     function(key, val, index) {
                         var title = this.getTitle() ? this.getTitle() : this.getKey();
@@ -68,7 +68,9 @@
             };
 
             options['fields']['applicationId']['dataSource'] = function(field, callback) {
-                Chain(self.platform()).listApplications().each(
+                Chain(self.platform()).listApplications({
+                    "limit": Gitana.Console.LIMIT_NONE
+                }).each(
                     function(key, val, index) {
                         var title = this.getTitle() ? this.getTitle() : this.getId();
                         field.selectOptions.push({
@@ -99,7 +101,7 @@
             ]));
         },
 
-        setupEditForm: function (el) {
+        setupEditForm: function (el, callback) {
             var self = this;
             var autoClientMapping = self.targetObject();
             var defaultData = this.populateObject(["title","description","uri","clientKey","authGrantKey","applicationId"],autoClientMapping);
@@ -122,6 +124,8 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },

@@ -239,7 +239,7 @@
             self.addButtons([]);
         },
 
-        asyncSetupForms : function(el, callback) {
+        setupForms : function(el, callback) {
             var self = this;
 
             self.schema(function(schema) {
@@ -315,10 +315,10 @@
                                 }
 
                             });
+
+                            callback();
                         }
                     });
-
-                    callback();
                 });
 
             });

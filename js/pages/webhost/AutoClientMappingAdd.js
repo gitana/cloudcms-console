@@ -13,7 +13,7 @@
                 options['fields']['clientKey']['dataSource'] = function(field, callback) {
                     var firstOption;
                     Chain(self.platform()).listClients({
-                        "limit": -1
+                        "limit": Gitana.Console.LIMIT_NONE
                     }).each(
                         function(key, val, index) {
                             var title = this.getTitle() ? this.getTitle() : this.getKey();
@@ -61,7 +61,7 @@
                 options['fields']['applicationId']['dataSource'] = function(field, callback) {
                     var firstOption;
                     Chain(self.platform()).listApplications({
-                        "limit": -1
+                        "limit": Gitana.Console.LIMIT_NONE
                     }).each(
                         function(key, val, index) {
                             var title = this.getTitle() ? this.getTitle() : this.getId();
@@ -114,7 +114,7 @@
                 ]));
             },
 
-            setupAutoClientMappingAddForm : function (el) {
+            setupAutoClientMappingAddForm : function (el, callback) {
                 var self = this;
                 $('#auto-client-mapping-add', $(el)).alpaca({
                     "view": "VIEW_WEB_CREATE",
@@ -150,12 +150,14 @@
                                 });
                             }
                         });
+
+                        callback();
                     }
                 });
             },
 
-            setupForms : function (el) {
-                this.setupAutoClientMappingAddForm(el);
+            setupForms : function (el, callback) {
+                this.setupAutoClientMappingAddForm(el, callback);
             },
 
             setupPage : function(el) {

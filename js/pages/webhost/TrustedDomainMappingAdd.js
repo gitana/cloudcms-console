@@ -38,7 +38,7 @@
                 ]));
             },
 
-            setupTrustedDomainMappingAddForm : function (el) {
+            setupTrustedDomainMappingAddForm : function (el, callback) {
                 var self = this;
                 $('#trusted-domain-mapping-add', $(el)).alpaca({
                     "view": "VIEW_WEB_CREATE",
@@ -74,12 +74,14 @@
                                 });
                             }
                         });
+
+                        callback();
                     }
                 });
             },
 
-            setupForms : function (el) {
-                this.setupTrustedDomainMappingAddForm(el);
+            setupForms : function (el, callback) {
+                this.setupTrustedDomainMappingAddForm(el, callback);
             },
 
             setupPage : function(el) {

@@ -3,7 +3,7 @@
     {
         TEMPLATE : "components/header",
 
-        index: function(el) {
+        index: function(el, callback) {
             var self = this;
 
             //this.setupRefreshSubscription(el);
@@ -43,54 +43,6 @@
             }
 
             this.model(el);
-
-            // render
-            self.renderTemplate(el, self.TEMPLATE, function(el) {
-
-                // user logo
-                var userLogoUrl = $('#login-user-avatar',$(el)).attr('src');
-                if (userLogoUrl == null || userLogoUrl != 'css/images/themes/clean/console/misc/avatar_small.png') {
-                    $('#login-user-avatar',$(el)).attr('src',$('#login-user-avatar',$(el)).attr('data-src'));
-                }
-
-                // platform logo
-                var platformLogoUrl = $('#platform-logo',$(el)).attr('src');
-                if (platformLogoUrl == null || platformLogoUrl != 'css/images/themes/clean/console/logos/logo-default.png') {
-                    $('#platform-logo',$(el)).attr('src',$('#platform-logo',$(el)).attr('data-src'));
-                }
-
-                // Add logout button
-                $('.logout',$(el)).click(function(e) {
-                    self.app().authenticator.logout(self,function() {
-                        Gitana.CMS.refresh();
-                    });
-                    e.preventDefault();
-                });
-
-                // profile clicks
-                $(".user-icon", $(el)).click(function(e) {
-                    self.app().run('GET',"#/profile");
-
-                    e.preventDefault();
-                });
-                $(".user-name", $(el)).click(function(e) {
-                    self.app().run('GET',"#/profile");
-
-                    e.preventDefault();
-                });
-
-                // profile mouseover
-                $(".user-icon", $(el)).mouseover(function(e) {
-                    $(this).css("cursor", "pointer");
-                    e.preventDefault();
-                });
-                $(".user-name", $(el)).mouseover(function(e) {
-                    $(this).css("cursor", "pointer");
-                    e.preventDefault();
-                });
-
-                el.swap();
-            });
 
             // Recent History
 
@@ -309,6 +261,61 @@
                     updateMyConsoleAppSettings();
                 });
             });
+
+            // render
+            self.renderTemplate(el, self.TEMPLATE, function(el) {
+
+                // user logo
+                var userLogoUrl = $('#login-user-avatar',$(el)).attr('src');
+                if (userLogoUrl == null || userLogoUrl != 'css/images/themes/clean/console/misc/avatar_small.png') {
+                    $('#login-user-avatar',$(el)).attr('src',$('#login-user-avatar',$(el)).attr('data-src'));
+                }
+
+                // platform logo
+                var platformLogoUrl = $('#platform-logo',$(el)).attr('src');
+                if (platformLogoUrl == null || platformLogoUrl != 'css/images/themes/clean/console/logos/logo-default.png') {
+                    $('#platform-logo',$(el)).attr('src',$('#platform-logo',$(el)).attr('data-src'));
+                }
+
+                // Add logout button
+                $('.logout',$(el)).click(function(e) {
+                    self.app().authenticator.logout(self,function() {
+                        Gitana.CMS.refresh();
+                    });
+                    e.preventDefault();
+                });
+
+                // profile clicks
+                $(".user-icon", $(el)).click(function(e) {
+                    self.app().run('GET',"#/profile");
+
+                    e.preventDefault();
+                });
+                $(".user-name", $(el)).click(function(e) {
+                    self.app().run('GET',"#/profile");
+
+                    e.preventDefault();
+                });
+
+                // profile mouseover
+                $(".user-icon", $(el)).mouseover(function(e) {
+                    $(this).css("cursor", "pointer");
+                    e.preventDefault();
+                });
+                $(".user-name", $(el)).mouseover(function(e) {
+                    $(this).css("cursor", "pointer");
+                    e.preventDefault();
+                });
+
+                el.swap(function(swappedEl) {
+
+                    if (callback)
+                    {
+                        callback();
+                    }
+                });
+            });
+
 
             /*
 

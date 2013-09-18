@@ -97,7 +97,7 @@
             ]));
         },
 
-        setupPlanAddForm : function (el) {
+        setupPlanAddForm : function (el, callback) {
             var self = this;
             $('#plan-add', $(el)).alpaca({
                 "view": "VIEW_WEB_CREATE",
@@ -121,12 +121,14 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },
 
-        setupForms : function (el) {
-            this.setupPlanAddForm(el);
+        setupForms : function (el, callback) {
+            this.setupPlanAddForm(el, callback);
         },
 
         setupPage : function(el) {

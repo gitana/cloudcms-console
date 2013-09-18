@@ -83,7 +83,7 @@
             ]));
         },
 
-        setupSettingsAddForm : function (el) {
+        setupSettingsAddForm: function (el, callback) {
             var self = this;
             $('#settings-add', $(el)).alpaca({
                 "view": "VIEW_WEB_CREATE",
@@ -117,12 +117,14 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },
 
-        setupForms : function (el) {
-            this.setupSettingsAddForm(el);
+        setupForms : function (el, callback) {
+            this.setupSettingsAddForm(el, callback);
         },
 
         setupPage : function(el) {

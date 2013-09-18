@@ -192,7 +192,9 @@
                         "type" : "select",
                         "helper": "Select principal domain.",
                         "dataSource": function(field, callback) {
-                            self.platform().listDomains().each(
+                            self.platform().listDomains({
+                                "limit": Gitana.Console.LIMIT_NONE
+                            }).each(
                                 function(key, val, index) {
                                     field.selectOptions.push({
                                         "value": this.getId(),

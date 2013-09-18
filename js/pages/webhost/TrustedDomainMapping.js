@@ -114,8 +114,9 @@
             this.pairs("trusted-domain-mapping-overview", pairs);
         },
 
-        setupDashlets : function () {
+        setupDashlets : function (el, callback) {
             this.setupTrustedDomainMappingOverview();
+            callback();
         },
 
         setupPage : function(el) {

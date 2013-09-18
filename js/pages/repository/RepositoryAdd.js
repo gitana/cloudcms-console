@@ -58,7 +58,7 @@
             ]));
         },
 
-        setupRepositoryAddForm : function (el) {
+        setupRepositoryAddForm : function (el, callback) {
             var self = this;
             $('#repo-add', $(el)).alpaca({
                 "view": "VIEW_WEB_CREATE",
@@ -83,12 +83,14 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },
 
-        setupForms : function (el) {
-            this.setupRepositoryAddForm(el);
+        setupForms : function (el, callback) {
+            this.setupRepositoryAddForm(el, callback);
         },
 
         setupPage : function(el) {

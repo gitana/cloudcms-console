@@ -13,7 +13,7 @@
             return this.folderLink;
         },
 
-        setupEditForm: function (el) {
+        setupEditForm: function (el, callback) {
             var self = this;
             var node = self.targetObject();
             var defaultData = self.populateObjectAll(node);
@@ -51,6 +51,8 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },

@@ -3,7 +3,7 @@
     {
         TEMPLATE: "layouts/console.dashboard",
 
-        index: function(el) {
+        index: function(el, callback) {
             var self = this;
 
             this.tokens = el.tokens;
@@ -25,24 +25,33 @@
                         self.setupToolbar();
 
                         // set up the dashlets
-                        self.setupDashlets(el);
+                        self.setupDashlets(el, function() {
 
-                        // set up the page
-                        self.setupPage(el);
+                            // set up the page
+                            self.setupPage(el);
 
-                        // detect changes to the list and redraw when they occur
-                        //self.setupRefreshSubscription(el);
+                            // detect changes to the list and redraw when they occur
+                            //self.setupRefreshSubscription(el);
 
-                        // list model
-                        var page = self.model(el);
+                            // list model
+                            var page = self.model(el);
 
-                        // render layout
-                        self.renderTemplate(el, self.TEMPLATE, function(el) {
-                            Gitana.Utils.UI.contentBox($(el));
-                            el.swap();
-                            Gitana.Utils.UI.enableTooltip();
-                            Gitana.Utils.UI.processBreadcrumb();
+                            // render layout
+                            self.renderTemplate(el, self.TEMPLATE, function(el) {
+                                Gitana.Utils.UI.contentBox($(el));
+                                el.swap(function(swappedEl) {
+                                    Gitana.Utils.UI.enableTooltip();
+                                    Gitana.Utils.UI.processBreadcrumb();
+
+                                    if (callback)
+                                    {
+                                        callback();
+                                    }
+                                });
+                            });
+
                         });
+
                     } else {
                         self.handleUnauthorizedPageAccess(el, error);
                     }
@@ -105,7 +114,9 @@
 
         /** Abstract methods **/
 
-        setupDashlets: function(el) {
+        setupDashlets: function(el, callback)
+        {
+            callback();
         }
     });
 

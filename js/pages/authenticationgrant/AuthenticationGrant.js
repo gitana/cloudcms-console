@@ -181,8 +181,10 @@
 
         },
 
-        setupDashlets : function () {
+        setupDashlets : function (el, callback)
+        {
             this.setupAuthenticationGrantOverview();
+            callback();
         },
 
         setupPage : function(el) {

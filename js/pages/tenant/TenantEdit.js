@@ -127,7 +127,7 @@
             ]));
         },
 
-        setupEditForm: function (el) {
+        setupEditForm: function (el, callback) {
             var self = this;
             var tenant = self.targetObject();
             var defaultData = this.populateObject(["title","description","planKey","paymentMethod","dnsSlug"],tenant);
@@ -157,6 +157,8 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },

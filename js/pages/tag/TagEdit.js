@@ -96,7 +96,7 @@
             ]));
         },
 
-        setupEditForm: function (el) {
+        setupEditForm: function (el, callback) {
 
             var self = this;
 
@@ -142,6 +142,8 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },

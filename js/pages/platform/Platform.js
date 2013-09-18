@@ -418,7 +418,7 @@
                 });
             },
 
-            setupDashlets : function (el) {
+            setupDashlets : function (el, callback) {
                 this.setupPlatformPlot(el);
                 this.setupPlatformStats(el);
                 this.setupLatestActivities(el);
@@ -469,6 +469,12 @@
                     this.then([f00,f0]).then(function() {
                         self.stats("platform-stats", stats);
                     });
+                }).then(function() {
+
+                    if (callback)
+                    {
+                        callback();
+                    }
                 });
             },
 

@@ -397,8 +397,9 @@
             });
         },
 
-        setupDashlets : function () {
+        setupDashlets : function (el, callback) {
             this.setupProfile();
+            callback();
         },
 
         setupPage : function(el) {
@@ -437,7 +438,9 @@
                     "text": "Special Principals"
                 });
 
-                self.platform().listDomains().each(function(key, val, index) {
+                self.platform().listDomains({
+                    "limit": Gitana.Console.LIMIT_NONE
+                }).each(function(key, val, index) {
                     field.selectOptions.push({
                         "value": this.getId(),
                         "text": self.friendlyTitle(this)

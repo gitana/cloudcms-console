@@ -158,8 +158,10 @@
             this.pairs("registrar-overview", pairs);
         },
 
-        setupDashlets : function () {
+        setupDashlets: function (el, callback)
+        {
             this.setupRegistrarOverview();
+            callback();
         },
 
         setupPage : function(el) {

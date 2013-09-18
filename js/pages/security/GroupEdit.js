@@ -65,7 +65,7 @@
             ]));
         },
 
-        setupEditForm: function (el) {
+        setupEditForm: function (el, callback) {
             var self = this;
             var group = self.targetObject();
             var defaultData = self.populateObjectAll(group);
@@ -109,6 +109,8 @@
 
                         }
                     });
+
+                    callback();
                 }
             });
         },

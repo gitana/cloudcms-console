@@ -71,11 +71,12 @@
             this.pairs("my-activities", pairs);
         },
 
-        setupDashlets: function(el) {
+        setupDashlets: function(el, callback) {
 
             this.setupNotifications(el);
             this.setupMyActivities();
 
+            callback();
         },
 
         setupPage : function(el) {

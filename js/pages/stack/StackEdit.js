@@ -75,7 +75,7 @@
             ]));
         },
 
-        setupEditForm: function (el) {
+        setupEditForm: function (el, callback) {
             var self = this;
             var stack = self.targetObject();
             var defaultData = self.populateObjectAll(stack)
@@ -98,6 +98,8 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },

@@ -14,7 +14,7 @@
             ];
         },
 
-        setupAttachmentAddForm : function (el) {
+        setupAttachmentAddForm: function (el, callback) {
             var self = this;
             $('#add-attachments',$(el)).alpaca({
                 "schema" : {
@@ -50,13 +50,15 @@
                     $(".files",$(el)).css({
                         "width" : "100%"
                     });
+
+                    callback();
                 }
             });
         },
 
 
-        setupForms : function (el) {
-            this.setupAttachmentAddForm(el);
+        setupForms: function (el, callback) {
+            this.setupAttachmentAddForm(el, callback);
         },
 
         setupPage : function(el) {

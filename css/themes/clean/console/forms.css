@@ -285,7 +285,8 @@ div.selector {
 }
 
 div.selector span {
-  background-position: right 0px;
+  /*background-position: right 0px;*/
+  background-position: 0px 0px;
   height: 26px;
   line-height: 26px;
 }
@@ -303,7 +304,8 @@ div.selector.active {
 
 div.selector:active span, 
 div.selector.active span {
-  background-position: right -26px;
+  /*background-position: right -26px;*/
+  background-position: 0px 0px;
 }
 
 div.selector.focus, div.selector.hover, div.selector:hover {
@@ -311,7 +313,8 @@ div.selector.focus, div.selector.hover, div.selector:hover {
 }
 
 div.selector.focus span, div.selector.hover span, div.selector:hover span {
-  background-position: right -52px;
+  /*background-position: right -52px;*/
+  background-position: 0px 0px;
 }
 
 div.selector.focus:active,
@@ -325,7 +328,8 @@ div.selector.focus:active span,
 div.selector:hover:active span,
 div.selector.active:hover span,
 div.selector.focus.active span {
-  background-position: right -78px;
+  /*background-position: right -78px;*/
+  background-position: 0px 0px;
 }
 
 div.selector.disabled {
@@ -333,7 +337,8 @@ div.selector.disabled {
 }
 
 div.selector.disabled span {
-  background-position: right -104px;
+  /*background-position: right -104px;*/
+  background-position: 0px 0px;
 }
 
 /* Checkbox */

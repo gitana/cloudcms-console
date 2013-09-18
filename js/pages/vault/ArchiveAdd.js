@@ -64,7 +64,7 @@
             ]));
         },
 
-        setupArchiveAddForm : function (el) {
+        setupArchiveAddForm : function (el, callback) {
             var self = this;
             $('#archive-add', $(el)).alpaca({
                 "view": "VIEW_WEB_CREATE",
@@ -102,12 +102,14 @@
                             }
                         }
                     });
+
+                    callback();
                 }
             });
         },
 
-        setupForms : function (el) {
-            this.setupArchiveAddForm(el);
+        setupForms : function (el, callback) {
+            this.setupArchiveAddForm(el, callback);
         },
 
         setupPage : function(el) {

@@ -464,13 +464,15 @@
         },
 
 
-        setupDashlets : function () {
+        setupDashlets : function (el, callback) {
             this.setupTenantOverview();
             this.setupPlanOverview();
             this.setupPrincipalOverview();
             this.setupMeterOverview();
             //this.setupAuthenticationGrantOverview();
             this.setupAutoClientMappingsOverview();
+
+            callback();
         },
 
         setupPage : function(el) {

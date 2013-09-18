@@ -114,8 +114,9 @@
             this.pairs("deployed-application-overview", pairs);
         },
 
-        setupDashlets : function () {
+        setupDashlets : function (el, callback) {
             this.setupDeployedApplicationOverview();
+            callback();
         },
 
         setupPage : function(el) {

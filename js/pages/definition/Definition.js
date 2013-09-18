@@ -188,7 +188,7 @@
             this.pairs("definition-latest-nodes",pairs);
         },
 
-        setupDashlets : function () {
+        setupDashlets : function (el, callback) {
 
             this.setupDefinitionOverview();
             this.setupDefinitionStats();
@@ -239,6 +239,8 @@
                     self.stats("definition-stats", stats);
                 });
 
+            }).then(function() {
+                callback();
             });
         },
 

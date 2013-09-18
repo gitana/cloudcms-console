@@ -162,7 +162,7 @@
             ]);
         },
 
-        setupAssociationTypeForm : function (el) {
+        setupAssociationTypeForm : function (el, callback) {
             var self = this;
 
             $('body').undelegate('.type-picker select', 'change').delegate('.type-picker select', 'change', function() {
@@ -259,7 +259,9 @@
                             "fieldClass" : "type-picker",
                             "dataSource" : function(field, callback) {
                                 var firstOption;
-                                self.branch().listDefinitions('association').each(
+                                self.branch().listDefinitions('association', {
+                                    "limit": Gitana.Console.LIMIT_NONE
+                                }).each(
                                     function(key, val, index) {
                                         var value = this.getQName();
                                         var text = value;
@@ -298,11 +300,13 @@
 
                     Gitana.Utils.UI.beautifyAlpacaForm(form);
 
+                    callback();
+
                 }
             });
         },
 
-        setupAssociationAddForm : function (el) {
+        setupAssociationAddForm : function (el, callback) {
             var self = this;
 
             var schema = self.schema();
@@ -368,16 +372,24 @@
                             }
                         }
                     });
+
+                    callback();
                 }
             });
         },
 
-        setupForms : function (el) {
+        setupForms : function (el, callback)
+        {
             var self = this;
-            this.setupAssociationTypeForm(el);
-            this.setupAssociationAddForm(el);
-            this.subscribe('form', function() {
-                self.setupAssociationAddForm();
+
+            self.setupAssociationTypeForm(el, function() {
+                self.setupAssociationAddForm(el, function() {
+                    self.subscribe('form', function() {
+                        self.setupAssociationAddForm(el);
+                    });
+
+                    callback();
+                });
             });
         },
 
@@ -459,7 +471,9 @@
             });
 
             options['fields']['type']['dataSource'] = function(field, callback) {
-                self.branch().listDefinitions('type').each(function(key, definition, index) {
+                self.branch().listDefinitions('type', {
+                    "limit": Gitana.Console.LIMIT_NONE
+                }).each(function(key, definition, index) {
                     field.selectOptions.push({
                         "value": definition.getQName(),
                         "text": definition.getQName()
@@ -567,7 +581,9 @@
                         };
                         self.branch().trap(function(error) {
                             return self.handlePageError(el, error);
-                        }).listDefinitions('type').each(function(key, definition, index) {
+                        }).listDefinitions('type', {
+                            "limit": Gitana.Console.LIMIT_NONE
+                        }).each(function(key, definition, index) {
 
                             self.defaultQuery["_type"]["$in"].push(definition.getQName());
 

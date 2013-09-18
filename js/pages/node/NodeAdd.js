@@ -63,7 +63,7 @@
             ]));
         },
 
-        setupNodeTypeForm : function (el) {
+        setupNodeTypeForm : function (el, callback) {
 
             var self = this;
 
@@ -192,7 +192,9 @@
                             "type": "select",
                             "fieldClass" : "type-picker",
                             "dataSource" : function(field, callback) {
-                                self.branch().listDefinitions('type').each(function() {
+                                self.branch().listDefinitions('type', {
+                                    'limit': Gitana.Console.LIMIT_NONE
+                                }).each(function() {
                                     var value = this.getQName();
                                     var text = value;
                                     if (this.getTitle()) {
@@ -235,6 +237,8 @@
 
                     Gitana.Utils.UI.beautifyAlpacaForm(form);
 
+                    callback();
+
                 }
             });
         },
@@ -253,7 +257,7 @@
             });
         },
 
-        setupNodeAddForm : function (el) {
+        setupNodeAddForm : function (el, callback) {
             var self = this;
 
             var formDiv = el ? $('#node-add',$(el)) : $('#node-add');
@@ -319,21 +323,26 @@
                             self.createNode(formVal);
                         }
                     });
+
+                    callback();
                 }
             });
         },
 
-        setupForms : function (el) {
+        setupForms : function (el, callback) {
 
             var self = this;
 
-            this.setupNodeTypeForm(el);
+            self.setupNodeTypeForm(el, function() {
+                self.setupNodeAddForm(el, function() {
+                    self.subscribe('form', function() {
+                        self.setupNodeAddForm();
+                    });
 
-            this.setupNodeAddForm(el);
-
-            this.subscribe('form', function() {
-                self.setupNodeAddForm();
+                    callback();
+                });
             });
+
         },
 
         setupPage: function(el) {

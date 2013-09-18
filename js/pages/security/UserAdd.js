@@ -202,7 +202,7 @@
             ]);
         },
 
-        setupUserAddForm : function (el) {
+        setupUserAddForm : function (el, callback) {
             var self = this;
             $('#user-add',$(el)).alpaca({
                 "view": "VIEW_WEB_CREATE",
@@ -260,12 +260,14 @@
 
                         }
                     });
+
+                    callback();
                 }
             });
         },
 
-        setupForms : function (el) {
-            this.setupUserAddForm(el);
+        setupForms : function (el, callback) {
+            this.setupUserAddForm(el, callback);
         },
 
         setupPage : function(el) {

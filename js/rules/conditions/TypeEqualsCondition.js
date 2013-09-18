@@ -26,7 +26,9 @@
                 };
 
                 var branch = this.observable("branch").get();
-                Chain(branch).listDefinitions().each(function() {
+                Chain(branch).listDefinitions({
+                    "limit": Gitana.Console.LIMIT_NONE
+                }).each(function() {
                     self._definitions.qnames.push(this.getQName());
                     self._definitions.names.push(this["title"]);
                     self._definitions.labels[this.getQName()] = this["title"];

@@ -53,7 +53,7 @@
             return this.breadcrumb($.merge(Gitana.Console.Breadcrumb.Branch(this), items));
         },
 
-        setupEditForm: function (el) {
+        setupEditForm: function (el, callback) {
             var self = this;
             var branch = self.targetObject();
             var defaultData = this.populateObject(["title","description"],branch);
@@ -80,6 +80,8 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },

@@ -135,10 +135,11 @@
             this.pairs("form-overview",pairs);
         },
 
-        setupDashlets : function () {
-
+        setupDashlets: function (el, callback)
+        {
             this.setupFormOverview();
 
+            callback();
         },
 
         setupPage : function(el) {

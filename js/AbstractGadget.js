@@ -33,7 +33,7 @@
         postSwap: function(el) {
         },
 
-        index: function(el) {
+        index: function(el, callback) {
             var self = this;
 
             this.setupRefreshSubscription(el);
@@ -43,8 +43,16 @@
             // render
             self.renderTemplate(el, self.TEMPLATE, function(el) {
                 self.preSwap();
-                el.swap();
-                self.postSwap();
+                el.swap(function(swappedEl) {
+                    self.postSwap();
+
+                    if (callback)
+                    {
+                        callback();
+                    }
+
+                });
+
             });
         },
 

@@ -3,7 +3,7 @@
     {
         TEMPLATE : "components/filter",
 
-        index: function(el) {
+        index: function(el, callback) {
             var self = this;
 
             self.setupRefreshSubscription(el);
@@ -25,7 +25,14 @@
                             if (!filter.displayFilter) {
                                 $('.filter',$(el)).css('display','none');
                             }
-                            el.swap();
+                            el.swap(function(swappedEl) {
+
+                                if (callback)
+                                {
+                                    callback();
+                                }
+
+                            });
                         }
                     });
                 }

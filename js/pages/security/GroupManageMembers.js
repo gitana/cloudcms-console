@@ -130,7 +130,9 @@
 
                     _this = this;
 
-                    this.subchain(self.group()).listUsers().each(function() {
+                    this.subchain(self.group()).listUsers({
+                        "limit": Gitana.Console.LIMIT_NONE
+                    }).each(function() {
                         memberIds.push(this.getId());
                     });
 

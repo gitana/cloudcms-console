@@ -31,6 +31,7 @@
             var options = _mergeObject(this.base(),Gitana.Console.Options.AuthenticationGrant);
             options["fields"]["clientId"]["dataSource"] = function(field, callback) {
                 Chain(self.platform()).listClients({
+                    "limit": Gitana.Console.LIMIT_NONE,
                     "sort": {
                         '_system.modified_on.ms': -1
                     }
@@ -63,7 +64,7 @@
             ]));
         },
 
-        setupEditForm: function (el) {
+        setupEditForm: function (el, callback) {
             var self = this;
             var authenticationGrant = self.targetObject();
             var defaultData = this.populateObject(["title","description","clientId","principalDomainId","principalId","enabled","allowOpenDriverAuthentication"],authenticationGrant);
@@ -93,6 +94,8 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },

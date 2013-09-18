@@ -1,5 +1,5 @@
 (function($) {
-    Gitana.Console.Pages.RepositoryTeamAdd = Gitana.Console.Pages.AbstractObjetTeamAdd.extend(
+    Gitana.Console.Pages.RepositoryTeamAdd = Gitana.Console.Pages.AbstractObjectTeamAdd.extend(
     {
         constructor: function(id, ratchet) {
             this.base(id, ratchet);

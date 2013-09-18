@@ -199,7 +199,7 @@
             ]));
         },
 
-        setupEditForm: function (el) {
+        setupEditForm: function (el, callback) {
             var self = this;
             var plan = self.targetObject();
             var defaultData = this.populateObject(["title","description","planKey","requiresBilling","base","storage","transferOut"],plan);
@@ -222,6 +222,8 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },

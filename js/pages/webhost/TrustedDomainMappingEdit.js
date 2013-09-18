@@ -43,7 +43,7 @@
             ]));
         },
 
-        setupEditForm: function (el) {
+        setupEditForm: function (el, callback) {
             var self = this;
             var trustedDomainMapping = self.targetObject();
             var defaultData = this.populateObject(["title","description","host","scope","platformId"], trustedDomainMapping);
@@ -66,6 +66,8 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },

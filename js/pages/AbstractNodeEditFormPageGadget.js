@@ -5,7 +5,7 @@
             this.base(id, ratchet);
         },
 
-        setupNodeTypeForm : function (el) {
+        setupNodeTypeForm : function (el, callback) {
             var self = this;
             var currentFormKey = self.targetObject().get(Gitana.CMS.NodeFormKey);
             $('.form-picker select').empty().append($("<option></option>")
@@ -52,6 +52,7 @@
 
                     Gitana.Utils.UI.beautifyAlpacaForm(form);
 
+                    callback();
                 }
             });
         },
@@ -80,20 +81,32 @@
             }
         },
 
-        setupForms: function (el) {
+        setupForms: function (el, callback)
+        {
             var self = this;
-            if (this.isEditJSONUri(el)) {
-                this.setupJSONEditForm(el, this.targetObject());
-            } else {
-                this.setupNodeTypeForm(el);
-                this.setupEditForm(el);
-                this.subscribe('form', function() {
-                    self.setupEditForm();
+
+            if (this.isEditJSONUri(el))
+            {
+                // this is handled in processForms after the swap
+                callback();
+            }
+            else
+            {
+                this.setupNodeTypeForm(el, function() {
+
+                    this.subscribe('form', function() {
+                        self.setupEditForm(el);
+                    });
+
+                    this.setupEditForm(el, function() {
+                        callback();
+                    });
                 });
             }
         },
 
-        index: function(el) {
+        index: function(el, callback)
+        {
             var self = this;
 
             this.tokens = el.tokens;
@@ -141,15 +154,25 @@
 
                                     Gitana.Utils.UI.jQueryUIDatePickerPatch();
 
-                                    self.setupForms(el);
+                                    self.setupForms(el, function() {
 
-                                    el.swap();
+                                        el.swap(function(swappedEl) {
 
-                                    Gitana.Utils.UI.enableTooltip();
+                                            Gitana.Utils.UI.enableTooltip();
 
-                                    Gitana.Utils.UI.processBreadcrumb();
+                                            Gitana.Utils.UI.processBreadcrumb();
 
-                                    self.processForms();
+                                            self.processForms(el, swappedEl, function() {
+
+                                                if (callback)
+                                                {
+                                                    callback();
+                                                }
+
+                                            });
+
+                                        });
+                                    });
                                 });
                             } else {
                                 self.handleUnauthorizedPageAccess(el, error);

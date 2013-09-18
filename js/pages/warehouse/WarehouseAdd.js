@@ -54,7 +54,7 @@
             ]));
         },
 
-        setupWarehouseAddForm : function (el) {
+        setupWarehouseAddForm : function (el, callback) {
             var self = this;
             $('#warehouse-add', $(el)).alpaca({
                 "view": "VIEW_WEB_CREATE",
@@ -83,12 +83,14 @@
 
                         }
                     });
+
+                    callback();
                 }
             });
         },
 
-        setupForms : function (el) {
-            this.setupWarehouseAddForm(el);
+        setupForms : function (el, callback) {
+            this.setupWarehouseAddForm(el, callback);
         },
 
         setupPage : function(el) {

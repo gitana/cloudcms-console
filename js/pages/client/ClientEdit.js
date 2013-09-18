@@ -59,7 +59,7 @@
             ]));
         },
 
-        setupEditForm: function (el) {
+        setupEditForm: function (el, callback) {
             var self = this;
             var client = self.targetObject();
             var defaultData = this.populateObject(["title","description","authorizedGrantTypes","scope","allowOpenDriverAuthentication","domainUrls","enabled"],client);
@@ -82,11 +82,13 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },
 
-        processEditForm: function(el) {
+        processEditForm: function(el, callback) {
 
             $('body').bind('swap', function(event, param) {
                 var authorizedGrantTypesSelector = $('#client-edit .authorized-grant-types select');
@@ -111,6 +113,8 @@
                     });
                 }
             });
+
+            callback();
         },
 
         editButtonConfig: function() {

@@ -112,8 +112,11 @@
             this.pairs("archive-overview", pairs);
         },
 
-        setupDashlets : function () {
+        setupDashlets : function (el, callback)
+        {
             this.setupArchiveOverview();
+
+            callback();
         },
 
         setupPage : function(el) {

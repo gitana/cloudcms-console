@@ -60,7 +60,7 @@
             ]));
         },
 
-        setupEditForm: function (el) {
+        setupEditForm: function (el, callback) {
             var self = this;
             var billingProvider = self.targetObject();
             var defaultData = this.populateObject(["title","description","providerId","environment","merchantId","publicKey","privateKey"],billingProvider);
@@ -83,6 +83,8 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },

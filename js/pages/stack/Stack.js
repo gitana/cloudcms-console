@@ -181,8 +181,9 @@
             this.pairs("stack-overview", pairs);
         },
 
-        setupDashlets : function () {
+        setupDashlets : function (el, callback) {
             this.setupStackOverview();
+            callback();
         },
 
         /** Filter Related Methods **/
