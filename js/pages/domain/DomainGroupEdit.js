@@ -57,7 +57,7 @@
             ]));
         },
 
-        setupEditForm: function (el) {
+        setupEditForm: function (el, callback) {
             var self = this;
             var group = self.targetObject();
             var defaultData = this.populateObject(["title","description","name"],group);
@@ -80,20 +80,20 @@
 
                             Chain(group).update().reload().then(function() {
 
-                                var callback = function () {
+                                var cb = function () {
                                     Gitana.Utils.UI.unblock(function() {
                                         self.app().run('GET', self.link(self.targetObject()));
                                     });
-                                }
+                                };
 
                                 if (fileUploadControl.getPayloadSize() > 0) {
                                     fileUploadControl.uploadAll();
 
                                     fileUploadControl.field.bind('fileuploaddone', function (e, data) {
-                                        callback();
+                                        cb();
                                     });
                                 } else {
-                                    callback();
+                                    cb();
                                 }
 
                             });
@@ -101,6 +101,8 @@
 
                         }
                     });
+
+                    callback();
                 }
             });
         },

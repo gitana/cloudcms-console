@@ -15,13 +15,14 @@
             options["fields"]["clientId"]["dataSource"] = function(field, callback) {
                 var firstOption;
                 Chain(self.platform()).listClients({
+                    "limit": Gitana.Console.LIMIT_NONE,
                     "sort": {
                         '_system.modified_on.ms': -1
                     }
                 }).each(function(key, val, index) {
                         field.selectOptions.push({
                             "value": this.getKey(),
-                            "text": self.friendlyTitle(this)
+                            "text": self.friendlyTitle(this) + " (" + this["key"] + ")"
                         });
                         if (!firstOption) {
                             firstOption = this.getKey();
@@ -77,7 +78,7 @@
             ]);
         },
 
-        setupAuthenticationGrantAddForm : function (el) {
+        setupAuthenticationGrantAddForm: function (el, callback) {
             var self = this;
 
             var schema = this.schema();
@@ -118,13 +119,15 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },
 
-        setupForms : function (el) {
+        setupForms : function (el, callback) {
             var self = this;
-            this.setupAuthenticationGrantAddForm(el);
+            this.setupAuthenticationGrantAddForm(el, callback);
         },
 
         setupPage : function(el) {

@@ -9,10 +9,6 @@
             "/applications/{applicationId}/edit/json"
         ],
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         targetObject: function() {
             return this.application();
         },
@@ -122,7 +118,7 @@
             ]));
         },
 
-        setupEditForm: function (el) {
+        setupEditForm: function (el, callback) {
             var self = this;
             var application = self.targetObject();
             var defaultData = this.populateObject(["key","title","description"],application);
@@ -145,6 +141,8 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },

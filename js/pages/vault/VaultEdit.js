@@ -52,7 +52,7 @@
             ]));
         },
 
-        setupEditForm: function (el) {
+        setupEditForm: function (el, callback) {
             var self = this;
             var vault = self.targetObject();
             var defaultData = this.populateObject(["title","description"],vault);
@@ -75,6 +75,8 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },

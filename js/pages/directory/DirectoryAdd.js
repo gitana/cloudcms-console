@@ -42,7 +42,7 @@
             ]));
         },
 
-        setupAddForm : function (el) {
+        setupAddForm: function(el, callback) {
             var self = this;
             $('#directory-add', $(el)).alpaca({
                 "view": "VIEW_WEB_CREATE",
@@ -66,12 +66,14 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },
 
-        setupForms : function (el) {
-            this.setupAddForm(el);
+        setupForms : function (el, callback) {
+            this.setupAddForm(el, callback);
         },
 
         setupPage : function(el) {

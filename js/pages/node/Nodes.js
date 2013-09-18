@@ -241,7 +241,9 @@
             });
 
             options['fields']['type']['dataSource'] = function(field, callback) {
-                self.branch().listDefinitions().each(function(key, definition, index) {
+                self.branch().listDefinitions({
+                    "limit": Gitana.Console.LIMIT_NONE
+                }).each(function(key, definition, index) {
                     field.selectOptions.push({
                         "value": definition.getQName(),
                         "text": definition.getQName()

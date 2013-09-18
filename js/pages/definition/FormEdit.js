@@ -156,7 +156,7 @@
             this.page(_mergeObject(page,this.base(el)));
         },
 
-        processEditForm: function (el) {
+        processEditForm: function (el, callback) {
 
             var self = this;
             var form = self.targetObject();
@@ -225,17 +225,19 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },
 
-        processJSONEditForm: function (el, object, targetId) {
+        processJSONEditForm: function (el, object, targetId, callback) {
             var targetId = targetId ? targetId : "json-edit";
             var self = this;
 
             var defaultData = object.stringify(true);
 
-            $('#' + targetId).alpaca({
+            $(el).find('#' + targetId).alpaca({
                 "data": defaultData,
                 "options": {
                     "type": "editor",
@@ -245,7 +247,7 @@
                 "postRender": function(control) {
                     Gitana.Utils.UI.beautifyAlpacaForm(control, targetId + '-save', true);
                     // Add Buttons
-                    $('#' + targetId + '-save').click(function() {
+                    $(el).find('#' + targetId + '-save').click(function() {
                         var form = control.getValue();
                         if (control.isValid(true)) {
 
@@ -266,10 +268,11 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
-        },
-
+        }
     });
 
     Ratchet.GadgetRegistry.register("page", Gitana.Console.Pages.FormEdit);

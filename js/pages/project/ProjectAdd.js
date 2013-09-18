@@ -101,7 +101,7 @@
                 ]));
             },
 
-            setupProjectAddForm : function (el) {
+            setupProjectAddForm : function (el, callback) {
                 var self = this;
                 $('#project-add', $(el)).alpaca({
                     "view": "VIEW_WEB_CREATE",
@@ -136,12 +136,14 @@
 
                             }
                         });
+
+                        callback();
                     }
                 });
             },
 
-            setupForms : function (el) {
-                this.setupProjectAddForm(el);
+            setupForms : function (el, callback) {
+                this.setupProjectAddForm(el, callback);
             },
 
             setupPage : function(el) {
@@ -168,7 +170,8 @@
                 this.page(_mergeObject(page, this.base(el)));
             },
 
-            processForms: function() {
+            processForms: function(el, newEl, callback)
+            {
             }
 
         });

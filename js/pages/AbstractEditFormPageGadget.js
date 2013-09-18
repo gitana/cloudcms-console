@@ -26,69 +26,6 @@
             this.editor = null;
         },
 
-        setupJSONEditForm: function (el, object, targetId) {
-
-            /*
-            var self = this;
-
-            var targetId = targetId ? targetId : "json-edit";
-            var self = this;
-
-            var defaultData = JSON.stringify(object, null, "   ");
-
-            $("#" + targetId, $(el)).alpaca({
-                "data": defaultData,
-                "schema": {
-                    "type": "string"
-                },
-                "options": {
-                    "type": "editor",
-                    "aceMode": "ace/mode/json",
-                    "aceFitContentHeight": true
-                },
-                "postRender": function(control) {
-
-                    self.editor = control.getEditor();
-
-                    control.getEditor().setShowPrintMargin(false);
-
-                    //Gitana.Utils.UI.uniform(control.getEl());
-                    control.getEl().css('border', 'none');
-                    // Add Buttons
-                    $('#' + targetId + '-save', $(el)).click(function() {
-                        var form = control.getValue();
-                        if (control.isValid(true)) {
-
-                            var obj = form;
-
-                            Gitana.Utils.UI.block("Updating Object JSON...");
-
-                            // update our selected object with the new json
-
-                            // Clean up object first
-                            for (var key in object) {
-                                if (object.hasOwnProperty(key) && !Gitana.isFunction(object[key])) {
-                                    delete object[key];
-                                }
-                            }
-
-                            Alpaca._mergeObject(object,obj);
-                            //object.object = Alpaca.cloneObject(obj);
-
-                            // update
-                            object.update().then(function () {
-                                var updatedObject = this;
-                                Gitana.Utils.UI.unblock(function() {
-                                    self.app().run("GET", self.LINK().call(self,updatedObject));
-                                });
-                            });
-                        }
-                    });
-                }
-            });
-            */
-        },
-
         isEditJSONUri: function(el) {
             var self = this;
             var check = false;
@@ -124,12 +61,14 @@
             }
         },
 
-        setupForms: function (el) {
+        setupForms: function (el, callback)
+        {
             var self = this;
             if (this.isEditJSONUri(el)) {
-                this.setupJSONEditForm(el, this.targetObject());
+                // this is handled in "processForms" after the swap
+                callback();
             } else {
-                this.setupEditForm(el);
+                this.setupEditForm(el, callback);
             }
         },
 
@@ -149,7 +88,9 @@
         },
 
         /** Abstract methods **/
-        setupEditForm: function (el) {
+        setupEditForm: function (el, callback)
+        {
+            callback();
         },
 
         editPageConfig: function() {
@@ -162,27 +103,32 @@
             return this.targetObject();
         },
 
-        processForms: function(el) {
+        processForms: function(el, newEl, callback) {
 
             var self = this;
-            if (this.isEditJSONUri(el)) {
-                this.processJSONEditForm(el, this.targetJsonObject());
-            } else {
-                this.processEditForm(el);
+
+            if (this.isEditJSONUri(el))
+            {
+                this.processJSONEditForm(newEl, this.targetJsonObject(), null, callback);
+            }
+            else
+            {
+                this.processEditForm(newEl, callback);
             }
         },
 
-        processEditForm: function(el) {
+        processEditForm: function(el, callback) {
+            callback();
         },
 
-        processJSONEditForm: function(el, object, targetId) {
+        processJSONEditForm: function(el, object, targetId, callback) {
 
             var self = this;
 
             var targetId = targetId ? targetId : "json-edit";
             var defaultData = JSON.stringify(object, null, "    ");
 
-            $("#" + targetId).alpaca({
+            $(el).find("#" + targetId).alpaca({
                 "data": defaultData,
                 "schema": {
                     "type": "string"
@@ -196,11 +142,15 @@
 
                     self.editor = control.getEditor();
 
-                    //Gitana.Utils.UI.uniform(control.getEl());
+                    window.setTimeout(function() {
+                        self.editor.setValue(self.editor.getValue());
+                        self.editor.clearSelection();
+                    }, 200);
+
                     control.getEl().css('border', 'none');
 
                     // Add Buttons
-                    $('#' + targetId + '-save').click(function() {
+                    $(el).find('#' + targetId + '-save').click(function() {
 
                         if (control.isValid(true))
                         {
@@ -218,9 +168,10 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
-
         },
 
         handleUpdate: function(object, json, callback)

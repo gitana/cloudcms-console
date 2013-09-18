@@ -63,7 +63,7 @@
             ]));
         },
 
-        setupEditForm: function (el) {
+        setupEditForm: function (el, callback) {
             var self = this;
             var warehouse = self.targetObject();
             var defaultData = this.populateObject(["title","description","uri"],warehouse);
@@ -86,6 +86,8 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },

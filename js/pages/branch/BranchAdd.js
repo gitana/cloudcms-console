@@ -87,7 +87,7 @@
             ]));
         },
 
-        setupBranchAddForm : function (el) {
+        setupBranchAddForm: function (el, callback) {
             var self = this;
             $('#branch-add',$(el)).alpaca({
                 "view": "VIEW_WEB_CREATE",
@@ -118,12 +118,14 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },
 
-        setupForms : function (el) {
-            this.setupBranchAddForm(el);
+        setupForms : function (el, callback) {
+            this.setupBranchAddForm(el, callback);
         },
 
         setupPage : function(el) {

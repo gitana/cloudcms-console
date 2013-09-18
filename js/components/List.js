@@ -190,7 +190,7 @@
             }
         },
 
-        index: function(el) {
+        index: function(el, callback) {
             var self = this;
 
             // detect changes to the list and redraw when they occur
@@ -528,9 +528,18 @@
                         this.fnDraw();
                         $('.dataTables_scrollBody').css('overflow','hidden');
 
-                        if (list.initCompleteCallback) {
-                            list.initCompleteCallback();
-                        }
+                        el.swap(function(swappedEl) {
+
+                            if (list.initCompleteCallback) {
+                                list.initCompleteCallback();
+                            }
+
+                            if (callback)
+                            {
+                                callback();
+                            }
+
+                        });
                     };
 
                     //tableConfig["sDom"] = "T<'clear'>lfrtip";
@@ -587,9 +596,14 @@
                     // special actions
                     self.processActions(list);
 
-                    el.swap();
-
                 });
+            }
+            else
+            {
+                if (callback)
+                {
+                    callback();
+                }
             }
         }
 

@@ -49,7 +49,7 @@
             });
         },
 
-        setupNodeAddForm : function (el) {
+        setupNodeAddForm : function (el, callback) {
             var self = this;
             var formDiv = el ? $('#node-add',$(el)) : $('#node-add');
 
@@ -74,15 +74,17 @@
                             self.createNode(formVal);
                         }
                     });
+
+                    callback();
                 }
             });
         },
 
-        setupForms : function (el) {
+        setupForms : function (el, callback) {
 
             var self = this;
 
-            this.setupNodeAddForm(el);
+            this.setupNodeAddForm(el, callback);
         },
 
         setupPage: function(el) {

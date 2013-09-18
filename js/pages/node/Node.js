@@ -403,7 +403,7 @@
                 this.pairs("latest-neighbors", pairs);
             },
 
-            setupDashlets : function () {
+            setupDashlets : function (el, callback) {
 
                 if (this.targetObject().isContainer()) {
                     this.setupPaste();
@@ -423,6 +423,7 @@
                     this.setupNodeStats();
                 }
 
+                callback();
             },
 
             setupPage : function(el) {

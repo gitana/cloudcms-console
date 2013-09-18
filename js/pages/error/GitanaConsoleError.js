@@ -25,7 +25,7 @@
             return this.breadcrumb(Gitana.Console.Breadcrumb.Error(this));
         },        
 
-        index: function(el) {
+        index: function(el, callback) {
             var self = this;
 
             // load context
@@ -53,11 +53,18 @@
 
                     Gitana.Utils.UI.jQueryUIDatePickerPatch();
 
-                    el.swap();
+                    el.swap(function(swappedEl) {
 
-                    Gitana.Utils.UI.enableTooltip();
+                        Gitana.Utils.UI.enableTooltip();
 
-                    Gitana.Utils.UI.processBreadcrumb();
+                        Gitana.Utils.UI.processBreadcrumb();
+
+                        if (callback)
+                        {
+                            callback();
+                        }
+                    });
+
                 });
             });
         },

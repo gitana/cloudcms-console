@@ -115,7 +115,7 @@
             }
         },
 
-        setupDomainUserAddForm : function (el) {
+        setupDomainUserAddForm : function (el, callback) {
             var self = this;
             $('#user-add',$(el)).alpaca({
                 "view": "VIEW_WEB_CREATE",
@@ -172,12 +172,14 @@
 
                         }
                     });
+
+                    callback();
                 }
             });
         },
 
-        setupForms : function (el) {
-            this.setupDomainUserAddForm(el);
+        setupForms : function (el, callback) {
+            this.setupDomainUserAddForm(el, callback);
         },
 
         setupPage : function(el) {

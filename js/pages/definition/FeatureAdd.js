@@ -158,13 +158,15 @@
             ]));
         },
 
-        setupFeatureAddForm : function (el) {
+        setupFeatureAddForm: function (el, callback) {
 
             var self = this;
 
             this.features = [];
 
-            Chain(self.branch()).listDefinitions('feature').each(function() {
+            Chain(self.branch()).listDefinitions('feature', {
+                "limit": Gitana.Console.LIMIT_NONE
+            }).each(function() {
 
                 self.features.push(this);
 
@@ -249,6 +251,8 @@
                         });
 
                         el.swap();
+
+                        callback();
                     }
                 });
 
@@ -256,11 +260,11 @@
 
         },
 
-        setupForms : function (el) {
-            this.setupFeatureAddForm(el);
+        setupForms : function (el, callback) {
+            this.setupFeatureAddForm(el, callback);
         },
 
-        index: function(el) {
+        index: function(el, callback) {
             var self = this;
 
             this.tokens = el.tokens;
@@ -296,7 +300,15 @@
 
                             Gitana.Utils.UI.jQueryUIDatePickerPatch();
 
-                            self.setupForms(el);
+                            self.setupForms(el, function() {
+
+                                if (callback)
+                                {
+                                    callback();
+                                }
+
+                            });
+
                         });
                     } else {
                         self.handleUnauthorizedPageAccess(el, error);

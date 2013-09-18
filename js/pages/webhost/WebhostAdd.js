@@ -55,7 +55,7 @@
             ]));
         },
 
-        setupWebhostAddForm : function (el) {
+        setupWebhostAddForm : function (el, callback) {
             var self = this;
             $('#webhost-add', $(el)).alpaca({
                 "view": "VIEW_WEB_CREATE",
@@ -79,12 +79,14 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },
 
-        setupForms : function (el) {
-            this.setupWebhostAddForm(el);
+        setupForms : function (el, callback) {
+            this.setupWebhostAddForm(el, callback);
         },
 
         setupPage : function(el) {

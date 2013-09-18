@@ -7,7 +7,7 @@
             this.base(id, ratchet);
         },
 
-        index: function(el) {
+        index: function(el, callback) {
             var self = this;
 
             self.setupRefreshSubscription(el);
@@ -22,20 +22,13 @@
                     $('#tenant-logo',$(el)).attr('src', $('#tenant-logo',$(el)).attr('data-src'));
                 }
 
-                // Add logout button
-                /*
-                $('.logout',$(el)).click(function() {
-                    self.server().logout().then(function() {
-                        Gitana.deleteCookie("GITANA_USER", "/");
-                        Gitana.CMS.refresh();
-                    });
-                });
+                el.swap(function(swappedEl) {
 
-                $('.user-button',$(el)).click(function() {
-                    $('.dropdown-username-menu').slideToggle();
+                    if (callback)
+                    {
+                        callback();
+                    }
                 });
-                */
-                el.swap();
             });
         }
 

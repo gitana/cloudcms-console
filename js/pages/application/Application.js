@@ -298,10 +298,13 @@
         },
 
 
-        setupDashlets : function () {
+        setupDashlets: function (el, callback)
+        {
             this.setupApplicationOverview();
             this.setupAutoHostingOverview();
             this.setupTrustedDomainMappingOverview();
+
+            callback();
         },
 
         setupPage : function(el) {

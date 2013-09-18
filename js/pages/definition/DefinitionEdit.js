@@ -135,7 +135,9 @@
             };
 
             options['fields']['_parent']['dataSource'] = function(field, callback) {
-                self.branch().listDefinitions().each(function() {
+                self.branch().listDefinitions({
+                    "limit": Gitana.Console.LIMIT_NONE
+                }).each(function() {
                     field.selectOptions.push({
                         "value": this.getQName(),
                         "text": this.getQName()

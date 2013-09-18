@@ -7,7 +7,7 @@
             this.base(id, ratchet);
         },
 
-        index: function(el) {
+        index: function(el, callback) {
             var self = this;
 
             self.setupRefreshSubscription(el);
@@ -38,9 +38,22 @@
                 self.renderTemplate(el, self.TEMPLATE, function(el) {
                     $('.menu', $(el)).initMenu();
                     $('.menu li a.selectable', $(el)).slideList();
-                    el.swap();
+                    el.swap(function(swappedEl) {
+
+                        if (callback)
+                        {
+                            callback();
+                        }
+                    });
                 });
 
+            }
+            else
+            {
+                if (callback)
+                {
+                    callback();
+                }
             }
         }
 

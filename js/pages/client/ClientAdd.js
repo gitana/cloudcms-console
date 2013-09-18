@@ -55,7 +55,7 @@
                 ]));
             },
 
-            setupClientAddForm : function (el) {
+            setupClientAddForm: function (el, callback) {
                 var self = this;
                 $('#client-add', $(el)).alpaca({
                     "view": "VIEW_WEB_CREATE",
@@ -82,12 +82,14 @@
                                 });
                             }
                         });
+
+                        callback();
                     }
                 });
             },
 
-            setupForms : function (el) {
-                this.setupClientAddForm(el);
+            setupForms : function (el, callback) {
+                this.setupClientAddForm(el, callback);
             },
 
             setupPage : function(el) {
@@ -114,8 +116,9 @@
                 this.page(_mergeObject(page, this.base(el)));
             },
 
-            processForms: function() {
-                $('body').bind('swap', function(event, param) {
+            processForms: function(el, newEl, callback)
+            {
+                $(newEl).find('body').bind('swap', function(event, param) {
                     var authorizedGrantTypesSelector = $('#client-add .authorized-grant-types select');
 
                     authorizedGrantTypesSelector.attr('title', 'Select and Add A Authorized Grant Type');

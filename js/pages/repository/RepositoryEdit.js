@@ -48,7 +48,7 @@
             ]));
         },
 
-        setupEditForm: function (el) {
+        setupEditForm: function (el, callback) {
             var self = this;
             var repository = self.targetObject();
             var defaultData = this.populateObject(["title","description"],repository);
@@ -71,6 +71,8 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },

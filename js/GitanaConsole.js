@@ -1,5 +1,7 @@
 (function($) {
 
+    Ratchet.useHandlerCallbacks = true;
+
     Gitana.Apps.APP_NAME = "console";
 
     if (typeof Gitana.Console === "undefined") {
@@ -96,6 +98,8 @@
             "permissions": ["CONNECT","READ", "CREATE_SUBOBJECTS", "UPDATE", "DELETE", "MODIFY_PERMISSIONS"]
         }
     };
+
+    Gitana.Console.LIMIT_NONE = 99999;
 
     Alpaca.registerView({
         "id": "VIEW_WEB_CREATE",

@@ -3,11 +3,7 @@
     {
         TEMPLATE : "components/barchart",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
-        index: function(el) {
+        index: function(el, callback) {
             var self = this;
 
             // detect changes to the pairs and redraw when they occur
@@ -61,32 +57,47 @@
                         },
                         "postRender": function (renderedField) {
                             Gitana.Utils.UI.beautifyAlpacaForm(renderedField);
-                            el.swap();
-                            var endDateControl = renderedField.getControlByPath("endDate");
-                            $(endDateControl.field).change(function() {
-                                if (renderedField.isValid(true)) {
-                                    if (barChart.render) {
-                                        var val = renderedField.getValue();
-                                        barChart.render(val['startDate'], val['endDate'], barChart.context);
-                                    }
-                                }
-                            });
+                            el.swap(function(swappedEl) {
 
-                            var generatedId = Ratchet.generateId() + "-jqplot";
-                            $('.jqplot', $(self.ratchet().el)).attr('id', generatedId);
-
-                            if ($("#" + generatedId).length > 0) {
-                                self.chart = $.jqplot(generatedId, barChart.data, barChart.options);
-                            } else {
-                                $('body').bind('swap', function(event, param) {
-                                    if ($("#" + generatedId).length > 0) {
-                                        self.chart = $.jqplot(generatedId, barChart.data, barChart.options);
+                                var endDateControl = renderedField.getControlByPath("endDate");
+                                $(endDateControl.field).change(function() {
+                                    if (renderedField.isValid(true)) {
+                                        if (barChart.render) {
+                                            var val = renderedField.getValue();
+                                            barChart.render(val['startDate'], val['endDate'], barChart.context);
+                                        }
                                     }
                                 });
-                            }
+
+                                var generatedId = Ratchet.generateId() + "-jqplot";
+                                $('.jqplot', $(self.ratchet().el)).attr('id', generatedId);
+
+                                if ($("#" + generatedId).length > 0) {
+                                    self.chart = $.jqplot(generatedId, barChart.data, barChart.options);
+                                } else {
+                                    $('body').bind('swap', function(event, param) {
+                                        if ($("#" + generatedId).length > 0) {
+                                            self.chart = $.jqplot(generatedId, barChart.data, barChart.options);
+                                        }
+                                    });
+                                }
+
+                                if (callback)
+                                {
+                                    callback();
+                                }
+
+                            });
                         }
                     });
                 });
+            }
+            else
+            {
+                if (callback)
+                {
+                    callback();
+                }
             }
         }
 

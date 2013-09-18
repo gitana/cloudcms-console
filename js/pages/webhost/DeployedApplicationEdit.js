@@ -43,7 +43,7 @@
             ]));
         },
 
-        setupEditForm: function (el) {
+        setupEditForm: function (el, callback) {
             var self = this;
             var deployedApplication = self.targetObject();
             var defaultData = this.populateObject([
@@ -70,6 +70,8 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },

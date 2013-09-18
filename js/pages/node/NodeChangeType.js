@@ -30,7 +30,7 @@
             ]));
         },
 
-        setupNodeTypeForm : function (el) {
+        setupNodeTypeForm : function (el, callback) {
             var self = this;
 
             self.clearDefinition();
@@ -57,7 +57,9 @@
                             "type": "select",
                             "fieldClass" : "type-picker",
                             "dataSource" : function(field, callback) {
-                                self.branch().listDefinitions('type').each(function() {
+                                self.branch().listDefinitions('type', {
+                                    'limit': Gitana.Console.LIMIT_NONE
+                                }).each(function() {
                                     var value = this.getQName();
                                     var text = value;
                                     if (this.getTitle()) {
@@ -106,7 +108,7 @@
 
                     });
 
-
+                    callback();
                 }
             });
         },
@@ -126,9 +128,9 @@
             });
         },
 
-        setupForms : function (el) {
+        setupForms : function (el, callback) {
 
-            this.setupNodeTypeForm(el);
+            this.setupNodeTypeForm(el, callback);
         },
 
         setupPage: function(el) {

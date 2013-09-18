@@ -1,5 +1,5 @@
 (function($) {
-    Gitana.Console.Pages.AbstractObjetTeamAdd = Gitana.CMS.Pages.AbstractFormPageGadget.extend(
+    Gitana.Console.Pages.AbstractObjectTeamAdd = Gitana.CMS.Pages.AbstractFormPageGadget.extend(
     {
         schema : function() {
             var schema = _mergeObject(this.base(), {
@@ -89,10 +89,6 @@
             });
         },
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         requiredAuthorities: function() {
             return [
                 {
@@ -102,7 +98,7 @@
             ];
         },
 
-        setupTeamAddForm : function (el) {
+        setupTeamAddForm : function (el, callback) {
             var self = this;
             $('#team-add',$(el)).alpaca({
                 "view": "VIEW_WEB_CREATE",
@@ -116,7 +112,6 @@
 
                     var fileUploadControl = form.getControlByPath("file");
                     fileUploadControl.hideButtons();
-
 
                     // Add Buttons
                     $('#team-add-create',$(el)).click(function(){
@@ -180,16 +175,19 @@
 
                         }
                     });
+
+                    callback();
                 }
             });
         },
 
-        setupForms : function (el) {
-            this.setupTeamAddForm(el);
+        setupForms : function (el, callback) {
+            this.setupTeamAddForm(el, callback);
         },
 
-        processForms: function() {
-            $('body').bind('swap', function(event, param) {
+        processForms: function(el, newEl, callback)
+        {
+            $(newEl).find('body').bind('swap', function(event, param) {
                 var rolesSelector = $('#team-add select');
 
                 rolesSelector.attr('title', 'Select and Add a Role');
@@ -201,6 +199,8 @@
                     });
                 }
             });
+
+            callback();
         }
     });
 

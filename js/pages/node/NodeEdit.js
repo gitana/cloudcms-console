@@ -63,7 +63,7 @@
             ]));
         },
 
-        _setupEditForm: function (editDiv, saveButton, node, defaultData, schema, options, mimeType) {
+        _setupEditForm: function (editDiv, saveButton, node, defaultData, schema, options, mimeType, callback) {
             var self = this;
 
             editDiv.empty().alpaca({
@@ -126,11 +126,13 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },
 
-        setupEditForm: function (el) {
+        setupEditForm: function (el, callback) {
 
             var self = this;
 
@@ -164,7 +166,7 @@
 
             Chain(node).listAttachments().trap(function() {
 
-                self._setupEditForm(editDiv, saveButton, node, defaultData, schema, options);
+                self._setupEditForm(editDiv, saveButton, node, defaultData, schema, options, null, callback);
 
                 return false;
 
@@ -200,23 +202,23 @@
                         "dataType": "text",
                         "success": function(doc) {
                             defaultData['body'] = doc;
-                            self._setupEditForm(editDiv, saveButton, node, defaultData, schema, options, mimeType);
+                            self._setupEditForm(editDiv, saveButton, node, defaultData, schema, options, mimeType, callback);
                         },
                         "error": function(jqXHR, textStatus, errorThrown) {
-                            self._setupEditForm(editDiv, saveButton, node, defaultData, schema, options, mimeType);
+                            self._setupEditForm(editDiv, saveButton, node, defaultData, schema, options, mimeType, callback);
                         }
                     });
 
                 } else {
 
-                    self._setupEditForm(editDiv, saveButton, node, defaultData, schema, options);
+                    self._setupEditForm(editDiv, saveButton, node, defaultData, schema, options, null, callback);
                 }
 
             });
 
         },
 
-        setupEditFormSelectionForm : function (el) {
+        setupEditFormSelectionForm : function (el, callback) {
             var self = this;
 
             $('body').undelegate('.form-picker select', 'change').delegate('.form-picker select', 'change', function() {
@@ -313,6 +315,7 @@
 
                     Gitana.Utils.UI.beautifyAlpacaForm(form);
 
+                    callback();
                 }
             });
         },
@@ -341,15 +344,25 @@
             };
         },
 
-        setupForms: function (el) {
+        setupForms: function (el, callback)
+        {
             var self = this;
-            if (!this.isEditJSONUri(el)) {
-                this.setupEditFormSelectionForm(el);
-            }
-            this.subscribe('form', function() {
-                self.setupEditForm();
+
+            this.base(el, function() {
+
+                self.subscribe('form', function() {
+                    self.setupEditForm(el, callback);
+                });
+
+                if (!self.isEditJSONUri(el)) {
+                    self.setupEditFormSelectionForm(el, callback);
+                }
+                else
+                {
+                    callback();
+                }
+
             });
-            this.base(el);
         },
 
         setupPage: function(el) {

@@ -52,7 +52,7 @@
             ]));
         },
 
-        setupEditForm: function (el) {
+        setupEditForm: function (el, callback) {
             var self = this;
             var registrar = self.targetObject();
             var defaultData = this.populateObject(["title","description"],registrar);
@@ -75,6 +75,8 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },

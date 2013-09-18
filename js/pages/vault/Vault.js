@@ -160,8 +160,10 @@
             this.pairs("vault-overview", pairs);
         },
 
-        setupDashlets : function () {
+        setupDashlets : function (el, callback) {
             this.setupVaultOverview();
+
+            callback();
         },
 
         setupPage : function(el) {

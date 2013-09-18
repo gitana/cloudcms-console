@@ -58,7 +58,7 @@
             ]));
         },
 
-        setupDomainAddForm : function (el) {
+        setupDomainAddForm : function (el, callback) {
             var self = this;
             $('#domain-add', $(el)).alpaca({
                 "view": "VIEW_WEB_CREATE",
@@ -82,12 +82,14 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },
 
-        setupForms : function (el) {
-            this.setupDomainAddForm(el);
+        setupForms : function (el, callback) {
+            this.setupDomainAddForm(el, callback);
         },
 
         setupPage : function(el) {

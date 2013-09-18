@@ -166,8 +166,9 @@
             this.pairs("client-overview", pairs);
         },
 
-        setupDashlets : function () {
+        setupDashlets : function (el, callback) {
             this.setupClientOverview();
+            callback();
         },
 
         setupPage : function(el) {

@@ -282,7 +282,8 @@
                 this.pairs("my-latest-nodes", myLatestNodesPairs);
             },
 
-            setupDashlets : function () {
+            setupDashlets : function (el, callback)
+            {
                 this.setupBranchOverview();
                 this.setupBranchStats();
                 this.setupNodePairs();
@@ -304,19 +305,25 @@
                     };
 
                     var f01 = function() {
-                        this.subchain(self.targetObject()).listDefinitions('association').totalRows(function (totalRows) {
+                        this.subchain(self.targetObject()).listDefinitions('association', {
+                            "limit": Gitana.Console.LIMIT_NONE
+                        }).totalRows(function (totalRows) {
                             stats.items[1]['value'] = totalRows;
                         });
                     };
 
                     var f02 = function() {
-                        this.subchain(self.targetObject()).listDefinitions('type').totalRows(function (totalRows) {
+                        this.subchain(self.targetObject()).listDefinitions('type', {
+                            "limit": Gitana.Console.LIMIT_NONE
+                        }).totalRows(function (totalRows) {
                             stats.items[2]['value'] = totalRows;
                         });
                     };
 
                     var f03 = function() {
-                        this.subchain(self.targetObject()).listDefinitions('feature').totalRows(function (totalRows) {
+                        this.subchain(self.targetObject()).listDefinitions('feature', {
+                            "limit": Gitana.Console.LIMIT_NONE
+                        }).totalRows(function (totalRows) {
                             stats.items[3]['value'] = totalRows;
                         });
                     };
@@ -376,9 +383,9 @@
                     this.then([f00,f01,f02,f03,f1]).then(function() {
                         self.stats("branch-stats", stats);
                     });
+                }).then(function() {
+                    callback();
                 });
-
-
             },
 
             setupPage : function(el) {

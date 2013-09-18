@@ -187,8 +187,10 @@
             this.pairs("plan-overview", pairs);
         },
 
-        setupDashlets : function () {
+        setupDashlets : function (el, callback) {
             this.setupPlanOverview();
+
+            callback();
         },
 
         setupPage : function(el) {

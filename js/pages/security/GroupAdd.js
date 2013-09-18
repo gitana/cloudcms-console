@@ -141,7 +141,7 @@
             ]);
         },
 
-        setupGroupAddForm : function (el) {
+        setupGroupAddForm : function (el, callback) {
             var self = this;
             $('#group-add',$(el)).alpaca({
                 "view": "VIEW_WEB_CREATE",
@@ -199,12 +199,14 @@
 
                         }
                     });
+
+                    callback();
                 }
             });
         },
 
-        setupForms : function (el) {
-            this.setupGroupAddForm(el);
+        setupForms : function (el, callback) {
+            this.setupGroupAddForm(el, callback);
         },
 
         setupPage : function(el) {

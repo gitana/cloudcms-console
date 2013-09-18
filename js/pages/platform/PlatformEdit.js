@@ -117,7 +117,7 @@
             ]));
         },
 
-        setupEditForm: function (el) {
+        setupEditForm: function (el, callback) {
             var self = this;
             var tenant = self.targetObject();
             var defaultData = Alpaca.cloneObject(tenant);
@@ -194,6 +194,8 @@
                         }
                     });
                     */
+
+                    callback();
                 }
             });
         },

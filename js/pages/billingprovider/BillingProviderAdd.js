@@ -55,7 +55,7 @@
                 ]));
             },
 
-            setupBillingProviderAddForm : function (el) {
+            setupBillingProviderAddForm: function (el, callback) {
                 var self = this;
                 $('#billing-provider-add', $(el)).alpaca({
                     "view": "VIEW_WEB_CREATE",
@@ -86,12 +86,14 @@
                                 });
                             }
                         });
+
+                        callback();
                     }
                 });
             },
 
-            setupForms : function (el) {
-                this.setupBillingProviderAddForm(el);
+            setupForms : function (el, callback) {
+                this.setupBillingProviderAddForm(el, callback);
             },
 
             setupPage : function(el) {

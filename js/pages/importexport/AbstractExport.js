@@ -88,7 +88,9 @@
                                     "type" : "select",
                                     "dataSource": function(field, callback) {
                                         var firstOption;
-                                        self.platform().listVaults().each(
+                                        self.platform().listVaults({
+                                            "limit": Gitana.Console.LIMIT_NONE
+                                        }).each(
                                             function(key, val, index) {
                                                 field.selectOptions.push({
                                                     "value": this.getId(),
@@ -166,7 +168,7 @@
                 ];
             },
 
-            setupExportForm : function (el) {
+            setupExportForm : function (el, callback) {
 
                 var objectType = this.targetObject().objectType();
 
@@ -254,12 +256,14 @@
                                     });
                             }
                         });
+
+                        callback();
                     }
                 });
             },
 
-            setupForms : function (el) {
-                this.setupExportForm(el);
+            setupForms : function (el, callback) {
+                this.setupExportForm(el, callback);
             }
 
         });

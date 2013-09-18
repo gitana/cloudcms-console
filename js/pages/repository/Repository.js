@@ -149,8 +149,17 @@
                 "key" : "Last Modified",
                 "value" : "By " + repository.getSystemMetadata().getModifiedBy() + " @ " + repository.getSystemMetadata().getModifiedOn().getTimestamp()
             });
-
+            this._pushItem(pairs.items, {
+                "key" : "Stack",
+                "value" : "None"
+            });
             this.pairs("repository-overview",pairs);
+
+            // load stack if available
+            Chain(this.contextObject()).trap(function(err) { }).findStack().then(function() {
+                self._updateItem(pairs.items, "Stack", "<a href='#" + self.link(this) + "'>" + self.friendlyTitle(this) + "</a>");
+                self.pairs("repository-overview", pairs);
+            });
         },
 
         setupRepositoryStats: function () {
@@ -201,7 +210,8 @@
             this.pairs("latest-changesets",pairs);
         },
 
-        setupDashlets : function () {
+        setupDashlets : function (el, callback)
+        {
             var self = this;
 
             this.setupRepositoryOverview();
@@ -264,8 +274,9 @@
                 this.then([f0,f1,f2,f3]).then(function() {
                     self.stats("repository-stats", stats);
                 });
+            }).then(function() {
+                callback();
             });
-
         },
 
         setupPage : function(el) {

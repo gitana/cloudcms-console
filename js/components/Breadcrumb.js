@@ -7,7 +7,7 @@
             this.base(id, ratchet);
         },
 
-        index: function(el) {
+        index: function(el, callback) {
             var self = this;
 
             self.setupRefreshSubscription(el);
@@ -38,9 +38,23 @@
                 // render
                 self.renderTemplate(el, self.TEMPLATE, function(el) {
 
-                    el.swap();
+                    el.swap(function(swappedEl) {
+
+                        if (callback)
+                        {
+                            callback();
+                        }
+
+                    });
 
                 });
+            }
+            else
+            {
+                if (callback)
+                {
+                    callback();
+                }
             }
         }
     });

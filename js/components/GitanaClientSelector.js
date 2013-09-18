@@ -277,7 +277,7 @@
             this.observable('clientselector').set(page);
         },
 
-        index: function(el) {
+        index: function(el, callback) {
             var self = this;
 
             this.tokens = el.tokens;
@@ -312,11 +312,18 @@
                             // set up list search box
                             self.setupListSearchbox(el);
 
-                            el.swap();
+                            el.swap(function(swappedEl) {
 
-                            self.processList(el);
+                                self.processList(swappedEl);
 
-                            Gitana.Utils.UI.enableTooltip();
+                                Gitana.Utils.UI.enableTooltip();
+
+                                if (callback)
+                                {
+                                    callback();
+                                }
+
+                            });
 
                         });
                     } else {

@@ -55,9 +55,7 @@
             return {
                 "id" : "",
                 "name" : "",
-                "lastName" : "",
                 "email" : "",
-                "companyName" : "",
                 "startDate" : "",
                 "endDate": "",
                 "query" : ""
@@ -79,19 +77,9 @@
                             "$regex" : formData['name']
                         };
                     }
-                    if (formData['lastName']) {
-                        query['lastName'] = {
-                            "$regex" : formData['lastName']
-                        };
-                    }
                     if (formData['email']) {
                         query['email'] = {
                             "$regex" : formData['email']
-                        };
-                    }
-                    if (formData['companyName']) {
-                        query['companyName'] = {
-                            "$regex" : formData['companyName']
                         };
                     }
                     if (formData.startDate || formData.endDate) {
@@ -124,19 +112,11 @@
                         "type" : "string"
                     },
                     "name" : {
-                        "title": "Principal Name",
-                        "type" : "string"
-                    },
-                    "lastName" : {
-                        "title": "Last Name",
+                        "title": "Name",
                         "type" : "string"
                     },
                     "email" : {
                         "title": "Email",
-                        "type" : "string"
-                    },
-                    "companyName" : {
-                        "title": "Company Name",
                         "type" : "string"
                     },
                     "startDate" : {
@@ -166,7 +146,9 @@
                         "type" : "select",
                         "dataSource": function(field, callback) {
                             var selectedOption;
-                            self.platform().listDomains().each(function(key, val, index) {
+                            self.platform().listDomains({
+                                "limit": Gitana.Console.LIMIT_NONE
+                            }).each(function(key, val, index) {
                                 field.selectOptions.push({
                                     "value": this.getId(),
                                     "text": self.friendlyTitle(this)
@@ -192,13 +174,7 @@
                     "name" : {
                         "size": this.DEFAULT_FILTER_TEXT_SIZE
                     },
-                    "lastName" : {
-                        "size": this.DEFAULT_FILTER_TEXT_SIZE
-                    },
                     "email" : {
-                        "size": this.DEFAULT_FILTER_TEXT_SIZE
-                    },
-                    "companyName" : {
                         "size": this.DEFAULT_FILTER_TEXT_SIZE
                     },
                     "startDate" : {
@@ -224,9 +200,7 @@
                         "domainId": "column-1",
                         "id": "column-1",
                         "name": "column-1",
-                        "lastName": "column-1",
                         "email": "column-2",
-                        "companyName": "column-2",
                         "startDate": "column-2",
                         "endDate": "column-2",
                         "query" : "column-3"
@@ -260,11 +234,12 @@
 
             list["columns"] = [
                 {
-                    "title": "Principal Name",
+                    "title": "Name",
                     "type":"property",
                     "sortingExpression": "name",
                     "property": function(callback) {
                         var name = self.listItemProp(this,'name');
+                        /*
                         var friendlyName = self.friendlyName(this);
                         var itemInfo = "<div>" + friendlyName + "</div>";
                         itemInfo += "<div>" + self.listItemProp(this, 'email') + "</div>";
@@ -274,7 +249,17 @@
 
                         var value = name;
                         value += self.listItemInfoText(this.getId(),itemInfo);
-                        callback(value);
+                        */
+                        callback(name);
+                    }
+                },
+                {
+                    "title": "Email",
+                    "type":"property",
+                    "sortingExpression": "email",
+                    "property": function(callback) {
+                        var email = self.listItemProp(this,'email');
+                        callback(email);
                     }
                 },
                 {
@@ -377,7 +362,7 @@
             this.observable('principalselector').set(page);
         },
 
-        index: function(el) {
+        index: function(el, callback) {
             var self = this;
 
             this.tokens = el.tokens;
@@ -412,11 +397,18 @@
                             // set up list search box
                             self.setupListSearchbox(el);
 
-                            el.swap();
+                            el.swap(function(swappedEl) {
 
-                            self.processList(el);
+                                self.processList(swappedEl);
 
-                            Gitana.Utils.UI.enableTooltip();
+                                Gitana.Utils.UI.enableTooltip();
+
+                                if (callback)
+                                {
+                                    callback();
+                                }
+
+                            });
 
                         });
                     } else {

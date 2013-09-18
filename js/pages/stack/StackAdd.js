@@ -73,7 +73,7 @@
             ]));
         },
 
-        setupStackAddForm : function (el) {
+        setupStackAddForm : function (el, callback) {
             var self = this;
             $('#stack-add', $(el)).alpaca({
                 "view": "VIEW_WEB_CREATE",
@@ -99,12 +99,14 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },
 
-        setupForms : function (el) {
-            this.setupStackAddForm(el);
+        setupForms : function (el, callback) {
+            this.setupStackAddForm(el, callback);
         },
 
         setupPage : function(el) {

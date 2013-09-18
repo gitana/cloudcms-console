@@ -7,65 +7,21 @@
             this.base(id, ratchet);
         },
 
-        index: function(el) {
+        index: function(el, callback) {
             var self = this;
 
             // subscribe: "toolbar"
             self.setupRefreshSubscription(el);
 
-            var toolbar = self.model(el);
-
-            if (toolbar) {
-
-                var items = toolbar.items ? toolbar.items : {};
+            var completionFunction = function()
+            {
                 if (toolbar.groups) {
-                    $.each(toolbar.groups, function(i,group) {
-                        _mergeObject(items, group.items);
+                    $.each(toolbar.groups, function(i, group) {
+                        $.each(group.items, function(j, item) {
+                            item[['visibility']] = items[item.id]['visibility'];
+                        })
                     })
                 }
-
-                var allRequiredAuthorities = [];
-                $.each(items, function(i, item) {
-                    if (item.requiredAuthorities) {
-                        $.merge(allRequiredAuthorities,item.requiredAuthorities);
-                    }
-                });
-
-                self.checkAuthorities(function() {
-                    $.each(items, function(i, item) {
-
-                        item["visibility"] = false;
-
-                        if (item.requiredAuthorities) {
-                            self.checkAuthorities(function(isEntitled) {
-                                if (isEntitled) {
-                                    // turn on the item
-                                    item["visibility"] = true;
-                                    $('.list-toolbar-content .toolbar-list li[id="toolbar-item-' + i + '"]').show();
-                                    $('.list-toolbar-content .toolbar-list li[id="toolbar-item-' + i + '"]', $(el)).show();
-                                    $('.page-toolbar-content .toolbar-list li[id="toolbar-item-' + i + '"]').show();
-                                    $('.page-toolbar-content .toolbar-list li[id="toolbar-item-' + i + '"]', $(el)).show();
-                                }
-                            }, item.requiredAuthorities);
-                        } else {
-                            // turn on the item
-                            item["visibility"] = true;
-                            $('.list-toolbar-content .toolbar-list li[id="toolbar-item-' + i + '"]').show();
-                            $('.list-toolbar-content .toolbar-list li[id="toolbar-item-' + i + '"]', $(el)).show();
-                            $('.page-toolbar-content .toolbar-list li[id="toolbar-item-' + i + '"]').show();
-                            $('.page-toolbar-content .toolbar-list li[id="toolbar-item-' + i + '"]', $(el)).show();
-                        }
-                    });
-
-                    if (toolbar.groups) {
-                        $.each(toolbar.groups, function(i, group) {
-                            $.each(group.items, function(j, item) {
-                                item[['visibility']] = items[item.id]['visibility'];
-                            })
-                        })
-                    }
-
-                }, allRequiredAuthorities);
 
                 // transform
                 self.renderTemplate(el, self.TEMPLATE, function(el) {
@@ -104,9 +60,97 @@
                         });
                     }
 
-                    el.swap();
+                    el.swap(function(swappedEl) {
+
+                        if (callback)
+                        {
+                            callback();
+                        }
+                    });
 
                 });
+            };
+
+            var toolbar = self.model(el);
+            if (toolbar) {
+
+                var items = toolbar.items ? toolbar.items : {};
+                if (toolbar.groups) {
+                    $.each(toolbar.groups, function(i,group) {
+                        _mergeObject(items, group.items);
+                    })
+                }
+
+                var allRequiredAuthorities = [];
+                $.each(items, function(i, item) {
+                    if (item.requiredAuthorities) {
+                        $.merge(allRequiredAuthorities,item.requiredAuthorities);
+                    }
+                });
+
+                // keys
+                var itemKeys = [];
+                $.each(items, function(itemKey, item) {
+                    itemKeys.push(itemKey);
+                });
+
+                self.checkAuthorities(function() {
+
+                    var processItem = function(index)
+                    {
+                        if (index == itemKeys.length)
+                        {
+                            completionFunction();
+
+                            return;
+                        }
+
+                        var item = items[itemKeys[index]];
+
+                        item["visibility"] = false;
+
+                        if (item.requiredAuthorities)
+                        {
+                            self.checkAuthorities(function(isEntitled) {
+
+                                if (isEntitled)
+                                {
+                                    // turn on the item
+                                    item["visibility"] = true;
+                                    $('.list-toolbar-content .toolbar-list li[id="toolbar-item-' + index + '"]').show();
+                                    $('.list-toolbar-content .toolbar-list li[id="toolbar-item-' + index + '"]', $(el)).show();
+                                    $('.page-toolbar-content .toolbar-list li[id="toolbar-item-' + index + '"]').show();
+                                    $('.page-toolbar-content .toolbar-list li[id="toolbar-item-' + index + '"]', $(el)).show();
+                                }
+
+                                // next item
+                                processItem(index + 1);
+
+                            }, item.requiredAuthorities);
+                        }
+                        else
+                        {
+                            // turn on the item
+                            item["visibility"] = true;
+                            $('.list-toolbar-content .toolbar-list li[id="toolbar-item-' + index + '"]').show();
+                            $('.list-toolbar-content .toolbar-list li[id="toolbar-item-' + index + '"]', $(el)).show();
+                            $('.page-toolbar-content .toolbar-list li[id="toolbar-item-' + index + '"]').show();
+                            $('.page-toolbar-content .toolbar-list li[id="toolbar-item-' + index + '"]', $(el)).show();
+
+                            // next item
+                            processItem(index + 1);
+                        }
+                    };
+                    processItem(0);
+
+                }, allRequiredAuthorities);
+            }
+            else
+            {
+                if (callback)
+                {
+                    callback();
+                }
             }
         }
     });

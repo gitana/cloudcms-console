@@ -145,10 +145,11 @@
             });
         },
 
-        setupDashlets : function (el) {
+        setupDashlets : function (el, callback) {
 
             this.setupNodePreview(el);
 
+            callback();
         },
 
         setupPage : function(el) {

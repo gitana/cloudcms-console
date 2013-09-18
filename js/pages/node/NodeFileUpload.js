@@ -23,7 +23,7 @@
             ]));
         },
 
-        setupFileUploadForm : function (el) {
+        setupFileUploadForm : function (el, callback) {
             var self = this;
             $('#upload-files',$(el)).alpaca({
                 "schema" : {
@@ -64,7 +64,9 @@
                         "width" : "100%"
                     });
 
-                    self.branch().listDefinitions('type').each(function() {
+                    self.branch().listDefinitions('type', {
+                        'limit': Gitana.Console.LIMIT_NONE
+                    }).each(function() {
                         var type = this.getQName();
                         $('.upload-node-type',$(el)).append('<option value="' + type+ '">' + type+ '</option>');
                     }).then(function() {
@@ -75,14 +77,16 @@
                             selectedList: 1,
                             header: "Select Node Type"
                         }).multiselectfilter();
+                    }).then(function() {
+                        callback();
                     });
                 }
             });
         },
 
 
-        setupForms : function (el) {
-            this.setupFileUploadForm(el);
+        setupForms : function (el, callback) {
+            this.setupFileUploadForm(el, callback);
         },
 
         setupPage : function(el) {

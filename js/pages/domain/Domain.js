@@ -211,7 +211,9 @@
                     }
                 }, pagination).then(function () {
                         stats.items[0]['value'] = this.size() == null ? 0 : this.size();
-                        this.subchain(domain).listUsers(pagination).then(function() {
+                        this.subchain(domain).listUsers(pagination, {
+                            "limit": Gitana.Console.LIMIT_NONE
+                        }).then(function() {
                             stats.items[1]['value'] = this.size() == null ? 0 : this.size();
                         });
                         this.then(function() {
@@ -429,11 +431,13 @@
                 });
             },
 
-            setupDashlets : function () {
+            setupDashlets : function (el, callback) {
                 this.setupDomainStats();
                 this.setupDomainPlot();
                 this.setupLatestGroups();
                 this.setupLatestUsers();
+
+                callback();
             },
 
             setupPage : function(el) {

@@ -101,7 +101,7 @@
             ]));
         },
 
-        setupUserProfileEditForm : function (el) {
+        setupUserProfileEditForm : function (el, callback) {
             var self = this;
             var user = self.targetObject();
             var defaultData = this.populateObject(["_settings","firstName","lastName","email","companyName"],user);
@@ -200,12 +200,14 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },
 
-        setupForms : function (el) {
-            this.setupUserProfileEditForm(el);
+        setupForms : function (el, callback) {
+            this.setupUserProfileEditForm(el, callback);
         },
 
         setupPage : function(el) {

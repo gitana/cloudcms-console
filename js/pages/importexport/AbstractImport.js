@@ -90,6 +90,7 @@
                             "dataSource": function(field, callback) {
                                 var firstOption;
                                 self.platform().listVaults({
+                                    "limit": Gitana.Console.LIMIT_NONE,
                                     "sort": {
                                         '_system.modified_on.ms': -1
                                     }
@@ -199,7 +200,7 @@
                 ]);
             },
 
-            setupImportForm : function (el) {
+            setupImportForm : function (el, callback) {
 
                 var self = this;
 
@@ -277,6 +278,8 @@
                                     });
                             }
                         });
+
+                        callback();
                     }
                 });
 
@@ -291,9 +294,9 @@
                 });
             },
 
-            setupForms : function (el) {
+            setupForms : function (el, callback) {
                 var self = this;
-                this.setupImportForm(el);
+                this.setupImportForm(el, callback);
             },
 
             /** Filter Related Methods **/

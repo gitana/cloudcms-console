@@ -161,8 +161,9 @@
             this.pairs("auto-client-mapping-overview", pairs);
         },
 
-        setupDashlets : function () {
+        setupDashlets : function (el, callback) {
             this.setupAutoClientMappingOverview();
+            callback();
         },
 
         setupPage : function(el) {

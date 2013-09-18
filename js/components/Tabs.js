@@ -7,7 +7,7 @@
             this.base(id, ratchet);
         },
 
-        index: function(el) {
+        index: function(el, callback) {
             var self = this;
 
             // detect changes to the tabs and redraw when they occur
@@ -46,7 +46,13 @@
 
                 $(el).find(".tabs").tabs(config);
 
-                el.swap();
+                el.swap(function(swappedEl) {
+
+                    if (callback)
+                    {
+                        callback();
+                    }
+                });
             });
         }
 

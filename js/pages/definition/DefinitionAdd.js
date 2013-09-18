@@ -115,7 +115,7 @@
 
             options['fields']['_parent']['dataSource'] = function(field, callback) {
                 self.branch().listDefinitions(null, {
-                    "limit": -1
+                    "limit": Gitana.Console.LIMIT_NONE
                 }).each(function() {
                     field.selectOptions.push({
                         "value": this.getQName(),
@@ -189,7 +189,7 @@
         processDefinitionAddForm : function (el) {
             var self = this;
 
-            $('#definition-add').alpaca({
+            $(el).find('#definition-add').alpaca({
                 "view": "VIEW_WEB_CREATE",
                 "schema": self.schema(),
                 "options": self.options(),
@@ -225,8 +225,9 @@
             });
         },
 
-        processForms : function (el) {
-            this.processDefinitionAddForm(el);
+        processForms : function (el, newEl, callback)
+        {
+            this.processDefinitionAddForm(newEl);
         }
 
     });

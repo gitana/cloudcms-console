@@ -121,7 +121,7 @@
             ]));
         },
 
-        setupFeatureEditForm : function (el) {
+        setupFeatureEditForm: function (el, callback) {
 
             var self = this;
 
@@ -191,13 +191,15 @@
 
                         }
                     });
+
+                    callback();
                 }
             });
 
         },
 
-        setupForms : function (el) {
-            this.setupFeatureEditForm(el);
+        setupForms : function (el, callback) {
+            this.setupFeatureEditForm(el, callback);
         },
 
         setupPage : function(el) {

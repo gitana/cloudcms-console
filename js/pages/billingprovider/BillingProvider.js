@@ -178,8 +178,10 @@
             this.pairs("billing-provider-overview", pairs);
         },
 
-        setupDashlets : function () {
+        setupDashlets: function (el, callback)
+        {
             this.setupBillingProviderOverview();
+            callback();
         },
 
         setupPage : function(el) {

@@ -139,8 +139,10 @@
             this.pairs("project-overview", pairs);
         },
 
-        setupDashlets : function () {
+        setupDashlets: function (el, callback)
+        {
             this.setupProjectOverview();
+            callback();
         },
 
         setupPage : function(el) {

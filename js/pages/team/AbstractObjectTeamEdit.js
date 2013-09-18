@@ -68,7 +68,7 @@
             ];
         },
 
-        setupEditForm: function (el) {
+        setupEditForm: function (el, callback) {
             var self = this;
             var group = self.group();
             var defaultData = this.populateObject(["title","description"],group);
@@ -137,6 +137,8 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },
@@ -165,8 +167,9 @@
             };
         },
 
-        processForms: function() {
-            $('body').bind('swap', function(event, param) {
+        processForms: function(el, newEl, callback)
+        {
+            $(newEl).find('body').bind('swap', function(event, param) {
                 var rolesSelector = $('select');
 
                 rolesSelector.attr('title', 'Select and Add a Role');
@@ -178,6 +181,8 @@
                     });
                 }
             });
+
+            callback();
         },
 
         setupPage: function(el) {

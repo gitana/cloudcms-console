@@ -46,7 +46,7 @@
             ]));
         },
 
-        setupEditForm: function (el) {
+        setupEditForm: function (el, callback) {
             var self = this;
             var directory = self.targetObject();
             var defaultData = this.populateObject(["title","description"], directory);
@@ -69,6 +69,8 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },

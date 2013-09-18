@@ -223,11 +223,12 @@
             this.pairs("latest-neighbors", pairs);
         },
 
-        setupDashlets : function () {
+        setupDashlets : function (el, callback) {
             this.setupTagOverview();
             this.setupTagSnapshot();
             this.setupLatestNeighbors();
             this.setupTagStats();
+            callback();
         },
 
         setupPage : function(el) {

@@ -314,8 +314,9 @@
 
         },
 
-        setupDashlets : function () {
+        setupDashlets: function(el, callback) {
             this.setupProfile();
+            callback();
         },
 
         setupPage : function(el) {

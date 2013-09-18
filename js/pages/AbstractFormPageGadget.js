@@ -33,7 +33,7 @@
             }
         },
 
-        index: function(el) {
+        index: function(el, callback) {
             var self = this;
 
             this.tokens = el.tokens;
@@ -70,9 +70,9 @@
                             Gitana.Utils.UI.jQueryUIDatePickerPatch();
                             */
 
-                            self.asyncSetupForms(el, function() {
+                            self.setupForms(el, function() {
 
-                                el.swap(function(newEl) {
+                                el.swap(function(swappedEl) {
 
                                     Gitana.Utils.UI.contentBox();
                                     Gitana.Utils.UI.jQueryUIDatePickerPatch();
@@ -80,7 +80,13 @@
                                     Gitana.Utils.UI.enableTooltip();
                                     Gitana.Utils.UI.processBreadcrumb();
 
-                                    self.asyncProcessForms(el, newEl, function() {});
+                                    self.processForms(el, swappedEl, function() {
+
+                                        if (callback)
+                                        {
+                                            callback();
+                                        }
+                                    });
                                 });
                             });
                         });
@@ -92,20 +98,12 @@
         },
 
         /** Abstract methods **/
-        asyncSetupForms: function(el, callback) {
-            this.setupForms(el);
+        setupForms: function(el, callback) {
             callback();
         },
 
-        setupForms: function(el) {
-        },
-
-        asyncProcessForms: function(el, newEl, callback) {
-            this.processForms(el);
+        processForms: function(el, newEl, callback) {
             callback();
-        },
-
-        processForms: function(el) {
         }
     });
 

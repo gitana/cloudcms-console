@@ -88,7 +88,7 @@
             ]));
         },
 
-        setupEditForm: function (el) {
+        setupEditForm: function (el, callback) {
             var self = this;
             var settings = self.targetObject();
 
@@ -134,6 +134,8 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },

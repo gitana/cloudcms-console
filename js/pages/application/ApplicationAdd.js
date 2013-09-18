@@ -136,7 +136,7 @@
             ]));
         },
 
-        setupApplicationAddForm : function (el) {
+        setupApplicationAddForm : function (el, callback) {
             var self = this;
             $('#application-add', $(el)).alpaca({
                 "view": "VIEW_WEB_CREATE",
@@ -226,12 +226,14 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },
 
-        setupForms : function (el) {
-            this.setupApplicationAddForm(el);
+        setupForms: function (el, callback) {
+            this.setupApplicationAddForm(el, callback);
         },
 
         setupPage : function(el) {

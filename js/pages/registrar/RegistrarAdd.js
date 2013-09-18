@@ -58,7 +58,7 @@
             ]));
         },
 
-        setupRegistrarAddForm : function (el) {
+        setupRegistrarAddForm : function (el, callback) {
             var self = this;
             $('#registrar-add', $(el)).alpaca({
                 "view": "VIEW_WEB_CREATE",
@@ -82,12 +82,14 @@
                             });
                         }
                     });
+
+                    callback();
                 }
             });
         },
 
-        setupForms : function (el) {
-            this.setupRegistrarAddForm(el);
+        setupForms : function (el, callback) {
+            this.setupRegistrarAddForm(el, callback);
         },
 
         setupPage : function(el) {

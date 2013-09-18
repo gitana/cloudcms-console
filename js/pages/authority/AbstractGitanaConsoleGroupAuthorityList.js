@@ -381,8 +381,10 @@
 
         },
 
-        setupDashlets: function(el) {
+        setupDashlets: function(el, callback)
+        {
             //this.setupPublicSecurity(el);
+            callback();
         }
 
     });

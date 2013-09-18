@@ -1176,17 +1176,14 @@
         "AuthenticationGrant" : {
             "fields" : {
                 "clientId" : {
-                    "helper" : "Select target client id.",
                     "type" : "select"
                 },
                 "gitanaPrincipalUser" : {
-                    "helper" : "Pick Cloud CMS principal user or enter his domain qualified id.",
                     "type" : "gitanaprincipalpicker",
                     "size" : 60
                 },
                 "enabled" : {
-                    "rightLabel" : "Enabled ?",
-                    "helper" : "Check this option to enable the grant."
+                    "rightLabel" : "Enabled ?"
                 },
                 "allowOpenDriverAuthentication" : {
                     "rightLabel" : "Allow Open Driver?"
@@ -1220,7 +1217,7 @@
                     "helper" : "Open Driver Authentication allows connections from qualified domains using only the public key (the secret is never transmitted or checked)"
                 },
                 "domainUrls" : {
-                    "helper" : "Enter list of allowed domain URLs",
+                    "helper" : "A list of domain URLs which are allowed to connect",
                     "fields" : {
                         "item": {
                             "helper": "The URL of the domain"
@@ -1231,8 +1228,7 @@
                     "rightLabel" : "Enabled ?"
                 },
                 "allowGuestLogin": {
-                    "rightLabel": "Allow Guest Login?",
-                    "helper": "Whether to allow guest logins via this client"
+                    "rightLabel": "Allow Guest Login?"
                 }
             }
         },

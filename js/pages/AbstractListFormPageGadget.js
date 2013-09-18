@@ -39,7 +39,7 @@
             }
         },
 
-        index: function(el) {
+        index: function(el, callback) {
             var self = this;
 
             this.tokens = el.tokens;
@@ -66,37 +66,45 @@
                         self.setupList(el);
 
                         // set up the dashlets
-                        self.setupDashlets(el);
+                        self.setupDashlets(el, function() {
 
-                        // set up the page
-                        self.setupPage(el);
+                            // set up the page
+                            self.setupPage(el);
 
-                        // detect changes to the list and redraw when they occur
-                        self.setupRefreshSubscription(el);
+                            // detect changes to the list and redraw when they occur
+                            self.setupRefreshSubscription(el);
 
-                        if (self.filterSubscription) {
-                            self.subscribe(self.filterSubscription, self.refreshHandler(el));
-                        }
+                            if (self.filterSubscription) {
+                                self.subscribe(self.filterSubscription, self.refreshHandler(el));
+                            }
 
-                        // list model
-                        var page = self.model(el);
+                            // list model
+                            var page = self.model(el);
 
-                        // render layout
-                        self.renderTemplate(el, self.TEMPLATE, function(el) {
+                            // render layout
+                            self.renderTemplate(el, self.TEMPLATE, function(el) {
 
-                            Gitana.Utils.UI.jQueryUIDatePickerPatch();
+                                Gitana.Utils.UI.jQueryUIDatePickerPatch();
 
-                            Gitana.Utils.UI.contentBox($(el));
+                                Gitana.Utils.UI.contentBox($(el));
 
-                            self.setupForms(el);
+                                self.setupForms(el);
 
-                            el.swap();
+                                el.swap(function(swappedEl) {
 
-                            self.processList(el);
+                                    self.processList(swappedEl);
 
-                            Gitana.Utils.UI.processBreadcrumb();
+                                    Gitana.Utils.UI.processBreadcrumb();
+
+                                    if (callback)
+                                    {
+                                        callback();
+                                    }
+                                });
+                            });
 
                         });
+
                     } else {
                         self.handleUnauthorizedPageAccess(el, error);
                     }
@@ -105,7 +113,7 @@
         },
 
         /** Abstract methpds **/
-        setupForms: function(el) {
+        setupForms: function(el, callback) {
         }
     });
 
