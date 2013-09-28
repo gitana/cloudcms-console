@@ -156,7 +156,7 @@
             });
             this._pushItem(pairs.items, {
                 "key" : "Allow Guest Login",
-                "value" : client["allowGuestLogin"]
+                "value" : (client["allowGuestLogin"] ? true: false)
             });
             this._pushItem(pairs.items, {
                 "key" : "Last Modified",

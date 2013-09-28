@@ -62,7 +62,7 @@
         setupEditForm: function (el, callback) {
             var self = this;
             var client = self.targetObject();
-            var defaultData = this.populateObject(["title","description","authorizedGrantTypes","scope","allowOpenDriverAuthentication","domainUrls","enabled"],client);
+            var defaultData = this.populateObject(["title","description","authorizedGrantTypes","scope","allowOpenDriverAuthentication","domainUrls","enabled","allowGuestLogin"],client);
             $('#client-edit', $(el)).alpaca({
                 "data": defaultData,
                 "schema": self.schema(),
