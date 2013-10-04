@@ -203,21 +203,24 @@
                         "type":"property",
                         "sortingExpression": "name",
                         "property": function(callback) {
-                            /*
-                             var id = self.listItemProp(this,'name');
-                             var value = "<a href='#" + self.link(this) + "'>" + id + "</a>";
-                             callback(value);
-                             */
                             var id = self.listItemProp(this, 'name');
                             var link = "";
                             if (this.get('teamGroup') && this.get('teamableTypeId')) {
                                 var teamableTypeId = this.get('teamableTypeId');
-                                if (teamableTypeId == 'repository') {
-                                    link = "/repositories/";
-                                } else {
-                                    link = "/" + teamableTypeId + "s/";
+                                if (teamableTypeId == 'platform') {
+                                    link = "";
                                 }
-                                link += this.get('teamableId') + "/teams/" + this.get('teamKey');
+                                else
+                                {
+                                    if (teamableTypeId == 'repository') {
+                                        link = "/repositories/";
+                                    } else {
+                                        link = "/" + teamableTypeId + "s/";
+                                    }
+
+                                    link += this.get('teamableId');
+                                }
+                                link += "/teams/" + this.get('teamKey');
                             } else {
                                 link = self.link(this);
                             }

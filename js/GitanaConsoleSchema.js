@@ -66,10 +66,10 @@
                     "items": {
                         "type": "object",
                         "properties": {
-                            "webhost": {
+                            "_key": {
                                 "type": "string"
                             },
-                            "subdomain": {
+                            "webhost": {
                                 "type": "string"
                             },
                             "domain": {
@@ -90,10 +90,8 @@
                     "properties": {
                         "type": {
                             "type": "string",
-                            "enum": ["github"]
-                        },
-                        "public": {
-                            "type": "boolean"
+                            "enum": ["github"],
+                            "default": "github"
                         },
                         "uri": {
                             "type": "string"
@@ -1003,18 +1001,19 @@
                     }
                 },
                 "deployments": {
+                    "type": "map",
                     "toolbarSticky": true,
                     "label": "Deployments",
                     "fields": {
                         "item": {
                             "fields": {
+                                "_key": {
+                                    "type": "text",
+                                    "label": "Deployment Key"
+                                },
                                 "webhost": {
                                     "type": "text",
                                     "label": "Web Host"
-                                },
-                                "subdomain": {
-                                    "type": "text",
-                                    "label": "Subdomain"
                                 },
                                 "domain": {
                                     "type": "text",
@@ -1040,14 +1039,9 @@
                     "label": "Source Control",
                     "fields": {
                         "type": {
-                            "type": "text",
+                            "type": "select",
                             "label": "Type",
                             "optionLabels": ["GitHub"]
-                        },
-                        "public": {
-                            "type": "checkbox",
-                            "label": "Public",
-                            "helper": "Is this a public repository?"
                         },
                         "uri": {
                             "type": "text",
@@ -1059,6 +1053,7 @@
                     }
                 },
                 "public": {
+                    "label": "Public Application Services",
                     "fields": {
                         "runAsPrincipalId": {
                             "type": "text",

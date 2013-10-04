@@ -76,11 +76,24 @@
                                 form.childrenByPropertyId["deploymentKey"].schema["enum"] = [];
                                 form.childrenByPropertyId["deploymentKey"].options.optionLabels = [];
 
+                                var firstDeploymentKey = null;
                                 for (var deploymentKey in this.deployments)
                                 {
+                                    if (!firstDeploymentKey)
+                                    {
+                                        firstDeploymentKey = deploymentKey;
+                                    }
+
                                     form.childrenByPropertyId["deploymentKey"].schema["enum"].push(deploymentKey);
                                     form.childrenByPropertyId["deploymentKey"].options.optionLabels.push(deploymentKey);
                                 }
+
+                                if (firstDeploymentKey)
+                                {
+                                    form.childrenByPropertyId["deploymentKey"].setValue(firstDeploymentKey);
+                                }
+
+                                var x = form.childrenByPropertyId["deploymentKey"].getValue();
 
                                 form.childrenByPropertyId["deploymentKey"].render();
                             });
@@ -99,11 +112,12 @@
 
                                 Gitana.Utils.UI.block("Deploying Application...");
 
-                                self.targetObject().readApplication(applicationId).then(function() {
+                                self.platform().readApplication(applicationId).then(function() {
                                     this.deploy(deploymentKey).then(function() {
                                         var newDeployedApplication = this;
                                         Gitana.Utils.UI.unblock(function() {
-                                            self.app().run('GET', self.LINK().call(self, newDeployedApplication));
+                                            var link = self.link(newDeployedApplication);
+                                            self.refresh(link);
                                         });
                                     });
                                 });

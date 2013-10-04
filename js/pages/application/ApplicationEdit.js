@@ -121,7 +121,7 @@
         setupEditForm: function (el, callback) {
             var self = this;
             var application = self.targetObject();
-            var defaultData = this.populateObject(["key","title","description"],application);
+            var defaultData = this.populateObject(["key","title","description","applicationType", "public", "source", "deployments"], application);
             $('#application-edit', $(el)).alpaca({
                 "data": defaultData,
                 "schema": self.schema(),

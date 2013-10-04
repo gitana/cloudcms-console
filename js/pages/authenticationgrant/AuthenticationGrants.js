@@ -125,6 +125,20 @@
 
             list["columns"] = [
                 {
+                    "title": "Title",
+                    "type":"property",
+                    "sortingExpression": "title",
+                    "property": function(callback) {
+                        var title = this["title"];
+                        if (!title)
+                        {
+                            title = this["_doc"];
+                        }
+                        var value = "<a href='#" + self.link(this) + "'>" + title + "</a>";
+                        callback(value);
+                    }
+                },
+                {
                     "title": "Key",
                     "type":"property",
                     "sortingExpression": "key",

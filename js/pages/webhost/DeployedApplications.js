@@ -221,6 +221,7 @@
                             "permissions" : ["update"]
                         }
                     },
+                    /*
                     "delete": {
                         "title": "Delete",
                         "icon" : Gitana.Utils.Image.buildImageUri('objects', 'deployed-application-delete', 48),
@@ -232,6 +233,7 @@
                             "permissions" : ["delete"]
                         }
                     },
+                    */
                     "export": {
                         "title": "Export",
                         "icon" : Gitana.Utils.Image.buildImageUri('objects', 'archive-export', 48),
@@ -249,7 +251,13 @@
                         "title": "Title",
                         "type":"property",
                         "property": function(callback) {
-                            var value = self.listItemProp(this, 'title');
+                            var title = self.listItemProp(this, 'title');
+                            if (!title)
+                            {
+                                title = this["_doc"];
+                            }
+
+                            var value = "<a href='#" + self.LINK().call(self, this) + "'>" + title + "</a>";
                             callback(value);
                         }
                     },
@@ -258,6 +266,15 @@
                         "type":"property",
                         "property": function(callback) {
                             var value = "<a href='#/applications/" + this.applicationId + "'>" + this.applicationId + "</a>";
+                            callback(value);
+                        }
+                    },
+                    {
+                        "title": "Deployment Key",
+                        "type":"property",
+                        "property": function(callback) {
+
+                            var value = self.listItemProp(this, 'deploymentKey');
                             callback(value);
                         }
                     },
@@ -273,22 +290,6 @@
                             }
 
                             callback(value);
-                        }
-                    },
-                    {
-                        "title": "Deployment Key",
-                        "type":"property",
-                        "property": function(callback) {
-
-                            var value = self.listItemProp(this, 'deploymentKey');
-                            callback(value);
-                        }
-                    },
-                    {
-                        "title": "Deployment Status",
-                        "type": "property",
-                        "property": function(callback) {
-                            callback("");
                         }
                     }
                 ];

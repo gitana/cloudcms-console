@@ -216,6 +216,15 @@
             this._clearObservable(key, "pairs");
         },
 
+        include: function()
+        {
+            return this._observable("include", arguments, {});
+        },
+
+        clearInclude: function(key) {
+            this._clearObservable(key, "include");
+        },
+
         breadcrumb: function() {
             return this._observable("breadcrumb", arguments, {});
         },
