@@ -453,6 +453,10 @@
                 var dataStoreType = control.attr('data-type');
                 var keyInput = $('input[id="' + dataStoreId + '"]');
                 var key = keyInput.val();
+                if (!key)
+                {
+                    key = dataStoreId;
+                }
                 Gitana.Utils.UI.block('Adding member ' + dataStoreId + '...');
                 Chain(self.targetObject()).trap(
                     function() {

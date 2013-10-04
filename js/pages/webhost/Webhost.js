@@ -102,7 +102,7 @@
         setupWebhostOverview: function () {
             var self = this;
             var webhost = self.targetObject();
-            var urlPatterns = webhost.getUrlPatterns() ? webhost.getUrlPatterns().join('<br/>') : ";"
+            var urlPatterns = webhost.getUrlPatterns() ? webhost.getUrlPatterns().join('<br/>') : "None"
 
             var pairs = {
                 "title" : "Overview",

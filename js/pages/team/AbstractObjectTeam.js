@@ -100,14 +100,20 @@
                     "type":"property",
                     "sortingExpression": "domainId",
                     "property": function(callback) {
-                        var id = this["domainId"];//.getDomainId();
-                        var link = this.get('domainLink') ? this.get('domainLink') : self.listLink('domains') + id;
+                        var id = this["domainId"];
                         var name = self.listItemProp(this, 'domainName', id);
-                        // make sure we get the primary domain name
-                        if (name == id && self.primaryDomain() && self.primaryDomain().getId() == id) {
-                            name = "Primary Domain";
+                        var value = name;
+                        if ("default" != id)
+                        {
+                            var link = this.get('domainLink') ? this.get('domainLink') : self.listLink('domains') + id;
+
+                            // make sure we get the primary domain name
+                            if (name == id && self.primaryDomain() && self.primaryDomain().getId() == id) {
+                                name = "Primary Domain";
+                            }
+
+                            value = "<a href='#" + link + "'>" + name + "</a>";
                         }
-                        var value = "<a href='#" + link + "'>" + name + "</a>";
                         callback(value);
                     }
                 },
@@ -116,9 +122,29 @@
                     "type":"property",
                     "sortingExpression": "name",
                     "property": function(callback) {
-                        //var name = this.getName();
+                        var domainId = this["domainId"];
                         var name = this["name"];
-                        var value = "<a href='#" + self.link(this) + "'>" + name + "</a>";
+                        var value = name;
+                        if ("default" == domainId)
+                        {
+                            name = "Special Domain";
+                        }
+                        else
+                        {
+                            var id = this["_doc"];
+                            var type = this["type"];
+                            var link = self.listLink("domains") + domainId;
+                            if (type.toLowerCase() == "user")
+                            {
+                                link += "/users/" + this["_doc"];
+                            }
+                            else if (type.toLowerCase() == "group")
+                            {
+                                link += "/groups/" + this["_doc"];
+                            }
+
+                            value = "<a href='#" + link + "'>" + name + "</a>";
+                        }
                         callback(value);
                     }
                 },

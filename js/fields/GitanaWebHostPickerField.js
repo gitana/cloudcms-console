@@ -63,7 +63,7 @@
                                 "status" : false
                             });
                             return false;
-                        }).readApplication(id).then(function() {
+                        }).readWebHost(id).then(function() {
                             callback({
                                 "message": "Valid web host ID",
                                 "status": true

@@ -1,0 +1,14 @@
+<script id="includeTemplate" type="text/x-jquery-tmpl">
+    {{if include}}
+    <div class="block-border">
+        {{if include.title}}
+        <div class="block-header">
+            <h1>{{if include.icon}}<span class="sprite-20 ${include.icon.substring(include.icon.lastIndexOf('/')+1,include.icon.lastIndexOf('.'))}"></span>{{/if}}<span class="block-header-title">${include.title}</span></h1><span></span>
+        </div>
+        {{/if}}
+        <div class="block-content">
+            {{html include.html}}
+        </div>
+    </div>
+    {{/if}}
+</script>
