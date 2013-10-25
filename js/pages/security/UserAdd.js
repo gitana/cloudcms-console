@@ -144,11 +144,7 @@
             return options;
         },
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
-         targetObject: function() {
+        targetObject: function() {
             return this.server();
         },
 

@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.WebhostExport = Gitana.Console.Pages.AbstractExport.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/webhosts/{webhostId}/export", this.index);
         },

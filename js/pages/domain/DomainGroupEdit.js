@@ -5,10 +5,6 @@
 
         EDIT_JSON_URI: "/domains/{domainId}/groups/{groupId}/edit/json",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         schema: function() {
             var schema = {};
 

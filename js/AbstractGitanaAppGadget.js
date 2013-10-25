@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Apps.AbstractGitanaAppGadget = Gitana.CMS.AbstractGadget.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         requiredAuthorities: function() {
             return [];
         },

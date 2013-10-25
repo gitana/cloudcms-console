@@ -3,10 +3,6 @@
     {
         TEMPLATE: "layouts/console.list.form",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         schema: function() {
             return {
                 "type": "object",

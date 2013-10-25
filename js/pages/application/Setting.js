@@ -7,10 +7,6 @@
 
         HIDE_FILTER : true,
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/applications/{applicationId}/settings/{settingsId}", this.index);
         },

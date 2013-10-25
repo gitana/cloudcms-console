@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.DomainUserImport = Gitana.Console.Pages.AbstractImport.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/domains/{domainId}/users/{userId}/import", this.index);
         },

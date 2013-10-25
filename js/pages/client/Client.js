@@ -1,8 +1,5 @@
 (function($) {
     Gitana.Console.Pages.Client = Gitana.CMS.Pages.AbstractDashboardPageGadget.extend({
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
 
         setup: function() {
             this.get("/clients/{clientId}", this.index);

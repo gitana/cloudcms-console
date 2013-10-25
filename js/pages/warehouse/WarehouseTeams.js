@@ -5,10 +5,6 @@
 
         FILTER : "warehouse-team-list-filters",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/warehouses/{warehouseId}/teams", this.index);
         },

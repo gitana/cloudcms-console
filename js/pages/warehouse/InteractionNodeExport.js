@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.InteractionNodeExport = Gitana.Console.Pages.AbstractExport.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/warehouses/{warehouseId}/nodes/{interactionNodeId}/export", this.index);
         },

@@ -3,10 +3,6 @@
     {
         SUBSCRIPTION : "forms",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/repositories/{repositoryId}/branches/{branchId}/definitions/{definitionId}/forms", this.index);
         },

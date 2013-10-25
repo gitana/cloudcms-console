@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.FormImport = Gitana.Console.Pages.AbstractImport.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/repositories/{repositoryId}/branches/{branchId}/definitions/{definitionId}/forms/{formId}/import", this.index);
         },

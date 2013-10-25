@@ -9,10 +9,6 @@
             "/registrars/{registrarId}/tenants/{tenantId}/edit/json"
         ],
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         targetObject: function() {
             return this.tenant();
         },

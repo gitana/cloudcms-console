@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.RegistrarExport = Gitana.Console.Pages.AbstractExport.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/registrars/{registrarId}/export", this.index);
         },

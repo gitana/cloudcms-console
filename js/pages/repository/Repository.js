@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.Repository = Gitana.CMS.Pages.AbstractDashboardPageGadget.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/repositories/{repositoryId}", this.index);
         },
@@ -228,14 +224,14 @@
             Chain().then(function() {
 
                 var f0 = function() {
-                    this.subchain(self.targetObject()).listBranches(pagination).then(function () {
-                        stats.items[0]['value'] = this.size() == null ? 0 : this.size();
+                    this.subchain(self.targetObject()).listBranches({},pagination).then(function () {
+                        stats.items[0]['value'] = this.totalRows();
                     });
                 };
 
                 var f1 = function() {
                     this.subchain(self.targetObject()).queryChangesets({},pagination).then(function () {
-                        stats.items[1]['value'] = this.size() == null ? 0 : this.size();
+                        stats.items[1]['value'] = this.totalRows();
                     });
                 };
 

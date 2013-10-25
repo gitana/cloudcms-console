@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.VaultExport = Gitana.Console.Pages.AbstractExport.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/vaults/{vaultId}/export", this.index);
         },

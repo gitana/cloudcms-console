@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.FeatureEditJSON = Gitana.Console.Pages.FeatureEdit.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         schema: function(featureId) {
 
             var schema = {

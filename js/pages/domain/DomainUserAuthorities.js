@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.DomainUserAuthorities = Gitana.Console.AbstractGitanaConsoleUserAuthorityListGadget.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/domains/{domainId}/authorities/users", this.index);
         },

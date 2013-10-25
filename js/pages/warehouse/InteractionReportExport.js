@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.InteractionReportExport = Gitana.Console.Pages.AbstractExport.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/warehouses/{warehouseId}/reports/{interactionReportId}/export", this.index);
         },

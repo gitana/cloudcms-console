@@ -5,10 +5,6 @@
 
         EDIT_JSON_URI: "/groups/{groupId}/edit/json",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         schema: function() {
             return _mergeObject(this.base(), {
                 "properties" : {

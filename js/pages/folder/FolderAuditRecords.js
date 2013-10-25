@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.FolderAuditRecords = Gitana.Console.Pages.ChildNodeAuditRecords.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/repositories/{repositoryId}/branches/{branchId}/folders/{nodeId}/auditrecords", this.index);
         },

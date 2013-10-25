@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.VaultImport = Gitana.Console.Pages.AbstractImport.extend(
         {
-            constructor: function(id, ratchet) {
-                this.base(id, ratchet);
-            },
-
             setup: function() {
                 this.get("/vaults/{vaultId}/import", this.index);
             },

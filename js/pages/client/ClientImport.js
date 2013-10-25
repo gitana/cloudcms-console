@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.ClientImport = Gitana.Console.Pages.AbstractImport.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/clients/{clientId}/import", this.index);
         },

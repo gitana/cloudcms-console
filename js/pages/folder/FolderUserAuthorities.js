@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.FolderUserAuthorities = Gitana.Console.Pages.NodeUserAuthorities.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         LINK : function() {
             return this.folderLink;
         },

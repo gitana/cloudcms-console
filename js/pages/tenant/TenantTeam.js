@@ -5,10 +5,6 @@
 
         FILTER : "tenant-team-member-list-filters",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/registrars/{registrarId}/tenants/{tenantId}/teams/{teamId}", this.index);
         },

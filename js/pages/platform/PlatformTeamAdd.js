@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.PlatformTeamAdd = Gitana.Console.Pages.AbstractObjectTeamAdd.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/add/team", this.index);
         },

@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.StackImport = Gitana.Console.Pages.AbstractImport.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/stacks/{stackId}/import", this.index);
         },

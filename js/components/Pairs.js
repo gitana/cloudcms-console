@@ -3,10 +3,6 @@
     {
         TEMPLATE: "components/pairs",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         preSwap: function(el) {
             Gitana.Utils.UI.contentBox($(el));
         }

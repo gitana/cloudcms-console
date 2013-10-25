@@ -5,10 +5,6 @@
 
         FILTER : "user-list-filters",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/users", this.index);
         },

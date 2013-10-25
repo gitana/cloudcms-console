@@ -3,10 +3,6 @@
     {
         SUBSCRIPTION : "node-file-upload",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/repositories/{repositoryId}/branches/{branchId}/upload", this.index);
         },

@@ -14,10 +14,6 @@
 
         DISPLAY_LIST_FILTER: true,
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setupToolbar: function() {
             var self = this;
             self.base();

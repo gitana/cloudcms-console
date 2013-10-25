@@ -3,10 +3,6 @@
     {
         ROOT_KEY: "mandatoryFeatures",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         targetObject: function() {
             return this.definition();
         },

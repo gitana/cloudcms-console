@@ -31,10 +31,6 @@
             return options;
         },
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         targetObject: function() {
             return this.vault();
         },

@@ -3,10 +3,6 @@
     {
         ROOT_KEY: "mandatoryFeatures",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         featuresLink: function() {
             return this.LIST_LINK().call(this,"features");
         },

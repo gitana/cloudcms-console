@@ -8,10 +8,6 @@
             }
         },
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         requiredAuthorities: function() {
             return [
                 {

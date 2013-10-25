@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.VaultTeamImport = Gitana.Console.Pages.AbstractObjectTeamImport.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/vaults/{vaultId}/teams/{teamId}/import", this.index);
         },

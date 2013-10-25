@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.ChildNodeImport = Gitana.Console.Pages.NodeImport.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         LINK : function() {
             return this.folderLink;
         },

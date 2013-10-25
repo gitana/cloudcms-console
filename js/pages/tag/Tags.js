@@ -5,10 +5,6 @@
 
         FILTER : "tag-list-filters",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/repositories/{repositoryId}/branches/{branchId}/tags", this.index);
         },

@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.RepositoryUserAuthorities = Gitana.Console.AbstractGitanaConsoleUserAuthorityListGadget.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/repositories/{repositoryId}/authorities/users", this.index);
         },

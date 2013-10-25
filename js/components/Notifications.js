@@ -3,10 +3,6 @@
     {
         TEMPLATE : "components/notifications",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         preSwap: function(el) {
             $('span.hide', $(el)).click(function() {
                 $(this).parent().slideUp();

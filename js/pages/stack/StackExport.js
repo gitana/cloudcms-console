@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.StackExport = Gitana.Console.Pages.AbstractExport.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/stacks/{stackId}/export", this.index);
         },

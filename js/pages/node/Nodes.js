@@ -14,10 +14,6 @@
             }
         },
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/repositories/{repositoryId}/branches/{branchId}/nodes", this.index);
         },
@@ -248,23 +244,31 @@
                         "value": definition.getQName(),
                         "text": definition.getQName()
                     });
-                 }).then(function() {
+                }).then(function() {
                     if (callback) {
                         callback();
                     }
                 });
             };
 
-            options['fields']['type']['postRender'] = function(renderedField) {
+            options['fields']['type']['postRender'] = function(callback) {
+
+                var renderedField = this;
+
                 var el = renderedField.getEl();
-                $('select',$(el)).css({
+
+                $(el).find("select").css({
                     "width" : "370px"
-                }).multiselect().multiselectfilter();
+                }).multiselect();//.multiselectfilter();
+
                 var val = renderedField.getValue();
+
                 // Make sure we don't check the None checkbox
                 if (!Alpaca.isValEmpty(val) && val.length == 1 && val[0] == "") {
-                    $('select',$(el)).multiselect("uncheckAll");
+                    $(el).find("select").multiselect("uncheckAll");
                 }
+
+                callback();
             };
 
             return options;

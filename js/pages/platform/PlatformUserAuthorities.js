@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.PlatformUserAuthorities = Gitana.Console.AbstractGitanaConsoleUserAuthorityListGadget.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         LINK : function() {
             return this.platformLink;
         },

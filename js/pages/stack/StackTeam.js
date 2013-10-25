@@ -5,10 +5,6 @@
 
         FILTER : "stack-team-member-list-filters",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/stacks/{stackId}/teams/{teamId}", this.index);
         },

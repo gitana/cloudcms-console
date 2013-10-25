@@ -9,10 +9,6 @@
             "/repositories/{repositoryId}/branches/{branchId}/edit/json"
         ],
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         options: function() {
             return _mergeObject(this.base(), {
                 "fields" : {

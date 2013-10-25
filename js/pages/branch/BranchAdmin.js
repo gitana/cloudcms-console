@@ -62,6 +62,21 @@
                         Gitana.Utils.UI.unblock();
                     });
                 }
+            }, {
+                "id": "maintenance",
+                "title": "Run maintenance over all branch nodes",
+                "description": "This operation will perform common maintenance functions to look for leftover system-maintained nodes that can be safely removed or repaired.  Your custom node data will not be affected.  This helps to ensure fast performance for your searches and content queries.",
+                "requiredAuthorities" : [{
+                    "permissioned" : self.targetObject(),
+                    "permissions": ["create_subobjects"]
+                }],
+                "click": function() {
+                    Gitana.Utils.UI.block("Please wait...", "Content maintenance is being run...");
+
+                    Chain(self.branch()).adminContentMaintenance().then(function() {
+                        Gitana.Utils.UI.unblock();
+                    });
+                }
             }]);
         },
 

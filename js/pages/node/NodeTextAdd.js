@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.NodeTextAdd = Gitana.Console.Pages.NodeAdd.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         schema: function() {
 
             return _mergeObject(this.base(), {

@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.WarehouseTeamExport = Gitana.Console.Pages.AbstractObjectTeamExport.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/warehouses/{warehouseId}/teams/{teamId}/export", this.index);
         },

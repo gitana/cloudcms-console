@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.BranchExport = Gitana.Console.Pages.AbstractExport.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/repositories/{repositoryId}/branches/{branchId}/export", this.index);
         },

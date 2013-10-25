@@ -1,8 +1,5 @@
 (function($) {
     Gitana.Console.Pages.Archive = Gitana.CMS.Pages.AbstractDashboardPageGadget.extend({
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
 
         setup: function() {
             this.get("/vaults/{vaultId}/archives/{archiveId}", this.index);

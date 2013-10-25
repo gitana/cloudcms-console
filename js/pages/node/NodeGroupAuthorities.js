@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.NodeGroupAuthorities = Gitana.Console.AbstractGitanaConsoleGroupAuthorityListGadget.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/repositories/{repositoryId}/branches/{branchId}/nodes/{nodeId}/authorities/groups", this.index);
         },

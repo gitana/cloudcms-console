@@ -5,10 +5,6 @@
 
         EDIT_JSON_URI: "/stacks/{stackId}/teams/{teamId}/edit/json",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         contextObject: function() {
             return this.stack();
         },

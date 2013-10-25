@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.FolderFeatures = Gitana.Console.Pages.NodeFeatures.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/repositories/{repositoryId}/branches/{branchId}/folders/{nodeId}/features", this.index);
         },

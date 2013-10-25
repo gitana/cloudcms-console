@@ -54,10 +54,6 @@
             return options;
         },
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/domains/{domainId}/add/group", this.index);
             this.get("/domains/{domainId}/groups/{groupId}/add/group", this.index);

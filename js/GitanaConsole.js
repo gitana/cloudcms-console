@@ -230,12 +230,16 @@
             }
 
             url += "fallback=";
-            url += window.location.protocol + "//" + window.location.hostname;
+
+            var fb = window.location.protocol + "//" + window.location.hostname;
             if (window.location.port)
             {
-                url += ":" + window.location.port;
+                fb += ":" + window.location.port;
             }
-            url += "/console/" + fallback;
+            fb += "/console/" + fallback;
+            fb = encodeURIComponent(fb);
+
+            url += fb;
         }
 
         return url;

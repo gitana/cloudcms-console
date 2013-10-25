@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.ChildNode = Gitana.Console.Pages.Node.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         LINK : function() {
             return this.folderLink;
         },

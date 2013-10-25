@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.AuthenticationGrantImport = Gitana.Console.Pages.AbstractImport.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/authenticationgrants/{authenticationGrantId}/import", this.index);
         },

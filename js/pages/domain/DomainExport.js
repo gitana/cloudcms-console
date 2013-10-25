@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.DomainExport = Gitana.Console.Pages.AbstractExport.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/domains/{domainId}/export", this.index);
         },

@@ -5,10 +5,6 @@
 
         FILTER : "repository-team-list-filters",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/repositories/{repositoryId}/teams", this.index);
         },

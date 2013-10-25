@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.FolderFeatureEditJSON = Gitana.Console.Pages.NodeFeatureEditJSON.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         LINK : function() {
             return this.folderLink;
         },

@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.StackUserAuthorities = Gitana.Console.AbstractGitanaConsoleUserAuthorityListGadget.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/stacks/{stackId}/authorities/users", this.index);
         },

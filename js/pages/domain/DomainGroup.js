@@ -5,10 +5,6 @@
 
             FILTER : "domain-member-list-filters",
 
-            constructor: function(id, ratchet) {
-                this.base(id, ratchet);
-            },
-
             setup: function() {
                 this.get("/domains/{domainId}/groups/{groupId}", this.index);
             },

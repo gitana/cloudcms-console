@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.NodePreview = Gitana.Console.Pages.Node.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/repositories/{repositoryId}/branches/{branchId}/nodes/{nodeId}/preview", this.index);
             this.get("/repositories/{repositoryId}/branches/{branchId}/nodes/{nodeId}/preview/{previewSetId}", this.index);

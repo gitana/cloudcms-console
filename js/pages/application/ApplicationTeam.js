@@ -5,10 +5,6 @@
 
         FILTER : "application-team-member-list-filters",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/applications/{applicationId}/teams/{teamId}", this.index);
         },

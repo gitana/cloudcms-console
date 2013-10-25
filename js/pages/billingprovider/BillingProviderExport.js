@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.BillingProviderExport = Gitana.Console.Pages.AbstractExport.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/billingproviders/{billingProviderId}/export", this.index);
         },

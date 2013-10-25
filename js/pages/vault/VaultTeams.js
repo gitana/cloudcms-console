@@ -5,10 +5,6 @@
 
         FILTER : "vault-team-list-filters",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/vaults/{vaultId}/teams", this.index);
         },

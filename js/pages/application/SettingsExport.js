@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.SettingsExport = Gitana.Console.Pages.AbstractExport.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/applications/{applicationId}/settings/{settingsId}/export", this.index);
         },

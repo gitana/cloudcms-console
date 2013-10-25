@@ -3,10 +3,6 @@
         {
             TEMPLATE : "components/plot",
 
-            constructor: function(id, ratchet) {
-                this.base(id, ratchet);
-            },
-
             renderPlot: function(plot, loadedData) {
                 var self = this;
                 var generatedId = Ratchet.generateId() + "-jqplot";

@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.PlanImport = Gitana.Console.Pages.AbstractImport.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/registrars/{registrarId}/plans/{planId}/import", this.index);
         },

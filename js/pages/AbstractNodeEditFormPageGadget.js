@@ -1,10 +1,6 @@
 (function($) {
     Gitana.CMS.Pages.AbstractNodeEditFormPageGadget = Gitana.CMS.Pages.AbstractEditFormPageGadget.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setupNodeTypeForm : function (el, callback) {
             var self = this;
             var currentFormKey = self.targetObject().get(Gitana.CMS.NodeFormKey);

@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.DefinitionImport = Gitana.Console.Pages.AbstractImport.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/repositories/{repositoryId}/branches/{branchId}/definitions/{definitionId}/import", this.index);
         },

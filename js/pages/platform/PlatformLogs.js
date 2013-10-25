@@ -16,10 +16,6 @@
             }
         },
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/logs", this.index);
         },

@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.AbstractGitanaConsoleGadget = Gitana.Apps.AbstractGitanaAppGadget.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         handleUnauthorizedPageAccess: function(el ,error) {
             var self = this;
 

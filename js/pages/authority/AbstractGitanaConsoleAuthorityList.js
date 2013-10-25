@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.AbstractGitanaConsoleAuthorityListGadget = Gitana.CMS.Pages.AbstractListPageGadget.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         /** abstract methods **/
         targetObject: function() {
         },

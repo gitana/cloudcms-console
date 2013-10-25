@@ -1,11 +1,7 @@
 (function($) {
     Gitana.CMS.Components.Searchbar = Gitana.CMS.Components.AbstractComponentGadget.extend(
     {
-        TEMPLATE : "components/searchbar",
-
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        }
+        TEMPLATE : "components/searchbar"
     });
 
     Ratchet.GadgetRegistry.register("searchbar", Gitana.CMS.Components.Searchbar);

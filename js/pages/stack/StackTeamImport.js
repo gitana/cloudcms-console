@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.StackTeamImport = Gitana.Console.Pages.AbstractObjectTeamImport.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/stacks/{stackId}/teams/{teamId}/import", this.index);
         },

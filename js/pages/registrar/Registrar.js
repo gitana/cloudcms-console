@@ -1,9 +1,5 @@
 (function($) {
     Gitana.Console.Pages.Registrar = Gitana.CMS.Pages.AbstractDashboardPageGadget.extend({
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/registrars/{registrarId}", this.index);
         },

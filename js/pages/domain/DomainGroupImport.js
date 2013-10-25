@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.DomainGroupImport = Gitana.Console.Pages.AbstractImport.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/domains/{domainId}/groups/{groupId}/import", this.index);
         },

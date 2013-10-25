@@ -83,10 +83,6 @@
             });
         },
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/add/group", this.index);
             this.get("/groups/{groupId}/add/group", this.index);

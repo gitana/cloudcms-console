@@ -3,10 +3,6 @@
     {
         TEMPLATE : "components/tabs",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         index: function(el, callback) {
             var self = this;
 

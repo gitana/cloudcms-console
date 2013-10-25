@@ -5,10 +5,6 @@
 
         FILTER : "tenant-attachments-list-filters",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/registrars/{registrarId}/tenants/{tenantId}/manage/attachments", this.index);
         },

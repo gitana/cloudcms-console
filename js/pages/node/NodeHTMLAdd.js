@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.NodeHTMLAdd = Gitana.Console.Pages.NodeTextAdd.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         options: function() {
             var options = this.base();
 

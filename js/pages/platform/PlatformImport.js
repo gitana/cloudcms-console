@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.PlatformImport = Gitana.Console.Pages.AbstractImport.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/import", this.index);
             this.get("/import/{type}", this.index);

@@ -3,10 +3,6 @@
     {
         ROOT_KEY: "_features",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/repositories/{repositoryId}/branches/{branchId}/nodes/{nodeId}/add/feature", this.index);
         },

@@ -1,8 +1,5 @@
 (function($) {
     Gitana.Console.Pages.NodeTranslationAdd = Gitana.CMS.Pages.AbstractFormPageGadget.extend({
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
 
         setup: function() {
             this.get("/repositories/{repositoryId}/branches/{branchId}/nodes/{nodeId}/add/translation", this.index);

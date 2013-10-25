@@ -5,10 +5,6 @@
 
         FILTER : "subgroup-list-filters",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/groups/{groupId}", this.index);
         },

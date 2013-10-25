@@ -245,7 +245,7 @@
                         this.loadDeploymentInfo(deployedApplication.deploymentKey, function(info) {
 
                             var status = "Deployed and Running";
-                            if (!info.active)
+                            if (!info.descriptor.active)
                             {
                                 status = "Deployed and Stopped";
                             }

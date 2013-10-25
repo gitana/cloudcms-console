@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.FolderAttachmentsManage = Gitana.Console.Pages.NodeAttachmentsManage.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/repositories/{repositoryId}/branches/{branchId}/folders/{nodeId}/manage/attachments", this.index);
         },

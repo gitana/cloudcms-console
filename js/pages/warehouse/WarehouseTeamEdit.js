@@ -5,10 +5,6 @@
 
         EDIT_JSON_URI: "/warehouses/{warehouseId}/teams/{teamId}/edit/json",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         contextObject: function() {
             return this.warehouse();
         },

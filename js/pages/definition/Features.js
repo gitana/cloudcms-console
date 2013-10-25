@@ -5,10 +5,6 @@
 
         ROOT_KEY: "mandatoryFeatures",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/repositories/{repositoryId}/branches/{branchId}/definitions/{definitionId}/features", this.index);
         },

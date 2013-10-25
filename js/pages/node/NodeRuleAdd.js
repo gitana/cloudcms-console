@@ -3,10 +3,6 @@
     {
         SUBSCRIPTION : "node-rule-add",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         definitions: function(callback)
         {
             Gitana.Utils.Node.loadDefinitions(this.branch(), function(definitions) {

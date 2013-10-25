@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.BranchAdd = Gitana.CMS.Pages.AbstractFormPageGadget.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         schema: function() {
 
             return _mergeObject(this.base(), {

@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.UserProfile = Gitana.CMS.Pages.AbstractDashboardPageGadget.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/profile", this.index);
         },

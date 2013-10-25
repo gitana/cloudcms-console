@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.ApplicationImport = Gitana.Console.Pages.AbstractImport.extend(
         {
-            constructor: function(id, ratchet) {
-                this.base(id, ratchet);
-            },
-
             setup: function() {
                 this.get("/applications/{applicationId}/import", this.index);
             },

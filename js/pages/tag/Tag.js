@@ -1,8 +1,5 @@
 (function($) {
     Gitana.Console.Pages.Tag = Gitana.CMS.Pages.AbstractDashboardPageGadget.extend({
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
 
         setup: function() {
             this.get("/repositories/{repositoryId}/branches/{branchId}/tags/{nodeId}", this.index);

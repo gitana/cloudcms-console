@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.PlatformTeamImport = Gitana.Console.Pages.AbstractObjectTeamImport.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/teams/{teamId}/import", this.index);
         },

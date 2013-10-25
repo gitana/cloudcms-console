@@ -5,10 +5,6 @@
 
         FILTER : "stack-attachments-list-filters",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/stacks/{stackId}/manage/attachments", this.index);
         },

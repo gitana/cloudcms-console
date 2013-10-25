@@ -3,10 +3,6 @@
     {
         SUBSCRIPTION : "folder",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/repositories/{repositoryId}/branches/{branchId}/folders/{nodeId}", this.index);
         },

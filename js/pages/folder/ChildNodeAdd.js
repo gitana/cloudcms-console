@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.ChildNodeAdd = Gitana.Console.Pages.NodeAdd.extend(
         {
-            constructor: function(id, ratchet) {
-                this.base(id, ratchet);
-            },
-
             schema: function() {
 
                 return this.base();

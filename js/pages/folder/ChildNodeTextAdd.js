@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.ChildNodeTextAdd = Gitana.Console.Pages.NodeTextAdd.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/repositories/{repositoryId}/branches/{branchId}/folders/{nodeId}/add/textnode", this.index);
             this.get("/repositories/{repositoryId}/branches/{branchId}/children/{nodeId}/add/textnode", this.index);

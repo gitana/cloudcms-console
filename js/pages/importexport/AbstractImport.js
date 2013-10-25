@@ -14,10 +14,6 @@
                 }
             },
 
-            constructor: function(id, ratchet) {
-                this.base(id, ratchet);
-            },
-
             schema: function() {
                 var schema = {
                     "type" : "object",

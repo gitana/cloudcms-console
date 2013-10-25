@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.WarehouseImport = Gitana.Console.Pages.AbstractImport.extend(
         {
-            constructor: function(id, ratchet) {
-                this.base(id, ratchet);
-            },
-
             setup: function() {
                 this.get("/warehouses/{warehouseId}/import", this.index);
             },

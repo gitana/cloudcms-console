@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.BillingProviderImport = Gitana.Console.Pages.AbstractImport.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/billingproviders/{billingProviderId}/import", this.index);
         },

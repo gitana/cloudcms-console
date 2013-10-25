@@ -5,10 +5,6 @@
 
         FILTER : "changeset-list-filters",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/repositories/{repositoryId}/changesets", this.index);
         },
@@ -159,6 +155,15 @@
                                 }
                             });
                         }
+                        callback(value);
+                    }
+                },
+                {
+                    "title": "Timestamp",
+                    "type":"property",
+                    "sortingExpression": "_system.created_on.timestamp",
+                    "property": function(callback) {
+                        var value = this.getSystemMetadata()["created_on"]["timestamp"];
                         callback(value);
                     }
                 }

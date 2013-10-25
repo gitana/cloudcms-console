@@ -87,10 +87,6 @@
             };
         },
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/users/{userId}/edit", this.index);
         },

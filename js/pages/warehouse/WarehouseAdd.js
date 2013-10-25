@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.WarehouseAdd = Gitana.CMS.Pages.AbstractFormPageGadget.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         schema: function() {
 
             var schema = Alpaca.cloneObject(Gitana.Console.Schema.Warehouse);

@@ -5,10 +5,6 @@
 
         FILTER : "user-members-list-filters",
 
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/users/{userId}/manage/memberships", this.index);
         },

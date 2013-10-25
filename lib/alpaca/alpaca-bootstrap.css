@@ -69,6 +69,14 @@ address:
     padding-left: 6px;
 }
 
+/**
+ * Hide hidden messages
+ */
+.alpaca-controlfield-message-hidden
+{
+    display:none;
+}
+
 
 /*
 .alpaca-controlfield-helper-text
@@ -144,11 +152,6 @@ DIV.alpaca-controlfield-text .twitter-typeahead .tt-dropdown-menu P
 {
     background-color: #ccc;
     color: #333;
-}
-
-.alpaca-controlfield-message-hidden
-{
-    display:none;
 }
 
 .alpaca-controlfield-checkbox INPUT[type=checkbox]

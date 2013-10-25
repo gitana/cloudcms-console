@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.WebhostAdd = Gitana.CMS.Pages.AbstractFormPageGadget.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         schema: function() {
             return Alpaca.merge(this.base(), Gitana.Console.Schema.Webhost);
         },

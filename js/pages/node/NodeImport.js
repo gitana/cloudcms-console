@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.NodeImport = Gitana.Console.Pages.AbstractImport.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         setup: function() {
             this.get("/repositories/{repositoryId}/branches/{branchId}/nodes/{nodeId}/import", this.index);
         },

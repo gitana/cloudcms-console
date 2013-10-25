@@ -1,10 +1,6 @@
 (function($) {
     Gitana.Console.Pages.AuthenticationGrantAdd = Gitana.CMS.Pages.AbstractFormPageGadget.extend(
     {
-        constructor: function(id, ratchet) {
-            this.base(id, ratchet);
-        },
-
         schema: function() {
             return _mergeObject(this.base(),Gitana.Console.Schema.AuthenticationGrant);
         },

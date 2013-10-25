@@ -7,12 +7,6 @@
 
         SUBSCRIPTION: "error",
 
-        constructor: function(id, ratchet) {
-            var self = this;
-
-            this.base(id, ratchet);
-        },
-        
         setup: function() {
             this.get(this.DEFAULT_URL, this.index);
         },
