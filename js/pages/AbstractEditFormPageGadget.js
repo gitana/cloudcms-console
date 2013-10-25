@@ -142,10 +142,12 @@
 
                     self.editor = control.getEditor();
 
+                    // this is to force resizing in a way that is compatible with the console's processJSON phase
                     window.setTimeout(function() {
                         self.editor.setValue(self.editor.getValue());
                         self.editor.clearSelection();
-                    }, 200);
+                        self.editor.getSession().getUndoManager().reset();
+                    }, 100);
 
                     control.getEl().css('border', 'none');
 
