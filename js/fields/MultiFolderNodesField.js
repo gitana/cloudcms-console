@@ -66,12 +66,18 @@
         /**
          * @see Alpaca.Fields.TextField#postRender
          */
-        postRender: function() {
-            this.base();
-            // apply additional css
-            if (this.fieldContainer) {
-                this.fieldContainer.addClass("alpaca-controlfield-multifoldernodes");
-            }
+        postRender: function(callback)
+        {
+            var self = this;
+
+            this.base(function() {
+
+                // apply additional css
+                if (self.fieldContainer) {
+                    self.fieldContainer.addClass("alpaca-controlfield-multifoldernodes");
+                }
+
+            });
         },
 
         /**

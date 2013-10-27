@@ -125,14 +125,17 @@
         /**
          * @see Alpaca.Fields.TextField#postRender
          */
-        postRender: function() {
-            this.base();
+        postRender: function(callback)
+        {
             var self = this;
-            $('<button class="gitana-picker-button">Select...</button>').button({
-                icons: {
-                    primary:'ui-icon-person'
-                }
-            }).click(function() {
+
+            this.base(function() {
+
+                $('<button class="gitana-picker-button">Select...</button>').button({
+                    icons: {
+                        primary:'ui-icon-person'
+                    }
+                }).click(function() {
                     $(".ui-dialog").remove();
                     $('div[gadget="principalselector"]').show().dialog({
                         title : "<div><img src='" + Gitana.Utils.Image.buildImageUri('objects', 'authentication-grant', 20) + "'/>Cloud CMS Principal Picker</div>",
@@ -141,7 +144,10 @@
                         height: 600,
                         modal: true
                     }).height('auto');
-            }).insertAfter(this.field);
+                }).insertAfter(self.field);
+
+                callback();
+            });
         },
 
         /**
