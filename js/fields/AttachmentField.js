@@ -444,8 +444,10 @@
         /**
          * @see Alpaca.Fields.TextField#postRender
          */
-        postRender: function() {
+        postRender: function(callback)
+        {
             var _this = this;
+
             var field = this.field;
             var outerEl = _this.getEl();
             this.fileUploadOptions = {
@@ -506,11 +508,15 @@
 
             this.renderAttachments();
 
-            this.base();
-            // apply additional css
-            if (this.fieldContainer) {
-                this.fieldContainer.addClass("alpaca-controlfield-file");
-            }
+            this.base(function() {
+
+                // apply additional css
+                if (_this.fieldContainer) {
+                    _this.fieldContainer.addClass("alpaca-controlfield-file");
+                }
+
+                callback();
+            });
 
         },
 

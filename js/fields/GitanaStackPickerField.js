@@ -98,43 +98,49 @@
         /**
          * @see Alpaca.Fields.TextField#postRender
          */
-        postRender: function() {
-            this.base();
+        postRender: function(callback)
+        {
             var self = this;
-            $('<button class="gitana-picker-button">Select...</button>').button({
-                icons: {
-                    primary:'ui-icon-document'
-                }
-            }).click(function() {
 
-                // make sure we only insert once
-                var el = $('<div gadget="stackselector"></div>').hide().insertAfter(self.field);
-                var ratchet = $(el).ratchet();
-                ratchet.run();
+            this.base(function() {
 
-                // TODO: we need some way to wait for ratchet to finish render...
-                window.setTimeout(function() {
-
-                    $(el).show();
-
-                    var dialog = Gitana.Utils.UI.modalOpen({
-                        "title": "Select a Stack",
-                        "body": el,
-                        "width": 700
-                    });
-
-                    for (var i = 0; i < ratchet.gadgetInstances.length; i++)
-                    {
-                        ratchet.gadgetInstances[i].selectHandler = function(stackId, title) {
-                            $(dialog).dialog("close");
-                            $(self.field).val(stackId).blur().focus();
-                            $(self.field).trigger("change");
-                        }
+                $('<button class="gitana-picker-button">Select...</button>').button({
+                    icons: {
+                        primary:'ui-icon-document'
                     }
+                }).click(function() {
 
-                }, 1000);
+                    // make sure we only insert once
+                    var el = $('<div gadget="stackselector"></div>').hide().insertAfter(self.field);
+                    var ratchet = $(el).ratchet();
+                    ratchet.run();
 
-            }).insertAfter(this.field);
+                    // TODO: we need some way to wait for ratchet to finish render...
+                    window.setTimeout(function() {
+
+                        $(el).show();
+
+                        var dialog = Gitana.Utils.UI.modalOpen({
+                            "title": "Select a Stack",
+                            "body": el,
+                            "width": 700
+                        });
+
+                        for (var i = 0; i < ratchet.gadgetInstances.length; i++)
+                        {
+                            ratchet.gadgetInstances[i].selectHandler = function(stackId, title) {
+                                $(dialog).dialog("close");
+                                $(self.field).val(stackId).blur().focus();
+                                $(self.field).trigger("change");
+                            }
+                        }
+
+                    }, 1000);
+
+                }).insertAfter(self.field);
+
+                callback();
+            });
         },
 
         /**

@@ -57,13 +57,6 @@
             },
 
             /**
-             * @see Alpaca.Fields.ObjectField#postRender
-             */
-            postRender: function() {
-                this.base();
-            },
-
-            /**
              * @see Alpaca.Fields.ObjectField#getTitle
              */
             getTitle: function() {

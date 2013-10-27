@@ -42,24 +42,30 @@
         /**
          * @see Alpaca.Fields.TextAreaField#postRender
          */
-    	postRender: function() {
-            this.base();
-			// see if we can render jWysiwyg
-			if (this.field.elrte) {
+    	postRender: function(callback)
+        {
+            var self = this;
 
-                this.field.addClass('alpaca-controlfield-elrte');
+            this.base(function() {
 
-                var opts = {
-                    cssClass : 'el-rte',
-                    // lang     : 'ru',
-                    height   : 450,
-                    toolbar  : 'complete',
-                    cssfiles : ['console/css/thirdparty/jquery/elrte/css/elrte-inner.css']
-                };
-                $('body').bind('form-rendered', function(event, param) {
-                    $('.alpaca-controlfield-elrte').elrte(opts);
-                });
-            }
+                // see if we can render jWysiwyg
+                if (self.field.elrte) {
+
+                    self.field.addClass('alpaca-controlfield-elrte');
+
+                    var opts = {
+                        cssClass : 'el-rte',
+                        // lang     : 'ru',
+                        height   : 450,
+                        toolbar  : 'complete',
+                        cssfiles : ['console/css/thirdparty/jquery/elrte/css/elrte-inner.css']
+                    };
+                    $('body').bind('form-rendered', function(event, param) {
+                        $('.alpaca-controlfield-elrte').elrte(opts);
+                    });
+                }
+
+            });
         },
 
 		/**
