@@ -283,6 +283,24 @@
             ]);
         },
 
+        "EmailProviders" : function(self , el) {
+            return $.merge(this.Application(self, el), [
+                {
+                    "text" : "Email Providers List",
+                    "link" : self.LIST_LINK().call(self,'emailproviders')
+                }
+            ]);
+        },
+
+        "EmailProvider" : function(self , el) {
+            return $.merge(this.EmailProviders(self, el), [
+                {
+                    "text" : self.friendlyTitle(self.emailProvider()),
+                    "link" : self.LINK().call(self,self.emailProvider())
+                }
+            ]);
+        },
+
         "Warehouses" : function(self , el) {
             return $.merge(this.Platform(self, el), [
                 {

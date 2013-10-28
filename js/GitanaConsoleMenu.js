@@ -554,6 +554,25 @@
             };
         },
 
+        "EmailProvider" : function(self , current) {
+            var defaultItem = "menu-emailprovider-dashboard";
+            var current = current ? current : defaultItem;
+            return {
+                "items": [{
+                    "id": "menu-emailprovider-header",
+                    "title": "Email Provider",
+                    "header": true,
+                    "items": [{
+                        "id" : "menu-emailprovider-dashboard",
+                        "link" : "#" + self.link(self.settings()),
+                        "title" : "Dashboard",
+                        "icon" : Gitana.Utils.Image.buildImageUri('objects', 'emailprovider', 16),
+                        "current" : current == defaultItem
+                    }]
+                }]
+            };
+        },
+
         "Application" : function(self , current) {
             var defaultItem = "menu-application-dashboard";
             var current = current ? current : "menu-application-dashboard";
@@ -583,9 +602,15 @@
                     "items": [{
                         "id" : "menu-application-settings",
                         "link" : "#" + self.listLink('settings'),
-                        "title" : "Settings List",
+                        "title" : "Settings",
                         "icon" :  Gitana.Utils.Image.buildImageUri('objects', 'settings', 16),
                         "current" : current == "menu-application-settings"
+                    },{
+                        "id" : "menu-application-emailproviders",
+                        "link" : "#" + self.listLink('emailproviders'),
+                        "title" : "Email Providers",
+                        "icon" :  Gitana.Utils.Image.buildImageUri('objects', 'emailproviders', 16),
+                        "current" : current == "menu-application-emailproviders"
                     }]
                 }]
             };

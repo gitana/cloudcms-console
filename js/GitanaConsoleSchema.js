@@ -1,6 +1,35 @@
 (function($) {
 
     Gitana.Console.Schema = {
+        "EmailProvider" : {
+            "type" : "object",
+            "properties" : {
+                "host": {
+                    "type": "string"
+                },
+                "port": {
+                    "type": "number"
+                },
+                "smtp_enabled": {
+                    "type": "boolean"
+                },
+                "smtp_is_secure": {
+                    "type": "boolean"
+                },
+                "smtp_starttls_enabled": {
+                    "type": "boolean"
+                },
+                "smtp_requires_auth": {
+                    "type": "boolean"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
         "Settings" : {
             "type" : "object",
             "properties" : {
@@ -943,6 +972,42 @@
     };
 
     Gitana.Console.Options = {
+        "EmailProvider" : {
+            "fields" : {
+                "host": {
+                    "type": "text",
+                    "label": "Email Server Host"
+                },
+                "port": {
+                    "type": "integer",
+                    "label": "Email Server Port"
+                },
+                "smtp_enabled": {
+                    "type": "checkbox",
+                    "label": "Connect via SMTP"
+                },
+                "smtp_is_secure": {
+                    "type": "checkbox",
+                    "label": "SMTP Server requires SSL"
+                },
+                "smtp_starttls_enabled": {
+                    "type": "checkbox",
+                    "label": "SMTP Server requires STARTTLS"
+                },
+                "smtp_requires_auth": {
+                    "type": "checkbox",
+                    "label": "SMTP Server requires authentication"
+                },
+                "username": {
+                    "type": "text",
+                    "label": "Authentication Username"
+                },
+                "password": {
+                    "type": "password",
+                    "label": "Authentication Password"
+                }
+            }
+        },
         "Settings" : {
             "fields" : {
                 "id" : {

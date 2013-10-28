@@ -105,6 +105,14 @@
             this.observable("settings").clear();
         },
 
+        emailProvider: function() {
+            return this._observable("emailProvider", arguments);
+        },
+
+        clearEmailProvider: function() {
+            this.observable("emailProvider").clear();
+        },
+
         registrar: function() {
             return this._observable("registrar", arguments);
         },
