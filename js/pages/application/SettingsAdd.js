@@ -68,7 +68,7 @@
         },
 
         setupMenu: function() {
-            this.menu(Gitana.Console.Menu.Application(this, "menu-application-settingss"));
+            this.menu(Gitana.Console.Menu.Application(this, "menu-application-settings"));
         },
 
         setupBreadcrumb: function() {

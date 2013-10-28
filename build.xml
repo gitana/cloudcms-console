@@ -331,6 +331,12 @@
                 <file name="pages/application/Setting.js"/>
                 <file name="pages/application/SettingsExport.js"/>
 
+                <file name="pages/application/EmailProviders.js"/>
+                <file name="pages/application/EmailProviderAdd.js"/>
+                <file name="pages/application/EmailProviderEdit.js"/>
+                <file name="pages/application/EmailProvider.js"/>
+                <file name="pages/application/EmailProviderExport.js"/>
+
                 <file name="pages/warehouse/Warehouses.js"/>
                 <file name="pages/warehouse/Warehouse.js"/>
                 <file name="pages/warehouse/WarehouseAdd.js"/>
