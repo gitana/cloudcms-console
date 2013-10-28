@@ -135,9 +135,9 @@
                     this.then(function() {
                         this.each(function() {
                             if ($.inArray(this.getId(),memberIds) != -1) {
-                                _this[this.getId()]['isMember'] = true;
+                                this['isMember'] = true;
                             } else {
-                                _this[this.getId()]['isMember'] = false;
+                                this['isMember'] = false;
                             }
                         }).then(function() {
                             callback.call(this);

@@ -359,6 +359,9 @@
                             var value = renderedField.childrenByPropertyId["query"].getEditor().getValue();
                             renderedField.childrenByPropertyId["query"].getEditor().setValue("");
                             renderedField.childrenByPropertyId["query"].getEditor().setValue(value);
+                            renderedField.childrenByPropertyId["query"].getEditor().clearSelection();
+                            renderedField.childrenByPropertyId["query"].getEditor().getSession().getUndoManager().reset();
+
                         }, 500);
 
                     }).appendTo($('#column-4', renderedField.outerEl));
@@ -367,6 +370,10 @@
 
         filterDefaultData : function(el) {
             var defaultData = this.filterEmptyData(el);
+            if (!defaultData.query)
+            {
+                defaultData.query = "{\n\n}";
+            }
 
             var targetObservable = Alpaca.isFunction(this.FILTER) ? this.FILTER() : this.FILTER;
 

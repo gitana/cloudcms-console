@@ -405,12 +405,11 @@
                                 return self.handlePageError(el, error);
                             }).then(function() {
                                 this.listMemberships(false).then(function(){
-                                    _this = this;
                                     this.each(function() {
-                                        _this[this.getId()]['isMember'] = true;
+                                        this['isMember'] = true;
                                     }).then(function() {
-                                            callback.call(this);
-                                        });
+                                        callback.call(this);
+                                    });
                                 });
                             });
                     } else {
@@ -438,9 +437,9 @@
                                     this.each(
                                         function() {
                                             if ($.inArray(this.getId(), memberIds) != -1) {
-                                                _this[this.getId()]['isMember'] = true;
+                                                this['isMember'] = true;
                                             } else {
-                                                _this[this.getId()]['isMember'] = false;
+                                                this['isMember'] = false;
                                             }
                                         }).then(function() {
                                             callback.call(this);
@@ -560,29 +559,6 @@
                             $('span', $(control)).html('Join');
                         });
                 });
-
-                /*
-                 $("body").undelegate(".member-selection", "click").delegate(".member-selection", "click", function() {
-                 var control = $(this);
-                 var groupId = control.val();
-                 var option = control.is(':checked');
-                 if (option) {
-                 Gitana.Utils.UI.block('Adding membership ' + groupId + '...');
-                 Chain(self.contextObject()).trap(function() {
-
-                 }).addMember(groupId,self.targetObject()).then(function() {
-                 Gitana.Utils.UI.unblock();
-                 });
-                 } else {
-                 Gitana.Utils.UI.block('Removing membership ' + groupId + '...');
-                 Chain(self.contextObject()).trap(function() {
-
-                 }).removeMember(groupId,self.targetObject()).then(function() {
-                 Gitana.Utils.UI.unblock();
-                 });
-                 }
-                 })
-                 */
             },
 
             setupDashlets : function (el, callback) {

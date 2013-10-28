@@ -292,9 +292,8 @@
                                 var indirect = null;
                                 var _this;
                                 this.listMembers(self.targetObject(), null, self.pagination(), indirect).then(function() {
-                                    _this = this;
                                     this.each(function() {
-                                        _this[this.getId()]['isMember'] = true;
+                                        this['isMember'] = true;
                                     }).then(function() {
                                         callback.call(this);
                                     });
@@ -343,12 +342,12 @@
                                     this.each(
                                         function() {
                                             if ($.inArray(this.getId(), memberIds) != -1) {
-                                                _this[this.getId()]['isMember'] = true;
+                                                this['isMember'] = true;
                                                 if (indirect && $.inArray(this.getId(), directMemberIds) == -1) {
-                                                    _this[this.getId()]['isIndirectMember'] = true;
+                                                    this['isIndirectMember'] = true;
                                                 }
                                             } else {
-                                                _this[this.getId()]['isMember'] = false;
+                                                this['isMember'] = false;
                                             }
                                         }).then(function() {
                                             callback.call(this);
