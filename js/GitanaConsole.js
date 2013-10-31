@@ -69,7 +69,7 @@
 
 
     Gitana.Console.Messages = {
-        "NON_AUTHORIZED_PAGE" : "You are not authorized to view this page!"
+        "NON_AUTHORIZED_PAGE" : "You are not authorized to view this page."
     };
 
     Gitana.Console.AUTHORITIES = {

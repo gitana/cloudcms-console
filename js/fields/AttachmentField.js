@@ -247,8 +247,12 @@
                  uriPrefix = "";
              }
 
-             var thumbnailUrl = this.context.getDriver().baseURL + this.context.getUri() + uriPrefix + "/preview/" + attachmentId + "" + size + "?size=" + size + "&attachment=" + attachmentId;
-             thumbnailUrl = _previewFallback(thumbnailUrl);
+             var thumbnailUrl = this.context.getDriver().baseURL + this.context.getUri() + "/preview/console-attachment-" + this.getId() + "?attachment=" + this.getId() + "&size=64&mimetype=image/jpeg";
+             if (attachmentId.indexOf("_preview") == 0)
+             {
+                 thumbnailUrl = this.getDriver().baseURL + this.getUri();
+             }
+             thumbnailUrl = _previewMimetypeFallback(thumbnailUrl);
 
              return this.getAuthorizedUrl(thumbnailUrl);
          },
@@ -519,77 +523,6 @@
             });
 
         },
-
-        /*
-        renderThumbnails : function (thumbnails) {
-            var _this = this;
-            if (thumbnails.length > 0) {
-                $('.fileupload-thumbnails', this.getEl()).button({
-                    icons: {
-                        primary:'ui-icon-image'
-                    }
-                }).click(function() {
-                    var images = []
-                    $.each(thumbnails, function(index, thumbnail) {
-                        images.push({
-                            'image' : thumbnail.url,
-                            'title' : "Thumbnail " + thumbnail.id,
-                            'description' : "<a href='"+thumbnail.url+"' target='_blank'>Download ("+thumbnail.size+")</a>"
-                        });
-                    });
-                    var tempDiv = $('<div class="ui-widget-header" style="padding:5px;"></div>');
-                    $('.fileupload-slideshow',_this.getEl()).empty().append(tempDiv);
-                    tempDiv.galleria({
-                        data_source: images,
-                        width:600,
-                        height:400,
-                        margin: 'auto',
-                        lightbox: true,
-                        extend: function(options) {
-                        }
-                    });
-                    $('.galleria-container',tempDiv).css('margin','auto');
-                }).show();
-            } else {
-                $('.fileupload-thumbnails', this.getEl()).button('disable');
-            }
-        },
-
-        renderPreview : function (previews) {
-            var _this = this;
-            if (previews.length > 0) {
-                $('.fileupload-preview', this.getEl()).button({
-                    icons: {
-                        primary:'ui-icon-image'
-                    }
-                }).click(function() {
-                    var images = []
-                    $.each(previews, function(index, thumbnail) {
-                        var pageNumber = parseInt(index)+1;
-                        images.push({
-                            'image' : thumbnail.url,
-                            'title' : "Page " + pageNumber,
-                            'description' : "<a href='"+thumbnail.url+"' target='_blank'>Download ("+thumbnail.size+")</a>"
-                        });
-                    });
-                    var tempDiv = $('<div class="ui-widget-header" style="padding:5px;"></div>');
-                    $('.fileupload-slideshow',_this.getEl()).empty().append(tempDiv);
-                    tempDiv.galleria({
-                        data_source: images,
-                        width:600,
-                        height:400,
-                        margin: 'auto',
-                        lightbox: true,
-                        extend: function(options) {
-                        }
-                    });
-                    $('.galleria-container',tempDiv).css('margin','auto');
-                }).show();
-            } else {
-                $('.fileupload-preview', this.getEl()).button('disable');
-            }
-        },
-        */
 
         /**
          * Renders all attachments of the attachable

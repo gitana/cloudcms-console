@@ -66,6 +66,7 @@
 
                         var formVal = form.getValue();
 
+                        form.renderValidationState(true);
                         if (form.isValid(true)) {
 
                             self.createNode(formVal);
@@ -88,7 +89,7 @@
 
             var page = {
                 "title" : "New JSON Node",
-                "description" : "Create a new json node of branch " + this.friendlyTitle(this.branch()) + ".",
+                "description" : "Create a node by providing its JSON source",
                 "forms" :[
                     {
                         "id" : "node-add",

@@ -761,13 +761,20 @@
                 application.then(function() {
 
                     var settingsId = el.tokens["settingsId"];
-
-                    if (settingsId) {
+                    if (settingsId)
+                    {
                         this.readSettings(settingsId).then(function() {
                             self.settings(this);
                         });
                     }
 
+                    var emailProviderId = el.tokens["emailProviderId"];
+                    if (emailProviderId)
+                    {
+                        this.readEmailProvider(emailProviderId).then(function() {
+                            self.emailProvider(this);
+                        });
+                    }
 
                     loadObjectTeam(this);
 
@@ -1227,6 +1234,12 @@
                     case 'Gitana.Settings':
 
                         link += this.listLink('settings');
+
+                        break;
+
+                    case 'Gitana.EmailProvider':
+
+                        link += this.listLink('emailproviders');
 
                         break;
 
@@ -1714,6 +1727,12 @@
                     case 'settings':
 
                         link += "applications/"+ this.application().getId() + "/settings/";
+
+                        break;
+
+                    case 'emailproviders':
+
+                        link += "applications/"+ this.application().getId() + "/emailproviders/";
 
                         break;
 

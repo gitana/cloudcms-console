@@ -29,8 +29,8 @@
         schema: function() {
 
             var schema = Alpaca.cloneObject(Gitana.Console.Schema.EmailProvider);
-            
-            _mergeObject(schema,this.base());
+
+            schema = _mergeObject(this.base(),schema);
 
             return schema;
         },
@@ -41,7 +41,7 @@
 
             var options = Alpaca.cloneObject(Gitana.Console.Options.EmailProvider);
             
-            _mergeObject(options,this.base());
+            options = _mergeObject(this.base(),options);
 
             return options;
         },
@@ -74,6 +74,10 @@
                         if (form.isValid(true)) {
                             Gitana.Utils.UI.block("Updating Email Provider ...");
 
+                            if (!formVal.port || formVal.port == "-1") {
+                                formVal.port = "";
+                            }
+
                             _mergeObject(emailProvider,formVal);
 
                             emailProvider.update().then(function() {
@@ -93,7 +97,7 @@
             return  {
                 "id": "edit",
                 "title": "Edit Email Provider",
-                "icon" : Gitana.Utils.Image.buildImageUri('objects', 'emailprovider-edit', 48),
+                "icon" : Gitana.Utils.Image.buildImageUri('objects', 'emailprovider', 48),
                 "url" : this.LINK().call(this,this.targetObject(), 'edit')
             };
         },
@@ -102,7 +106,7 @@
             return {
                 "id" : "emailprovider-edit",
                 "title" : "Edit Email Provider",
-                "icon" : Gitana.Utils.Image.buildImageUri('objects', 'emailprovider-edit', 24),
+                "icon" : Gitana.Utils.Image.buildImageUri('objects', 'emailprovider', 24),
                 "buttons" :[
                     {
                         "id" : "emailprovider-edit-save",

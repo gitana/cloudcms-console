@@ -1,24 +1,16 @@
 (function($) {
     Gitana.Console.Pages.EmailProviderAdd = Gitana.CMS.Pages.AbstractFormPageGadget.extend(
     {
-        schema: function() {
-
+        schema: function()
+        {
             var schema = Alpaca.cloneObject(Gitana.Console.Schema.EmailProvider);
-
-            _mergeObject(schema,this.base());
-
-            return schema;
+            return _mergeObject(this.base(), schema);
         },
 
-        options: function() {
-
-            var self = this;
-
+        options: function()
+        {
             var options = Alpaca.cloneObject(Gitana.Console.Options.EmailProvider);
-
-            _mergeObject(options,this.base());
-
-            return options;
+            return _mergeObject(this.base(), options);
         },
 
         setup: function() {
@@ -43,7 +35,7 @@
         },
 
         setupBreadcrumb: function() {
-            return this.breadcrumb($.merge(Gitana.Console.Breadcrumb.EmailProvider(this), [
+            return this.breadcrumb($.merge(Gitana.Console.Breadcrumb.Application(this), [
                 {
                     "text" : "New Email Provider"
                 }
@@ -64,8 +56,12 @@
 
                         form.showHiddenMessages();
 
-                        var formVal = form.getValue();
                         if (form.isValid(true)) {
+
+                            var formVal = form.getValue();
+                            if (!formVal.port || formVal.port == "-1") {
+                                formVal.port = "";
+                            }
 
                             Gitana.Utils.UI.block("Creating Email Provider...");
 
@@ -95,7 +91,7 @@
                 "forms" :[{
                     "id" : "emailprovider-add",
                     "title" : "Create A New Email Provider",
-                    "icon" : Gitana.Utils.Image.buildImageUri('objects', 'emailprovider-add', 24),
+                    "icon" : Gitana.Utils.Image.buildImageUri('objects', 'emailprovider', 24),
                     "buttons" :[
                         {
                             "id" : "emailprovider-add-create",

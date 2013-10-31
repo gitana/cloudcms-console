@@ -20,14 +20,16 @@
          * @param {Object|String} view Field view.
          * @param {Alpaca.Connector} connector Field connector.
          */
-        constructor: function(container, data, options, schema, view, connector) {
+        constructor: function(container, data, options, schema, view, connector)
+        {
             this.base(container, data, options, schema, view, connector);
         },
 
         /**
          * @see Alpaca.Fields.TextField#setup
          */
-        setup: function() {
+        setup: function()
+        {
             this.base();
 
             this.controlFieldTemplateDescriptor = this.view.getTemplateDescriptor("controlFieldMultiNodes");
@@ -40,109 +42,77 @@
             }
         },
 
+        branch: function()
+        {
+            return Chain(this.context);
+        },
+
         /**
-         *
+         * @override
          */
-        getUploadTemplate: function() {
+        getUploadTemplate: function()
+        {
             return this.wrapTemplate("multiNodesUploadTemplate");
         },
 
         /**
-         *
+         * @override
          */
-        getDownloadTemplate: function() {
+        getDownloadTemplate: function()
+        {
             return this.wrapTemplate("multiNodesDownloadTemplate");
         },
 
         /**
-         *
+         * @override
          */
-        onFileUploadChange: function (e, data) {
+        onFileUploadChange: function (e, data)
+        {
             this.base(e, data);
+
             if ($('tr.template-upload', this.field).length > 0) {
                 $('tr.template-upload:last', this.field).css('border-bottom', '1px solid #ccc');
             }
         },
 
-        onFileUploadFail: function (e, data) {
+        /**
+         * @override
+         */
+        onFileUploadFail: function (e, data)
+        {
             this.base(e, data);
+
             if ($('tr.template-upload', this.field).length <= 2) {
                 $('tr.template-upload', this.field).css('border-bottom', 'none');
             }
         },
 
-        onNodeCreated: function (node,index,context) {
-
+        /**
+         * @override
+         */
+        onNodeCreated: function(node,index)
+        {
+            // nothing
         },
-
-        /*
-        renderPreview : function (previews) {
-            var _this = this;
-            var images = [];
-            $.each(previews, function(index, thumbnail) {
-                var pageNumber = parseInt(index) + 1;
-                images.push({
-                    'image' : thumbnail.url,
-                    'title' : "Page " + pageNumber,
-                    'description' : "<a href='" + thumbnail.url + "' target='_blank'>Download (" + thumbnail.size + ")</a>"
-                });
-            });
-            var tempDiv = $('<div class="ui-widget-header" style="padding:5px;"></div>');
-            $('.fileupload-slideshow', _this.getEl()).empty().append(tempDiv);
-            tempDiv.galleria({
-                data_source: images,
-                width:600,
-                height:400,
-                margin: 'auto',
-                lightbox: true,
-                extend: function(options) {
-                }
-            });
-            $('.galleria-container', tempDiv).css('margin', 'auto');
-        },
-
-        renderThumbnails : function (previews) {
-            var _this = this;
-            var images = []
-            $.each(previews, function(index, thumbnail) {
-                images.push({
-                    'image' : thumbnail.url,
-                    'title' : "Thumbnail " + thumbnail.id,
-                    'description' : "<a href='" + thumbnail.url + "' target='_blank'>Download (" + thumbnail.size + ")</a>"
-                });
-            });
-            var tempDiv = $('<div class="ui-widget-header" style="padding:5px;"></div>');
-            $('.fileupload-slideshow', _this.getEl()).empty().append(tempDiv);
-            tempDiv.galleria({
-                data_source: images,
-                width:600,
-                height:400,
-                margin: 'auto',
-                lightbox: true,
-                extend: function(options) {
-                }
-            });
-            $('.galleria-container', tempDiv).css('margin', 'auto');
-        },
-        */
 
         /**
-         *
          * @param e
          */
-        onFileUploadStart: function (e) {
+        onFileUploadStart: function (e)
+        {
             Gitana.Utils.UI.block('Uploading File(s)...');
         },
 
         /**
-         *
          * @param e
          */
-        onFileUploadStop: function (e) {
+        onFileUploadStop: function (e)
+        {
            Gitana.Utils.UI.unblock();
         },
 
         /**
+         * This method converts the Gitana row response to the format that the file upload plugin expects.
          *
          * @param e
          * @param data
@@ -150,106 +120,60 @@
          */
         onFileUploadDone: function (e, data, fileUpload) {
 
-            fileUpload = this.fileUpload.data("blueimp-fileupload");
+            var self = this;
 
-            var _this = this;
-            var gitanaResults = data.result;
-            data.result = [];
-            var loadedExpectedResults = [];
-            if (gitanaResults.total_rows > 0) {
-                var branch = _this.context.branch ? _this.context.branch() : _this.context.getBranch();
-                //console.log("Prepare download files");
-                $.each(gitanaResults.rows, function(index, result) {
-                    var nodeId = result['_doc'];
-                    //console.log("Node : " + nodeId);
-                    data.result.push({
-                        "loaded" : false
-                    });
-                    branch.readNode(nodeId).then(function() {
-                        var node = this;
-                        // add a post processing callback
-                        _this.onNodeCreated(node, index , _this.context);
-                        var nodeUrl;
-                        if (_this.nodeUrl) {
-                            nodeUrl = _this.nodeUrl(node.getId());
-                        } else {
-                            nodeUrl = node.getProxiedUri();
-                        }
-                        var expectedResult = {
-                            "title": node.getTitle(),
-                            "size": 0,
-                            "type": '',
-                            "url": nodeUrl,
-                            "delete_url":  node.getProxiedUri(),
-                            "delete_type": "DELETE",
-                            "attachmentId" : "default"
-                        };
+            var branch = self.branch();
 
-                        /*
-                        var driver = node.getDriver();
-                        var options = {
-                            "url" : node.getProxiedUri(),
-                            "type" : "DELETE"
-                        }
-                        Gitana.oAuth.prepareJQueryAjaxRequest(driver, options);
-                        expectedResult['oauth_header'] = JSON.stringify(options.headers, null, ' ');
-                        */
-                        var thumbnails = [];
-                        var previews = [];
-                        var attachments = [];
-                        node.attachment('default').then(function() {
-                            var attachment = this;
-                            attachments.push({
-                                "id"  : attachment.getId(),
-                                "type" : attachment.getContentType(),
-                                "size" : Math.round(attachment.getLength() / 10.24) / 100 + ' KB',
-                                "url"  : attachment.getDownloadUri(),
-                                "name" : attachment.getFilename()
-                            });
-                        }).then(function() {
-                            expectedResult.loaded = true;
-                            expectedResult.thumbnails = thumbnails;
-                            expectedResult.previews = previews;
-                            expectedResult.attachments = attachments;
-                            loadedExpectedResults.push(expectedResult);
-                            if (loadedExpectedResults.length == gitanaResults.total_rows) {
-                                if (data.context) {
-                                    data.context.each(function (index) {
-                                        var file = ($.isArray(loadedExpectedResults) &&
-                                                loadedExpectedResults[index]) || {error: 'emptyResult'};
-                                        if (file.error) {
-                                            fileUpload._adjustMaxNumberOfFiles(1);
-                                        }
-                                        //.replaceAll(this)
-                                        fileUpload._renderDownload([file])
-                                                .css('display', 'none')
-                                                .appendTo($('.files'))
-                                                .fadeIn(function () {
-                                            // Fix for IE7 and lower:
-                                            $(this).show();
-                                            $('.fileupload-preview',$(this)).click(function() {
-                                                _this.renderPreview(loadedExpectedResults[index].previews);
-                                            });
-                                            $('.fileupload-thumbnails',$(this)).click(function() {
-                                                _this.renderThumbnails(loadedExpectedResults[index].thumbnails);
-                                            });
-                                        });
-                                    });
-                                } else {
-                                    fileUpload._renderDownload(loadedExpectedResults)
-                                            .css('display', 'none')
-                                            .appendTo($(this).find('.files'))
-                                            .fadeIn(function () {
-                                        // Fix for IE7 and lower:
-                                        $(this).show();
-                                    });
-                                }
-                            }
-                        });
-                    });
+            var files = [];
+
+            for (var i = 0; i < data.result.rows.length; i++)
+            {
+                var row = data.result.rows[i];
+                var currentFile = data.files[i];
+
+                var nodeId = row["_doc"];
+                var attachmentId = currentFile["attachmentId"];
+
+                // we read the node here to fire the callback, but this is done async
+                Chain(branch).readNode(nodeId).then(function() {
+                    self.onNodeCreated.call(self, this, i);
                 });
-                fileUpload._adjustMaxNumberOfFiles(gitanaResults.total_rows);
+
+                var nodeUrl = branch.getDriver().baseURL + branch.getUri() + "/nodes/" + nodeId;
+
+                var thumbnailUrl = nodeUrl + "/preview/console-attachment-" + attachmentId + "?attachment=default&size=64&mimetype=image/jpeg";
+                if (attachmentId.indexOf("_preview") == 0)
+                {
+                    thumbnailUrl = nodeUrl + "/attachments/" + attachmentId;
+                }
+                thumbnailUrl = _previewMimetypeFallback(thumbnailUrl);
+
+                var browseUrl = "#/repositories/" + branch.getRepositoryId() + "/branches/" + branch.getId() + "/nodes/" + nodeId;
+
+                // the new file
+                var file = {
+                    "name": currentFile.name,
+                    "size": currentFile.size,
+                    "type": currentFile.type,
+                    "url": nodeUrl,
+                    "thumbnail_url": thumbnailUrl,
+                    "browse_url": browseUrl,
+                    "delete_url": nodeUrl,
+                    "delete_type": "DELETE",
+                    "attachmentId": "default"
+                };
+
+                files.push(file);
             }
+
+            /*
+            data.result = {
+                "files": files
+            };
+            */
+            data.result.files = files;
+
+            this.renderAttachments();
         },
 
         /**
@@ -259,6 +183,8 @@
         {
             var self = this;
 
+            var branch = self.branch();
+
             this.base(function() {
 
                 // apply additional css
@@ -266,35 +192,50 @@
                     self.fieldContainer.addClass("alpaca-controlfield-multinodes");
                 }
 
+                var uploadNodeTypeEl = $(self.field).find(".upload-node-type");
+
+                Chain(branch).listDefinitions('type', {
+                    "limit": Gitana.Console.LIMIT_NONE
+                }).each(function() {
+                    var type = this.getQName();
+                    $(uploadNodeTypeEl).append('<option value="' + type+ '">' + type+ '</option>');
+                }).then(function() {
+                    $(uploadNodeTypeEl).val("n:node");
+                    window.setTimeout(function() {
+                        $(uploadNodeTypeEl).multiselect({
+                            minWidth: '300',
+                            multiple: false,
+                            selectedList: 1,
+                            header: "Select Node Type"
+                        }).multiselectfilter();
+                    }, 400);
+                }).then(function() {
+                    callback();
+                });
+
             });
         },
 
         /**
          * Returns service uri for attachment upload
          */
-        computeAttachmentUploadUri : function () {
-            var nodesUploadUri = "#";
-            var context = this.context;
-            if (context) {
-                var repository = context.repository();
-                var branch = context.branch();
-                if (repository) {
-                    nodesUploadUri = repository.getDriver().baseURL;
-                    nodesUploadUri += "/repositories/" + repository.getId();
-                }
-                if (branch) {
-                    nodesUploadUri += "/branches/" + branch.getId();
-                }
-                var format = Ratchet.Browser.ie ? ".text" : "";
-                nodesUploadUri += "/nodes"+format;
-            }
+        computeAttachmentUploadUri : function ()
+        {
+            var branch = this.branch();
+
+            var nodesUploadUri = branch.getDriver().baseURL + "/repositories/" + branch.getRepositoryId() + "/branches/" + branch.getId() + "/nodes";
+
+            var format = Ratchet.Browser.ie ? ".text" : "";
+            nodesUploadUri += format;
+
             return nodesUploadUri;
         },
 
         /**
          * Prepares final uri for attachment upload
          */
-        prepareUploadFormFields : function (data) {
+        prepareUploadFormFields: function (data)
+        {
             var _this = this;
             var formElem = this.field.find('form');
             var actionUri = this.computeAttachmentUploadUri();
@@ -303,6 +244,7 @@
             $('input:hidden', formElem).remove();
             $.each(data.files, function(index, file) {
                 var alpacaId = file['alpacaId'];
+                /*
                 //$('input.node-title-input:text:[data-alpacaid=' + alpacaId + ']', _this.field).each(function(index2) {
                 $('input[data-alpacaid=' + alpacaId + ']', _this.field).each(function(index2) {
                     formElem.append('<input class="properties-field" type="hidden" name="property' + index + '_title" value="' + $(this).val() + '">');
@@ -311,12 +253,16 @@
                 $('textarea[data-alpacaid=' + alpacaId + ']', _this.field).each(function(index2) {
                     formElem.append('<input class="properties-field" type="hidden" name="property' + index + '_description" value="' + $(this).val() + '">');
                 });
+                */
 
+                var propertyName = "_type";
                 if (_this.nodeType) {
-                    formElem.append('<input class="properties-field" type="hidden" name="property' + index + '__type" value="' + _this.nodeType + '">');
+                    formElem.append('<input class="properties-field" type="hidden" name="property' + index + '__' + propertyName + '" value="' + _this.nodeType + '">');
                 } else {
-                    if($('.upload-node-type').val() != null) {
-                        formElem.append('<input class="properties-field" type="hidden" name="property' + index + '__type" value="' + $('.upload-node-type').val() + '">');
+                    var nodeType = $('.upload-node-type').val();
+                    if (nodeType)
+                    {
+                        formElem.append('<input class="properties-field" type="hidden" name="property' + index + '__' + propertyName + '" value="' + nodeType + '">');
                     }
                 }
             });
@@ -335,7 +281,8 @@
         /**
          * @see Alpaca.ControlField#handleValidate
          */
-        handleValidate: function() {
+        handleValidate: function()
+        {
             var valInfo = this.validation;
 
             var status = this._validateAttachmentId();
@@ -352,30 +299,105 @@
         /**
          * @see Alpaca.Fields.TextField#getTitle
          */
-        getTitle: function() {
+        getTitle: function()
+        {
             return "Multiple Node Field";
         },
 
         /**
          * @see Alpaca.Fields.TextField#getDescription
          */
-        getDescription: function() {
+        getDescription: function()
+        {
             return "Field for uploading multiple nodes.";
         },
 
         /**
          * @see Alpaca.Fields.TextField#getFieldType
          */
-        getFieldType: function() {
+        getFieldType: function()
+        {
             return "file";
         }
     });
 
-    Alpaca.registerTemplate('multiNodesUploadTemplate', '<tr class="fileupload-item"><tr><td style="display:none;"><strong>Title</strong></td><td class="node-title" colspan="6"  style="display:none;"><input class="node-title-input" size="40" type="text" data-alpacaid="${alpacaId}" value="${name}"/></td></tr><tr><td style="display:none;"><strong>Description</strong></td><td class="node-description" colspan="6"  style="display:none;"><textarea class="node-description-input" rows="5" cols="40" data-alpacaid="${alpacaId}"></textarea></td></tr><tr class="template-upload{{if error}} ui-state-error{{/if}}"><td class="attachment-id"  style="display:none;"><span class="ui-icon ui-icon-copy" style="float:left;"/><input class="attachment-id-input" type="text" value="${attachmentId}" data-alpacaid="${alpacaId}"/></td><td class="preview"></td><td class="name">${name}</td><td class="type">${type}</td><td class="size">${sizef}</td>{{if error}}<td class="upload-error" colspan="2">Error:{{if error === \'maxFileSize\'}}File is too big{{else error === \'minFileSize\'}}File is too small{{else error === \'acceptFileTypes\'}}Filetype not allowed{{else error === \'maxNumberOfFiles\'}}Max number of files exceeded{{else}}${error}{{/if}}</td>{{else}}<td><div class="progress"><div class="bar" style="width:0%;"></div></div></td><td><button class="start" style="display:none">Start</button></td>{{/if}}<td><button class="cancel">Cancel</button></td></tr></tr>');
+    var _TEMPLATE_MULTINODES = Alpaca.Fields.MultiNodesField._TEMPLATE_MULTINODES = ' \
+        <div id="fileupload-${id}"> \
+            <form method="POST" enctype="multipart/form-data"> \
+            <div class="fileupload-buttonbar"> \
+                <label class="fileinput-button"> \
+                    <span>Add files...</span> \
+                    <input type="file" name="files[]" multiple> \
+                    </label> \
+                    <select class="upload-node-type" style="float:right"></select> \
+                </div> \
+            </form> \
+            <div class="fileupload-slideshow"></div> \
+            <div class="fileupload-content dropzone" rel="tooltip-html" title="Drag-n-Drop your desktop file(s) to the above drop zone."> \
+                <table class="files"></table> \
+                <div class="fileupload-progressbar" style="display:none"></div> \
+            </div> \
+        </div> \
+    ';
 
-    Alpaca.registerTemplate('multiNodesDownloadTemplate', '{{if loaded}}<tr class="template-download{{if error}} ui-state-error{{/if}}" data-attachmentid="${attachmentId}">{{if error}}<td></td><td class="attachment-id"><input class="attachment-id-input" type="text" value="${attachmentId}" disabled="disabled"/></td><td class="name">${name}</td><td class="size">${sizef}</td><td class="upload-error" colspan="2">Error:{{if error === 1}}File exceeds upload_max_filesize (php.ini directive){{else error === 2}}File exceeds MAX_FILE_SIZE (HTML form directive){{else error === 3}}File was only partially uploaded{{else error === 4}}No File was uploaded{{else error === 5}}Missing a temporary folder{{else error === 6}}Failed to write file to disk{{else error === 7}}File upload stopped by extension{{else error === \'maxFileSize\'}}File is too big{{else error === \'minFileSize\'}}File is too small{{else error === \'acceptFileTypes\'}}Filetype not allowed{{else error === \'maxNumberOfFiles\'}}Max number of files exceeded{{else error === \'uploadedBytes\'}}Uploaded bytes exceed file size{{else error === \'emptyResult\'}}Empty file upload result{{else}}${error}{{/if}}</td>{{else}}<td class="attachment-id"><a href="${url}">${title}</a></td><td class="preview" colspan="2" style="white-space:nowrap;">{{if thumbnails}}<span class="ui-icon ui-icon-image" style="float:left;"></span> {{each thumbnails}}<span style="padding:0 2px"><a href="${url}" class="thumbnail"  target="_blank">${id}</a></span>{{/each}}{{/if}}</td>{{if attachments}}<td class="name"  colspan="2" style="white-space:nowrap;"><span class="ui-icon ui-icon-copy" style="float:left;"/> {{each attachments}}<span style="padding:0 2px"><a href="${url}" class="attachment" title="${name} ${size} ${type}" target="_blank">${id}</a></span>{{/each}}</td>{{/if}}<td colspan="1"></td>{{/if}}<td><button class="delete" data-type="${delete_type}" data-url="${delete_url}">Delete</button></td></tr>{{/if}}');
+    var _TEMPLATE_UPLOAD_TEMPLATE = Alpaca.Fields.MultiNodesField._TEMPLATE_UPLOAD_TEMPLATE = ' \
+        <tr class="template-upload {{if error}}ui-state-error{{/if}}"> \
+            <td class="node-title" colspan="6"> \
+                <input class="node-title-input" size="40" type="text" data-alpacaid="${alpacaId}" value="${name}"/> \
+            </td> \
+            <td class="attachment-id" style="display:none;"> \
+                <input class="attachment-id-input" type="text" value="${attachmentId}" data-alpacaid="${alpacaId}"/> \
+            </td> \
+            <td class="preview"></td> \
+            <td class="type">${type}</td> \
+            <td class="size">${size}</td> \
+        {{if error}} \
+            <td class="upload-error" colspan="2">Error:{{if error === \'maxFileSize\'}}File is too big{{else error === \'minFileSize\'}}File is too small{{else error === \'acceptFileTypes\'}}Filetype not allowed{{else error === \'maxNumberOfFiles\'}}Max number of files exceeded{{else}}${error}{{/if}} \
+            </td> \
+        {{else}} \
+            <td> \
+                <div class="progress"> \
+                    <div class="bar" style="width:0%;"></div> \
+                </div> \
+            </td> \
+            <td><button class="start">Start</button></td> \
+        {{/if}} \
+            <td> \
+                <button class="cancel">Cancel</button> \
+            </td> \
+        </tr> \
+    ';
 
-    Alpaca.registerTemplate("controlFieldMultiNodes", '<div id="fileupload-${id}"><form method="POST" enctype="multipart/form-data"><div class="fileupload-buttonbar"><label class="fileinput-button"><span>Add files...</span><input type="file" name="files[]" multiple></label><select class="upload-node-type" style="float:right"></select></div></form><div class="fileupload-slideshow"></div><div class="fileupload-content dropzone" rel="tooltip-html" title="Drag-n-Drop your desktop file(s) to the above drop zone."><table class="files"></table><div class="fileupload-progressbar" style="visibility:hidden;display:none"></div></div></div>');
+    var _TEMPLATE_DOWNLOAD_TEMPLATE = Alpaca.Fields.MultiNodesField._TEMPLATE_DOWNLOAD_TEMPLATE = ' \
+        <tr class="template-download{{if error}} ui-state-error{{/if}}" data-attachmentid="${attachmentId}"> \
+        {{if error}} \
+            <td></td> \
+            <td class="preview"></td> \
+            <td class="name">${name}</td> \
+            <td class="type">${type}</td> \
+            <td class="size">${size}</td> \
+            <td class="upload-error" colspan="2"> \
+                Error:{{if error === 1}}File exceeds upload_max_filesize (php.ini directive){{else error === 2}}File exceeds MAX_FILE_SIZE (HTML form directive){{else error === 3}}File was only partially uploaded{{else error === 4}}No File was uploaded{{else error === 5}}Missing a temporary folder{{else error === 6}}Failed to write file to disk{{else error === 7}}File upload stopped by extension{{else error === \'maxFileSize\'}}File is too big{{else error === \'minFileSize\'}}File is too small{{else error === \'acceptFileTypes\'}}Filetype not allowed{{else error === \'maxNumberOfFiles\'}}Max number of files exceeded{{else error === \'uploadedBytes\'}}Uploaded bytes exceed file size{{else error === \'emptyResult\'}}Empty file upload result{{else}}${error}{{/if}} \
+            </td> \
+        {{else}} \
+            <td class="preview">\
+                <img src="${thumbnail_url}"> \
+            </td> \
+            <td class="name"> \
+                <a class="fileupload-attachment-download" href="${browse_url}">${name}</a> \
+            </td> \
+            <td class="type">${type}</td> \
+            <td class="size">${size}</td> \
+        {{/if}} \
+            <td colspan="3"> \
+                <button class="delete" data-type="${delete_type}" data-url="${delete_url}">Delete</button> \
+            </td> \
+        </tr> \
+    ';
+
+    Alpaca.registerTemplate('multiNodesUploadTemplate', _TEMPLATE_UPLOAD_TEMPLATE);
+    Alpaca.registerTemplate('multiNodesDownloadTemplate', _TEMPLATE_DOWNLOAD_TEMPLATE);
+    Alpaca.registerTemplate("controlFieldMultiNodes", _TEMPLATE_MULTINODES);
 
     Alpaca.registerFieldClass("multinodes", Alpaca.Fields.MultiNodesField);
 

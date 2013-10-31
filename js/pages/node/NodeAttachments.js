@@ -223,7 +223,16 @@
                     "type":"property",
                     "cssClass": "table-preview-attachment",
                     "property": function(callback) {
-                        var previewUrl = _previewMimetypeFallback(this.getPreviewUri(this.getId()), this.getContentType());
+                        //var previewUrl = _previewMimetypeFallback(this.getPreviewUri(this.getId()), this.getContentType());
+                        var attachmentName = this.getId();
+
+                        var previewUrl = this.getDriver().baseURL + this.getUri() + "/../../preview/console-attachment-" + this.getId() + "?attachment=" + this.getId() + "&size=64&mimetype=image/jpeg";
+                        if (attachmentName.indexOf("_preview") == 0)
+                        {
+                            previewUrl = this.getDriver().baseURL + this.getUri();
+                        }
+                        previewUrl = _previewMimetypeFallback(previewUrl);
+
                         var value = "<div><img src='" + previewUrl + "'></div>";
                         callback(value);
                     }

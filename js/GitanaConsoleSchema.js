@@ -984,19 +984,19 @@
                 },
                 "smtp_enabled": {
                     "type": "checkbox",
-                    "label": "Connect via SMTP"
+                    "rightLabel": "Connect via SMTP"
                 },
                 "smtp_is_secure": {
                     "type": "checkbox",
-                    "label": "SMTP Server requires SSL"
+                    "rightLabel": "SMTP Server requires SSL"
                 },
                 "smtp_starttls_enabled": {
                     "type": "checkbox",
-                    "label": "SMTP Server requires STARTTLS"
+                    "rightLabel": "SMTP Server requires STARTTLS"
                 },
                 "smtp_requires_auth": {
                     "type": "checkbox",
-                    "label": "SMTP Server requires authentication"
+                    "rightLabel": "SMTP Server requires authentication"
                 },
                 "username": {
                     "type": "text",

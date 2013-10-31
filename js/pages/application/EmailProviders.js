@@ -191,22 +191,30 @@
 
             list["columns"] = [
                 {
-                    "title": "Scope",
+                    "title": "ID",
                     "type":"property",
-                    "sortingExpression": "scope",
+                    "sortingExpression": "_doc",
                     "property": function(callback) {
-                        var title = self.listItemProp(this,'scope');
+                        var title = self.listItemProp(this,'_doc');
                         var link = self.link(this);
                         var value = "<a href='#" + link + "'>" + title + "</a>";
                         callback(value);
                     }
                 },
                 {
-                    "title": "Key",
+                    "title": "Host",
                     "type":"property",
-                    "sortingExpression": "key",
+                    "sortingExpression": "host",
                     "property": function(callback) {
-                        callback(self.listItemProp(this,'key'));
+                        callback(self.listItemProp(this,'host'));
+                    }
+                },
+                {
+                    "title": "Port",
+                    "type":"property",
+                    "sortingExpression": "port",
+                    "property": function(callback) {
+                        callback(self.listItemProp(this,'port'));
                     }
                 },
                 {

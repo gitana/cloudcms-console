@@ -72,7 +72,7 @@
 
             var page = {
                 "title" : "Error",
-                "description" : "Display details of error.",
+                "description" : "An error has occurred that requires your attention.",
                 "error" : this.error()
             };
 

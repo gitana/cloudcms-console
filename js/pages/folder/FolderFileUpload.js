@@ -37,7 +37,7 @@
                             "type": "multifoldernodes",
                             "name": "fields",
                             "helper": "Select and upload file(s).",
-                            "context": self,
+                            "context": self.node(),
                             "fileupload" : {
                                 "attachmentId" : "default"
                             },
@@ -60,22 +60,7 @@
                         "width" : "100%"
                     });
 
-                    self.branch().listDefinitions('type', {
-                        "limit": Gitana.Console.LIMIT_NONE
-                    }).each(function() {
-                        var type = this.getQName();
-                        $('.upload-node-type',$(el)).append('<option value="' + type+ '">' + type+ '</option>');
-                    }).then(function() {
-                        $('.upload-node-type',$(el)).val("n:node");
-                        $('.upload-node-type', $(el)).multiselect({
-                            minWidth: '300',
-                            multiple: false,
-                            selectedList: 1,
-                            header: "Select Node Type"
-                        }).multiselectfilter();
-                    }).then(function() {
-                        callback();
-                    })
+                    callback();
                 }
             });
         },

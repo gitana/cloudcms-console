@@ -36,8 +36,8 @@
                         "file": {
                             "type": "multinodes",
                             "name": "fields",
-                            "helper": "Select and upload file(s).",
-                            "context": self,
+                            "helper": "Select and upload file(s)",
+                            "context": self.branch(),
                             "fileupload" : {
                                 "attachmentId" : "default"
                             },
@@ -60,6 +60,7 @@
                         "width" : "100%"
                     });
 
+                    /*
                     self.branch().listDefinitions('type', {
                         'limit': Gitana.Console.LIMIT_NONE
                     }).each(function() {
@@ -76,13 +77,16 @@
                     }).then(function() {
                         callback();
                     });
+                    */
+                    callback();
                 }
             });
         },
 
-
         setupForms : function (el, callback) {
-            this.setupFileUploadForm(el, callback);
+            this.setupFileUploadForm(el, function() {
+                callback();
+            });
         },
 
         setupPage : function(el) {
