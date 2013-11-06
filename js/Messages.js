@@ -95,7 +95,7 @@
             },
             "Import": {
                 "title" : "Import Platform",
-                "description" : "Imports the platform from an archive"
+                "description" : "Imports an archive into this platform"
             },
             "GroupAuthorities": {
                 "title" : "Platform Group Security",

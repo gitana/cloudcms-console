@@ -2,8 +2,8 @@
     Gitana.Console.Pages.PlatformImport = Gitana.Console.Pages.AbstractImport.extend(
     {
         setup: function() {
-            this.get("/import", this.index);
             this.get("/import/{type}", this.index);
+            this.get("/import", this.index);
         },
 
         targetObject: function() {

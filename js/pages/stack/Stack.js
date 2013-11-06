@@ -430,7 +430,22 @@
                                 }).queryVaults(dataStoreQuery, self.pagination(pagination)).then(handler);
                             break;
                         case 'webhost' :
-                            Chain(self.contextObject()).queryWebHosts(dataStoreQuery, self.pagination(pagination)).then(handler);
+                            Chain(self.contextObject()).trap(
+                                function(error) {
+                                    return self.handlePageError(el, error);
+                                }).queryWebHosts(dataStoreQuery, self.pagination(pagination)).then(handler);
+                            break;
+                        case 'directory' :
+                            Chain(self.contextObject()).trap(
+                                function(error) {
+                                    return self.handlePageError(el, error);
+                                }).queryDirectories(dataStoreQuery, self.pagination(pagination)).then(handler);
+                            break;
+                        case 'warehouse' :
+                            Chain(self.contextObject()).trap(
+                                function(error) {
+                                    return self.handlePageError(el, error);
+                                }).queryWarehouses(dataStoreQuery, self.pagination(pagination)).then(handler);
                             break;
                     }
                 }

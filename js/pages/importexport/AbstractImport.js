@@ -90,23 +90,22 @@
                                     "sort": {
                                         '_system.modified_on.ms': -1
                                     }
-                                }).each(
-                                    function(key, val, index) {
-                                        field.selectOptions.push({
-                                            "value": this.getId(),
-                                            "text": self.friendlyTitle(this)
-                                        });
-                                        if (!firstOption) {
-                                            firstOption = this.getId();
-                                        }
-                                    }).then(function() {
-                                        if (callback) {
-                                            callback();
-                                            if (firstOption) {
-                                                field.field.val(firstOption).change();
-                                            }
-                                        }
+                                }).each(function(key, val, index) {
+                                    field.selectOptions.push({
+                                        "value": this.getId(),
+                                        "text": self.friendlyTitle(this)
                                     });
+                                    if (!firstOption) {
+                                        firstOption = this.getId();
+                                    }
+                                }).then(function() {
+                                    if (callback) {
+                                        callback();
+                                        if (firstOption) {
+                                            field.field.val(firstOption).change();
+                                        }
+                                    }
+                                });
                             }
                         },
                         "archive" : {
@@ -160,7 +159,7 @@
                     }
                 });
 
-                options.fields.archive['postRender'] = function(archiveField) {
+                options.fields.archive['postRender'] = function(callback) {
                     $('<button class="gitana-picker-button">Select Archive...</button>').button({
                         icons: {
                             primary:'ui-icon-document'
@@ -174,7 +173,9 @@
                             height: 600,
                             modal: true
                         }).height('auto');
-                    }).appendTo(archiveField.outerEl);
+                    }).appendTo(this.outerEl);
+
+                    callback();
                 };
 
                 return options;
@@ -204,7 +205,7 @@
 
                 var options = this.options();
 
-                $('#import', $(el)).alpaca({
+                $(el).find("#import").alpaca({
                     "schema": schema,
                     "options": options,
                     "view" : {
@@ -275,7 +276,10 @@
                             }
                         });
 
-                        callback();
+                        if (callback)
+                        {
+                            callback();
+                        }
                     }
                 });
 
