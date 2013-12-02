@@ -22,7 +22,7 @@
             this.error(error);
 
             if (error.status && error.status == '401') {
-                this.app().authenticator.logout(this, function() {
+                this.app().authenticator.logout(function() {
                     Gitana.CMS.refresh();
                 });
             } else {

@@ -97,13 +97,91 @@
             });
         },
 
-        logout: function(context, callback) {
+        postLogin: function(platform, context, callback)
+        {
             var self = this;
-            Gitana.Authentication.platform().logout().then(function() {
-                if (callback) {
-                    callback();
-                }
+
+            var authInfo = platform.getDriver().getAuthInfo();
+            context.observable("authInfo").set(authInfo);
+
+            // populate tenantDetails
+            self.populateTenantDetails(context, authInfo, function() {
+
+                var userName = authInfo.getPrincipalName();
+                var domainId = authInfo.getPrincipalDomainId();
+
+                platform.readDomain(domainId).then(function() {
+                    context.observable("domain").set(this);
+                    this.readPrincipal(userName).then(function() {
+                        self.populateAuthenticatedUser(context, this, function() {
+                            callback();
+                        });
+                    });
+                });
             });
+        },
+
+        postLogout: function(callback)
+        {
+            callback();
+        },
+
+        /*
+
+         logout: function(context, callback) {
+         var self = this;
+         Gitana.Authentication.platform().logout().then(function() {
+         if (callback) {
+         callback();
+         }
+         });
+         }
+         */
+
+        populateTenantDetails: function(context, authInfo, callback)
+        {
+            // we build up an object to hold tenant info
+            var tenantDetails = {
+                "id": authInfo.getTenantId(),
+                "title": authInfo.getTenantTitle(),
+                "description": authInfo.getTenantDescription(),
+                "friendlyName": authInfo.getTenantTitle() ? authInfo.getTenantTitle() : authInfo.getTenantId(),
+                "avatarUrl": "" // TODO: platform attachment?
+            };
+
+            var platform = Gitana.Authentication.platform();
+            tenantDetails['avatarUrl'] = platform.getTenantPreviewUri("avatar48", {
+                "attachment": "avatar",
+                "size": 48,
+                "timestamp": new Date().getTime()
+            });
+
+            // update tenant observable
+            context.observable("tenantDetails").set(tenantDetails);
+
+            callback();
+        },
+
+        populateAuthenticatedUser: function(context, user, callback)
+        {
+            // update user observable
+            context.observable("user").set(user);
+            context.observable("userRoles").set({});
+
+            // update user details observable
+            var userDetails = user;
+            userDetails['friendlyName'] = user["firstName"] ? user["firstName"] : user["name"];
+            userDetails['fullName'] = user["firstName"] && user["lastName"] ? user["firstName"] + " " + user["lastName"] : userDetails['friendlyName'];
+            userDetails['avatarUrl'] = user.getPreviewUri("avatar48", {
+                "attachment": "avatar",
+                "size": 48,
+                "timestamp": new Date().getTime()
+            });
+
+            // load user settings
+            context.observable("userDetails").set(userDetails);
+
+            callback();
         }
     });
 })(jQuery);

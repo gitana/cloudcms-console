@@ -279,7 +279,7 @@
 
                 // Add logout button
                 $('.logout',$(el)).click(function(e) {
-                    self.app().authenticator.logout(self,function() {
+                    self.app().authenticator.logout(function() {
                         Gitana.CMS.refresh();
                     });
                     e.preventDefault();
