@@ -2057,8 +2057,8 @@
                 link += "/teams/"
             }
 
-            if (team && team['teamKey']) {
-                link += team['teamKey'];
+            if (team && team['key']) {
+                link += team['key'];
             }
 
             if (mode) {
